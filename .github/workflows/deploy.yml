@@ -1,9 +1,9 @@
 name: Auto Deploy Stock Reports
 
 on:
-  # 18:00 KST ~ 06:00 KST (09:00 ~ 21:00 UTC) 매 3시간마다 실행
+  # 18:00 KST ~ 06:00 KST (09:00 ~ 21:00 UTC) 매시 정각 실행
   schedule:
-    - cron: '0 9,12,15,18,21 * * *'
+    - cron: '0 9-21 * * *'
 
   # 수동 실행도 가능
   workflow_dispatch:
