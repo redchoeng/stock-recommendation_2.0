@@ -1,0 +1,280 @@
+name: Auto Deploy Stock Reports
+
+on:
+  # 18:00 KST ~ 06:00 KST (09:00 ~ 21:00 UTC) 매 3시간마다 실행
+  schedule:
+    - cron: '0 9,12,15,18,21 * * *'
+
+  # 수동 실행도 가능
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install yfinance pandas numpy requests
+
+      - name: Clone source repositories
+        run: |
+          # 소스 코드 가져오기 (임시)
+          mkdir -p source/finance-datareader
+          mkdir -p source/value-stocks
+
+      - name: Generate NASDAQ 100 Report
+        run: |
+          cat > generate_nasdaq.py << 'SCRIPT'
+          import yfinance as yf
+          import pandas as pd
+          from datetime import datetime
+          import warnings
+          warnings.filterwarnings('ignore')
+
+          NASDAQ100_TICKERS = [
+              'AAPL', 'MSFT', 'NVDA', 'AVGO', 'ADBE', 'CSCO', 'QCOM', 'TXN', 'AMD', 'INTC',
+              'GOOGL', 'META', 'AMZN', 'TSLA', 'NFLX', 'CRM', 'ORCL', 'INTU', 'NOW', 'SNOW',
+              'COST', 'PEP', 'AMGN', 'GILD', 'ISRG', 'HON', 'PYPL', 'ABNB', 'MELI', 'ARM'
+          ]
+
+          def analyze_stock(ticker):
+              try:
+                  stock = yf.Ticker(ticker)
+                  hist = stock.history(period='6mo')
+                  if hist.empty or len(hist) < 20:
+                      return None
+
+                  info = stock.info
+                  current_price = hist['Close'].iloc[-1]
+                  sma20 = hist['Close'].rolling(20).mean().iloc[-1]
+                  sma50 = hist['Close'].rolling(50).mean().iloc[-1] if len(hist) >= 50 else sma20
+
+                  score = 50
+                  if current_price > sma20: score += 10
+                  if current_price > sma50: score += 10
+                  if info.get('revenueGrowth', 0) and info['revenueGrowth'] > 0.1: score += 15
+                  if info.get('profitMargins', 0) and info['profitMargins'] > 0.15: score += 15
+
+                  return {
+                      'ticker': ticker,
+                      'name': info.get('shortName', ticker),
+                      'price': current_price,
+                      'score': min(score, 100),
+                      'sector': info.get('sector', 'Technology')
+                  }
+              except:
+                  return None
+
+          stocks = []
+          for t in NASDAQ100_TICKERS:
+              result = analyze_stock(t)
+              if result:
+                  stocks.append(result)
+                  print(f"  {t}: {result['score']}점")
+
+          stocks.sort(key=lambda x: x['score'], reverse=True)
+          recommended = [s for s in stocks if s['score'] >= 50]
+
+          now = datetime.now()
+          html = f'''<!DOCTYPE html>
+          <html lang="ko">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>NASDAQ 100 - {now.strftime("%Y-%m-%d")}</title>
+              <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+              <style>
+                  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+                  body {{ font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%); background-attachment: fixed; padding: 20px; min-height: 100vh; }}
+                  .container {{ max-width: 1200px; margin: 0 auto; }}
+                  .header {{ background: white; border-radius: 30px; padding: 35px; margin-bottom: 25px; box-shadow: 0 8px 0 #5BA3E0; border: 4px solid #5D4E37; text-align: center; }}
+                  .header h1 {{ color: #5D4E37; font-size: 2em; }}
+                  .header .date {{ color: #5BA3E0; margin-top: 10px; }}
+                  .summary {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }}
+                  .summary-card {{ background: linear-gradient(180deg, #FFF8DC, #FAEBD7); border-radius: 20px; padding: 20px; border: 3px solid #5D4E37; text-align: center; }}
+                  .summary-card .value {{ color: #FF6B35; font-size: 1.8em; font-weight: bold; }}
+                  .stock-card {{ background: white; border-radius: 20px; padding: 25px; margin-bottom: 15px; border: 3px solid #5D4E37; box-shadow: 0 5px 0 #5BA3E0; }}
+                  .stock-card h2 {{ color: #5D4E37; margin-bottom: 10px; }}
+                  .stock-card .ticker {{ color: #5BA3E0; }}
+                  .stock-card .score {{ background: #5BA3E0; color: white; padding: 8px 20px; border-radius: 20px; float: right; }}
+                  .stock-card .score.high {{ background: #4CAF50; }}
+                  .back-link {{ display: block; text-align: center; margin-bottom: 20px; color: #5D4E37; }}
+                  .footer {{ background: rgba(255,255,255,0.9); border-radius: 20px; padding: 20px; text-align: center; color: #7B6B4F; margin-top: 30px; }}
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <a href="index.html" class="back-link">← 메인으로</a>
+                  <div class="header">
+                      <div style="font-size: 3em;">🚀</div>
+                      <h1>NASDAQ 100 Recommendations</h1>
+                      <div class="date">{now.strftime("%Y-%m-%d %H:%M")} UTC 업데이트</div>
+                  </div>
+                  <div class="summary">
+                      <div class="summary-card"><div class="label">분석 종목</div><div class="value">{len(stocks)}개</div></div>
+                      <div class="summary-card"><div class="label">추천 종목</div><div class="value">{len(recommended)}개</div></div>
+                  </div>
+          '''
+          for s in recommended[:20]:
+              score_class = 'high' if s['score'] >= 70 else ''
+              html += f'''
+                  <div class="stock-card">
+                      <span class="score {score_class}">{s['score']}점</span>
+                      <h2>{s['name']}</h2>
+                      <span class="ticker">{s['ticker']}</span> | ${s['price']:.2f}
+                  </div>'''
+
+          html += '''
+                  <div class="footer">⚠️ 본 리포트는 투자 참고 자료입니다.</div>
+              </div>
+          </body>
+          </html>'''
+
+          with open('nasdaq100_report.html', 'w', encoding='utf-8') as f:
+              f.write(html)
+          print(f"\\nNASDAQ 리포트 생성 완료: {len(recommended)}개 추천")
+          SCRIPT
+          python generate_nasdaq.py
+
+      - name: Generate Value Stocks Report
+        run: |
+          cat > generate_value.py << 'SCRIPT'
+          import yfinance as yf
+          from datetime import datetime
+          import warnings
+          warnings.filterwarnings('ignore')
+
+          VALUE_TICKERS = [
+              'JPM', 'BAC', 'WFC', 'GS', 'BRK-B', 'V', 'MA',
+              'JNJ', 'UNH', 'PFE', 'ABBV', 'MRK', 'LLY',
+              'PG', 'KO', 'PEP', 'WMT', 'COST',
+              'XOM', 'CVX', 'COP',
+              'LMT', 'RTX', 'CAT', 'UNP', 'UPS', 'HON',
+              'NEE', 'DUK', 'SO'
+          ]
+
+          def analyze_stock(ticker):
+              try:
+                  stock = yf.Ticker(ticker)
+                  hist = stock.history(period='6mo')
+                  if hist.empty:
+                      return None
+
+                  info = stock.info
+                  current_price = hist['Close'].iloc[-1]
+
+                  score = 50
+                  div_yield = info.get('dividendYield', 0) or 0
+                  if div_yield > 0.02: score += 15
+                  if div_yield > 0.04: score += 10
+                  if info.get('trailingPE', 100) and info['trailingPE'] < 20: score += 10
+                  if info.get('profitMargins', 0) and info['profitMargins'] > 0.1: score += 10
+
+                  return {
+                      'ticker': ticker,
+                      'name': info.get('shortName', ticker),
+                      'price': current_price,
+                      'score': min(score, 100),
+                      'dividend': div_yield * 100
+                  }
+              except:
+                  return None
+
+          stocks = []
+          for t in VALUE_TICKERS:
+              result = analyze_stock(t)
+              if result:
+                  stocks.append(result)
+                  print(f"  {t}: {result['score']}점")
+
+          stocks.sort(key=lambda x: x['score'], reverse=True)
+          recommended = [s for s in stocks if s['score'] >= 45]
+
+          now = datetime.now()
+          html = f'''<!DOCTYPE html>
+          <html lang="ko">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Value Stocks - {now.strftime("%Y-%m-%d")}</title>
+              <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+              <style>
+                  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+                  body {{ font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%); background-attachment: fixed; padding: 20px; min-height: 100vh; }}
+                  .container {{ max-width: 1200px; margin: 0 auto; }}
+                  .header {{ background: white; border-radius: 30px; padding: 35px; margin-bottom: 25px; box-shadow: 0 8px 0 #E8A838; border: 4px solid #5D4E37; text-align: center; }}
+                  .header h1 {{ color: #5D4E37; font-size: 2em; }}
+                  .header .date {{ color: #E8A838; margin-top: 10px; }}
+                  .summary {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }}
+                  .summary-card {{ background: linear-gradient(180deg, #FFF8DC, #FAEBD7); border-radius: 20px; padding: 20px; border: 3px solid #5D4E37; text-align: center; }}
+                  .summary-card .value {{ color: #FF6B35; font-size: 1.8em; font-weight: bold; }}
+                  .stock-card {{ background: white; border-radius: 20px; padding: 25px; margin-bottom: 15px; border: 3px solid #5D4E37; box-shadow: 0 5px 0 #E8A838; }}
+                  .stock-card h2 {{ color: #5D4E37; margin-bottom: 10px; }}
+                  .stock-card .ticker {{ color: #E8A838; }}
+                  .stock-card .score {{ background: #E8A838; color: white; padding: 8px 20px; border-radius: 20px; float: right; }}
+                  .stock-card .score.high {{ background: #4CAF50; }}
+                  .dividend {{ color: #4CAF50; font-weight: bold; }}
+                  .back-link {{ display: block; text-align: center; margin-bottom: 20px; color: #5D4E37; }}
+                  .footer {{ background: rgba(255,255,255,0.9); border-radius: 20px; padding: 20px; text-align: center; color: #7B6B4F; margin-top: 30px; }}
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <a href="index.html" class="back-link">← 메인으로</a>
+                  <div class="header">
+                      <div style="font-size: 3em;">💰</div>
+                      <h1>Value Stocks Recommendations</h1>
+                      <div class="date">{now.strftime("%Y-%m-%d %H:%M")} UTC 업데이트</div>
+                  </div>
+                  <div class="summary">
+                      <div class="summary-card"><div class="label">분석 종목</div><div class="value">{len(stocks)}개</div></div>
+                      <div class="summary-card"><div class="label">추천 종목</div><div class="value">{len(recommended)}개</div></div>
+                  </div>
+          '''
+          for s in recommended[:20]:
+              score_class = 'high' if s['score'] >= 70 else ''
+              div_text = f" | <span class='dividend'>배당 {s['dividend']:.1f}%</span>" if s['dividend'] > 0 else ""
+              html += f'''
+                  <div class="stock-card">
+                      <span class="score {score_class}">{s['score']}점</span>
+                      <h2>{s['name']}</h2>
+                      <span class="ticker">{s['ticker']}</span> | ${s['price']:.2f}{div_text}
+                  </div>'''
+
+          html += '''
+                  <div class="footer">⚠️ 본 리포트는 투자 참고 자료입니다.</div>
+              </div>
+          </body>
+          </html>'''
+
+          with open('value_report.html', 'w', encoding='utf-8') as f:
+              f.write(html)
+          print(f"\\nValue 리포트 생성 완료: {len(recommended)}개 추천")
+          SCRIPT
+          python generate_value.py
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+
+          # 변경사항이 있을 때만 커밋
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto update reports - $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git push
+          fi
