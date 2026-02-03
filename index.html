@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
+            background-attachment: fixed;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 구름 애니메이션 */
+        .cloud {
+            position: fixed;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.9;
+            animation: float 20s infinite ease-in-out;
+            z-index: 0;
+        }
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+        .cloud-1 {
+            width: 100px;
+            height: 40px;
+            top: 8%;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        .cloud-1::before { width: 50px; height: 50px; top: -25px; left: 15px; }
+        .cloud-1::after { width: 35px; height: 35px; top: -15px; left: 55px; }
+
+        .cloud-2 {
+            width: 120px;
+            height: 45px;
+            top: 15%;
+            left: -120px;
+            animation-delay: -7s;
+        }
+        .cloud-2::before { width: 55px; height: 55px; top: -30px; left: 20px; }
+        .cloud-2::after { width: 40px; height: 40px; top: -18px; left: 65px; }
+
+        .cloud-3 {
+            width: 80px;
+            height: 35px;
+            top: 25%;
+            left: -80px;
+            animation-delay: -14s;
+        }
+        .cloud-3::before { width: 40px; height: 40px; top: -20px; left: 10px; }
+        .cloud-3::after { width: 30px; height: 30px; top: -12px; left: 40px; }
+
+        @keyframes float {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        /* 반짝이 효과 */
+        .sparkle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: sparkle 2s infinite;
+            z-index: 1;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        /* 말풍선 스타일 헤더 */
+        .header-bubble {
+            background: white;
+            border-radius: 30px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            box-shadow:
+                0 8px 0 #E8C547,
+                0 12px 20px rgba(0,0,0,0.15);
+            position: relative;
+            border: 4px solid #5D4E37;
+        }
+
+        .header-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 15px solid transparent;
+            border-top-color: white;
+        }
+
+        .emoji-icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #5D4E37;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 0 #FFF5BA;
+        }
+
+        .subtitle {
+            color: #7B6B4F;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* 스탯 박스 - 게임 UI 스타일 */
+        .stats-box {
+            background: linear-gradient(180deg, #FFF8DC 0%, #FAEBD7 100%);
+            border: 4px solid #5D4E37;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow:
+                0 6px 0 #C4A35A,
+                inset 0 2px 0 rgba(255,255,255,0.5);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .stat-value {
+            color: #FF6B35;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 0 #5D4E37;
+        }
+
+        .stat-label {
+            color: #5D4E37;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* 카드 - 메이플 아이템 창 스타일 */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(180deg, #FFFFFF 0%, #F5F5DC 100%);
+            border-radius: 20px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 4px solid #5D4E37;
+            position: relative;
+            box-shadow:
+                0 6px 0 var(--card-shadow),
+                0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card.tech {
+            --card-shadow: #4A90D9;
+            --card-accent: #5BA3E0;
+            --card-glow: rgba(91, 163, 224, 0.3);
+        }
+
+        .card.value {
+            --card-shadow: #E8A838;
+            --card-accent: #F5B041;
+            --card-glow: rgba(245, 176, 65, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 12px 0 var(--card-shadow),
+                0 20px 40px var(--card-glow);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--card-accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 3px solid #5D4E37;
+            box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+        }
+
+        .card-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            color: #5D4E37;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #7B6B4F;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .card .features {
+            text-align: left;
+            background: rgba(93, 78, 55, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .card .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #5D4E37;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .card .feature:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            background: var(--card-accent);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            flex-shrink: 0;
+        }
+
+        .card .btn {
+            display: inline-block;
+            background: var(--card-accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+            border: 3px solid #5D4E37;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            font-family: 'Jua', sans-serif;
+            font-size: 1em;
+        }
+
+        .card:hover .btn {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+        }
+
+        /* 푸터 */
+        .footer {
+            background: rgba(255,255,255,0.7);
+            border-radius: 15px;
+            padding: 15px 25px;
+            color: #7B6B4F;
+            font-size: 0.85em;
+            border: 3px solid #C4A35A;
+        }
+
+        /* 캐릭터 데코 */
+        .deco-left, .deco-right {
+            position: fixed;
+            bottom: 20px;
+            font-size: 4em;
+            z-index: 5;
+            animation: sway 3s infinite ease-in-out;
+        }
+        .deco-left { left: 20px; }
+        .deco-right { right: 20px; animation-delay: -1.5s; }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        @media (max-width: 768px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+            .emoji-icon {
+                font-size: 3em;
+            }
+            .deco-left, .deco-right {
+                display: none;
+            }
+            .stats {
+                gap: 15px;
+            }
+            .stat {
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 구름들 -->
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+
+    <!-- 반짝이들 -->
+    <div class="sparkle" style="top: 20%; left: 15%;"></div>
+    <div class="sparkle" style="top: 30%; right: 20%; animation-delay: 0.5s;"></div>
+    <div class="sparkle" style="top: 50%; left: 10%; animation-delay: 1s;"></div>
+    <div class="sparkle" style="top: 60%; right: 15%; animation-delay: 1.5s;"></div>
+    <div class="sparkle" style="top: 80%; left: 25%; animation-delay: 0.3s;"></div>
+
+    <!-- 캐릭터 데코 -->
+    <div class="deco-left">🌸</div>
+    <div class="deco-right">🍀</div>
+
+    <div class="container">
+        <div class="header-bubble">
+            <div class="emoji-icon">📈</div>
+            <h1>Stock Recommendations</h1>
+            <p class="subtitle">당신에게 어쩌면 도움이 될만한<br>주식 분석 시스템</p>
+        </div>
+
+        <div class="stats-box">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">100점</div>
+                    <div class="stat-label">종합 점수</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">400+</div>
+                    <div class="stat-label">분석 종목</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">Daily</div>
+                    <div class="stat-label">자동 업데이트</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards">
+            <a href="nasdaq100_report.html" class="card tech">
+                <span class="card-badge">기술주</span>
+                <div class="card-icon">🚀</div>
+                <h2>NASDAQ 100</h2>
+                <p>AI, 반도체, 클라우드, 소프트웨어<br>성장주 분석</p>
+
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>밥값 35점</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>기술적 분석 25점</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>자동화/AI 수혜 20점</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>정책 수혜 20점</span>
+                    </div>
+                </div>
+
+                <div class="btn">입장하기 →</div>
+            </a>
+
+            <a href="value_report.html" class="card value">
+                <span class="card-badge">가치주</span>
+                <div class="card-icon">💰</div>
+                <h2>Value Stocks</h2>
+                <p>금융, 헬스케어, 산업재, 에너지<br>안정적 배당주 분석</p>
+
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>밥값+배당 45점</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>기술적 분석 25점</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>안정성 15점</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span>정책 수혜 15점</span>
+                    </div>
+                </div>
+
+                <div class="btn">입장하기 →</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>⚠️ 본 리포트는 투자 참고 자료이며, 투자 판단의 책임은 투자자 본인에게 있습니다.</p>
+        </div>
+    </div>
+
+    <script>
+        // 랜덤 반짝이 추가
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 4000);
+        }
+
+        setInterval(createSparkle, 800);
+    </script>
+</body>
+</html>
