@@ -5,6 +5,11 @@ on:
   schedule:
     - cron: '0 9-21 * * *'
 
+  # 푸시할 때도 실행
+  push:
+    branches:
+      - main
+
   # 수동 실행도 가능
   workflow_dispatch:
 
