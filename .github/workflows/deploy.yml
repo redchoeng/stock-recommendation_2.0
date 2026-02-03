@@ -177,8 +177,15 @@ jobs:
 
                   score = 50
                   div_yield = info.get('dividendYield', 0) or 0
-                  if div_yield > 0.02: score += 15
-                  if div_yield > 0.04: score += 10
+                  # yfinance가 소수(0.03) 또는 퍼센트(3.0)로 반환하는 경우 처리
+                  if div_yield > 1:
+                      div_yield_pct = div_yield  # 이미 퍼센트
+                      div_yield_decimal = div_yield / 100
+                  else:
+                      div_yield_pct = div_yield * 100  # 소수 -> 퍼센트
+                      div_yield_decimal = div_yield
+                  if div_yield_decimal > 0.02: score += 15
+                  if div_yield_decimal > 0.04: score += 10
                   if info.get('trailingPE', 100) and info['trailingPE'] < 20: score += 10
                   if info.get('profitMargins', 0) and info['profitMargins'] > 0.1: score += 10
 
@@ -187,7 +194,7 @@ jobs:
                       'name': info.get('shortName', ticker),
                       'price': current_price,
                       'score': min(score, 100),
-                      'dividend': div_yield * 100
+                      'dividend': div_yield_pct
                   }
               except:
                   return None
