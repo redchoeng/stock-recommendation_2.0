@@ -31,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install yfinance pandas numpy requests tabulate ta
+          pip install -r requirements.txt
 
       - name: Generate NASDAQ 100 Report with Titan Algorithm
         run: |
