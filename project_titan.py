@@ -73,16 +73,22 @@ VALUE_TICKERS = [
     'XOM', 'CVX', 'COP', 'SLB', 'EOG', 'MPC', 'PSX', 'VLO', 'OXY', 'HES',
     'DVN', 'FANG', 'HAL', 'BKR', 'APA',
 
-    # Defense & Aerospace (7) - 국방/방산
-    'LMT', 'RTX', 'BA', 'NOC', 'GD', 'LHX', 'HII',
+    # Defense & Aerospace (8) - 국방/방산
+    'LMT', 'RTX', 'BA', 'NOC', 'GD', 'LHX', 'HII', 'KTOS',
 
-    # Industrials (22)
+    # Infrastructure & Construction (10) - AIRR 리쇼어링 수혜주
+    'STRL', 'FIX', 'MTZ', 'EME', 'PWR', 'PRIM', 'DY', 'AGX', 'SPXC', 'OSK',
+
+    # Transportation & Logistics (5)
+    'SAIA', 'CHRW', 'R', 'ODFL', 'KEX',
+
+    # Industrials (27) - AIRR 제조업 리쇼어링 포함
     'CAT', 'DE', 'UNP', 'UPS', 'HON', 'MMM', 'GE', 'EMR', 'ETN', 'ITW',
     'PH', 'CMI', 'CSX', 'NSC', 'FDX', 'WM', 'RSG', 'JCI', 'ROK', 'DOV',
-    'IR', 'XYL',
+    'IR', 'XYL', 'AAON', 'RBC', 'POWL', 'AIT', 'GVA',
 
-    # Nuclear & Uranium (9) - 원자력/우라늄
-    'CCJ', 'SMR', 'OKLO', 'UEC', 'URG', 'UUUU', 'LEU', 'GEV', 'VST',
+    # Nuclear & Uranium (10) - 원자력/우라늄
+    'CCJ', 'SMR', 'OKLO', 'UEC', 'URG', 'UUUU', 'LEU', 'GEV', 'VST', 'BWXT',
 
     # Strategic Materials - Rare Earth (3) - 희토류
     'MP', 'REE', 'AVL',
