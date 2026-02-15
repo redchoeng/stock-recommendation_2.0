@@ -1,0 +1,60 @@
+name: Backtest Titan Strategy
+
+on:
+  # 수동 실행
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: '시작 날짜 (YYYY-MM-DD)'
+        required: false
+        default: '2023-01-01'
+      top_n:
+        description: '포트폴리오 종목 수'
+        required: false
+        default: '10'
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Backtest
+        run: |
+          python backtest_titan.py
+        env:
+          START_DATE: ${{ github.event.inputs.start_date || '2023-01-01' }}
+          TOP_N: ${{ github.event.inputs.top_n || '10' }}
+
+      - name: Upload Backtest Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-report
+          path: backtest_report.html
+
+      - name: Commit Backtest Report
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add backtest_report.html || true
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add backtest report - $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git push
+          fi

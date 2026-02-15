@@ -6,3 +6,4 @@ tabulate
 ta
 pytz
 pandas_market_calendars
+python-dateutil
