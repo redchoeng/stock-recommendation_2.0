@@ -16,9 +16,10 @@ NASDAQ100_TICKERS = [
     # Mega Cap Tech (10)
     'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'GOOG', 'META', 'AMZN', 'TSLA', 'AVGO', 'COST',
 
-    # Software & Cloud (20)
+    # Software & Cloud (21)
     'CRM', 'ADBE', 'ORCL', 'INTU', 'NOW', 'SNOW', 'PANW', 'CRWD', 'WDAY', 'TEAM',
     'DDOG', 'ZS', 'FTNT', 'ADSK', 'ANSS', 'CDNS', 'SNPS', 'TTWO', 'EA', 'RBLX',
+    'NET',
 
     # Semiconductors (16)
     'AMD', 'INTC', 'QCOM', 'TXN', 'MU', 'LRCX', 'AMAT', 'KLAC', 'NXPI', 'MRVL',
@@ -35,8 +36,9 @@ NASDAQ100_TICKERS = [
     # Communication & Media (10)
     'CMCSA', 'CHTR', 'TMUS', 'TTD', 'NTES', 'SIRI', 'FOXA', 'FOX', 'PARA', 'WBD',
 
-    # Industrials & Services (10)
+    # Industrials & Services (11)
     'HON', 'ADP', 'PAYX', 'CTAS', 'ODFL', 'VRSK', 'FAST', 'PCAR', 'LULU', 'ROST',
+    'SYM',
 
     # Payment & Fintech (5)
     'PYPL', 'CSCO', 'AEP', 'EXC', 'XEL'
