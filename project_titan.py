@@ -550,6 +550,131 @@ class TitanAnalyzer:
         else:
             return "Avoid"
 
+    def _detect_market_regime(self):
+        """시장 상태 감지 (Bull/Bear/Sideways)"""
+        try:
+            import yfinance as yf
+            from ta.trend import ADXIndicator
+
+            # S&P 500 분석
+            spy = yf.Ticker('^GSPC')
+            hist = spy.history(period='1y')
+
+            if len(hist) < 200:
+                return 'neutral', {}, "데이터 부족"
+
+            close = hist['Close']
+            current_price = close.iloc[-1]
+
+            # 이동평균
+            ma50 = close.rolling(window=50).mean().iloc[-1]
+            ma200 = close.rolling(window=200).mean().iloc[-1]
+
+            # 추세 방향 (최근 3개월)
+            price_3m_ago = close.iloc[-63] if len(close) >= 63 else close.iloc[0]
+            trend_3m = (current_price - price_3m_ago) / price_3m_ago
+
+            # 추세 방향 (최근 6개월)
+            price_6m_ago = close.iloc[-126] if len(close) >= 126 else close.iloc[0]
+            trend_6m = (current_price - price_6m_ago) / price_6m_ago
+
+            # ADX (추세 강도)
+            adx = ADXIndicator(high=hist['High'], low=hist['Low'], close=close)
+            adx_value = adx.adx().iloc[-1]
+
+            # 신호 카운트
+            bull_signals = 0
+            bear_signals = 0
+
+            # 1. 가격 vs MA200
+            if current_price > ma200:
+                bull_signals += 1
+            else:
+                bear_signals += 1
+
+            # 2. MA50 vs MA200
+            if ma50 > ma200:
+                bull_signals += 1
+            else:
+                bear_signals += 1
+
+            # 3. 3개월 추세
+            if trend_3m > 0.05:  # +5% 이상
+                bull_signals += 1
+            elif trend_3m < -0.05:  # -5% 이상
+                bear_signals += 1
+
+            # 4. 6개월 추세
+            if trend_6m > 0.10:  # +10% 이상
+                bull_signals += 1
+            elif trend_6m < -0.10:  # -10% 이상
+                bear_signals += 1
+
+            # 시장 상태 결정
+            if adx_value < 20:  # 약한 추세
+                regime = 'sideways'
+                regime_kr = '횡보장'
+                regime_emoji = '↔️'
+            elif bull_signals >= 3:
+                regime = 'bull'
+                regime_kr = '상승장'
+                regime_emoji = '📈'
+            elif bear_signals >= 3:
+                regime = 'bear'
+                regime_kr = '하락장'
+                regime_emoji = '📉'
+            else:
+                regime = 'neutral'
+                regime_kr = '중립'
+                regime_emoji = '➡️'
+
+            details = {
+                'current': current_price,
+                'ma50': ma50,
+                'ma200': ma200,
+                'trend_3m': trend_3m * 100,  # 퍼센트로
+                'trend_6m': trend_6m * 100,  # 퍼센트로
+                'adx': adx_value,
+                'bull_signals': bull_signals,
+                'bear_signals': bear_signals
+            }
+
+            description = f"{regime_emoji} {regime_kr} (S&P500: {current_price:.0f}, 3개월: {trend_3m*100:+.1f}%, ADX: {adx_value:.0f})"
+
+            return regime, details, description
+
+        except Exception as e:
+            print(f"Market regime detection error: {e}")
+            return 'neutral', {}, "감지 실패"
+
+    def _apply_regime_adjustment(self, tech_score, fund_score, regime):
+        """시장 상태에 따른 점수 가중치 조정"""
+        original_tech = tech_score
+        original_fund = fund_score
+
+        if regime == 'bull':
+            # 상승장: 기술적 분석과 모멘텀 중시
+            tech_score = int(tech_score * 1.2)  # +20%
+            fund_score = int(fund_score * 0.9)  # -10%
+            adjustment = "상승장 조정: 기술+20%, 펀더+90%"
+
+        elif regime == 'bear':
+            # 하락장: 펀더멘털과 방어 중시
+            tech_score = int(tech_score * 0.7)  # -30%
+            fund_score = int(fund_score * 1.3)  # +30%
+            adjustment = "하락장 조정: 기술70%, 펀더+30%"
+
+        elif regime == 'sideways':
+            # 횡보장: 밸류 중시
+            tech_score = int(tech_score * 1.0)  # 유지
+            fund_score = int(fund_score * 1.1)  # +10%
+            adjustment = "횡보장 조정: 기술100%, 펀더+10%"
+
+        else:  # neutral
+            adjustment = "중립: 조정 없음"
+
+        return tech_score, fund_score, adjustment
+
     def _calculate_volatility_breakout(self, hist):
         """변동성 돌파 전략 가격 계산 (레거시 - 호환성 유지)"""
         try:
@@ -765,6 +890,11 @@ class TitanAnalyzer:
         print("📊 STAGE 2: 정밀 분석 (Fundamental + Technical)")
         print("=" * 70)
 
+        # 🌍 시장 상태 감지
+        print("\n🌍 시장 상태 감지 중...")
+        market_regime, regime_details, regime_desc = self._detect_market_regime()
+        print(f"   {regime_desc}\n")
+
         results = []
         total = len(tickers)
 
@@ -774,6 +904,27 @@ class TitanAnalyzer:
 
                 result = self._analyze_single_stock(ticker)
                 if result:
+                    # 시장 상태에 따른 점수 조정
+                    tech_adjusted, fund_adjusted, adjustment_msg = self._apply_regime_adjustment(
+                        result['tech_score'],
+                        result['fund_score'],
+                        market_regime
+                    )
+
+                    # 조정된 점수로 총점 재계산
+                    total_score_adjusted = fund_adjusted + tech_adjusted + result['contrarian_adjustment']
+
+                    # 결과에 시장 상태 정보 추가
+                    result['market_regime'] = market_regime
+                    result['regime_description'] = regime_desc
+                    result['regime_adjustment'] = adjustment_msg
+                    result['tech_score_original'] = result['tech_score']
+                    result['fund_score_original'] = result['fund_score']
+                    result['tech_score'] = tech_adjusted
+                    result['fund_score'] = fund_adjusted
+                    result['score'] = total_score_adjusted
+                    result['verdict'] = self._get_verdict(total_score_adjusted)
+
                     results.append(result)
 
                 # API 제한 회피
@@ -783,7 +934,8 @@ class TitanAnalyzer:
                 print(f"  ⚠️  {ticker} 분석 실패: {e}")
                 continue
 
-        print(f"\n✅ 2단계 완료: {len(results)}개 종목 분석 완료\n")
+        print(f"\n✅ 2단계 완료: {len(results)}개 종목 분석 완료")
+        print(f"📊 시장 상태: {regime_desc}\n")
         return results
 
     def display_results(self, results, min_score=60):
@@ -1051,6 +1203,10 @@ class TitanAnalyzer:
                 <div class="label">평균 점수</div>
                 <div class="value">{sum(r['score'] for r in filtered) / len(filtered) if filtered else 0:.0f}점</div>
             </div>
+            <div class="summary-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <div class="label" style="color: rgba(255,255,255,0.9);">🌍 시장 상태</div>
+                <div class="value" style="font-size: 1.2em;">{filtered[0].get('regime_description', 'N/A') if filtered else 'N/A'}</div>
+            </div>
         </div>
 '''
 
@@ -1125,6 +1281,26 @@ class TitanAnalyzer:
                             <span class="criterion">🎯 가격 패턴</span>
                             <span class="criterion-value">52주 {tech_bd.get('price_position', 0):.0%}</span>
                             <span class="criterion-score">+{tech_bd.get('pattern_score', 0)}점 /5</span>
+                        </div>
+                    </div>
+                </div>'''
+
+            # 시장 상태 조정 표시
+            regime_adjustment = stock.get('regime_adjustment', '')
+            if regime_adjustment and regime_adjustment != '중립: 조정 없음':
+                html += f'''
+                <div class="breakdown-section" style="border-top: 2px dashed #667eea; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #667eea;">🌍 {regime_adjustment}</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
+                            <span class="criterion">원래 기술 점수</span>
+                            <span class="criterion-value">{stock.get('tech_score_original', 0)}점</span>
+                            <span class="criterion-score">→ {stock.get('tech_score', 0)}점</span>
+                        </div>
+                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
+                            <span class="criterion">원래 펀더 점수</span>
+                            <span class="criterion-value">{stock.get('fund_score_original', 0)}점</span>
+                            <span class="criterion-score">→ {stock.get('fund_score', 0)}점</span>
                         </div>
                     </div>
                 </div>'''
