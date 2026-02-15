@@ -40,8 +40,24 @@ NASDAQ100_TICKERS = [
     'HON', 'ADP', 'PAYX', 'CTAS', 'ODFL', 'VRSK', 'FAST', 'PCAR', 'LULU', 'ROST',
     'SYM',
 
-    # Payment & Fintech (5)
-    'PYPL', 'CSCO', 'AEP', 'EXC', 'XEL'
+    # Payment & Fintech (10)
+    'PYPL', 'CSCO', 'AEP', 'EXC', 'XEL', 'SQ', 'AFRM', 'UPST', 'SOFI', 'NU',
+
+    # AI Infrastructure & Data Center (10)
+    'SMCI', 'ANET', 'DELL', 'HPE', 'NTAP', 'STX', 'WDC', 'PSTG', 'JNPR', 'AKAM',
+
+    # Cloud/SaaS Expansion (15)
+    'MDB', 'ESTC', 'CFLT', 'GTLB', 'ZI', 'DOCN', 'DBX', 'BOX', 'SHOP',
+    'HUBS', 'VEEV', 'ZM', 'DOCU', 'SMAR', 'APPN',
+
+    # Cybersecurity Expansion (8)
+    'OKTA', 'S', 'CHKP', 'TENB', 'CYBR', 'VRNS', 'QLYS', 'RPD',
+
+    # Semiconductors Expansion (7)
+    'ENTG', 'WOLF', 'ONTO', 'SWKS', 'QRVO', 'CRUS', 'SLAB',
+
+    # AI/Data Software (5)
+    'PLTR', 'AI', 'PATH', 'U', 'BILL'
 ]
 
 VALUE_TICKERS = [
@@ -104,7 +120,28 @@ VALUE_TICKERS = [
     'WEC', 'PEG', 'AWK', 'ETR', 'FE',
 
     # Telecom (5)
-    'VZ', 'T', 'TMUS', 'CHTR', 'CMCSA'
+    'VZ', 'T', 'TMUS', 'CHTR', 'CMCSA',
+
+    # Regional Banks (10)
+    'ZION', 'MTB', 'FHN', 'CMA', 'EWBC', 'WAL', 'SNV', 'VLY', 'OZK', 'PBCT',
+
+    # Insurance Expansion (5)
+    'HIG', 'PFG', 'LNC', 'AIZ', 'RE',
+
+    # REITs Expansion (10)
+    'CBRE', 'IRM', 'COLD', 'REXR', 'FR', 'KRC', 'BXP', 'VNO', 'SLG', 'JBGS',
+
+    # Industrials Expansion (10)
+    'URI', 'CARR', 'OTIS', 'TT', 'GNRC', 'AOS', 'BLDR', 'SSD', 'MLI', 'BECN',
+
+    # Healthcare Expansion (5)
+    'HOLX', 'PODD', 'XRAY', 'ENOV', 'MMSI',
+
+    # Energy Expansion (5)
+    'CTRA', 'MRO', 'NOV', 'CHX', 'RIG',
+
+    # Consumer/Restaurants (5)
+    'DRI', 'TXRH', 'CBRL', 'BLMN', 'CAKE'
 ]
 
 
