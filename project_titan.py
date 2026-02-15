@@ -81,8 +81,8 @@ VALUE_TICKERS = [
     'PH', 'CMI', 'CSX', 'NSC', 'FDX', 'WM', 'RSG', 'JCI', 'ROK', 'DOV',
     'IR', 'XYL',
 
-    # Nuclear & Uranium (7) - 원자력/우라늄
-    'CCJ', 'SMR', 'OKLO', 'UEC', 'URG', 'UUUU', 'LEU',
+    # Nuclear & Uranium (9) - 원자력/우라늄
+    'CCJ', 'SMR', 'OKLO', 'UEC', 'URG', 'UUUU', 'LEU', 'GEV', 'VST',
 
     # Strategic Materials - Rare Earth (3) - 희토류
     'MP', 'REE', 'AVL',
