@@ -44,8 +44,12 @@ class TitanAnalyzer:
     SCORE_ROE_GOOD = 5
     SCORE_OPM_EXCELLENT = 15
     SCORE_OPM_GOOD = 5
-    SCORE_SECTOR_PRIMARY = 20
-    SCORE_SECTOR_SECONDARY = 10
+
+    # 섹터별 점수 (2026 거시 경제 트렌드 반영)
+    SCORE_SECTOR_TIER1 = 20  # AI, 반도체, 클라우드, 사이버보안, 국방
+    SCORE_SECTOR_TIER2 = 15  # 소프트웨어, EV, 바이오텍, 신재생에너지
+    SCORE_SECTOR_TIER3 = 10  # 헬스케어, 산업자동화, 핀테크
+    SCORE_SECTOR_TIER4 = 5   # 전통 에너지, 소비재, 유틸리티
 
     # 기술적 점수 가중치
     SCORE_MA20 = 20
@@ -176,21 +180,103 @@ class TitanAnalyzer:
                     score += self.SCORE_OPM_GOOD
                     breakdown['opm_score'] = self.SCORE_OPM_GOOD
 
-            # 3. Sector
+            # 3. Sector & Industry (세분화된 분류)
             sector = info.get('sector', '')
-            breakdown['sector_name'] = sector
-            if sector in ['Technology', 'Communication Services']:
-                score += self.SCORE_SECTOR_PRIMARY
-                breakdown['sector_score'] = self.SCORE_SECTOR_PRIMARY
-                comments.append("Tech/AI섹터")
-            elif sector in ['Industrials', 'Energy']:
-                score += self.SCORE_SECTOR_PRIMARY
-                breakdown['sector_score'] = self.SCORE_SECTOR_PRIMARY
-                comments.append("인프라/에너지")
-            elif sector in ['Healthcare', 'Consumer Cyclical']:
-                score += self.SCORE_SECTOR_SECONDARY
-                breakdown['sector_score'] = self.SCORE_SECTOR_SECONDARY
-                comments.append("헬스케어/소비")
+            industry = info.get('industry', '')
+            breakdown['sector_name'] = f"{sector}"
+
+            # Tier 1: AI, 반도체, 클라우드, 사이버보안, 국방 (20점)
+            if any(keyword in industry.lower() for keyword in ['semiconductor', 'chip', 'ai', 'artificial intelligence']):
+                score += self.SCORE_SECTOR_TIER1
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                breakdown['sector_name'] = "AI/반도체"
+                comments.append("AI/반도체")
+            elif any(keyword in industry.lower() for keyword in ['cloud', 'data center', 'infrastructure software']):
+                score += self.SCORE_SECTOR_TIER1
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                breakdown['sector_name'] = "클라우드"
+                comments.append("클라우드")
+            elif any(keyword in industry.lower() for keyword in ['cybersecurity', 'security software', 'information security']):
+                score += self.SCORE_SECTOR_TIER1
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                breakdown['sector_name'] = "사이버보안"
+                comments.append("사이버보안")
+            elif any(keyword in industry.lower() for keyword in ['aerospace', 'defense', 'military']):
+                score += self.SCORE_SECTOR_TIER1
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                breakdown['sector_name'] = "국방/항공"
+                comments.append("국방/항공")
+
+            # Tier 2: 소프트웨어, EV, 바이오텍, 신재생 (15점)
+            elif sector == 'Technology' and any(keyword in industry.lower() for keyword in ['software', 'application', 'saas']):
+                score += self.SCORE_SECTOR_TIER2
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                breakdown['sector_name'] = "소프트웨어"
+                comments.append("소프트웨어")
+            elif any(keyword in industry.lower() for keyword in ['electric vehicle', 'ev ', 'battery', 'lithium']):
+                score += self.SCORE_SECTOR_TIER2
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                breakdown['sector_name'] = "전기차/배터리"
+                comments.append("전기차/배터리")
+            elif any(keyword in industry.lower() for keyword in ['biotech', 'genomic', 'gene therapy', 'crispr']):
+                score += self.SCORE_SECTOR_TIER2
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                breakdown['sector_name'] = "바이오텍"
+                comments.append("바이오텍")
+            elif any(keyword in industry.lower() for keyword in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
+                score += self.SCORE_SECTOR_TIER2
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                breakdown['sector_name'] = "신재생에너지"
+                comments.append("신재생에너지")
+            elif sector == 'Communication Services':
+                score += self.SCORE_SECTOR_TIER2
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                breakdown['sector_name'] = "디지털인프라"
+                comments.append("디지털인프라")
+
+            # Tier 3: 헬스케어, 산업자동화, 핀테크 (10점)
+            elif sector == 'Healthcare' and 'biotech' not in industry.lower():
+                score += self.SCORE_SECTOR_TIER3
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                breakdown['sector_name'] = "헬스케어"
+                comments.append("헬스케어")
+            elif sector == 'Industrials' and any(keyword in industry.lower() for keyword in ['automation', 'robot', 'machinery']):
+                score += self.SCORE_SECTOR_TIER3
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                breakdown['sector_name'] = "산업자동화"
+                comments.append("산업자동화")
+            elif any(keyword in industry.lower() for keyword in ['fintech', 'payment', 'financial technology']):
+                score += self.SCORE_SECTOR_TIER3
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                breakdown['sector_name'] = "핀테크"
+                comments.append("핀테크")
+            elif sector == 'Industrials':
+                score += self.SCORE_SECTOR_TIER3
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                breakdown['sector_name'] = "산업재"
+                comments.append("산업재")
+            elif sector == 'Financial Services':
+                score += self.SCORE_SECTOR_TIER3
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                breakdown['sector_name'] = "금융"
+                comments.append("금융")
+
+            # Tier 4: 전통 에너지, 소비재, 유틸리티 (5점)
+            elif sector == 'Energy' and 'renewable' not in industry.lower():
+                score += self.SCORE_SECTOR_TIER4
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
+                breakdown['sector_name'] = "전통에너지"
+                comments.append("전통에너지")
+            elif sector in ['Consumer Cyclical', 'Consumer Defensive']:
+                score += self.SCORE_SECTOR_TIER4
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
+                breakdown['sector_name'] = "소비재"
+                comments.append("소비재")
+            elif sector == 'Utilities':
+                score += self.SCORE_SECTOR_TIER4
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
+                breakdown['sector_name'] = "유틸리티"
+                comments.append("유틸리티")
 
         except Exception:
             pass
