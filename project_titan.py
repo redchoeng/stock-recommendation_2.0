@@ -73,10 +73,19 @@ VALUE_TICKERS = [
     'XOM', 'CVX', 'COP', 'SLB', 'EOG', 'MPC', 'PSX', 'VLO', 'OXY', 'HES',
     'DVN', 'FANG', 'HAL', 'BKR', 'APA',
 
-    # Industrials (25)
-    'LMT', 'RTX', 'BA', 'CAT', 'DE', 'UNP', 'UPS', 'HON', 'MMM', 'GE',
-    'EMR', 'ETN', 'ITW', 'PH', 'CMI', 'CSX', 'NSC', 'FDX', 'WM', 'RSG',
-    'JCI', 'ROK', 'DOV', 'IR', 'XYL',
+    # Defense & Aerospace (7) - 국방/방산
+    'LMT', 'RTX', 'BA', 'NOC', 'GD', 'LHX', 'HII',
+
+    # Industrials (22)
+    'CAT', 'DE', 'UNP', 'UPS', 'HON', 'MMM', 'GE', 'EMR', 'ETN', 'ITW',
+    'PH', 'CMI', 'CSX', 'NSC', 'FDX', 'WM', 'RSG', 'JCI', 'ROK', 'DOV',
+    'IR', 'XYL',
+
+    # Nuclear & Uranium (7) - 원자력/우라늄
+    'CCJ', 'SMR', 'OKLO', 'UEC', 'URG', 'UUUU', 'LEU',
+
+    # Strategic Materials - Rare Earth (3) - 희토류
+    'MP', 'REE', 'AVL',
 
     # Materials (15)
     'LIN', 'APD', 'ECL', 'SHW', 'DD', 'NEM', 'FCX', 'NUE', 'VMC', 'MLM',
@@ -109,8 +118,8 @@ class TitanAnalyzer:
     SCORE_OPM_GOOD = 5
 
     # 섹터별 점수 (2026 거시 경제 트렌드 반영)
-    SCORE_SECTOR_TIER1 = 20  # AI, 반도체, 클라우드, 사이버보안, 국방
-    SCORE_SECTOR_TIER2 = 15  # 소프트웨어, EV, 바이오텍, 신재생에너지
+    SCORE_SECTOR_TIER1 = 20  # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
+    SCORE_SECTOR_TIER2 = 15  # 소프트웨어, EV, 바이오텍, 신재생에너지, 희토류
     SCORE_SECTOR_TIER3 = 10  # 헬스케어, 산업자동화, 핀테크
     SCORE_SECTOR_TIER4 = 5   # 전통 에너지, 소비재, 유틸리티
 
@@ -300,7 +309,7 @@ class TitanAnalyzer:
                 breakdown['sector_name'] = "국방/항공"
                 comments.append("국방/항공")
 
-            # Tier 2: 소프트웨어, EV, 바이오텍, 신재생 (15점)
+            # Tier 2: 소프트웨어, EV, 바이오텍, 신재생, 원자력, 희토류 (15점)
             elif sector == 'Technology' and any(keyword in industry.lower() for keyword in ['software', 'application', 'saas']):
                 score += self.SCORE_SECTOR_TIER2
                 breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
@@ -321,6 +330,16 @@ class TitanAnalyzer:
                 breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
                 breakdown['sector_name'] = "신재생에너지"
                 comments.append("신재생에너지")
+            elif any(keyword in industry.lower() for keyword in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
+                score += self.SCORE_SECTOR_TIER2
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                breakdown['sector_name'] = "원자력/우라늄"
+                comments.append("원자력/우라늄")
+            elif any(keyword in industry.lower() for keyword in ['rare earth', 'lithium', 'cobalt', 'nickel', 'critical mineral']):
+                score += self.SCORE_SECTOR_TIER2
+                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                breakdown['sector_name'] = "희토류/전략소재"
+                comments.append("희토류/전략소재")
             elif sector == 'Communication Services':
                 score += self.SCORE_SECTOR_TIER2
                 breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
