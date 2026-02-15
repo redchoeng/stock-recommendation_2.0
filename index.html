@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Recommendations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta http-equiv="refresh" content="300">
+    <title>PROJECT TITAN v2.0 - 주식 투자 분석 시스템</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -373,25 +374,28 @@
 
     <div class="container">
         <div class="header-bubble">
-            <div class="emoji-icon">📈</div>
-            <h1>Stock Recommendations</h1>
-            <p class="subtitle">당신에게 어쩌면 도움이 될만한<br>주식 분석 시스템</p>
+            <div class="emoji-icon">🚀💰</div>
+            <h1>PROJECT TITAN v2.0</h1>
+            <p class="subtitle">AI 기반 미국 주식 투자 분석 시스템<br>Fundamental + Technical + Volatility Breakout</p>
         </div>
 
         <div class="stats-box">
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-value">100점</div>
-                    <div class="stat-label">종합 점수</div>
+                    <div class="stat-value" id="updateTime">로딩 중...</div>
+                    <div class="stat-label">📅 마지막 업데이트 (KST)</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">400+</div>
+                    <div class="stat-value">60+</div>
                     <div class="stat-label">분석 종목</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">Daily</div>
+                    <div class="stat-value">9회/일</div>
                     <div class="stat-label">자동 업데이트</div>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 15px; color: #4CAF50; font-weight: bold;">
+                🔄 5분마다 자동 새로고침
             </div>
         </div>
 
@@ -405,19 +409,19 @@
                 <div class="features">
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>밥값 35점</span>
+                        <span>펀더멘털 분석 (ROE, OPM, 섹터)</span>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>기술적 분석 25점</span>
+                        <span>기술적 분석 (MA20, RSI, 거래량)</span>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>자동화/AI 수혜 20점</span>
+                        <span>변동성 돌파 전략 (매수/목표/손절가)</span>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>정책 수혜 20점</span>
+                        <span>시간대별 가격 (프리/정규/애프터)</span>
                     </div>
                 </div>
 
@@ -433,19 +437,19 @@
                 <div class="features">
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>밥값+배당 45점</span>
+                        <span>펀더멘털 분석 (ROE, OPM, 섹터)</span>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>기술적 분석 25점</span>
+                        <span>기술적 분석 (MA20, RSI, 거래량)</span>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>안정성 15점</span>
+                        <span>변동성 돌파 전략 (매수/목표/손절가)</span>
                     </div>
                     <div class="feature">
                         <span class="feature-icon">✓</span>
-                        <span>정책 수혜 15점</span>
+                        <span>시간대별 가격 (프리/정규/애프터)</span>
                     </div>
                 </div>
 
@@ -454,11 +458,30 @@
         </div>
 
         <div class="footer">
-            <p>⚠️ 본 리포트는 투자 참고 자료이며, 투자 판단의 책임은 투자자 본인에게 있습니다.</p>
+            <p><strong>⚠️ 투자 유의사항</strong><br>
+            본 리포트는 PROJECT TITAN 알고리즘 기반 투자 참고 자료이며, 투자 손실에 대한 책임은 투자자 본인에게 있습니다.</p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #999;">
+                Powered by Titan v2.0 | GitHub Actions 자동 배포 |
+                업데이트: 한국시간 18:00, 21:00, 23:30, 00:30, 03:30, 05:30, 06:30, 08:00, 10:00
+            </p>
         </div>
     </div>
 
     <script>
+        // 현재 시간 표시 (한국시간)
+        function updateTime() {
+            const now = new Date();
+            const kstTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
+            const formatted = (kstTime.getMonth() + 1) + '/' +
+                            kstTime.getDate() + ' ' +
+                            String(kstTime.getHours()).padStart(2, '0') + ':' +
+                            String(kstTime.getMinutes()).padStart(2, '0');
+            document.getElementById('updateTime').textContent = formatted;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000); // 1초마다 시간 업데이트
+
         // 랜덤 반짝이 추가
         function createSparkle() {
             const sparkle = document.createElement('div');
