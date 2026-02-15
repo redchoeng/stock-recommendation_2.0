@@ -6,9 +6,10 @@ Advanced 2-Stage Filtering Analysis for NASDAQ 100, Value Stocks, and S&P 500
 import yfinance as yf
 import pandas as pd
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from tabulate import tabulate
 from ta.momentum import RSIIndicator
+import pytz
 
 # 사전 정의된 티커 리스트
 NASDAQ100_TICKERS = [
@@ -138,77 +139,111 @@ class TitanAnalyzer:
         """기본적 분석 점수 (최대 50점)"""
         score = 0
         comments = []
+        breakdown = {
+            'roe_score': 0,
+            'roe_value': 0,
+            'opm_score': 0,
+            'opm_value': 0,
+            'sector_score': 0,
+            'sector_name': ''
+        }
 
         try:
             # 1. ROE
             roe = info.get('returnOnEquity')
             if roe:
                 roe_pct = roe * 100
+                breakdown['roe_value'] = roe_pct
                 if roe_pct > 20:
                     score += self.SCORE_ROE_EXCELLENT
+                    breakdown['roe_score'] = self.SCORE_ROE_EXCELLENT
                     comments.append(f"ROE:{roe_pct:.1f}%")
                 elif roe_pct > 10:
                     score += self.SCORE_ROE_GOOD
+                    breakdown['roe_score'] = self.SCORE_ROE_GOOD
                     comments.append(f"ROE:{roe_pct:.1f}%")
 
             # 2. Operating Margin
             opm = info.get('operatingMargins')
             if opm:
                 opm_pct = opm * 100
+                breakdown['opm_value'] = opm_pct
                 if opm_pct > 20:
                     score += self.SCORE_OPM_EXCELLENT
+                    breakdown['opm_score'] = self.SCORE_OPM_EXCELLENT
                     comments.append(f"OPM:{opm_pct:.1f}%")
                 elif opm_pct > 10:
                     score += self.SCORE_OPM_GOOD
+                    breakdown['opm_score'] = self.SCORE_OPM_GOOD
 
             # 3. Sector
             sector = info.get('sector', '')
+            breakdown['sector_name'] = sector
             if sector in ['Technology', 'Communication Services']:
                 score += self.SCORE_SECTOR_PRIMARY
+                breakdown['sector_score'] = self.SCORE_SECTOR_PRIMARY
                 comments.append("Tech/AI섹터")
             elif sector in ['Industrials', 'Energy']:
                 score += self.SCORE_SECTOR_PRIMARY
+                breakdown['sector_score'] = self.SCORE_SECTOR_PRIMARY
                 comments.append("인프라/에너지")
             elif sector in ['Healthcare', 'Consumer Cyclical']:
                 score += self.SCORE_SECTOR_SECONDARY
+                breakdown['sector_score'] = self.SCORE_SECTOR_SECONDARY
                 comments.append("헬스케어/소비")
 
         except Exception:
             pass
 
-        return score, comments
+        return score, comments, breakdown
 
     def _get_technical_score(self, hist, current_price):
         """기술적 분석 점수 (최대 50점)"""
         score = 0
         comments = []
+        breakdown = {
+            'ma20_score': 0,
+            'ma20_value': 0,
+            'volume_score': 0,
+            'volume_ratio': 0,
+            'rsi_score': 0,
+            'rsi_value': 0
+        }
 
         try:
             if len(hist) < 20:
-                return 0, ["데이터부족"]
+                return 0, ["데이터부족"], breakdown
 
             # 1. MA20
             ma20 = hist['Close'].rolling(window=20).mean().iloc[-1]
+            breakdown['ma20_value'] = ma20
             if current_price > ma20:
                 score += self.SCORE_MA20
+                breakdown['ma20_score'] = self.SCORE_MA20
                 comments.append("Price>MA20")
 
             # 2. Volume
             avg_volume_20 = hist['Volume'].rolling(window=20).mean().iloc[-1]
             current_volume = hist['Volume'].iloc[-1]
+            volume_ratio = current_volume / avg_volume_20 if avg_volume_20 > 0 else 0
+            breakdown['volume_ratio'] = volume_ratio
             if current_volume > avg_volume_20 * self.VOLUME_SURGE_MULTIPLIER:
                 score += self.SCORE_VOLUME_SURGE
+                breakdown['volume_score'] = self.SCORE_VOLUME_SURGE
                 comments.append("고거래량")
 
             # 3. RSI
             rsi_indicator = RSIIndicator(close=hist['Close'], window=14)
             rsi = rsi_indicator.rsi().iloc[-1]
+            breakdown['rsi_value'] = rsi
 
             if self.RSI_OVERSOLD <= rsi <= self.RSI_OPTIMAL_MAX:
                 score += self.SCORE_RSI_OPTIMAL
+                breakdown['rsi_score'] = self.SCORE_RSI_OPTIMAL
                 comments.append(f"RSI:{rsi:.0f}")
             elif rsi < self.RSI_OVERSOLD:
                 score += self.SCORE_RSI_OVERSOLD
+                breakdown['rsi_score'] = self.SCORE_RSI_OVERSOLD
                 comments.append(f"RSI:{rsi:.0f}(과매도)")
             elif rsi > self.RSI_OVERBOUGHT:
                 comments.append(f"RSI:{rsi:.0f}(과열)")
@@ -216,7 +251,7 @@ class TitanAnalyzer:
         except Exception:
             pass
 
-        return score, comments
+        return score, comments, breakdown
 
     def _get_verdict(self, total_score):
         """점수에 따른 투자 판단"""
@@ -255,6 +290,50 @@ class TitanAnalyzer:
         """현재가 추출"""
         return info.get('currentPrice') or info.get('regularMarketPrice') or hist['Close'].iloc[-1]
 
+    def _get_market_status_and_prices(self, info):
+        """시장 상태 및 가격 정보 추출"""
+        try:
+            # 현재 ET 시간
+            et_tz = pytz.timezone('America/New_York')
+            now_et = datetime.now(et_tz)
+            hour = now_et.hour
+            minute = now_et.minute
+
+            # 시장 시간대 판단
+            # Pre-market: 4:00 AM - 9:30 AM ET
+            # Regular: 9:30 AM - 4:00 PM ET
+            # After-hours: 4:00 PM - 8:00 PM ET
+
+            market_status = 'closed'
+            if (hour == 4 and minute >= 0) or (4 < hour < 9) or (hour == 9 and minute < 30):
+                market_status = 'pre'
+            elif (hour == 9 and minute >= 30) or (9 < hour < 16):
+                market_status = 'regular'
+            elif (hour >= 16 and hour < 20):
+                market_status = 'after'
+
+            # 가격 정보
+            current_price = info.get('currentPrice') or info.get('regularMarketPrice', 0)
+            pre_market_price = info.get('preMarketPrice')
+            post_market_price = info.get('postMarketPrice')
+            regular_market_previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose', 0)
+
+            return {
+                'status': market_status,
+                'current_price': current_price,
+                'pre_market_price': pre_market_price,
+                'post_market_price': post_market_price,
+                'previous_close': regular_market_previous_close
+            }
+        except Exception:
+            return {
+                'status': 'unknown',
+                'current_price': info.get('currentPrice') or info.get('regularMarketPrice', 0),
+                'pre_market_price': None,
+                'post_market_price': None,
+                'previous_close': info.get('regularMarketPreviousClose') or info.get('previousClose', 0)
+            }
+
     def _analyze_single_stock(self, ticker):
         """개별 종목 분석"""
         stock = yf.Ticker(ticker)
@@ -268,12 +347,15 @@ class TitanAnalyzer:
         current_price = self._get_current_price(info, hist)
 
         # 점수 계산
-        fund_score, fund_comments = self._get_fundamental_score(info)
-        tech_score, tech_comments = self._get_technical_score(hist, current_price)
+        fund_score, fund_comments, fund_breakdown = self._get_fundamental_score(info)
+        tech_score, tech_comments, tech_breakdown = self._get_technical_score(hist, current_price)
         total_score = fund_score + tech_score
 
         # 가격 계산
         breakout, target, stop_loss = self._calculate_volatility_breakout(hist)
+
+        # 시장 상태 및 가격 정보
+        market_info = self._get_market_status_and_prices(info)
 
         # Verdict
         verdict = self._get_verdict(total_score)
@@ -285,8 +367,13 @@ class TitanAnalyzer:
         return {
             'ticker': ticker,
             'score': total_score,
+            'fund_score': fund_score,
+            'tech_score': tech_score,
+            'fund_breakdown': fund_breakdown,
+            'tech_breakdown': tech_breakdown,
             'verdict': verdict,
             'price': current_price,
+            'market_info': market_info,
             'breakout': breakout,
             'target': target,
             'stop_loss': stop_loss,
@@ -503,6 +590,60 @@ class TitanAnalyzer:
             margin-left: 10px;
             font-weight: bold;
         }}
+        .score-breakdown {{
+            margin: 15px 0;
+            padding: 15px;
+            background: #F8F9FA;
+            border-radius: 10px;
+            border: 2px solid #E0E0E0;
+        }}
+        .score-breakdown h3 {{
+            color: #5D4E37;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }}
+        .breakdown-section {{
+            margin-bottom: 12px;
+        }}
+        .breakdown-title {{
+            font-weight: bold;
+            color: {primary_color};
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }}
+        .breakdown-items {{
+            display: grid;
+            gap: 6px;
+        }}
+        .breakdown-item {{
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            padding: 6px 10px;
+            background: white;
+            border-radius: 6px;
+            align-items: center;
+            font-size: 0.85em;
+        }}
+        .breakdown-item .criterion {{
+            color: #5D4E37;
+            font-weight: 500;
+        }}
+        .breakdown-item .criterion-value {{
+            color: #7B6B4F;
+            text-align: right;
+        }}
+        .breakdown-item .criterion-score {{
+            color: {primary_color};
+            font-weight: bold;
+            text-align: right;
+            min-width: 50px;
+        }}
+        .highlight-price {{
+            background: linear-gradient(135deg, #FFF3CD, #FFE5B4) !important;
+            border: 2px solid {primary_color} !important;
+            font-weight: bold;
+        }}
     </style>
 </head>
 <body>
@@ -538,13 +679,104 @@ class TitanAnalyzer:
             score_class = 'strong' if stock['score'] >= self.SCORE_STRONG_BUY else ('high' if stock['score'] >= self.SCORE_BUY else '')
             verdict_class = stock['verdict'].lower().replace(' ', '-').replace('★', '').strip()
 
+            # 점수 상세 정보
+            fund_bd = stock.get('fund_breakdown', {})
+            tech_bd = stock.get('tech_breakdown', {})
+            market_info = stock.get('market_info', {})
+
             html += f'''
         <div class="stock-card">
             <div class="rank">#{i}</div>
             <span class="score-badge {score_class}">{stock['score']}점</span>
             <h2><span class="ticker">{stock['ticker']}</span></h2>
             <span class="verdict {verdict_class}">{stock['verdict']}</span>
-            <div class="info">
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: {stock.get('fund_score', 0)}점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">{fund_bd.get('roe_value', 0):.1f}%</span>
+                            <span class="criterion-score">+{fund_bd.get('roe_score', 0)}점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">{fund_bd.get('opm_value', 0):.1f}%</span>
+                            <span class="criterion-score">+{fund_bd.get('opm_score', 0)}점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">{fund_bd.get('sector_name', 'N/A')}</span>
+                            <span class="criterion-score">+{fund_bd.get('sector_score', 0)}점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: {stock.get('tech_score', 0)}점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: ${tech_bd.get('ma20_value', 0):.2f}</span>
+                            <span class="criterion-score">+{tech_bd.get('ma20_score', 0)}점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">{tech_bd.get('volume_ratio', 0):.1f}x 평균</span>
+                            <span class="criterion-score">+{tech_bd.get('volume_score', 0)}점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">{tech_bd.get('rsi_value', 0):.1f}</span>
+                            <span class="criterion-score">+{tech_bd.get('rsi_score', 0)}점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
+            <div class="info">'''
+
+            # 시장 상태에 따른 가격 표시
+            market_status = market_info.get('status', 'unknown')
+            if market_status == 'pre':
+                # 프리마켓: 전날 마감가 + 프리마켓 가격
+                html += f'''
+                <div class="info-item">
+                    <div class="info-label">전날 마감가</div>
+                    <div class="info-value">${market_info.get('previous_close', 0):.2f}</div>
+                </div>'''
+                if market_info.get('pre_market_price'):
+                    html += f'''
+                <div class="info-item highlight-price">
+                    <div class="info-label">프리마켓 가격</div>
+                    <div class="info-value">${market_info.get('pre_market_price', 0):.2f}</div>
+                </div>'''
+            elif market_status == 'regular':
+                # 정규장: 현재가만
+                html += f'''
+                <div class="info-item highlight-price">
+                    <div class="info-label">현재가</div>
+                    <div class="info-value">${stock['price']:.2f}</div>
+                </div>'''
+            elif market_status == 'after':
+                # 애프터장: 정규장 마감가 + 애프터장 가격
+                html += f'''
+                <div class="info-item">
+                    <div class="info-label">정규장 마감가</div>
+                    <div class="info-value">${market_info.get('previous_close', 0):.2f}</div>
+                </div>'''
+                if market_info.get('post_market_price'):
+                    html += f'''
+                <div class="info-item highlight-price">
+                    <div class="info-label">애프터장 가격</div>
+                    <div class="info-value">${market_info.get('post_market_price', 0):.2f}</div>
+                </div>'''
+            else:
+                # 장 마감 또는 알 수 없음: 현재가
+                html += f'''
                 <div class="info-item">
                     <div class="info-label">현재가</div>
                     <div class="info-value">${stock['price']:.2f}</div>

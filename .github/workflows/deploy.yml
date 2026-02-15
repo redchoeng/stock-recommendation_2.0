@@ -1,9 +1,19 @@
 name: Auto Deploy Stock Reports
 
 on:
-  # 18:00 KST ~ 06:00 KST (09:00 ~ 21:00 UTC) 매시 정각 실행
+  # 한국시간 18:00, 21:00, 23:30, 00:30, 03:30, 05:30, 06:30, 08:00, 10:00 실행
+  # UTC 시간: 09:00, 12:00, 14:30, 15:30, 18:30, 20:30, 21:30, 23:00, 01:00
+  # 월-금 (미장 개장일) 실행
   schedule:
-    - cron: '0 9-21 * * *'
+    - cron: '0 1 * * 1-5'    # 10:00 KST
+    - cron: '0 9 * * 1-5'    # 18:00 KST
+    - cron: '0 12 * * 1-5'   # 21:00 KST
+    - cron: '30 14 * * 1-5'  # 23:30 KST
+    - cron: '30 15 * * 1-5'  # 00:30 KST (다음날)
+    - cron: '30 18 * * 0-4'  # 03:30 KST (다음날)
+    - cron: '30 20 * * 0-4'  # 05:30 KST (다음날)
+    - cron: '30 21 * * 0-4'  # 06:30 KST (다음날)
+    - cron: '0 23 * * 0-4'   # 08:00 KST (다음날)
 
   # 푸시할 때도 실행
   push:
@@ -35,11 +45,32 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Check if US Market is Open
+        id: market_check
+        run: |
+          python -c "
+          import pandas_market_calendars as mcal
+          from datetime import datetime
+          import pytz
+
+          nyse = mcal.get_calendar('NYSE')
+          et_tz = pytz.timezone('America/New_York')
+          today = datetime.now(et_tz).date()
+
+          schedule = nyse.schedule(start_date=today, end_date=today)
+          is_open = len(schedule) > 0
+
+          print(f'is_open={str(is_open).lower()}')
+          print(f'::set-output name=is_open::{str(is_open).lower()}')
+          "
+
       - name: Generate NASDAQ 100 Report with Titan Algorithm
+        if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
           python project_titan.py nasdaq
 
       - name: Generate Value Stocks Report with Titan Algorithm
+        if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
           python project_titan.py value
 
