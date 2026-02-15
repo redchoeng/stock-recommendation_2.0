@@ -43,27 +43,48 @@ NASDAQ100_TICKERS = [
 ]
 
 VALUE_TICKERS = [
-    # Financials (20)
+    # Financials - Banks (25)
     'JPM', 'BAC', 'WFC', 'C', 'GS', 'MS', 'BLK', 'SCHW', 'AXP', 'USB',
     'PNC', 'TFC', 'BK', 'STT', 'COF', 'DFS', 'SYF', 'BRK-B', 'V', 'MA',
+    'CFG', 'HBAN', 'RF', 'KEY', 'FITB',
 
-    # Healthcare (20)
+    # Financials - Insurance (15)
+    'BRK-B', 'PGR', 'TRV', 'ALL', 'CB', 'AIG', 'MET', 'PRU', 'AFL', 'AMP',
+    'CINF', 'L', 'GL', 'WRB', 'RGA',
+
+    # Real Estate - REITs (20)
+    'PLD', 'AMT', 'CCI', 'EQIX', 'PSA', 'DLR', 'O', 'WELL', 'SPG', 'AVB',
+    'EQR', 'VTR', 'ARE', 'INVH', 'ESS', 'MAA', 'UDR', 'CPT', 'HST', 'REG',
+
+    # Healthcare (25)
     'JNJ', 'UNH', 'LLY', 'ABBV', 'MRK', 'TMO', 'ABT', 'DHR', 'PFE', 'BMY',
-    'AMGN', 'CVS', 'CI', 'ELV', 'HUM', 'MDT', 'ISRG', 'SYK', 'BSX', 'GILD',
+    'AMGN', 'CVS', 'CI', 'ELV', 'HUM', 'MDT', 'SYK', 'BSX', 'GILD', 'VRTX',
+    'ZBH', 'BAX', 'BDX', 'RMD', 'A',
 
-    # Consumer Staples (15)
+    # Consumer Staples (20)
     'PG', 'KO', 'PEP', 'WMT', 'COST', 'PM', 'MO', 'CL', 'KMB', 'GIS',
-    'K', 'HSY', 'MDLZ', 'STZ', 'TAP',
+    'K', 'HSY', 'MDLZ', 'STZ', 'TAP', 'CPB', 'CAG', 'SJM', 'CHD', 'CLX',
 
-    # Energy (10)
+    # Consumer Discretionary - Retail (15)
+    'HD', 'LOW', 'TJX', 'TGT', 'DG', 'DLTR', 'ROST', 'BBY', 'ULTA', 'DPZ',
+    'YUM', 'MCD', 'CMG', 'SBUX', 'NKE',
+
+    # Energy (15)
     'XOM', 'CVX', 'COP', 'SLB', 'EOG', 'MPC', 'PSX', 'VLO', 'OXY', 'HES',
+    'DVN', 'FANG', 'HAL', 'BKR', 'APA',
 
-    # Industrials (20)
+    # Industrials (25)
     'LMT', 'RTX', 'BA', 'CAT', 'DE', 'UNP', 'UPS', 'HON', 'MMM', 'GE',
     'EMR', 'ETN', 'ITW', 'PH', 'CMI', 'CSX', 'NSC', 'FDX', 'WM', 'RSG',
+    'JCI', 'ROK', 'DOV', 'IR', 'XYL',
 
-    # Utilities (10)
+    # Materials (15)
+    'LIN', 'APD', 'ECL', 'SHW', 'DD', 'NEM', 'FCX', 'NUE', 'VMC', 'MLM',
+    'PPG', 'IFF', 'ALB', 'CE', 'CF',
+
+    # Utilities (15)
     'NEE', 'DUK', 'SO', 'D', 'AEP', 'EXC', 'SRE', 'XEL', 'ED', 'ES',
+    'WEC', 'PEG', 'AWK', 'ETR', 'FE',
 
     # Telecom (5)
     'VZ', 'T', 'TMUS', 'CHTR', 'CMCSA'
