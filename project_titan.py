@@ -62,6 +62,10 @@ class TitanAnalyzer:
     RSI_OPTIMAL_MAX = 60
     RSI_OVERBOUGHT = 70
 
+    # 역발상 보너스/페널티 (하이브리드 전략)
+    SCORE_OVERSOLD_QUALITY_BONUS = 10  # 과매도 우량주 보너스
+    SCORE_OVERBOUGHT_PENALTY = -5      # 과열주 감점
+
     # 기타 설정
     VOLUME_SURGE_MULTIPLIER = 1.2
     STOP_LOSS_RATIO = 0.97
@@ -420,6 +424,39 @@ class TitanAnalyzer:
                 'previous_close': info.get('regularMarketPreviousClose') or info.get('previousClose', 0)
             }
 
+    def _apply_contrarian_adjustment(self, fund_score, tech_breakdown, sector_name):
+        """하이브리드 전략: 과매도 우량주 보너스, 과열주 감점"""
+        adjustment = 0
+        contrarian_comment = ""
+
+        rsi = tech_breakdown.get('rsi_value', 50)
+
+        # 우량 성장 섹터 리스트
+        quality_growth_sectors = [
+            'AI/반도체', '클라우드', '사이버보안', '국방/항공',
+            '소프트웨어', '바이오텍', '디지털인프라'
+        ]
+
+        # 🎯 과매도 우량주 = 황금 매수 기회
+        if rsi < self.RSI_OVERSOLD:
+            # 펀더멘털이 우수하고 (30점 이상)
+            if fund_score >= 30:
+                # 성장 섹터면 큰 보너스
+                if sector_name in quality_growth_sectors:
+                    adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS
+                    contrarian_comment = "🎯저가매수기회"
+                # 기타 섹터는 작은 보너스
+                else:
+                    adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS // 2
+                    contrarian_comment = "💎저평가"
+
+        # ⚠️ 과열 = 위험 신호
+        elif rsi > self.RSI_OVERBOUGHT:
+            adjustment = self.SCORE_OVERBOUGHT_PENALTY
+            contrarian_comment = "⚠️과열주의"
+
+        return adjustment, contrarian_comment
+
     def _analyze_single_stock(self, ticker):
         """개별 종목 분석"""
         stock = yf.Ticker(ticker)
@@ -435,7 +472,16 @@ class TitanAnalyzer:
         # 점수 계산
         fund_score, fund_comments, fund_breakdown = self._get_fundamental_score(info)
         tech_score, tech_comments, tech_breakdown = self._get_technical_score(hist, current_price)
-        total_score = fund_score + tech_score
+
+        # 🔥 하이브리드 전략: 역발상 조정
+        contrarian_adj, contrarian_comment = self._apply_contrarian_adjustment(
+            fund_score,
+            tech_breakdown,
+            fund_breakdown.get('sector_name', '')
+        )
+
+        # 최종 점수 (역발상 조정 반영)
+        total_score = fund_score + tech_score + contrarian_adj
 
         # 가격 계산
         breakout, target, stop_loss = self._calculate_volatility_breakout(hist)
@@ -446,8 +492,10 @@ class TitanAnalyzer:
         # Verdict
         verdict = self._get_verdict(total_score)
 
-        # 코멘트 조합
+        # 코멘트 조합 (역발상 코멘트 우선 표시)
         all_comments = fund_comments + tech_comments
+        if contrarian_comment:
+            all_comments.insert(0, contrarian_comment)
         comment = ", ".join(all_comments[:3]) if all_comments else "-"
 
         return {
@@ -455,6 +503,7 @@ class TitanAnalyzer:
             'score': total_score,
             'fund_score': fund_score,
             'tech_score': tech_score,
+            'contrarian_adjustment': contrarian_adj,
             'fund_breakdown': fund_breakdown,
             'tech_breakdown': tech_breakdown,
             'verdict': verdict,
@@ -819,7 +868,27 @@ class TitanAnalyzer:
                             <span class="criterion-score">+{tech_bd.get('rsi_score', 0)}점</span>
                         </div>
                     </div>
-                </div>
+                </div>'''
+
+            # 역발상 조정 표시 (보너스/페널티가 있을 때만)
+            contrarian_adj = stock.get('contrarian_adjustment', 0)
+            if contrarian_adj != 0:
+                adj_sign = '+' if contrarian_adj > 0 else ''
+                adj_color = '#4CAF50' if contrarian_adj > 0 else '#F44336'
+                adj_label = '🎯 역발상 보너스' if contrarian_adj > 0 else '⚠️ 과열 감점'
+                html += f'''
+                <div class="breakdown-section" style="border-top: 2px solid {primary_color}; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: {adj_color};">{adj_label}: {adj_sign}{contrarian_adj}점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.1);">
+                            <span class="criterion">최종 점수</span>
+                            <span class="criterion-value">{stock.get('fund_score', 0)} + {stock.get('tech_score', 0)} {adj_sign}{contrarian_adj}</span>
+                            <span class="criterion-score" style="color: {adj_color}; font-size: 1.1em;">{stock['score']}점</span>
+                        </div>
+                    </div>
+                </div>'''
+
+            html += '''
             </div>
 
             <!-- 가격 정보 -->
