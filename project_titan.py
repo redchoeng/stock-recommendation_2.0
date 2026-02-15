@@ -677,7 +677,7 @@ class TitanAnalyzer:
         """개별 종목 분석"""
         stock = yf.Ticker(ticker)
         info = stock.info
-        hist = stock.history(period='60d')
+        hist = stock.history(period='1y')  # 전문가급 분석용 1년 데이터
 
         if hist.empty or len(hist) < 20:
             return None
