@@ -50,6 +50,10 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+
+          # Pull latest changes first
+          git pull --rebase origin main || true
+
           git add backtest_report.html || true
 
           if git diff --staged --quiet; then
