@@ -11,7 +11,7 @@ import numpy as np
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 import time
-from project_titan import TitanAnalyzer
+from project_titan import TitanAnalyzer, NASDAQ100_TICKERS
 
 
 class TitanBacktester:
@@ -491,8 +491,7 @@ def main():
     )
 
     # NASDAQ 100 티커
-    analyzer = TitanAnalyzer()
-    tickers = analyzer.get_nasdaq100_tickers()
+    tickers = NASDAQ100_TICKERS
 
     print(f"📊 백테스트 대상: NASDAQ 100 ({len(tickers)}개)")
 
