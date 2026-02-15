@@ -11,7 +11,7 @@ import numpy as np
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 import time
-from project_titan import TitanAnalyzer, NASDAQ100_TICKERS
+from project_titan import TitanAnalyzer, NASDAQ100_TICKERS, VALUE_TICKERS
 
 
 class TitanBacktester:
@@ -155,9 +155,10 @@ class TitanBacktester:
         print("=" * 80)
         print("🔬 PROJECT TITAN - ROLLING BACKTEST")
         print("=" * 80)
-        print(f"기간: {self.start_date.strftime('%Y-%m-%d')} ~ {self.end_date.strftime('%Y-%m-%d')}")
-        print(f"리밸런싱: {self.rebalance_freq} (매월)")
-        print(f"포트폴리오 크기: TOP {self.top_n}")
+        print(f"📊 종목 풀: {len(tickers)}개 (NASDAQ 100 + VALUE)")
+        print(f"📅 기간: {self.start_date.strftime('%Y-%m-%d')} ~ {self.end_date.strftime('%Y-%m-%d')}")
+        print(f"🔄 리밸런싱: {self.rebalance_freq} (매월)")
+        print(f"💼 포트폴리오 크기: TOP {self.top_n}")
         print("=" * 80)
 
         rebalance_dates = self._get_rebalance_dates()
@@ -402,6 +403,7 @@ class TitanBacktester:
         <div class="header">
             <h1>🔬 PROJECT TITAN</h1>
             <h2>Rolling Backtest Report</h2>
+            <h3>통합 포트폴리오 (NASDAQ 100 + VALUE)</h3>
             <p>{self.start_date.strftime('%Y-%m-%d')} ~ {self.end_date.strftime('%Y-%m-%d')}</p>
         </div>
 
@@ -490,10 +492,17 @@ def main():
         rebalance_freq='M'
     )
 
-    # NASDAQ 100 티커
-    tickers = NASDAQ100_TICKERS
+    # 전체 종목 통합 (NASDAQ 100 + VALUE)
+    tickers = list(set(NASDAQ100_TICKERS + VALUE_TICKERS))  # 중복 제거
 
-    print(f"📊 백테스트 대상: NASDAQ 100 ({len(tickers)}개)")
+    nasdaq_count = len(NASDAQ100_TICKERS)
+    value_count = len(VALUE_TICKERS)
+    total_count = len(tickers)
+
+    print(f"📊 백테스트 대상: 통합 포트폴리오")
+    print(f"   - NASDAQ 100: {nasdaq_count}개")
+    print(f"   - VALUE: {value_count}개")
+    print(f"   - 총 종목 (중복제거): {total_count}개")
 
     # 백테스트 실행
     metrics = backtester.run_backtest(tickers)
