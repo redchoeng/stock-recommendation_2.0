@@ -355,7 +355,7 @@ class TitanAnalyzer:
             return "Avoid"
 
     def _calculate_volatility_breakout(self, hist):
-        """변동성 돌파 전략 가격 계산"""
+        """변동성 돌파 전략 가격 계산 (레거시 - 호환성 유지)"""
         try:
             if len(hist) < 2:
                 return None, None, None
@@ -375,6 +375,46 @@ class TitanAnalyzer:
 
         except Exception:
             return None, None, None
+
+    def _calculate_smart_entry_exit(self, current_price, contrarian_adj, hist, ma20):
+        """🎯 스마트 진입/청산 전략 (역발상 하이브리드)"""
+        try:
+            if len(hist) < 2:
+                return None, None, None, "데이터 부족"
+
+            # Tier 1: 🎯 역발상 매수 (과매도 우량주)
+            if contrarian_adj > 0:
+                buy_price = current_price  # 즉시 매수
+                target_price = current_price * 1.10  # +10%
+                stop_loss = current_price * 0.95     # -5%
+                strategy = "🎯 즉시매수"
+
+            # Tier 2: ⚠️ 매수 보류 (과열주)
+            elif contrarian_adj < 0:
+                buy_price = None  # 매수 보류
+                target_price = None
+                stop_loss = None
+                strategy = "⚠️ 조정대기"
+
+            # Tier 3: 📊 기술적 매수 (일반 종목)
+            else:
+                # MA20 풀백 전략: MA20 + 1%
+                if ma20 and ma20 > 0:
+                    buy_price = ma20 * 1.01
+                    target_price = buy_price * 1.08  # +8%
+                    stop_loss = ma20 * 0.97          # MA20 -3% (추세 이탈)
+                    strategy = "📊 MA20풀백"
+                else:
+                    # MA20 없으면 현재가
+                    buy_price = current_price
+                    target_price = current_price * 1.08
+                    stop_loss = current_price * 0.97
+                    strategy = "📊 현재가"
+
+            return buy_price, target_price, stop_loss, strategy
+
+        except Exception:
+            return None, None, None, "계산 실패"
 
     def _get_current_price(self, info, hist):
         """현재가 추출"""
@@ -483,8 +523,14 @@ class TitanAnalyzer:
         # 최종 점수 (역발상 조정 반영)
         total_score = fund_score + tech_score + contrarian_adj
 
-        # 가격 계산
-        breakout, target, stop_loss = self._calculate_volatility_breakout(hist)
+        # 🎯 스마트 진입/청산 전략
+        ma20 = tech_breakdown.get('ma20_value', 0)
+        buy_price, target, stop_loss, strategy = self._calculate_smart_entry_exit(
+            current_price, contrarian_adj, hist, ma20
+        )
+
+        # 레거시 호환성: breakout 가격도 유지
+        breakout, _, _ = self._calculate_volatility_breakout(hist)
 
         # 시장 상태 및 가격 정보
         market_info = self._get_market_status_and_prices(info)
@@ -509,7 +555,9 @@ class TitanAnalyzer:
             'verdict': verdict,
             'price': current_price,
             'market_info': market_info,
-            'breakout': breakout,
+            'buy_price': buy_price,           # 🎯 스마트 매수가
+            'buy_strategy': strategy,          # 전략 설명
+            'breakout': breakout,              # 레거시 호환
             'target': target,
             'stop_loss': stop_loss,
             'comment': comment
@@ -937,11 +985,12 @@ class TitanAnalyzer:
                     <div class="info-value">${stock['price']:.2f}</div>
                 </div>'''
 
-            if stock['breakout']:
+            # 🎯 스마트 매수/매도 가격 표시
+            if stock.get('buy_price') is not None:
                 html += f'''
                 <div class="info-item">
-                    <div class="info-label">매수 신호가</div>
-                    <div class="info-value">${stock['breakout']:.2f}</div>
+                    <div class="info-label">매수가 {stock.get('buy_strategy', '')}</div>
+                    <div class="info-value">${stock['buy_price']:.2f}</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">목표가</div>
@@ -950,6 +999,17 @@ class TitanAnalyzer:
                 <div class="info-item">
                     <div class="info-label">손절가</div>
                     <div class="info-value">${stock['stop_loss']:.2f}</div>
+                </div>'''
+            else:
+                # ⚠️ 과열주 - 매수 보류
+                html += f'''
+                <div class="info-item" style="background: rgba(244, 67, 54, 0.1); border-left: 3px solid #F44336;">
+                    <div class="info-label">⚠️ 투자전략</div>
+                    <div class="info-value" style="color: #F44336;">조정 대기</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">진입 조건</div>
+                    <div class="info-value" style="font-size: 0.85em;">RSI 60 이하 또는 MA20 도달</div>
                 </div>'''
 
             if stock['comment'] and stock['comment'] != '-':
@@ -967,7 +1027,8 @@ class TitanAnalyzer:
         <div class="footer">
             <strong>⚠️ 투자 유의사항</strong><br>
             본 리포트는 PROJECT TITAN 알고리즘 기반 투자 참고 자료이며, 투자 손실에 대한 책임은 투자자 본인에게 있습니다.<br>
-            <small>Powered by Titan v2.0 | Fundamental (ROE, OPM, Sector) + Technical (MA20, RSI, Volume) + Volatility Breakout</small>
+            <small>Powered by Titan v2.0 | Fundamental (ROE, OPM, Sector) + Technical (MA20, RSI, Volume) + Contrarian Hybrid Strategy</small><br>
+            <small>🎯 과매도 우량주 즉시매수 | 📊 일반주 MA20풀백 | ⚠️ 과열주 조정대기</small>
         </div>
     </div>
 </body>
