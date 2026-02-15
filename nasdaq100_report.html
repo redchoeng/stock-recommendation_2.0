@@ -131,6 +131,60 @@
             margin-left: 10px;
             font-weight: bold;
         }
+        .score-breakdown {
+            margin: 15px 0;
+            padding: 15px;
+            background: #F8F9FA;
+            border-radius: 10px;
+            border: 2px solid #E0E0E0;
+        }
+        .score-breakdown h3 {
+            color: #5D4E37;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+        .breakdown-section {
+            margin-bottom: 12px;
+        }
+        .breakdown-title {
+            font-weight: bold;
+            color: #5BA3E0;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        .breakdown-items {
+            display: grid;
+            gap: 6px;
+        }
+        .breakdown-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            padding: 6px 10px;
+            background: white;
+            border-radius: 6px;
+            align-items: center;
+            font-size: 0.85em;
+        }
+        .breakdown-item .criterion {
+            color: #5D4E37;
+            font-weight: 500;
+        }
+        .breakdown-item .criterion-value {
+            color: #7B6B4F;
+            text-align: right;
+        }
+        .breakdown-item .criterion-score {
+            color: #5BA3E0;
+            font-weight: bold;
+            text-align: right;
+            min-width: 50px;
+        }
+        .highlight-price {
+            background: linear-gradient(135deg, #FFF3CD, #FFE5B4) !important;
+            border: 2px solid #5BA3E0 !important;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -140,7 +194,7 @@
             <div style="font-size: 3em;">🚀</div>
             <h1>NASDAQ 100 Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
             <div class="subtitle">Advanced Fundamental + Technical Analysis</div>
-            <div class="date">2026-02-15 14:40 UTC 업데이트</div>
+            <div class="date">2026-02-15 14:54 UTC 업데이트</div>
         </div>
         <div class="summary">
             <div class="summary-card">
@@ -166,8 +220,55 @@
             <span class="score-badge strong">80점</span>
             <h2><span class="ticker">CSCO</span></h2>
             <span class="verdict strong-buy-">Strong Buy ★</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">23.8%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">24.9%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 30점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $79.26</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">1.6x 평균</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">44.7</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$76.85</div>
                 </div>
@@ -191,8 +292,55 @@
             <span class="score-badge high">70점</span>
             <h2><span class="ticker">TXN</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">30.1%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">33.3%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 20점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $211.51</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.5x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">70.7</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$226.16</div>
                 </div>
@@ -216,8 +364,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">AAPL</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">152.0%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">35.4%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $262.09</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.9x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">39.5</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$255.78</div>
                 </div>
@@ -241,8 +436,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">MSFT</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">34.4%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">47.1%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $432.49</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.7x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">32.3</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$401.32</div>
                 </div>
@@ -266,8 +508,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">NVDA</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">107.4%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">63.2%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $185.30</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.9x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">47.4</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$182.81</div>
                 </div>
@@ -291,8 +580,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">AVGO</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">31.0%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">31.8%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $329.90</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.7x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">44.8</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$325.17</div>
                 </div>
@@ -316,8 +652,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">QCOM</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">21.5%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">27.5%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $148.46</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">1.1x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">32.7</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$140.70</div>
                 </div>
@@ -341,8 +724,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">GOOGL</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">35.7%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">31.6%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Communication Services</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $327.90</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">1.0x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">31.9</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$305.72</div>
                 </div>
@@ -366,8 +796,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">META</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">30.2%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">41.3%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Communication Services</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $665.88</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.7x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">42.9</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$639.77</div>
                 </div>
@@ -391,8 +868,55 @@
             <span class="score-badge high">65점</span>
             <h2><span class="ticker">ORCL</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">69.0%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">32.0%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 15점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $164.75</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.6x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">43.1</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$160.14</div>
                 </div>
@@ -416,8 +940,55 @@
             <span class="score-badge high">60점</span>
             <h2><span class="ticker">AMGN</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 40점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">106.1%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">28.2%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Healthcare</span>
+                            <span class="criterion-score">+10점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 20점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $351.14</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.8x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">63.1</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$369.19</div>
                 </div>
@@ -441,8 +1012,55 @@
             <span class="score-badge high">60점</span>
             <h2><span class="ticker">GILD</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 40점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">40.7%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">37.4%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Healthcare</span>
+                            <span class="criterion-score">+10점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 20점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $142.05</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.8x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">70.4</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$154.98</div>
                 </div>
@@ -466,8 +1084,55 @@
             <span class="score-badge high">60점</span>
             <h2><span class="ticker">HON</span></h2>
             <span class="verdict buy">Buy</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 40점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">28.2%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">15.4%</span>
+                            <span class="criterion-score">+5점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Industrials</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 20점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $229.21</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">1.0x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">73.8</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$241.38</div>
                 </div>
@@ -491,8 +1156,55 @@
             <span class="score-badge ">55점</span>
             <h2><span class="ticker">ADBE</span></h2>
             <span class="verdict hold">Hold</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">55.4%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">36.5%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 5점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $283.31</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">1.1x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">29.8</span>
+                            <span class="criterion-score">+5점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$263.97</div>
                 </div>
@@ -516,8 +1228,55 @@
             <span class="score-badge ">55점</span>
             <h2><span class="ticker">NFLX</span></h2>
             <span class="verdict hold">Hold</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 50점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">42.8%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">24.5%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Communication Services</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 5점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $82.74</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.8x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">27.2</span>
+                            <span class="criterion-score">+5점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$76.87</div>
                 </div>
@@ -541,8 +1300,55 @@
             <span class="score-badge ">55점</span>
             <h2><span class="ticker">ABNB</span></h2>
             <span class="verdict hold">Hold</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 25점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">30.2%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">9.7%</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Consumer Cyclical</span>
+                            <span class="criterion-score">+10점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 30점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $126.96</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">2.2x 평균</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">40.6</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$121.35</div>
                 </div>
@@ -566,8 +1372,55 @@
             <span class="score-badge ">50점</span>
             <h2><span class="ticker">SNOW</span></h2>
             <span class="verdict hold">Hold</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 20점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">-53.1%</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">-27.2%</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 30점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $191.15</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">1.2x 평균</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">42.8</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$182.29</div>
                 </div>
@@ -591,8 +1444,55 @@
             <span class="score-badge ">50점</span>
             <h2><span class="ticker">ARM</span></h2>
             <span class="verdict hold">Hold</span>
+
+            <!-- 점수 상세 분석 -->
+            <div class="score-breakdown">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 30점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">11.3%</span>
+                            <span class="criterion-score">+5점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">15.4%</span>
+                            <span class="criterion-score">+5점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 20점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">MA20 돌파</span>
+                            <span class="criterion-value">MA20: $114.49</span>
+                            <span class="criterion-score">+20점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">거래량</span>
+                            <span class="criterion-value">0.5x 평균</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">RSI</span>
+                            <span class="criterion-value">62.3</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item">
+                <div class="info-item highlight-price">
                     <div class="info-label">현재가</div>
                     <div class="info-value">$125.28</div>
                 </div>
