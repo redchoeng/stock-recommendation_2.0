@@ -51,15 +51,41 @@ class TitanAnalyzer:
     SCORE_SECTOR_TIER3 = 10  # 헬스케어, 산업자동화, 핀테크
     SCORE_SECTOR_TIER4 = 5   # 전통 에너지, 소비재, 유틸리티
 
-    # 기술적 점수 가중치
-    SCORE_MA20 = 20
-    SCORE_VOLUME_SURGE = 15
-    SCORE_RSI_OPTIMAL = 15
-    SCORE_RSI_OVERSOLD = 5
+    # 기술적 점수 재설계 (전문가급, 총 50점)
+    # 1. 추세 분석 (15점)
+    SCORE_MA200 = 3
+    SCORE_MA50 = 3
+    SCORE_MA20 = 2
+    SCORE_MACD_BULLISH = 4
+    SCORE_MACD_SIGNAL = 2
+    SCORE_ADX_STRONG = 3
+
+    # 2. 모멘텀 (12점)
+    SCORE_RSI_OPTIMAL = 6
+    SCORE_RSI_GOOD = 4
+    SCORE_RSI_OVERSOLD = 2
+    SCORE_STOCH_OPTIMAL = 6
+    SCORE_STOCH_GOOD = 3
+
+    # 3. 거래량 (10점)
+    SCORE_VOLUME_EXTREME = 6    # 3배 이상
+    SCORE_VOLUME_HIGH = 4       # 2-3배
+    SCORE_VOLUME_MODERATE = 3   # 1.5-2배
+    SCORE_VOLUME_NORMAL = 2     # 1.2-1.5배
+    SCORE_OBV_RISING = 4
+
+    # 4. 변동성 (8점)
+    SCORE_BB_POSITION = 5
+    SCORE_ATR_EXPANSION = 3
+
+    # 5. 가격 패턴 (5점)
+    SCORE_PRICE_POSITION = 5
 
     # RSI 임계값
     RSI_OVERSOLD = 30
+    RSI_OPTIMAL_MIN = 40
     RSI_OPTIMAL_MAX = 60
+    RSI_GOOD_MAX = 70
     RSI_OVERBOUGHT = 70
 
     # 역발상 보너스/페널티 (하이브리드 전략)
@@ -288,57 +314,207 @@ class TitanAnalyzer:
         return score, comments, breakdown
 
     def _get_technical_score(self, hist, current_price):
-        """기술적 분석 점수 (최대 50점)"""
+        """전문가급 기술적 분석 (최대 50점)"""
+        from ta.trend import MACD, ADXIndicator
+        from ta.momentum import RSIIndicator, StochasticOscillator
+        from ta.volatility import BollingerBands, AverageTrueRange
+        from ta.volume import OnBalanceVolumeIndicator
+
         score = 0
         comments = []
         breakdown = {
-            'ma20_score': 0,
-            'ma20_value': 0,
-            'volume_score': 0,
-            'volume_ratio': 0,
-            'rsi_score': 0,
-            'rsi_value': 0
+            # 추세 (15점)
+            'trend_score': 0, 'ma20': 0, 'ma50': 0, 'ma200': 0,
+            'macd_score': 0, 'adx_score': 0,
+            # 모멘텀 (12점)
+            'momentum_score': 0, 'rsi_value': 0, 'rsi_score': 0,
+            'stoch_score': 0, 'stoch_k': 0, 'stoch_d': 0,
+            # 거래량 (10점)
+            'volume_score': 0, 'volume_ratio': 0, 'obv_score': 0,
+            # 변동성 (8점)
+            'volatility_score': 0, 'bb_position': 0, 'atr_score': 0,
+            # 가격 패턴 (5점)
+            'pattern_score': 0, 'price_position': 0
         }
 
         try:
-            if len(hist) < 20:
+            if len(hist) < 200:
                 return 0, ["데이터부족"], breakdown
 
-            # 1. MA20
-            ma20 = hist['Close'].rolling(window=20).mean().iloc[-1]
-            breakdown['ma20_value'] = ma20
+            close = hist['Close']
+            volume = hist['Volume']
+
+            # ==================== 1. 추세 분석 (15점) ====================
+            trend_score = 0
+
+            # 다층 이동평균
+            ma20 = close.rolling(window=20).mean().iloc[-1]
+            ma50 = close.rolling(window=50).mean().iloc[-1]
+            ma200 = close.rolling(window=200).mean().iloc[-1]
+
+            breakdown['ma20'] = ma20
+            breakdown['ma50'] = ma50
+            breakdown['ma200'] = ma200
+
+            if current_price > ma200:
+                trend_score += self.SCORE_MA200
+                comments.append("MA200↑")
+            if current_price > ma50:
+                trend_score += self.SCORE_MA50
             if current_price > ma20:
-                score += self.SCORE_MA20
-                breakdown['ma20_score'] = self.SCORE_MA20
-                comments.append("Price>MA20")
+                trend_score += self.SCORE_MA20
 
-            # 2. Volume
-            avg_volume_20 = hist['Volume'].rolling(window=20).mean().iloc[-1]
-            current_volume = hist['Volume'].iloc[-1]
-            volume_ratio = current_volume / avg_volume_20 if avg_volume_20 > 0 else 0
-            breakdown['volume_ratio'] = volume_ratio
-            if current_volume > avg_volume_20 * self.VOLUME_SURGE_MULTIPLIER:
-                score += self.SCORE_VOLUME_SURGE
-                breakdown['volume_score'] = self.SCORE_VOLUME_SURGE
-                comments.append("고거래량")
+            # MACD
+            macd = MACD(close=close)
+            macd_line = macd.macd().iloc[-1]
+            macd_signal = macd.macd_signal().iloc[-1]
 
-            # 3. RSI
-            rsi_indicator = RSIIndicator(close=hist['Close'], window=14)
-            rsi = rsi_indicator.rsi().iloc[-1]
+            if macd_line > macd_signal:
+                if macd_line > 0:
+                    trend_score += self.SCORE_MACD_BULLISH  # 강한 상승
+                    comments.append("MACD골든")
+                else:
+                    trend_score += self.SCORE_MACD_SIGNAL
+                breakdown['macd_score'] = self.SCORE_MACD_BULLISH if macd_line > 0 else self.SCORE_MACD_SIGNAL
+
+            # ADX (추세 강도)
+            adx = ADXIndicator(high=hist['High'], low=hist['Low'], close=close)
+            adx_value = adx.adx().iloc[-1]
+
+            if adx_value > 25:  # 강한 추세
+                trend_score += self.SCORE_ADX_STRONG
+                breakdown['adx_score'] = self.SCORE_ADX_STRONG
+                comments.append(f"ADX:{adx_value:.0f}")
+
+            breakdown['trend_score'] = trend_score
+            score += trend_score
+
+            # ==================== 2. 모멘텀 (12점) ====================
+            momentum_score = 0
+
+            # RSI
+            rsi_ind = RSIIndicator(close=close, window=14)
+            rsi = rsi_ind.rsi().iloc[-1]
             breakdown['rsi_value'] = rsi
 
-            if self.RSI_OVERSOLD <= rsi <= self.RSI_OPTIMAL_MAX:
-                score += self.SCORE_RSI_OPTIMAL
+            if self.RSI_OPTIMAL_MIN <= rsi <= self.RSI_OPTIMAL_MAX:
+                momentum_score += self.SCORE_RSI_OPTIMAL
                 breakdown['rsi_score'] = self.SCORE_RSI_OPTIMAL
+                comments.append(f"RSI:{rsi:.0f}*")
+            elif self.RSI_OVERSOLD <= rsi < self.RSI_GOOD_MAX:
+                momentum_score += self.SCORE_RSI_GOOD
+                breakdown['rsi_score'] = self.SCORE_RSI_GOOD
                 comments.append(f"RSI:{rsi:.0f}")
             elif rsi < self.RSI_OVERSOLD:
-                score += self.SCORE_RSI_OVERSOLD
+                momentum_score += self.SCORE_RSI_OVERSOLD
                 breakdown['rsi_score'] = self.SCORE_RSI_OVERSOLD
-                comments.append(f"RSI:{rsi:.0f}(과매도)")
-            elif rsi > self.RSI_OVERBOUGHT:
-                comments.append(f"RSI:{rsi:.0f}(과열)")
+                comments.append(f"RSI:{rsi:.0f}↓")
 
-        except Exception:
+            # Stochastic
+            stoch = StochasticOscillator(high=hist['High'], low=hist['Low'], close=close)
+            stoch_k = stoch.stoch().iloc[-1]
+            stoch_d = stoch.stoch_signal().iloc[-1]
+
+            breakdown['stoch_k'] = stoch_k
+            breakdown['stoch_d'] = stoch_d
+
+            if stoch_k > stoch_d and stoch_k < 80:
+                momentum_score += self.SCORE_STOCH_OPTIMAL
+                breakdown['stoch_score'] = self.SCORE_STOCH_OPTIMAL
+                comments.append("Stoch골든")
+            elif stoch_k > stoch_d:
+                momentum_score += self.SCORE_STOCH_GOOD
+                breakdown['stoch_score'] = self.SCORE_STOCH_GOOD
+
+            breakdown['momentum_score'] = momentum_score
+            score += momentum_score
+
+            # ==================== 3. 거래량 (10점) ====================
+            volume_score = 0
+
+            avg_volume = volume.rolling(window=20).mean().iloc[-1]
+            current_volume = volume.iloc[-1]
+            volume_ratio = current_volume / avg_volume if avg_volume > 0 else 0
+            breakdown['volume_ratio'] = volume_ratio
+
+            # 등급별 점수
+            if volume_ratio >= 3.0:
+                volume_score += self.SCORE_VOLUME_EXTREME
+                comments.append(f"거래량{volume_ratio:.1f}x")
+            elif volume_ratio >= 2.0:
+                volume_score += self.SCORE_VOLUME_HIGH
+                comments.append(f"거래량{volume_ratio:.1f}x")
+            elif volume_ratio >= 1.5:
+                volume_score += self.SCORE_VOLUME_MODERATE
+            elif volume_ratio >= 1.2:
+                volume_score += self.SCORE_VOLUME_NORMAL
+
+            # OBV (누적 거래량)
+            obv = OnBalanceVolumeIndicator(close=close, volume=volume)
+            obv_values = obv.on_balance_volume()
+            obv_ma = obv_values.rolling(window=20).mean()
+
+            if len(obv_values) >= 20 and obv_values.iloc[-1] > obv_ma.iloc[-1]:
+                volume_score += self.SCORE_OBV_RISING
+                breakdown['obv_score'] = self.SCORE_OBV_RISING
+                comments.append("OBV↑")
+
+            breakdown['volume_score'] = volume_score
+            score += volume_score
+
+            # ==================== 4. 변동성 (8점) ====================
+            volatility_score = 0
+
+            # Bollinger Bands
+            bb = BollingerBands(close=close)
+            bb_high = bb.bollinger_hband().iloc[-1]
+            bb_low = bb.bollinger_lband().iloc[-1]
+            bb_mid = bb.bollinger_mavg().iloc[-1]
+
+            # 볼린저 밴드 내 위치 (0-1)
+            bb_position = (current_price - bb_low) / (bb_high - bb_low) if (bb_high - bb_low) > 0 else 0.5
+            breakdown['bb_position'] = bb_position
+
+            if 0.3 <= bb_position <= 0.7:
+                volatility_score += self.SCORE_BB_POSITION  # 중간 위치 (안정)
+            elif bb_position < 0.3:
+                volatility_score += 3  # 하단 (반등 기대)
+                comments.append("BB하단")
+
+            # ATR (변동성 확장)
+            atr = AverageTrueRange(high=hist['High'], low=hist['Low'], close=close)
+            atr_current = atr.average_true_range().iloc[-1]
+            atr_avg = atr.average_true_range().rolling(window=14).mean().iloc[-1]
+
+            if atr_current > atr_avg:
+                volatility_score += self.SCORE_ATR_EXPANSION
+                breakdown['atr_score'] = self.SCORE_ATR_EXPANSION
+
+            breakdown['volatility_score'] = volatility_score
+            score += volatility_score
+
+            # ==================== 5. 가격 패턴 (5점) ====================
+            pattern_score = 0
+
+            # 52주 고/저 대비 위치
+            high_52w = close.rolling(window=252).max().iloc[-1]
+            low_52w = close.rolling(window=252).min().iloc[-1]
+            price_position = (current_price - low_52w) / (high_52w - low_52w) if (high_52w - low_52w) > 0 else 0.5
+            breakdown['price_position'] = price_position
+
+            if price_position >= 0.9:
+                pattern_score += self.SCORE_PRICE_POSITION
+                comments.append("52주고점근처")
+            elif price_position >= 0.7:
+                pattern_score += 3
+            elif 0.5 <= price_position < 0.7:
+                pattern_score += 2
+
+            breakdown['pattern_score'] = pattern_score
+            score += pattern_score
+
+        except Exception as e:
+            print(f"Technical analysis error: {e}")
             pass
 
         return score, comments, breakdown
@@ -898,22 +1074,37 @@ class TitanAnalyzer:
                     </div>
                 </div>
                 <div class="breakdown-section">
-                    <div class="breakdown-title">기술적 점수: {stock.get('tech_score', 0)}점 / 50점</div>
+                    <div class="breakdown-title">기술적 점수: {stock.get('tech_score', 0)}점 / 50점 (전문가급)</div>
                     <div class="breakdown-items">
-                        <div class="breakdown-item">
-                            <span class="criterion">MA20 돌파</span>
-                            <span class="criterion-value">MA20: ${tech_bd.get('ma20_value', 0):.2f}</span>
-                            <span class="criterion-score">+{tech_bd.get('ma20_score', 0)}점</span>
+                        <!-- 추세 분석 -->
+                        <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
+                            <span class="criterion">📈 추세 분석</span>
+                            <span class="criterion-value">MA20/50/200, MACD, ADX</span>
+                            <span class="criterion-score">+{tech_bd.get('trend_score', 0)}점 /15</span>
                         </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">거래량</span>
-                            <span class="criterion-value">{tech_bd.get('volume_ratio', 0):.1f}x 평균</span>
-                            <span class="criterion-score">+{tech_bd.get('volume_score', 0)}점</span>
+                        <!-- 모멘텀 -->
+                        <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
+                            <span class="criterion">⚡ 모멘텀</span>
+                            <span class="criterion-value">RSI:{tech_bd.get('rsi_value', 0):.0f}, Stoch</span>
+                            <span class="criterion-score">+{tech_bd.get('momentum_score', 0)}점 /12</span>
                         </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">RSI</span>
-                            <span class="criterion-value">{tech_bd.get('rsi_value', 0):.1f}</span>
-                            <span class="criterion-score">+{tech_bd.get('rsi_score', 0)}점</span>
+                        <!-- 거래량 -->
+                        <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
+                            <span class="criterion">📊 거래량</span>
+                            <span class="criterion-value">{tech_bd.get('volume_ratio', 0):.1f}x, OBV</span>
+                            <span class="criterion-score">+{tech_bd.get('volume_score', 0)}점 /10</span>
+                        </div>
+                        <!-- 변동성 -->
+                        <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
+                            <span class="criterion">🌊 변동성</span>
+                            <span class="criterion-value">BB, ATR</span>
+                            <span class="criterion-score">+{tech_bd.get('volatility_score', 0)}점 /8</span>
+                        </div>
+                        <!-- 가격 패턴 -->
+                        <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
+                            <span class="criterion">🎯 가격 패턴</span>
+                            <span class="criterion-value">52주 {tech_bd.get('price_position', 0):.0%}</span>
+                            <span class="criterion-score">+{tech_bd.get('pattern_score', 0)}점 /5</span>
                         </div>
                     </div>
                 </div>'''
