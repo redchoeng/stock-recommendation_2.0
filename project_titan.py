@@ -20,9 +20,9 @@ NASDAQ100_TICKERS = [
     'CRM', 'ADBE', 'ORCL', 'INTU', 'NOW', 'SNOW', 'PANW', 'CRWD', 'WDAY', 'TEAM',
     'DDOG', 'ZS', 'FTNT', 'ADSK', 'ANSS', 'CDNS', 'SNPS', 'TTWO', 'EA', 'RBLX',
 
-    # Semiconductors (15)
+    # Semiconductors (16)
     'AMD', 'INTC', 'QCOM', 'TXN', 'MU', 'LRCX', 'AMAT', 'KLAC', 'NXPI', 'MRVL',
-    'ADI', 'ON', 'MPWR', 'MCHP', 'ASML',
+    'ADI', 'ON', 'MPWR', 'MCHP', 'ASML', 'TER',
 
     # E-commerce & Consumer (15)
     'NFLX', 'ABNB', 'BKNG', 'MELI', 'DASH', 'SBUX', 'PEP', 'KDP', 'MDLZ', 'MNST',
