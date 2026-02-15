@@ -389,6 +389,10 @@ class TitanAnalyzer:
             breakdown['trend_score'] = trend_score
             score += trend_score
 
+            # ==================== 추세 필터 ====================
+            # 추세 점수가 낮으면 하락 추세로 판단
+            is_downtrend = trend_score < 8  # 15점 만점의 절반 이하
+
             # ==================== 2. 모멘텀 (12점) ====================
             momentum_score = 0
 
@@ -406,9 +410,14 @@ class TitanAnalyzer:
                 breakdown['rsi_score'] = self.SCORE_RSI_GOOD
                 comments.append(f"RSI:{rsi:.0f}")
             elif rsi < self.RSI_OVERSOLD:
-                momentum_score += self.SCORE_RSI_OVERSOLD
-                breakdown['rsi_score'] = self.SCORE_RSI_OVERSOLD
-                comments.append(f"RSI:{rsi:.0f}↓")
+                # 하락 추세에서 과매도는 매수 신호가 아님 (떨어지는 칼)
+                if not is_downtrend:
+                    momentum_score += self.SCORE_RSI_OVERSOLD
+                    breakdown['rsi_score'] = self.SCORE_RSI_OVERSOLD
+                    comments.append(f"RSI:{rsi:.0f}↓")
+                else:
+                    # 하락 추세에서는 보너스 없음
+                    comments.append(f"RSI:{rsi:.0f}⚠")
 
             # Stochastic
             stoch = StochasticOscillator(high=hist['High'], low=hist['Low'], close=close)
@@ -478,8 +487,11 @@ class TitanAnalyzer:
             if 0.3 <= bb_position <= 0.7:
                 volatility_score += self.SCORE_BB_POSITION  # 중간 위치 (안정)
             elif bb_position < 0.3:
-                volatility_score += 3  # 하단 (반등 기대)
-                comments.append("BB하단")
+                # 하락 추세에서 BB 하단은 매수 신호가 아님
+                if not is_downtrend:
+                    volatility_score += 3  # 하단 (반등 기대)
+                    comments.append("BB하단")
+                # 하락 추세에서는 보너스 없음
 
             # ATR (변동성 확장)
             atr = AverageTrueRange(high=hist['High'], low=hist['Low'], close=close)
@@ -512,6 +524,14 @@ class TitanAnalyzer:
 
             breakdown['pattern_score'] = pattern_score
             score += pattern_score
+
+            # ==================== 추세 필터 페널티 ====================
+            # 하락 추세일 경우 전체 기술 점수에 페널티 적용
+            if is_downtrend and score > 0:
+                original_score = score
+                score = int(score * 0.6)  # 40% 페널티
+                comments.append(f"⚠하락추세({original_score}→{score})")
+                breakdown['trend_penalty'] = True
 
         except Exception as e:
             print(f"Technical analysis error: {e}")
