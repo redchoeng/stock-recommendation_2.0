@@ -525,13 +525,11 @@ class TitanAnalyzer:
             breakdown['pattern_score'] = pattern_score
             score += pattern_score
 
-            # ==================== 추세 필터 페널티 ====================
-            # 하락 추세일 경우 전체 기술 점수에 페널티 적용
-            if is_downtrend and score > 0:
-                original_score = score
-                score = int(score * 0.6)  # 40% 페널티
-                comments.append(f"⚠하락추세({original_score}→{score})")
-                breakdown['trend_penalty'] = True
+            # ==================== 추세 필터 정보 저장 ====================
+            # 하락 추세 플래그 저장 (페널티는 시장 상태 파악 후 적용)
+            breakdown['is_downtrend'] = is_downtrend
+            if is_downtrend:
+                comments.append(f"⚠하락추세")
 
         except Exception as e:
             print(f"Technical analysis error: {e}")
@@ -539,13 +537,31 @@ class TitanAnalyzer:
 
         return score, comments, breakdown
 
-    def _get_verdict(self, total_score):
-        """점수에 따른 투자 판단"""
-        if total_score >= self.SCORE_STRONG_BUY:
+    def _get_verdict(self, total_score, market_regime='neutral'):
+        """시장 상태에 따른 적응형 투자 판단"""
+        # 시장 상태별 기준 점수
+        if market_regime == 'bull':
+            # 상승장: 인플레이션 방지 (기준 상향)
+            strong_buy_threshold = 85
+            buy_threshold = 75
+            hold_threshold = 65
+        elif market_regime == 'bear':
+            # 하락장: 디플레이션 보정 (기준 하향)
+            strong_buy_threshold = 75
+            buy_threshold = 65
+            hold_threshold = 55
+        else:  # neutral or sideways
+            # 중립/횡보: 기본 기준
+            strong_buy_threshold = 80
+            buy_threshold = 70
+            hold_threshold = 60
+
+        # 판정
+        if total_score >= strong_buy_threshold:
             return "Strong Buy ★"
-        elif total_score >= self.SCORE_BUY:
+        elif total_score >= buy_threshold:
             return "Buy"
-        elif total_score >= self.SCORE_HOLD:
+        elif total_score >= hold_threshold:
             return "Hold"
         else:
             return "Avoid"
@@ -647,31 +663,71 @@ class TitanAnalyzer:
             print(f"Market regime detection error: {e}")
             return 'neutral', {}, "감지 실패"
 
-    def _apply_regime_adjustment(self, tech_score, fund_score, regime):
-        """시장 상태에 따른 점수 가중치 조정"""
+    def _apply_regime_adjustment(self, tech_score, fund_score, regime, is_downtrend=False, tech_breakdown=None):
+        """시장 상태에 따른 점수 비율 재설계 + 추세 필터"""
         original_tech = tech_score
         original_fund = fund_score
 
+        # ==================== 1. 추세 필터 페널티 (시장 상태 고려) ====================
+        trend_penalty_applied = False
+        if is_downtrend and tech_score > 0:
+            if regime == 'bear':
+                # 하락장에서는 모든 종목이 하락 추세이므로 페널티 완화
+                tech_score = int(tech_score * 0.8)  # 20% 페널티만
+                trend_penalty_msg = f"하락추세 페널티 -20% (하락장 완화)"
+            else:
+                # 상승장/횡보장에서는 하락 추세가 비정상이므로 강한 페널티
+                tech_score = int(tech_score * 0.6)  # 40% 페널티
+                trend_penalty_msg = f"하락추세 페널티 -40%"
+            trend_penalty_applied = True
+        else:
+            trend_penalty_msg = ""
+
+        # ==================== 2. 시장 상태별 가중치 재설계 ====================
+        # 기존: 멀티플라이어 방식 → 신규: 비율 재분배 방식
         if regime == 'bull':
-            # 상승장: 기술적 분석과 모멘텀 중시
-            tech_score = int(tech_score * 1.2)  # +20%
-            fund_score = int(fund_score * 0.9)  # -10%
-            adjustment = "상승장 조정: 기술+20%, 펀더+90%"
+            # 상승장: 기술 60 : 펀더 40
+            tech_weight = 0.6
+            fund_weight = 0.4
+            tech_score = int(tech_score * 1.2)  # 60/50 = 1.2
+            fund_score = int(fund_score * 0.8)  # 40/50 = 0.8
+            adjustment = "상승장: 기술60% : 펀더40% (모멘텀 중시)"
 
         elif regime == 'bear':
-            # 하락장: 펀더멘털과 방어 중시
-            tech_score = int(tech_score * 0.7)  # -30%
-            fund_score = int(fund_score * 1.3)  # +30%
-            adjustment = "하락장 조정: 기술70%, 펀더+30%"
+            # 하락장: 기술 40 : 펀더 60
+            tech_weight = 0.4
+            fund_weight = 0.6
+            tech_score = int(tech_score * 0.8)  # 40/50 = 0.8
+            fund_score = int(fund_score * 1.2)  # 60/50 = 1.2
+            adjustment = "하락장: 기술40% : 펀더60% (안전성 중시)"
 
         elif regime == 'sideways':
-            # 횡보장: 밸류 중시
-            tech_score = int(tech_score * 1.0)  # 유지
-            fund_score = int(fund_score * 1.1)  # +10%
-            adjustment = "횡보장 조정: 기술100%, 펀더+10%"
+            # 횡보장: 기술 50 : 펀더 50 (균형)
+            tech_weight = 0.5
+            fund_weight = 0.5
+            tech_score = int(tech_score * 1.0)
+            fund_score = int(fund_score * 1.0)
+            adjustment = "횡보장: 기술50% : 펀더50% (균형)"
 
         else:  # neutral
+            tech_weight = 0.5
+            fund_weight = 0.5
             adjustment = "중립: 조정 없음"
+
+        # ==================== 3. 점수 상한선 적용 (인플레이션 방지) ====================
+        if regime == 'bull':
+            tech_score = min(tech_score, 60)  # 상승장에서 기술 점수 상한
+            fund_score = min(fund_score, 50)
+        elif regime == 'bear':
+            tech_score = min(tech_score, 50)
+            fund_score = min(fund_score, 65)  # 하락장에서 펀더 점수 상한
+        else:
+            tech_score = min(tech_score, 55)
+            fund_score = min(fund_score, 55)
+
+        # 조정 메시지 통합
+        if trend_penalty_applied:
+            adjustment = f"{trend_penalty_msg} + {adjustment}"
 
         return tech_score, fund_score, adjustment
 
@@ -904,11 +960,14 @@ class TitanAnalyzer:
 
                 result = self._analyze_single_stock(ticker)
                 if result:
-                    # 시장 상태에 따른 점수 조정
+                    # 시장 상태에 따른 점수 조정 (추세 필터 포함)
+                    is_downtrend = result.get('tech_breakdown', {}).get('is_downtrend', False)
                     tech_adjusted, fund_adjusted, adjustment_msg = self._apply_regime_adjustment(
                         result['tech_score'],
                         result['fund_score'],
-                        market_regime
+                        market_regime,
+                        is_downtrend=is_downtrend,
+                        tech_breakdown=result.get('tech_breakdown', {})
                     )
 
                     # 조정된 점수로 총점 재계산
@@ -923,7 +982,7 @@ class TitanAnalyzer:
                     result['tech_score'] = tech_adjusted
                     result['fund_score'] = fund_adjusted
                     result['score'] = total_score_adjusted
-                    result['verdict'] = self._get_verdict(total_score_adjusted)
+                    result['verdict'] = self._get_verdict(total_score_adjusted, market_regime)
 
                     results.append(result)
 
@@ -976,6 +1035,18 @@ class TitanAnalyzer:
         filtered.sort(key=lambda x: x['score'], reverse=True)
 
         now = datetime.now()
+
+        # 시장 상태 및 기준 점수 결정
+        market_regime = filtered[0].get('market_regime', 'neutral') if filtered else 'neutral'
+        if market_regime == 'bull':
+            strong_buy_threshold = 85
+            buy_threshold = 75
+        elif market_regime == 'bear':
+            strong_buy_threshold = 75
+            buy_threshold = 65
+        else:
+            strong_buy_threshold = 80
+            buy_threshold = 70
 
         # 리포트 타입에 따른 색상 및 아이콘 설정
         if "NASDAQ" in report_type:
@@ -1196,22 +1267,23 @@ class TitanAnalyzer:
                 <div class="value">{len(filtered)}개</div>
             </div>
             <div class="summary-card">
-                <div class="label">Strong Buy</div>
-                <div class="value">{len([r for r in filtered if r['score'] >= self.SCORE_STRONG_BUY])}개</div>
+                <div class="label">Strong Buy (≥{strong_buy_threshold}점)</div>
+                <div class="value">{len([r for r in filtered if r['score'] >= strong_buy_threshold])}개</div>
             </div>
             <div class="summary-card">
                 <div class="label">평균 점수</div>
                 <div class="value">{sum(r['score'] for r in filtered) / len(filtered) if filtered else 0:.0f}점</div>
             </div>
             <div class="summary-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                <div class="label" style="color: rgba(255,255,255,0.9);">🌍 시장 상태</div>
-                <div class="value" style="font-size: 1.2em;">{filtered[0].get('regime_description', 'N/A') if filtered else 'N/A'}</div>
+                <div class="label" style="color: rgba(255,255,255,0.9);">🌍 시장 상태 및 평가 기준</div>
+                <div class="value" style="font-size: 1.1em;">{filtered[0].get('regime_description', 'N/A') if filtered else 'N/A'}<br>
+                <span style="font-size: 0.85em; opacity: 0.9;">Strong Buy ≥{strong_buy_threshold}점 | Buy ≥{buy_threshold}점</span></div>
             </div>
         </div>
 '''
 
         for i, stock in enumerate(filtered[:20], 1):
-            score_class = 'strong' if stock['score'] >= self.SCORE_STRONG_BUY else ('high' if stock['score'] >= self.SCORE_BUY else '')
+            score_class = 'strong' if stock['score'] >= strong_buy_threshold else ('high' if stock['score'] >= buy_threshold else '')
             verdict_class = stock['verdict'].lower().replace(' ', '-').replace('★', '').strip()
 
             # 점수 상세 정보
