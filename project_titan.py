@@ -11,20 +11,62 @@ from tabulate import tabulate
 from ta.momentum import RSIIndicator
 import pytz
 
-# 사전 정의된 티커 리스트
+# 사전 정의된 티커 리스트 (NASDAQ 100 전체)
 NASDAQ100_TICKERS = [
-    'AAPL', 'MSFT', 'NVDA', 'AVGO', 'ADBE', 'CSCO', 'QCOM', 'TXN', 'AMD', 'INTC',
-    'GOOGL', 'META', 'AMZN', 'TSLA', 'NFLX', 'CRM', 'ORCL', 'INTU', 'NOW', 'SNOW',
-    'COST', 'PEP', 'AMGN', 'GILD', 'ISRG', 'HON', 'PYPL', 'ABNB', 'MELI', 'ARM'
+    # Mega Cap Tech (10)
+    'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'GOOG', 'META', 'AMZN', 'TSLA', 'AVGO', 'COST',
+
+    # Software & Cloud (20)
+    'CRM', 'ADBE', 'ORCL', 'INTU', 'NOW', 'SNOW', 'PANW', 'CRWD', 'WDAY', 'TEAM',
+    'DDOG', 'ZS', 'FTNT', 'ADSK', 'ANSS', 'CDNS', 'SNPS', 'TTWO', 'EA', 'RBLX',
+
+    # Semiconductors (15)
+    'AMD', 'INTC', 'QCOM', 'TXN', 'MU', 'LRCX', 'AMAT', 'KLAC', 'NXPI', 'MRVL',
+    'ADI', 'ON', 'MPWR', 'MCHP', 'ASML',
+
+    # E-commerce & Consumer (15)
+    'NFLX', 'ABNB', 'BKNG', 'MELI', 'DASH', 'SBUX', 'PEP', 'KDP', 'MDLZ', 'MNST',
+    'PDD', 'JD', 'CPRT', 'KHC', 'CEG',
+
+    # Biotech & Healthcare (15)
+    'AMGN', 'GILD', 'ISRG', 'REGN', 'VRTX', 'BIIB', 'MRNA', 'ILMN', 'ALGN', 'IDXX',
+    'DXCM', 'EXAS', 'SGEN', 'TECH', 'ZTS',
+
+    # Communication & Media (10)
+    'CMCSA', 'CHTR', 'TMUS', 'TTD', 'NTES', 'SIRI', 'FOXA', 'FOX', 'PARA', 'WBD',
+
+    # Industrials & Services (10)
+    'HON', 'ADP', 'PAYX', 'CTAS', 'ODFL', 'VRSK', 'FAST', 'PCAR', 'LULU', 'ROST',
+
+    # Payment & Fintech (5)
+    'PYPL', 'CSCO', 'AEP', 'EXC', 'XEL'
 ]
 
 VALUE_TICKERS = [
-    'JPM', 'BAC', 'WFC', 'GS', 'BRK-B', 'V', 'MA',
-    'JNJ', 'UNH', 'PFE', 'ABBV', 'MRK', 'LLY',
-    'PG', 'KO', 'PEP', 'WMT', 'COST',
-    'XOM', 'CVX', 'COP',
-    'LMT', 'RTX', 'CAT', 'UNP', 'UPS', 'HON',
-    'NEE', 'DUK', 'SO'
+    # Financials (20)
+    'JPM', 'BAC', 'WFC', 'C', 'GS', 'MS', 'BLK', 'SCHW', 'AXP', 'USB',
+    'PNC', 'TFC', 'BK', 'STT', 'COF', 'DFS', 'SYF', 'BRK-B', 'V', 'MA',
+
+    # Healthcare (20)
+    'JNJ', 'UNH', 'LLY', 'ABBV', 'MRK', 'TMO', 'ABT', 'DHR', 'PFE', 'BMY',
+    'AMGN', 'CVS', 'CI', 'ELV', 'HUM', 'MDT', 'ISRG', 'SYK', 'BSX', 'GILD',
+
+    # Consumer Staples (15)
+    'PG', 'KO', 'PEP', 'WMT', 'COST', 'PM', 'MO', 'CL', 'KMB', 'GIS',
+    'K', 'HSY', 'MDLZ', 'STZ', 'TAP',
+
+    # Energy (10)
+    'XOM', 'CVX', 'COP', 'SLB', 'EOG', 'MPC', 'PSX', 'VLO', 'OXY', 'HES',
+
+    # Industrials (20)
+    'LMT', 'RTX', 'BA', 'CAT', 'DE', 'UNP', 'UPS', 'HON', 'MMM', 'GE',
+    'EMR', 'ETN', 'ITW', 'PH', 'CMI', 'CSX', 'NSC', 'FDX', 'WM', 'RSG',
+
+    # Utilities (10)
+    'NEE', 'DUK', 'SO', 'D', 'AEP', 'EXC', 'SRE', 'XEL', 'ED', 'ES',
+
+    # Telecom (5)
+    'VZ', 'T', 'TMUS', 'CHTR', 'CMCSA'
 ]
 
 
