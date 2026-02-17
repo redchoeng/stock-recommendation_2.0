@@ -168,17 +168,21 @@ class TitanAnalyzer:
     SCORE_OPM_EXCELLENT = 15
     SCORE_OPM_GOOD = 5
 
-    # 섹터별 점수 - 성장주 (2026 거시 경제 트렌드 반영)
-    SCORE_SECTOR_TIER1 = 20  # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
-    SCORE_SECTOR_TIER2 = 15  # 소프트웨어, EV, 바이오텍, 신재생에너지, 희토류
-    SCORE_SECTOR_TIER3 = 10  # 헬스케어, 산업자동화, 핀테크
-    SCORE_SECTOR_TIER4 = 5   # 전통 에너지, 소비재, 유틸리티
+    # 매출 성장률 점수 (신규 - 섹터 비중 축소분 이동)
+    SCORE_REVENUE_GROWTH_HIGH = 10   # 매출 성장률 20% 이상
+    SCORE_REVENUE_GROWTH_GOOD = 5    # 매출 성장률 10-20%
 
-    # 섹터별 점수 - 가치주 (배당, 안정성, 방어적 섹터 우선)
-    VALUE_SECTOR_TIER1 = 20  # 필수소비재, 헬스케어 (배당귀족)
-    VALUE_SECTOR_TIER2 = 15  # 유틸리티, 금융 (안정적 배당)
-    VALUE_SECTOR_TIER3 = 10  # 산업재, 에너지, 부동산 (가치 섹터)
-    VALUE_SECTOR_TIER4 = 5   # 기술주, 경기민감 소비재 (성장주 영역)
+    # 섹터별 점수 - 성장주 (비중 축소: 20% → 10%)
+    SCORE_SECTOR_TIER1 = 10  # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
+    SCORE_SECTOR_TIER2 = 8   # 소프트웨어, EV, 바이오텍, 신재생에너지, 희토류
+    SCORE_SECTOR_TIER3 = 5   # 헬스케어, 산업자동화, 핀테크
+    SCORE_SECTOR_TIER4 = 3   # 전통 에너지, 소비재, 유틸리티
+
+    # 섹터별 점수 - 가치주 (비중 축소: 20% → 10%)
+    VALUE_SECTOR_TIER1 = 10  # 필수소비재, 헬스케어 (배당귀족)
+    VALUE_SECTOR_TIER2 = 8   # 유틸리티, 금융 (안정적 배당)
+    VALUE_SECTOR_TIER3 = 5   # 산업재, 에너지, 부동산 (가치 섹터)
+    VALUE_SECTOR_TIER4 = 3   # 기술주, 경기민감 소비재 (성장주 영역)
 
     # 기술적 점수 재설계 (전문가급, 총 50점)
     # 1. 추세 분석 (15점)
@@ -308,6 +312,8 @@ class TitanAnalyzer:
             'roe_value': 0,
             'opm_score': 0,
             'opm_value': 0,
+            'revenue_growth_score': 0,
+            'revenue_growth_value': 0,
             'sector_score': 0,
             'sector_name': ''
         }
@@ -340,7 +346,21 @@ class TitanAnalyzer:
                     score += self.SCORE_OPM_GOOD
                     breakdown['opm_score'] = self.SCORE_OPM_GOOD
 
-            # 3. Sector & Industry (세분화된 분류)
+            # 3. Revenue Growth (매출 성장률 - 섹터 내 차별화)
+            revenue_growth = info.get('revenueGrowth')
+            if revenue_growth:
+                rg_pct = revenue_growth * 100
+                breakdown['revenue_growth_value'] = rg_pct
+                if rg_pct > 20:
+                    score += self.SCORE_REVENUE_GROWTH_HIGH
+                    breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_HIGH
+                    comments.append(f"매출↑{rg_pct:.0f}%")
+                elif rg_pct > 10:
+                    score += self.SCORE_REVENUE_GROWTH_GOOD
+                    breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_GOOD
+                    comments.append(f"매출↑{rg_pct:.0f}%")
+
+            # 4. Sector & Industry (세분화된 분류)
             sector = info.get('sector', '')
             industry = info.get('industry', '')
             breakdown['sector_name'] = f"{sector}"
