@@ -1,0 +1,19 @@
+# ML 관련 파일 (로컬 전용)
+ml_predictor.py
+run_ml_portfolio.py
+check_stocks.py
+requirements_ml.txt
+
+# 포트폴리오 관련
+portfolio_manager.py
+portfolio.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 기타
+nul
+output.txt
+*.onnx
