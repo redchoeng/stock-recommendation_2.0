@@ -64,11 +64,17 @@ from ta.volume import OnBalanceVolumeIndicator
 
 
 class FeatureEngineer:
-    """기술 지표 기반 피처 생성"""
+    """기술 지표 + 가치투자 피처 생성"""
 
     @staticmethod
-    def create_features(df):
-        """주가 데이터에서 ML 피처 생성"""
+    def create_features(df, ticker_info=None, value_mode=False):
+        """주가 데이터에서 ML 피처 생성
+
+        Args:
+            df: 주가 데이터 (OHLCV)
+            ticker_info: yfinance ticker.info 딕셔너리 (가치주 모드용)
+            value_mode: True면 가치투자 피처 추가
+        """
         features = pd.DataFrame(index=df.index)
 
         close = df['Close']
@@ -128,6 +134,75 @@ class FeatureEngineer:
         features['high_low_ratio'] = (close - low) / (high - low + 1e-10)
         features['close_to_high'] = close / high.rolling(20).max() - 1
         features['close_to_low'] = close / low.rolling(20).min() - 1
+
+        # 10. 52주 가격 위치 (가치투자용)
+        features['price_52w_high'] = close / close.rolling(252).max() - 1  # 52주 고점 대비
+        features['price_52w_low'] = close / close.rolling(252).min() - 1   # 52주 저점 대비
+        features['price_52w_position'] = (close - close.rolling(252).min()) / \
+                                         (close.rolling(252).max() - close.rolling(252).min() + 1e-10)
+
+        # ===== 가치투자 피처 (value_mode) =====
+        if value_mode and ticker_info:
+            # 배당률 (Dividend Yield)
+            div_yield = ticker_info.get('dividendYield', 0) or 0
+            features['dividend_yield'] = div_yield
+
+            # 배당률 매력도 (3% 이상 = 1, 2-3% = 0.5, 2% 미만 = 0)
+            if div_yield >= 0.03:
+                features['dividend_attractive'] = 1.0
+            elif div_yield >= 0.02:
+                features['dividend_attractive'] = 0.5
+            else:
+                features['dividend_attractive'] = 0.0
+
+            # PER (낮을수록 저평가)
+            pe_ratio = ticker_info.get('trailingPE', 0) or ticker_info.get('forwardPE', 0) or 30
+            features['pe_ratio'] = min(pe_ratio / 100, 1.0)  # 정규화
+            # PER 매력도 (15 이하 = 매력적)
+            features['pe_attractive'] = max(0, 1 - pe_ratio / 30) if pe_ratio > 0 else 0
+
+            # PBR (낮을수록 저평가)
+            pb_ratio = ticker_info.get('priceToBook', 0) or 3
+            features['pb_ratio'] = min(pb_ratio / 10, 1.0)  # 정규화
+            # PBR 매력도 (1.5 이하 = 매력적)
+            features['pb_attractive'] = max(0, 1 - pb_ratio / 3) if pb_ratio > 0 else 0
+
+            # Payout Ratio (배당성향 - 30-60%가 이상적)
+            payout = ticker_info.get('payoutRatio', 0) or 0
+            features['payout_ratio'] = min(payout, 1.0)
+            # 배당성향 적정성 (30-60% = 1, 그 외 = 감소)
+            if 0.3 <= payout <= 0.6:
+                features['payout_healthy'] = 1.0
+            elif 0.2 <= payout < 0.3 or 0.6 < payout <= 0.8:
+                features['payout_healthy'] = 0.5
+            else:
+                features['payout_healthy'] = 0.0
+
+            # ROE (높을수록 좋음)
+            roe = ticker_info.get('returnOnEquity', 0) or 0
+            features['roe'] = min(max(roe, 0), 0.5)  # 0-50% 범위로 클리핑
+            features['roe_attractive'] = 1.0 if roe >= 0.15 else (roe / 0.15 if roe > 0 else 0)
+
+            # 부채비율 (낮을수록 안전)
+            debt_equity = ticker_info.get('debtToEquity', 0) or 0
+            features['debt_equity'] = min(debt_equity / 200, 1.0)  # 정규화
+            features['low_debt'] = 1.0 if debt_equity < 50 else max(0, 1 - debt_equity / 150)
+
+            # FCF Yield (Free Cash Flow / Market Cap)
+            fcf = ticker_info.get('freeCashflow', 0) or 0
+            market_cap = ticker_info.get('marketCap', 1) or 1
+            fcf_yield = fcf / market_cap if market_cap > 0 else 0
+            features['fcf_yield'] = max(min(fcf_yield, 0.2), -0.1)  # -10% ~ 20% 범위
+
+            # 가치투자 종합 점수 (배당 비중 축소, PER/ROE 강화)
+            features['value_score'] = (
+                features['dividend_attractive'] * 0.10 +  # 배당률: 25% → 10%
+                features['pe_attractive'] * 0.30 +        # PER: 20% → 30% (저평가 중시)
+                features['pb_attractive'] * 0.15 +        # PBR: 15% 유지
+                features['roe_attractive'] * 0.25 +       # ROE: 20% → 25% (수익성 중시)
+                features['low_debt'] * 0.10 +             # 저부채: 10% 유지
+                features['payout_healthy'] * 0.10         # 배당성향: 10% 유지
+            )
 
         # NaN 처리
         features = features.replace([np.inf, -np.inf], np.nan)
@@ -189,13 +264,15 @@ class LSTMModel(nn.Module):
 class EnsemblePredictor:
     """앙상블 예측기 (XGBoost + LSTM with ONNX DirectML)"""
 
-    def __init__(self, sequence_length=20):
+    def __init__(self, sequence_length=20, value_mode=False):
         self.sequence_length = sequence_length
+        self.value_mode = value_mode  # 가치주 모드
         self.xgb_model = None
         self.lstm_model = None
         self.onnx_session = None  # ONNX Runtime 세션 (DirectML 가속)
         self.feature_engineer = FeatureEngineer()
         self.feature_columns = None
+        self.ticker_info = None  # 가치주 펀더멘털 정보
 
     def prepare_data(self, ticker, period='2y'):
         """데이터 준비"""
@@ -207,8 +284,21 @@ class EnsemblePredictor:
             print(f"⚠️ {ticker}: 데이터 부족 ({len(df)}일)")
             return None, None, None
 
-        # 피처 생성
-        features = self.feature_engineer.create_features(df)
+        # 가치주 모드: 펀더멘털 정보 가져오기
+        ticker_info = None
+        if self.value_mode:
+            try:
+                ticker_info = stock.info
+                self.ticker_info = ticker_info
+                div_yield = ticker_info.get('dividendYield', 0) or 0
+                pe_ratio = ticker_info.get('trailingPE', 0) or 0
+                pb_ratio = ticker_info.get('priceToBook', 0) or 0
+                print(f"   📊 가치지표: 배당률 {div_yield*100:.1f}%, PER {pe_ratio:.1f}, PBR {pb_ratio:.1f}")
+            except Exception as e:
+                print(f"   ⚠️ 펀더멘털 정보 로드 실패: {str(e)[:30]}")
+
+        # 피처 생성 (가치주 모드면 추가 피처 포함)
+        features = self.feature_engineer.create_features(df, ticker_info, self.value_mode)
         target = self.feature_engineer.create_target(df, horizon=5, threshold=0.02)
 
         # NaN 제거
@@ -477,18 +567,27 @@ class EnsemblePredictor:
             return "➡️ Hold", max(prob)
 
 
-def train_and_predict(tickers, save_models=True):
-    """여러 종목에 대해 학습 및 예측"""
-    predictor = EnsemblePredictor(sequence_length=20)
+def train_and_predict(tickers, save_models=True, value_mode=False):
+    """여러 종목에 대해 학습 및 예측
+
+    Args:
+        tickers: 분석할 종목 리스트
+        save_models: 모델 저장 여부
+        value_mode: True면 가치투자 피처 사용 (배당률, PER, PBR 등)
+    """
+    predictor = EnsemblePredictor(sequence_length=20, value_mode=value_mode)
     results = []
+
+    mode_str = "가치주" if value_mode else "성장주"
+    print(f"\n🔍 분석 모드: {mode_str}")
 
     for ticker in tickers:
         print(f"\n{'='*50}")
-        print(f"📊 {ticker} 분석 중...")
+        print(f"📊 {ticker} 분석 중... [{mode_str} 모드]")
         print('='*50)
 
         try:
-            # 데이터 준비
+            # 데이터 준비 (value_mode면 펀더멘털 피처 포함)
             df, features, target = predictor.prepare_data(ticker, period='2y')
             if df is None:
                 continue
@@ -529,12 +628,24 @@ def train_and_predict(tickers, save_models=True):
                 'prob_neutral': latest_prob[1],
                 'prob_up': latest_prob[2]
             }
+
+            # 가치주 모드: 추가 정보
+            if value_mode and predictor.ticker_info:
+                result['dividend_yield'] = predictor.ticker_info.get('dividendYield', 0) or 0
+                result['pe_ratio'] = predictor.ticker_info.get('trailingPE', 0) or 0
+                result['pb_ratio'] = predictor.ticker_info.get('priceToBook', 0) or 0
+                result['value_score'] = features['value_score'].iloc[-1] if 'value_score' in features.columns else 0
+
             results.append(result)
 
             print(f"\n🎯 {ticker} 예측 결과:")
             print(f"   현재가: ${current_price:.2f}")
             print(f"   신호: {signal} (신뢰도: {confidence:.1%})")
             print(f"   확률 - 하락: {latest_prob[0]:.1%}, 보합: {latest_prob[1]:.1%}, 상승: {latest_prob[2]:.1%}")
+
+            if value_mode and predictor.ticker_info:
+                div_y = predictor.ticker_info.get('dividendYield', 0) or 0
+                print(f"   💰 가치점수: {result.get('value_score', 0):.2f} | 배당률: {div_y*100:.1f}%")
 
         except Exception as e:
             print(f"❌ {ticker} 분석 실패: {e}")
