@@ -1522,78 +1522,40 @@ class TitanAnalyzer:
             pre_price = market_info.get('pre_market_price')
             post_price = market_info.get('post_market_price')
 
-            # 시장 상태 배지 색상
-            status_colors = {
-                'pre': ('#FF9800', '🌅 프리마켓'),
-                'regular': ('#4CAF50', '📈 정규장'),
-                'after': ('#9C27B0', '🌙 애프터장'),
-                'closed': ('#607D8B', '🔒 장마감'),
-                'unknown': ('#9E9E9E', '⏳ 확인중')
-            }
-            status_color, status_label = status_colors.get(market_status, status_colors['unknown'])
-
-            # 시장 상태 배지
-            html += f'''
-                <div class="info-item" style="background: {status_color}; color: white; grid-column: 1 / -1;">
-                    <div class="info-label" style="color: rgba(255,255,255,0.9);">시장 상태</div>
-                    <div class="info-value" style="font-size: 1.1em;">{status_label}</div>
-                </div>'''
-
-            if market_status == 'pre':
-                # 프리마켓: 프리마켓 가격 강조
-                html += f'''
-                <div class="info-item">
-                    <div class="info-label">전일 종가</div>
-                    <div class="info-value">${prev_close:.2f}</div>
-                </div>'''
-                if pre_price:
-                    change_pct = ((pre_price - prev_close) / prev_close * 100) if prev_close > 0 else 0
-                    change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
-                    change_sign = '+' if change_pct >= 0 else ''
-                    html += f'''
-                <div class="info-item highlight-price" style="border: 3px solid {status_color};">
-                    <div class="info-label" style="color: {status_color}; font-weight: bold;">🌅 프리마켓</div>
-                    <div class="info-value">${pre_price:.2f} <span style="color: {change_color}; font-size: 0.85em;">({change_sign}{change_pct:.2f}%)</span></div>
-                </div>'''
-
-            elif market_status == 'regular':
-                # 정규장: 현재가 강조
-                change_pct = ((current_price - prev_close) / prev_close * 100) if prev_close > 0 else 0
-                change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
-                change_sign = '+' if change_pct >= 0 else ''
-                html += f'''
-                <div class="info-item">
-                    <div class="info-label">전일 종가</div>
-                    <div class="info-value">${prev_close:.2f}</div>
-                </div>
-                <div class="info-item highlight-price" style="border: 3px solid {status_color};">
-                    <div class="info-label" style="color: {status_color}; font-weight: bold;">📈 현재가</div>
-                    <div class="info-value">${current_price:.2f} <span style="color: {change_color}; font-size: 0.85em;">({change_sign}{change_pct:.2f}%)</span></div>
-                </div>'''
-
-            elif market_status == 'after':
-                # 애프터장: 애프터장 가격 강조
-                html += f'''
-                <div class="info-item">
-                    <div class="info-label">정규장 종가</div>
-                    <div class="info-value">${current_price:.2f}</div>
-                </div>'''
-                if post_price:
-                    change_pct = ((post_price - current_price) / current_price * 100) if current_price > 0 else 0
-                    change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
-                    change_sign = '+' if change_pct >= 0 else ''
-                    html += f'''
-                <div class="info-item highlight-price" style="border: 3px solid {status_color};">
-                    <div class="info-label" style="color: {status_color}; font-weight: bold;">🌙 애프터장</div>
-                    <div class="info-value">${post_price:.2f} <span style="color: {change_color}; font-size: 0.85em;">({change_sign}{change_pct:.2f}%)</span></div>
-                </div>'''
-
+            # 시장 상태별 설정
+            if market_status == 'pre' and pre_price:
+                # 프리마켓: 프리마켓 가격 표시
+                display_price = pre_price
+                status_color = '#FF9800'
+                status_label = '🌅 프리마켓'
+                base_price = prev_close
+            elif market_status == 'after' and post_price:
+                # 애프터장: 애프터장 가격 표시
+                display_price = post_price
+                status_color = '#9C27B0'
+                status_label = '🌙 애프터장'
+                base_price = current_price  # 정규장 종가 대비
             else:
-                # 장 마감 또는 알 수 없음: 현재가
-                html += f'''
+                # 정규장 또는 기타: 정규장 가격 표시
+                display_price = current_price
+                status_color = '#4CAF50'
+                status_label = '☀️ 정규장'
+                base_price = prev_close
+
+            # 변동률 계산
+            change_pct = ((display_price - base_price) / base_price * 100) if base_price > 0 else 0
+            change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
+            change_sign = '+' if change_pct >= 0 else ''
+
+            # 시장 상태 + 가격 표시
+            html += f'''
+                <div class="info-item" style="background: {status_color}; color: white;">
+                    <div class="info-label" style="color: rgba(255,255,255,0.9);">{status_label}</div>
+                    <div class="info-value" style="font-size: 1.2em;">${display_price:.2f}</div>
+                </div>
                 <div class="info-item">
-                    <div class="info-label">현재가</div>
-                    <div class="info-value">${current_price:.2f}</div>
+                    <div class="info-label">전일대비</div>
+                    <div class="info-value" style="color: {change_color}; font-weight: bold;">{change_sign}{change_pct:.2f}%</div>
                 </div>'''
 
             # 🎯 스마트 매수/매도 가격 표시
