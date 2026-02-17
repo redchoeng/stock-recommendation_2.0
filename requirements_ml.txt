@@ -1,0 +1,22 @@
+# ML Predictor 추가 패키지 (로컬 전용)
+# =============================================
+
+# 기본 ML
+xgboost>=2.0.0
+scikit-learn>=1.3.0
+
+# PyTorch (CPU 버전 - 기본)
+torch>=2.0.0
+
+# ONNX (모델 변환)
+onnx
+onnxscript
+
+# AMD Radeon GPU 가속 (DirectML via ONNX Runtime)
+# Windows에서 AMD/Intel GPU 사용시:
+onnxruntime-directml
+
+# =============================================
+# 설치 방법:
+# pip install -r requirements_ml.txt
+# =============================================
