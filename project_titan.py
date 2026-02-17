@@ -11,137 +11,124 @@ from tabulate import tabulate
 from ta.momentum import RSIIndicator
 import pytz
 
-# 사전 정의된 티커 리스트 (NASDAQ 100 전체)
+# ============================================================================
+# 사전 정의된 티커 리스트 (Yahoo Finance 섹터 기반 재분류)
+# ============================================================================
+
+# 기술주/성장주 (Technology, Digital Platform, Biotech Growth)
 NASDAQ100_TICKERS = [
-    # Mega Cap Tech (10)
-    'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'GOOG', 'META', 'AMZN', 'TSLA', 'AVGO', 'COST',
+    # ========== Technology - Semiconductors (21) ==========
+    'NVDA', 'AMD', 'INTC', 'QCOM', 'TXN', 'MU', 'AVGO', 'MRVL', 'ADI', 'ON',
+    'MPWR', 'MCHP', 'ASML', 'LRCX', 'AMAT', 'KLAC', 'NXPI', 'ENTG', 'WOLF',
+    'SWKS', 'QRVO', 'CRUS', 'SLAB', 'TER', 'ONTO',
 
-    # Software & Cloud (21)
-    'CRM', 'ADBE', 'ORCL', 'INTU', 'NOW', 'SNOW', 'PANW', 'CRWD', 'WDAY', 'TEAM',
-    'DDOG', 'ZS', 'FTNT', 'ADSK', 'ANSS', 'CDNS', 'SNPS', 'TTWO', 'EA', 'RBLX',
-    'NET',
+    # ========== Technology - Software & Cloud (35) ==========
+    'MSFT', 'ORCL', 'CRM', 'ADBE', 'INTU', 'NOW', 'SNOW', 'WDAY', 'TEAM',
+    'DDOG', 'ADSK', 'CDNS', 'SNPS', 'PANW', 'CRWD', 'ZS', 'FTNT', 'NET',
+    'MDB', 'ESTC', 'CFLT', 'GTLB', 'DOCN', 'DBX', 'BOX', 'SHOP', 'HUBS',
+    'ZM', 'DOCU', 'APPN', 'OKTA', 'CYBR', 'VRNS', 'QLYS', 'RPD', 'TENB', 'S',
+    'CHKP', 'BILL', 'VEEV',
 
-    # Semiconductors (16)
-    'AMD', 'INTC', 'QCOM', 'TXN', 'MU', 'LRCX', 'AMAT', 'KLAC', 'NXPI', 'MRVL',
-    'ADI', 'ON', 'MPWR', 'MCHP', 'ASML', 'TER',
+    # ========== Technology - AI & Data (8) ==========
+    'PLTR', 'AI', 'PATH', 'U', 'SNPS', 'CDNS',
 
-    # E-commerce & Consumer (15)
-    'NFLX', 'ABNB', 'BKNG', 'MELI', 'DASH', 'SBUX', 'PEP', 'KDP', 'MDLZ', 'MNST',
-    'PDD', 'JD', 'CPRT', 'KHC', 'CEG',
+    # ========== Technology - Hardware & Infrastructure (12) ==========
+    'AAPL', 'DELL', 'HPE', 'SMCI', 'ANET', 'CSCO', 'JNPR', 'AKAM',
+    'NTAP', 'STX', 'WDC', 'PSTG',
 
-    # Biotech & Healthcare (15)
-    'AMGN', 'GILD', 'ISRG', 'REGN', 'VRTX', 'BIIB', 'MRNA', 'ILMN', 'ALGN', 'IDXX',
-    'DXCM', 'EXAS', 'SGEN', 'TECH', 'ZTS',
+    # ========== Technology - Fintech (7) ==========
+    'PYPL', 'SQ', 'AFRM', 'UPST', 'SOFI', 'NU', 'V', 'MA',
 
-    # Communication & Media (10)
-    'CMCSA', 'CHTR', 'TMUS', 'TTD', 'NTES', 'SIRI', 'FOXA', 'FOX', 'PARA', 'WBD',
+    # ========== Technology - Business Services (4) ==========
+    'ADP', 'PAYX',
 
-    # Industrials & Services (11)
-    'HON', 'ADP', 'PAYX', 'CTAS', 'ODFL', 'VRSK', 'FAST', 'PCAR', 'LULU', 'ROST',
-    'SYM',
+    # ========== Communication Services - Digital Platform (12) ==========
+    'GOOGL', 'GOOG', 'META', 'NFLX', 'TTD',  # 디지털 광고/스트리밍
+    'EA', 'TTWO', 'RBLX', 'NTES',  # 게임
+    'WBD', 'SIRI', 'FOX', 'FOXA',  # 미디어/엔터테인먼트
 
-    # Payment & Fintech (10)
-    'PYPL', 'CSCO', 'AEP', 'EXC', 'XEL', 'SQ', 'AFRM', 'UPST', 'SOFI', 'NU',
+    # ========== Consumer Cyclical - Digital/EV (10) ==========
+    'AMZN', 'TSLA', 'MELI', 'ABNB', 'BKNG', 'DASH', 'PDD', 'JD',  # 이커머스/플랫폼
+    'LULU', 'CPRT',  # 성장형 소비재
 
-    # AI Infrastructure & Data Center (10)
-    'SMCI', 'ANET', 'DELL', 'HPE', 'NTAP', 'STX', 'WDC', 'PSTG', 'JNPR', 'AKAM',
+    # ========== Healthcare - Biotech & Growth (18) ==========
+    'LLY',  # 비만/당뇨 신약 (성장)
+    'MRNA', 'REGN', 'VRTX', 'BIIB',  # 바이오텍
+    'ISRG', 'DXCM', 'ALGN', 'IDXX', 'PODD',  # 의료기기 성장
+    'ILMN', 'EXAS', 'TECH',  # 진단/연구
+    'TMO', 'DHR', 'A',  # 생명과학 장비
 
-    # Cloud/SaaS Expansion (15)
-    'MDB', 'ESTC', 'CFLT', 'GTLB', 'ZI', 'DOCN', 'DBX', 'BOX', 'SHOP',
-    'HUBS', 'VEEV', 'ZM', 'DOCU', 'SMAR', 'APPN',
-
-    # Cybersecurity Expansion (8)
-    'OKTA', 'S', 'CHKP', 'TENB', 'CYBR', 'VRNS', 'QLYS', 'RPD',
-
-    # Semiconductors Expansion (7)
-    'ENTG', 'WOLF', 'ONTO', 'SWKS', 'QRVO', 'CRUS', 'SLAB',
-
-    # AI/Data Software (5)
-    'PLTR', 'AI', 'PATH', 'U', 'BILL'
+    # ========== Industrials - High Growth (5) ==========
+    'SMR', 'OKLO',  # 소형모듈원자로 (SMR) - 신기술
+    'GEV',  # GE Vernova - 에너지 기술
+    'SYM', 'VRSK'  # 자동화/데이터
 ]
 
+# 가치주/배당주 (Traditional Sectors, Stable Earnings)
 VALUE_TICKERS = [
-    # Financials - Banks (25)
-    'JPM', 'BAC', 'WFC', 'C', 'GS', 'MS', 'BLK', 'SCHW', 'AXP', 'USB',
-    'PNC', 'TFC', 'BK', 'STT', 'COF', 'DFS', 'SYF', 'BRK-B', 'V', 'MA',
-    'CFG', 'HBAN', 'RF', 'KEY', 'FITB',
+    # ========== Financial Services - Banks (25) ==========
+    'JPM', 'BAC', 'WFC', 'C', 'GS', 'MS', 'USB', 'PNC', 'TFC', 'BK',
+    'STT', 'COF', 'SCHW', 'BLK', 'AXP',
+    'CFG', 'HBAN', 'RF', 'KEY', 'FITB', 'ZION', 'MTB', 'FHN', 'CMA', 'EWBC',
+    'WAL', 'SNV', 'VLY', 'OZK',
 
-    # Financials - Insurance (15)
+    # ========== Financial Services - Insurance (20) ==========
     'BRK-B', 'PGR', 'TRV', 'ALL', 'CB', 'AIG', 'MET', 'PRU', 'AFL', 'AMP',
-    'CINF', 'L', 'GL', 'WRB', 'RGA',
+    'CINF', 'L', 'GL', 'WRB', 'RGA', 'HIG', 'PFG', 'LNC', 'AIZ', 'SYF',
 
-    # Real Estate - REITs (20)
+    # ========== Real Estate - REITs (30) ==========
     'PLD', 'AMT', 'CCI', 'EQIX', 'PSA', 'DLR', 'O', 'WELL', 'SPG', 'AVB',
     'EQR', 'VTR', 'ARE', 'INVH', 'ESS', 'MAA', 'UDR', 'CPT', 'HST', 'REG',
-
-    # Healthcare (25)
-    'JNJ', 'UNH', 'LLY', 'ABBV', 'MRK', 'TMO', 'ABT', 'DHR', 'PFE', 'BMY',
-    'AMGN', 'CVS', 'CI', 'ELV', 'HUM', 'MDT', 'SYK', 'BSX', 'GILD', 'VRTX',
-    'ZBH', 'BAX', 'BDX', 'RMD', 'A',
-
-    # Consumer Staples (20)
-    'PG', 'KO', 'PEP', 'WMT', 'COST', 'PM', 'MO', 'CL', 'KMB', 'GIS',
-    'K', 'HSY', 'MDLZ', 'STZ', 'TAP', 'CPB', 'CAG', 'SJM', 'CHD', 'CLX',
-
-    # Consumer Discretionary - Retail (15)
-    'HD', 'LOW', 'TJX', 'TGT', 'DG', 'DLTR', 'ROST', 'BBY', 'ULTA', 'DPZ',
-    'YUM', 'MCD', 'CMG', 'SBUX', 'NKE',
-
-    # Energy (15)
-    'XOM', 'CVX', 'COP', 'SLB', 'EOG', 'MPC', 'PSX', 'VLO', 'OXY', 'HES',
-    'DVN', 'FANG', 'HAL', 'BKR', 'APA',
-
-    # Defense & Aerospace (8) - 국방/방산
-    'LMT', 'RTX', 'BA', 'NOC', 'GD', 'LHX', 'HII', 'KTOS',
-
-    # Infrastructure & Construction (10) - AIRR 리쇼어링 수혜주
-    'STRL', 'FIX', 'MTZ', 'EME', 'PWR', 'PRIM', 'DY', 'AGX', 'SPXC', 'OSK',
-
-    # Transportation & Logistics (5)
-    'SAIA', 'CHRW', 'R', 'ODFL', 'KEX',
-
-    # Industrials (27) - AIRR 제조업 리쇼어링 포함
-    'CAT', 'DE', 'UNP', 'UPS', 'HON', 'MMM', 'GE', 'EMR', 'ETN', 'ITW',
-    'PH', 'CMI', 'CSX', 'NSC', 'FDX', 'WM', 'RSG', 'JCI', 'ROK', 'DOV',
-    'IR', 'XYL', 'AAON', 'RBC', 'POWL', 'AIT', 'GVA',
-
-    # Nuclear & Uranium (10) - 원자력/우라늄
-    'CCJ', 'SMR', 'OKLO', 'UEC', 'URG', 'UUUU', 'LEU', 'GEV', 'VST', 'BWXT',
-
-    # Strategic Materials - Rare Earth (3) - 희토류
-    'MP', 'REE', 'AVL',
-
-    # Materials (15)
-    'LIN', 'APD', 'ECL', 'SHW', 'DD', 'NEM', 'FCX', 'NUE', 'VMC', 'MLM',
-    'PPG', 'IFF', 'ALB', 'CE', 'CF',
-
-    # Utilities (15)
-    'NEE', 'DUK', 'SO', 'D', 'AEP', 'EXC', 'SRE', 'XEL', 'ED', 'ES',
-    'WEC', 'PEG', 'AWK', 'ETR', 'FE',
-
-    # Telecom (5)
-    'VZ', 'T', 'TMUS', 'CHTR', 'CMCSA',
-
-    # Regional Banks (10)
-    'ZION', 'MTB', 'FHN', 'CMA', 'EWBC', 'WAL', 'SNV', 'VLY', 'OZK', 'PBCT',
-
-    # Insurance Expansion (5)
-    'HIG', 'PFG', 'LNC', 'AIZ', 'RE',
-
-    # REITs Expansion (10)
     'CBRE', 'IRM', 'COLD', 'REXR', 'FR', 'KRC', 'BXP', 'VNO', 'SLG', 'JBGS',
 
-    # Industrials Expansion (10)
-    'URI', 'CARR', 'OTIS', 'TT', 'GNRC', 'AOS', 'BLDR', 'SSD', 'MLI', 'BECN',
+    # ========== Healthcare - Traditional Pharma & Plans (20) ==========
+    'JNJ', 'UNH', 'ABBV', 'MRK', 'PFE', 'BMY', 'AMGN', 'GILD',
+    'CVS', 'CI', 'ELV', 'HUM',  # 헬스케어 플랜
+    'MDT', 'SYK', 'BSX', 'ZBH', 'BAX', 'BDX', 'RMD',  # 의료기기 (안정)
+    'HOLX', 'XRAY', 'ENOV', 'MMSI', 'ZTS',  # 기타 헬스케어
 
-    # Healthcare Expansion (5)
-    'HOLX', 'PODD', 'XRAY', 'ENOV', 'MMSI',
+    # ========== Consumer Defensive - Staples (25) ==========
+    'PG', 'KO', 'PEP', 'WMT', 'COST', 'PM', 'MO', 'CL', 'KMB', 'GIS',
+    'HSY', 'MDLZ', 'MNST', 'KDP', 'KHC', 'STZ', 'TAP', 'CPB', 'CAG', 'SJM',
+    'CHD', 'CLX', 'DG', 'DLTR', 'TGT',
 
-    # Energy Expansion (5)
-    'CTRA', 'MRO', 'NOV', 'CHX', 'RIG',
+    # ========== Consumer Cyclical - Traditional Retail & Restaurant (20) ==========
+    'HD', 'LOW', 'TJX', 'ROST', 'BBY', 'ULTA', 'NKE',  # 리테일
+    'MCD', 'SBUX', 'YUM', 'CMG', 'DPZ', 'DRI', 'TXRH', 'CBRL', 'BLMN', 'CAKE',  # 레스토랑
 
-    # Consumer/Restaurants (5)
-    'DRI', 'TXRH', 'CBRL', 'BLMN', 'CAKE'
+    # ========== Energy - Oil & Gas (18) ==========
+    'XOM', 'CVX', 'COP', 'SLB', 'EOG', 'MPC', 'PSX', 'VLO', 'OXY',
+    'DVN', 'FANG', 'HAL', 'BKR', 'APA', 'CTRA', 'MRO', 'NOV', 'RIG',
+
+    # ========== Energy - Uranium (7) ==========
+    'CCJ', 'UEC', 'URG', 'UUUU', 'LEU', 'BWXT',  # 우라늄/원자력
+
+    # ========== Industrials - Aerospace & Defense (8) ==========
+    'LMT', 'RTX', 'BA', 'NOC', 'GD', 'LHX', 'HII', 'KTOS',
+
+    # ========== Industrials - Infrastructure & Construction (12) ==========
+    'STRL', 'FIX', 'MTZ', 'EME', 'PWR', 'PRIM', 'DY', 'AGX', 'SPXC', 'OSK',
+    'BLDR', 'SSD',
+
+    # ========== Industrials - Transportation & Logistics (8) ==========
+    'UNP', 'UPS', 'CSX', 'NSC', 'FDX', 'SAIA', 'CHRW', 'ODFL', 'KEX',
+
+    # ========== Industrials - Machinery & Equipment (25) ==========
+    'CAT', 'DE', 'HON', 'MMM', 'GE', 'EMR', 'ETN', 'ITW', 'PH', 'CMI',
+    'ROK', 'DOV', 'IR', 'XYL', 'AAON', 'RBC', 'POWL', 'AIT', 'GVA',
+    'URI', 'CARR', 'OTIS', 'TT', 'GNRC', 'AOS', 'MLI', 'BECN',
+    'WM', 'RSG', 'JCI', 'FAST', 'PCAR', 'CTAS',
+
+    # ========== Basic Materials (17) ==========
+    'LIN', 'APD', 'ECL', 'SHW', 'DD', 'NEM', 'FCX', 'NUE', 'VMC', 'MLM',
+    'PPG', 'IFF', 'ALB', 'CE', 'CF', 'MP',  # 희토류
+
+    # ========== Utilities (18) ==========
+    'NEE', 'DUK', 'SO', 'D', 'AEP', 'EXC', 'SRE', 'XEL', 'ED', 'ES',
+    'WEC', 'PEG', 'AWK', 'ETR', 'FE', 'CEG', 'VST',  # 전력
+
+    # ========== Communication Services - Telecom (5) ==========
+    'VZ', 'T', 'TMUS', 'CHTR', 'CMCSA'
 ]
 
 
@@ -1530,45 +1517,83 @@ class TitanAnalyzer:
 
             # 시장 상태에 따른 가격 표시
             market_status = market_info.get('status', 'unknown')
+            prev_close = market_info.get('previous_close', 0)
+            current_price = stock['price']
+            pre_price = market_info.get('pre_market_price')
+            post_price = market_info.get('post_market_price')
+
+            # 시장 상태 배지 색상
+            status_colors = {
+                'pre': ('#FF9800', '🌅 프리마켓'),
+                'regular': ('#4CAF50', '📈 정규장'),
+                'after': ('#9C27B0', '🌙 애프터장'),
+                'closed': ('#607D8B', '🔒 장마감'),
+                'unknown': ('#9E9E9E', '⏳ 확인중')
+            }
+            status_color, status_label = status_colors.get(market_status, status_colors['unknown'])
+
+            # 시장 상태 배지
+            html += f'''
+                <div class="info-item" style="background: {status_color}; color: white; grid-column: 1 / -1;">
+                    <div class="info-label" style="color: rgba(255,255,255,0.9);">시장 상태</div>
+                    <div class="info-value" style="font-size: 1.1em;">{status_label}</div>
+                </div>'''
+
             if market_status == 'pre':
-                # 프리마켓: 전날 마감가 + 프리마켓 가격
+                # 프리마켓: 프리마켓 가격 강조
                 html += f'''
                 <div class="info-item">
-                    <div class="info-label">전날 마감가</div>
-                    <div class="info-value">${market_info.get('previous_close', 0):.2f}</div>
+                    <div class="info-label">전일 종가</div>
+                    <div class="info-value">${prev_close:.2f}</div>
                 </div>'''
-                if market_info.get('pre_market_price'):
+                if pre_price:
+                    change_pct = ((pre_price - prev_close) / prev_close * 100) if prev_close > 0 else 0
+                    change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
+                    change_sign = '+' if change_pct >= 0 else ''
                     html += f'''
-                <div class="info-item highlight-price">
-                    <div class="info-label">프리마켓 가격</div>
-                    <div class="info-value">${market_info.get('pre_market_price', 0):.2f}</div>
+                <div class="info-item highlight-price" style="border: 3px solid {status_color};">
+                    <div class="info-label" style="color: {status_color}; font-weight: bold;">🌅 프리마켓</div>
+                    <div class="info-value">${pre_price:.2f} <span style="color: {change_color}; font-size: 0.85em;">({change_sign}{change_pct:.2f}%)</span></div>
                 </div>'''
+
             elif market_status == 'regular':
-                # 정규장: 현재가만
-                html += f'''
-                <div class="info-item highlight-price">
-                    <div class="info-label">현재가</div>
-                    <div class="info-value">${stock['price']:.2f}</div>
-                </div>'''
-            elif market_status == 'after':
-                # 애프터장: 정규장 마감가 + 애프터장 가격
+                # 정규장: 현재가 강조
+                change_pct = ((current_price - prev_close) / prev_close * 100) if prev_close > 0 else 0
+                change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
+                change_sign = '+' if change_pct >= 0 else ''
                 html += f'''
                 <div class="info-item">
-                    <div class="info-label">정규장 마감가</div>
-                    <div class="info-value">${market_info.get('previous_close', 0):.2f}</div>
+                    <div class="info-label">전일 종가</div>
+                    <div class="info-value">${prev_close:.2f}</div>
+                </div>
+                <div class="info-item highlight-price" style="border: 3px solid {status_color};">
+                    <div class="info-label" style="color: {status_color}; font-weight: bold;">📈 현재가</div>
+                    <div class="info-value">${current_price:.2f} <span style="color: {change_color}; font-size: 0.85em;">({change_sign}{change_pct:.2f}%)</span></div>
                 </div>'''
-                if market_info.get('post_market_price'):
+
+            elif market_status == 'after':
+                # 애프터장: 애프터장 가격 강조
+                html += f'''
+                <div class="info-item">
+                    <div class="info-label">정규장 종가</div>
+                    <div class="info-value">${current_price:.2f}</div>
+                </div>'''
+                if post_price:
+                    change_pct = ((post_price - current_price) / current_price * 100) if current_price > 0 else 0
+                    change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
+                    change_sign = '+' if change_pct >= 0 else ''
                     html += f'''
-                <div class="info-item highlight-price">
-                    <div class="info-label">애프터장 가격</div>
-                    <div class="info-value">${market_info.get('post_market_price', 0):.2f}</div>
+                <div class="info-item highlight-price" style="border: 3px solid {status_color};">
+                    <div class="info-label" style="color: {status_color}; font-weight: bold;">🌙 애프터장</div>
+                    <div class="info-value">${post_price:.2f} <span style="color: {change_color}; font-size: 0.85em;">({change_sign}{change_pct:.2f}%)</span></div>
                 </div>'''
+
             else:
                 # 장 마감 또는 알 수 없음: 현재가
                 html += f'''
                 <div class="info-item">
                     <div class="info-label">현재가</div>
-                    <div class="info-value">${stock['price']:.2f}</div>
+                    <div class="info-value">${current_price:.2f}</div>
                 </div>'''
 
             # 🎯 스마트 매수/매도 가격 표시
