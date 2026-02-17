@@ -64,9 +64,9 @@ GROWTH_TICKERS = [
     'SYM', 'VRSK'  # 자동화/데이터
 ]
 
-# 가치주/배당주 (Traditional Sectors, Stable Earnings)
+# 가치주/배당주 (Traditional Sectors, Stable Earnings) - S&P 500 기반 확장
 VALUE_TICKERS = [
-    # ========== Financial Services - Banks (25) ==========
+    # ========== Financial Services - Banks (29) ==========
     'JPM', 'BAC', 'WFC', 'C', 'GS', 'MS', 'USB', 'PNC', 'TFC', 'BK',
     'STT', 'COF', 'SCHW', 'BLK', 'AXP',
     'CFG', 'HBAN', 'RF', 'KEY', 'FITB', 'ZION', 'MTB', 'FHN', 'CMA', 'EWBC',
@@ -76,56 +76,75 @@ VALUE_TICKERS = [
     'BRK-B', 'PGR', 'TRV', 'ALL', 'CB', 'AIG', 'MET', 'PRU', 'AFL', 'AMP',
     'CINF', 'L', 'GL', 'WRB', 'RGA', 'HIG', 'PFG', 'LNC', 'AIZ', 'SYF',
 
-    # ========== Real Estate - REITs (30) ==========
+    # ========== Financial Services - Capital Markets & Data (15) ==========
+    'SPGI', 'MCO', 'ICE', 'CME', 'NDAQ', 'MSCI',  # 거래소/데이터
+    'MMC', 'AON', 'WTW',  # 보험중개
+    'FIS', 'FISV', 'GPN', 'CPAY', 'JKHY', 'BR',  # 결제/금융기술
+
+    # ========== Real Estate - REITs (35) ==========
     'PLD', 'AMT', 'CCI', 'EQIX', 'PSA', 'DLR', 'O', 'WELL', 'SPG', 'AVB',
     'EQR', 'VTR', 'ARE', 'INVH', 'ESS', 'MAA', 'UDR', 'CPT', 'HST', 'REG',
     'CBRE', 'IRM', 'COLD', 'REXR', 'FR', 'KRC', 'BXP', 'VNO', 'SLG', 'JBGS',
+    'SBAC', 'KIM', 'EXR', 'GLPI', 'SUI',  # S&P 500 추가
 
-    # ========== Healthcare - Traditional Pharma & Plans (20) ==========
+    # ========== Healthcare - Traditional Pharma & Plans (30) ==========
     'JNJ', 'UNH', 'ABBV', 'MRK', 'PFE', 'BMY', 'AMGN', 'GILD',
-    'CVS', 'CI', 'ELV', 'HUM',  # 헬스케어 플랜
+    'CVS', 'CI', 'ELV', 'HUM', 'CNC', 'MOH',  # 헬스케어 플랜
     'MDT', 'SYK', 'BSX', 'ZBH', 'BAX', 'BDX', 'RMD',  # 의료기기 (안정)
     'HOLX', 'XRAY', 'ENOV', 'MMSI', 'ZTS',  # 기타 헬스케어
+    'ABT', 'HCA', 'MCK', 'CAH', 'GEHC',  # S&P 500 추가
 
-    # ========== Consumer Defensive - Staples (25) ==========
+    # ========== Consumer Defensive - Staples (35) ==========
     'PG', 'KO', 'PEP', 'WMT', 'COST', 'PM', 'MO', 'CL', 'KMB', 'GIS',
     'HSY', 'MDLZ', 'MNST', 'KDP', 'KHC', 'STZ', 'TAP', 'CPB', 'CAG', 'SJM',
     'CHD', 'CLX', 'DG', 'DLTR', 'TGT',
+    'EL', 'HRL', 'MKC', 'LW', 'TSN', 'SYY', 'ADM', 'BG',  # S&P 500 추가
+    'ORLY', 'AZO',  # 자동차부품 (필수소비재 성격)
 
-    # ========== Consumer Cyclical - Traditional Retail & Restaurant (20) ==========
+    # ========== Consumer Cyclical - Traditional Retail & Restaurant (25) ==========
     'HD', 'LOW', 'TJX', 'ROST', 'BBY', 'ULTA', 'NKE',  # 리테일
     'MCD', 'SBUX', 'YUM', 'CMG', 'DPZ', 'DRI', 'TXRH', 'CBRL', 'BLMN', 'CAKE',  # 레스토랑
+    'F', 'GM', 'APTV', 'BWA', 'LEA', 'GNTX', 'LKQ', 'GPC',  # 자동차/부품
 
-    # ========== Energy - Oil & Gas (18) ==========
+    # ========== Energy - Oil & Gas (20) ==========
     'XOM', 'CVX', 'COP', 'SLB', 'EOG', 'MPC', 'PSX', 'VLO', 'OXY',
-    'DVN', 'FANG', 'HAL', 'BKR', 'APA', 'CTRA', 'MRO', 'NOV', 'RIG',
+    'DVN', 'FANG', 'HAL', 'BKR', 'APA', 'CTRA', 'NOV', 'RIG',
+    'TRGP', 'WMB',  # 미드스트림
 
     # ========== Energy - Uranium (7) ==========
     'CCJ', 'UEC', 'URG', 'UUUU', 'LEU', 'BWXT',  # 우라늄/원자력
 
-    # ========== Industrials - Aerospace & Defense (8) ==========
+    # ========== Industrials - Aerospace & Defense (12) ==========
     'LMT', 'RTX', 'BA', 'NOC', 'GD', 'LHX', 'HII', 'KTOS',
+    'TDG', 'HWM', 'TXT', 'LDOS',  # S&P 500 추가
 
-    # ========== Industrials - Infrastructure & Construction (12) ==========
+    # ========== Industrials - Infrastructure & Construction (15) ==========
     'STRL', 'FIX', 'MTZ', 'EME', 'PWR', 'PRIM', 'DY', 'AGX', 'SPXC', 'OSK',
     'BLDR', 'SSD',
+    'J', 'ACM', 'FLR',  # 엔지니어링
 
-    # ========== Industrials - Transportation & Logistics (8) ==========
+    # ========== Industrials - Transportation & Logistics (15) ==========
     'UNP', 'UPS', 'CSX', 'NSC', 'FDX', 'SAIA', 'CHRW', 'ODFL', 'KEX',
+    'DAL', 'UAL', 'LUV', 'ALK',  # 항공사
+    'EXPD', 'JBHT',  # 물류
 
-    # ========== Industrials - Machinery & Equipment (25) ==========
+    # ========== Industrials - Machinery & Equipment (35) ==========
     'CAT', 'DE', 'HON', 'MMM', 'GE', 'EMR', 'ETN', 'ITW', 'PH', 'CMI',
     'ROK', 'DOV', 'IR', 'XYL', 'AAON', 'RBC', 'POWL', 'AIT', 'GVA',
-    'URI', 'CARR', 'OTIS', 'TT', 'GNRC', 'AOS', 'MLI', 'BECN',
+    'URI', 'CARR', 'OTIS', 'TT', 'GNRC', 'AOS', 'MLI',
     'WM', 'RSG', 'JCI', 'FAST', 'PCAR', 'CTAS',
+    'GWW', 'FTV', 'AME', 'SNA', 'IEX',  # S&P 500 추가
 
-    # ========== Basic Materials (17) ==========
+    # ========== Basic Materials (25) ==========
     'LIN', 'APD', 'ECL', 'SHW', 'DD', 'NEM', 'FCX', 'NUE', 'VMC', 'MLM',
     'PPG', 'IFF', 'ALB', 'CE', 'CF', 'MP',  # 희토류
+    'DOW', 'LYB', 'EMN', 'FMC',  # 화학
+    'BALL', 'PKG', 'IP', 'AVY', 'AMCR',  # 포장재
 
-    # ========== Utilities (18) ==========
+    # ========== Utilities (25) ==========
     'NEE', 'DUK', 'SO', 'D', 'AEP', 'EXC', 'SRE', 'XEL', 'ED', 'ES',
     'WEC', 'PEG', 'AWK', 'ETR', 'FE', 'CEG', 'VST',  # 전력
+    'ATO', 'NI', 'CNP', 'DTE', 'CMS', 'LNT', 'EVRG', 'PPL',  # S&P 500 추가
 
     # ========== Communication Services - Telecom (5) ==========
     'VZ', 'T', 'TMUS', 'CHTR', 'CMCSA'
@@ -149,11 +168,17 @@ class TitanAnalyzer:
     SCORE_OPM_EXCELLENT = 15
     SCORE_OPM_GOOD = 5
 
-    # 섹터별 점수 (2026 거시 경제 트렌드 반영)
+    # 섹터별 점수 - 성장주 (2026 거시 경제 트렌드 반영)
     SCORE_SECTOR_TIER1 = 20  # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
     SCORE_SECTOR_TIER2 = 15  # 소프트웨어, EV, 바이오텍, 신재생에너지, 희토류
     SCORE_SECTOR_TIER3 = 10  # 헬스케어, 산업자동화, 핀테크
     SCORE_SECTOR_TIER4 = 5   # 전통 에너지, 소비재, 유틸리티
+
+    # 섹터별 점수 - 가치주 (배당, 안정성, 방어적 섹터 우선)
+    VALUE_SECTOR_TIER1 = 20  # 필수소비재, 헬스케어 (배당귀족)
+    VALUE_SECTOR_TIER2 = 15  # 유틸리티, 금융 (안정적 배당)
+    VALUE_SECTOR_TIER3 = 10  # 산업재, 에너지, 부동산 (가치 섹터)
+    VALUE_SECTOR_TIER4 = 5   # 기술주, 경기민감 소비재 (성장주 영역)
 
     # 기술적 점수 재설계 (전문가급, 총 50점)
     # 1. 추세 분석 (15점)
@@ -203,6 +228,7 @@ class TitanAnalyzer:
     def __init__(self):
         self.K_FACTOR = 0.5  # Volatility breakout factor
         self.results = []
+        self.analysis_mode = 'growth'  # 'growth' or 'value'
 
     def get_sp500_tickers(self):
         """S&P 500 티커 리스트 다운로드"""
@@ -319,113 +345,175 @@ class TitanAnalyzer:
             industry = info.get('industry', '')
             breakdown['sector_name'] = f"{sector}"
 
-            # Tier 1: AI, 반도체, 클라우드, 사이버보안, 국방 (20점)
-            if any(keyword in industry.lower() for keyword in ['semiconductor', 'chip', 'ai', 'artificial intelligence']):
-                score += self.SCORE_SECTOR_TIER1
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
-                breakdown['sector_name'] = "AI/반도체"
-                comments.append("AI/반도체")
-            elif any(keyword in industry.lower() for keyword in ['cloud', 'data center', 'infrastructure software']):
-                score += self.SCORE_SECTOR_TIER1
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
-                breakdown['sector_name'] = "클라우드"
-                comments.append("클라우드")
-            elif any(keyword in industry.lower() for keyword in ['cybersecurity', 'security software', 'information security']):
-                score += self.SCORE_SECTOR_TIER1
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
-                breakdown['sector_name'] = "사이버보안"
-                comments.append("사이버보안")
-            elif any(keyword in industry.lower() for keyword in ['aerospace', 'defense', 'military']):
-                score += self.SCORE_SECTOR_TIER1
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
-                breakdown['sector_name'] = "국방/항공"
-                comments.append("국방/항공")
+            # ===== 가치주 모드: 배당/안정성 중심 점수 체계 =====
+            if self.analysis_mode == 'value':
+                sector_score, sector_name, sector_comment = self._get_value_sector_score(sector, industry)
+                score += sector_score
+                breakdown['sector_score'] = sector_score
+                breakdown['sector_name'] = sector_name
+                if sector_comment:
+                    comments.append(sector_comment)
 
-            # Tier 2: 소프트웨어, EV, 바이오텍, 신재생, 원자력, 희토류 (15점)
-            elif sector == 'Technology' and any(keyword in industry.lower() for keyword in ['software', 'application', 'saas']):
-                score += self.SCORE_SECTOR_TIER2
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                breakdown['sector_name'] = "소프트웨어"
-                comments.append("소프트웨어")
-            elif any(keyword in industry.lower() for keyword in ['electric vehicle', 'ev ', 'battery', 'lithium']):
-                score += self.SCORE_SECTOR_TIER2
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                breakdown['sector_name'] = "전기차/배터리"
-                comments.append("전기차/배터리")
-            elif any(keyword in industry.lower() for keyword in ['biotech', 'genomic', 'gene therapy', 'crispr']):
-                score += self.SCORE_SECTOR_TIER2
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                breakdown['sector_name'] = "바이오텍"
-                comments.append("바이오텍")
-            elif any(keyword in industry.lower() for keyword in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
-                score += self.SCORE_SECTOR_TIER2
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                breakdown['sector_name'] = "신재생에너지"
-                comments.append("신재생에너지")
-            elif any(keyword in industry.lower() for keyword in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
-                score += self.SCORE_SECTOR_TIER2
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                breakdown['sector_name'] = "원자력/우라늄"
-                comments.append("원자력/우라늄")
-            elif any(keyword in industry.lower() for keyword in ['rare earth', 'lithium', 'cobalt', 'nickel', 'critical mineral']):
-                score += self.SCORE_SECTOR_TIER2
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                breakdown['sector_name'] = "희토류/전략소재"
-                comments.append("희토류/전략소재")
-            elif sector == 'Communication Services':
-                score += self.SCORE_SECTOR_TIER2
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                breakdown['sector_name'] = "디지털인프라"
-                comments.append("디지털인프라")
+            # ===== 성장주 모드: 기술/성장 중심 점수 체계 =====
+            else:
+                # Tier 1: AI, 반도체, 클라우드, 사이버보안, 국방 (20점)
+                if any(keyword in industry.lower() for keyword in ['semiconductor', 'chip', 'ai', 'artificial intelligence']):
+                    score += self.SCORE_SECTOR_TIER1
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                    breakdown['sector_name'] = "AI/반도체"
+                    comments.append("AI/반도체")
+                elif any(keyword in industry.lower() for keyword in ['cloud', 'data center', 'infrastructure software']):
+                    score += self.SCORE_SECTOR_TIER1
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                    breakdown['sector_name'] = "클라우드"
+                    comments.append("클라우드")
+                elif any(keyword in industry.lower() for keyword in ['cybersecurity', 'security software', 'information security']):
+                    score += self.SCORE_SECTOR_TIER1
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                    breakdown['sector_name'] = "사이버보안"
+                    comments.append("사이버보안")
+                elif any(keyword in industry.lower() for keyword in ['aerospace', 'defense', 'military']):
+                    score += self.SCORE_SECTOR_TIER1
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                    breakdown['sector_name'] = "국방/항공"
+                    comments.append("국방/항공")
 
-            # Tier 3: 헬스케어, 산업자동화, 핀테크 (10점)
-            elif sector == 'Healthcare' and 'biotech' not in industry.lower():
-                score += self.SCORE_SECTOR_TIER3
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                breakdown['sector_name'] = "헬스케어"
-                comments.append("헬스케어")
-            elif sector == 'Industrials' and any(keyword in industry.lower() for keyword in ['automation', 'robot', 'machinery']):
-                score += self.SCORE_SECTOR_TIER3
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                breakdown['sector_name'] = "산업자동화"
-                comments.append("산업자동화")
-            elif any(keyword in industry.lower() for keyword in ['fintech', 'payment', 'financial technology']):
-                score += self.SCORE_SECTOR_TIER3
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                breakdown['sector_name'] = "핀테크"
-                comments.append("핀테크")
-            elif sector == 'Industrials':
-                score += self.SCORE_SECTOR_TIER3
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                breakdown['sector_name'] = "산업재"
-                comments.append("산업재")
-            elif sector == 'Financial Services':
-                score += self.SCORE_SECTOR_TIER3
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                breakdown['sector_name'] = "금융"
-                comments.append("금융")
+                # Tier 2: 소프트웨어, EV, 바이오텍, 신재생, 원자력, 희토류 (15점)
+                elif sector == 'Technology' and any(keyword in industry.lower() for keyword in ['software', 'application', 'saas']):
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "소프트웨어"
+                    comments.append("소프트웨어")
+                elif any(keyword in industry.lower() for keyword in ['electric vehicle', 'ev ', 'battery', 'lithium']):
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "전기차/배터리"
+                    comments.append("전기차/배터리")
+                elif any(keyword in industry.lower() for keyword in ['biotech', 'genomic', 'gene therapy', 'crispr']):
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "바이오텍"
+                    comments.append("바이오텍")
+                elif any(keyword in industry.lower() for keyword in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "신재생에너지"
+                    comments.append("신재생에너지")
+                elif any(keyword in industry.lower() for keyword in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "원자력/우라늄"
+                    comments.append("원자력/우라늄")
+                elif any(keyword in industry.lower() for keyword in ['rare earth', 'lithium', 'cobalt', 'nickel', 'critical mineral']):
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "희토류/전략소재"
+                    comments.append("희토류/전략소재")
+                elif sector == 'Communication Services':
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "디지털인프라"
+                    comments.append("디지털인프라")
 
-            # Tier 4: 전통 에너지, 소비재, 유틸리티 (5점)
-            elif sector == 'Energy' and 'renewable' not in industry.lower():
-                score += self.SCORE_SECTOR_TIER4
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
-                breakdown['sector_name'] = "전통에너지"
-                comments.append("전통에너지")
-            elif sector in ['Consumer Cyclical', 'Consumer Defensive']:
-                score += self.SCORE_SECTOR_TIER4
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
-                breakdown['sector_name'] = "소비재"
-                comments.append("소비재")
-            elif sector == 'Utilities':
-                score += self.SCORE_SECTOR_TIER4
-                breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
-                breakdown['sector_name'] = "유틸리티"
-                comments.append("유틸리티")
+                # Tier 3: 헬스케어, 산업자동화, 핀테크 (10점)
+                elif sector == 'Healthcare' and 'biotech' not in industry.lower():
+                    score += self.SCORE_SECTOR_TIER3
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                    breakdown['sector_name'] = "헬스케어"
+                    comments.append("헬스케어")
+                elif sector == 'Industrials' and any(keyword in industry.lower() for keyword in ['automation', 'robot', 'machinery']):
+                    score += self.SCORE_SECTOR_TIER3
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                    breakdown['sector_name'] = "산업자동화"
+                    comments.append("산업자동화")
+                elif any(keyword in industry.lower() for keyword in ['fintech', 'payment', 'financial technology']):
+                    score += self.SCORE_SECTOR_TIER3
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                    breakdown['sector_name'] = "핀테크"
+                    comments.append("핀테크")
+                elif sector == 'Industrials':
+                    score += self.SCORE_SECTOR_TIER3
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                    breakdown['sector_name'] = "산업재"
+                    comments.append("산업재")
+                elif sector == 'Financial Services':
+                    score += self.SCORE_SECTOR_TIER3
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                    breakdown['sector_name'] = "금융"
+                    comments.append("금융")
+
+                # Tier 4: 전통 에너지, 소비재, 유틸리티 (5점)
+                elif sector == 'Energy' and 'renewable' not in industry.lower():
+                    score += self.SCORE_SECTOR_TIER4
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
+                    breakdown['sector_name'] = "전통에너지"
+                    comments.append("전통에너지")
+                elif sector in ['Consumer Cyclical', 'Consumer Defensive']:
+                    score += self.SCORE_SECTOR_TIER4
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
+                    breakdown['sector_name'] = "소비재"
+                    comments.append("소비재")
+                elif sector == 'Utilities':
+                    score += self.SCORE_SECTOR_TIER4
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
+                    breakdown['sector_name'] = "유틸리티"
+                    comments.append("유틸리티")
 
         except Exception:
             pass
 
         return score, comments, breakdown
+
+    def _get_value_sector_score(self, sector, industry):
+        """가치주 모드용 섹터 점수 (배당/안정성 중심)"""
+        industry_lower = industry.lower()
+
+        # Tier 1 (20점): 필수소비재, 헬스케어 (배당귀족 다수 포함)
+        # 필수소비재 - 경기 방어적, 안정적 배당
+        if sector == 'Consumer Defensive':
+            if any(kw in industry_lower for kw in ['household', 'personal', 'packaged food', 'beverage', 'tobacco']):
+                return self.VALUE_SECTOR_TIER1, "필수소비재", "필수소비재"
+            return self.VALUE_SECTOR_TIER1, "필수소비재", "필수소비재"
+        # 헬스케어 - 제약/의료기기 (바이오텍 제외한 안정적 헬스케어)
+        if sector == 'Healthcare' and 'biotech' not in industry_lower:
+            if any(kw in industry_lower for kw in ['drug', 'pharmaceutical', 'medical device', 'health care plan', 'diagnostics']):
+                return self.VALUE_SECTOR_TIER1, "헬스케어", "헬스케어"
+            return self.VALUE_SECTOR_TIER1, "헬스케어", "헬스케어"
+
+        # Tier 2 (15점): 유틸리티, 금융 (안정적 배당)
+        if sector == 'Utilities':
+            return self.VALUE_SECTOR_TIER2, "유틸리티", "유틸리티"
+        if sector == 'Financial Services':
+            if any(kw in industry_lower for kw in ['bank', 'insurance', 'asset management', 'capital market']):
+                return self.VALUE_SECTOR_TIER2, "금융", "금융"
+            return self.VALUE_SECTOR_TIER2, "금융", "금융"
+        # 부동산 - REITs
+        if sector == 'Real Estate':
+            return self.VALUE_SECTOR_TIER2, "부동산/REITs", "부동산/REITs"
+
+        # Tier 3 (10점): 산업재, 에너지, 통신
+        if sector == 'Industrials':
+            if any(kw in industry_lower for kw in ['aerospace', 'defense', 'railroad', 'logistics', 'machinery']):
+                return self.VALUE_SECTOR_TIER3, "산업재", "산업재"
+            return self.VALUE_SECTOR_TIER3, "산업재", "산업재"
+        if sector == 'Energy':
+            return self.VALUE_SECTOR_TIER3, "에너지", "에너지"
+        if sector == 'Communication Services' and any(kw in industry_lower for kw in ['telecom', 'wireless']):
+            return self.VALUE_SECTOR_TIER3, "통신", "통신"
+        # 소재 (화학, 금속 등)
+        if sector == 'Basic Materials':
+            return self.VALUE_SECTOR_TIER3, "소재", "소재"
+
+        # Tier 4 (5점): 기술주, 경기민감 소비재 (가치주에서는 낮은 점수)
+        if sector == 'Technology':
+            return self.VALUE_SECTOR_TIER4, "기술주", "기술주"
+        if sector == 'Consumer Cyclical':
+            return self.VALUE_SECTOR_TIER4, "경기소비재", "경기소비재"
+        if sector == 'Communication Services':  # 디지털 미디어 등
+            return self.VALUE_SECTOR_TIER4, "미디어/엔터", "미디어/엔터"
+
+        # 기타 섹터
+        return 5, sector if sector else "기타", sector if sector else ""
 
     def _get_technical_score(self, hist, current_price):
         """전문가급 기술적 분석 (최대 50점)"""
@@ -1794,6 +1882,7 @@ if __name__ == "__main__":
         mode = sys.argv[1].lower()
 
         if mode == "growth":
+            analyzer.analysis_mode = 'growth'  # 성장주 섹터 점수 체계
             analyzer.run_analysis_with_tickers(
                 tickers=GROWTH_TICKERS,
                 report_type="Growth Stocks",
@@ -1803,6 +1892,7 @@ if __name__ == "__main__":
                 ml_min_score=75  # ML 예측은 75점 이상만
             )
         elif mode == "value":
+            analyzer.analysis_mode = 'value'  # 가치주 섹터 점수 체계
             analyzer.run_analysis_with_tickers(
                 tickers=VALUE_TICKERS,
                 report_type="Value Stocks",
