@@ -1585,6 +1585,30 @@ class TitanAnalyzer:
                     <div class="info-value" style="font-size: 0.85em;">RSI 60 이하 또는 MA20 도달</div>
                 </div>'''
 
+            # 🤖 ML 예측 결과 표시
+            if stock.get('ml_signal'):
+                ml_signal = stock['ml_signal']
+                ml_conf = stock.get('ml_confidence', 0)
+                ml_prob_up = stock.get('ml_prob_up', 0)
+
+                # 신호에 따른 색상
+                if 'Buy' in ml_signal or '상승' in ml_signal:
+                    ml_color = '#4CAF50'
+                elif 'Sell' in ml_signal or '하락' in ml_signal:
+                    ml_color = '#F44336'
+                else:
+                    ml_color = '#FF9800'
+
+                html += f'''
+                <div class="info-item" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid {ml_color};">
+                    <div class="info-label" style="color: #888;">🤖 AI 예측</div>
+                    <div class="info-value" style="color: {ml_color}; font-weight: bold;">{ml_signal}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">AI 신뢰도</div>
+                    <div class="info-value">{ml_conf:.0%}</div>
+                </div>'''
+
             if stock['comment'] and stock['comment'] != '-':
                 html += f'''
             </div>
@@ -1613,7 +1637,7 @@ class TitanAnalyzer:
         print(f"✅ HTML 리포트 생성 완료: {filename} ({len(filtered)}개 추천)")
         return filtered
 
-    def run_analysis_with_tickers(self, tickers, report_type="Analysis", html_filename=None, min_score=50, skip_stage1=True):
+    def run_analysis_with_tickers(self, tickers, report_type="Analysis", html_filename=None, min_score=50, skip_stage1=True, ml_min_score=None):
         """특정 티커 리스트로 분석 실행"""
         start_time = time.time()
 
@@ -1633,6 +1657,10 @@ class TitanAnalyzer:
                 return []
             results = self.stage2_deep_analysis(filtered_tickers)
 
+        # ML 예측 (ml_min_score 이상 종목만)
+        if ml_min_score is not None:
+            results = self.run_ml_predictions(results, ml_min_score)
+
         # 결과 출력
         self.display_results(results, min_score=min_score)
 
@@ -1642,6 +1670,79 @@ class TitanAnalyzer:
 
         elapsed = time.time() - start_time
         print(f"\n⏱️  총 소요 시간: {elapsed/60:.1f}분")
+
+        return results
+
+    def run_ml_predictions(self, results, ml_min_score):
+        """ML 예측 실행 (특정 점수 이상 종목만)"""
+        try:
+            from ml_predictor import EnsemblePredictor
+        except ImportError:
+            print("⚠️ ML Predictor 미설치 - ML 예측 스킵")
+            return results
+
+        # ml_min_score 이상 종목 필터링
+        ml_targets = [r for r in results if r.get('score', 0) >= ml_min_score]
+
+        if not ml_targets:
+            print(f"ℹ️ {ml_min_score}점 이상 종목 없음 - ML 예측 스킵")
+            return results
+
+        print(f"\n{'='*70}")
+        print(f"🤖 ML 예측 시작 ({ml_min_score}점 이상 {len(ml_targets)}개 종목)")
+        print(f"{'='*70}")
+
+        predictor = EnsemblePredictor(sequence_length=20)
+
+        for stock in ml_targets:
+            ticker = stock['ticker']
+            try:
+                print(f"\n📊 {ticker} ML 분석 중...")
+
+                # 데이터 준비
+                df, features, target = predictor.prepare_data(ticker, period='2y')
+                if df is None:
+                    stock['ml_signal'] = '❓ 데이터 부족'
+                    stock['ml_confidence'] = 0
+                    continue
+
+                # Train/Val 분할
+                split_idx = int(len(features) * 0.8)
+                X_train = features.iloc[:split_idx]
+                y_train = target.iloc[:split_idx]
+                X_val = features.iloc[split_idx:]
+                y_val = target.iloc[split_idx:]
+
+                # 모델 학습
+                predictor.train_xgboost(X_train, y_train, X_val, y_val)
+                predictor.train_lstm(X_train, y_train, X_val, y_val, epochs=30)
+
+                # 예측
+                recent_features = features.iloc[-30:]
+                predictions, probabilities = predictor.predict(recent_features)
+
+                if 'ensemble' in probabilities:
+                    latest_prob = probabilities['ensemble'][-1]
+                elif 'xgboost' in probabilities:
+                    latest_prob = probabilities['xgboost'][-1]
+                else:
+                    stock['ml_signal'] = '❓ 예측 실패'
+                    stock['ml_confidence'] = 0
+                    continue
+
+                signal, confidence = predictor.get_signal(latest_prob)
+
+                stock['ml_signal'] = signal
+                stock['ml_confidence'] = confidence
+                stock['ml_prob_up'] = latest_prob[2]
+                stock['ml_prob_down'] = latest_prob[0]
+
+                print(f"   ✅ {ticker}: {signal} (신뢰도: {confidence:.1%})")
+
+            except Exception as e:
+                print(f"   ❌ {ticker} ML 예측 실패: {e}")
+                stock['ml_signal'] = '❓ 오류'
+                stock['ml_confidence'] = 0
 
         return results
 
@@ -1698,7 +1799,8 @@ if __name__ == "__main__":
                 report_type="Growth Stocks",
                 html_filename="growth_report.html",
                 min_score=50,
-                skip_stage1=True
+                skip_stage1=True,
+                ml_min_score=75  # ML 예측은 75점 이상만
             )
         elif mode == "value":
             analyzer.run_analysis_with_tickers(
@@ -1706,7 +1808,8 @@ if __name__ == "__main__":
                 report_type="Value Stocks",
                 html_filename="value_report.html",
                 min_score=45,
-                skip_stage1=True
+                skip_stage1=True,
+                ml_min_score=75  # ML 예측은 75점 이상만
             )
         elif mode == "sp500":
             analyzer.run_full_analysis()
