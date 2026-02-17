@@ -16,7 +16,7 @@ import pytz
 # ============================================================================
 
 # 기술주/성장주 (Technology, Digital Platform, Biotech Growth)
-NASDAQ100_TICKERS = [
+GROWTH_TICKERS = [
     # ========== Technology - Semiconductors (21) ==========
     'NVDA', 'AMD', 'INTC', 'QCOM', 'TXN', 'MU', 'AVGO', 'MRVL', 'ADI', 'ON',
     'MPWR', 'MCHP', 'ASML', 'LRCX', 'AMAT', 'KLAC', 'NXPI', 'ENTG', 'WOLF',
@@ -1692,11 +1692,11 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         mode = sys.argv[1].lower()
 
-        if mode == "nasdaq":
+        if mode == "growth":
             analyzer.run_analysis_with_tickers(
-                tickers=NASDAQ100_TICKERS,
-                report_type="NASDAQ 100",
-                html_filename="nasdaq100_report.html",
+                tickers=GROWTH_TICKERS,
+                report_type="Growth Stocks",
+                html_filename="growth_report.html",
                 min_score=50,
                 skip_stage1=True
             )
@@ -1712,7 +1712,7 @@ if __name__ == "__main__":
             analyzer.run_full_analysis()
         else:
             print(f"❌ 알 수 없는 모드: {mode}")
-            print("사용법: python project_titan.py [nasdaq|value|sp500]")
+            print("사용법: python project_titan.py [growth|value|sp500]")
     else:
         # 기본: S&P 500 전체 분석
         analyzer.run_full_analysis()

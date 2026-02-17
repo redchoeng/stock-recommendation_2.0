@@ -64,10 +64,10 @@ jobs:
           print(f'::set-output name=is_open::{str(is_open).lower()}')
           "
 
-      - name: Generate NASDAQ 100 Report with Titan Algorithm
+      - name: Generate Growth Stocks Report with Titan Algorithm
         if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
-          python project_titan.py nasdaq
+          python project_titan.py growth
 
       - name: Generate Value Stocks Report with Titan Algorithm
         if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
