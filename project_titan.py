@@ -313,7 +313,7 @@ class TitanAnalyzer:
             'opm_score': 0,
             'opm_value': 0,
             'revenue_growth_score': 0,
-            'revenue_growth_value': 0,
+            'revenue_growth_value': None,  # None이면 N/A 표시
             'sector_score': 0,
             'sector_name': ''
         }
@@ -354,11 +354,9 @@ class TitanAnalyzer:
                 if rg_pct > 20:
                     score += self.SCORE_REVENUE_GROWTH_HIGH
                     breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_HIGH
-                    comments.append(f"매출↑{rg_pct:.0f}%")
                 elif rg_pct > 10:
                     score += self.SCORE_REVENUE_GROWTH_GOOD
                     breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_GOOD
-                    comments.append(f"매출↑{rg_pct:.0f}%")
 
             # 4. Sector & Industry (세분화된 분류)
             sector = info.get('sector', '')
@@ -1513,6 +1511,10 @@ class TitanAnalyzer:
             tech_bd = stock.get('tech_breakdown', {})
             market_info = stock.get('market_info', {})
 
+            # 매출성장률 표시 (None이면 N/A)
+            rg_value = fund_bd.get('revenue_growth_value')
+            rg_display = f"{rg_value:.1f}%" if rg_value is not None else "N/A"
+
             html += f'''
         <div class="stock-card">
             <div class="rank">#{i}</div>
@@ -1540,6 +1542,11 @@ class TitanAnalyzer:
                             <span class="criterion">섹터</span>
                             <span class="criterion-value">{fund_bd.get('sector_name', 'N/A')}</span>
                             <span class="criterion-score">+{fund_bd.get('sector_score', 0)}점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">매출성장률</span>
+                            <span class="criterion-value">{rg_display}</span>
+                            <span class="criterion-score">+{fund_bd.get('revenue_growth_score', 0)}점</span>
                         </div>
                     </div>
                 </div>
