@@ -627,38 +627,38 @@ class TitanAnalyzer:
         # === 수혜 섹터 ===
         # 에너지 (화석연료) - 원유, 가스, 정유, 파이프라인
         if sector == 'Energy' and 'renewable' not in ind_lower and 'solar' not in ind_lower:
-            return self.POLICY_BONUS, "🏛️트럼프 에너지정책 수혜"
+            return self.POLICY_BONUS, "🏦트럼프 에너지정책 수혜"
 
         # 국방/항공
         if any(kw in ind_lower for kw in ['aerospace', 'defense', 'military']):
-            return self.POLICY_BONUS, "🏛️트럼프 국방비증액 수혜"
+            return self.POLICY_BONUS, "🏦트럼프 국방비증액 수혜"
 
         # 금융 (은행, 보험, 자산운용)
         if sector == 'Financial Services':
-            return self.POLICY_BONUS, "🏛️트럼프 금융규제완화 수혜"
+            return self.POLICY_BONUS, "🏦트럼프 금융규제완화 수혜"
 
         # 산업재/제조 (리쇼어링, 인프라)
         if sector == 'Industrials':
-            return self.POLICY_BONUS, "🏛️트럼프 리쇼어링/관세 수혜"
+            return self.POLICY_BONUS, "🏦트럼프 리쇼어링/관세 수혜"
 
         # 원자력
         if any(kw in ind_lower for kw in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
-            return self.POLICY_BONUS, "🏛️트럼프 원자력정책 수혜"
+            return self.POLICY_BONUS, "🏦트럼프 원자력정책 수혜"
         if sector == 'Utilities' and 'independent power' in ind_lower:
-            return self.POLICY_BONUS, "🏛️트럼프 원자력정책 수혜"
+            return self.POLICY_BONUS, "🏦트럼프 원자력정책 수혜"
 
         # 희토류/전략소재
         if any(kw in ind_lower for kw in ['rare earth', 'critical mineral', 'cobalt', 'nickel']):
-            return self.POLICY_BONUS, "🏛️트럼프 공급망안보 수혜"
+            return self.POLICY_BONUS, "🏦트럼프 공급망안보 수혜"
 
         # === 역풍 섹터 ===
         # 신재생에너지
         if any(kw in ind_lower for kw in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
-            return self.POLICY_PENALTY, "🏛️트럼프 IRA축소 역풍"
+            return self.POLICY_PENALTY, "🏦트럼프 IRA축소 역풍"
 
         # 전기차/배터리
         if any(kw in ind_lower for kw in ['electric vehicle', 'ev ', 'battery', 'lithium']):
-            return self.POLICY_PENALTY, "🏛️트럼프 EV보조금삭감 역풍"
+            return self.POLICY_PENALTY, "🏦트럼프 EV보조금삭감 역풍"
 
         return 0, ""
 
@@ -1802,7 +1802,7 @@ class TitanAnalyzer:
                             <span class="criterion-score">+{fund_bd.get('sector_score', 0)}점</span>
                         </div>
                         {"" if fund_bd.get('policy_bonus', 0) == 0 else f'''<div class="breakdown-item" style="background: rgba({'76,175,80' if fund_bd.get('policy_bonus',0) > 0 else '244,67,54'}, 0.08);">
-                            <span class="criterion">🏛️ 정책</span>
+                            <span class="criterion">🏦 정책</span>
                             <span class="criterion-value">트럼프 정부 {'수혜' if fund_bd.get('policy_bonus',0) > 0 else '역풍'}</span>
                             <span class="criterion-score">{'+' if fund_bd.get('policy_bonus',0) > 0 else ''}{fund_bd.get('policy_bonus',0)}점</span>
                         </div>'''}
