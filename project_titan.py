@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Project Titan - US Stock Decision Support System
 Advanced 2-Stage Filtering Analysis for NASDAQ 100, Value Stocks, and S&P 500
