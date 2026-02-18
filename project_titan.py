@@ -1773,6 +1773,20 @@ class TitanAnalyzer:
             rg_value = fund_bd.get('revenue_growth_value')
             rg_display = f"{rg_value:.1f}%" if rg_value is not None else "N/A"
 
+            # 정책 보너스 HTML (중첩 f-string 회피 - Python 3.11 호환)
+            policy_bonus = fund_bd.get('policy_bonus', 0)
+            if policy_bonus != 0:
+                p_color = '76,175,80' if policy_bonus > 0 else '244,67,54'
+                p_label = '수혜' if policy_bonus > 0 else '역풍'
+                p_sign = '+' if policy_bonus > 0 else ''
+                policy_html = f'''<div class="breakdown-item" style="background: rgba({p_color}, 0.08);">
+                            <span class="criterion">[Policy] 정책</span>
+                            <span class="criterion-value">트럼프 정부 {p_label}</span>
+                            <span class="criterion-score">{p_sign}{policy_bonus}점</span>
+                        </div>'''
+            else:
+                policy_html = ""
+
             html += f'''
         <div class="stock-card">
             <div class="rank">#{i}</div>
@@ -1801,11 +1815,7 @@ class TitanAnalyzer:
                             <span class="criterion-value">{fund_bd.get('sector_name', 'N/A')}</span>
                             <span class="criterion-score">+{fund_bd.get('sector_score', 0)}점</span>
                         </div>
-                        {"" if fund_bd.get('policy_bonus', 0) == 0 else f'''<div class="breakdown-item" style="background: rgba({'76,175,80' if fund_bd.get('policy_bonus',0) > 0 else '244,67,54'}, 0.08);">
-                            <span class="criterion">[Policy] 정책</span>
-                            <span class="criterion-value">트럼프 정부 {'수혜' if fund_bd.get('policy_bonus',0) > 0 else '역풍'}</span>
-                            <span class="criterion-score">{'+' if fund_bd.get('policy_bonus',0) > 0 else ''}{fund_bd.get('policy_bonus',0)}점</span>
-                        </div>'''}
+                        {policy_html}
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">{rg_display}</span>
