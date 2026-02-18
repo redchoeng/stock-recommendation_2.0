@@ -1339,6 +1339,7 @@ class TitanAnalyzer:
 
         return {
             'ticker': ticker,
+            'company_name': info.get('shortName', ''),
             'score': total_score,
             'fund_score': fund_score,
             'tech_score': tech_score,
@@ -1776,7 +1777,7 @@ class TitanAnalyzer:
         <div class="stock-card">
             <div class="rank">#{i}</div>
             <span class="score-badge {score_class}">{stock['score']}점</span>
-            <h2><span class="ticker">{stock['ticker']}</span></h2>
+            <h2><span class="ticker">{stock['ticker']}</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">{stock.get('company_name', '')}</span></h2>
             <span class="verdict {verdict_class}">{stock['verdict']}</span>
 
             <!-- 점수 상세 분석 -->
