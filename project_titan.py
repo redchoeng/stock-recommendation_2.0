@@ -184,6 +184,37 @@ class TitanAnalyzer:
     VALUE_SECTOR_TIER3 = 5   # 산업재, 에너지, 부동산 (가치 섹터)
     VALUE_SECTOR_TIER4 = 3   # 기술주, 경기민감 소비재 (성장주 영역)
 
+    # 섹터별 ROE 기준 (자본구조 차이 반영)
+    # {sector: (excellent_threshold, good_threshold)}
+    SECTOR_ROE_THRESHOLDS = {
+        'Utilities': (12, 6),              # 인프라 자산 대비 ROE 구조적 저조 (평균 8-12%)
+        'Real Estate': (12, 5),            # REIT: 배당 90% 의무분배로 ROE 왜곡 (O 2.5%, PLD 6.1%)
+        'Energy': (15, 8),                 # 자본집약 산업, 유가 사이클 (XOM 11%, CVX 7%)
+        'Consumer Defensive': (20, 10),    # 기본 기준 유지 (KO 43%, PG 31%)
+        'Industrials': (20, 10),           # 기본 기준 유지
+        'Technology': (20, 10),
+        'Healthcare': (20, 10),
+        'Financial Services': (20, 10),
+    }
+    DEFAULT_ROE_THRESHOLD = (20, 10)
+
+    # 섹터별 매출성장률 기준 (성숙/방어 업종 차등 적용)
+    # {sector: (high_threshold, good_threshold)}
+    SECTOR_REVENUE_GROWTH_THRESHOLDS = {
+        'Consumer Defensive': (8, 3),      # 성숙 산업 (KO 2.4%, PG 1.5%, WMT 5.8%)
+        'Energy': (10, 3),                 # 유가 사이클, 마이너스 성장 빈번 (XOM -1.3%)
+        'Utilities': (10, 5),              # 규제 산업, 안정적 저성장 (NEE 20% 예외적)
+        'Financial Services': (10, 3),     # 성숙 산업 (JPM 2.5%, BRK 2.1%)
+        'Healthcare': (12, 5),             # 특허주기 영향 (MRK 5%, BMY 1.3%)
+        'Industrials': (15, 8),            # 방산 포함, 정부계약 특성 (LMT 9%, GD 7.8%)
+        'Real Estate': (10, 3),            # REIT: 안정적 임대수익 (PLD 4%, O 10%)
+        'Communication Services': (15, 8),
+        'Consumer Cyclical': (15, 8),
+        'Technology': (20, 10),            # 기본 기준 유지 (고성장 기대)
+        'Basic Materials': (15, 8),
+    }
+    DEFAULT_REVENUE_GROWTH_THRESHOLD = (20, 10)
+
     # 섹터별 OPM 기준 (저마진 업종 차등 적용)
     # {sector: (excellent_threshold, good_threshold)}
     SECTOR_OPM_THRESHOLDS = {
@@ -209,6 +240,7 @@ class TitanAnalyzer:
         'Aerospace & Defense': (10, 5),     # 방산: 정부계약 저마진 (LMT 9%, HII 5.9%)
         'Computer Hardware': (10, 3),       # 서버/하드웨어: 조립 저마진 (SMCI 3.7%)
         'Scientific & Technical Instruments': (10, 5),
+        'Healthcare Plans': (5, 1),         # 건강보험: 구조적 극저마진 (UNH 0.3%, CI 3.3%)
     }
 
     # 기술적 점수 재설계 (전문가급, 총 50점)
@@ -346,24 +378,27 @@ class TitanAnalyzer:
         }
 
         try:
-            # 1. ROE
+            sector = info.get('sector', '')
+            industry = info.get('industry', '')
+
+            # 1. ROE (섹터별 차등 기준)
             roe = info.get('returnOnEquity')
+            roe_excellent, roe_good = self.SECTOR_ROE_THRESHOLDS.get(
+                sector, self.DEFAULT_ROE_THRESHOLD)
             if roe:
                 roe_pct = roe * 100
                 breakdown['roe_value'] = roe_pct
-                if roe_pct > 20:
+                if roe_pct > roe_excellent:
                     score += self.SCORE_ROE_EXCELLENT
                     breakdown['roe_score'] = self.SCORE_ROE_EXCELLENT
                     comments.append(f"ROE:{roe_pct:.1f}%")
-                elif roe_pct > 10:
+                elif roe_pct > roe_good:
                     score += self.SCORE_ROE_GOOD
                     breakdown['roe_score'] = self.SCORE_ROE_GOOD
                     comments.append(f"ROE:{roe_pct:.1f}%")
 
             # 2. Operating Margin (업종/섹터별 차등 기준)
             opm = info.get('operatingMargins')
-            sector = info.get('sector', '')
-            industry = info.get('industry', '')
             # industry 오버라이드 우선, 없으면 섹터 기준
             opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
                 industry, self.SECTOR_OPM_THRESHOLDS.get(
@@ -379,15 +414,17 @@ class TitanAnalyzer:
                     score += self.SCORE_OPM_GOOD
                     breakdown['opm_score'] = self.SCORE_OPM_GOOD
 
-            # 3. Revenue Growth (매출 성장률 - 섹터 내 차별화)
+            # 3. Revenue Growth (매출 성장률 - 섹터별 차등 기준)
             revenue_growth = info.get('revenueGrowth')
+            rg_high, rg_good = self.SECTOR_REVENUE_GROWTH_THRESHOLDS.get(
+                sector, self.DEFAULT_REVENUE_GROWTH_THRESHOLD)
             if revenue_growth:
                 rg_pct = revenue_growth * 100
                 breakdown['revenue_growth_value'] = rg_pct
-                if rg_pct > 20:
+                if rg_pct > rg_high:
                     score += self.SCORE_REVENUE_GROWTH_HIGH
                     breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_HIGH
-                elif rg_pct > 10:
+                elif rg_pct > rg_good:
                     score += self.SCORE_REVENUE_GROWTH_GOOD
                     breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_GOOD
 
