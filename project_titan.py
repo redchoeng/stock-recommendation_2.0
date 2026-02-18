@@ -184,6 +184,33 @@ class TitanAnalyzer:
     VALUE_SECTOR_TIER3 = 5   # 산업재, 에너지, 부동산 (가치 섹터)
     VALUE_SECTOR_TIER4 = 3   # 기술주, 경기민감 소비재 (성장주 영역)
 
+    # 섹터별 OPM 기준 (저마진 업종 차등 적용)
+    # {sector: (excellent_threshold, good_threshold)}
+    SECTOR_OPM_THRESHOLDS = {
+        # 저마진 업종 - 유통/소매/식품유통
+        'Consumer Defensive': (7, 3),    # WMT 3.7%, COST 3.7%, PG 23%
+        'Consumer Cyclical': (12, 6),    # HD 15%, NKE 12%, MCD 45%
+        # 중간 마진 업종
+        'Industrials': (15, 8),          # GE 19%, RTX 11%, CAT 20%
+        'Energy': (15, 8),               # XOM 16%, CVX 14%
+        'Basic Materials': (15, 8),      # LIN 24%, NUE 12%
+        'Real Estate': (15, 8),          # REITs
+        'Communication Services': (15, 8),
+        'Utilities': (15, 8),            # NEE 22%
+        # 고마진 업종 - 기본 기준 유지
+        'Financial Services': (20, 10),
+        'Healthcare': (20, 10),
+        'Technology': (20, 10),
+    }
+    DEFAULT_OPM_THRESHOLD = (20, 10)  # 기본값
+
+    # 업종(industry) 레벨 OPM 오버라이드 (섹터 기준보다 우선)
+    INDUSTRY_OPM_OVERRIDES = {
+        'Aerospace & Defense': (10, 5),     # 방산: 정부계약 저마진 (LMT 9%, HII 5.9%)
+        'Computer Hardware': (10, 3),       # 서버/하드웨어: 조립 저마진 (SMCI 3.7%)
+        'Scientific & Technical Instruments': (10, 5),
+    }
+
     # 기술적 점수 재설계 (전문가급, 총 50점)
     # 1. 추세 분석 (15점)
     SCORE_MA200 = 3
@@ -333,16 +360,22 @@ class TitanAnalyzer:
                     breakdown['roe_score'] = self.SCORE_ROE_GOOD
                     comments.append(f"ROE:{roe_pct:.1f}%")
 
-            # 2. Operating Margin
+            # 2. Operating Margin (업종/섹터별 차등 기준)
             opm = info.get('operatingMargins')
+            sector = info.get('sector', '')
+            industry = info.get('industry', '')
+            # industry 오버라이드 우선, 없으면 섹터 기준
+            opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
+                industry, self.SECTOR_OPM_THRESHOLDS.get(
+                    sector, self.DEFAULT_OPM_THRESHOLD))
             if opm:
                 opm_pct = opm * 100
                 breakdown['opm_value'] = opm_pct
-                if opm_pct > 20:
+                if opm_pct > opm_excellent:
                     score += self.SCORE_OPM_EXCELLENT
                     breakdown['opm_score'] = self.SCORE_OPM_EXCELLENT
                     comments.append(f"OPM:{opm_pct:.1f}%")
-                elif opm_pct > 10:
+                elif opm_pct > opm_good:
                     score += self.SCORE_OPM_GOOD
                     breakdown['opm_score'] = self.SCORE_OPM_GOOD
 
@@ -359,8 +392,6 @@ class TitanAnalyzer:
                     breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_GOOD
 
             # 4. Sector & Industry (세분화된 분류)
-            sector = info.get('sector', '')
-            industry = info.get('industry', '')
             breakdown['sector_name'] = f"{sector}"
 
             # ===== 가치주 모드: 배당/안정성 중심 점수 체계 =====
@@ -460,12 +491,20 @@ class TitanAnalyzer:
                     breakdown['sector_name'] = "금융"
                     comments.append("금융")
 
-                # Tier 4: 전통 에너지, 소비재, 유틸리티 (5점)
+                # Tier 3: 전통 에너지 (미국 에너지 정책 수혜, TIER4→TIER3 상향)
                 elif sector == 'Energy' and 'renewable' not in industry.lower():
-                    score += self.SCORE_SECTOR_TIER4
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
-                    breakdown['sector_name'] = "전통에너지"
-                    comments.append("전통에너지")
+                    score += self.SCORE_SECTOR_TIER3
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
+                    breakdown['sector_name'] = "에너지"
+                    comments.append("에너지")
+                # 원자력 유틸리티 (CEG, VST 등 Independent Power) → TIER2 (원자력 수혜)
+                elif sector == 'Utilities' and 'independent power' in industry.lower():
+                    score += self.SCORE_SECTOR_TIER2
+                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                    breakdown['sector_name'] = "원자력발전"
+                    comments.append("원자력발전")
+
+                # Tier 4: 소비재, 일반 유틸리티 (5점)
                 elif sector in ['Consumer Cyclical', 'Consumer Defensive']:
                     score += self.SCORE_SECTOR_TIER4
                     breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
