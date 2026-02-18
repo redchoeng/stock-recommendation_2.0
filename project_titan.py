@@ -221,9 +221,8 @@ class TitanAnalyzer:
 
     # 업종(industry) 레벨 매출성장률 오버라이드
     INDUSTRY_REVENUE_GROWTH_OVERRIDES = {
-        # AI 슈퍼사이클: 25%+ 수혜, 10%+ 보통, 미만은 뒤처지는 것
-        'Semiconductors': (25, 10),
-        'Semiconductor Equipment & Materials': (25, 10),
+        # 반도체: Technology 기본 기준과 동일 (20%/10%)
+        # 'Semiconductors': (20, 10),  # Technology 기본값과 동일하므로 오버라이드 불필요
     }
 
     # 섹터별 OPM 기준 (저마진 업종 차등 적용)
