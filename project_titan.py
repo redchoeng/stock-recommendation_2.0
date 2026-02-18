@@ -184,6 +184,10 @@ class TitanAnalyzer:
     VALUE_SECTOR_TIER3 = 5   # 산업재, 에너지, 부동산 (가치 섹터)
     VALUE_SECTOR_TIER4 = 3   # 기술주, 경기민감 소비재 (성장주 영역)
 
+    # 트럼프 정부 정책 방향 보너스/페널티
+    POLICY_BONUS = 3          # 정책 수혜 섹터 가산점
+    POLICY_PENALTY = -3       # 정책 역풍 섹터 감점
+
     # 섹터별 ROE 기준 (자본구조 차이 반영)
     # {sector: (excellent_threshold, good_threshold)}
     SECTOR_ROE_THRESHOLDS = {
@@ -461,6 +465,14 @@ class TitanAnalyzer:
                 if sector_comment:
                     comments.append(sector_comment)
 
+                # 트럼프 정책 보너스/페널티 적용 (가치주 모드)
+                policy_bonus, policy_comment = self._get_trump_policy_bonus(
+                    sector, industry, sector_name)
+                if policy_bonus != 0:
+                    score += policy_bonus
+                    breakdown['policy_bonus'] = policy_bonus
+                    comments.append(policy_comment)
+
             # ===== 성장주 모드: 기술/성장 중심 점수 체계 =====
             else:
                 ind_lower = industry.lower()
@@ -581,10 +593,74 @@ class TitanAnalyzer:
                     breakdown['sector_name'] = "유틸리티"
                     comments.append("유틸리티")
 
+                # 트럼프 정책 보너스/페널티 적용 (성장주 모드)
+                policy_bonus, policy_comment = self._get_trump_policy_bonus(
+                    sector, industry, breakdown.get('sector_name', ''))
+                if policy_bonus != 0:
+                    score += policy_bonus
+                    breakdown['policy_bonus'] = policy_bonus
+                    comments.append(policy_comment)
+
         except Exception:
             pass
 
         return score, comments, breakdown
+
+    def _get_trump_policy_bonus(self, sector, industry, sector_name=""):
+        """트럼프 정부 거시 정책 방향에 따른 섹터 보너스/페널티
+
+        수혜 섹터 (+3):
+        - 에너지(화석연료): Drill Baby Drill, 파리협정 탈퇴, LNG 수출 확대
+        - 국방/항공: 국방비 증액, NATO 압박 → 유럽 방산 지출↑
+        - 금융: 은행 규제 완화, 바젤III 완화, 암호화폐 친화
+        - 산업재/제조: 리쇼어링, 관세 정책, 인프라 투자
+        - 원자력: 에너지 독립, AI 전력 수요, SMR 지원
+        - 희토류/전략소재: 중국 의존 탈피, 공급망 안보
+
+        역풍 섹터 (-3):
+        - 신재생에너지: IRA 보조금 축소/폐지 위험, 규제 완화로 경쟁력↓
+        - 전기차/배터리: EV 보조금 삭감, 연비규제 완화
+        """
+        ind_lower = industry.lower() if industry else ""
+        sn_lower = sector_name.lower() if sector_name else ""
+
+        # === 수혜 섹터 ===
+        # 에너지 (화석연료) - 원유, 가스, 정유, 파이프라인
+        if sector == 'Energy' and 'renewable' not in ind_lower and 'solar' not in ind_lower:
+            return self.POLICY_BONUS, "🏛️트럼프 에너지정책 수혜"
+
+        # 국방/항공
+        if any(kw in ind_lower for kw in ['aerospace', 'defense', 'military']):
+            return self.POLICY_BONUS, "🏛️트럼프 국방비증액 수혜"
+
+        # 금융 (은행, 보험, 자산운용)
+        if sector == 'Financial Services':
+            return self.POLICY_BONUS, "🏛️트럼프 금융규제완화 수혜"
+
+        # 산업재/제조 (리쇼어링, 인프라)
+        if sector == 'Industrials':
+            return self.POLICY_BONUS, "🏛️트럼프 리쇼어링/관세 수혜"
+
+        # 원자력
+        if any(kw in ind_lower for kw in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
+            return self.POLICY_BONUS, "🏛️트럼프 원자력정책 수혜"
+        if sector == 'Utilities' and 'independent power' in ind_lower:
+            return self.POLICY_BONUS, "🏛️트럼프 원자력정책 수혜"
+
+        # 희토류/전략소재
+        if any(kw in ind_lower for kw in ['rare earth', 'critical mineral', 'cobalt', 'nickel']):
+            return self.POLICY_BONUS, "🏛️트럼프 공급망안보 수혜"
+
+        # === 역풍 섹터 ===
+        # 신재생에너지
+        if any(kw in ind_lower for kw in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
+            return self.POLICY_PENALTY, "🏛️트럼프 IRA축소 역풍"
+
+        # 전기차/배터리
+        if any(kw in ind_lower for kw in ['electric vehicle', 'ev ', 'battery', 'lithium']):
+            return self.POLICY_PENALTY, "🏛️트럼프 EV보조금삭감 역풍"
+
+        return 0, ""
 
     def _get_value_sector_score(self, sector, industry):
         """가치주 모드용 섹터 점수 (배당/안정성 중심)"""
@@ -1121,7 +1197,7 @@ class TitanAnalyzer:
         """현재가 추출"""
         return info.get('currentPrice') or info.get('regularMarketPrice') or hist['Close'].iloc[-1]
 
-    def _get_market_status_and_prices(self, info):
+    def _get_market_status_and_prices(self, info, stock_obj=None):
         """시장 상태 및 가격 정보 추출"""
         try:
             # 현재 ET 시간
@@ -1148,6 +1224,22 @@ class TitanAnalyzer:
             pre_market_price = info.get('preMarketPrice')
             post_market_price = info.get('postMarketPrice')
             regular_market_previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose', 0)
+
+            # yfinance info에 프리/애프터 가격 없으면 history(prepost=True)로 시도
+            if market_status in ('pre', 'after') and stock_obj is not None:
+                need_fetch = (market_status == 'pre' and not pre_market_price) or \
+                             (market_status == 'after' and not post_market_price)
+                if need_fetch:
+                    try:
+                        ext = stock_obj.history(period='1d', interval='5m', prepost=True)
+                        if not ext.empty:
+                            latest = float(ext['Close'].iloc[-1])
+                            if market_status == 'pre':
+                                pre_market_price = latest
+                            else:
+                                post_market_price = latest
+                    except Exception:
+                        pass
 
             return {
                 'status': market_status,
@@ -1234,7 +1326,7 @@ class TitanAnalyzer:
         breakout, _, _ = self._calculate_volatility_breakout(hist)
 
         # 시장 상태 및 가격 정보
-        market_info = self._get_market_status_and_prices(info)
+        market_info = self._get_market_status_and_prices(info, stock)
 
         # Verdict
         verdict = self._get_verdict(total_score)
@@ -1570,6 +1662,59 @@ class TitanAnalyzer:
             border: 2px solid {primary_color} !important;
             font-weight: bold;
         }}
+        /* 점수 체계 버튼 */
+        .scoring-btn {{
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 22px;
+            background: linear-gradient(135deg, #5D4E37, #7B6B4F);
+            color: #FFF8DC;
+            border: 2px solid #5D4E37;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }}
+        .scoring-btn:hover {{ background: linear-gradient(135deg, #7B6B4F, #9B8B6F); transform: translateY(-1px); }}
+        /* 모달 */
+        .scoring-overlay {{
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }}
+        .scoring-overlay.active {{ display: flex; }}
+        .scoring-modal {{
+            width: 95%; max-width: 1400px; height: 92vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+        }}
+        .scoring-modal iframe {{
+            width: 100%; height: 100%; border: none;
+        }}
+        .scoring-close {{
+            position: absolute;
+            top: 12px; right: 16px;
+            width: 36px; height: 36px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3em;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }}
+        .scoring-close:hover {{ background: rgba(200,0,0,0.8); }}
     </style>
 </head>
 <body>
@@ -1580,6 +1725,14 @@ class TitanAnalyzer:
             <h1>{report_type} Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
             <div class="subtitle">Advanced Fundamental + Technical Analysis</div>
             <div class="date">{now.strftime("%Y-%m-%d %H:%M")} UTC 업데이트</div>
+            <button class="scoring-btn" onclick="document.getElementById('scoringOverlay').classList.add('active')">📐 점수 체계 보기</button>
+        </div>
+        <!-- 점수 체계 모달 -->
+        <div id="scoringOverlay" class="scoring-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+            <div class="scoring-modal">
+                <button class="scoring-close" onclick="document.getElementById('scoringOverlay').classList.remove('active')">&times;</button>
+                <iframe src="scoring_system.html"></iframe>
+            </div>
         </div>
         <div class="summary">
             <div class="summary-card">
@@ -1647,6 +1800,11 @@ class TitanAnalyzer:
                             <span class="criterion-value">{fund_bd.get('sector_name', 'N/A')}</span>
                             <span class="criterion-score">+{fund_bd.get('sector_score', 0)}점</span>
                         </div>
+                        {"" if fund_bd.get('policy_bonus', 0) == 0 else f'''<div class="breakdown-item" style="background: rgba({'76,175,80' if fund_bd.get('policy_bonus',0) > 0 else '244,67,54'}, 0.08);">
+                            <span class="criterion">🏛️ 정책</span>
+                            <span class="criterion-value">트럼프 정부 {'수혜' if fund_bd.get('policy_bonus',0) > 0 else '역풍'}</span>
+                            <span class="criterion-score">{'+' if fund_bd.get('policy_bonus',0) > 0 else ''}{fund_bd.get('policy_bonus',0)}점</span>
+                        </div>'''}
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">{rg_display}</span>
@@ -1853,6 +2011,16 @@ class TitanAnalyzer:
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(html)
 
+        # 점수 체계 HTML을 리포트와 같은 디렉토리에 복사
+        try:
+            import shutil
+            scoring_src = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scoring_system.html')
+            scoring_dst = os.path.join(os.path.dirname(os.path.abspath(filename)), 'scoring_system.html')
+            if os.path.exists(scoring_src) and scoring_src != scoring_dst:
+                shutil.copy2(scoring_src, scoring_dst)
+        except Exception:
+            pass
+
         print(f"✅ HTML 리포트 생성 완료: {filename} ({len(filtered)}개 추천)")
         return filtered
 
@@ -1996,6 +2164,7 @@ class TitanAnalyzer:
 
 if __name__ == "__main__":
     import sys
+    sys.stdout.reconfigure(encoding='utf-8')
 
     print("""
     ╔═══════════════════════════════════════════════════════════╗

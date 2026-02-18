@@ -185,6 +185,59 @@
             border: 2px solid #7B68EE !important;
             font-weight: bold;
         }
+        /* 점수 체계 버튼 */
+        .scoring-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 22px;
+            background: linear-gradient(135deg, #5D4E37, #7B6B4F);
+            color: #FFF8DC;
+            border: 2px solid #5D4E37;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .scoring-btn:hover { background: linear-gradient(135deg, #7B6B4F, #9B8B6F); transform: translateY(-1px); }
+        /* 모달 */
+        .scoring-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .scoring-overlay.active { display: flex; }
+        .scoring-modal {
+            width: 95%; max-width: 1400px; height: 92vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .scoring-modal iframe {
+            width: 100%; height: 100%; border: none;
+        }
+        .scoring-close {
+            position: absolute;
+            top: 12px; right: 16px;
+            width: 36px; height: 36px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3em;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .scoring-close:hover { background: rgba(200,0,0,0.8); }
     </style>
 </head>
 <body>
@@ -194,7 +247,15 @@
             <div style="font-size: 3em;">⭐</div>
             <h1>Growth Stocks Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
             <div class="subtitle">Advanced Fundamental + Technical Analysis</div>
-            <div class="date">2026-02-18 09:50 UTC 업데이트</div>
+            <div class="date">2026-02-18 18:12 UTC 업데이트</div>
+            <button class="scoring-btn" onclick="document.getElementById('scoringOverlay').classList.add('active')">📐 점수 체계 보기</button>
+        </div>
+        <!-- 점수 체계 모달 -->
+        <div id="scoringOverlay" class="scoring-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+            <div class="scoring-modal">
+                <button class="scoring-close" onclick="document.getElementById('scoringOverlay').classList.remove('active')">&times;</button>
+                <iframe src="scoring_system.html"></iframe>
+            </div>
         </div>
         <div class="summary">
             <div class="summary-card">
@@ -247,6 +308,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">28.9%</span>
@@ -310,11 +372,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$138.80</div>
+                    <div class="info-value" style="font-size: 1.2em;">$138.25</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-1.97%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-2.36%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -327,6 +389,14 @@
                 <div class="info-item">
                     <div class="info-label">손절가</div>
                     <div class="info-value">$138.30</div>
+                </div>
+                <div class="info-item" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #4CAF50;">
+                    <div class="info-label" style="color: #888;">🤖 AI 예측</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">🚀 Strong Buy</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">AI 신뢰도</div>
+                    <div class="info-value">79%</div>
                 </div>
             </div>
             <div class="comment">💡 ROE:31.4%, OPM:41.5%, AI/반도체</div>
@@ -358,6 +428,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">62.5%</span>
@@ -421,11 +492,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$188.45</div>
+                    <div class="info-value" style="font-size: 1.2em;">$187.59</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+3.10%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.63%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -438,6 +509,14 @@
                 <div class="info-item">
                     <div class="info-label">손절가</div>
                     <div class="info-value">$179.42</div>
+                </div>
+                <div class="info-item" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #F44336;">
+                    <div class="info-label" style="color: #888;">🤖 AI 예측</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">🔻 Sell</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">AI 신뢰도</div>
+                    <div class="info-value">59%</div>
                 </div>
             </div>
             <div class="comment">💡 ROE:107.4%, OPM:63.2%, AI/반도체</div>
@@ -469,6 +548,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">22.1%</span>
@@ -532,11 +612,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$238.97</div>
+                    <div class="info-value" style="font-size: 1.2em;">$238.00</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+1.46%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+1.05%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -549,6 +629,14 @@
                 <div class="info-item">
                     <div class="info-label">손절가</div>
                     <div class="info-value">$228.51</div>
+                </div>
+                <div class="info-item" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #4CAF50;">
+                    <div class="info-label" style="color: #888;">🤖 AI 예측</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">🚀 Strong Buy</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">AI 신뢰도</div>
+                    <div class="info-value">51%</div>
                 </div>
             </div>
             <div class="comment">💡 ROE:65.6%, OPM:33.9%, AI/반도체</div>
@@ -580,6 +668,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">56.7%</span>
@@ -643,11 +732,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$406.09</div>
+                    <div class="info-value" style="font-size: 1.2em;">$404.29</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-1.35%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-1.79%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -660,6 +749,14 @@
                 <div class="info-item">
                     <div class="info-label">손절가</div>
                     <div class="info-value">$387.79</div>
+                </div>
+                <div class="info-item" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #FF9800;">
+                    <div class="info-label" style="color: #888;">🤖 AI 예측</div>
+                    <div class="info-value" style="color: #FF9800; font-weight: bold;">➡️ Hold</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">AI 신뢰도</div>
+                    <div class="info-value">41%</div>
                 </div>
             </div>
             <div class="comment">💡 ROE:22.6%, OPM:45.0%, AI/반도체</div>
@@ -691,6 +788,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">7.2%</span>
@@ -752,13 +850,13 @@
 
             <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item" style="background: #FF9800; color: white;">
-                    <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$245.35</div>
+                <div class="info-item" style="background: #4CAF50; color: white;">
+                    <div class="info-label" style="color: rgba(255,255,255,0.9);">☀️ 정규장</div>
+                    <div class="info-value" style="font-size: 1.2em;">$245.09</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.38%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.27%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -802,6 +900,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">-2.1%</span>
@@ -865,11 +964,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$363.87</div>
+                    <div class="info-value" style="font-size: 1.2em;">$363.00</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.52%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.28%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -913,6 +1012,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">4.9%</span>
@@ -976,11 +1076,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$1437.25</div>
+                    <div class="info-value" style="font-size: 1.2em;">$1432.62</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.18%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+1.85%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -1024,6 +1124,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">N/A</span>
@@ -1087,11 +1188,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$287.79</div>
+                    <div class="info-value" style="font-size: 1.2em;">$286.85</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.21%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+1.87%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -1135,6 +1236,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">10.4%</span>
@@ -1246,6 +1348,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">43.9%</span>
@@ -1307,13 +1410,13 @@
 
             <!-- 가격 정보 -->
             <div class="info">
-                <div class="info-item" style="background: #FF9800; color: white;">
-                    <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$309.88</div>
+                <div class="info-item" style="background: #4CAF50; color: white;">
+                    <div class="info-label" style="color: rgba(255,255,255,0.9);">☀️ 정규장</div>
+                    <div class="info-value" style="font-size: 1.2em;">$305.53</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-1.52%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-2.90%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -1357,6 +1460,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">20.8%</span>
@@ -1468,6 +1572,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">21.5%</span>
@@ -1531,11 +1636,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$420.22</div>
+                    <div class="info-value" style="font-size: 1.2em;">$422.00</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-1.35%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.94%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -1579,6 +1684,7 @@
                             <span class="criterion-value">디지털인프라</span>
                             <span class="criterion-score">+8점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">17.6%</span>
@@ -1652,11 +1758,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$77.57</div>
+                    <div class="info-value" style="font-size: 1.2em;">$77.55</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.91%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.88%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 🎯 즉시매수</div>
@@ -1700,6 +1806,7 @@
                             <span class="criterion-value">바이오텍</span>
                             <span class="criterion-score">+8점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">9.5%</span>
@@ -1811,6 +1918,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">16.4%</span>
@@ -1874,11 +1982,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$332.50</div>
+                    <div class="info-value" style="font-size: 1.2em;">$332.03</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.25%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.11%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
@@ -1922,6 +2030,7 @@
                             <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+10점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">4.5%</span>
@@ -2033,6 +2142,7 @@
                             <span class="criterion-value">소프트웨어</span>
                             <span class="criterion-score">+8점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">10.1%</span>
@@ -2154,6 +2264,7 @@
                             <span class="criterion-value">가전/생태계</span>
                             <span class="criterion-score">+8점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">15.7%</span>
@@ -2217,7 +2328,7 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$265.40</div>
+                    <div class="info-value" style="font-size: 1.2em;">$265.41</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
@@ -2265,6 +2376,7 @@
                             <span class="criterion-value">헬스케어</span>
                             <span class="criterion-score">+5점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">13.1%</span>
@@ -2376,6 +2488,7 @@
                             <span class="criterion-value">디지털인프라</span>
                             <span class="criterion-score">+8점</span>
                         </div>
+                        
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">18.0%</span>
@@ -2439,11 +2552,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$304.11</div>
+                    <div class="info-value" style="font-size: 1.2em;">$303.68</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.53%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.67%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📊 현재가</div>
