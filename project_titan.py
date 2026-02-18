@@ -217,8 +217,9 @@ class TitanAnalyzer:
 
     # 업종(industry) 레벨 매출성장률 오버라이드
     INDUSTRY_REVENUE_GROWTH_OVERRIDES = {
-        'Semiconductors': (15, 5),                       # 반도체 사이클 (QCOM 5%, INTC -4%)
-        'Semiconductor Equipment & Materials': (15, 5),  # 장비 사이클 (AMAT -2%, LRCX 22%)
+        # AI 슈퍼사이클: 25%+ 수혜, 10%+ 보통, 미만은 뒤처지는 것
+        'Semiconductors': (25, 10),
+        'Semiconductor Equipment & Materials': (25, 10),
     }
 
     # 섹터별 OPM 기준 (저마진 업종 차등 적용)
