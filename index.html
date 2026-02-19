@@ -429,7 +429,7 @@
         <div class="user-bar">
             <span class="admin-badge" id="adminBadge">ADMIN</span>
             <span class="user-name" id="userName">로딩...</span>
-            <button class="btn-logout" onclick="logout()">로그아웃</button>
+            <button class="btn-logout" id="logoutBtn" onclick="logout()">로그아웃</button>
         </div>
 
         <div class="header-bubble">
@@ -612,24 +612,44 @@
         const { createClient } = supabase;
         const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // 인증 체크 → 미로그인 시 login.html로 이동
+        const isGuest = sessionStorage.getItem('titan_guest') === 'true';
+
+        // 인증 체크 → 미로그인 시 login.html로 이동 (게스트 예외)
         (async () => {
             const { data: { session } } = await sb.auth.getSession();
-            if (!session) {
+            if (!session && !isGuest) {
                 window.location.href = 'login.html';
                 return;
             }
 
-            // 사용자 정보 표시
-            const user = session.user;
-            document.getElementById('userName').textContent =
-                user.user_metadata?.name || user.email?.split('@')[0] || 'User';
+            if (isGuest) {
+                // 게스트 모드
+                document.getElementById('userName').textContent = '👤 Guest';
+                document.getElementById('logoutBtn').textContent = '로그인하기';
 
-            // 관리자 확인
-            const { data: profile } = await sb.from('user_profiles')
-                .select('role').eq('user_id', user.id).single();
-            if (profile?.role === 'admin') {
-                document.getElementById('adminBadge').style.display = 'inline';
+                // 포트폴리오/대시보드 카드 비활성화
+                document.querySelectorAll('.card.dashboard, .card.portfolio').forEach(card => {
+                    card.href = 'javascript:void(0)';
+                    card.style.opacity = '0.5';
+                    card.style.pointerEvents = 'none';
+                    card.style.position = 'relative';
+                    const lock = document.createElement('div');
+                    lock.textContent = '🔒 로그인 필요';
+                    lock.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.7);color:white;padding:10px 24px;border-radius:20px;font-weight:700;font-size:1.1em;z-index:10;';
+                    card.appendChild(lock);
+                });
+            } else {
+                // 로그인 사용자
+                const user = session.user;
+                document.getElementById('userName').textContent =
+                    user.user_metadata?.name || user.email?.split('@')[0] || 'User';
+
+                // 관리자 확인
+                const { data: profile } = await sb.from('user_profiles')
+                    .select('role').eq('user_id', user.id).single();
+                if (profile?.role === 'admin') {
+                    document.getElementById('adminBadge').style.display = 'inline';
+                }
             }
 
             // 컨텐츠 표시
@@ -637,6 +657,11 @@
         })();
 
         async function logout() {
+            if (isGuest) {
+                sessionStorage.removeItem('titan_guest');
+                window.location.href = 'login.html';
+                return;
+            }
             await sb.auth.signOut();
             window.location.href = 'login.html';
         }

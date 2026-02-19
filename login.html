@@ -190,6 +190,13 @@ h1 { color: #5D4E37; font-size: 1.8em; margin-bottom: 8px; }
 
     <div class="message" id="message"></div>
 
+    <div class="divider">또는</div>
+
+    <button class="btn-social" onclick="startGuest()" style="background:#95A5A6;color:white;box-shadow:0 4px 0 #7F8C8D;">
+        👤 비회원으로 시작
+    </button>
+    <div style="font-size:0.78em;color:#999;margin-top:4px;">리포트 열람만 가능 · 포트폴리오 기능 제한</div>
+
     <a href="admin_setup.html" style="display:inline-block;margin-top:20px;color:#E74C3C;text-decoration:none;font-size:0.82em;font-weight:700;">🔑 관리자 계정 등록</a>
 </div>
 
@@ -268,6 +275,11 @@ function showMessage(text, type) {
 function setLoading(on) {
     document.getElementById('loadingSpinner').classList.toggle('active', on);
     document.getElementById('emailSubmitBtn').disabled = on;
+}
+
+function startGuest() {
+    sessionStorage.setItem('titan_guest', 'true');
+    window.location.href = 'index.html';
 }
 
 // Enter 키로 로그인
