@@ -2260,6 +2260,21 @@ tr:hover {{ background:#f8fff8; }}
 .summary-label {{ font-size:0.8em; color:#7B6B4F; margin-top:3px; }}
 .cash-note {{ text-align:center; margin-top:12px; color:#E67E22; font-weight:700; font-size:0.9em; }}
 
+/* 내 자산에 추가 버튼 */
+.add-to-assets {{
+    display:block; width:100%; padding:16px; margin-top:20px;
+    background:#8E44AD; color:white; border:3px solid #5D4E37;
+    border-radius:15px; font-size:1.1em; font-weight:700; cursor:pointer;
+    box-shadow:0 4px 0 #6C3483; font-family:inherit; transition:all 0.2s;
+    text-align:center;
+}}
+.add-to-assets:hover {{ transform:translateY(-2px); box-shadow:0 6px 0 #6C3483; }}
+.add-to-assets:disabled {{ background:#aaa; box-shadow:0 4px 0 #888; cursor:not-allowed; }}
+.add-msg {{ text-align:center; margin-top:10px; padding:10px; border-radius:10px; font-size:0.9em; display:none; }}
+.add-msg.success {{ display:block; background:#D5F5E3; color:#27AE60; border:2px solid #27AE60; }}
+.add-msg.error {{ display:block; background:#FDEDEC; color:#E74C3C; border:2px solid #E74C3C; }}
+.add-msg.info {{ display:block; background:#EBF5FB; color:#2E86C1; border:2px solid #2E86C1; }}
+
 /* 푸터 */
 .footer {{ background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; }}
 @media (max-width:768px) {{
@@ -2328,6 +2343,8 @@ tr:hover {{ background:#f8fff8; }}
             </table>
             <div class="cash-note" id="cashNote"></div>
             <div class="summary-box" id="summaryBox"></div>
+            <button class="add-to-assets" id="addToAssetsBtn" onclick="addToMyAssets()">🏦 내 자산에 전체 추가</button>
+            <div class="add-msg" id="addMsg"></div>
         </div>
     </div>
 
@@ -2340,7 +2357,29 @@ tr:hover {{ background:#f8fff8; }}
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase_config.js"></script>
 <script>
+let sbClient = null;
+let currentUser = null;
+let lastPortfolio = [];
+
+// Supabase 초기화 + 인증 체크
+(async () => {{
+    try {{
+        const {{ createClient }} = supabase;
+        sbClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const {{ data: {{ session }} }} = await sbClient.auth.getSession();
+        if (!session) {{
+            window.location.href = 'login.html';
+            return;
+        }}
+        currentUser = session.user;
+    }} catch(e) {{
+        window.location.href = 'login.html';
+    }}
+}})();
+
 const ALL_DATA = {portfolio_json};
 const GROWTH = ALL_DATA.filter(s => s.category === 'Growth');
 const VALUE = ALL_DATA.filter(s => s.category === 'Value');
@@ -2383,6 +2422,12 @@ function calculatePortfolio() {{
         const w = valueRatio * (s.final / vTotal);
         portfolio.push({{...s, weight: w}});
     }});
+
+    // 계산 결과 저장 (내 자산 추가용)
+    lastPortfolio = portfolio.map(s => ({{
+        ...s,
+        calcShares: Math.floor(seed * s.weight / s.price)
+    }}));
 
     // 테이블 렌더링
     const tbody = document.getElementById('portfolioTable');
@@ -2444,6 +2489,63 @@ function calculatePortfolio() {{
 
     document.getElementById('resultSection').style.display = 'block';
     document.getElementById('resultSection').scrollIntoView({{behavior:'smooth'}});
+}}
+
+// ===== 내 자산에 추가 =====
+async function addToMyAssets() {{
+    const msgEl = document.getElementById('addMsg');
+    const btn = document.getElementById('addToAssetsBtn');
+
+    if (!currentUser) {{
+        msgEl.className = 'add-msg info';
+        msgEl.textContent = '로그인이 필요합니다. 로그인 페이지로 이동합니다...';
+        setTimeout(() => {{ window.location.href = 'login.html'; }}, 1500);
+        return;
+    }}
+
+    if (lastPortfolio.length === 0) {{
+        msgEl.className = 'add-msg error';
+        msgEl.textContent = '먼저 포트폴리오를 계산해주세요.';
+        return;
+    }}
+
+    const validItems = lastPortfolio.filter(s => s.calcShares > 0);
+    if (validItems.length === 0) {{
+        msgEl.className = 'add-msg error';
+        msgEl.textContent = '투자금이 부족하여 추가할 종목이 없습니다.';
+        return;
+    }}
+
+    btn.disabled = true;
+    btn.textContent = '추가 중...';
+
+    let success = 0, fail = 0;
+    for (const s of validItems) {{
+        const {{ error }} = await sbClient.from('assets').insert({{
+            user_id: currentUser.id,
+            asset_type: 'stock',
+            ticker: s.ticker,
+            name: s.name,
+            shares: s.calcShares,
+            buy_price: s.price,
+            amount: s.calcShares * s.price,
+            note: `Titan ${{s.titan}}점, ${{s.category}}, ${{s.tier_name}}`
+        }});
+        if (error) fail++; else success++;
+    }}
+
+    btn.disabled = false;
+    btn.textContent = '🏦 내 자산에 전체 추가';
+
+    if (success > 0) {{
+        msgEl.className = 'add-msg success';
+        msgEl.textContent = `${{success}}종목 자산 추가 완료!` + (fail > 0 ? ` (${{fail}}건 실패)` : '') + ' 대시보드에서 확인하세요.';
+    }} else {{
+        msgEl.className = 'add-msg error';
+        msgEl.textContent = '추가에 실패했습니다.';
+    }}
+
+    setTimeout(() => {{ msgEl.className = 'add-msg'; }}, 8000);
 }}
 
 // 페이지 로드 시 자동 계산
