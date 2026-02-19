@@ -2070,7 +2070,7 @@ class TitanAnalyzer:
                 policy_html = ""
 
             # === 가격 블록을 먼저 빌드 (카드 상단에 표시) ===
-            market_info = stock.get('market_info', {{}})
+            market_info = stock.get('market_info', {})
             market_status = market_info.get('status', 'unknown')
             prev_close = market_info.get('previous_close', 0)
             regular_price = stock['price']
