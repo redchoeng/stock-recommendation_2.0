@@ -1952,22 +1952,25 @@ class TitanAnalyzer:
 
             # 시장 상태별 설정
             if market_status == 'pre' and pre_price:
-                # 프리마켓: 프리마켓 가격 표시
                 display_price = pre_price
                 status_color = '#FF9800'
                 status_label = '🌅 프리마켓'
                 base_price = prev_close
             elif market_status == 'after' and post_price:
-                # 애프터장: 애프터장 가격 표시
                 display_price = post_price
                 status_color = '#9C27B0'
                 status_label = '🌙 애프터장'
-                base_price = current_price  # 정규장 종가 대비
-            else:
-                # 정규장 또는 기타: 정규장 가격 표시
+                base_price = current_price
+            elif market_status == 'regular':
                 display_price = current_price
                 status_color = '#4CAF50'
                 status_label = '☀️ 정규장'
+                base_price = prev_close
+            else:
+                # 폐장 (closed/unknown) - 마지막 종가 표시
+                display_price = current_price
+                status_color = '#607D8B'
+                status_label = '🌙 폐장'
                 base_price = prev_close
 
             # 변동률 계산
