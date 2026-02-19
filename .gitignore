@@ -1,6 +1,4 @@
 # ML 관련 파일 (로컬 전용)
-ml_predictor.py
-run_ml_portfolio.py
 check_stocks.py
 requirements_ml.txt
 
