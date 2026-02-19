@@ -91,10 +91,32 @@ tr:hover { background:#f8fff8; }
 /* 푸터 */
 .footer { background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; }
 @media (max-width:768px) {
-    .input-row { flex-direction:column; }
-    table { font-size:0.78em; }
+    body { padding:10px; }
+    .container { padding-top:10px; }
+    .header-bubble { padding:18px 15px; border-radius:20px; }
+    .emoji-icon { font-size:2.2em; }
+    h1 { font-size:1.3em; }
+    .subtitle { font-size:0.85em; }
+    .input-section { padding:15px 12px; border-radius:16px; }
+    .input-row { flex-direction:column; gap:10px; }
+    .seed-input { width:100%; font-size:1.1em; }
+    .slider-group input[type=range] { width:140px; }
+    .slider-label { min-width:100px; font-size:0.85em; }
+    .calc-btn { width:100%; padding:14px; }
+    .result-card { padding:12px 10px; border-radius:16px; }
+    .result-card h2 { font-size:1.1em; }
+    table { font-size:0.72em; display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
     th,td { padding:6px 4px; }
-    h1 { font-size:1.4em; }
+    .summary-box { grid-template-columns:repeat(2,1fr); gap:8px; }
+    .summary-value { font-size:1.1em; }
+    .summary-label { font-size:0.75em; }
+    .add-to-assets { font-size:1em; padding:14px; }
+    .footer { padding:12px 10px; font-size:0.8em; }
+}
+@media (max-width:400px) {
+    h1 { font-size:1.1em; }
+    table { font-size:0.65em; }
+    .summary-box { grid-template-columns:1fr 1fr; }
 }
 </style>
 </head>
@@ -113,7 +135,7 @@ tr:hover { background:#f8fff8; }
         <h1>Portfolio Builder</h1>
         <p class="subtitle">Titan 점수 + 유동성 등급 기반 포트폴리오 구성</p>
         <p class="subtitle">ML 없이 펀더멘털 + 기술적 분석만으로 추천</p>
-        <p class="timestamp">마지막 업데이트: 2026-02-19 15:33 UTC</p>
+        <p class="timestamp">마지막 업데이트: 2026-02-19 15:46 UTC</p>
     </div>
 
     <div class="input-section">
@@ -193,7 +215,7 @@ let lastPortfolio = [];
     }
 })();
 
-const ALL_DATA = [{"ticker": "MU", "name": "Micron Technology, Inc.", "titan": 88, "fund": 48, "tech": 40, "tier_bonus": 5, "tier_name": "Hot", "final": 93, "price": 414.55, "daily_val": 13630.0, "sector": "Technology", "category": "Growth"}, {"ticker": "NVDA", "name": "NVIDIA Corporation", "titan": 85, "fund": 50, "tech": 35, "tier_bonus": 5, "tier_name": "Hot", "final": 90, "price": 187.63, "daily_val": 33771.0, "sector": "Technology", "category": "Growth"}, {"ticker": "TER", "name": "Teradyne, Inc.", "titan": 81, "fund": 47, "tech": 34, "tier_bonus": 5, "tier_name": "Hot", "final": 86, "price": 313.8, "daily_val": 1052.0, "sector": "Technology", "category": "Growth"}, {"ticker": "LRCX", "name": "Lam Research Corporation", "titan": 80, "fund": 49, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 85, "price": 233.29, "daily_val": 2799.0, "sector": "Technology", "category": "Growth"}, {"ticker": "TXN", "name": "Texas Instruments Incorporated", "titan": 78, "fund": 44, "tech": 34, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 218.79, "daily_val": 1728.0, "sector": "Technology", "category": "Growth"}, {"ticker": "PEP", "name": "Pepsico, Inc.", "titan": 82, "fund": 46, "tech": 36, "tier_bonus": 5, "tier_name": "Hot", "final": 87, "price": 163.88, "daily_val": 1408.0, "sector": "Consumer Defensive", "category": "Value"}, {"ticker": "ABBV", "name": "AbbVie Inc.", "titan": 80, "fund": 47, "tech": 33, "tier_bonus": 5, "tier_name": "Hot", "final": 85, "price": 224.87, "daily_val": 1476.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "GE", "name": "GE Aerospace", "titan": 78, "fund": 47, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 332.53, "daily_val": 1762.0, "sector": "Industrials", "category": "Value"}, {"ticker": "ALL", "name": "Allstate Corporation (The)", "titan": 79, "fund": 46, "tech": 33, "tier_bonus": 3, "tier_name": "Active", "final": 82, "price": 205.22, "daily_val": 358.0, "sector": "Financial Services", "category": "Value"}, {"ticker": "AMGN", "name": "Amgen Inc.", "titan": 77, "fund": 46, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 82, "price": 376.57, "daily_val": 1100.0, "sector": "Healthcare", "category": "Value"}];
+const ALL_DATA = [{"ticker": "NVDA", "name": "NVIDIA Corporation", "titan": 89, "fund": 50, "tech": 39, "tier_bonus": 5, "tier_name": "Hot", "final": 94, "price": 188.28, "daily_val": 33468.0, "sector": "Technology", "category": "Growth"}, {"ticker": "MU", "name": "Micron Technology, Inc.", "titan": 88, "fund": 48, "tech": 40, "tier_bonus": 5, "tier_name": "Hot", "final": 93, "price": 417.87, "daily_val": 13681.0, "sector": "Technology", "category": "Growth"}, {"ticker": "LRCX", "name": "Lam Research Corporation", "titan": 80, "fund": 49, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 85, "price": 234.95, "daily_val": 2799.0, "sector": "Technology", "category": "Growth"}, {"ticker": "TXN", "name": "Texas Instruments Incorporated", "titan": 78, "fund": 44, "tech": 34, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 219.17, "daily_val": 1725.0, "sector": "Technology", "category": "Growth"}, {"ticker": "MPWR", "name": "Monolithic Power Systems, Inc.", "titan": 78, "fund": 44, "tech": 34, "tier_bonus": 3, "tier_name": "Active", "final": 81, "price": 1157.0, "daily_val": 799.0, "sector": "Technology", "category": "Growth"}, {"ticker": "PEP", "name": "Pepsico, Inc.", "titan": 82, "fund": 46, "tech": 36, "tier_bonus": 5, "tier_name": "Hot", "final": 87, "price": 164.19, "daily_val": 1403.0, "sector": "Consumer Defensive", "category": "Value"}, {"ticker": "MNST", "name": "Monster Beverage Corporation", "titan": 84, "fund": 50, "tech": 34, "tier_bonus": 3, "tier_name": "Active", "final": 87, "price": 82.04, "daily_val": 465.0, "sector": "Consumer Defensive", "category": "Value"}, {"ticker": "NEM", "name": "Newmont Corporation", "titan": 81, "fund": 43, "tech": 38, "tier_bonus": 5, "tier_name": "Hot", "final": 86, "price": 125.85, "daily_val": 1203.0, "sector": "Basic Materials", "category": "Value"}, {"ticker": "ABBV", "name": "AbbVie Inc.", "titan": 80, "fund": 47, "tech": 33, "tier_bonus": 5, "tier_name": "Hot", "final": 85, "price": 224.92, "daily_val": 1472.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "GE", "name": "GE Aerospace", "titan": 78, "fund": 47, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 334.3, "daily_val": 1787.0, "sector": "Industrials", "category": "Value"}];
 const GROWTH = ALL_DATA.filter(s => s.category === 'Growth');
 const VALUE = ALL_DATA.filter(s => s.category === 'Value');
 
