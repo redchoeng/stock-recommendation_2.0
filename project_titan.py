@@ -1404,6 +1404,9 @@ class TitanAnalyzer:
             'avg_volume': info.get('averageVolume', 0),
             'market_cap': info.get('marketCap', 0),
             'sector': info.get('sector', ''),
+            'liquidity_bonus': 0,
+            'liquidity_tier': 'N/A',
+            'daily_trading_value': 0,
             'market_info': market_info,
             'buy_price': buy_price,           # 🎯 스마트 매수가
             'buy_strategy': strategy,          # 전략 설명
@@ -1443,8 +1446,25 @@ class TitanAnalyzer:
                         tech_breakdown=result.get('tech_breakdown', {})
                     )
 
-                    # 조정된 점수로 총점 재계산
-                    total_score_adjusted = fund_adjusted + tech_adjusted + result['contrarian_adjustment']
+                    # 🔥 거래대금 유동성 티어 보너스
+                    avg_vol = result.get('avg_volume', 0)
+                    cur_price = result.get('price', 0)
+                    daily_value = avg_vol * cur_price
+                    if daily_value >= 1_000_000_000:
+                        liq_bonus, liq_tier = 5, 'Hot'
+                    elif daily_value >= 300_000_000:
+                        liq_bonus, liq_tier = 3, 'Active'
+                    elif daily_value >= 100_000_000:
+                        liq_bonus, liq_tier = 0, 'Normal'
+                    else:
+                        liq_bonus, liq_tier = -3, 'Thin'
+
+                    result['liquidity_bonus'] = liq_bonus
+                    result['liquidity_tier'] = liq_tier
+                    result['daily_trading_value'] = daily_value
+
+                    # 조정된 점수로 총점 재계산 (거래대금 보너스 포함)
+                    total_score_adjusted = fund_adjusted + tech_adjusted + result['contrarian_adjustment'] + liq_bonus
 
                     # 결과에 시장 상태 정보 추가
                     result['market_regime'] = market_regime
@@ -1989,6 +2009,26 @@ class TitanAnalyzer:
                             <span class="criterion">최종 점수</span>
                             <span class="criterion-value">{stock.get('fund_score', 0)} + {stock.get('tech_score', 0)} {adj_sign}{contrarian_adj}</span>
                             <span class="criterion-score" style="color: {adj_color}; font-size: 1.1em;">{stock['score']}점</span>
+                        </div>
+                    </div>
+                </div>'''
+
+            # 💧 거래대금 유동성 티어 표시
+            liq_bonus = stock.get('liquidity_bonus', 0)
+            liq_tier = stock.get('liquidity_tier', 'N/A')
+            daily_val = stock.get('daily_trading_value', 0)
+            daily_val_m = daily_val / 1e6  # 백만 달러 단위
+            liq_sign = '+' if liq_bonus >= 0 else ''
+            tier_colors = {{'Hot': '#FF6B35', 'Active': '#27AE60', 'Normal': '#7B6B4F', 'Thin': '#E74C3C'}}
+            liq_color = tier_colors.get(liq_tier, '#7B6B4F')
+            html += f'''
+                <div class="breakdown-section" style="border-top: 2px dashed #3498DB; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: {liq_color};">💧 거래대금 유동성: {liq_tier} ({liq_sign}{liq_bonus}점)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
+                            <span class="criterion">일 거래대금</span>
+                            <span class="criterion-value">${daily_val_m:,.0f}M</span>
+                            <span class="criterion-score" style="color: {liq_color};">{liq_sign}{liq_bonus}점</span>
                         </div>
                     </div>
                 </div>'''
