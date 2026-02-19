@@ -163,27 +163,32 @@ class TitanAnalyzer:
     SCORE_BUY = 60
     SCORE_HOLD = 40
 
-    # 펀더멘털 점수 가중치
-    SCORE_ROE_EXCELLENT = 15
-    SCORE_ROE_GOOD = 5
+    # 펀더멘털 점수 가중치 (4단계 그라데이션)
+    SCORE_ROE_EXCELLENT = 15    # 섹터 기준 초과
+    SCORE_ROE_GOOD = 8          # 섹터 기준 충족
+    SCORE_ROE_FAIR = 3          # 기준 미달이지만 양호 (good의 50% 이상)
     SCORE_OPM_EXCELLENT = 15
-    SCORE_OPM_GOOD = 5
+    SCORE_OPM_GOOD = 8
+    SCORE_OPM_FAIR = 3
 
-    # 매출 성장률 점수 (신규 - 섹터 비중 축소분 이동)
-    SCORE_REVENUE_GROWTH_HIGH = 10   # 매출 성장률 20% 이상
-    SCORE_REVENUE_GROWTH_GOOD = 5    # 매출 성장률 10-20%
+    # 매출 성장률 점수 (4단계 그라데이션)
+    SCORE_REVENUE_GROWTH_HIGH = 10   # 섹터 기준 초과
+    SCORE_REVENUE_GROWTH_GOOD = 5    # 섹터 기준 충족
+    SCORE_REVENUE_GROWTH_FAIR = 2    # 기준 미달이지만 양호 (good의 50% 이상)
 
     # 섹터별 점수 - 성장주 (비중 축소: 20% → 10%)
     SCORE_SECTOR_TIER1 = 10  # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
     SCORE_SECTOR_TIER2 = 8   # 소프트웨어, EV, 바이오텍, 신재생에너지, 희토류
     SCORE_SECTOR_TIER3 = 5   # 헬스케어, 산업자동화, 핀테크
     SCORE_SECTOR_TIER4 = 3   # 전통 에너지, 소비재, 유틸리티
+    SCORE_SECTOR_DEFAULT = 1 # 분류 미매칭 (최소 보장)
 
     # 섹터별 점수 - 가치주 (비중 축소: 20% → 10%)
     VALUE_SECTOR_TIER1 = 10  # 필수소비재, 헬스케어 (배당귀족)
     VALUE_SECTOR_TIER2 = 8   # 유틸리티, 금융 (안정적 배당)
     VALUE_SECTOR_TIER3 = 5   # 산업재, 에너지, 부동산 (가치 섹터)
     VALUE_SECTOR_TIER4 = 3   # 기술주, 경기민감 소비재 (성장주 영역)
+    VALUE_SECTOR_DEFAULT = 1 # 분류 미매칭 (최소 보장)
 
     # 트럼프 정부 정책 방향 보너스/페널티
     POLICY_BONUS = 3          # 정책 수혜 섹터 가산점
@@ -373,6 +378,42 @@ class TitanAnalyzer:
         print(f"\n✅ 1단계 완료: {len(filtered)}개 종목 선정 (원본 {total}개)\n")
         return [item['ticker'] for item in filtered]
 
+    @staticmethod
+    def _calc_gradient_score(value, excellent, good, max_pts):
+        """선형 보간 점수 계산 (커트라인 점프 제거)
+
+        구간별 점수:
+        - value > excellent*1.3: max_pts (만점, 확실한 우수)
+        - excellent ~ excellent*1.3: max_pts*0.8 ~ max_pts (우수 구간 보간)
+        - good ~ excellent: max_pts*0.4 ~ max_pts*0.8 (양호 구간 보간)
+        - good*0.5 ~ good: 1 ~ max_pts*0.4 (미달이지만 인정)
+        - < good*0.5: 0
+        """
+        if value <= 0:
+            return 0
+
+        fair = good * 0.5
+        top = excellent * 1.3  # 확실한 우수 기준
+
+        if value >= top:
+            return max_pts
+        elif value >= excellent:
+            # excellent ~ top 구간: 80% ~ 100%
+            ratio = (value - excellent) / (top - excellent) if top > excellent else 1
+            pts = max_pts * (0.8 + 0.2 * ratio)
+        elif value >= good:
+            # good ~ excellent 구간: 40% ~ 80%
+            ratio = (value - good) / (excellent - good) if excellent > good else 1
+            pts = max_pts * (0.4 + 0.4 * ratio)
+        elif value >= fair:
+            # fair ~ good 구간: 5% ~ 40%
+            ratio = (value - fair) / (good - fair) if good > fair else 1
+            pts = max_pts * (0.05 + 0.35 * ratio)
+        else:
+            return 0
+
+        return round(pts)
+
     def _get_fundamental_score(self, info):
         """기본적 분석 점수 (최대 50점)"""
         score = 0
@@ -392,40 +433,34 @@ class TitanAnalyzer:
             sector = info.get('sector', '')
             industry = info.get('industry', '')
 
-            # 1. ROE (섹터별 차등 기준)
+            # 1. ROE (섹터별 차등 기준, 선형 보간)
             roe = info.get('returnOnEquity')
             roe_excellent, roe_good = self.SECTOR_ROE_THRESHOLDS.get(
                 sector, self.DEFAULT_ROE_THRESHOLD)
             if roe:
                 roe_pct = roe * 100
                 breakdown['roe_value'] = roe_pct
-                if roe_pct > roe_excellent:
-                    score += self.SCORE_ROE_EXCELLENT
-                    breakdown['roe_score'] = self.SCORE_ROE_EXCELLENT
-                    comments.append(f"ROE:{roe_pct:.1f}%")
-                elif roe_pct > roe_good:
-                    score += self.SCORE_ROE_GOOD
-                    breakdown['roe_score'] = self.SCORE_ROE_GOOD
+                roe_pts = self._calc_gradient_score(roe_pct, roe_excellent, roe_good, 15)
+                score += roe_pts
+                breakdown['roe_score'] = roe_pts
+                if roe_pts >= 8:
                     comments.append(f"ROE:{roe_pct:.1f}%")
 
-            # 2. Operating Margin (업종/섹터별 차등 기준)
+            # 2. Operating Margin (업종/섹터별 차등 기준, 선형 보간)
             opm = info.get('operatingMargins')
-            # industry 오버라이드 우선, 없으면 섹터 기준
             opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
                 industry, self.SECTOR_OPM_THRESHOLDS.get(
                     sector, self.DEFAULT_OPM_THRESHOLD))
             if opm:
                 opm_pct = opm * 100
                 breakdown['opm_value'] = opm_pct
-                if opm_pct > opm_excellent:
-                    score += self.SCORE_OPM_EXCELLENT
-                    breakdown['opm_score'] = self.SCORE_OPM_EXCELLENT
+                opm_pts = self._calc_gradient_score(opm_pct, opm_excellent, opm_good, 15)
+                score += opm_pts
+                breakdown['opm_score'] = opm_pts
+                if opm_pts >= 8:
                     comments.append(f"OPM:{opm_pct:.1f}%")
-                elif opm_pct > opm_good:
-                    score += self.SCORE_OPM_GOOD
-                    breakdown['opm_score'] = self.SCORE_OPM_GOOD
 
-            # 3. Revenue Growth (매출 성장률 - 업종/섹터별 차등 기준)
+            # 3. Revenue Growth (매출 성장률 - 업종/섹터별 차등 기준, 선형 보간)
             revenue_growth = info.get('revenueGrowth')
             rg_high, rg_good = self.INDUSTRY_REVENUE_GROWTH_OVERRIDES.get(
                 industry, self.SECTOR_REVENUE_GROWTH_THRESHOLDS.get(
@@ -433,12 +468,9 @@ class TitanAnalyzer:
             if revenue_growth:
                 rg_pct = revenue_growth * 100
                 breakdown['revenue_growth_value'] = rg_pct
-                if rg_pct > rg_high:
-                    score += self.SCORE_REVENUE_GROWTH_HIGH
-                    breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_HIGH
-                elif rg_pct > rg_good:
-                    score += self.SCORE_REVENUE_GROWTH_GOOD
-                    breakdown['revenue_growth_score'] = self.SCORE_REVENUE_GROWTH_GOOD
+                rg_pts = self._calc_gradient_score(rg_pct, rg_high, rg_good, 10)
+                score += rg_pts
+                breakdown['revenue_growth_score'] = rg_pts
 
             # 3-1. 고성장 투자기업 보정 (매출 30%+ & ROE/OPM 적자)
             # SNOW, NET, CRWD 등 성장 투자 중인 기업은 적자가 구조적
@@ -446,12 +478,14 @@ class TitanAnalyzer:
                 roe_val = roe * 100 if roe else 0
                 opm_val = opm * 100 if opm else 0
                 if roe_val < 0 and breakdown['roe_score'] == 0:
-                    score += self.SCORE_ROE_GOOD  # 성장 투자 인정 +5
-                    breakdown['roe_score'] = self.SCORE_ROE_GOOD
+                    growth_credit = round(15 * 0.4)  # 성장 투자 인정 (40% = 6점)
+                    score += growth_credit
+                    breakdown['roe_score'] = growth_credit
                     comments.append("성장투자")
                 if opm_val < 0 and breakdown['opm_score'] == 0:
-                    score += self.SCORE_OPM_GOOD  # 성장 투자 인정 +5
-                    breakdown['opm_score'] = self.SCORE_OPM_GOOD
+                    growth_credit = round(15 * 0.4)
+                    score += growth_credit
+                    breakdown['opm_score'] = growth_credit
 
             # 4. Sector & Industry (세분화된 분류)
             breakdown['sector_name'] = f"{sector}"
@@ -593,6 +627,12 @@ class TitanAnalyzer:
                     breakdown['sector_name'] = "유틸리티"
                     comments.append("유틸리티")
 
+                # Default: 분류 미매칭 (최소 1점 보장)
+                else:
+                    score += self.SCORE_SECTOR_DEFAULT
+                    breakdown['sector_score'] = self.SCORE_SECTOR_DEFAULT
+                    breakdown['sector_name'] = sector or "기타"
+
                 # 트럼프 정책 보너스/페널티 적용 (성장주 모드)
                 policy_bonus, policy_comment = self._get_trump_policy_bonus(
                     sector, industry, breakdown.get('sector_name', ''))
@@ -710,8 +750,8 @@ class TitanAnalyzer:
         if sector == 'Communication Services':  # 디지털 미디어 등
             return self.VALUE_SECTOR_TIER4, "미디어/엔터", "미디어/엔터"
 
-        # 기타 섹터
-        return 5, sector if sector else "기타", sector if sector else ""
+        # 기타 섹터 (최소 보장)
+        return self.VALUE_SECTOR_DEFAULT, sector if sector else "기타", sector if sector else ""
 
     def _get_technical_score(self, hist, current_price):
         """전문가급 기술적 분석 (최대 50점)"""
