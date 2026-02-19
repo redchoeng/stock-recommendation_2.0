@@ -500,8 +500,8 @@
     "company_name": "S&P Global Inc."
   },
   "MCO": {
-    "score": 65,
-    "fund_score": 49,
+    "score": 67,
+    "fund_score": 51,
     "tech_score": 16,
     "price": 450.76,
     "avg_volume": 1001846,
@@ -600,8 +600,8 @@
     "company_name": "Fiserv, Inc."
   },
   "GPN": {
-    "score": 59,
-    "fund_score": 26,
+    "score": 56,
+    "fund_score": 23,
     "tech_score": 33,
     "price": 81.26,
     "avg_volume": 2977606,
@@ -1130,8 +1130,8 @@
     "company_name": "Molina Healthcare Inc"
   },
   "MDT": {
-    "score": 39,
-    "fund_score": 27,
+    "score": 40,
+    "fund_score": 28,
     "tech_score": 12,
     "price": 98.49,
     "avg_volume": 7740245,
@@ -1150,8 +1150,8 @@
     "company_name": "Stryker Corporation"
   },
   "BSX": {
-    "score": 49,
-    "fund_score": 40,
+    "score": 48,
+    "fund_score": 39,
     "tech_score": 9,
     "price": 76.28,
     "avg_volume": 13548988,
@@ -1890,8 +1890,8 @@
     "company_name": "LKQ Corporation"
   },
   "GPC": {
-    "score": 10,
-    "fund_score": 4,
+    "score": 14,
+    "fund_score": 8,
     "tech_score": 6,
     "price": 120.91,
     "avg_volume": 1118015,
@@ -1990,8 +1990,8 @@
     "company_name": "Occidental Petroleum Corporatio"
   },
   "DVN": {
-    "score": 73,
-    "fund_score": 43,
+    "score": 67,
+    "fund_score": 37,
     "tech_score": 30,
     "price": 44.44,
     "avg_volume": 9536140,
@@ -3070,8 +3070,8 @@
     "company_name": "Albemarle Corporation"
   },
   "CE": {
-    "score": 46,
-    "fund_score": 12,
+    "score": 43,
+    "fund_score": 9,
     "tech_score": 34,
     "price": 54.86,
     "avg_volume": 2096371,
@@ -3330,8 +3330,8 @@
     "company_name": "Entergy Corporation"
   },
   "FE": {
-    "score": 74,
-    "fund_score": 43,
+    "score": 73,
+    "fund_score": 42,
     "tech_score": 31,
     "price": 48.94,
     "avg_volume": 4829198,
@@ -3440,8 +3440,8 @@
     "company_name": "PPL Corporation"
   },
   "VZ": {
-    "score": 45,
-    "fund_score": 26,
+    "score": 49,
+    "fund_score": 30,
     "tech_score": 24,
     "price": 48.05,
     "avg_volume": 30914295,

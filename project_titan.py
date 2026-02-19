@@ -2025,30 +2025,6 @@ class TitanAnalyzer:
                     <div class="info-value" style="font-size: 0.85em;">RSI 60 이하 또는 MA20 도달</div>
                 </div>'''
 
-            # 🤖 ML 예측 결과 표시
-            if stock.get('ml_signal'):
-                ml_signal = stock['ml_signal']
-                ml_conf = stock.get('ml_confidence', 0)
-                ml_prob_up = stock.get('ml_prob_up', 0)
-
-                # 신호에 따른 색상
-                if 'Buy' in ml_signal or '상승' in ml_signal:
-                    ml_color = '#4CAF50'
-                elif 'Sell' in ml_signal or '하락' in ml_signal:
-                    ml_color = '#F44336'
-                else:
-                    ml_color = '#FF9800'
-
-                html += f'''
-                <div class="info-item" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid {ml_color};">
-                    <div class="info-label" style="color: #888;">🤖 AI 예측</div>
-                    <div class="info-value" style="color: {ml_color}; font-weight: bold;">{ml_signal}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">AI 신뢰도</div>
-                    <div class="info-value">{ml_conf:.0%}</div>
-                </div>'''
-
             if stock['comment'] and stock['comment'] != '-':
                 html += f'''
             </div>
@@ -2087,7 +2063,7 @@ class TitanAnalyzer:
         print(f"✅ HTML 리포트 생성 완료: {filename} ({len(filtered)}개 추천)")
         return filtered
 
-    def run_analysis_with_tickers(self, tickers, report_type="Analysis", html_filename=None, min_score=50, skip_stage1=True, ml_min_score=None):
+    def run_analysis_with_tickers(self, tickers, report_type="Analysis", html_filename=None, min_score=50, skip_stage1=True):
         """특정 티커 리스트로 분석 실행"""
         start_time = time.time()
 
@@ -2106,10 +2082,6 @@ class TitanAnalyzer:
                 print("❌ 1단계 필터를 통과한 종목이 없습니다.")
                 return []
             results = self.stage2_deep_analysis(filtered_tickers)
-
-        # ML 예측 (ml_min_score 이상 종목만)
-        if ml_min_score is not None:
-            results = self.run_ml_predictions(results, ml_min_score)
 
         # 결과 출력
         self.display_results(results, min_score=min_score)
@@ -2623,7 +2595,6 @@ if __name__ == "__main__":
                 html_filename="growth_report.html",
                 min_score=50,
                 skip_stage1=True,
-                ml_min_score=75  # ML 예측은 75점 이상만
             )
         elif mode == "value":
             analyzer.analysis_mode = 'value'  # 가치주 섹터 점수 체계
@@ -2633,7 +2604,6 @@ if __name__ == "__main__":
                 html_filename="value_report.html",
                 min_score=45,
                 skip_stage1=True,
-                ml_min_score=75  # ML 예측은 75점 이상만
             )
         elif mode == "portfolio":
             analyzer.generate_portfolio_html(filename="portfolio.html")

@@ -80,8 +80,8 @@
     "company_name": "Marvell Technology, Inc."
   },
   "ADI": {
-    "score": 59,
-    "fund_score": 37,
+    "score": 61,
+    "fund_score": 39,
     "tech_score": 27,
     "price": 346.37,
     "avg_volume": 3954345,
@@ -360,8 +360,8 @@
     "company_name": "Autodesk, Inc."
   },
   "CDNS": {
-    "score": 59,
-    "fund_score": 40,
+    "score": 56,
+    "fund_score": 37,
     "tech_score": 19,
     "price": 305.01,
     "avg_volume": 1988901,
@@ -380,8 +380,8 @@
     "company_name": "Synopsys, Inc."
   },
   "PANW": {
-    "score": 46,
-    "fund_score": 30,
+    "score": 49,
+    "fund_score": 33,
     "tech_score": 6,
     "price": 152.35,
     "avg_volume": 8186071,
@@ -1320,8 +1320,8 @@
     "company_name": "Symbotic Inc."
   },
   "VRSK": {
-    "score": 57,
-    "fund_score": 40,
+    "score": 55,
+    "fund_score": 38,
     "tech_score": 17,
     "price": 184.07,
     "avg_volume": 1648956,
