@@ -1772,6 +1772,46 @@ class TitanAnalyzer:
             transition: background 0.2s;
         }}
         .scoring-close:hover {{ background: rgba(200,0,0,0.8); }}
+
+        /* ===== 모바일 반응형 ===== */
+        @media (max-width: 768px) {{
+            body {{ padding: 10px; }}
+            .container {{ max-width: 100%; }}
+            .header {{ padding: 20px 15px; border-radius: 20px; }}
+            .header h1 {{ font-size: 1.3em; }}
+            .header .subtitle {{ font-size: 0.9em; }}
+            .titan-badge {{ display: block; margin: 8px auto 0; }}
+            .summary {{ grid-template-columns: repeat(2, 1fr); gap: 8px; }}
+            .summary-card {{ padding: 12px 8px; border-radius: 14px; }}
+            .summary-card .value {{ font-size: 1.3em; }}
+            .summary-card .label {{ font-size: 0.8em; }}
+            .stock-card {{ padding: 15px 12px; border-radius: 16px; margin-bottom: 12px; }}
+            .stock-card .rank {{ width: 32px; height: 32px; font-size: 1em; top: 8px; left: 8px; }}
+            .stock-card h2 {{ padding-left: 42px; font-size: 1.1em; padding-right: 70px; }}
+            .score-badge {{ padding: 5px 12px; font-size: 0.95em; }}
+            .stock-card .info {{ grid-template-columns: repeat(2, 1fr); gap: 6px; }}
+            .stock-card .info-item {{ padding: 6px; border-radius: 8px; }}
+            .stock-card .info-label {{ font-size: 0.75em; }}
+            .stock-card .info-value {{ font-size: 0.9em; }}
+            .score-breakdown {{ padding: 10px; margin: 10px 0; }}
+            .score-breakdown h3 {{ font-size: 0.9em; }}
+            .breakdown-title {{ font-size: 0.85em; }}
+            .breakdown-item {{ grid-template-columns: 1fr auto; gap: 4px; padding: 5px 8px; font-size: 0.8em; }}
+            .breakdown-item .criterion-value {{ display: none; }}
+            .comment {{ font-size: 0.82em; padding: 8px; }}
+            .verdict {{ font-size: 0.8em; padding: 4px 12px; }}
+            .scoring-modal {{ width: 100%; height: 95vh; border-radius: 10px; }}
+            .footer {{ padding: 15px 10px; font-size: 0.85em; }}
+        }}
+        @media (max-width: 400px) {{
+            .header h1 {{ font-size: 1.1em; }}
+            .summary {{ grid-template-columns: 1fr 1fr; gap: 6px; }}
+            .summary-card .value {{ font-size: 1.1em; }}
+            .stock-card h2 {{ font-size: 1em; padding-right: 60px; }}
+            .score-badge {{ padding: 4px 10px; font-size: 0.85em; }}
+            .stock-card .info {{ grid-template-columns: 1fr 1fr; }}
+            .breakdown-item {{ font-size: 0.75em; }}
+        }}
     </style>
 </head>
 <body>
@@ -2278,10 +2318,32 @@ tr:hover {{ background:#f8fff8; }}
 /* 푸터 */
 .footer {{ background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; }}
 @media (max-width:768px) {{
-    .input-row {{ flex-direction:column; }}
-    table {{ font-size:0.78em; }}
+    body {{ padding:10px; }}
+    .container {{ padding-top:10px; }}
+    .header-bubble {{ padding:18px 15px; border-radius:20px; }}
+    .emoji-icon {{ font-size:2.2em; }}
+    h1 {{ font-size:1.3em; }}
+    .subtitle {{ font-size:0.85em; }}
+    .input-section {{ padding:15px 12px; border-radius:16px; }}
+    .input-row {{ flex-direction:column; gap:10px; }}
+    .seed-input {{ width:100%; font-size:1.1em; }}
+    .slider-group input[type=range] {{ width:140px; }}
+    .slider-label {{ min-width:100px; font-size:0.85em; }}
+    .calc-btn {{ width:100%; padding:14px; }}
+    .result-card {{ padding:12px 10px; border-radius:16px; }}
+    .result-card h2 {{ font-size:1.1em; }}
+    table {{ font-size:0.72em; display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }}
     th,td {{ padding:6px 4px; }}
-    h1 {{ font-size:1.4em; }}
+    .summary-box {{ grid-template-columns:repeat(2,1fr); gap:8px; }}
+    .summary-value {{ font-size:1.1em; }}
+    .summary-label {{ font-size:0.75em; }}
+    .add-to-assets {{ font-size:1em; padding:14px; }}
+    .footer {{ padding:12px 10px; font-size:0.8em; }}
+}}
+@media (max-width:400px) {{
+    h1 {{ font-size:1.1em; }}
+    table {{ font-size:0.65em; }}
+    .summary-box {{ grid-template-columns:1fr 1fr; }}
 }}
 </style>
 </head>
@@ -2716,8 +2778,16 @@ h1 {{ color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #
 
 .footer {{ background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; margin-top:10px; }}
 @media (max-width:768px) {{
-    h1 {{ font-size:1.4em; }}
-    .version-card {{ padding:15px; }}
+    body {{ padding:10px; }}
+    .header-bubble {{ padding:18px 15px; border-radius:20px; }}
+    .emoji-icon {{ font-size:2.2em; }}
+    h1 {{ font-size:1.3em; }}
+    .subtitle {{ font-size:0.85em; }}
+    .version-card {{ padding:15px 12px; border-radius:12px; border-left-width:5px; }}
+    .version-tag {{ font-size:0.82em; padding:4px 12px; }}
+    .version-subtitle {{ font-size:0.92em; }}
+    .change-list li {{ font-size:0.82em; padding-left:16px; }}
+    .footer {{ padding:12px 10px; font-size:0.8em; }}
 }}
 </style>
 </head>
