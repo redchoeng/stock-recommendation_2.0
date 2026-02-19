@@ -250,9 +250,9 @@
     "company_name": "East West Bancorp, Inc."
   },
   "WAL": {
-    "score": 64,
+    "score": 65,
     "fund_score": 44,
-    "tech_score": 14,
+    "tech_score": 15,
     "price": 91.17,
     "avg_volume": 944901,
     "market_cap": 10033592320,
@@ -600,9 +600,9 @@
     "company_name": "Fiserv, Inc."
   },
   "GPN": {
-    "score": 50,
+    "score": 52,
     "fund_score": 23,
-    "tech_score": 29,
+    "tech_score": 31,
     "price": 80.25,
     "avg_volume": 2977606,
     "market_cap": 22470942720,
@@ -720,9 +720,9 @@
     "company_name": "Welltower Inc."
   },
   "SPG": {
-    "score": 80,
+    "score": 83,
     "fund_score": 48,
-    "tech_score": 21,
+    "tech_score": 25,
     "price": 199.72,
     "avg_volume": 1517613,
     "market_cap": 75331018752,
