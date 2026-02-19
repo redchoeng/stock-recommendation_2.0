@@ -1816,7 +1816,7 @@ class TitanAnalyzer:
         </div>
 '''
 
-        for i, stock in enumerate(filtered[:20], 1):
+        for i, stock in enumerate(filtered, 1):
             score_class = 'strong' if stock['score'] >= strong_buy_threshold else ('high' if stock['score'] >= buy_threshold else '')
             verdict_class = stock['verdict'].lower().replace(' ', '-').replace('★', '').strip()
 
@@ -2889,7 +2889,7 @@ if __name__ == "__main__":
                 tickers=GROWTH_TICKERS,
                 report_type="Growth Stocks",
                 html_filename="growth_report.html",
-                min_score=50,
+                min_score=75,
                 skip_stage1=True,
             )
         elif mode == "value":
@@ -2898,7 +2898,7 @@ if __name__ == "__main__":
                 tickers=VALUE_TICKERS,
                 report_type="Value Stocks",
                 html_filename="value_report.html",
-                min_score=45,
+                min_score=75,
                 skip_stage1=True,
             )
         elif mode == "portfolio":
