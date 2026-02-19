@@ -924,6 +924,9 @@ class TitanAnalyzer:
             # 볼린저 밴드 내 위치 (0-1)
             bb_position = (current_price - bb_low) / (bb_high - bb_low) if (bb_high - bb_low) > 0 else 0.5
             breakdown['bb_position'] = bb_position
+            breakdown['bb_upper'] = float(bb_high)
+            breakdown['bb_lower'] = float(bb_low)
+            breakdown['bb_mid'] = float(bb_mid)
 
             if 0.3 <= bb_position <= 0.7:
                 volatility_score += self.SCORE_BB_POSITION  # 중간 위치 (안정)
@@ -943,6 +946,7 @@ class TitanAnalyzer:
                 volatility_score += self.SCORE_ATR_EXPANSION
                 breakdown['atr_score'] = self.SCORE_ATR_EXPANSION
 
+            breakdown['atr_value'] = float(atr_current)
             breakdown['volatility_score'] = volatility_score
             score += volatility_score
 
@@ -1194,40 +1198,185 @@ class TitanAnalyzer:
         except Exception:
             return None, None, None
 
-    def _calculate_smart_entry_exit(self, current_price, contrarian_adj, hist, ma20):
-        """🎯 스마트 진입/청산 전략 (역발상 하이브리드)"""
+    # ===== 스윙매매 헬퍼 메서드 =====
+
+    def _find_swing_lows(self, hist, lookback=60, order=5):
+        """최근 N일 로우에서 스윙 저점(지지선) 탐지"""
+        lows = hist['Low'].iloc[-lookback:]
+        swing_lows = []
+        for i in range(order, len(lows) - order):
+            if all(lows.iloc[i] <= lows.iloc[i - j] for j in range(1, order + 1)) and \
+               all(lows.iloc[i] <= lows.iloc[i + j] for j in range(1, order + 1)):
+                swing_lows.append(float(lows.iloc[i]))
+        return sorted(set(swing_lows))
+
+    def _find_swing_highs(self, hist, lookback=60, order=5):
+        """최근 N일 하이에서 스윙 고점(저항선) 탐지"""
+        highs = hist['High'].iloc[-lookback:]
+        swing_highs = []
+        for i in range(order, len(highs) - order):
+            if all(highs.iloc[i] >= highs.iloc[i - j] for j in range(1, order + 1)) and \
+               all(highs.iloc[i] >= highs.iloc[i + j] for j in range(1, order + 1)):
+                swing_highs.append(float(highs.iloc[i]))
+        return sorted(set(swing_highs))
+
+    @staticmethod
+    def _nearest_below(levels, price):
+        """현재가 아래 가장 가까운 레벨"""
+        candidates = [l for l in levels if l < price]
+        return max(candidates) if candidates else None
+
+    @staticmethod
+    def _nearest_above(levels, price):
+        """현재가 위 가장 가까운 레벨"""
+        candidates = [l for l in levels if l > price]
+        return min(candidates) if candidates else None
+
+    def _validate_risk_reward(self, buy_price, target_price, stop_loss, atr, swing_highs):
+        """R:R >= 1.5 보장, 최대 손절 8%"""
+        # 최대 손절 거리 8%
+        max_stop = buy_price * 0.92
+        if stop_loss < max_stop:
+            stop_loss = max_stop
+
+        # R:R 최소 1.5:1
+        risk = buy_price - stop_loss
+        reward = target_price - buy_price
+        if risk > 0 and reward / risk < 1.5:
+            farther = [r for r in swing_highs if r > target_price]
+            if farther:
+                target_price = min(farther)
+            elif atr > 0:
+                target_price = buy_price + (2.5 * atr)
+            else:
+                target_price = buy_price * 1.10
+
+        return target_price, stop_loss
+
+    def _calculate_smart_entry_exit(self, current_price, contrarian_adj, hist, tech_breakdown):
+        """🎯 스윙매매 특화 진입/청산 전략 (기술적 레벨 기반)"""
         try:
-            if len(hist) < 2:
+            if len(hist) < 20:
                 return None, None, None, "데이터 부족"
 
-            # Tier 1: 🎯 역발상 매수 (과매도 우량주)
+            # --- 기술적 데이터 추출 ---
+            ma20 = tech_breakdown.get('ma20', 0)
+            ma50 = tech_breakdown.get('ma50', 0)
+            bb_upper = tech_breakdown.get('bb_upper', 0)
+            bb_lower = tech_breakdown.get('bb_lower', 0)
+            atr = tech_breakdown.get('atr_value', 0)
+
+            # --- 스윙 구조 탐지 ---
+            swing_lows = self._find_swing_lows(hist)
+            swing_highs = self._find_swing_highs(hist)
+            nearest_support = self._nearest_below(swing_lows, current_price)
+            nearest_resistance = self._nearest_above(swing_highs, current_price)
+
+            # ========== Tier 1: 역발상 매수 (과매도 우량주) ==========
             if contrarian_adj > 0:
-                buy_price = current_price  # 즉시 매수
-                target_price = current_price * 1.10  # +10%
-                stop_loss = current_price * 0.95     # -5%
-                strategy = "🎯 즉시매수"
-
-            # Tier 2: ⚠️ 매수 보류 (과열주)
-            elif contrarian_adj < 0:
-                buy_price = None  # 매수 보류
-                target_price = None
-                stop_loss = None
-                strategy = "⚠️ 조정대기"
-
-            # Tier 3: 📊 기술적 매수 (일반 종목)
-            else:
-                # MA20 풀백 전략: MA20 + 1%
-                if ma20 and ma20 > 0:
-                    buy_price = ma20 * 1.01
-                    target_price = buy_price * 1.08  # +8%
-                    stop_loss = ma20 * 0.97          # MA20 -3% (추세 이탈)
-                    strategy = "📊 MA20풀백"
+                # 매수: BB 하단이 현재가 -3% 이내면 BB 하단, 아니면 현재가
+                if bb_lower > 0 and bb_lower >= current_price * 0.97:
+                    buy_price = bb_lower
                 else:
-                    # MA20 없으면 현재가
                     buy_price = current_price
-                    target_price = current_price * 1.08
-                    stop_loss = current_price * 0.97
-                    strategy = "📊 현재가"
+
+                # 목표: 스윙 고점 > BB 상단 > 1.5×ATR
+                if nearest_resistance and nearest_resistance > buy_price * 1.03:
+                    target_price = nearest_resistance
+                elif bb_upper > 0 and bb_upper > buy_price * 1.03:
+                    target_price = bb_upper
+                else:
+                    target_price = buy_price + (1.5 * atr) if atr > 0 else buy_price * 1.08
+
+                # 손절: 스윙 저점 -1% 또는 2×ATR 중 타이트한 쪽
+                atr_stop = buy_price - (2.0 * atr) if atr > 0 else buy_price * 0.95
+                struct_stop = nearest_support * 0.99 if nearest_support else atr_stop
+                stop_loss = max(atr_stop, struct_stop)
+                if stop_loss > buy_price * 0.98:
+                    stop_loss = buy_price * 0.98
+                if stop_loss >= buy_price:
+                    stop_loss = buy_price * 0.95
+
+                target_price, stop_loss = self._validate_risk_reward(
+                    buy_price, target_price, stop_loss, atr, swing_highs)
+
+                strategy = "🎯 역발상매수(기술적지지)"
+
+            # ========== Tier 2: 조정대기 (과열주) ==========
+            elif contrarian_adj < 0:
+                # 진입조건가: MA20, 스윙 저점, 2×ATR 풀백 중 가장 높은 값
+                candidates = []
+                if ma20 > 0 and ma20 < current_price:
+                    candidates.append(ma20)
+                if nearest_support and nearest_support < current_price:
+                    candidates.append(nearest_support)
+                if atr > 0:
+                    candidates.append(current_price - (2.0 * atr))
+
+                buy_price = max(candidates) if candidates else current_price * 0.95
+
+                # 조건충족시 목표/손절
+                if nearest_resistance and nearest_resistance > buy_price * 1.03:
+                    target_price = nearest_resistance
+                elif bb_upper > 0:
+                    target_price = bb_upper
+                else:
+                    target_price = buy_price * 1.08
+
+                atr_stop = buy_price - (2.0 * atr) if atr > 0 else buy_price * 0.95
+                struct_stop = nearest_support * 0.99 if nearest_support else atr_stop
+                stop_loss = max(atr_stop, struct_stop)
+                if stop_loss >= buy_price:
+                    stop_loss = buy_price * 0.95
+
+                target_price, stop_loss = self._validate_risk_reward(
+                    buy_price, target_price, stop_loss, atr, swing_highs)
+
+                strategy = "⚠️ 조정대기(진입조건가)"
+
+            # ========== Tier 3: 풀백매수 (일반종목) ==========
+            else:
+                # 매수: 가장 가까운 지지선 (MA20 > BB하단 > 스윙저점 > MA50)
+                support_candidates = []
+                if ma20 > 0 and ma20 < current_price:
+                    support_candidates.append(('MA20', ma20))
+                if bb_lower > 0 and bb_lower < current_price:
+                    support_candidates.append(('BB하단', bb_lower))
+                if nearest_support and nearest_support < current_price:
+                    support_candidates.append(('스윙저점', nearest_support))
+                if ma50 > 0 and ma50 < current_price:
+                    support_candidates.append(('MA50', ma50))
+
+                if support_candidates:
+                    best_label, best_support = max(support_candidates, key=lambda x: x[1])
+                    buy_price = best_support
+                    strategy_suffix = best_label
+                else:
+                    buy_price = current_price
+                    strategy_suffix = "현재가"
+
+                # 목표: 가장 가까운 저항선
+                if nearest_resistance and nearest_resistance > current_price:
+                    target_price = nearest_resistance
+                elif bb_upper > 0 and bb_upper > current_price:
+                    target_price = bb_upper
+                else:
+                    target_price = buy_price + (2.0 * atr) if atr > 0 else buy_price * 1.08
+
+                # 손절: 매수가 아래 스윙 저점 -1% 또는 2×ATR
+                supports_below = [l for l in swing_lows if l < buy_price]
+                struct_stop = max(supports_below) * 0.99 if supports_below else buy_price * 0.95
+                atr_stop = buy_price - (2.0 * atr) if atr > 0 else buy_price * 0.95
+                stop_loss = max(atr_stop, struct_stop)
+                if stop_loss > buy_price * 0.98:
+                    stop_loss = buy_price * 0.98
+                if stop_loss >= buy_price:
+                    stop_loss = buy_price * 0.95
+
+                target_price, stop_loss = self._validate_risk_reward(
+                    buy_price, target_price, stop_loss, atr, swing_highs)
+
+                strategy = f"📊 풀백매수({strategy_suffix})"
 
             return buy_price, target_price, stop_loss, strategy
 
@@ -1369,10 +1518,9 @@ class TitanAnalyzer:
         # 최종 점수 (역발상 조정 반영)
         total_score = fund_score + tech_score + contrarian_adj
 
-        # 🎯 스마트 진입/청산 전략
-        ma20 = tech_breakdown.get('ma20_value', 0)
+        # 🎯 스윙매매 특화 진입/청산 전략
         buy_price, target, stop_loss, strategy = self._calculate_smart_entry_exit(
-            current_price, contrarian_adj, hist, ma20
+            current_price, contrarian_adj, hist, tech_breakdown
         )
 
         # 레거시 호환성: breakout 가격도 유지
@@ -1691,7 +1839,26 @@ class TitanAnalyzer:
             background: #F8F9FA;
             border-radius: 10px;
             border: 2px solid #E0E0E0;
+            display: none;
         }}
+        .score-breakdown.open {{
+            display: block;
+        }}
+        .detail-toggle {{
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 18px;
+            background: linear-gradient(135deg, #F8F9FA, #E8E8E8);
+            color: #5D4E37;
+            border: 2px solid #C4A35A;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }}
+        .detail-toggle:hover {{ background: #FFF8DC; transform: translateY(-1px); }}
         .score-breakdown h3 {{
             color: #5D4E37;
             margin-bottom: 12px;
@@ -1883,7 +2050,6 @@ class TitanAnalyzer:
             # 점수 상세 정보
             fund_bd = stock.get('fund_breakdown', {})
             tech_bd = stock.get('tech_breakdown', {})
-            market_info = stock.get('market_info', {})
 
             # 매출성장률 표시 (None이면 N/A)
             rg_value = fund_bd.get('revenue_growth_value')
@@ -1903,6 +2069,93 @@ class TitanAnalyzer:
             else:
                 policy_html = ""
 
+            # === 가격 블록을 먼저 빌드 (카드 상단에 표시) ===
+            market_info = stock.get('market_info', {{}})
+            market_status = market_info.get('status', 'unknown')
+            prev_close = market_info.get('previous_close', 0)
+            regular_price = stock['price']
+            display_price = market_info.get('display_price', regular_price)
+
+            if market_status == 'pre':
+                status_color = '#FF9800'
+                status_label = '🌅 프리마켓'
+                base_price = prev_close
+            elif market_status == 'after':
+                status_color = '#9C27B0'
+                status_label = '🌙 애프터장'
+                base_price = regular_price
+            elif market_status == 'regular':
+                status_color = '#4CAF50'
+                status_label = '☀️ 정규장'
+                base_price = prev_close
+            else:
+                status_color = '#607D8B'
+                status_label = '🌙 폐장'
+                base_price = prev_close
+
+            change_pct = ((display_price - base_price) / base_price * 100) if base_price > 0 else 0
+            change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
+            change_sign = '+' if change_pct >= 0 else ''
+
+            price_html = f'''
+            <div class="info">
+                <div class="info-item" style="background: {status_color}; color: white;">
+                    <div class="info-label" style="color: rgba(255,255,255,0.9);">{status_label}</div>
+                    <div class="info-value" style="font-size: 1.2em;">${display_price:.2f}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">전일대비</div>
+                    <div class="info-value" style="color: {change_color}; font-weight: bold;">{change_sign}{change_pct:.2f}%</div>
+                </div>'''
+
+            buy_strategy = stock.get('buy_strategy', '')
+            if stock.get('buy_price') is not None and buy_strategy.startswith('⚠️'):
+                price_html += f'''
+                <div class="info-item" style="background: rgba(244, 67, 54, 0.1); border-left: 3px solid #F44336;">
+                    <div class="info-label">⚠️ 투자전략</div>
+                    <div class="info-value" style="color: #F44336;">조정 대기</div>
+                </div>
+                <div class="info-item" style="background: rgba(255, 152, 0, 0.1);">
+                    <div class="info-label">진입 조건가</div>
+                    <div class="info-value" style="color: #E67E22;">${stock['buy_price']:.2f}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">조건충족시 목표</div>
+                    <div class="info-value">${stock['target']:.2f}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">조건충족시 손절</div>
+                    <div class="info-value">${stock['stop_loss']:.2f}</div>
+                </div>'''
+            elif stock.get('buy_price') is not None:
+                price_html += f'''
+                <div class="info-item">
+                    <div class="info-label">매수가 {buy_strategy}</div>
+                    <div class="info-value">${stock['buy_price']:.2f}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">목표가</div>
+                    <div class="info-value">${stock['target']:.2f}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">손절가</div>
+                    <div class="info-value">${stock['stop_loss']:.2f}</div>
+                </div>'''
+            else:
+                price_html += f'''
+                <div class="info-item" style="background: rgba(244, 67, 54, 0.1);">
+                    <div class="info-label">⚠️ 투자전략</div>
+                    <div class="info-value" style="color: #F44336;">데이터 부족</div>
+                </div>'''
+
+            price_html += '''
+            </div>'''
+
+            # 코멘트
+            comment_html = ''
+            if stock['comment'] and stock['comment'] != '-':
+                comment_html = f'<div class="comment">💡 {stock["comment"]}</div>'
+
             html += f'''
         <div class="stock-card">
             <div class="rank">#{i}</div>
@@ -1910,8 +2163,13 @@ class TitanAnalyzer:
             <h2><span class="ticker">{stock['ticker']}</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">{stock.get('company_name', '')}</span></h2>
             <span class="verdict {verdict_class}">{stock['verdict']}</span>
 
-            <!-- 점수 상세 분석 -->
-            <div class="score-breakdown">
+            {price_html}
+            {comment_html}
+
+            <button class="detail-toggle" onclick="toggleDetail({i})">상세 분석 ▼</button>
+
+            <!-- 점수 상세 분석 (접힌 상태) -->
+            <div class="score-breakdown" id="detail-{i}">
                 <h3>📊 점수 상세 분석</h3>
                 <div class="breakdown-section">
                     <div class="breakdown-title">펀더멘털 점수: {stock.get('fund_score', 0)}점 / 50점</div>
@@ -2033,88 +2291,9 @@ class TitanAnalyzer:
                     </div>
                 </div>'''
 
+            # score-breakdown 닫기 + stock-card 닫기
             html += '''
             </div>
-
-            <!-- 가격 정보 -->
-            <div class="info">'''
-
-            # 시장 상태에 따른 가격 표시 - 시간 기준으로 라벨 결정 (가격 유무 무관)
-            market_status = market_info.get('status', 'unknown')
-            prev_close = market_info.get('previous_close', 0)
-            regular_price = stock['price']  # 정규장 종가
-            display_price = market_info.get('display_price', regular_price)
-
-            # 시장 상태별 설정 - 시간이 프리면 무조건 프리마켓 표시
-            if market_status == 'pre':
-                status_color = '#FF9800'
-                status_label = '🌅 프리마켓'
-                base_price = prev_close  # 전일종가 대비
-            elif market_status == 'after':
-                status_color = '#9C27B0'
-                status_label = '🌙 애프터장'
-                base_price = regular_price  # 당일 정규장 종가 대비
-            elif market_status == 'regular':
-                status_color = '#4CAF50'
-                status_label = '☀️ 정규장'
-                base_price = prev_close  # 전일종가 대비
-            else:
-                status_color = '#607D8B'
-                status_label = '🌙 폐장'
-                base_price = prev_close
-
-            # 변동률 계산
-            change_pct = ((display_price - base_price) / base_price * 100) if base_price > 0 else 0
-            change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
-            change_sign = '+' if change_pct >= 0 else ''
-
-            # 시장 상태 + 가격 표시
-            html += f'''
-                <div class="info-item" style="background: {status_color}; color: white;">
-                    <div class="info-label" style="color: rgba(255,255,255,0.9);">{status_label}</div>
-                    <div class="info-value" style="font-size: 1.2em;">${display_price:.2f}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: {change_color}; font-weight: bold;">{change_sign}{change_pct:.2f}%</div>
-                </div>'''
-
-            # 🎯 스마트 매수/매도 가격 표시
-            if stock.get('buy_price') is not None:
-                html += f'''
-                <div class="info-item">
-                    <div class="info-label">매수가 {stock.get('buy_strategy', '')}</div>
-                    <div class="info-value">${stock['buy_price']:.2f}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">목표가</div>
-                    <div class="info-value">${stock['target']:.2f}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">손절가</div>
-                    <div class="info-value">${stock['stop_loss']:.2f}</div>
-                </div>'''
-            else:
-                # ⚠️ 과열주 - 매수 보류
-                html += f'''
-                <div class="info-item" style="background: rgba(244, 67, 54, 0.1); border-left: 3px solid #F44336;">
-                    <div class="info-label">⚠️ 투자전략</div>
-                    <div class="info-value" style="color: #F44336;">조정 대기</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">진입 조건</div>
-                    <div class="info-value" style="font-size: 0.85em;">RSI 60 이하 또는 MA20 도달</div>
-                </div>'''
-
-            if stock['comment'] and stock['comment'] != '-':
-                html += f'''
-            </div>
-            <div class="comment">💡 {stock['comment']}</div>'''
-            else:
-                html += '''
-            </div>'''
-
-            html += '''
         </div>'''
 
         html += f'''
@@ -2125,6 +2304,19 @@ class TitanAnalyzer:
             <small>🎯 과매도 우량주 즉시매수 | 📊 일반주 MA20풀백 | ⚠️ 과열주 조정대기</small>
         </div>
     </div>
+<script>
+function toggleDetail(id) {{
+    var el = document.getElementById('detail-' + id);
+    var btn = el.previousElementSibling;
+    if (el.classList.contains('open')) {{
+        el.classList.remove('open');
+        btn.textContent = '상세 분석 ▼';
+    }} else {{
+        el.classList.add('open');
+        btn.textContent = '상세 분석 ▲';
+    }}
+}}
+</script>
 </body>
 </html>'''
 
