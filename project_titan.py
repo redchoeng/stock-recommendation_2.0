@@ -1334,49 +1334,147 @@ class TitanAnalyzer:
 
                 strategy = "⚠️ 조정대기(진입조건가)"
 
-            # ========== Tier 3: 풀백매수 (일반종목) ==========
+            # ========== Tier 3: 세분화 전략 (일반종목) ==========
             else:
-                # 매수: 가장 가까운 지지선 (MA20 > BB하단 > 스윙저점 > MA50)
-                support_candidates = []
-                if ma20 > 0 and ma20 < current_price:
-                    support_candidates.append(('MA20', ma20))
-                if bb_lower > 0 and bb_lower < current_price:
-                    support_candidates.append(('BB하단', bb_lower))
-                if nearest_support and nearest_support < current_price:
-                    support_candidates.append(('스윙저점', nearest_support))
-                if ma50 > 0 and ma50 < current_price:
-                    support_candidates.append(('MA50', ma50))
+                rsi = tech_breakdown.get('rsi_value', 50)
+                ma200 = tech_breakdown.get('ma200', 0)
 
-                if support_candidates:
-                    best_label, best_support = max(support_candidates, key=lambda x: x[1])
-                    buy_price = best_support
-                    strategy_suffix = best_label
-                else:
+                # --- 시장 구조 판별 ---
+                uptrend = (ma20 > 0 and ma50 > 0 and ma20 > ma50)
+                price_above_ma20 = (ma20 > 0 and current_price > ma20)
+                sideways = (ma20 > 0 and ma50 > 0 and abs(ma20 - ma50) / ma50 < 0.02)
+                weak = (ma50 > 0 and current_price < ma50) or rsi < 40
+
+                # --- Tier 3A: 📈 추세추종 (강한 상승추세 편승) ---
+                if uptrend and price_above_ma20 and rsi >= 50:
                     buy_price = current_price
-                    strategy_suffix = "현재가"
+                    # 목표: 스윙고점 > BB상단 > 2×ATR
+                    if nearest_resistance and nearest_resistance > current_price * 1.02:
+                        target_price = nearest_resistance
+                    elif bb_upper > 0 and bb_upper > current_price * 1.02:
+                        target_price = bb_upper
+                    else:
+                        target_price = current_price + (2.0 * atr) if atr > 0 else current_price * 1.08
+                    # 손절: MA20 or 2×ATR 중 타이트한 쪽
+                    atr_stop = current_price - (2.0 * atr) if atr > 0 else current_price * 0.95
+                    ma20_stop = ma20 * 0.99 if ma20 > 0 else atr_stop
+                    stop_loss = max(atr_stop, ma20_stop)
+                    if stop_loss > current_price * 0.98:
+                        stop_loss = current_price * 0.98
+                    if stop_loss >= current_price:
+                        stop_loss = current_price * 0.95
+                    target_price, stop_loss = self._validate_risk_reward(
+                        buy_price, target_price, stop_loss, atr, swing_highs)
+                    strategy = "📈 추세추종(MA20↑)"
 
-                # 목표: 가장 가까운 저항선
-                if nearest_resistance and nearest_resistance > current_price:
-                    target_price = nearest_resistance
-                elif bb_upper > 0 and bb_upper > current_price:
-                    target_price = bb_upper
+                # --- Tier 3B: 📊 풀백매수 (상승추세 눌림목) ---
+                elif uptrend and not price_above_ma20:
+                    support_candidates = []
+                    if ma20 > 0 and ma20 < current_price * 1.03:
+                        support_candidates.append(('MA20', ma20))
+                    if bb_lower > 0 and bb_lower < current_price:
+                        support_candidates.append(('BB하단', bb_lower))
+                    if nearest_support and nearest_support < current_price:
+                        support_candidates.append(('스윙저점', nearest_support))
+                    if support_candidates:
+                        best_label, best_support = max(support_candidates, key=lambda x: x[1])
+                        buy_price = best_support
+                        strategy_suffix = best_label
+                    else:
+                        buy_price = ma20 if ma20 > 0 else current_price
+                        strategy_suffix = "MA20"
+                    # 목표: 최근 고점 복귀
+                    if nearest_resistance and nearest_resistance > current_price:
+                        target_price = nearest_resistance
+                    elif bb_upper > 0 and bb_upper > current_price:
+                        target_price = bb_upper
+                    else:
+                        target_price = buy_price + (2.0 * atr) if atr > 0 else buy_price * 1.08
+                    # 손절
+                    supports_below = [l for l in swing_lows if l < buy_price]
+                    struct_stop = max(supports_below) * 0.99 if supports_below else buy_price * 0.95
+                    atr_stop = buy_price - (2.0 * atr) if atr > 0 else buy_price * 0.95
+                    stop_loss = max(atr_stop, struct_stop)
+                    if stop_loss > buy_price * 0.98:
+                        stop_loss = buy_price * 0.98
+                    if stop_loss >= buy_price:
+                        stop_loss = buy_price * 0.95
+                    target_price, stop_loss = self._validate_risk_reward(
+                        buy_price, target_price, stop_loss, atr, swing_highs)
+                    strategy = f"📊 풀백매수({strategy_suffix})"
+
+                # --- Tier 3C: 📦 박스권하단 (횡보장 지지선 매수) ---
+                elif sideways or (not uptrend and not weak):
+                    support_candidates = []
+                    if bb_lower > 0 and bb_lower < current_price:
+                        support_candidates.append(('BB하단', bb_lower))
+                    if nearest_support and nearest_support < current_price:
+                        support_candidates.append(('스윙저점', nearest_support))
+                    if ma50 > 0 and ma50 < current_price:
+                        support_candidates.append(('MA50', ma50))
+                    if support_candidates:
+                        best_label, best_support = max(support_candidates, key=lambda x: x[1])
+                        buy_price = best_support
+                        strategy_suffix = best_label
+                    else:
+                        buy_price = current_price * 0.97
+                        strategy_suffix = "지지선"
+                    # 목표: 박스 상단 (BB상단 or 스윙고점)
+                    if nearest_resistance and nearest_resistance > current_price:
+                        target_price = nearest_resistance
+                    elif bb_upper > 0 and bb_upper > current_price:
+                        target_price = bb_upper
+                    else:
+                        target_price = buy_price + (1.5 * atr) if atr > 0 else buy_price * 1.06
+                    # 손절: 박스 하단 이탈
+                    supports_below = [l for l in swing_lows if l < buy_price]
+                    struct_stop = max(supports_below) * 0.99 if supports_below else buy_price * 0.95
+                    atr_stop = buy_price - (2.0 * atr) if atr > 0 else buy_price * 0.95
+                    stop_loss = max(atr_stop, struct_stop)
+                    if stop_loss > buy_price * 0.98:
+                        stop_loss = buy_price * 0.98
+                    if stop_loss >= buy_price:
+                        stop_loss = buy_price * 0.95
+                    target_price, stop_loss = self._validate_risk_reward(
+                        buy_price, target_price, stop_loss, atr, swing_highs)
+                    strategy = f"📦 박스권하단({strategy_suffix})"
+
+                # --- Tier 3D: 🔄 반등대기 (약세, 확인 후 진입) ---
                 else:
-                    target_price = buy_price + (2.0 * atr) if atr > 0 else buy_price * 1.08
-
-                # 손절: 매수가 아래 스윙 저점 -1% 또는 2×ATR
-                supports_below = [l for l in swing_lows if l < buy_price]
-                struct_stop = max(supports_below) * 0.99 if supports_below else buy_price * 0.95
-                atr_stop = buy_price - (2.0 * atr) if atr > 0 else buy_price * 0.95
-                stop_loss = max(atr_stop, struct_stop)
-                if stop_loss > buy_price * 0.98:
-                    stop_loss = buy_price * 0.98
-                if stop_loss >= buy_price:
-                    stop_loss = buy_price * 0.95
-
-                target_price, stop_loss = self._validate_risk_reward(
-                    buy_price, target_price, stop_loss, atr, swing_highs)
-
-                strategy = f"📊 풀백매수({strategy_suffix})"
+                    # 강한 지지선에서만 진입
+                    support_candidates = []
+                    if nearest_support and nearest_support < current_price:
+                        support_candidates.append(('스윙저점', nearest_support))
+                    if ma200 > 0 and ma200 < current_price:
+                        support_candidates.append(('MA200', ma200))
+                    if bb_lower > 0 and bb_lower < current_price:
+                        support_candidates.append(('BB하단', bb_lower))
+                    if support_candidates:
+                        best_label, best_support = max(support_candidates, key=lambda x: x[1])
+                        buy_price = best_support
+                        strategy_suffix = best_label
+                    else:
+                        buy_price = current_price * 0.95
+                        strategy_suffix = "지지확인"
+                    # 목표: 보수적 (MA50 복귀 or 1.5×ATR)
+                    if ma50 > 0 and ma50 > current_price:
+                        target_price = ma50
+                    elif nearest_resistance and nearest_resistance > current_price:
+                        target_price = nearest_resistance
+                    else:
+                        target_price = buy_price + (1.5 * atr) if atr > 0 else buy_price * 1.06
+                    # 손절: 타이트하게
+                    supports_below = [l for l in swing_lows if l < buy_price]
+                    struct_stop = max(supports_below) * 0.99 if supports_below else buy_price * 0.95
+                    atr_stop = buy_price - (1.5 * atr) if atr > 0 else buy_price * 0.95
+                    stop_loss = max(atr_stop, struct_stop)
+                    if stop_loss > buy_price * 0.97:
+                        stop_loss = buy_price * 0.97
+                    if stop_loss >= buy_price:
+                        stop_loss = buy_price * 0.95
+                    target_price, stop_loss = self._validate_risk_reward(
+                        buy_price, target_price, stop_loss, atr, swing_highs)
+                    strategy = f"🔄 반등대기({strategy_suffix})"
 
             return buy_price, target_price, stop_loss, strategy
 
