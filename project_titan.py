@@ -1611,8 +1611,14 @@ class TitanAnalyzer:
                     result['liquidity_tier'] = liq_tier
                     result['daily_trading_value'] = daily_value
 
-                    # 조정된 점수로 총점 재계산 (거래대금 보너스 포함)
-                    total_score_adjusted = fund_adjusted + tech_adjusted + result['contrarian_adjustment'] + liq_bonus
+                    # 모드별 펀더멘털/기술적 가중치 적용
+                    if self.analysis_mode == 'value':
+                        fund_w, tech_w = 1.3, 0.7   # 가치주: 펀더 65 : 기술 35
+                    else:
+                        fund_w, tech_w = 0.8, 1.2    # 성장주: 펀더 40 : 기술 60
+
+                    # 조정된 점수로 총점 재계산 (가중치 + 거래대금 보너스 포함)
+                    total_score_adjusted = round(fund_adjusted * fund_w + tech_adjusted * tech_w) + result['contrarian_adjustment'] + liq_bonus
 
                     # 결과에 시장 상태 정보 추가
                     result['market_regime'] = market_regime
@@ -3200,7 +3206,7 @@ if __name__ == "__main__":
                 tickers=VALUE_TICKERS,
                 report_type="Value Stocks",
                 html_filename="value_report.html",
-                min_score=75,
+                min_score=85,
                 skip_stage1=True,
             )
         elif mode == "portfolio":
