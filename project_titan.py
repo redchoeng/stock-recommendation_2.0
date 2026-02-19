@@ -4,6 +4,7 @@ Project Titan - US Stock Decision Support System
 Advanced 2-Stage Filtering Analysis for NASDAQ 100, Value Stocks, and S&P 500
 """
 
+import os
 import yfinance as yf
 import pandas as pd
 import time
@@ -2466,6 +2467,199 @@ setInterval(() => {{
             f.write(html)
         print(f"📊 포트폴리오 페이지 생성: {filename} (Growth {len(top_growth)}개 + Value {len(top_value)}개)")
 
+    def generate_changelog_html(self, md_file="CHANGELOG.md", filename="changelog.html"):
+        """CHANGELOG.md → changelog.html 변환 (카와이 스타일)"""
+        import re
+
+        md_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), md_file)
+        if not os.path.exists(md_path):
+            print(f"⚠️ {md_file} 없음 - changelog 생성 스킵")
+            return
+
+        with open(md_path, 'r', encoding='utf-8') as f:
+            md_content = f.read()
+
+        # 마크다운 → HTML 변환
+        sections_html = ""
+        current_version = ""
+        current_subtitle = ""
+        current_items = []
+
+        # 버전별 색상 매핑
+        version_colors = ['#E74C3C', '#E67E22', '#F1C40F', '#2ECC71', '#3498DB', '#9B59B6', '#1ABC9C', '#E91E63']
+        color_idx = 0
+
+        for line in md_content.split('\n'):
+            line = line.rstrip()
+
+            if line.startswith('## '):
+                # 이전 버전 섹션 마무리
+                if current_version:
+                    color = version_colors[color_idx % len(version_colors)]
+                    color_idx += 1
+                    items_html = ""
+                    for item in current_items:
+                        # **bold** 처리
+                        item = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', item)
+                        items_html += f'<li>{item}</li>\n'
+                    sections_html += f'''
+        <div class="version-card" style="border-left-color: {color};">
+            <div class="version-header">
+                <span class="version-tag" style="background: {color};">{current_version}</span>
+                <span class="version-subtitle">{current_subtitle}</span>
+            </div>
+            <ul class="change-list">{items_html}</ul>
+        </div>'''
+                    current_items = []
+
+                # 새 버전 파싱: ## v2.4.0 (2026-02-19)
+                match = re.match(r'##\s+(.+?)(?:\s+\(.+?\))?\s*$', line)
+                if match:
+                    current_version = match.group(1).strip()
+                current_subtitle = ""
+
+            elif line.startswith('### '):
+                current_subtitle = line[4:].strip()
+
+            elif line.startswith('- '):
+                item = line[2:].strip()
+                current_items.append(item)
+
+            elif line.startswith('  - '):
+                item = line[4:].strip()
+                current_items.append(f'&nbsp;&nbsp;&nbsp;&nbsp;{item}')
+
+        # 마지막 버전
+        if current_version:
+            color = version_colors[color_idx % len(version_colors)]
+            items_html = ""
+            for item in current_items:
+                item = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', item)
+                items_html += f'<li>{item}</li>\n'
+            sections_html += f'''
+        <div class="version-card" style="border-left-color: {color};">
+            <div class="version-header">
+                <span class="version-tag" style="background: {color};">{current_version}</span>
+                <span class="version-subtitle">{current_subtitle}</span>
+            </div>
+            <ul class="change-list">{items_html}</ul>
+        </div>'''
+
+        html = f'''<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patch Notes - Titan v2.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* {{ margin:0; padding:0; box-sizing:border-box; }}
+body {{
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
+    background-attachment: fixed;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}}
+.cloud {{ position:fixed; background:white; border-radius:50px; opacity:0.9; animation:float 20s infinite ease-in-out; z-index:0; }}
+.cloud::before,.cloud::after {{ content:''; position:absolute; background:white; border-radius:50%; }}
+.cloud-1 {{ width:100px; height:40px; top:8%; left:-100px; }}
+.cloud-1::before {{ width:50px; height:50px; top:-25px; left:15px; }}
+.cloud-1::after {{ width:35px; height:35px; top:-15px; left:55px; }}
+.cloud-2 {{ width:120px; height:45px; top:15%; left:-120px; animation-delay:-7s; }}
+.cloud-2::before {{ width:55px; height:55px; top:-30px; left:20px; }}
+.cloud-2::after {{ width:40px; height:40px; top:-18px; left:65px; }}
+@keyframes float {{ 0%{{transform:translateX(0)}} 100%{{transform:translateX(calc(100vw + 200px))}} }}
+.sparkle {{ position:fixed; width:10px; height:10px; background:#FFD700; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation:sparkle 2s infinite; z-index:1; }}
+@keyframes sparkle {{ 0%,100%{{opacity:0;transform:scale(0)}} 50%{{opacity:1;transform:scale(1)}} }}
+.container {{ position:relative; z-index:10; max-width:800px; margin:0 auto; padding-top:20px; }}
+.back-link {{ display:inline-block; color:#5D4E37; text-decoration:none; font-weight:bold; margin-bottom:15px; padding:8px 20px; background:rgba(255,255,255,0.8); border-radius:20px; border:2px solid #C4A35A; }}
+.back-link:hover {{ background:white; }}
+.header-bubble {{ background:white; border-radius:30px; padding:25px 30px; margin-bottom:25px; box-shadow:0 8px 0 #E74C3C, 0 12px 20px rgba(0,0,0,0.15); border:4px solid #5D4E37; text-align:center; }}
+.emoji-icon {{ font-size:3em; margin-bottom:8px; animation:bounce 2s infinite; }}
+@keyframes bounce {{ 0%,100%{{transform:translateY(0)}} 50%{{transform:translateY(-10px)}} }}
+h1 {{ color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #FADBD8; }}
+.subtitle {{ color:#7B6B4F; font-size:0.95em; }}
+
+.version-card {{
+    background: white;
+    border-radius: 16px;
+    padding: 20px 25px;
+    margin-bottom: 18px;
+    border: 3px solid #5D4E37;
+    border-left: 8px solid #E74C3C;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}}
+.version-card:hover {{ transform: translateX(5px); }}
+.version-header {{ display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap; }}
+.version-tag {{
+    display:inline-block; padding:5px 16px; border-radius:20px;
+    color:white; font-weight:900; font-size:0.95em;
+    border:2px solid #5D4E37; box-shadow:0 2px 0 rgba(0,0,0,0.15);
+}}
+.version-subtitle {{ color:#5D4E37; font-weight:700; font-size:1.05em; }}
+.change-list {{ list-style:none; padding:0; }}
+.change-list li {{
+    color:#555; font-size:0.9em; line-height:1.7;
+    padding:3px 0 3px 20px; position:relative;
+}}
+.change-list li::before {{
+    content:''; position:absolute; left:0; top:11px;
+    width:8px; height:8px; border-radius:50%; background:#C4A35A;
+}}
+.change-list li strong {{ color:#5D4E37; }}
+
+.footer {{ background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; margin-top:10px; }}
+@media (max-width:768px) {{
+    h1 {{ font-size:1.4em; }}
+    .version-card {{ padding:15px; }}
+}}
+</style>
+</head>
+<body>
+<div class="cloud cloud-1"></div>
+<div class="cloud cloud-2"></div>
+<div class="sparkle" style="top:20%;left:15%"></div>
+<div class="sparkle" style="top:50%;right:20%;animation-delay:0.5s"></div>
+<div class="sparkle" style="top:75%;left:10%;animation-delay:1s"></div>
+
+<div class="container">
+    <a href="index.html" class="back-link">&larr; 메인으로</a>
+
+    <div class="header-bubble">
+        <div class="emoji-icon">📋</div>
+        <h1>Patch Notes</h1>
+        <p class="subtitle">PROJECT TITAN 버전 히스토리</p>
+    </div>
+
+    {sections_html}
+
+    <div class="footer">
+        <p>Powered by Titan v2.0 | CHANGELOG.md 기반 자동 생성</p>
+    </div>
+</div>
+
+<script>
+setInterval(() => {{
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.top = Math.random()*100+'%';
+    s.style.left = Math.random()*100+'%';
+    s.style.animationDelay = Math.random()*2+'s';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 4000);
+}}, 1200);
+</script>
+</body>
+</html>'''
+
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(html)
+        print(f"📋 패치노트 생성: {filename}")
+
     def run_ml_predictions(self, results, ml_min_score):
         """ML 예측 실행 (특정 점수 이상 종목만)"""
         try:
@@ -2607,11 +2801,13 @@ if __name__ == "__main__":
             )
         elif mode == "portfolio":
             analyzer.generate_portfolio_html(filename="portfolio.html")
+        elif mode == "changelog":
+            analyzer.generate_changelog_html()
         elif mode == "sp500":
             analyzer.run_full_analysis()
         else:
             print(f"❌ 알 수 없는 모드: {mode}")
-            print("사용법: python project_titan.py [growth|value|portfolio|sp500]")
+            print("사용법: python project_titan.py [growth|value|portfolio|changelog|sp500]")
     else:
         # 기본: S&P 500 전체 분석
         analyzer.run_full_analysis()

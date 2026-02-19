@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patch Notes - Titan v2.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
+    background-attachment: fixed;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+.cloud { position:fixed; background:white; border-radius:50px; opacity:0.9; animation:float 20s infinite ease-in-out; z-index:0; }
+.cloud::before,.cloud::after { content:''; position:absolute; background:white; border-radius:50%; }
+.cloud-1 { width:100px; height:40px; top:8%; left:-100px; }
+.cloud-1::before { width:50px; height:50px; top:-25px; left:15px; }
+.cloud-1::after { width:35px; height:35px; top:-15px; left:55px; }
+.cloud-2 { width:120px; height:45px; top:15%; left:-120px; animation-delay:-7s; }
+.cloud-2::before { width:55px; height:55px; top:-30px; left:20px; }
+.cloud-2::after { width:40px; height:40px; top:-18px; left:65px; }
+@keyframes float { 0%{transform:translateX(0)} 100%{transform:translateX(calc(100vw + 200px))} }
+.sparkle { position:fixed; width:10px; height:10px; background:#FFD700; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation:sparkle 2s infinite; z-index:1; }
+@keyframes sparkle { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:1;transform:scale(1)} }
+.container { position:relative; z-index:10; max-width:800px; margin:0 auto; padding-top:20px; }
+.back-link { display:inline-block; color:#5D4E37; text-decoration:none; font-weight:bold; margin-bottom:15px; padding:8px 20px; background:rgba(255,255,255,0.8); border-radius:20px; border:2px solid #C4A35A; }
+.back-link:hover { background:white; }
+.header-bubble { background:white; border-radius:30px; padding:25px 30px; margin-bottom:25px; box-shadow:0 8px 0 #E74C3C, 0 12px 20px rgba(0,0,0,0.15); border:4px solid #5D4E37; text-align:center; }
+.emoji-icon { font-size:3em; margin-bottom:8px; animation:bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+h1 { color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #FADBD8; }
+.subtitle { color:#7B6B4F; font-size:0.95em; }
+
+.version-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 25px;
+    margin-bottom: 18px;
+    border: 3px solid #5D4E37;
+    border-left: 8px solid #E74C3C;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+.version-card:hover { transform: translateX(5px); }
+.version-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+.version-tag {
+    display:inline-block; padding:5px 16px; border-radius:20px;
+    color:white; font-weight:900; font-size:0.95em;
+    border:2px solid #5D4E37; box-shadow:0 2px 0 rgba(0,0,0,0.15);
+}
+.version-subtitle { color:#5D4E37; font-weight:700; font-size:1.05em; }
+.change-list { list-style:none; padding:0; }
+.change-list li {
+    color:#555; font-size:0.9em; line-height:1.7;
+    padding:3px 0 3px 20px; position:relative;
+}
+.change-list li::before {
+    content:''; position:absolute; left:0; top:11px;
+    width:8px; height:8px; border-radius:50%; background:#C4A35A;
+}
+.change-list li strong { color:#5D4E37; }
+
+.footer { background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; margin-top:10px; }
+@media (max-width:768px) {
+    h1 { font-size:1.4em; }
+    .version-card { padding:15px; }
+}
+</style>
+</head>
+<body>
+<div class="cloud cloud-1"></div>
+<div class="cloud cloud-2"></div>
+<div class="sparkle" style="top:20%;left:15%"></div>
+<div class="sparkle" style="top:50%;right:20%;animation-delay:0.5s"></div>
+<div class="sparkle" style="top:75%;left:10%;animation-delay:1s"></div>
+
+<div class="container">
+    <a href="index.html" class="back-link">&larr; 메인으로</a>
+
+    <div class="header-bubble">
+        <div class="emoji-icon">📋</div>
+        <h1>Patch Notes</h1>
+        <p class="subtitle">PROJECT TITAN 버전 히스토리</p>
+    </div>
+
+    
+        <div class="version-card" style="border-left-color: #E74C3C;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #E74C3C;">v2.4.0</span>
+                <span class="version-subtitle">Portfolio Builder & AI 예측 제거</span>
+            </div>
+            <ul class="change-list"><li><strong>Portfolio Builder 페이지 추가</strong>: 시드머니 입력 → Growth/Value 자동 배분, 종목별 금액/주수 계산</li>
+<li>Growth/Value 비율 슬라이더 (기본 60:40, 실시간 조절)</li>
+<li>유동성 등급 기반 종목 선정 (Hot/Active/Normal/Thin)</li>
+<li><strong>AI 예측 칸 제거</strong>: 리포트에서 ML 예측/신뢰도 표시 삭제, 분석 파이프라인 간소화</li>
+<li><strong>시장 상태 표시 수정</strong>: 프리마켓 시간에 "폐장"으로 뜨던 고질적 버그 해결</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;시간 기반 라벨 결정 (가격 유무와 무관하게 정확한 상태 표시)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;주말 체크 추가, history fallback 강화 (period=5d)</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #E67E22;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #E67E22;">v2.3.0</span>
+                <span class="version-subtitle">거래대금 유동성 티어 시스템</span>
+            </div>
+            <ul class="change-list"><li>시총 보너스 → <strong>거래대금(avg_volume × price) 기반 티어</strong>로 변경</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Hot ($1B+/일): +5점</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Active ($300M~$1B): +3점</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Normal ($100M~$300M): +0점</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;Thin (<$100M): -3점</li>
+<li>실제 매수세/유동성을 더 정확히 반영</li>
+<li>ML 포트폴리오 시스템 Git 추적 시작 (ml_predictor.py, run_ml_portfolio.py)</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #F1C40F;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #F1C40F;">v2.2.0</span>
+                <span class="version-subtitle">그래디언트 스코어링</span>
+            </div>
+            <ul class="change-list"><li>하드 커트오프 → <strong>선형 보간법</strong> 채점으로 전환</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;ROE 15%→15점, 10%→10점 같은 연속적 점수 부여</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;경계값 부근 종목의 점수가 더 공정하게 산출</li>
+<li>시장 상태 표시 개선: 폐장 시간에도 항상 "정규장"으로 뜨던 버그 수정</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #2ECC71;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #2ECC71;">v2.1.0</span>
+                <span class="version-subtitle">트럼프 정책 보너스 & 섹터 정밀화</span>
+            </div>
+            <ul class="change-list"><li><strong>트럼프 정책 섹터 보너스</strong> 추가: 국방비증액, 에너지정책, 리쇼어링/관세 수혜</li>
+<li><strong>섹터별 차등 기준</strong> 도입</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;섹터별 OPM 임계값 (금융 15%, 반도체 25%, 소프트웨어 20% 등)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;섹터별 ROE 임계값 및 매출성장률 기준</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;반도체 슈퍼사이클 보너스 (매출성장 25%+)</li>
+<li>점수 체계 시각화 페이지 (scoring_system.html)</li>
+<li>기업명 표시 추가 (티커 옆에 풀네임)</li>
+<li>GitHub Actions Python 호환성 수정 (이모지, f-string, UTF-8)</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #3498DB;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #3498DB;">v2.0.0</span>
+                <span class="version-subtitle">Titan v2.0 엔진 & 가치주 확장</span>
+            </div>
+            <ul class="change-list"><li><strong>Growth/Value 분리 분석</strong>: 별도 티커 리스트, 별도 섹터 점수 체계</li>
+<li><strong>ML 예측기 통합</strong> (로컬 전용): XGBoost + LSTM 앙상블</li>
+<li>가치주 섹터 점수 체계 추가 (배당, 안정성 가중)</li>
+<li>매출성장률 표시 추가</li>
+<li>.gitignore: ML 관련 파일 분리 관리</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #9B59B6;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #9B59B6;">v1.5.0</span>
+                <span class="version-subtitle">전문가급 기술적 분석 시스템</span>
+            </div>
+            <ul class="change-list"><li><strong>마켓 레짐 감지</strong>: S&P500 기반 상승장/하락장/횡보장 판단</li>
+<li><strong>트렌드 필터링</strong>: 하락 추세 종목 고점수 방지</li>
+<li><strong>종합 점수 체계 재설계</strong> (Phase 1~3)</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;펀더멘털 50점 + 기술적 50점 = 100점 만점</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;하이브리드 역발상 전략: 과매도 우량주 보너스, 과열주 감점</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;스마트 진입/청산 전략 (3단계: 즉시매수/MA20풀백/조정대기)</li>
+<li>데이터 기간 1년으로 확장 (전문 기술 분석용)</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #1ABC9C;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #1ABC9C;">v1.2.0</span>
+                <span class="version-subtitle">상세 분석 & UI 개선</span>
+            </div>
+            <ul class="change-list"><li><strong>점수 상세 분석 브레이크다운</strong>: 각 항목별 점수 시각화</li>
+<li><strong>시간대별 가격 표시</strong>: 프리마켓/정규장/애프터장 구분</li>
+<li>메인 페이지 (index.html) Titan v2.0 디자인 적용</li>
+<li>5분마다 자동 새로고침</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #E91E63;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #E91E63;">v1.1.0</span>
+                <span class="version-subtitle">섹터 분류 & 종목 확장</span>
+            </div>
+            <ul class="change-list"><li><strong>섹터 상세 분류</strong>: AI/반도체, 클라우드, 사이버보안, 국방/항공 등</li>
+<li>VALUE 티커 195종목으로 확장 (S&P 500 가치주 유니버스)</li>
+<li>전략 섹터 추가: 국방, 원자력, 희토류</li>
+<li>TER, NET, SYM 등 개별 종목 추가</li>
+</ul>
+        </div>
+        <div class="version-card" style="border-left-color: #E74C3C;">
+            <div class="version-header">
+                <span class="version-tag" style="background: #E74C3C;">v1.0.0</span>
+                <span class="version-subtitle">초기 릴리스</span>
+            </div>
+            <ul class="change-list"><li>S&P 500 기반 주식 추천 대시보드</li>
+<li>GitHub Actions 자동 배포 (9회/일)</li>
+<li>기본 펀더멘털 스크리닝 (시가총액, 거래량, 가격)</li>
+<li>배당수익률 계산 수정</li>
+<li>카와이 UI 테마 (구름 애니메이션, 반짝이 효과)</li>
+</ul>
+        </div>
+
+    <div class="footer">
+        <p>Powered by Titan v2.0 | CHANGELOG.md 기반 자동 생성</p>
+    </div>
+</div>
+
+<script>
+setInterval(() => {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.top = Math.random()*100+'%';
+    s.style.left = Math.random()*100+'%';
+    s.style.animationDelay = Math.random()*2+'s';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 4000);
+}, 1200);
+</script>
+</body>
+</html>

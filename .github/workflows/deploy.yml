@@ -80,6 +80,10 @@ jobs:
         run: |
           python project_titan.py portfolio
 
+      - name: Generate Changelog Page
+        run: |
+          python project_titan.py changelog
+
       - name: Commit and Push
         run: |
           git config --local user.email "action@github.com"
