@@ -1,0 +1,3 @@
+// Supabase 설정
+const SUPABASE_URL = 'https://fmahmnrtwxwoppxgzyas.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtYWhtbnJ0d3h3b3BweGd6eWFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE0OTc1OTYsImV4cCI6MjA4NzA3MzU5Nn0.HNOwNVRi0lwLFZLqc7m_QSrHePUfwTAAl-n8fGmhqCE';

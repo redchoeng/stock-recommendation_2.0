@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자산 관리 - Titan Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
+    background-attachment: fixed;
+    padding: 20px;
+    overflow-x: hidden;
+}
+.cloud { position:fixed; background:white; border-radius:50px; opacity:0.9; animation:float 20s infinite ease-in-out; z-index:0; }
+.cloud::before,.cloud::after { content:''; position:absolute; background:white; border-radius:50%; }
+.cloud-1 { width:100px; height:40px; top:8%; left:-100px; }
+.cloud-1::before { width:50px; height:50px; top:-25px; left:15px; }
+.cloud-1::after { width:35px; height:35px; top:-15px; left:55px; }
+@keyframes float { 0%{transform:translateX(0)} 100%{transform:translateX(calc(100vw + 200px))} }
+
+.container { position:relative; z-index:10; max-width:800px; margin:0 auto; }
+.back-link { display:inline-block; color:#5D4E37; text-decoration:none; font-weight:bold; margin-bottom:15px; padding:8px 20px; background:rgba(255,255,255,0.8); border-radius:20px; border:2px solid #C4A35A; }
+.header-bubble { background:white; border-radius:30px; padding:25px 30px; margin-bottom:25px; box-shadow:0 8px 0 #8E44AD, 0 12px 20px rgba(0,0,0,0.15); border:4px solid #5D4E37; text-align:center; }
+.emoji-icon { font-size:2.5em; margin-bottom:5px; }
+h1 { color:#5D4E37; font-size:1.6em; margin-bottom:5px; }
+
+/* Tabs */
+.tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tab {
+    padding:10px 24px; border:3px solid #5D4E37; border-radius:20px;
+    background:white; cursor:pointer; font-weight:700; font-family:inherit;
+    color:#5D4E37; transition:all 0.2s; font-size:0.95em;
+}
+.tab.active { background:#8E44AD; color:white; }
+.tab:hover:not(.active) { background:#f0e0ff; }
+
+/* Form */
+.form-card {
+    background:white; border-radius:20px; padding:25px;
+    border:4px solid #5D4E37; box-shadow:0 6px 0 rgba(0,0,0,0.08);
+    margin-bottom:25px;
+}
+.form-card h2 { color:#5D4E37; font-size:1.1em; margin-bottom:15px; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.form-group { display:flex; flex-direction:column; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { color:#5D4E37; font-weight:700; font-size:0.85em; margin-bottom:4px; }
+.form-group input, .form-group select {
+    padding:10px 14px; border:3px solid #ddd; border-radius:12px;
+    font-size:1em; font-family:inherit; background:#FAFAFA;
+}
+.form-group input:focus, .form-group select:focus { outline:none; border-color:#8E44AD; box-shadow:0 0 8px rgba(142,68,173,0.2); }
+.form-group input[readonly] { background:#f0f0f0; color:#555; }
+
+/* Ticker lookup row */
+.input-with-btn { display:flex; gap:8px; }
+.input-with-btn input { flex:1; }
+.btn-lookup {
+    padding:10px 18px; background:#3498DB; color:white; border:3px solid #5D4E37;
+    border-radius:12px; font-weight:700; cursor:pointer; font-family:inherit;
+    font-size:0.9em; white-space:nowrap; transition:all 0.2s;
+    box-shadow:0 3px 0 #2980B9;
+}
+.btn-lookup:hover { transform:translateY(-1px); }
+.btn-lookup:disabled { background:#aaa; box-shadow:0 3px 0 #888; cursor:wait; }
+
+/* Stock info card */
+.stock-info {
+    display:none; background:#F0FFF0; border:2px solid #27AE60; border-radius:12px;
+    padding:12px 16px; margin-bottom:12px; grid-column:1/-1;
+}
+.stock-info.active { display:flex; align-items:center; gap:15px; flex-wrap:wrap; }
+.stock-info .ticker-badge {
+    background:#27AE60; color:white; padding:6px 14px; border-radius:20px;
+    font-weight:900; font-size:1.1em;
+}
+.stock-info .name-text { color:#5D4E37; font-weight:700; flex:1; }
+.stock-info .price-text { color:#27AE60; font-weight:900; font-size:1.3em; }
+
+/* ETF select */
+.etf-select {
+    padding:10px 14px; border:3px solid #ddd; border-radius:12px;
+    font-size:1em; font-family:inherit; background:#FAFAFA; width:100%;
+    cursor:pointer;
+}
+.etf-select:focus { outline:none; border-color:#8E44AD; }
+
+.btn-add {
+    width:100%; padding:14px; margin-top:15px;
+    background:#8E44AD; color:white; border:3px solid #5D4E37;
+    border-radius:15px; font-size:1em; font-weight:700; cursor:pointer;
+    box-shadow:0 4px 0 #6C3483; font-family:inherit; transition:all 0.2s;
+}
+.btn-add:hover { transform:translateY(-2px); }
+
+/* Settings Section */
+.settings-card {
+    background:white; border-radius:20px; padding:25px;
+    border:4px solid #5D4E37; box-shadow:0 6px 0 rgba(0,0,0,0.08);
+    margin-bottom:25px;
+}
+.settings-card h2 { color:#5D4E37; font-size:1.1em; margin-bottom:15px; }
+.target-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.target-row label { width:80px; font-weight:700; color:#5D4E37; font-size:0.9em; }
+.target-row input { width:80px; padding:8px; border:3px solid #ddd; border-radius:10px; text-align:center; font-family:inherit; }
+.target-row span { color:#7B6B4F; font-size:0.85em; }
+.btn-save-target {
+    padding:10px 24px; background:#27AE60; color:white; border:3px solid #5D4E37;
+    border-radius:12px; font-weight:700; cursor:pointer; font-family:inherit;
+    box-shadow:0 3px 0 #1E8449; margin-top:10px;
+}
+.target-sum { margin-top:10px; font-weight:700; font-size:0.9em; }
+.target-sum.ok { color:#27AE60; }
+.target-sum.bad { color:#E74C3C; }
+
+/* Snapshot Section */
+.snapshot-card {
+    background:white; border-radius:20px; padding:25px;
+    border:4px solid #5D4E37; box-shadow:0 6px 0 rgba(0,0,0,0.08);
+    margin-bottom:25px;
+}
+.snapshot-card h2 { color:#5D4E37; font-size:1.1em; margin-bottom:15px; }
+.btn-snapshot {
+    padding:14px 30px; background:#E67E22; color:white; border:3px solid #5D4E37;
+    border-radius:15px; font-weight:700; cursor:pointer; font-family:inherit;
+    box-shadow:0 4px 0 #CA6F1E; font-size:1em;
+}
+
+.message { padding:10px 15px; border-radius:10px; font-size:0.9em; margin-top:10px; display:none; }
+.message.success { display:block; background:#D5F5E3; color:#27AE60; border:2px solid #27AE60; }
+.message.error { display:block; background:#FDEDEC; color:#E74C3C; border:2px solid #E74C3C; }
+
+.footer { background:rgba(255,255,255,0.7); border-radius:15px; padding:15px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; }
+
+@media (max-width:768px) {
+    .form-grid { grid-template-columns:1fr; }
+    .stock-info.active { flex-direction:column; text-align:center; }
+}
+</style>
+</head>
+<body>
+<div class="cloud cloud-1"></div>
+
+<div class="container">
+    <a href="dashboard.html" class="back-link">&larr; 대시보드</a>
+
+    <div class="header-bubble">
+        <div class="emoji-icon">💼</div>
+        <h1>자산 관리</h1>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('stock')">주식</button>
+        <button class="tab" onclick="switchTab('etf')">ETF/지수</button>
+        <button class="tab" onclick="switchTab('deposit')">예금/현금</button>
+        <button class="tab" onclick="switchTab('settings')">목표 설정</button>
+        <button class="tab" onclick="switchTab('snapshot')">월말 스냅샷</button>
+    </div>
+
+    <!-- Stock Form -->
+    <div class="form-card" id="form-stock">
+        <h2>개별주식 추가</h2>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>티커 입력 후 조회</label>
+                <div class="input-with-btn">
+                    <input type="text" id="s_ticker" placeholder="NVDA, AAPL, MSFT..." style="text-transform:uppercase">
+                    <button class="btn-lookup" id="s_lookup_btn" onclick="lookupStock()">조회</button>
+                </div>
+            </div>
+            <div class="stock-info" id="s_info">
+                <span class="ticker-badge" id="s_info_ticker">-</span>
+                <span class="name-text" id="s_info_name">-</span>
+                <span class="price-text" id="s_info_price">-</span>
+            </div>
+            <div class="form-group">
+                <label>주수</label>
+                <input type="number" id="s_shares" placeholder="10" step="0.01">
+            </div>
+            <div class="form-group">
+                <label>매수 평단가 ($)</label>
+                <input type="number" id="s_price" placeholder="현재가로 자동 입력" step="0.01">
+            </div>
+            <div class="form-group full">
+                <label>메모 (선택)</label>
+                <input type="text" id="s_note" placeholder="자동 입력됩니다">
+            </div>
+        </div>
+        <button class="btn-add" onclick="addStock()">주식 추가</button>
+        <div class="message" id="msg-stock"></div>
+    </div>
+
+    <!-- ETF Form -->
+    <div class="form-card" id="form-etf" style="display:none">
+        <h2>ETF/지수펀드 추가</h2>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>인기 ETF 선택</label>
+                <select class="etf-select" id="e_select" onchange="selectEtf()">
+                    <option value="">-- 목록에서 선택하거나 아래 티커 직접 입력 --</option>
+                    <optgroup label="미국 대형 지수">
+                        <option value="SPY">SPY - SPDR S&P 500 (비용 0.09%)</option>
+                        <option value="QQQ">QQQ - Invesco Nasdaq 100 (비용 0.20%)</option>
+                        <option value="VOO">VOO - Vanguard S&P 500 (비용 0.03%)</option>
+                        <option value="VTI">VTI - Vanguard 전체 시장 (비용 0.03%)</option>
+                        <option value="IVV">IVV - iShares S&P 500 (비용 0.03%)</option>
+                    </optgroup>
+                    <optgroup label="배당 / 스타일">
+                        <option value="SCHD">SCHD - Schwab 배당주 (비용 0.06%)</option>
+                        <option value="VGT">VGT - Vanguard IT섹터 (비용 0.10%)</option>
+                        <option value="VUG">VUG - Vanguard 성장주 (비용 0.04%)</option>
+                        <option value="VTV">VTV - Vanguard 가치주 (비용 0.04%)</option>
+                        <option value="ARKK">ARKK - ARK Innovation (비용 0.75%)</option>
+                    </optgroup>
+                    <optgroup label="채권 / 원자재 / 신흥국">
+                        <option value="AGG">AGG - iShares 미국 채권 (비용 0.03%)</option>
+                        <option value="TLT">TLT - iShares 장기 국채 (비용 0.15%)</option>
+                        <option value="GLD">GLD - SPDR Gold (비용 0.40%)</option>
+                        <option value="EEM">EEM - iShares 신흥국 (비용 0.68%)</option>
+                        <option value="VWO">VWO - Vanguard 신흥국 (비용 0.08%)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group full">
+                <label>또는 티커 직접 입력</label>
+                <div class="input-with-btn">
+                    <input type="text" id="e_ticker" placeholder="ETF 티커 입력" style="text-transform:uppercase">
+                    <button class="btn-lookup" id="e_lookup_btn" onclick="lookupEtf()">조회</button>
+                </div>
+            </div>
+            <div class="stock-info" id="e_info">
+                <span class="ticker-badge" id="e_info_ticker" style="background:#E67E22">-</span>
+                <span class="name-text" id="e_info_name">-</span>
+                <span class="price-text" id="e_info_price" style="color:#E67E22">-</span>
+            </div>
+            <div class="form-group">
+                <label>주수</label>
+                <input type="number" id="e_shares" placeholder="20" step="0.01">
+            </div>
+            <div class="form-group">
+                <label>매수 평단가 ($)</label>
+                <input type="number" id="e_price" placeholder="현재가로 자동 입력" step="0.01">
+            </div>
+            <div class="form-group full">
+                <label>메모 (선택)</label>
+                <input type="text" id="e_note" placeholder="자동 입력됩니다">
+            </div>
+        </div>
+        <button class="btn-add" onclick="addEtf()">ETF 추가</button>
+        <div class="message" id="msg-etf"></div>
+    </div>
+
+    <!-- Deposit Form -->
+    <div class="form-card" id="form-deposit" style="display:none">
+        <h2>예금/현금 추가</h2>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label>예금명</label>
+                <input type="text" id="d_name" placeholder="카카오뱅크 정기예금">
+            </div>
+            <div class="form-group">
+                <label>금액 (₩ 원)</label>
+                <input type="text" id="d_amount" placeholder="5,000,000" oninput="formatWon(this)">
+            </div>
+            <div class="form-group">
+                <label>이자율 (%)</label>
+                <input type="number" id="d_rate" placeholder="3.5" step="0.01">
+            </div>
+            <div class="form-group">
+                <label>만기일 (선택)</label>
+                <input type="date" id="d_maturity">
+            </div>
+            <div class="form-group">
+                <label>메모 (선택)</label>
+                <input type="text" id="d_note" placeholder="1년 만기">
+            </div>
+        </div>
+        <button class="btn-add" onclick="addDeposit()">예금 추가</button>
+        <div class="message" id="msg-deposit"></div>
+    </div>
+
+    <!-- Settings -->
+    <div class="settings-card" id="form-settings" style="display:none">
+        <h2>목표 배분 비율 설정</h2>
+        <div class="target-row">
+            <label>주식</label>
+            <input type="number" id="t_stocks" value="40" min="0" max="100" onchange="checkTargetSum()"> <span>%</span>
+        </div>
+        <div class="target-row">
+            <label>ETF</label>
+            <input type="number" id="t_etf" value="40" min="0" max="100" onchange="checkTargetSum()"> <span>%</span>
+        </div>
+        <div class="target-row">
+            <label>예금</label>
+            <input type="number" id="t_cash" value="20" min="0" max="100" onchange="checkTargetSum()"> <span>%</span>
+        </div>
+        <div class="target-sum ok" id="targetSum">합계: 100%</div>
+        <button class="btn-save-target" onclick="saveTargets()">저장</button>
+        <div class="message" id="msg-settings"></div>
+    </div>
+
+    <!-- Snapshot -->
+    <div class="snapshot-card" id="form-snapshot" style="display:none">
+        <h2 id="snapshot-title">월말 스냅샷</h2>
+        <p style="color:#7B6B4F;margin-bottom:15px;">현재 자산 상태를 이번 달 스냅샷으로 저장합니다.<br>월별 자산 추이 그래프에 반영됩니다.</p>
+        <button class="btn-snapshot" onclick="saveSnapshot()">이번 달 스냅샷 저장</button>
+        <div class="message" id="msg-snapshot"></div>
+    </div>
+
+    <div class="footer">
+        <p>데이터는 Supabase에 안전하게 저장됩니다</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase_config.js"></script>
+<script>
+const { createClient } = supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUser = null;
+let usdKrw = 1450; // fallback
+
+// ===== 환율 조회 =====
+async function fetchExchangeRate() {
+    try {
+        const res = await fetch('https://open.er-api.com/v6/latest/USD');
+        if (res.ok) { const d = await res.json(); if (d.rates?.KRW) return d.rates.KRW; }
+    } catch(e) {}
+    try {
+        const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        if (res.ok) { const d = await res.json(); if (d.rates?.KRW) return d.rates.KRW; }
+    } catch(e) {}
+    return 1450;
+}
+
+// ===== 원화 입력 포맷 (콤마) =====
+function formatWon(el) {
+    let v = el.value.replace(/[^0-9]/g, '');
+    if (v) el.value = parseInt(v).toLocaleString('ko-KR');
+}
+
+function parseWon(str) {
+    return parseInt((str || '0').replace(/[^0-9]/g, '')) || 0;
+}
+
+// ===== ETF 정보 데이터 =====
+const ETF_INFO = {
+    'SPY':  { name:'SPDR S&P 500 ETF Trust',               desc:'S&P 500 추종, 비용비율 0.09%' },
+    'QQQ':  { name:'Invesco QQQ Trust',                     desc:'Nasdaq 100 추종, 비용비율 0.20%' },
+    'VOO':  { name:'Vanguard S&P 500 ETF',                  desc:'S&P 500 추종, 비용비율 0.03%' },
+    'VTI':  { name:'Vanguard Total Stock Market ETF',        desc:'미국 전체 시장, 비용비율 0.03%' },
+    'IVV':  { name:'iShares Core S&P 500 ETF',              desc:'S&P 500 추종, 비용비율 0.03%' },
+    'SCHD': { name:'Schwab U.S. Dividend Equity ETF',        desc:'미국 배당주, 비용비율 0.06%' },
+    'VGT':  { name:'Vanguard Information Technology ETF',    desc:'IT 섹터, 비용비율 0.10%' },
+    'VUG':  { name:'Vanguard Growth ETF',                    desc:'미국 성장주, 비용비율 0.04%' },
+    'VTV':  { name:'Vanguard Value ETF',                     desc:'미국 가치주, 비용비율 0.04%' },
+    'ARKK': { name:'ARK Innovation ETF',                     desc:'혁신 테마, 비용비율 0.75%' },
+    'AGG':  { name:'iShares Core U.S. Aggregate Bond ETF',   desc:'미국 종합 채권, 비용비율 0.03%' },
+    'TLT':  { name:'iShares 20+ Year Treasury Bond ETF',     desc:'장기 국채, 비용비율 0.15%' },
+    'GLD':  { name:'SPDR Gold Shares',                       desc:'금 현물, 비용비율 0.40%' },
+    'EEM':  { name:'iShares MSCI Emerging Markets ETF',      desc:'신흥국 주식, 비용비율 0.68%' },
+    'VWO':  { name:'Vanguard FTSE Emerging Markets ETF',     desc:'신흥국 주식, 비용비율 0.08%' }
+};
+
+// ===== Yahoo Finance 시세 조회 =====
+async function fetchQuote(ticker) {
+    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=5d&interval=1d`;
+
+    // 1차: corsproxy.io
+    try {
+        const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`);
+        if (res.ok) {
+            const data = await res.json();
+            const meta = data.chart.result[0].meta;
+            return { name: meta.shortName || meta.longName || ticker, price: meta.regularMarketPrice, prev: meta.previousClose };
+        }
+    } catch(e) {}
+
+    // 2차: allorigins
+    try {
+        const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+        if (res.ok) {
+            const wrap = await res.json();
+            const data = JSON.parse(wrap.contents);
+            const meta = data.chart.result[0].meta;
+            return { name: meta.shortName || meta.longName || ticker, price: meta.regularMarketPrice, prev: meta.previousClose };
+        }
+    } catch(e) {}
+
+    return null;
+}
+
+// ===== 주식 조회 =====
+async function lookupStock() {
+    const ticker = document.getElementById('s_ticker').value.trim().toUpperCase();
+    if (!ticker) { showMsg('msg-stock', '티커를 입력하세요', 'error'); return; }
+
+    const btn = document.getElementById('s_lookup_btn');
+    btn.disabled = true; btn.textContent = '조회중...';
+
+    const quote = await fetchQuote(ticker);
+    btn.disabled = false; btn.textContent = '조회';
+
+    if (!quote) {
+        showMsg('msg-stock', '시세를 불러올 수 없습니다. 직접 입력해주세요.', 'error');
+        document.getElementById('s_info').className = 'stock-info';
+        return;
+    }
+
+    // 정보 카드 표시
+    document.getElementById('s_info').className = 'stock-info active';
+    document.getElementById('s_info_ticker').textContent = ticker;
+    document.getElementById('s_info_name').textContent = quote.name;
+    document.getElementById('s_info_price').textContent = '$' + quote.price.toFixed(2);
+
+    // 자동 입력
+    document.getElementById('s_price').value = quote.price.toFixed(2);
+    document.getElementById('s_note').value = `현재가 $${quote.price.toFixed(2)}`;
+
+    // 숨겨둔 이름 저장
+    document.getElementById('s_ticker').dataset.name = quote.name;
+    document.getElementById('s_ticker').dataset.price = quote.price;
+}
+
+// Enter 키로 조회
+document.getElementById('s_ticker').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') lookupStock();
+});
+
+// ===== ETF 드롭다운 선택 =====
+async function selectEtf() {
+    const sel = document.getElementById('e_select').value;
+    if (!sel) return;
+
+    document.getElementById('e_ticker').value = sel;
+    const info = ETF_INFO[sel];
+    if (info) {
+        document.getElementById('e_note').value = info.desc;
+        document.getElementById('e_ticker').dataset.name = info.name;
+    }
+
+    // 시세 자동 조회
+    const btn = document.getElementById('e_lookup_btn');
+    btn.disabled = true; btn.textContent = '조회중...';
+
+    const quote = await fetchQuote(sel);
+    btn.disabled = false; btn.textContent = '조회';
+
+    if (quote) {
+        document.getElementById('e_info').className = 'stock-info active';
+        document.getElementById('e_info_ticker').textContent = sel;
+        document.getElementById('e_info_name').textContent = info ? info.name : quote.name;
+        document.getElementById('e_info_price').textContent = '$' + quote.price.toFixed(2);
+        document.getElementById('e_price').value = quote.price.toFixed(2);
+        document.getElementById('e_ticker').dataset.price = quote.price;
+    } else if (info) {
+        document.getElementById('e_info').className = 'stock-info active';
+        document.getElementById('e_info_ticker').textContent = sel;
+        document.getElementById('e_info_name').textContent = info.name;
+        document.getElementById('e_info_price').textContent = '가격 조회 실패';
+    }
+}
+
+// ===== ETF 직접 조회 =====
+async function lookupEtf() {
+    const ticker = document.getElementById('e_ticker').value.trim().toUpperCase();
+    if (!ticker) { showMsg('msg-etf', '티커를 입력하세요', 'error'); return; }
+
+    const btn = document.getElementById('e_lookup_btn');
+    btn.disabled = true; btn.textContent = '조회중...';
+
+    const quote = await fetchQuote(ticker);
+    btn.disabled = false; btn.textContent = '조회';
+
+    const info = ETF_INFO[ticker];
+
+    if (!quote && !info) {
+        showMsg('msg-etf', '시세를 불러올 수 없습니다. 직접 입력해주세요.', 'error');
+        document.getElementById('e_info').className = 'stock-info';
+        return;
+    }
+
+    document.getElementById('e_info').className = 'stock-info active';
+    document.getElementById('e_info_ticker').textContent = ticker;
+    document.getElementById('e_info_name').textContent = (info ? info.name : null) || (quote ? quote.name : ticker);
+    document.getElementById('e_ticker').dataset.name = (info ? info.name : null) || (quote ? quote.name : ticker);
+
+    if (quote) {
+        document.getElementById('e_info_price').textContent = '$' + quote.price.toFixed(2);
+        document.getElementById('e_price').value = quote.price.toFixed(2);
+        document.getElementById('e_ticker').dataset.price = quote.price;
+    } else {
+        document.getElementById('e_info_price').textContent = '가격 조회 실패';
+    }
+
+    if (info) document.getElementById('e_note').value = info.desc;
+}
+
+document.getElementById('e_ticker').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') lookupEtf();
+});
+
+// ===== Init =====
+async function init() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) { window.location.href = 'login.html'; return; }
+    currentUser = session.user;
+
+    // 환율 로드
+    usdKrw = await fetchExchangeRate();
+
+    const { data: profile } = await sb.from('user_profiles').select('*').eq('user_id', currentUser.id).single();
+    if (profile) {
+        document.getElementById('t_stocks').value = profile.target_stocks || 40;
+        document.getElementById('t_etf').value = profile.target_etf || 40;
+        document.getElementById('t_cash').value = profile.target_cash || 20;
+    }
+
+    if (window.location.hash === '#snapshot') switchTab('snapshot');
+
+    // URL 파라미터로 자동 추가 처리 (포트폴리오에서 넘어온 경우)
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('auto_add')) {
+        try {
+            const items = JSON.parse(decodeURIComponent(params.get('auto_add')));
+            await autoAddFromPortfolio(items);
+        } catch(e) {}
+    }
+}
+
+// ===== 포트폴리오 자동 추가 =====
+async function autoAddFromPortfolio(items) {
+    let success = 0, fail = 0;
+    for (const item of items) {
+        const { error } = await sb.from('assets').insert({
+            user_id: currentUser.id,
+            asset_type: 'stock',
+            ticker: item.ticker,
+            name: item.name,
+            shares: item.shares,
+            buy_price: item.price,
+            amount: item.shares * item.price,
+            note: `Titan ${item.titan}점, ${item.category}, ${item.tier_name}`
+        });
+        if (error) fail++; else success++;
+    }
+    if (success > 0) showMsg('msg-stock', `포트폴리오 ${success}종목 자동 추가 완료!` + (fail > 0 ? ` (${fail}건 실패)` : ''), 'success');
+}
+
+function switchTab(tab) {
+    document.querySelectorAll('.form-card, .settings-card, .snapshot-card').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+
+    const formId = 'form-' + tab;
+    const el = document.getElementById(formId);
+    if (el) el.style.display = 'block';
+
+    event.target.classList.add('active');
+}
+
+async function addStock() {
+    const ticker = document.getElementById('s_ticker').value.trim().toUpperCase();
+    const name = document.getElementById('s_ticker').dataset.name || ticker;
+    const shares = parseFloat(document.getElementById('s_shares').value);
+    const price = parseFloat(document.getElementById('s_price').value);
+    const note = document.getElementById('s_note').value.trim();
+
+    if (!ticker || !shares || !price) { showMsg('msg-stock', '티커 조회 후 주수를 입력하세요', 'error'); return; }
+
+    const { error } = await sb.from('assets').insert({
+        user_id: currentUser.id,
+        asset_type: 'stock',
+        ticker, name, shares, buy_price: price,
+        amount: shares * price, note
+    });
+
+    if (error) { showMsg('msg-stock', error.message, 'error'); return; }
+    showMsg('msg-stock', ticker + ' 추가 완료!', 'success');
+    document.getElementById('s_ticker').value = '';
+    document.getElementById('s_shares').value = '';
+    document.getElementById('s_price').value = '';
+    document.getElementById('s_note').value = '';
+    document.getElementById('s_info').className = 'stock-info';
+    delete document.getElementById('s_ticker').dataset.name;
+}
+
+async function addEtf() {
+    const ticker = document.getElementById('e_ticker').value.trim().toUpperCase();
+    const name = document.getElementById('e_ticker').dataset.name || ETF_INFO[ticker]?.name || ticker;
+    const shares = parseFloat(document.getElementById('e_shares').value);
+    const price = parseFloat(document.getElementById('e_price').value);
+    const note = document.getElementById('e_note').value.trim();
+
+    if (!ticker || !shares || !price) { showMsg('msg-etf', '티커 조회 후 주수를 입력하세요', 'error'); return; }
+
+    const { error } = await sb.from('assets').insert({
+        user_id: currentUser.id,
+        asset_type: 'etf',
+        ticker, name, shares, buy_price: price,
+        amount: shares * price, note
+    });
+
+    if (error) { showMsg('msg-etf', error.message, 'error'); return; }
+    showMsg('msg-etf', ticker + ' 추가 완료!', 'success');
+    document.getElementById('e_ticker').value = '';
+    document.getElementById('e_shares').value = '';
+    document.getElementById('e_price').value = '';
+    document.getElementById('e_note').value = '';
+    document.getElementById('e_select').value = '';
+    document.getElementById('e_info').className = 'stock-info';
+    delete document.getElementById('e_ticker').dataset.name;
+}
+
+async function addDeposit() {
+    const name = document.getElementById('d_name').value.trim();
+    const amount = parseWon(document.getElementById('d_amount').value);
+    const rate = parseFloat(document.getElementById('d_rate').value) || 0;
+    const maturity = document.getElementById('d_maturity').value || null;
+    const note = document.getElementById('d_note').value.trim();
+
+    if (!name || !amount) { showMsg('msg-deposit', '예금명과 금액을 입력하세요', 'error'); return; }
+
+    const { error } = await sb.from('assets').insert({
+        user_id: currentUser.id,
+        asset_type: 'deposit',
+        name, amount, interest_rate: rate,
+        maturity_date: maturity, note
+    });
+
+    if (error) { showMsg('msg-deposit', error.message, 'error'); return; }
+    showMsg('msg-deposit', name + ' 추가 완료!', 'success');
+    document.getElementById('d_name').value = '';
+    document.getElementById('d_amount').value = '';
+    document.getElementById('d_rate').value = '';
+    document.getElementById('d_maturity').value = '';
+    document.getElementById('d_note').value = '';
+}
+
+function checkTargetSum() {
+    const s = parseInt(document.getElementById('t_stocks').value) || 0;
+    const e = parseInt(document.getElementById('t_etf').value) || 0;
+    const c = parseInt(document.getElementById('t_cash').value) || 0;
+    const sum = s + e + c;
+    const el = document.getElementById('targetSum');
+    el.textContent = '합계: ' + sum + '%';
+    el.className = 'target-sum ' + (sum === 100 ? 'ok' : 'bad');
+}
+
+async function saveTargets() {
+    const s = parseInt(document.getElementById('t_stocks').value) || 0;
+    const e = parseInt(document.getElementById('t_etf').value) || 0;
+    const c = parseInt(document.getElementById('t_cash').value) || 0;
+
+    if (s + e + c !== 100) { showMsg('msg-settings', '합계가 100%여야 합니다', 'error'); return; }
+
+    const { error } = await sb.from('user_profiles')
+        .update({ target_stocks: s, target_etf: e, target_cash: c })
+        .eq('user_id', currentUser.id);
+
+    if (error) { showMsg('msg-settings', error.message, 'error'); return; }
+    showMsg('msg-settings', '목표 비율 저장 완료!', 'success');
+}
+
+async function saveSnapshot() {
+    const { data: assets } = await sb.from('assets').select('*').eq('user_id', currentUser.id);
+    if (!assets || assets.length === 0) { showMsg('msg-snapshot', '등록된 자산이 없습니다', 'error'); return; }
+
+    // 모든 자산을 원화(KRW)로 계산
+    let stocksKRW = 0, etfKRW = 0, cashKRW = 0;
+    assets.forEach(a => {
+        if (a.asset_type === 'deposit') {
+            cashKRW += Number(a.amount); // 이미 원화
+        } else {
+            const krwVal = Number(a.shares) * Number(a.buy_price) * usdKrw;
+            if (a.asset_type === 'stock') stocksKRW += krwVal;
+            else etfKRW += krwVal;
+        }
+    });
+
+    const total = stocksKRW + etfKRW + cashKRW;
+    const now = new Date();
+    const month = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+
+    const { data: prevSnaps } = await sb.from('monthly_snapshots')
+        .select('total_value')
+        .eq('user_id', currentUser.id)
+        .order('month', { ascending: false })
+        .limit(1);
+
+    let growthRate = 0;
+    if (prevSnaps && prevSnaps.length > 0 && prevSnaps[0].total_value > 0) {
+        growthRate = ((total - prevSnaps[0].total_value) / prevSnaps[0].total_value * 100);
+    }
+
+    const { error } = await sb.from('monthly_snapshots').upsert({
+        user_id: currentUser.id,
+        month: month,
+        total_value: Math.round(total),
+        stocks_value: Math.round(stocksKRW),
+        etf_value: Math.round(etfKRW),
+        cash_value: Math.round(cashKRW),
+        growth_rate: Math.round(growthRate * 100) / 100
+    }, { onConflict: 'user_id,month' });
+
+    if (error) { showMsg('msg-snapshot', error.message, 'error'); return; }
+    const fmtTotal = '₩' + Math.round(total).toLocaleString('ko-KR');
+    showMsg('msg-snapshot', month + ' 스냅샷 저장 완료! (총 ' + fmtTotal + ', ' + (growthRate >= 0 ? '+' : '') + growthRate.toFixed(2) + '%, 환율 ₩' + Math.round(usdKrw).toLocaleString() + '/USD)', 'success');
+}
+
+function showMsg(id, text, type) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.className = 'message ' + type;
+    setTimeout(() => el.className = 'message', 5000);
+}
+
+init();
+</script>
+</body>
+</html>

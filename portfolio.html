@@ -73,6 +73,21 @@ tr:hover { background:#f8fff8; }
 .summary-label { font-size:0.8em; color:#7B6B4F; margin-top:3px; }
 .cash-note { text-align:center; margin-top:12px; color:#E67E22; font-weight:700; font-size:0.9em; }
 
+/* 내 자산에 추가 버튼 */
+.add-to-assets {
+    display:block; width:100%; padding:16px; margin-top:20px;
+    background:#8E44AD; color:white; border:3px solid #5D4E37;
+    border-radius:15px; font-size:1.1em; font-weight:700; cursor:pointer;
+    box-shadow:0 4px 0 #6C3483; font-family:inherit; transition:all 0.2s;
+    text-align:center;
+}
+.add-to-assets:hover { transform:translateY(-2px); box-shadow:0 6px 0 #6C3483; }
+.add-to-assets:disabled { background:#aaa; box-shadow:0 4px 0 #888; cursor:not-allowed; }
+.add-msg { text-align:center; margin-top:10px; padding:10px; border-radius:10px; font-size:0.9em; display:none; }
+.add-msg.success { display:block; background:#D5F5E3; color:#27AE60; border:2px solid #27AE60; }
+.add-msg.error { display:block; background:#FDEDEC; color:#E74C3C; border:2px solid #E74C3C; }
+.add-msg.info { display:block; background:#EBF5FB; color:#2E86C1; border:2px solid #2E86C1; }
+
 /* 푸터 */
 .footer { background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; }
 @media (max-width:768px) {
@@ -141,6 +156,8 @@ tr:hover { background:#f8fff8; }
             </table>
             <div class="cash-note" id="cashNote"></div>
             <div class="summary-box" id="summaryBox"></div>
+            <button class="add-to-assets" id="addToAssetsBtn" onclick="addToMyAssets()">🏦 내 자산에 전체 추가</button>
+            <div class="add-msg" id="addMsg"></div>
         </div>
     </div>
 
@@ -153,7 +170,22 @@ tr:hover { background:#f8fff8; }
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase_config.js"></script>
 <script>
+let sbClient = null;
+let currentUser = null;
+let lastPortfolio = []; // 마지막 계산 결과 저장
+
+// Supabase 초기화
+try {
+    const { createClient } = supabase;
+    sbClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    sbClient.auth.getSession().then(({ data: { session } }) => {
+        if (session) currentUser = session.user;
+    });
+} catch(e) {}
+
 const ALL_DATA = [{"ticker": "NVDA", "name": "NVIDIA Corporation", "titan": 84, "fund": 50, "tech": 34, "tier_bonus": 5, "tier_name": "Hot", "final": 89, "price": 187.98, "daily_val": 33833.0, "sector": "Technology", "category": "Growth"}, {"ticker": "MU", "name": "Micron Technology, Inc.", "titan": 78, "fund": 48, "tech": 30, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 420.95, "daily_val": 13840.0, "sector": "Technology", "category": "Growth"}, {"ticker": "TER", "name": "Teradyne, Inc.", "titan": 78, "fund": 47, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 314.82, "daily_val": 1056.0, "sector": "Technology", "category": "Growth"}, {"ticker": "LRCX", "name": "Lam Research Corporation", "titan": 76, "fund": 49, "tech": 27, "tier_bonus": 5, "tier_name": "Hot", "final": 81, "price": 240.09, "daily_val": 2880.0, "sector": "Technology", "category": "Growth"}, {"ticker": "MPWR", "name": "Monolithic Power Systems, Inc.", "titan": 76, "fund": 44, "tech": 32, "tier_bonus": 3, "tier_name": "Active", "final": 79, "price": 1188.32, "daily_val": 839.0, "sector": "Technology", "category": "Growth"}, {"ticker": "PEP", "name": "Pepsico, Inc.", "titan": 79, "fund": 46, "tech": 33, "tier_bonus": 5, "tier_name": "Hot", "final": 84, "price": 164.39, "daily_val": 1412.0, "sector": "Consumer Defensive", "category": "Value"}, {"ticker": "GS", "name": "Goldman Sachs Group, Inc. (The)", "titan": 78, "fund": 44, "tech": 34, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 933.73, "daily_val": 2147.0, "sector": "Financial Services", "category": "Value"}, {"ticker": "RF", "name": "Regions Financial Corporation", "titan": 80, "fund": 43, "tech": 37, "tier_bonus": 3, "tier_name": "Active", "final": 83, "price": 30.06, "daily_val": 396.0, "sector": "Financial Services", "category": "Value"}, {"ticker": "AMGN", "name": "Amgen Inc.", "titan": 77, "fund": 46, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 82, "price": 379.73, "daily_val": 1110.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "NEM", "name": "Newmont Corporation", "titan": 77, "fund": 43, "tech": 34, "tier_bonus": 5, "tier_name": "Hot", "final": 82, "price": 124.69, "daily_val": 1190.0, "sector": "Basic Materials", "category": "Value"}];
 const GROWTH = ALL_DATA.filter(s => s.category === 'Growth');
 const VALUE = ALL_DATA.filter(s => s.category === 'Value');
@@ -196,6 +228,12 @@ function calculatePortfolio() {
         const w = valueRatio * (s.final / vTotal);
         portfolio.push({...s, weight: w});
     });
+
+    // 계산 결과 저장 (내 자산 추가용)
+    lastPortfolio = portfolio.map(s => ({
+        ...s,
+        calcShares: Math.floor(seed * s.weight / s.price)
+    }));
 
     // 테이블 렌더링
     const tbody = document.getElementById('portfolioTable');
@@ -257,6 +295,65 @@ function calculatePortfolio() {
 
     document.getElementById('resultSection').style.display = 'block';
     document.getElementById('resultSection').scrollIntoView({behavior:'smooth'});
+}
+
+// ===== 내 자산에 추가 =====
+async function addToMyAssets() {
+    const msgEl = document.getElementById('addMsg');
+    const btn = document.getElementById('addToAssetsBtn');
+
+    // 로그인 체크
+    if (!currentUser) {
+        msgEl.className = 'add-msg info';
+        msgEl.textContent = '로그인이 필요합니다. 로그인 페이지로 이동합니다...';
+        setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+        return;
+    }
+
+    if (lastPortfolio.length === 0) {
+        msgEl.className = 'add-msg error';
+        msgEl.textContent = '먼저 포트폴리오를 계산해주세요.';
+        return;
+    }
+
+    // 0주인 종목 필터
+    const validItems = lastPortfolio.filter(s => s.calcShares > 0);
+    if (validItems.length === 0) {
+        msgEl.className = 'add-msg error';
+        msgEl.textContent = '투자금이 부족하여 추가할 종목이 없습니다.';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '추가 중...';
+
+    let success = 0, fail = 0;
+    for (const s of validItems) {
+        const { error } = await sbClient.from('assets').insert({
+            user_id: currentUser.id,
+            asset_type: 'stock',
+            ticker: s.ticker,
+            name: s.name,
+            shares: s.calcShares,
+            buy_price: s.price,
+            amount: s.calcShares * s.price,
+            note: `Titan ${s.titan}점, ${s.category}, ${s.tier_name}`
+        });
+        if (error) fail++; else success++;
+    }
+
+    btn.disabled = false;
+    btn.textContent = '🏦 내 자산에 전체 추가';
+
+    if (success > 0) {
+        msgEl.className = 'add-msg success';
+        msgEl.textContent = `${success}종목 자산 추가 완료!` + (fail > 0 ? ` (${fail}건 실패)` : '') + ' 대시보드에서 확인하세요.';
+    } else {
+        msgEl.className = 'add-msg error';
+        msgEl.textContent = '추가에 실패했습니다: ' + (fail > 0 ? `${fail}건 오류` : '알 수 없는 오류');
+    }
+
+    setTimeout(() => { msgEl.className = 'add-msg'; }, 8000);
 }
 
 // 페이지 로드 시 자동 계산
