@@ -2277,7 +2277,7 @@ class TitanAnalyzer:
             daily_val = stock.get('daily_trading_value', 0)
             daily_val_m = daily_val / 1e6  # 백만 달러 단위
             liq_sign = '+' if liq_bonus >= 0 else ''
-            tier_colors = {{'Hot': '#FF6B35', 'Active': '#27AE60', 'Normal': '#7B6B4F', 'Thin': '#E74C3C'}}
+            tier_colors = {'Hot': '#FF6B35', 'Active': '#27AE60', 'Normal': '#7B6B4F', 'Thin': '#E74C3C'}
             liq_color = tier_colors.get(liq_tier, '#7B6B4F')
             html += f'''
                 <div class="breakdown-section" style="border-top: 2px dashed #3498DB; padding-top: 10px; margin-top: 10px;">
