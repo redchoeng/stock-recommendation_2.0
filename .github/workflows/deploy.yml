@@ -75,6 +75,11 @@ jobs:
         run: |
           python project_titan.py value
 
+      - name: Generate Portfolio Composition Page
+        if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          python project_titan.py portfolio
+
       - name: Commit and Push
         run: |
           git config --local user.email "action@github.com"

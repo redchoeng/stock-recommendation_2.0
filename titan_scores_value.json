@@ -1,0 +1,3492 @@
+{
+  "JPM": {
+    "score": 55,
+    "fund_score": 39,
+    "tech_score": 16,
+    "price": 308.78,
+    "avg_volume": 10537205,
+    "market_cap": 840580136960,
+    "sector": "Financial Services",
+    "company_name": "JP Morgan Chase & Co."
+  },
+  "BAC": {
+    "score": 59,
+    "fund_score": 42,
+    "tech_score": 17,
+    "price": 53.36,
+    "avg_volume": 38384583,
+    "market_cap": 389661163520,
+    "sector": "Financial Services",
+    "company_name": "Bank of America Corporation"
+  },
+  "WFC": {
+    "score": 55,
+    "fund_score": 38,
+    "tech_score": 17,
+    "price": 88.56,
+    "avg_volume": 14966573,
+    "market_cap": 277997322240,
+    "sector": "Financial Services",
+    "company_name": "Wells Fargo & Company"
+  },
+  "C": {
+    "score": 61,
+    "fund_score": 31,
+    "tech_score": 30,
+    "price": 116.27,
+    "avg_volume": 14007980,
+    "market_cap": 208037969920,
+    "sector": "Financial Services",
+    "company_name": "Citigroup, Inc."
+  },
+  "GS": {
+    "score": 78,
+    "fund_score": 44,
+    "tech_score": 34,
+    "price": 933.73,
+    "avg_volume": 2299000,
+    "market_cap": 282659749888,
+    "sector": "Financial Services",
+    "company_name": "Goldman Sachs Group, Inc. (The)"
+  },
+  "MS": {
+    "score": 59,
+    "fund_score": 44,
+    "tech_score": 15,
+    "price": 176.59,
+    "avg_volume": 6569985,
+    "market_cap": 280656117760,
+    "sector": "Financial Services",
+    "company_name": "Morgan Stanley"
+  },
+  "USB": {
+    "score": 75,
+    "fund_score": 38,
+    "tech_score": 37,
+    "price": 58.76,
+    "avg_volume": 10400685,
+    "market_cap": 91371798528,
+    "sector": "Financial Services",
+    "company_name": "U.S. Bancorp"
+  },
+  "PNC": {
+    "score": 78,
+    "fund_score": 41,
+    "tech_score": 37,
+    "price": 232.74,
+    "avg_volume": 2413835,
+    "market_cap": 94100013056,
+    "sector": "Financial Services",
+    "company_name": "PNC Financial Services Group, I"
+  },
+  "TFC": {
+    "score": 68,
+    "fund_score": 34,
+    "tech_score": 34,
+    "price": 52.69,
+    "avg_volume": 8901865,
+    "market_cap": 67403489280,
+    "sector": "Financial Services",
+    "company_name": "Truist Financial Corporation"
+  },
+  "BK": {
+    "score": 60,
+    "fund_score": 41,
+    "tech_score": 19,
+    "price": 119.49,
+    "avg_volume": 3715353,
+    "market_cap": 83326246912,
+    "sector": "Financial Services",
+    "company_name": "The Bank of New York Mellon Cor"
+  },
+  "STT": {
+    "score": 74,
+    "fund_score": 40,
+    "tech_score": 34,
+    "price": 129.68,
+    "avg_volume": 2083573,
+    "market_cap": 36221235200,
+    "sector": "Financial Services",
+    "company_name": "State Street Corporation"
+  },
+  "COF": {
+    "score": 44,
+    "fund_score": 34,
+    "tech_score": 10,
+    "price": 209.88,
+    "avg_volume": 4717463,
+    "market_cap": 133427781632,
+    "sector": "Financial Services",
+    "company_name": "Capital One Financial Corporati"
+  },
+  "SCHW": {
+    "score": 60,
+    "fund_score": 47,
+    "tech_score": 13,
+    "price": 95.38,
+    "avg_volume": 10213611,
+    "market_cap": 173135609856,
+    "sector": "Financial Services",
+    "company_name": "Charles Schwab Corporation (The"
+  },
+  "BLK": {
+    "score": 61,
+    "fund_score": 42,
+    "tech_score": 19,
+    "price": 1092.26,
+    "avg_volume": 707046,
+    "market_cap": 169465135104,
+    "sector": "Financial Services",
+    "company_name": "BlackRock, Inc."
+  },
+  "AXP": {
+    "score": 58,
+    "fund_score": 44,
+    "tech_score": 14,
+    "price": 346.24,
+    "avg_volume": 2839503,
+    "market_cap": 238507982848,
+    "sector": "Financial Services",
+    "company_name": "American Express Company"
+  },
+  "CFG": {
+    "score": 70,
+    "fund_score": 37,
+    "tech_score": 33,
+    "price": 65.04,
+    "avg_volume": 5098211,
+    "market_cap": 27933784064,
+    "sector": "Financial Services",
+    "company_name": "Citizens Financial Group, Inc."
+  },
+  "HBAN": {
+    "score": 59,
+    "fund_score": 40,
+    "tech_score": 19,
+    "price": 17.89,
+    "avg_volume": 32650053,
+    "market_cap": 36312985600,
+    "sector": "Financial Services",
+    "company_name": "Huntington Bancshares Incorpora"
+  },
+  "RF": {
+    "score": 80,
+    "fund_score": 43,
+    "tech_score": 37,
+    "price": 30.06,
+    "avg_volume": 13157513,
+    "market_cap": 26358906880,
+    "sector": "Financial Services",
+    "company_name": "Regions Financial Corporation"
+  },
+  "KEY": {
+    "score": 57,
+    "fund_score": 41,
+    "tech_score": 16,
+    "price": 21.94,
+    "avg_volume": 15597028,
+    "market_cap": 24186679296,
+    "sector": "Financial Services",
+    "company_name": "KeyCorp"
+  },
+  "FITB": {
+    "score": 77,
+    "fund_score": 42,
+    "tech_score": 35,
+    "price": 53.67,
+    "avg_volume": 10457590,
+    "market_cap": 48305598464,
+    "sector": "Financial Services",
+    "company_name": "Fifth Third Bancorp"
+  },
+  "ZION": {
+    "score": 78,
+    "fund_score": 44,
+    "tech_score": 34,
+    "price": 62.04,
+    "avg_volume": 1710156,
+    "market_cap": 9160391680,
+    "sector": "Financial Services",
+    "company_name": "Zions Bancorporation N.A."
+  },
+  "MTB": {
+    "score": 68,
+    "fund_score": 37,
+    "tech_score": 31,
+    "price": 231.75,
+    "avg_volume": 1102698,
+    "market_cap": 36215410688,
+    "sector": "Financial Services",
+    "company_name": "M&T Bank Corporation"
+  },
+  "FHN": {
+    "score": 77,
+    "fund_score": 43,
+    "tech_score": 34,
+    "price": 25.1,
+    "avg_volume": 6269336,
+    "market_cap": 12359092224,
+    "sector": "Financial Services",
+    "company_name": "First Horizon Corporation"
+  },
+  "CMA": {
+    "score": 66,
+    "fund_score": 37,
+    "tech_score": 29,
+    "price": 88.67,
+    "avg_volume": 2354484,
+    "market_cap": 11348051968,
+    "sector": "Financial Services",
+    "company_name": "Comerica Incorporated"
+  },
+  "EWBC": {
+    "score": 76,
+    "fund_score": 46,
+    "tech_score": 30,
+    "price": 121.64,
+    "avg_volume": 870245,
+    "market_cap": 16735911936,
+    "sector": "Financial Services",
+    "company_name": "East West Bancorp, Inc."
+  },
+  "WAL": {
+    "score": 75,
+    "fund_score": 44,
+    "tech_score": 31,
+    "price": 95.01,
+    "avg_volume": 944901,
+    "market_cap": 10456199168,
+    "sector": "Financial Services",
+    "company_name": "Western Alliance Bancorporation"
+  },
+  "SNV": {
+    "score": 63,
+    "fund_score": 43,
+    "tech_score": 20,
+    "price": 50.05,
+    "avg_volume": 1103900,
+    "market_cap": 6947805696,
+    "sector": "Financial Services",
+    "company_name": "Synovus Financial Corp."
+  },
+  "VLY": {
+    "score": 71,
+    "fund_score": 40,
+    "tech_score": 31,
+    "price": 13.27,
+    "avg_volume": 7590688,
+    "market_cap": 7399824384,
+    "sector": "Financial Services",
+    "company_name": "Valley National Bancorp"
+  },
+  "OZK": {
+    "score": 66,
+    "fund_score": 38,
+    "tech_score": 28,
+    "price": 49.48,
+    "avg_volume": 1231888,
+    "market_cap": 5535715840,
+    "sector": "Financial Services",
+    "company_name": "Bank OZK"
+  },
+  "BRK-B": {
+    "score": 69,
+    "fund_score": 34,
+    "tech_score": 35,
+    "price": 499.07,
+    "avg_volume": 4861216,
+    "market_cap": 1076661059584,
+    "sector": "Financial Services",
+    "company_name": "Berkshire Hathaway Inc. New"
+  },
+  "PGR": {
+    "score": 52,
+    "fund_score": 45,
+    "tech_score": 7,
+    "price": 203.28,
+    "avg_volume": 3473110,
+    "market_cap": 119162732544,
+    "sector": "Financial Services",
+    "company_name": "Progressive Corporation (The)"
+  },
+  "TRV": {
+    "score": 73,
+    "fund_score": 42,
+    "tech_score": 31,
+    "price": 298.46,
+    "avg_volume": 1598413,
+    "market_cap": 66575507456,
+    "sector": "Financial Services",
+    "company_name": "The Travelers Companies, Inc."
+  },
+  "ALL": {
+    "score": 75,
+    "fund_score": 46,
+    "tech_score": 29,
+    "price": 209.43,
+    "avg_volume": 1743928,
+    "market_cap": 54804000768,
+    "sector": "Financial Services",
+    "company_name": "Allstate Corporation (The)"
+  },
+  "CB": {
+    "score": 73,
+    "fund_score": 42,
+    "tech_score": 31,
+    "price": 329.29,
+    "avg_volume": 1759101,
+    "market_cap": 129592360960,
+    "sector": "Financial Services",
+    "company_name": "Chubb Limited"
+  },
+  "AIG": {
+    "score": 53,
+    "fund_score": 22,
+    "tech_score": 31,
+    "price": 79.79,
+    "avg_volume": 4991621,
+    "market_cap": 43052773376,
+    "sector": "Financial Services",
+    "company_name": "American International Group, I"
+  },
+  "MET": {
+    "score": 61,
+    "fund_score": 28,
+    "tech_score": 33,
+    "price": 79.22,
+    "avg_volume": 3611056,
+    "market_cap": 52197396480,
+    "sector": "Financial Services",
+    "company_name": "MetLife, Inc."
+  },
+  "PRU": {
+    "score": 50,
+    "fund_score": 34,
+    "tech_score": 16,
+    "price": 104.33,
+    "avg_volume": 1960431,
+    "market_cap": 36306841600,
+    "sector": "Financial Services",
+    "company_name": "Prudential Financial, Inc."
+  },
+  "AFL": {
+    "score": 66,
+    "fund_score": 34,
+    "tech_score": 32,
+    "price": 113.62,
+    "avg_volume": 2438501,
+    "market_cap": 59549827072,
+    "sector": "Financial Services",
+    "company_name": "AFLAC Incorporated"
+  },
+  "AMP": {
+    "score": 60,
+    "fund_score": 48,
+    "tech_score": 12,
+    "price": 477.79,
+    "avg_volume": 657533,
+    "market_cap": 44389421056,
+    "sector": "Financial Services",
+    "company_name": "Ameriprise Financial, Inc."
+  },
+  "CINF": {
+    "score": 61,
+    "fund_score": 46,
+    "tech_score": 15,
+    "price": 163.25,
+    "avg_volume": 617661,
+    "market_cap": 25470021632,
+    "sector": "Financial Services",
+    "company_name": "Cincinnati Financial Corporatio"
+  },
+  "L": {
+    "score": 64,
+    "fund_score": 29,
+    "tech_score": 35,
+    "price": 108.66,
+    "avg_volume": 805346,
+    "market_cap": 22455629824,
+    "sector": "Financial Services",
+    "company_name": "Loews Corporation"
+  },
+  "GL": {
+    "score": 74,
+    "fund_score": 42,
+    "tech_score": 32,
+    "price": 143.6,
+    "avg_volume": 504588,
+    "market_cap": 11632108544,
+    "sector": "Financial Services",
+    "company_name": "Globe Life Inc."
+  },
+  "WRB": {
+    "score": 57,
+    "fund_score": 33,
+    "tech_score": 24,
+    "price": 70.8,
+    "avg_volume": 2874781,
+    "market_cap": 26905501696,
+    "sector": "Financial Services",
+    "company_name": "W.R. Berkley Corporation"
+  },
+  "RGA": {
+    "score": 66,
+    "fund_score": 32,
+    "tech_score": 34,
+    "price": 222.57,
+    "avg_volume": 439743,
+    "market_cap": 14625928192,
+    "sector": "Financial Services",
+    "company_name": "Reinsurance Group of America, I"
+  },
+  "HIG": {
+    "score": 74,
+    "fund_score": 42,
+    "tech_score": 32,
+    "price": 141.26,
+    "avg_volume": 1555010,
+    "market_cap": 39397453824,
+    "sector": "Financial Services",
+    "company_name": "The Hartford Insurance Group, I"
+  },
+  "PFG": {
+    "score": 44,
+    "fund_score": 28,
+    "tech_score": 16,
+    "price": 92.45,
+    "avg_volume": 1431801,
+    "market_cap": 20310693888,
+    "sector": "Financial Services",
+    "company_name": "Principal Financial Group Inc"
+  },
+  "LNC": {
+    "score": 61,
+    "fund_score": 30,
+    "tech_score": 31,
+    "price": 41.84,
+    "avg_volume": 1704546,
+    "market_cap": 7947049984,
+    "sector": "Financial Services",
+    "company_name": "Lincoln National Corporation"
+  },
+  "AIZ": {
+    "score": 48,
+    "fund_score": 33,
+    "tech_score": 15,
+    "price": 219.7,
+    "avg_volume": 360160,
+    "market_cap": 11085888512,
+    "sector": "Financial Services",
+    "company_name": "Assurant, Inc."
+  },
+  "SYF": {
+    "score": 71,
+    "fund_score": 44,
+    "tech_score": 27,
+    "price": 72.85,
+    "avg_volume": 4245215,
+    "market_cap": 26238464000,
+    "sector": "Financial Services",
+    "company_name": "Synchrony Financial"
+  },
+  "SPGI": {
+    "score": 51,
+    "fund_score": 41,
+    "tech_score": 10,
+    "price": 419.38,
+    "avg_volume": 2132090,
+    "market_cap": 126988263424,
+    "sector": "Financial Services",
+    "company_name": "S&P Global Inc."
+  },
+  "MCO": {
+    "score": 65,
+    "fund_score": 49,
+    "tech_score": 16,
+    "price": 450.76,
+    "avg_volume": 1001846,
+    "market_cap": 80847699968,
+    "sector": "Financial Services",
+    "company_name": "Moody's Corporation"
+  },
+  "ICE": {
+    "score": 50,
+    "fund_score": 40,
+    "tech_score": 10,
+    "price": 155.19,
+    "avg_volume": 3724458,
+    "market_cap": 88486010880,
+    "sector": "Financial Services",
+    "company_name": "Intercontinental Exchange Inc."
+  },
+  "CME": {
+    "score": 70,
+    "fund_score": 42,
+    "tech_score": 28,
+    "price": 302.55,
+    "avg_volume": 2018385,
+    "market_cap": 108770476032,
+    "sector": "Financial Services",
+    "company_name": "CME Group Inc."
+  },
+  "NDAQ": {
+    "score": 50,
+    "fund_score": 40,
+    "tech_score": 10,
+    "price": 82.13,
+    "avg_volume": 4298355,
+    "market_cap": 46895853568,
+    "sector": "Financial Services",
+    "company_name": "Nasdaq, Inc."
+  },
+  "MSCI": {
+    "score": 47,
+    "fund_score": 34,
+    "tech_score": 13,
+    "price": 545.25,
+    "avg_volume": 655935,
+    "market_cap": 40969830400,
+    "sector": "Financial Services",
+    "company_name": "MSCI Inc."
+  },
+  "MMC": {
+    "score": 65,
+    "fund_score": 47,
+    "tech_score": 18,
+    "price": 182.7,
+    "avg_volume": 2732934,
+    "market_cap": 89819709440,
+    "sector": "Financial Services",
+    "company_name": "Marsh & McLennan Companies, Inc"
+  },
+  "AON": {
+    "score": 58,
+    "fund_score": 45,
+    "tech_score": 13,
+    "price": 322.98,
+    "avg_volume": 1254973,
+    "market_cap": 69419794432,
+    "sector": "Financial Services",
+    "company_name": "Aon plc"
+  },
+  "WTW": {
+    "score": 55,
+    "fund_score": 38,
+    "tech_score": 17,
+    "price": 301.92,
+    "avg_volume": 767970,
+    "market_cap": 28908423168,
+    "sector": "Financial Services",
+    "company_name": "Willis Towers Watson Public Lim"
+  },
+  "FIS": {
+    "score": 24,
+    "fund_score": 18,
+    "tech_score": 6,
+    "price": 48.58,
+    "avg_volume": 3716970,
+    "market_cap": 25377153024,
+    "sector": "Technology",
+    "company_name": "Fidelity National Information S"
+  },
+  "FISV": {
+    "score": 20,
+    "fund_score": 1,
+    "tech_score": 19,
+    "price": 63.01,
+    "avg_volume": 10022855,
+    "market_cap": 34251802624,
+    "sector": "",
+    "company_name": "Fiserv, Inc."
+  },
+  "GPN": {
+    "score": 59,
+    "fund_score": 26,
+    "tech_score": 33,
+    "price": 81.26,
+    "avg_volume": 2977606,
+    "market_cap": 22753755136,
+    "sector": "Industrials",
+    "company_name": "Global Payments Inc."
+  },
+  "CPAY": {
+    "score": 71,
+    "fund_score": 41,
+    "tech_score": 30,
+    "price": 349.19,
+    "avg_volume": 607953,
+    "market_cap": 24657836032,
+    "sector": "Technology",
+    "company_name": "Corpay, Inc."
+  },
+  "JKHY": {
+    "score": 45,
+    "fund_score": 35,
+    "tech_score": 10,
+    "price": 158.76,
+    "avg_volume": 872366,
+    "market_cap": 11490593792,
+    "sector": "Technology",
+    "company_name": "Jack Henry & Associates, Inc."
+  },
+  "BR": {
+    "score": 40,
+    "fund_score": 27,
+    "tech_score": 13,
+    "price": 178.12,
+    "avg_volume": 971213,
+    "market_cap": 20795279360,
+    "sector": "Technology",
+    "company_name": "Broadridge Financial Solutions,"
+  },
+  "PLD": {
+    "score": 63,
+    "fund_score": 35,
+    "tech_score": 28,
+    "price": 139.63,
+    "avg_volume": 3596821,
+    "market_cap": 129697701888,
+    "sector": "Real Estate",
+    "company_name": "Prologis, Inc."
+  },
+  "AMT": {
+    "score": 69,
+    "fund_score": 45,
+    "tech_score": 24,
+    "price": 186.62,
+    "avg_volume": 3248810,
+    "market_cap": 87385038848,
+    "sector": "Real Estate",
+    "company_name": "American Tower Corporation (REI"
+  },
+  "CCI": {
+    "score": 52,
+    "fund_score": 23,
+    "tech_score": 29,
+    "price": 87.43,
+    "avg_volume": 3173858,
+    "market_cap": 38073929728,
+    "sector": "Real Estate",
+    "company_name": "Crown Castle Inc."
+  },
+  "EQIX": {
+    "score": 59,
+    "fund_score": 40,
+    "tech_score": 24,
+    "price": 924.24,
+    "avg_volume": 605906,
+    "market_cap": 90811129856,
+    "sector": "Real Estate",
+    "company_name": "Equinix, Inc."
+  },
+  "PSA": {
+    "score": 69,
+    "fund_score": 42,
+    "tech_score": 27,
+    "price": 299.0,
+    "avg_volume": 1206530,
+    "market_cap": 52476428288,
+    "sector": "Real Estate",
+    "company_name": "Public Storage"
+  },
+  "DLR": {
+    "score": 63,
+    "fund_score": 35,
+    "tech_score": 28,
+    "price": 176.02,
+    "avg_volume": 2104935,
+    "market_cap": 61572579328,
+    "sector": "Real Estate",
+    "company_name": "Digital Realty Trust, Inc."
+  },
+  "O": {
+    "score": 59,
+    "fund_score": 31,
+    "tech_score": 28,
+    "price": 65.07,
+    "avg_volume": 6488883,
+    "market_cap": 59741143040,
+    "sector": "Real Estate",
+    "company_name": "Realty Income Corporation"
+  },
+  "WELL": {
+    "score": 55,
+    "fund_score": 25,
+    "tech_score": 30,
+    "price": 208.59,
+    "avg_volume": 3433190,
+    "market_cap": 145544200192,
+    "sector": "Real Estate",
+    "company_name": "Welltower Inc."
+  },
+  "SPG": {
+    "score": 69,
+    "fund_score": 48,
+    "tech_score": 21,
+    "price": 199.63,
+    "avg_volume": 1517613,
+    "market_cap": 75297079296,
+    "sector": "Real Estate",
+    "company_name": "Simon Property Group, Inc."
+  },
+  "AVB": {
+    "score": 52,
+    "fund_score": 36,
+    "tech_score": 16,
+    "price": 178.06,
+    "avg_volume": 1143293,
+    "market_cap": 25212395520,
+    "sector": "Real Estate",
+    "company_name": "AvalonBay Communities, Inc."
+  },
+  "EQR": {
+    "score": 67,
+    "fund_score": 35,
+    "tech_score": 32,
+    "price": 63.59,
+    "avg_volume": 2529946,
+    "market_cap": 25026600960,
+    "sector": "Real Estate",
+    "company_name": "Equity Residential"
+  },
+  "VTR": {
+    "score": 52,
+    "fund_score": 33,
+    "tech_score": 24,
+    "price": 85.74,
+    "avg_volume": 3073320,
+    "market_cap": 40723517440,
+    "sector": "Real Estate",
+    "company_name": "Ventas, Inc."
+  },
+  "ARE": {
+    "score": 38,
+    "fund_score": 23,
+    "tech_score": 15,
+    "price": 54.16,
+    "avg_volume": 2837293,
+    "market_cap": 9385948160,
+    "sector": "Real Estate",
+    "company_name": "Alexandria Real Estate Equities"
+  },
+  "INVH": {
+    "score": 46,
+    "fund_score": 36,
+    "tech_score": 10,
+    "price": 26.84,
+    "avg_volume": 6254548,
+    "market_cap": 16453473280,
+    "sector": "Real Estate",
+    "company_name": "Invitation Homes Inc."
+  },
+  "ESS": {
+    "score": 69,
+    "fund_score": 38,
+    "tech_score": 31,
+    "price": 256.18,
+    "avg_volume": 537166,
+    "market_cap": 17703690240,
+    "sector": "Real Estate",
+    "company_name": "Essex Property Trust, Inc."
+  },
+  "MAA": {
+    "score": 62,
+    "fund_score": 31,
+    "tech_score": 31,
+    "price": 135.12,
+    "avg_volume": 1022620,
+    "market_cap": 16217585664,
+    "sector": "Real Estate",
+    "company_name": "Mid-America Apartment Communiti"
+  },
+  "UDR": {
+    "score": 71,
+    "fund_score": 33,
+    "tech_score": 38,
+    "price": 38.25,
+    "avg_volume": 3830763,
+    "market_cap": 14400706560,
+    "sector": "Real Estate",
+    "company_name": "UDR, Inc."
+  },
+  "CPT": {
+    "score": 68,
+    "fund_score": 34,
+    "tech_score": 34,
+    "price": 108.57,
+    "avg_volume": 1442555,
+    "market_cap": 11551340544,
+    "sector": "Real Estate",
+    "company_name": "Camden Property Trust"
+  },
+  "HST": {
+    "score": 57,
+    "fund_score": 24,
+    "tech_score": 33,
+    "price": 20.26,
+    "avg_volume": 7492661,
+    "market_cap": 14112638976,
+    "sector": "Real Estate",
+    "company_name": "Host Hotels & Resorts, Inc."
+  },
+  "REG": {
+    "score": 66,
+    "fund_score": 38,
+    "tech_score": 28,
+    "price": 75.72,
+    "avg_volume": 1306421,
+    "market_cap": 14140312576,
+    "sector": "Real Estate",
+    "company_name": "Regency Centers Corporation"
+  },
+  "CBRE": {
+    "score": 42,
+    "fund_score": 30,
+    "tech_score": 12,
+    "price": 152.01,
+    "avg_volume": 1744810,
+    "market_cap": 45237108736,
+    "sector": "Real Estate",
+    "company_name": "CBRE Group Inc"
+  },
+  "IRM": {
+    "score": 61,
+    "fund_score": 33,
+    "tech_score": 28,
+    "price": 105.83,
+    "avg_volume": 2259985,
+    "market_cap": 31308238848,
+    "sector": "Real Estate",
+    "company_name": "Iron Mountain Incorporated (Del"
+  },
+  "COLD": {
+    "score": 15,
+    "fund_score": 11,
+    "tech_score": 4,
+    "price": 12.0,
+    "avg_volume": 5816298,
+    "market_cap": 3429475584,
+    "sector": "Real Estate",
+    "company_name": "Americold Realty Trust, Inc."
+  },
+  "REXR": {
+    "score": 33,
+    "fund_score": 26,
+    "tech_score": 7,
+    "price": 37.22,
+    "avg_volume": 2424498,
+    "market_cap": 8875835392,
+    "sector": "Real Estate",
+    "company_name": "Rexford Industrial Realty, Inc."
+  },
+  "FR": {
+    "score": 68,
+    "fund_score": 40,
+    "tech_score": 28,
+    "price": 60.4,
+    "avg_volume": 1017720,
+    "market_cap": 8251049984,
+    "sector": "Real Estate",
+    "company_name": "First Industrial Realty Trust, "
+  },
+  "KRC": {
+    "score": 42,
+    "fund_score": 29,
+    "tech_score": 13,
+    "price": 32.27,
+    "avg_volume": 1704753,
+    "market_cap": 3861222656,
+    "sector": "Real Estate",
+    "company_name": "Kilroy Realty Corporation"
+  },
+  "BXP": {
+    "score": 48,
+    "fund_score": 36,
+    "tech_score": 12,
+    "price": 61.55,
+    "avg_volume": 1770085,
+    "market_cap": 10892882944,
+    "sector": "Real Estate",
+    "company_name": "BXP, Inc."
+  },
+  "VNO": {
+    "score": 43,
+    "fund_score": 33,
+    "tech_score": 10,
+    "price": 29.73,
+    "avg_volume": 1636913,
+    "market_cap": 6206110720,
+    "sector": "Real Estate",
+    "company_name": "Vornado Realty Trust"
+  },
+  "SLG": {
+    "score": 19,
+    "fund_score": 12,
+    "tech_score": 7,
+    "price": 39.27,
+    "avg_volume": 1358193,
+    "market_cap": 2984846080,
+    "sector": "Real Estate",
+    "company_name": "SL Green Realty Corp"
+  },
+  "JBGS": {
+    "score": 15,
+    "fund_score": 8,
+    "tech_score": 7,
+    "price": 15.77,
+    "avg_volume": 587723,
+    "market_cap": 1011178240,
+    "sector": "Real Estate",
+    "company_name": "JBG SMITH Properties"
+  },
+  "SBAC": {
+    "score": 55,
+    "fund_score": 31,
+    "tech_score": 24,
+    "price": 197.46,
+    "avg_volume": 798433,
+    "market_cap": 21041930240,
+    "sector": "Real Estate",
+    "company_name": "SBA Communications Corporation"
+  },
+  "KIM": {
+    "score": 61,
+    "fund_score": 33,
+    "tech_score": 28,
+    "price": 22.66,
+    "avg_volume": 5082341,
+    "market_cap": 15345217536,
+    "sector": "Real Estate",
+    "company_name": "Kimco Realty Corporation (HC)"
+  },
+  "EXR": {
+    "score": 62,
+    "fund_score": 35,
+    "tech_score": 27,
+    "price": 145.18,
+    "avg_volume": 1308250,
+    "market_cap": 32172097536,
+    "sector": "Real Estate",
+    "company_name": "Extra Space Storage Inc"
+  },
+  "GLPI": {
+    "score": 60,
+    "fund_score": 42,
+    "tech_score": 18,
+    "price": 46.71,
+    "avg_volume": 2690545,
+    "market_cap": 13219319808,
+    "sector": "Real Estate",
+    "company_name": "Gaming and Leisure Properties, "
+  },
+  "SUI": {
+    "score": 54,
+    "fund_score": 27,
+    "tech_score": 27,
+    "price": 129.99,
+    "avg_volume": 737546,
+    "market_cap": 16723540992,
+    "sector": "Real Estate",
+    "company_name": "Sun Communities, Inc."
+  },
+  "JNJ": {
+    "score": 64,
+    "fund_score": 45,
+    "tech_score": 24,
+    "price": 244.99,
+    "avg_volume": 9121536,
+    "market_cap": 590401175552,
+    "sector": "Healthcare",
+    "company_name": "Johnson & Johnson"
+  },
+  "UNH": {
+    "score": 36,
+    "fund_score": 26,
+    "tech_score": 10,
+    "price": 288.2,
+    "avg_volume": 8798040,
+    "market_cap": 261062688768,
+    "sector": "Healthcare",
+    "company_name": "UnitedHealth Group Incorporated"
+  },
+  "ABBV": {
+    "score": 74,
+    "fund_score": 47,
+    "tech_score": 27,
+    "price": 228.72,
+    "avg_volume": 6562888,
+    "market_cap": 404236206080,
+    "sector": "Healthcare",
+    "company_name": "AbbVie Inc."
+  },
+  "MRK": {
+    "score": 75,
+    "fund_score": 44,
+    "tech_score": 31,
+    "price": 121.66,
+    "avg_volume": 14575891,
+    "market_cap": 303880339456,
+    "sector": "Healthcare",
+    "company_name": "Merck & Company, Inc."
+  },
+  "PFE": {
+    "score": 57,
+    "fund_score": 29,
+    "tech_score": 28,
+    "price": 27.37,
+    "avg_volume": 50358385,
+    "market_cap": 155617820672,
+    "sector": "Healthcare",
+    "company_name": "Pfizer, Inc."
+  },
+  "BMY": {
+    "score": 73,
+    "fund_score": 40,
+    "tech_score": 33,
+    "price": 59.73,
+    "avg_volume": 14587433,
+    "market_cap": 121638576128,
+    "sector": "Healthcare",
+    "company_name": "Bristol-Myers Squibb Company"
+  },
+  "AMGN": {
+    "score": 77,
+    "fund_score": 46,
+    "tech_score": 31,
+    "price": 379.73,
+    "avg_volume": 2922008,
+    "market_cap": 204700155904,
+    "sector": "Healthcare",
+    "company_name": "Amgen Inc."
+  },
+  "GILD": {
+    "score": 72,
+    "fund_score": 44,
+    "tech_score": 28,
+    "price": 152.74,
+    "avg_volume": 7449735,
+    "market_cap": 189501423616,
+    "sector": "Healthcare",
+    "company_name": "Gilead Sciences, Inc."
+  },
+  "CVS": {
+    "score": 37,
+    "fund_score": 23,
+    "tech_score": 14,
+    "price": 77.75,
+    "avg_volume": 8406913,
+    "market_cap": 98914410496,
+    "sector": "Healthcare",
+    "company_name": "CVS Health Corporation"
+  },
+  "CI": {
+    "score": 60,
+    "fund_score": 36,
+    "tech_score": 24,
+    "price": 290.12,
+    "avg_volume": 1699473,
+    "market_cap": 77498540032,
+    "sector": "Healthcare",
+    "company_name": "The Cigna Group"
+  },
+  "ELV": {
+    "score": 59,
+    "fund_score": 32,
+    "tech_score": 27,
+    "price": 346.24,
+    "avg_volume": 1632208,
+    "market_cap": 76416786432,
+    "sector": "Healthcare",
+    "company_name": "Elevance Health, Inc."
+  },
+  "HUM": {
+    "score": 34,
+    "fund_score": 21,
+    "tech_score": 13,
+    "price": 187.12,
+    "avg_volume": 1934678,
+    "market_cap": 22505496576,
+    "sector": "Healthcare",
+    "company_name": "Humana Inc."
+  },
+  "CNC": {
+    "score": 47,
+    "fund_score": 20,
+    "tech_score": 27,
+    "price": 43.07,
+    "avg_volume": 6754130,
+    "market_cap": 21179973632,
+    "sector": "Healthcare",
+    "company_name": "Centene Corporation"
+  },
+  "MOH": {
+    "score": 35,
+    "fund_score": 22,
+    "tech_score": 13,
+    "price": 142.61,
+    "avg_volume": 1790711,
+    "market_cap": 7344415232,
+    "sector": "Healthcare",
+    "company_name": "Molina Healthcare Inc"
+  },
+  "MDT": {
+    "score": 39,
+    "fund_score": 27,
+    "tech_score": 12,
+    "price": 98.49,
+    "avg_volume": 7740245,
+    "market_cap": 126324850688,
+    "sector": "Healthcare",
+    "company_name": "Medtronic plc."
+  },
+  "SYK": {
+    "score": 70,
+    "fund_score": 42,
+    "tech_score": 28,
+    "price": 377.32,
+    "avg_volume": 1852750,
+    "market_cap": 144396091392,
+    "sector": "Healthcare",
+    "company_name": "Stryker Corporation"
+  },
+  "BSX": {
+    "score": 49,
+    "fund_score": 40,
+    "tech_score": 9,
+    "price": 76.28,
+    "avg_volume": 13548988,
+    "market_cap": 113124745216,
+    "sector": "Healthcare",
+    "company_name": "Boston Scientific Corporation"
+  },
+  "ZBH": {
+    "score": 49,
+    "fund_score": 30,
+    "tech_score": 24,
+    "price": 98.25,
+    "avg_volume": 2207108,
+    "market_cap": 19471337472,
+    "sector": "Healthcare",
+    "company_name": "Zimmer Biomet Holdings, Inc."
+  },
+  "BAX": {
+    "score": 48,
+    "fund_score": 19,
+    "tech_score": 29,
+    "price": 21.87,
+    "avg_volume": 8948330,
+    "market_cap": 11251897344,
+    "sector": "Healthcare",
+    "company_name": "Baxter International Inc."
+  },
+  "BDX": {
+    "score": 43,
+    "fund_score": 21,
+    "tech_score": 27,
+    "price": 182.68,
+    "avg_volume": 2708466,
+    "market_cap": 66184065024,
+    "sector": "Healthcare",
+    "company_name": "Becton, Dickinson and Company"
+  },
+  "RMD": {
+    "score": 81,
+    "fund_score": 47,
+    "tech_score": 34,
+    "price": 258.91,
+    "avg_volume": 1044241,
+    "market_cap": 37792133120,
+    "sector": "Healthcare",
+    "company_name": "ResMed Inc."
+  },
+  "HOLX": {
+    "score": 59,
+    "fund_score": 30,
+    "tech_score": 29,
+    "price": 75.2,
+    "avg_volume": 2717851,
+    "market_cap": 16788017152,
+    "sector": "Healthcare",
+    "company_name": "Hologic, Inc."
+  },
+  "XRAY": {
+    "score": 22,
+    "fund_score": 11,
+    "tech_score": 11,
+    "price": 12.49,
+    "avg_volume": 3964336,
+    "market_cap": 2492403968,
+    "sector": "Healthcare",
+    "company_name": "DENTSPLY SIRONA Inc."
+  },
+  "ENOV": {
+    "score": 29,
+    "fund_score": 16,
+    "tech_score": 13,
+    "price": 22.07,
+    "avg_volume": 974313,
+    "market_cap": 1262169600,
+    "sector": "Healthcare",
+    "company_name": "Enovis Corporation"
+  },
+  "MMSI": {
+    "score": 40,
+    "fund_score": 30,
+    "tech_score": 10,
+    "price": 82.98,
+    "avg_volume": 666050,
+    "market_cap": 4919904768,
+    "sector": "Healthcare",
+    "company_name": "Merit Medical Systems, Inc."
+  },
+  "ZTS": {
+    "score": 71,
+    "fund_score": 41,
+    "tech_score": 30,
+    "price": 129.13,
+    "avg_volume": 5290331,
+    "market_cap": 56906715136,
+    "sector": "Healthcare",
+    "company_name": "Zoetis Inc."
+  },
+  "ABT": {
+    "score": 47,
+    "fund_score": 34,
+    "tech_score": 13,
+    "price": 113.29,
+    "avg_volume": 9102633,
+    "market_cap": 197176606720,
+    "sector": "Healthcare",
+    "company_name": "Abbott Laboratories"
+  },
+  "HCA": {
+    "score": 53,
+    "fund_score": 25,
+    "tech_score": 28,
+    "price": 535.02,
+    "avg_volume": 1226718,
+    "market_cap": 119642357760,
+    "sector": "Healthcare",
+    "company_name": "HCA Healthcare, Inc."
+  },
+  "MCK": {
+    "score": 46,
+    "fund_score": 18,
+    "tech_score": 28,
+    "price": 946.97,
+    "avg_volume": 754581,
+    "market_cap": 116881326080,
+    "sector": "Healthcare",
+    "company_name": "McKesson Corporation"
+  },
+  "CAH": {
+    "score": 49,
+    "fund_score": 20,
+    "tech_score": 29,
+    "price": 224.99,
+    "avg_volume": 1997823,
+    "market_cap": 52943753216,
+    "sector": "Healthcare",
+    "company_name": "Cardinal Health, Inc."
+  },
+  "GEHC": {
+    "score": 68,
+    "fund_score": 37,
+    "tech_score": 31,
+    "price": 82.95,
+    "avg_volume": 3610730,
+    "market_cap": 37804441600,
+    "sector": "Healthcare",
+    "company_name": "GE HealthCare Technologies Inc."
+  },
+  "PG": {
+    "score": 75,
+    "fund_score": 40,
+    "tech_score": 35,
+    "price": 156.86,
+    "avg_volume": 11175193,
+    "market_cap": 366539997184,
+    "sector": "Consumer Defensive",
+    "company_name": "Procter & Gamble Company (The)"
+  },
+  "KO": {
+    "score": 65,
+    "fund_score": 43,
+    "tech_score": 27,
+    "price": 79.49,
+    "avg_volume": 18206341,
+    "market_cap": 341934899200,
+    "sector": "Consumer Defensive",
+    "company_name": "Coca-Cola Company (The)"
+  },
+  "PEP": {
+    "score": 79,
+    "fund_score": 46,
+    "tech_score": 33,
+    "price": 164.39,
+    "avg_volume": 8591691,
+    "market_cap": 224777043968,
+    "sector": "Consumer Defensive",
+    "company_name": "Pepsico, Inc."
+  },
+  "WMT": {
+    "score": 70,
+    "fund_score": 37,
+    "tech_score": 33,
+    "price": 126.62,
+    "avg_volume": 30839795,
+    "market_cap": 1009522442240,
+    "sector": "Consumer Defensive",
+    "company_name": "Walmart Inc."
+  },
+  "COST": {
+    "score": 75,
+    "fund_score": 40,
+    "tech_score": 35,
+    "price": 996.08,
+    "avg_volume": 2746040,
+    "market_cap": 442217398272,
+    "sector": "Consumer Defensive",
+    "company_name": "Costco Wholesale Corporation"
+  },
+  "PM": {
+    "score": 61,
+    "fund_score": 32,
+    "tech_score": 29,
+    "price": 182.67,
+    "avg_volume": 5805890,
+    "market_cap": 284358639616,
+    "sector": "Consumer Defensive",
+    "company_name": "Philip Morris International Inc"
+  },
+  "MO": {
+    "score": 53,
+    "fund_score": 25,
+    "tech_score": 28,
+    "price": 66.77,
+    "avg_volume": 9946968,
+    "market_cap": 112084901888,
+    "sector": "Consumer Defensive",
+    "company_name": "Altria Group, Inc."
+  },
+  "CL": {
+    "score": 65,
+    "fund_score": 46,
+    "tech_score": 24,
+    "price": 95.58,
+    "avg_volume": 6638533,
+    "market_cap": 77249748992,
+    "sector": "Consumer Defensive",
+    "company_name": "Colgate-Palmolive Company"
+  },
+  "KMB": {
+    "score": 68,
+    "fund_score": 40,
+    "tech_score": 28,
+    "price": 109.9,
+    "avg_volume": 6034436,
+    "market_cap": 36478267392,
+    "sector": "Consumer Defensive",
+    "company_name": "Kimberly-Clark Corporation"
+  },
+  "GIS": {
+    "score": 49,
+    "fund_score": 40,
+    "tech_score": 9,
+    "price": 45.36,
+    "avg_volume": 7496546,
+    "market_cap": 24203284480,
+    "sector": "Consumer Defensive",
+    "company_name": "General Mills, Inc."
+  },
+  "HSY": {
+    "score": 77,
+    "fund_score": 43,
+    "tech_score": 34,
+    "price": 222.04,
+    "avg_volume": 1850263,
+    "market_cap": 45026406400,
+    "sector": "Consumer Defensive",
+    "company_name": "The Hershey Company"
+  },
+  "MDLZ": {
+    "score": 67,
+    "fund_score": 39,
+    "tech_score": 28,
+    "price": 60.08,
+    "avg_volume": 11563141,
+    "market_cap": 77524746240,
+    "sector": "Consumer Defensive",
+    "company_name": "Mondelez International, Inc."
+  },
+  "MNST": {
+    "score": 74,
+    "fund_score": 50,
+    "tech_score": 24,
+    "price": 83.18,
+    "avg_volume": 5589980,
+    "market_cap": 81268621312,
+    "sector": "Consumer Defensive",
+    "company_name": "Monster Beverage Corporation"
+  },
+  "KDP": {
+    "score": 61,
+    "fund_score": 37,
+    "tech_score": 24,
+    "price": 29.14,
+    "avg_volume": 12322666,
+    "market_cap": 39589113856,
+    "sector": "Consumer Defensive",
+    "company_name": "Keurig Dr Pepper Inc."
+  },
+  "KHC": {
+    "score": 40,
+    "fund_score": 25,
+    "tech_score": 15,
+    "price": 23.95,
+    "avg_volume": 14994011,
+    "market_cap": 28350687232,
+    "sector": "Consumer Defensive",
+    "company_name": "The Kraft Heinz Company"
+  },
+  "STZ": {
+    "score": 65,
+    "fund_score": 34,
+    "tech_score": 31,
+    "price": 156.29,
+    "avg_volume": 2653805,
+    "market_cap": 27209129984,
+    "sector": "Consumer Defensive",
+    "company_name": "Constellation Brands, Inc."
+  },
+  "TAP": {
+    "score": 58,
+    "fund_score": 25,
+    "tech_score": 33,
+    "price": 50.82,
+    "avg_volume": 3258748,
+    "market_cap": 10049949696,
+    "sector": "Consumer Defensive",
+    "company_name": "Molson Coors Beverage Company"
+  },
+  "CPB": {
+    "score": 48,
+    "fund_score": 34,
+    "tech_score": 14,
+    "price": 27.53,
+    "avg_volume": 6875786,
+    "market_cap": 8207635968,
+    "sector": "Consumer Defensive",
+    "company_name": "The Campbell's Company"
+  },
+  "CAG": {
+    "score": 55,
+    "fund_score": 25,
+    "tech_score": 30,
+    "price": 18.79,
+    "avg_volume": 11419123,
+    "market_cap": 8988562432,
+    "sector": "Consumer Defensive",
+    "company_name": "ConAgra Brands, Inc."
+  },
+  "SJM": {
+    "score": 63,
+    "fund_score": 28,
+    "tech_score": 35,
+    "price": 107.69,
+    "avg_volume": 1626903,
+    "market_cap": 11489912832,
+    "sector": "Consumer Defensive",
+    "company_name": "The J.M. Smucker Company"
+  },
+  "CHD": {
+    "score": 63,
+    "fund_score": 41,
+    "tech_score": 27,
+    "price": 102.67,
+    "avg_volume": 2554835,
+    "market_cap": 24654155776,
+    "sector": "Consumer Defensive",
+    "company_name": "Church & Dwight Company, Inc."
+  },
+  "CLX": {
+    "score": 68,
+    "fund_score": 40,
+    "tech_score": 28,
+    "price": 123.2,
+    "avg_volume": 2384998,
+    "market_cap": 15027982336,
+    "sector": "Consumer Defensive",
+    "company_name": "Clorox Company (The)"
+  },
+  "DG": {
+    "score": 56,
+    "fund_score": 32,
+    "tech_score": 24,
+    "price": 152.02,
+    "avg_volume": 3630880,
+    "market_cap": 33462470656,
+    "sector": "Consumer Defensive",
+    "company_name": "Dollar General Corporation"
+  },
+  "DLTR": {
+    "score": 71,
+    "fund_score": 43,
+    "tech_score": 28,
+    "price": 132.54,
+    "avg_volume": 3286325,
+    "market_cap": 27033896960,
+    "sector": "Consumer Defensive",
+    "company_name": "Dollar Tree, Inc."
+  },
+  "TGT": {
+    "score": 61,
+    "fund_score": 33,
+    "tech_score": 28,
+    "price": 115.66,
+    "avg_volume": 7240943,
+    "market_cap": 52555804672,
+    "sector": "Consumer Defensive",
+    "company_name": "Target Corporation"
+  },
+  "EL": {
+    "score": 68,
+    "fund_score": 31,
+    "tech_score": 37,
+    "price": 111.6,
+    "avg_volume": 3801816,
+    "market_cap": 40368738304,
+    "sector": "Consumer Defensive",
+    "company_name": "Estee Lauder Companies, Inc. (T"
+  },
+  "HRL": {
+    "score": 42,
+    "fund_score": 24,
+    "tech_score": 18,
+    "price": 24.48,
+    "avg_volume": 4930005,
+    "market_cap": 13466626048,
+    "sector": "Consumer Defensive",
+    "company_name": "Hormel Foods Corporation"
+  },
+  "MKC": {
+    "score": 66,
+    "fund_score": 38,
+    "tech_score": 28,
+    "price": 70.02,
+    "avg_volume": 3537476,
+    "market_cap": 18796044288,
+    "sector": "Consumer Defensive",
+    "company_name": "McCormick & Company, Incorporat"
+  },
+  "LW": {
+    "score": 71,
+    "fund_score": 39,
+    "tech_score": 32,
+    "price": 48.86,
+    "avg_volume": 2739621,
+    "market_cap": 6808762368,
+    "sector": "Consumer Defensive",
+    "company_name": "Lamb Weston Holdings, Inc."
+  },
+  "TSN": {
+    "score": 57,
+    "fund_score": 22,
+    "tech_score": 35,
+    "price": 63.96,
+    "avg_volume": 3015443,
+    "market_cap": 22518970368,
+    "sector": "Consumer Defensive",
+    "company_name": "Tyson Foods, Inc."
+  },
+  "SYY": {
+    "score": 55,
+    "fund_score": 36,
+    "tech_score": 24,
+    "price": 89.28,
+    "avg_volume": 3700966,
+    "market_cap": 42758926336,
+    "sector": "Consumer Defensive",
+    "company_name": "Sysco Corporation"
+  },
+  "ADM": {
+    "score": 27,
+    "fund_score": 12,
+    "tech_score": 15,
+    "price": 67.52,
+    "avg_volume": 3388070,
+    "market_cap": 32448065536,
+    "sector": "Consumer Defensive",
+    "company_name": "Archer-Daniels-Midland Company"
+  },
+  "BG": {
+    "score": 37,
+    "fund_score": 22,
+    "tech_score": 20,
+    "price": 121.77,
+    "avg_volume": 1564790,
+    "market_cap": 23545573376,
+    "sector": "Consumer Defensive",
+    "company_name": "Bunge Limited"
+  },
+  "ORLY": {
+    "score": 31,
+    "fund_score": 22,
+    "tech_score": 9,
+    "price": 92.75,
+    "avg_volume": 5872660,
+    "market_cap": 78290649088,
+    "sector": "Consumer Cyclical",
+    "company_name": "O'Reilly Automotive, Inc."
+  },
+  "AZO": {
+    "score": 51,
+    "fund_score": 22,
+    "tech_score": 29,
+    "price": 3744.64,
+    "avg_volume": 165783,
+    "market_cap": 62283337728,
+    "sector": "Consumer Cyclical",
+    "company_name": "AutoZone, Inc."
+  },
+  "HD": {
+    "score": 59,
+    "fund_score": 31,
+    "tech_score": 28,
+    "price": 383.52,
+    "avg_volume": 4669856,
+    "market_cap": 381798547456,
+    "sector": "Consumer Cyclical",
+    "company_name": "Home Depot, Inc. (The)"
+  },
+  "LOW": {
+    "score": 39,
+    "fund_score": 15,
+    "tech_score": 24,
+    "price": 282.13,
+    "avg_volume": 3068625,
+    "market_cap": 158261248000,
+    "sector": "Consumer Cyclical",
+    "company_name": "Lowe's Companies, Inc."
+  },
+  "TJX": {
+    "score": 64,
+    "fund_score": 34,
+    "tech_score": 30,
+    "price": 157.23,
+    "avg_volume": 5524411,
+    "market_cap": 174987362304,
+    "sector": "Consumer Cyclical",
+    "company_name": "TJX Companies, Inc. (The)"
+  },
+  "ROST": {
+    "score": 57,
+    "fund_score": 35,
+    "tech_score": 27,
+    "price": 200.38,
+    "avg_volume": 2671863,
+    "market_cap": 65168842752,
+    "sector": "Consumer Cyclical",
+    "company_name": "Ross Stores, Inc."
+  },
+  "BBY": {
+    "score": 36,
+    "fund_score": 18,
+    "tech_score": 18,
+    "price": 66.91,
+    "avg_volume": 4531320,
+    "market_cap": 14057876480,
+    "sector": "Consumer Cyclical",
+    "company_name": "Best Buy Co., Inc."
+  },
+  "ULTA": {
+    "score": 62,
+    "fund_score": 36,
+    "tech_score": 26,
+    "price": 689.42,
+    "avg_volume": 670446,
+    "market_cap": 30912464896,
+    "sector": "Consumer Cyclical",
+    "company_name": "Ulta Beauty, Inc."
+  },
+  "NKE": {
+    "score": 37,
+    "fund_score": 22,
+    "tech_score": 15,
+    "price": 65.55,
+    "avg_volume": 17941060,
+    "market_cap": 97039130624,
+    "sector": "Consumer Cyclical",
+    "company_name": "Nike, Inc."
+  },
+  "MCD": {
+    "score": 57,
+    "fund_score": 23,
+    "tech_score": 34,
+    "price": 327.89,
+    "avg_volume": 3336118,
+    "market_cap": 233983754240,
+    "sector": "Consumer Cyclical",
+    "company_name": "McDonald's Corporation"
+  },
+  "SBUX": {
+    "score": 44,
+    "fund_score": 14,
+    "tech_score": 30,
+    "price": 95.76,
+    "avg_volume": 9659280,
+    "market_cap": 109099368448,
+    "sector": "Consumer Cyclical",
+    "company_name": "Starbucks Corporation"
+  },
+  "YUM": {
+    "score": 55,
+    "fund_score": 21,
+    "tech_score": 34,
+    "price": 162.91,
+    "avg_volume": 2112268,
+    "market_cap": 45232422912,
+    "sector": "Consumer Cyclical",
+    "company_name": "Yum! Brands, Inc."
+  },
+  "CMG": {
+    "score": 51,
+    "fund_score": 34,
+    "tech_score": 17,
+    "price": 38.72,
+    "avg_volume": 19065288,
+    "market_cap": 51198607360,
+    "sector": "Consumer Cyclical",
+    "company_name": "Chipotle Mexican Grill, Inc."
+  },
+  "DPZ": {
+    "score": 27,
+    "fund_score": 18,
+    "tech_score": 9,
+    "price": 382.99,
+    "avg_volume": 660641,
+    "market_cap": 13002096640,
+    "sector": "Consumer Cyclical",
+    "company_name": "Domino's Pizza Inc"
+  },
+  "DRI": {
+    "score": 62,
+    "fund_score": 31,
+    "tech_score": 31,
+    "price": 216.41,
+    "avg_volume": 1623748,
+    "market_cap": 25171462144,
+    "sector": "Consumer Cyclical",
+    "company_name": "Darden Restaurants, Inc."
+  },
+  "TXRH": {
+    "score": 65,
+    "fund_score": 32,
+    "tech_score": 33,
+    "price": 186.87,
+    "avg_volume": 870928,
+    "market_cap": 12417625088,
+    "sector": "Consumer Cyclical",
+    "company_name": "Texas Roadhouse, Inc."
+  },
+  "CBRL": {
+    "score": 18,
+    "fund_score": 3,
+    "tech_score": 15,
+    "price": 32.95,
+    "avg_volume": 1882420,
+    "market_cap": 735710784,
+    "sector": "Consumer Cyclical",
+    "company_name": "Cracker Barrel Old Country Stor"
+  },
+  "BLMN": {
+    "score": 25,
+    "fund_score": 10,
+    "tech_score": 15,
+    "price": 6.83,
+    "avg_volume": 2185905,
+    "market_cap": 582032704,
+    "sector": "Consumer Cyclical",
+    "company_name": "Bloomin' Brands, Inc."
+  },
+  "CAKE": {
+    "score": 53,
+    "fund_score": 22,
+    "tech_score": 31,
+    "price": 64.07,
+    "avg_volume": 1169251,
+    "market_cap": 3193357056,
+    "sector": "Consumer Cyclical",
+    "company_name": "The Cheesecake Factory Incorpor"
+  },
+  "F": {
+    "score": 30,
+    "fund_score": 3,
+    "tech_score": 27,
+    "price": 13.85,
+    "avg_volume": 59575773,
+    "market_cap": 55254233088,
+    "sector": "Consumer Cyclical",
+    "company_name": "Ford Motor Company"
+  },
+  "GM": {
+    "score": 44,
+    "fund_score": 10,
+    "tech_score": 34,
+    "price": 83.67,
+    "avg_volume": 9047401,
+    "market_cap": 78052507648,
+    "sector": "Consumer Cyclical",
+    "company_name": "General Motors Company"
+  },
+  "APTV": {
+    "score": 44,
+    "fund_score": 14,
+    "tech_score": 30,
+    "price": 83.81,
+    "avg_volume": 2305920,
+    "market_cap": 18109614080,
+    "sector": "Consumer Cyclical",
+    "company_name": "Aptiv PLC"
+  },
+  "BWA": {
+    "score": 35,
+    "fund_score": 16,
+    "tech_score": 24,
+    "price": 61.72,
+    "avg_volume": 3342436,
+    "market_cap": 13203643392,
+    "sector": "Consumer Cyclical",
+    "company_name": "BorgWarner Inc."
+  },
+  "LEA": {
+    "score": 41,
+    "fund_score": 13,
+    "tech_score": 28,
+    "price": 136.9,
+    "avg_volume": 622200,
+    "market_cap": 7101026304,
+    "sector": "Consumer Cyclical",
+    "company_name": "Lear Corporation"
+  },
+  "GNTX": {
+    "score": 61,
+    "fund_score": 37,
+    "tech_score": 24,
+    "price": 24.54,
+    "avg_volume": 2333830,
+    "market_cap": 5386269184,
+    "sector": "Consumer Cyclical",
+    "company_name": "Gentex Corporation"
+  },
+  "LKQ": {
+    "score": 47,
+    "fund_score": 18,
+    "tech_score": 29,
+    "price": 33.22,
+    "avg_volume": 3923615,
+    "market_cap": 8547279872,
+    "sector": "Consumer Cyclical",
+    "company_name": "LKQ Corporation"
+  },
+  "GPC": {
+    "score": 10,
+    "fund_score": 4,
+    "tech_score": 6,
+    "price": 120.91,
+    "avg_volume": 1118015,
+    "market_cap": 16819850240,
+    "sector": "Consumer Cyclical",
+    "company_name": "Genuine Parts Company"
+  },
+  "XOM": {
+    "score": 54,
+    "fund_score": 24,
+    "tech_score": 30,
+    "price": 150.68,
+    "avg_volume": 18391103,
+    "market_cap": 635442495488,
+    "sector": "Energy",
+    "company_name": "Exxon Mobil Corporation"
+  },
+  "CVX": {
+    "score": 47,
+    "fund_score": 20,
+    "tech_score": 27,
+    "price": 183.87,
+    "avg_volume": 10589390,
+    "market_cap": 367621144576,
+    "sector": "Energy",
+    "company_name": "Chevron Corporation"
+  },
+  "COP": {
+    "score": 57,
+    "fund_score": 29,
+    "tech_score": 28,
+    "price": 110.52,
+    "avg_volume": 7910068,
+    "market_cap": 136571576320,
+    "sector": "Energy",
+    "company_name": "ConocoPhillips"
+  },
+  "SLB": {
+    "score": 60,
+    "fund_score": 37,
+    "tech_score": 23,
+    "price": 51.59,
+    "avg_volume": 18272233,
+    "market_cap": 77144154112,
+    "sector": "Energy",
+    "company_name": "SLB Limited"
+  },
+  "EOG": {
+    "score": 68,
+    "fund_score": 37,
+    "tech_score": 31,
+    "price": 122.27,
+    "avg_volume": 4229850,
+    "market_cap": 66758610944,
+    "sector": "Energy",
+    "company_name": "EOG Resources, Inc."
+  },
+  "MPC": {
+    "score": 56,
+    "fund_score": 28,
+    "tech_score": 28,
+    "price": 199.57,
+    "avg_volume": 2273375,
+    "market_cap": 59991240704,
+    "sector": "Energy",
+    "company_name": "Marathon Petroleum Corporation"
+  },
+  "PSX": {
+    "score": 48,
+    "fund_score": 24,
+    "tech_score": 24,
+    "price": 157.4,
+    "avg_volume": 2399873,
+    "market_cap": 63609155584,
+    "sector": "Energy",
+    "company_name": "Phillips 66"
+  },
+  "VLO": {
+    "score": 48,
+    "fund_score": 21,
+    "tech_score": 27,
+    "price": 199.46,
+    "avg_volume": 3288935,
+    "market_cap": 61962600448,
+    "sector": "Energy",
+    "company_name": "Valero Energy Corporation"
+  },
+  "OXY": {
+    "score": 54,
+    "fund_score": 25,
+    "tech_score": 29,
+    "price": 47.11,
+    "avg_volume": 10225163,
+    "market_cap": 46413262848,
+    "sector": "Energy",
+    "company_name": "Occidental Petroleum Corporatio"
+  },
+  "DVN": {
+    "score": 73,
+    "fund_score": 43,
+    "tech_score": 30,
+    "price": 44.44,
+    "avg_volume": 9536140,
+    "market_cap": 27877210112,
+    "sector": "Energy",
+    "company_name": "Devon Energy Corporation"
+  },
+  "FANG": {
+    "score": 74,
+    "fund_score": 41,
+    "tech_score": 33,
+    "price": 174.01,
+    "avg_volume": 1879193,
+    "market_cap": 49858318336,
+    "sector": "Energy",
+    "company_name": "Diamondback Energy, Inc."
+  },
+  "HAL": {
+    "score": 55,
+    "fund_score": 30,
+    "tech_score": 25,
+    "price": 34.77,
+    "avg_volume": 12729811,
+    "market_cap": 29263357952,
+    "sector": "Energy",
+    "company_name": "Halliburton Company"
+  },
+  "BKR": {
+    "score": 61,
+    "fund_score": 30,
+    "tech_score": 31,
+    "price": 61.54,
+    "avg_volume": 8655455,
+    "market_cap": 60816072704,
+    "sector": "Energy",
+    "company_name": "Baker Hughes Company"
+  },
+  "APA": {
+    "score": 68,
+    "fund_score": 38,
+    "tech_score": 30,
+    "price": 28.61,
+    "avg_volume": 5871648,
+    "market_cap": 10236270592,
+    "sector": "Energy",
+    "company_name": "APA Corporation"
+  },
+  "CTRA": {
+    "score": 73,
+    "fund_score": 42,
+    "tech_score": 31,
+    "price": 31.47,
+    "avg_volume": 9424998,
+    "market_cap": 23960551424,
+    "sector": "Energy",
+    "company_name": "Coterra Energy Inc."
+  },
+  "NOV": {
+    "score": 45,
+    "fund_score": 17,
+    "tech_score": 28,
+    "price": 19.99,
+    "avg_volume": 4269298,
+    "market_cap": 7291409920,
+    "sector": "Energy",
+    "company_name": "NOV Inc."
+  },
+  "RIG": {
+    "score": 58,
+    "fund_score": 30,
+    "tech_score": 28,
+    "price": 6.22,
+    "avg_volume": 40869705,
+    "market_cap": 6852463104,
+    "sector": "Energy",
+    "company_name": "Transocean Ltd (Switzerland)"
+  },
+  "TRGP": {
+    "score": 66,
+    "fund_score": 45,
+    "tech_score": 26,
+    "price": 227.62,
+    "avg_volume": 1381288,
+    "market_cap": 48981970944,
+    "sector": "Energy",
+    "company_name": "Targa Resources, Inc."
+  },
+  "WMB": {
+    "score": 63,
+    "fund_score": 44,
+    "tech_score": 24,
+    "price": 72.14,
+    "avg_volume": 7344873,
+    "market_cap": 88155078656,
+    "sector": "Energy",
+    "company_name": "Williams Companies, Inc. (The)"
+  },
+  "CCJ": {
+    "score": 54,
+    "fund_score": 26,
+    "tech_score": 28,
+    "price": 116.5,
+    "avg_volume": 4247278,
+    "market_cap": 50777001984,
+    "sector": "Energy",
+    "company_name": "Cameco Corporation"
+  },
+  "UEC": {
+    "score": 23,
+    "fund_score": 8,
+    "tech_score": 15,
+    "price": 16.0,
+    "avg_volume": 10903428,
+    "market_cap": 7734038528,
+    "sector": "Energy",
+    "company_name": "Uranium Energy Corp."
+  },
+  "URG": {
+    "score": 18,
+    "fund_score": 8,
+    "tech_score": 10,
+    "price": 1.58,
+    "avg_volume": 11035281,
+    "market_cap": 594417536,
+    "sector": "Energy",
+    "company_name": "Ur Energy Inc"
+  },
+  "UUUU": {
+    "score": 58,
+    "fund_score": 30,
+    "tech_score": 28,
+    "price": 21.34,
+    "avg_volume": 13245878,
+    "market_cap": 5139258368,
+    "sector": "Energy",
+    "company_name": "Energy Fuels Inc"
+  },
+  "LEU": {
+    "score": 31,
+    "fund_score": 24,
+    "tech_score": 7,
+    "price": 206.67,
+    "avg_volume": 1167441,
+    "market_cap": 4064075520,
+    "sector": "Energy",
+    "company_name": "Centrus Energy Corp."
+  },
+  "BWXT": {
+    "score": 63,
+    "fund_score": 46,
+    "tech_score": 17,
+    "price": 202.25,
+    "avg_volume": 1024861,
+    "market_cap": 18491058176,
+    "sector": "Industrials",
+    "company_name": "BWX Technologies, Inc."
+  },
+  "LMT": {
+    "score": 51,
+    "fund_score": 39,
+    "tech_score": 17,
+    "price": 649.81,
+    "avg_volume": 1682418,
+    "market_cap": 150364602368,
+    "sector": "Industrials",
+    "company_name": "Lockheed Martin Corporation"
+  },
+  "RTX": {
+    "score": 61,
+    "fund_score": 34,
+    "tech_score": 27,
+    "price": 204.81,
+    "avg_volume": 5355950,
+    "market_cap": 274913918976,
+    "sector": "Industrials",
+    "company_name": "RTX Corporation"
+  },
+  "BA": {
+    "score": 68,
+    "fund_score": 39,
+    "tech_score": 29,
+    "price": 238.93,
+    "avg_volume": 8379596,
+    "market_cap": 187642970112,
+    "sector": "Industrials",
+    "company_name": "Boeing Company (The)"
+  },
+  "NOC": {
+    "score": 66,
+    "fund_score": 43,
+    "tech_score": 23,
+    "price": 724.83,
+    "avg_volume": 883336,
+    "market_cap": 103447789568,
+    "sector": "Industrials",
+    "company_name": "Northrop Grumman Corporation"
+  },
+  "GD": {
+    "score": 51,
+    "fund_score": 35,
+    "tech_score": 16,
+    "price": 349.49,
+    "avg_volume": 1336513,
+    "market_cap": 94498512896,
+    "sector": "Industrials",
+    "company_name": "General Dynamics Corporation"
+  },
+  "LHX": {
+    "score": 57,
+    "fund_score": 27,
+    "tech_score": 30,
+    "price": 352.12,
+    "avg_volume": 1357966,
+    "market_cap": 65865048064,
+    "sector": "Industrials",
+    "company_name": "L3Harris Technologies, Inc."
+  },
+  "HII": {
+    "score": 60,
+    "fund_score": 30,
+    "tech_score": 30,
+    "price": 424.89,
+    "avg_volume": 545798,
+    "market_cap": 16673825792,
+    "sector": "Industrials",
+    "company_name": "Huntington Ingalls Industries, "
+  },
+  "KTOS": {
+    "score": 33,
+    "fund_score": 18,
+    "tech_score": 15,
+    "price": 97.21,
+    "avg_volume": 3049618,
+    "market_cap": 16557697024,
+    "sector": "Industrials",
+    "company_name": "Kratos Defense & Security Solut"
+  },
+  "TDG": {
+    "score": 45,
+    "fund_score": 30,
+    "tech_score": 15,
+    "price": 1315.33,
+    "avg_volume": 357288,
+    "market_cap": 74281369600,
+    "sector": "Industrials",
+    "company_name": "Transdigm Group Incorporated"
+  },
+  "HWM": {
+    "score": 65,
+    "fund_score": 46,
+    "tech_score": 24,
+    "price": 249.35,
+    "avg_volume": 2530721,
+    "market_cap": 100363378688,
+    "sector": "Industrials",
+    "company_name": "Howmet Aerospace Inc."
+  },
+  "TXT": {
+    "score": 63,
+    "fund_score": 32,
+    "tech_score": 31,
+    "price": 100.25,
+    "avg_volume": 1721281,
+    "market_cap": 17459783680,
+    "sector": "Industrials",
+    "company_name": "Textron Inc."
+  },
+  "LDOS": {
+    "score": 36,
+    "fund_score": 25,
+    "tech_score": 11,
+    "price": 171.53,
+    "avg_volume": 877560,
+    "market_cap": 22006841344,
+    "sector": "Technology",
+    "company_name": "Leidos Holdings, Inc."
+  },
+  "STRL": {
+    "score": 81,
+    "fund_score": 46,
+    "tech_score": 35,
+    "price": 410.63,
+    "avg_volume": 539748,
+    "market_cap": 12614295552,
+    "sector": "Industrials",
+    "company_name": "Sterling Infrastructure, Inc."
+  },
+  "FIX": {
+    "score": 71,
+    "fund_score": 45,
+    "tech_score": 26,
+    "price": 1319.47,
+    "avg_volume": 579080,
+    "market_cap": 46552817664,
+    "sector": "Industrials",
+    "company_name": "Comfort Systems USA, Inc."
+  },
+  "MTZ": {
+    "score": 54,
+    "fund_score": 29,
+    "tech_score": 25,
+    "price": 264.18,
+    "avg_volume": 840520,
+    "market_cap": 20845901824,
+    "sector": "Industrials",
+    "company_name": "MasTec, Inc."
+  },
+  "EME": {
+    "score": 69,
+    "fund_score": 39,
+    "tech_score": 30,
+    "price": 783.06,
+    "avg_volume": 370765,
+    "market_cap": 35054358528,
+    "sector": "Industrials",
+    "company_name": "EMCOR Group, Inc."
+  },
+  "PWR": {
+    "score": 60,
+    "fund_score": 30,
+    "tech_score": 30,
+    "price": 519.31,
+    "avg_volume": 1023941,
+    "market_cap": 77437370368,
+    "sector": "Industrials",
+    "company_name": "Quanta Services, Inc."
+  },
+  "PRIM": {
+    "score": 68,
+    "fund_score": 33,
+    "tech_score": 35,
+    "price": 160.41,
+    "avg_volume": 950033,
+    "market_cap": 8667329536,
+    "sector": "Industrials",
+    "company_name": "Primoris Services Corporation"
+  },
+  "DY": {
+    "score": 63,
+    "fund_score": 36,
+    "tech_score": 27,
+    "price": 412.68,
+    "avg_volume": 465830,
+    "market_cap": 12366830592,
+    "sector": "Industrials",
+    "company_name": "Dycom Industries, Inc."
+  },
+  "AGX": {
+    "score": 60,
+    "fund_score": 33,
+    "tech_score": 27,
+    "price": 414.12,
+    "avg_volume": 394116,
+    "market_cap": 5745256448,
+    "sector": "Industrials",
+    "company_name": "Argan, Inc."
+  },
+  "SPXC": {
+    "score": 59,
+    "fund_score": 40,
+    "tech_score": 24,
+    "price": 241.58,
+    "avg_volume": 523263,
+    "market_cap": 12039277568,
+    "sector": "Industrials",
+    "company_name": "SPX Technologies, Inc."
+  },
+  "OSK": {
+    "score": 57,
+    "fund_score": 23,
+    "tech_score": 34,
+    "price": 171.58,
+    "avg_volume": 767818,
+    "market_cap": 10981173248,
+    "sector": "Industrials",
+    "company_name": "Oshkosh Corporation (Holding Co"
+  },
+  "BLDR": {
+    "score": 20,
+    "fund_score": 14,
+    "tech_score": 6,
+    "price": 113.9,
+    "avg_volume": 2085258,
+    "market_cap": 12595128320,
+    "sector": "Industrials",
+    "company_name": "Builders FirstSource, Inc."
+  },
+  "SSD": {
+    "score": 56,
+    "fund_score": 28,
+    "tech_score": 28,
+    "price": 203.35,
+    "avg_volume": 282208,
+    "market_cap": 8462878208,
+    "sector": "Basic Materials",
+    "company_name": "Simpson Manufacturing Company, "
+  },
+  "J": {
+    "score": 59,
+    "fund_score": 25,
+    "tech_score": 34,
+    "price": 141.49,
+    "avg_volume": 1083041,
+    "market_cap": 16708316160,
+    "sector": "Industrials",
+    "company_name": "Jacobs Solutions Inc."
+  },
+  "ACM": {
+    "score": 45,
+    "fund_score": 27,
+    "tech_score": 18,
+    "price": 95.36,
+    "avg_volume": 1671421,
+    "market_cap": 12328963072,
+    "sector": "Industrials",
+    "company_name": "AECOM"
+  },
+  "FLR": {
+    "score": 42,
+    "fund_score": 8,
+    "tech_score": 34,
+    "price": 50.64,
+    "avg_volume": 2721136,
+    "market_cap": 8186683392,
+    "sector": "Industrials",
+    "company_name": "Fluor Corporation"
+  },
+  "UNP": {
+    "score": 57,
+    "fund_score": 38,
+    "tech_score": 24,
+    "price": 265.0,
+    "avg_volume": 3413050,
+    "market_cap": 157248749568,
+    "sector": "Industrials",
+    "company_name": "Union Pacific Corporation"
+  },
+  "UPS": {
+    "score": 64,
+    "fund_score": 31,
+    "tech_score": 33,
+    "price": 116.12,
+    "avg_volume": 6209595,
+    "market_cap": 98514534400,
+    "sector": "Industrials",
+    "company_name": "United Parcel Service, Inc."
+  },
+  "CSX": {
+    "score": 58,
+    "fund_score": 36,
+    "tech_score": 27,
+    "price": 41.36,
+    "avg_volume": 13665983,
+    "market_cap": 76911263744,
+    "sector": "Industrials",
+    "company_name": "CSX Corporation"
+  },
+  "NSC": {
+    "score": 54,
+    "fund_score": 35,
+    "tech_score": 24,
+    "price": 316.76,
+    "avg_volume": 1261260,
+    "market_cap": 71135436800,
+    "sector": "Industrials",
+    "company_name": "Norfolk Southern Corporation"
+  },
+  "FDX": {
+    "score": 53,
+    "fund_score": 31,
+    "tech_score": 27,
+    "price": 383.08,
+    "avg_volume": 1834835,
+    "market_cap": 90389815296,
+    "sector": "Industrials",
+    "company_name": "FedEx Corporation"
+  },
+  "SAIA": {
+    "score": 54,
+    "fund_score": 20,
+    "tech_score": 34,
+    "price": 390.35,
+    "avg_volume": 530453,
+    "market_cap": 10399954944,
+    "sector": "Industrials",
+    "company_name": "Saia, Inc."
+  },
+  "CHRW": {
+    "score": 60,
+    "fund_score": 25,
+    "tech_score": 35,
+    "price": 185.86,
+    "avg_volume": 2096583,
+    "market_cap": 22046867456,
+    "sector": "Industrials",
+    "company_name": "C.H. Robinson Worldwide, Inc."
+  },
+  "ODFL": {
+    "score": 72,
+    "fund_score": 37,
+    "tech_score": 35,
+    "price": 193.81,
+    "avg_volume": 2412228,
+    "market_cap": 40732688384,
+    "sector": "Industrials",
+    "company_name": "Old Dominion Freight Line, Inc."
+  },
+  "KEX": {
+    "score": 52,
+    "fund_score": 24,
+    "tech_score": 28,
+    "price": 127.8,
+    "avg_volume": 762821,
+    "market_cap": 7131239936,
+    "sector": "Industrials",
+    "company_name": "Kirby Corporation"
+  },
+  "DAL": {
+    "score": 60,
+    "fund_score": 30,
+    "tech_score": 30,
+    "price": 71.11,
+    "avg_volume": 7919640,
+    "market_cap": 46444122112,
+    "sector": "Industrials",
+    "company_name": "Delta Air Lines, Inc."
+  },
+  "UAL": {
+    "score": 62,
+    "fund_score": 30,
+    "tech_score": 32,
+    "price": 116.93,
+    "avg_volume": 5298956,
+    "market_cap": 37854683136,
+    "sector": "Industrials",
+    "company_name": "United Airlines Holdings, Inc."
+  },
+  "LUV": {
+    "score": 35,
+    "fund_score": 13,
+    "tech_score": 27,
+    "price": 54.8,
+    "avg_volume": 10041518,
+    "market_cap": 28340097024,
+    "sector": "Industrials",
+    "company_name": "Southwest Airlines Company"
+  },
+  "ALK": {
+    "score": 36,
+    "fund_score": 8,
+    "tech_score": 28,
+    "price": 55.84,
+    "avg_volume": 3484050,
+    "market_cap": 6401578496,
+    "sector": "Industrials",
+    "company_name": "Alaska Air Group, Inc."
+  },
+  "EXPD": {
+    "score": 44,
+    "fund_score": 31,
+    "tech_score": 13,
+    "price": 149.58,
+    "avg_volume": 1465373,
+    "market_cap": 20300777472,
+    "sector": "Industrials",
+    "company_name": "Expeditors International of Was"
+  },
+  "JBHT": {
+    "score": 58,
+    "fund_score": 23,
+    "tech_score": 35,
+    "price": 223.45,
+    "avg_volume": 1190071,
+    "market_cap": 21276538880,
+    "sector": "Industrials",
+    "company_name": "J.B. Hunt Transport Services, I"
+  },
+  "CAT": {
+    "score": 73,
+    "fund_score": 45,
+    "tech_score": 28,
+    "price": 751.97,
+    "avg_volume": 2746628,
+    "market_cap": 351906594816,
+    "sector": "Industrials",
+    "company_name": "Caterpillar, Inc."
+  },
+  "DE": {
+    "score": 68,
+    "fund_score": 37,
+    "tech_score": 31,
+    "price": 593.27,
+    "avg_volume": 1554801,
+    "market_cap": 160820346880,
+    "sector": "Industrials",
+    "company_name": "Deere & Company"
+  },
+  "HON": {
+    "score": 54,
+    "fund_score": 35,
+    "tech_score": 24,
+    "price": 241.14,
+    "avg_volume": 4380118,
+    "market_cap": 162496937984,
+    "sector": "Industrials",
+    "company_name": "Honeywell International Inc."
+  },
+  "MMM": {
+    "score": 65,
+    "fund_score": 33,
+    "tech_score": 32,
+    "price": 164.17,
+    "avg_volume": 3472573,
+    "market_cap": 86468337664,
+    "sector": "Industrials",
+    "company_name": "3M Company"
+  },
+  "GE": {
+    "score": 75,
+    "fund_score": 47,
+    "tech_score": 28,
+    "price": 329.58,
+    "avg_volume": 5298798,
+    "market_cap": 347645542400,
+    "sector": "Industrials",
+    "company_name": "GE Aerospace"
+  },
+  "EMR": {
+    "score": 64,
+    "fund_score": 30,
+    "tech_score": 34,
+    "price": 151.14,
+    "avg_volume": 3124880,
+    "market_cap": 84986339328,
+    "sector": "Industrials",
+    "company_name": "Emerson Electric Company"
+  },
+  "ETN": {
+    "score": 71,
+    "fund_score": 43,
+    "tech_score": 28,
+    "price": 380.38,
+    "avg_volume": 3105223,
+    "market_cap": 148081934336,
+    "sector": "Industrials",
+    "company_name": "Eaton Corporation, PLC"
+  },
+  "ITW": {
+    "score": 58,
+    "fund_score": 39,
+    "tech_score": 24,
+    "price": 296.16,
+    "avg_volume": 1373220,
+    "market_cap": 85353316352,
+    "sector": "Industrials",
+    "company_name": "Illinois Tool Works Inc."
+  },
+  "PH": {
+    "score": 71,
+    "fund_score": 43,
+    "tech_score": 28,
+    "price": 997.5,
+    "avg_volume": 636831,
+    "market_cap": 125900988416,
+    "sector": "Industrials",
+    "company_name": "Parker-Hannifin Corporation"
+  },
+  "CMI": {
+    "score": 59,
+    "fund_score": 31,
+    "tech_score": 28,
+    "price": 593.0,
+    "avg_volume": 971051,
+    "market_cap": 81932115968,
+    "sector": "Industrials",
+    "company_name": "Cummins Inc."
+  },
+  "ROK": {
+    "score": 54,
+    "fund_score": 42,
+    "tech_score": 12,
+    "price": 396.46,
+    "avg_volume": 924723,
+    "market_cap": 44575260672,
+    "sector": "Industrials",
+    "company_name": "Rockwell Automation, Inc."
+  },
+  "DOV": {
+    "score": 54,
+    "fund_score": 35,
+    "tech_score": 24,
+    "price": 232.08,
+    "avg_volume": 1215125,
+    "market_cap": 31830517760,
+    "sector": "Industrials",
+    "company_name": "Dover Corporation"
+  },
+  "IR": {
+    "score": 54,
+    "fund_score": 30,
+    "tech_score": 24,
+    "price": 97.2,
+    "avg_volume": 3521213,
+    "market_cap": 38404730880,
+    "sector": "Industrials",
+    "company_name": "Ingersoll Rand Inc."
+  },
+  "XYL": {
+    "score": 38,
+    "fund_score": 28,
+    "tech_score": 10,
+    "price": 129.24,
+    "avg_volume": 1536896,
+    "market_cap": 31482865664,
+    "sector": "Industrials",
+    "company_name": "Xylem Inc."
+  },
+  "AAON": {
+    "score": 55,
+    "fund_score": 24,
+    "tech_score": 31,
+    "price": 102.28,
+    "avg_volume": 971706,
+    "market_cap": 8349531136,
+    "sector": "Industrials",
+    "company_name": "AAON, Inc."
+  },
+  "RBC": {
+    "score": 56,
+    "fund_score": 37,
+    "tech_score": 24,
+    "price": 551.65,
+    "avg_volume": 202676,
+    "market_cap": 17442600960,
+    "sector": "Industrials",
+    "company_name": "RBC Bearings Incorporated"
+  },
+  "POWL": {
+    "score": 69,
+    "fund_score": 36,
+    "tech_score": 33,
+    "price": 542.98,
+    "avg_volume": 269431,
+    "market_cap": 6593016832,
+    "sector": "Industrials",
+    "company_name": "Powell Industries, Inc."
+  },
+  "AIT": {
+    "score": 64,
+    "fund_score": 33,
+    "tech_score": 31,
+    "price": 279.27,
+    "avg_volume": 336370,
+    "market_cap": 10533480448,
+    "sector": "Industrials",
+    "company_name": "Applied Industrial Technologies"
+  },
+  "GVA": {
+    "score": 65,
+    "fund_score": 29,
+    "tech_score": 36,
+    "price": 132.79,
+    "avg_volume": 660003,
+    "market_cap": 5796257792,
+    "sector": "Industrials",
+    "company_name": "Granite Construction Incorporat"
+  },
+  "URI": {
+    "score": 66,
+    "fund_score": 38,
+    "tech_score": 28,
+    "price": 880.18,
+    "avg_volume": 731510,
+    "market_cap": 56005984256,
+    "sector": "Industrials",
+    "company_name": "United Rentals, Inc."
+  },
+  "CARR": {
+    "score": 45,
+    "fund_score": 15,
+    "tech_score": 30,
+    "price": 64.33,
+    "avg_volume": 8148526,
+    "market_cap": 53769838592,
+    "sector": "Industrials",
+    "company_name": "Carrier Global Corporation"
+  },
+  "OTIS": {
+    "score": 48,
+    "fund_score": 20,
+    "tech_score": 28,
+    "price": 92.77,
+    "avg_volume": 3188251,
+    "market_cap": 36153937920,
+    "sector": "Industrials",
+    "company_name": "Otis Worldwide Corporation"
+  },
+  "TT": {
+    "score": 65,
+    "fund_score": 37,
+    "tech_score": 28,
+    "price": 459.44,
+    "avg_volume": 1577623,
+    "market_cap": 101875769344,
+    "sector": "Industrials",
+    "company_name": "Trane Technologies plc"
+  },
+  "GNRC": {
+    "score": 29,
+    "fund_score": 10,
+    "tech_score": 24,
+    "price": 228.35,
+    "avg_volume": 1142305,
+    "market_cap": 13400506368,
+    "sector": "Industrials",
+    "company_name": "Generac Holdlings Inc."
+  },
+  "AOS": {
+    "score": 62,
+    "fund_score": 37,
+    "tech_score": 25,
+    "price": 78.96,
+    "avg_volume": 1375646,
+    "market_cap": 10919371776,
+    "sector": "Industrials",
+    "company_name": "A.O. Smith Corporation"
+  },
+  "MLI": {
+    "score": 48,
+    "fund_score": 38,
+    "tech_score": 10,
+    "price": 116.99,
+    "avg_volume": 847806,
+    "market_cap": 12987484160,
+    "sector": "Industrials",
+    "company_name": "Mueller Industries, Inc."
+  },
+  "WM": {
+    "score": 66,
+    "fund_score": 41,
+    "tech_score": 25,
+    "price": 234.06,
+    "avg_volume": 2112911,
+    "market_cap": 94404771840,
+    "sector": "Industrials",
+    "company_name": "Waste Management, Inc."
+  },
+  "RSG": {
+    "score": 47,
+    "fund_score": 34,
+    "tech_score": 13,
+    "price": 216.84,
+    "avg_volume": 1526398,
+    "market_cap": 67700875264,
+    "sector": "Industrials",
+    "company_name": "Republic Services, Inc."
+  },
+  "JCI": {
+    "score": 50,
+    "fund_score": 31,
+    "tech_score": 24,
+    "price": 139.48,
+    "avg_volume": 5618671,
+    "market_cap": 85370986496,
+    "sector": "Industrials",
+    "company_name": "Johnson Controls International "
+  },
+  "FAST": {
+    "score": 72,
+    "fund_score": 44,
+    "tech_score": 28,
+    "price": 45.98,
+    "avg_volume": 8361356,
+    "market_cap": 52793278464,
+    "sector": "Industrials",
+    "company_name": "Fastenal Company"
+  },
+  "PCAR": {
+    "score": 50,
+    "fund_score": 23,
+    "tech_score": 27,
+    "price": 125.17,
+    "avg_volume": 3406691,
+    "market_cap": 65764315136,
+    "sector": "Industrials",
+    "company_name": "PACCAR Inc."
+  },
+  "CTAS": {
+    "score": 73,
+    "fund_score": 43,
+    "tech_score": 30,
+    "price": 196.41,
+    "avg_volume": 1964495,
+    "market_cap": 78930640896,
+    "sector": "Industrials",
+    "company_name": "Cintas Corporation"
+  },
+  "GWW": {
+    "score": 66,
+    "fund_score": 35,
+    "tech_score": 31,
+    "price": 1134.04,
+    "avg_volume": 300453,
+    "market_cap": 54243680256,
+    "sector": "Industrials",
+    "company_name": "W.W. Grainger, Inc."
+  },
+  "FTV": {
+    "score": 53,
+    "fund_score": 20,
+    "tech_score": 33,
+    "price": 58.33,
+    "avg_volume": 3736235,
+    "market_cap": 18526287872,
+    "sector": "Technology",
+    "company_name": "Fortive Corporation"
+  },
+  "AME": {
+    "score": 69,
+    "fund_score": 39,
+    "tech_score": 30,
+    "price": 234.31,
+    "avg_volume": 1408600,
+    "market_cap": 54114820096,
+    "sector": "Industrials",
+    "company_name": "AMETEK, Inc."
+  },
+  "SNA": {
+    "score": 62,
+    "fund_score": 34,
+    "tech_score": 28,
+    "price": 384.36,
+    "avg_volume": 321696,
+    "market_cap": 19989622784,
+    "sector": "Industrials",
+    "company_name": "Snap-On Incorporated"
+  },
+  "IEX": {
+    "score": 56,
+    "fund_score": 31,
+    "tech_score": 25,
+    "price": 208.98,
+    "avg_volume": 761481,
+    "market_cap": 15733536768,
+    "sector": "Industrials",
+    "company_name": "IDEX Corporation"
+  },
+  "LIN": {
+    "score": 55,
+    "fund_score": 33,
+    "tech_score": 27,
+    "price": 485.28,
+    "avg_volume": 2827493,
+    "market_cap": 227552411648,
+    "sector": "Basic Materials",
+    "company_name": "Linde plc"
+  },
+  "APD": {
+    "score": 57,
+    "fund_score": 22,
+    "tech_score": 35,
+    "price": 282.39,
+    "avg_volume": 1619488,
+    "market_cap": 62875832320,
+    "sector": "Basic Materials",
+    "company_name": "Air Products and Chemicals, Inc"
+  },
+  "ECL": {
+    "score": 57,
+    "fund_score": 39,
+    "tech_score": 23,
+    "price": 302.59,
+    "avg_volume": 1367053,
+    "market_cap": 85822054400,
+    "sector": "Basic Materials",
+    "company_name": "Ecolab Inc."
+  },
+  "SHW": {
+    "score": 60,
+    "fund_score": 33,
+    "tech_score": 27,
+    "price": 365.76,
+    "avg_volume": 1811318,
+    "market_cap": 91196153856,
+    "sector": "Basic Materials",
+    "company_name": "Sherwin-Williams Company (The)"
+  },
+  "DD": {
+    "score": 38,
+    "fund_score": 16,
+    "tech_score": 27,
+    "price": 51.35,
+    "avg_volume": 5153288,
+    "market_cap": 21514383360,
+    "sector": "Basic Materials",
+    "company_name": "DuPont de Nemours, Inc."
+  },
+  "NEM": {
+    "score": 77,
+    "fund_score": 43,
+    "tech_score": 34,
+    "price": 124.69,
+    "avg_volume": 9542228,
+    "market_cap": 136965693440,
+    "sector": "Basic Materials",
+    "company_name": "Newmont Corporation"
+  },
+  "FCX": {
+    "score": 61,
+    "fund_score": 24,
+    "tech_score": 37,
+    "price": 62.55,
+    "avg_volume": 19324676,
+    "market_cap": 89817456640,
+    "sector": "Basic Materials",
+    "company_name": "Freeport-McMoRan, Inc."
+  },
+  "NUE": {
+    "score": 47,
+    "fund_score": 19,
+    "tech_score": 28,
+    "price": 184.54,
+    "avg_volume": 1688163,
+    "market_cap": 42233573376,
+    "sector": "Basic Materials",
+    "company_name": "Nucor Corporation"
+  },
+  "VMC": {
+    "score": 39,
+    "fund_score": 27,
+    "tech_score": 12,
+    "price": 299.36,
+    "avg_volume": 973471,
+    "market_cap": 39554707456,
+    "sector": "Basic Materials",
+    "company_name": "Vulcan Materials Company (Holdi"
+  },
+  "MLM": {
+    "score": 39,
+    "fund_score": 26,
+    "tech_score": 13,
+    "price": 661.73,
+    "avg_volume": 440076,
+    "market_cap": 39907045376,
+    "sector": "Basic Materials",
+    "company_name": "Martin Marietta Materials, Inc."
+  },
+  "PPG": {
+    "score": 49,
+    "fund_score": 28,
+    "tech_score": 26,
+    "price": 128.25,
+    "avg_volume": 2144585,
+    "market_cap": 28946024448,
+    "sector": "Basic Materials",
+    "company_name": "PPG Industries, Inc."
+  },
+  "IFF": {
+    "score": 26,
+    "fund_score": 7,
+    "tech_score": 24,
+    "price": 82.96,
+    "avg_volume": 2022103,
+    "market_cap": 21261576192,
+    "sector": "Basic Materials",
+    "company_name": "International Flavors & Fragran"
+  },
+  "ALB": {
+    "score": 32,
+    "fund_score": 13,
+    "tech_score": 19,
+    "price": 171.22,
+    "avg_volume": 3341631,
+    "market_cap": 20177801216,
+    "sector": "Basic Materials",
+    "company_name": "Albemarle Corporation"
+  },
+  "CE": {
+    "score": 46,
+    "fund_score": 12,
+    "tech_score": 34,
+    "price": 54.86,
+    "avg_volume": 2096371,
+    "market_cap": 6007438848,
+    "sector": "Basic Materials",
+    "company_name": "Celanese Corporation"
+  },
+  "CF": {
+    "score": 69,
+    "fund_score": 43,
+    "tech_score": 26,
+    "price": 95.82,
+    "avg_volume": 2338631,
+    "market_cap": 15520248832,
+    "sector": "Basic Materials",
+    "company_name": "CF Industries Holdings, Inc."
+  },
+  "MP": {
+    "score": 15,
+    "fund_score": 5,
+    "tech_score": 10,
+    "price": 57.94,
+    "avg_volume": 8434705,
+    "market_cap": 10268733440,
+    "sector": "Basic Materials",
+    "company_name": "MP Materials Corp."
+  },
+  "DOW": {
+    "score": 36,
+    "fund_score": 5,
+    "tech_score": 31,
+    "price": 31.58,
+    "avg_volume": 12515215,
+    "market_cap": 22659725312,
+    "sector": "Basic Materials",
+    "company_name": "Dow Inc."
+  },
+  "LYB": {
+    "score": 39,
+    "fund_score": 8,
+    "tech_score": 31,
+    "price": 55.97,
+    "avg_volume": 6074615,
+    "market_cap": 18015229952,
+    "sector": "Basic Materials",
+    "company_name": "LyondellBasell Industries NV"
+  },
+  "EMN": {
+    "score": 48,
+    "fund_score": 14,
+    "tech_score": 34,
+    "price": 80.26,
+    "avg_volume": 1717291,
+    "market_cap": 9155241984,
+    "sector": "Basic Materials",
+    "company_name": "Eastman Chemical Company"
+  },
+  "FMC": {
+    "score": 31,
+    "fund_score": 19,
+    "tech_score": 12,
+    "price": 14.48,
+    "avg_volume": 4664545,
+    "market_cap": 1808842496,
+    "sector": "Basic Materials",
+    "company_name": "FMC Corporation"
+  },
+  "BALL": {
+    "score": 51,
+    "fund_score": 32,
+    "tech_score": 24,
+    "price": 66.31,
+    "avg_volume": 2546705,
+    "market_cap": 18046191616,
+    "sector": "Consumer Cyclical",
+    "company_name": "Ball Corporation"
+  },
+  "PKG": {
+    "score": 50,
+    "fund_score": 25,
+    "tech_score": 25,
+    "price": 239.03,
+    "avg_volume": 917516,
+    "market_cap": 21507629056,
+    "sector": "Consumer Cyclical",
+    "company_name": "Packaging Corporation of Americ"
+  },
+  "IP": {
+    "score": 44,
+    "fund_score": 19,
+    "tech_score": 25,
+    "price": 48.48,
+    "avg_volume": 6169798,
+    "market_cap": 25599297536,
+    "sector": "Consumer Cyclical",
+    "company_name": "International Paper Company"
+  },
+  "AVY": {
+    "score": 58,
+    "fund_score": 30,
+    "tech_score": 28,
+    "price": 195.41,
+    "avg_volume": 709171,
+    "market_cap": 15104292864,
+    "sector": "Consumer Cyclical",
+    "company_name": "Avery Dennison Corporation"
+  },
+  "AMCR": {
+    "score": 53,
+    "fund_score": 25,
+    "tech_score": 28,
+    "price": 49.59,
+    "avg_volume": 5165410,
+    "market_cap": 22912845824,
+    "sector": "Consumer Cyclical",
+    "company_name": "Amcor plc"
+  },
+  "NEE": {
+    "score": 69,
+    "fund_score": 41,
+    "tech_score": 28,
+    "price": 91.22,
+    "avg_volume": 9598468,
+    "market_cap": 189975658496,
+    "sector": "Utilities",
+    "company_name": "NextEra Energy, Inc."
+  },
+  "DUK": {
+    "score": 68,
+    "fund_score": 43,
+    "tech_score": 25,
+    "price": 125.24,
+    "avg_volume": 3840378,
+    "market_cap": 97394294784,
+    "sector": "Utilities",
+    "company_name": "Duke Energy Corporation (Holdin"
+  },
+  "SO": {
+    "score": 74,
+    "fund_score": 40,
+    "tech_score": 34,
+    "price": 91.04,
+    "avg_volume": 5853013,
+    "market_cap": 100244594688,
+    "sector": "Utilities",
+    "company_name": "Southern Company (The)"
+  },
+  "D": {
+    "score": 72,
+    "fund_score": 42,
+    "tech_score": 30,
+    "price": 64.72,
+    "avg_volume": 6313606,
+    "market_cap": 55265267712,
+    "sector": "Utilities",
+    "company_name": "Dominion Energy, Inc."
+  },
+  "AEP": {
+    "score": 73,
+    "fund_score": 45,
+    "tech_score": 28,
+    "price": 127.27,
+    "avg_volume": 3412968,
+    "market_cap": 68835442688,
+    "sector": "Utilities",
+    "company_name": "American Electric Power Company"
+  },
+  "EXC": {
+    "score": 61,
+    "fund_score": 33,
+    "tech_score": 28,
+    "price": 47.24,
+    "avg_volume": 7907935,
+    "market_cap": 48321449984,
+    "sector": "Utilities",
+    "company_name": "Exelon Corporation"
+  },
+  "SRE": {
+    "score": 67,
+    "fund_score": 37,
+    "tech_score": 30,
+    "price": 91.73,
+    "avg_volume": 4002300,
+    "market_cap": 59870478336,
+    "sector": "Utilities",
+    "company_name": "DBA Sempra"
+  },
+  "XEL": {
+    "score": 66,
+    "fund_score": 41,
+    "tech_score": 25,
+    "price": 79.68,
+    "avg_volume": 5378120,
+    "market_cap": 47133888512,
+    "sector": "Utilities",
+    "company_name": "Xcel Energy Inc."
+  },
+  "ED": {
+    "score": 68,
+    "fund_score": 40,
+    "tech_score": 28,
+    "price": 111.61,
+    "avg_volume": 2102106,
+    "market_cap": 40284024832,
+    "sector": "Utilities",
+    "company_name": "Consolidated Edison, Inc."
+  },
+  "ES": {
+    "score": 71,
+    "fund_score": 44,
+    "tech_score": 27,
+    "price": 71.72,
+    "avg_volume": 2707738,
+    "market_cap": 26908565504,
+    "sector": "Utilities",
+    "company_name": "Eversource Energy (D/B/A)"
+  },
+  "WEC": {
+    "score": 72,
+    "fund_score": 44,
+    "tech_score": 28,
+    "price": 113.72,
+    "avg_volume": 2255441,
+    "market_cap": 37011484672,
+    "sector": "Utilities",
+    "company_name": "WEC Energy Group, Inc."
+  },
+  "PEG": {
+    "score": 72,
+    "fund_score": 45,
+    "tech_score": 27,
+    "price": 84.36,
+    "avg_volume": 2936311,
+    "market_cap": 42108628992,
+    "sector": "Utilities",
+    "company_name": "Public Service Enterprise Group"
+  },
+  "AWK": {
+    "score": 70,
+    "fund_score": 41,
+    "tech_score": 29,
+    "price": 131.16,
+    "avg_volume": 1844906,
+    "market_cap": 25599438848,
+    "sector": "Utilities",
+    "company_name": "American Water Works Company, I"
+  },
+  "ETR": {
+    "score": 67,
+    "fund_score": 39,
+    "tech_score": 28,
+    "price": 102.39,
+    "avg_volume": 2704046,
+    "market_cap": 46315028480,
+    "sector": "Utilities",
+    "company_name": "Entergy Corporation"
+  },
+  "FE": {
+    "score": 74,
+    "fund_score": 43,
+    "tech_score": 31,
+    "price": 48.94,
+    "avg_volume": 4829198,
+    "market_cap": 28270950400,
+    "sector": "Utilities",
+    "company_name": "FirstEnergy Corp."
+  },
+  "CEG": {
+    "score": 49,
+    "fund_score": 39,
+    "tech_score": 10,
+    "price": 294.05,
+    "avg_volume": 3273233,
+    "market_cap": 106531397632,
+    "sector": "Utilities",
+    "company_name": "Constellation Energy Corporatio"
+  },
+  "VST": {
+    "score": 62,
+    "fund_score": 41,
+    "tech_score": 21,
+    "price": 170.57,
+    "avg_volume": 5311556,
+    "market_cap": 57793470464,
+    "sector": "Utilities",
+    "company_name": "Vistra Corp."
+  },
+  "ATO": {
+    "score": 70,
+    "fund_score": 42,
+    "tech_score": 28,
+    "price": 178.12,
+    "avg_volume": 1319275,
+    "market_cap": 29467983872,
+    "sector": "Utilities",
+    "company_name": "Atmos Energy Corporation"
+  },
+  "NI": {
+    "score": 70,
+    "fund_score": 42,
+    "tech_score": 28,
+    "price": 45.3,
+    "avg_volume": 3802513,
+    "market_cap": 21437433856,
+    "sector": "Utilities",
+    "company_name": "NiSource Inc"
+  },
+  "CNP": {
+    "score": 69,
+    "fund_score": 39,
+    "tech_score": 30,
+    "price": 41.93,
+    "avg_volume": 4957030,
+    "market_cap": 27374768128,
+    "sector": "Utilities",
+    "company_name": "CenterPoint Energy, Inc (Holdin"
+  },
+  "DTE": {
+    "score": 71,
+    "fund_score": 43,
+    "tech_score": 28,
+    "price": 142.62,
+    "avg_volume": 1597575,
+    "market_cap": 29619748864,
+    "sector": "Utilities",
+    "company_name": "DTE Energy Company"
+  },
+  "CMS": {
+    "score": 72,
+    "fund_score": 44,
+    "tech_score": 28,
+    "price": 75.11,
+    "avg_volume": 2653570,
+    "market_cap": 23015274496,
+    "sector": "Utilities",
+    "company_name": "CMS Energy Corporation"
+  },
+  "LNT": {
+    "score": 71,
+    "fund_score": 43,
+    "tech_score": 28,
+    "price": 69.53,
+    "avg_volume": 2166251,
+    "market_cap": 17872943104,
+    "sector": "Utilities",
+    "company_name": "Alliant Energy Corporation"
+  },
+  "EVRG": {
+    "score": 59,
+    "fund_score": 31,
+    "tech_score": 28,
+    "price": 80.4,
+    "avg_volume": 1995035,
+    "market_cap": 18509217792,
+    "sector": "Utilities",
+    "company_name": "Evergy, Inc."
+  },
+  "PPL": {
+    "score": 66,
+    "fund_score": 38,
+    "tech_score": 28,
+    "price": 36.81,
+    "avg_volume": 7718216,
+    "market_cap": 27229800448,
+    "sector": "Utilities",
+    "company_name": "PPL Corporation"
+  },
+  "VZ": {
+    "score": 45,
+    "fund_score": 26,
+    "tech_score": 24,
+    "price": 48.05,
+    "avg_volume": 30914295,
+    "market_cap": 202626842624,
+    "sector": "Communication Services",
+    "company_name": "Verizon Communications Inc."
+  },
+  "T": {
+    "score": 58,
+    "fund_score": 30,
+    "tech_score": 28,
+    "price": 27.88,
+    "avg_volume": 42933313,
+    "market_cap": 197653839872,
+    "sector": "Communication Services",
+    "company_name": "AT&T Inc."
+  },
+  "TMUS": {
+    "score": 61,
+    "fund_score": 36,
+    "tech_score": 25,
+    "price": 213.25,
+    "avg_volume": 5908473,
+    "market_cap": 238521532416,
+    "sector": "Communication Services",
+    "company_name": "T-Mobile US, Inc."
+  },
+  "CHTR": {
+    "score": 60,
+    "fund_score": 35,
+    "tech_score": 25,
+    "price": 239.14,
+    "avg_volume": 2036391,
+    "market_cap": 30946955264,
+    "sector": "Communication Services",
+    "company_name": "Charter Communications, Inc."
+  },
+  "CMCSA": {
+    "score": 57,
+    "fund_score": 26,
+    "tech_score": 31,
+    "price": 31.6,
+    "avg_volume": 37514241,
+    "market_cap": 115147071488,
+    "sector": "Communication Services",
+    "company_name": "Comcast Corporation"
+  }
+}

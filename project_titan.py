@@ -1388,6 +1388,9 @@ class TitanAnalyzer:
             'tech_breakdown': tech_breakdown,
             'verdict': verdict,
             'price': current_price,
+            'avg_volume': info.get('averageVolume', 0),
+            'market_cap': info.get('marketCap', 0),
+            'sector': info.get('sector', ''),
             'market_info': market_info,
             'buy_price': buy_price,           # 🎯 스마트 매수가
             'buy_strategy': strategy,          # 전략 설명
@@ -2109,10 +2112,381 @@ class TitanAnalyzer:
         if html_filename:
             self.generate_html_report(results, report_type=report_type, filename=html_filename, min_score=min_score)
 
+        # Titan 점수 캐시 저장 (ML 포트폴리오에서 동일 점수 사용)
+        self._save_score_cache(results, report_type)
+
         elapsed = time.time() - start_time
         print(f"\n⏱️  총 소요 시간: {elapsed/60:.1f}분")
 
         return results
+
+    def _save_score_cache(self, results, report_type):
+        """Titan 분석 점수를 JSON 캐시로 저장"""
+        import json
+        cache_type = 'growth' if 'Growth' in report_type else 'value'
+        cache_file = f"titan_scores_{cache_type}.json"
+        cache = {}
+        for r in results:
+            cache[r['ticker']] = {
+                'score': r.get('score', 0),
+                'fund_score': r.get('fund_score', 0),
+                'tech_score': r.get('tech_score', 0),
+                'price': r.get('price', 0),
+                'avg_volume': r.get('avg_volume', 0),
+                'market_cap': r.get('market_cap', 0),
+                'sector': r.get('sector', ''),
+                'company_name': r.get('company_name', ''),
+            }
+        with open(cache_file, 'w') as f:
+            json.dump(cache, f, indent=2)
+        print(f"💾 Titan 점수 캐시 저장: {cache_file} ({len(cache)}개 종목)")
+
+    def generate_portfolio_html(self, filename="portfolio.html"):
+        """포트폴리오 구성 HTML 페이지 생성 (Titan + Liquidity Tier, ML 없음)"""
+        import json as _json
+
+        # 1. 양쪽 캐시 로드
+        growth_cache, value_cache = {}, {}
+        try:
+            with open('titan_scores_growth.json', 'r') as f:
+                growth_cache = _json.load(f)
+        except FileNotFoundError:
+            print("⚠️ titan_scores_growth.json 없음")
+        try:
+            with open('titan_scores_value.json', 'r') as f:
+                value_cache = _json.load(f)
+        except FileNotFoundError:
+            print("⚠️ titan_scores_value.json 없음")
+
+        if not growth_cache and not value_cache:
+            print("❌ 캐시 파일 없음. growth/value 분석을 먼저 실행하세요.")
+            return
+
+        # 2. 유동성 티어 계산
+        def calc_tier(avg_vol, price):
+            dv = avg_vol * price
+            if dv >= 1_000_000_000: return 5, 'Hot'
+            elif dv >= 300_000_000: return 3, 'Active'
+            elif dv >= 100_000_000: return 0, 'Normal'
+            else: return -3, 'Thin'
+
+        # 3. 후보 생성
+        def process_cache(cache, category):
+            candidates = []
+            for ticker, d in cache.items():
+                if d.get('score', 0) >= 75 and d.get('price', 0) > 0:
+                    bonus, tier = calc_tier(d.get('avg_volume', 0), d.get('price', 0))
+                    dv = d.get('avg_volume', 0) * d.get('price', 0) / 1e6
+                    candidates.append({
+                        'ticker': ticker,
+                        'name': d.get('company_name', ticker),
+                        'titan': d.get('score', 0),
+                        'fund': d.get('fund_score', 0),
+                        'tech': d.get('tech_score', 0),
+                        'tier_bonus': bonus,
+                        'tier_name': tier,
+                        'final': d.get('score', 0) + bonus,
+                        'price': round(d.get('price', 0), 2),
+                        'daily_val': round(dv, 0),
+                        'sector': d.get('sector', ''),
+                        'category': category
+                    })
+            candidates.sort(key=lambda x: x['final'], reverse=True)
+            return candidates
+
+        growth_list = process_cache(growth_cache, 'Growth')
+        value_list = process_cache(value_cache, 'Value')
+
+        # 상위 5개씩 (JS에서 사용자가 3개 선택 가능)
+        top_growth = growth_list[:5]
+        top_value = value_list[:5]
+        all_candidates = top_growth + top_value
+
+        portfolio_json = _json.dumps(all_candidates, ensure_ascii=False)
+        now = datetime.now()
+        timestamp = now.strftime("%Y-%m-%d %H:%M UTC")
+
+        html = f'''<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Builder - Titan v2.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* {{ margin:0; padding:0; box-sizing:border-box; }}
+body {{
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
+    background-attachment: fixed;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}}
+.cloud {{ position:fixed; background:white; border-radius:50px; opacity:0.9; animation:float 20s infinite ease-in-out; z-index:0; }}
+.cloud::before,.cloud::after {{ content:''; position:absolute; background:white; border-radius:50%; }}
+.cloud-1 {{ width:100px; height:40px; top:8%; left:-100px; }}
+.cloud-1::before {{ width:50px; height:50px; top:-25px; left:15px; }}
+.cloud-1::after {{ width:35px; height:35px; top:-15px; left:55px; }}
+.cloud-2 {{ width:120px; height:45px; top:15%; left:-120px; animation-delay:-7s; }}
+.cloud-2::before {{ width:55px; height:55px; top:-30px; left:20px; }}
+.cloud-2::after {{ width:40px; height:40px; top:-18px; left:65px; }}
+@keyframes float {{ 0%{{transform:translateX(0)}} 100%{{transform:translateX(calc(100vw + 200px))}} }}
+.sparkle {{ position:fixed; width:10px; height:10px; background:#FFD700; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation:sparkle 2s infinite; z-index:1; }}
+@keyframes sparkle {{ 0%,100%{{opacity:0;transform:scale(0)}} 50%{{opacity:1;transform:scale(1)}} }}
+.container {{ position:relative; z-index:10; max-width:960px; margin:0 auto; padding-top:20px; }}
+.back-link {{ display:inline-block; color:#5D4E37; text-decoration:none; font-weight:bold; margin-bottom:15px; padding:8px 20px; background:rgba(255,255,255,0.8); border-radius:20px; border:2px solid #C4A35A; }}
+.back-link:hover {{ background:white; }}
+.header-bubble {{ background:white; border-radius:30px; padding:25px 30px; margin-bottom:25px; box-shadow:0 8px 0 #27AE60, 0 12px 20px rgba(0,0,0,0.15); border:4px solid #5D4E37; text-align:center; }}
+.emoji-icon {{ font-size:3em; margin-bottom:8px; animation:bounce 2s infinite; }}
+@keyframes bounce {{ 0%,100%{{transform:translateY(0)}} 50%{{transform:translateY(-10px)}} }}
+h1 {{ color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #D5F5E3; }}
+.subtitle {{ color:#7B6B4F; font-size:0.95em; }}
+.timestamp {{ color:#999; font-size:0.8em; margin-top:5px; }}
+
+/* 입력 섹션 */
+.input-section {{ background:linear-gradient(180deg,#FFF8DC,#FAEBD7); border:4px solid #5D4E37; border-radius:20px; padding:25px; margin-bottom:25px; box-shadow:0 6px 0 #C4A35A; }}
+.input-row {{ display:flex; gap:15px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:15px; }}
+.input-group {{ display:flex; flex-direction:column; align-items:center; }}
+.input-group label {{ color:#5D4E37; font-weight:700; margin-bottom:5px; font-size:0.9em; }}
+.seed-input {{ width:200px; padding:12px 15px; border:3px solid #5D4E37; border-radius:12px; font-size:1.2em; font-family:inherit; text-align:center; background:white; }}
+.seed-input:focus {{ outline:none; border-color:#27AE60; box-shadow:0 0 10px rgba(39,174,96,0.3); }}
+.slider-group {{ display:flex; align-items:center; gap:10px; }}
+.slider-group input[type=range] {{ width:180px; accent-color:#27AE60; }}
+.slider-label {{ font-weight:700; color:#5D4E37; min-width:120px; text-align:center; }}
+.calc-btn {{ background:#27AE60; color:white; padding:12px 35px; border:3px solid #5D4E37; border-radius:25px; font-size:1.1em; font-weight:bold; cursor:pointer; box-shadow:0 4px 0 #1E8449; transition:all 0.2s; font-family:inherit; }}
+.calc-btn:hover {{ transform:translateY(2px); box-shadow:0 2px 0 #1E8449; }}
+.calc-btn:active {{ transform:translateY(4px); box-shadow:none; }}
+
+/* 결과 테이블 */
+.result-section {{ display:none; }}
+.result-card {{ background:white; border-radius:20px; padding:20px; margin-bottom:20px; border:4px solid #5D4E37; box-shadow:0 6px 0 #27AE60, 0 10px 20px rgba(0,0,0,0.1); }}
+.result-card h2 {{ color:#5D4E37; font-size:1.3em; margin-bottom:15px; text-align:center; }}
+table {{ width:100%; border-collapse:collapse; font-size:0.88em; }}
+th {{ background:#27AE60; color:white; padding:10px 8px; text-align:center; font-weight:700; }}
+th:first-child {{ border-radius:10px 0 0 0; }}
+th:last-child {{ border-radius:0 10px 0 0; }}
+td {{ padding:10px 8px; text-align:center; border-bottom:1px solid #eee; }}
+tr:hover {{ background:#f8fff8; }}
+.cat-growth {{ background:#E8F4FD; color:#2E86C1; padding:3px 10px; border-radius:10px; font-size:0.85em; font-weight:700; }}
+.cat-value {{ background:#FEF5E7; color:#D4851C; padding:3px 10px; border-radius:10px; font-size:0.85em; font-weight:700; }}
+.tier-hot {{ color:#FF6B35; font-weight:700; }}
+.tier-active {{ color:#27AE60; font-weight:700; }}
+.tier-normal {{ color:#7B6B4F; }}
+.tier-thin {{ color:#E74C3C; font-weight:700; }}
+.summary-box {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-top:15px; }}
+.summary-item {{ background:#F8F9FA; border-radius:12px; padding:12px; text-align:center; }}
+.summary-value {{ font-size:1.3em; font-weight:900; color:#27AE60; }}
+.summary-label {{ font-size:0.8em; color:#7B6B4F; margin-top:3px; }}
+.cash-note {{ text-align:center; margin-top:12px; color:#E67E22; font-weight:700; font-size:0.9em; }}
+
+/* 푸터 */
+.footer {{ background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; }}
+@media (max-width:768px) {{
+    .input-row {{ flex-direction:column; }}
+    table {{ font-size:0.78em; }}
+    th,td {{ padding:6px 4px; }}
+    h1 {{ font-size:1.4em; }}
+}}
+</style>
+</head>
+<body>
+<div class="cloud cloud-1"></div>
+<div class="cloud cloud-2"></div>
+<div class="sparkle" style="top:20%;left:15%"></div>
+<div class="sparkle" style="top:40%;right:20%;animation-delay:0.5s"></div>
+<div class="sparkle" style="top:70%;left:10%;animation-delay:1s"></div>
+
+<div class="container">
+    <a href="index.html" class="back-link">← 메인으로</a>
+
+    <div class="header-bubble">
+        <div class="emoji-icon">📊💼</div>
+        <h1>Portfolio Builder</h1>
+        <p class="subtitle">Titan 점수 + 유동성 등급 기반 포트폴리오 구성</p>
+        <p class="subtitle">ML 없이 펀더멘털 + 기술적 분석만으로 추천</p>
+        <p class="timestamp">마지막 업데이트: {timestamp}</p>
+    </div>
+
+    <div class="input-section">
+        <div class="input-row">
+            <div class="input-group">
+                <label>💵 투자금 (USD)</label>
+                <input type="text" id="seedInput" class="seed-input" placeholder="10,000" value="10000">
+            </div>
+            <div class="input-group">
+                <label>⚖️ Growth / Value 비율</label>
+                <div class="slider-group">
+                    <input type="range" id="ratioSlider" min="0" max="100" value="60" step="5">
+                    <span class="slider-label" id="ratioLabel">Growth 60% / Value 40%</span>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center">
+            <button class="calc-btn" onclick="calculatePortfolio()">📊 포트폴리오 계산</button>
+        </div>
+    </div>
+
+    <div class="result-section" id="resultSection">
+        <div class="result-card">
+            <h2>🏆 추천 포트폴리오</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>종목</th>
+                        <th>분류</th>
+                        <th>Titan</th>
+                        <th>유동성</th>
+                        <th>최종</th>
+                        <th>비중</th>
+                        <th>금액</th>
+                        <th>주수</th>
+                    </tr>
+                </thead>
+                <tbody id="portfolioTable"></tbody>
+            </table>
+            <div class="cash-note" id="cashNote"></div>
+            <div class="summary-box" id="summaryBox"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>⚠️ 투자 유의사항</strong><br>
+        본 포트폴리오는 Titan 알고리즘 기반 참고 자료이며, 투자 손실에 대한 책임은 투자자 본인에게 있습니다.</p>
+        <p style="margin-top:8px;font-size:0.8em;color:#999;">
+            Powered by Titan v2.0 | 유동성 등급: Hot($1B+/일) Active($300M+) Normal($100M+) Thin(&lt;$100M)
+        </p>
+    </div>
+</div>
+
+<script>
+const ALL_DATA = {portfolio_json};
+const GROWTH = ALL_DATA.filter(s => s.category === 'Growth');
+const VALUE = ALL_DATA.filter(s => s.category === 'Value');
+
+const slider = document.getElementById('ratioSlider');
+const ratioLabel = document.getElementById('ratioLabel');
+slider.addEventListener('input', () => {{
+    const g = slider.value;
+    ratioLabel.textContent = 'Growth ' + g + '% / Value ' + (100 - g) + '%';
+}});
+
+// 시드 입력에 콤마 자동 포맷
+document.getElementById('seedInput').addEventListener('input', function(e) {{
+    let v = e.target.value.replace(/[^0-9]/g, '');
+    if (v) e.target.value = parseInt(v).toLocaleString('en-US');
+}});
+
+function calculatePortfolio() {{
+    const seedStr = document.getElementById('seedInput').value.replace(/,/g, '');
+    const seed = parseFloat(seedStr);
+    if (isNaN(seed) || seed <= 0) {{ alert('투자금을 입력하세요'); return; }}
+
+    const growthRatio = parseInt(slider.value) / 100;
+    const valueRatio = 1 - growthRatio;
+
+    // 상위 3개씩 선택
+    const gPicks = GROWTH.slice(0, 3);
+    const vPicks = VALUE.slice(0, 3);
+
+    // 카테고리 내 점수 비례 비중
+    const gTotal = gPicks.reduce((s, x) => s + x.final, 0) || 1;
+    const vTotal = vPicks.reduce((s, x) => s + x.final, 0) || 1;
+
+    let portfolio = [];
+    gPicks.forEach(s => {{
+        const w = growthRatio * (s.final / gTotal);
+        portfolio.push({{...s, weight: w}});
+    }});
+    vPicks.forEach(s => {{
+        const w = valueRatio * (s.final / vTotal);
+        portfolio.push({{...s, weight: w}});
+    }});
+
+    // 테이블 렌더링
+    const tbody = document.getElementById('portfolioTable');
+    tbody.innerHTML = '';
+    let totalUsed = 0;
+    let totalShares = 0;
+
+    portfolio.forEach((s, i) => {{
+        const amount = seed * s.weight;
+        const shares = Math.floor(amount / s.price);
+        const actual = shares * s.price;
+        totalUsed += actual;
+        totalShares += shares;
+
+        const catClass = s.category === 'Growth' ? 'cat-growth' : 'cat-value';
+        const tierClass = 'tier-' + s.tier_name.toLowerCase();
+        const bonusStr = s.tier_bonus >= 0 ? '+' + s.tier_bonus : s.tier_bonus;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td><strong>${{i+1}}</strong></td>
+            <td style="text-align:left"><strong>${{s.ticker}}</strong><br><span style="font-size:0.8em;color:#999">${{s.name}}</span></td>
+            <td><span class="${{catClass}}">${{s.category}}</span></td>
+            <td>${{s.titan}}</td>
+            <td><span class="${{tierClass}}">${{s.tier_name}}(${{bonusStr}})</span></td>
+            <td><strong>${{s.final}}</strong></td>
+            <td>${{(s.weight * 100).toFixed(1)}}%</td>
+            <td>$${{actual.toLocaleString('en-US', {{minimumFractionDigits:0}})}}</td>
+            <td>${{shares}}주</td>
+        `;
+        tbody.appendChild(tr);
+    }});
+
+    // 잔액
+    const remainder = seed - totalUsed;
+    document.getElementById('cashNote').textContent =
+        remainder > 0 ? '💰 미배분 현금: $' + remainder.toLocaleString('en-US', {{minimumFractionDigits:2}}) + ' (주수 내림 처리)' : '';
+
+    // 요약
+    const avgScore = portfolio.reduce((s, x) => s + x.final, 0) / portfolio.length;
+    document.getElementById('summaryBox').innerHTML = `
+        <div class="summary-item">
+            <div class="summary-value">$${{seed.toLocaleString('en-US')}}</div>
+            <div class="summary-label">총 투자금</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value">${{portfolio.length}}종목</div>
+            <div class="summary-label">포트폴리오</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value">${{avgScore.toFixed(1)}}</div>
+            <div class="summary-label">평균 최종점수</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value">${{parseInt(slider.value)}}:${{100-parseInt(slider.value)}}</div>
+            <div class="summary-label">Growth:Value</div>
+        </div>
+    `;
+
+    document.getElementById('resultSection').style.display = 'block';
+    document.getElementById('resultSection').scrollIntoView({{behavior:'smooth'}});
+}}
+
+// 페이지 로드 시 자동 계산
+window.addEventListener('load', () => {{ calculatePortfolio(); }});
+
+// 반짝이 생성
+setInterval(() => {{
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.top = Math.random()*100+'%';
+    s.style.left = Math.random()*100+'%';
+    s.style.animationDelay = Math.random()*2+'s';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 4000);
+}}, 1200);
+</script>
+</body>
+</html>'''
+
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(html)
+        print(f"📊 포트폴리오 페이지 생성: {filename} (Growth {len(top_growth)}개 + Value {len(top_value)}개)")
 
     def run_ml_predictions(self, results, ml_min_score):
         """ML 예측 실행 (특정 점수 이상 종목만)"""
@@ -2255,11 +2629,13 @@ if __name__ == "__main__":
                 skip_stage1=True,
                 ml_min_score=75  # ML 예측은 75점 이상만
             )
+        elif mode == "portfolio":
+            analyzer.generate_portfolio_html(filename="portfolio.html")
         elif mode == "sp500":
             analyzer.run_full_analysis()
         else:
             print(f"❌ 알 수 없는 모드: {mode}")
-            print("사용법: python project_titan.py [growth|value|sp500]")
+            print("사용법: python project_titan.py [growth|value|portfolio|sp500]")
     else:
         # 기본: S&P 500 전체 분석
         analyzer.run_full_analysis()
