@@ -201,6 +201,9 @@ const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let isSignup = false;
 
+// 현재 페이지 기준 base URL 계산 (GitHub Pages 서브 경로 대응)
+const BASE_URL = window.location.href.replace(/\/[^/]*$/, '/');
+
 // 이미 로그인 상태면 메인으로
 sb.auth.getSession().then(({ data: { session } }) => {
     if (session) window.location.href = 'index.html';
@@ -209,7 +212,7 @@ sb.auth.getSession().then(({ data: { session } }) => {
 async function loginWithGithub() {
     const { error } = await sb.auth.signInWithOAuth({
         provider: 'github',
-        options: { redirectTo: window.location.origin + '/index.html' }
+        options: { redirectTo: BASE_URL + 'index.html' }
     });
     if (error) showMessage(error.message, 'error');
 }
@@ -217,7 +220,7 @@ async function loginWithGithub() {
 async function loginWithGoogle() {
     const { error } = await sb.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: window.location.origin + '/index.html' }
+        options: { redirectTo: BASE_URL + 'index.html' }
     });
     if (error) showMessage(error.message, 'error');
 }
