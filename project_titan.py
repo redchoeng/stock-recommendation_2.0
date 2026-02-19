@@ -1238,40 +1238,41 @@ class TitanAnalyzer:
         return info.get('currentPrice') or info.get('regularMarketPrice') or hist['Close'].iloc[-1]
 
     def _get_market_status_and_prices(self, info, stock_obj=None):
-        """시장 상태 및 가격 정보 추출"""
+        """시장 상태 및 가격 정보 추출 - 프리/정규/애프터/폐장 정확히 구분"""
         try:
-            # 현재 ET 시간
             et_tz = pytz.timezone('America/New_York')
             now_et = datetime.now(et_tz)
             hour = now_et.hour
             minute = now_et.minute
+            weekday = now_et.weekday()  # 0=Mon, 6=Sun
 
             # 시장 시간대 판단
-            # Pre-market: 4:00 AM - 9:30 AM ET
-            # Regular: 9:30 AM - 4:00 PM ET
-            # After-hours: 4:00 PM - 8:00 PM ET
+            # Pre-market: 4:00 AM - 9:30 AM ET (월-금)
+            # Regular: 9:30 AM - 4:00 PM ET (월-금)
+            # After-hours: 4:00 PM - 8:00 PM ET (월-금)
+            # 그 외: closed
 
             market_status = 'closed'
-            if (hour == 4 and minute >= 0) or (4 < hour < 9) or (hour == 9 and minute < 30):
-                market_status = 'pre'
-            elif (hour == 9 and minute >= 30) or (9 < hour < 16):
-                market_status = 'regular'
-            elif (hour >= 16 and hour < 20):
-                market_status = 'after'
+            if weekday < 5:  # 월-금만
+                if (hour == 4 and minute >= 0) or (4 < hour < 9) or (hour == 9 and minute < 30):
+                    market_status = 'pre'
+                elif (hour == 9 and minute >= 30) or (9 < hour < 16):
+                    market_status = 'regular'
+                elif (hour >= 16 and hour < 20):
+                    market_status = 'after'
 
             # 가격 정보
-            current_price = info.get('currentPrice') or info.get('regularMarketPrice', 0)
+            regular_price = info.get('currentPrice') or info.get('regularMarketPrice', 0)
             pre_market_price = info.get('preMarketPrice')
             post_market_price = info.get('postMarketPrice')
-            regular_market_previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose', 0)
+            previous_close = info.get('regularMarketPreviousClose') or info.get('previousClose', 0)
 
-            # yfinance info에 프리/애프터 가격 없으면 history(prepost=True)로 시도
+            # Extended hours에서 가격 없으면 history(prepost=True)로 실시간 가격 시도
             if market_status in ('pre', 'after') and stock_obj is not None:
-                need_fetch = (market_status == 'pre' and not pre_market_price) or \
-                             (market_status == 'after' and not post_market_price)
-                if need_fetch:
+                target_price = pre_market_price if market_status == 'pre' else post_market_price
+                if not target_price:
                     try:
-                        ext = stock_obj.history(period='1d', interval='5m', prepost=True)
+                        ext = stock_obj.history(period='5d', interval='5m', prepost=True)
                         if not ext.empty:
                             latest = float(ext['Close'].iloc[-1])
                             if market_status == 'pre':
@@ -1281,17 +1282,28 @@ class TitanAnalyzer:
                     except Exception:
                         pass
 
+            # 시장 상태별 표시용 가격 결정
+            if market_status == 'pre':
+                display_price = pre_market_price or regular_price
+            elif market_status == 'after':
+                display_price = post_market_price or regular_price
+            else:
+                display_price = regular_price
+
             return {
                 'status': market_status,
-                'current_price': current_price,
+                'current_price': regular_price,
+                'display_price': display_price,
                 'pre_market_price': pre_market_price,
                 'post_market_price': post_market_price,
-                'previous_close': regular_market_previous_close
+                'previous_close': previous_close
             }
         except Exception:
+            fallback_price = info.get('currentPrice') or info.get('regularMarketPrice', 0)
             return {
                 'status': 'unknown',
-                'current_price': info.get('currentPrice') or info.get('regularMarketPrice', 0),
+                'current_price': fallback_price,
+                'display_price': fallback_price,
                 'pre_market_price': None,
                 'post_market_price': None,
                 'previous_close': info.get('regularMarketPreviousClose') or info.get('previousClose', 0)
@@ -1946,32 +1958,26 @@ class TitanAnalyzer:
             <!-- 가격 정보 -->
             <div class="info">'''
 
-            # 시장 상태에 따른 가격 표시
+            # 시장 상태에 따른 가격 표시 - 시간 기준으로 라벨 결정 (가격 유무 무관)
             market_status = market_info.get('status', 'unknown')
             prev_close = market_info.get('previous_close', 0)
-            current_price = stock['price']
-            pre_price = market_info.get('pre_market_price')
-            post_price = market_info.get('post_market_price')
+            regular_price = stock['price']  # 정규장 종가
+            display_price = market_info.get('display_price', regular_price)
 
-            # 시장 상태별 설정
-            if market_status == 'pre' and pre_price:
-                display_price = pre_price
+            # 시장 상태별 설정 - 시간이 프리면 무조건 프리마켓 표시
+            if market_status == 'pre':
                 status_color = '#FF9800'
                 status_label = '🌅 프리마켓'
-                base_price = prev_close
-            elif market_status == 'after' and post_price:
-                display_price = post_price
+                base_price = prev_close  # 전일종가 대비
+            elif market_status == 'after':
                 status_color = '#9C27B0'
                 status_label = '🌙 애프터장'
-                base_price = current_price
+                base_price = regular_price  # 당일 정규장 종가 대비
             elif market_status == 'regular':
-                display_price = current_price
                 status_color = '#4CAF50'
                 status_label = '☀️ 정규장'
-                base_price = prev_close
+                base_price = prev_close  # 전일종가 대비
             else:
-                # 폐장 (closed/unknown) - 마지막 종가 표시
-                display_price = current_price
                 status_color = '#607D8B'
                 status_label = '🌙 폐장'
                 base_price = prev_close
