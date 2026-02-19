@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Setup - Titan Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #2C3E50 0%, #34495E 50%, #1A252F 100%);
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.setup-box {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 460px;
+    border: 4px solid #E74C3C;
+    box-shadow: 0 8px 0 #C0392B, 0 12px 30px rgba(0,0,0,0.3);
+    text-align: center;
+}
+.emoji-icon { font-size: 3.5em; margin-bottom: 15px; }
+h1 { color: #2C3E50; font-size: 1.6em; margin-bottom: 8px; }
+.subtitle { color: #7F8C8D; font-size: 0.9em; margin-bottom: 25px; }
+
+.step { display: none; }
+.step.active { display: block; }
+
+.info-card {
+    background: #FEF9E7; border: 2px solid #F39C12; border-radius: 15px;
+    padding: 15px; margin-bottom: 20px; text-align: left;
+    font-size: 0.88em; color: #7D6608; line-height: 1.6;
+}
+
+.user-card {
+    background: #EBF5FB; border: 2px solid #3498DB; border-radius: 15px;
+    padding: 15px; margin-bottom: 20px;
+    font-size: 0.9em; color: #2E86C1; font-weight: 700;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 18px;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    font-size: 1.1em;
+    font-family: inherit;
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.input-field:focus { outline: none; border-color: #E74C3C; box-shadow: 0 0 10px rgba(231,76,60,0.2); }
+
+.btn-verify {
+    width: 100%;
+    padding: 14px;
+    background: #E74C3C;
+    color: white;
+    border: 3px solid #5D4E37;
+    border-radius: 15px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #C0392B;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+.btn-verify:hover { transform: translateY(-2px); }
+.btn-verify:disabled { background: #aaa; box-shadow: 0 4px 0 #888; cursor: wait; }
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: #3498DB;
+    color: white;
+    border: 3px solid #5D4E37;
+    border-radius: 15px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #2980B9;
+    font-family: inherit;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+    text-decoration: none;
+    display: block;
+}
+.btn-login:hover { transform: translateY(-2px); }
+
+.message {
+    margin-top: 15px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    display: none;
+}
+.message.error { display:block; background:#FDEDEC; color:#E74C3C; border:2px solid #E74C3C; }
+.message.success { display:block; background:#D5F5E3; color:#27AE60; border:2px solid #27AE60; }
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #7F8C8D;
+    text-decoration: none;
+    font-size: 0.85em;
+}
+.back-link:hover { color: #2C3E50; }
+
+.success-icon { font-size: 4em; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+
+<div class="setup-box">
+    <div class="emoji-icon">🔑</div>
+    <h1>관리자 계정 설정</h1>
+    <p class="subtitle">관리자 코드를 입력하여 관리자 권한을 획득합니다</p>
+
+    <!-- Step 1: 로그인 필요 -->
+    <div class="step" id="stepLogin">
+        <div class="info-card">
+            관리자 권한을 설정하려면 먼저 계정이 필요합니다.<br>
+            로그인 또는 회원가입 후 다시 이 페이지를 방문하세요.
+        </div>
+        <a href="login.html" class="btn-login">로그인 / 회원가입</a>
+    </div>
+
+    <!-- Step 2: 관리자 코드 입력 -->
+    <div class="step" id="stepCode">
+        <div class="user-card" id="currentUserInfo">로그인 확인 중...</div>
+        <div class="info-card">
+            관리자 코드를 입력하세요.<br>
+            코드는 Supabase SQL에서 설정된 값입니다.<br>
+            (기본값: <code>titan-admin-2024</code>)
+        </div>
+        <input type="password" class="input-field" id="adminCode" placeholder="관리자 코드 입력">
+        <button class="btn-verify" id="verifyBtn" onclick="verifyAdmin()">관리자 인증</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <!-- Step 3: 성공 -->
+    <div class="step" id="stepSuccess">
+        <div class="success-icon">🎉</div>
+        <h2 style="color:#27AE60;margin-bottom:15px;">관리자 권한 획득!</h2>
+        <p style="color:#7B6B4F;margin-bottom:20px;">이제 관리자 기능을 사용할 수 있습니다.</p>
+        <a href="index.html" class="btn-login" style="background:#27AE60;box-shadow:0 4px 0 #1E8449;">메인으로 이동</a>
+    </div>
+
+    <!-- Step 4: 이미 관리자 -->
+    <div class="step" id="stepAlready">
+        <div class="success-icon">👑</div>
+        <h2 style="color:#8E44AD;margin-bottom:15px;">이미 관리자입니다</h2>
+        <p style="color:#7B6B4F;margin-bottom:20px;">현재 계정에 관리자 권한이 설정되어 있습니다.</p>
+        <a href="index.html" class="btn-login" style="background:#8E44AD;box-shadow:0 4px 0 #6C3483;">메인으로 이동</a>
+    </div>
+
+    <a href="login.html" class="back-link">&larr; 로그인으로 돌아가기</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase_config.js"></script>
+<script>
+const { createClient } = supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUser = null;
+
+(async () => {
+    const { data: { session } } = await sb.auth.getSession();
+
+    if (!session) {
+        document.getElementById('stepLogin').classList.add('active');
+        return;
+    }
+
+    currentUser = session.user;
+    const displayName = currentUser.user_metadata?.name || currentUser.email?.split('@')[0] || 'User';
+    document.getElementById('currentUserInfo').textContent = '로그인: ' + displayName + ' (' + currentUser.email + ')';
+
+    // 이미 관리자인지 확인
+    const { data: profile } = await sb.from('user_profiles')
+        .select('role').eq('user_id', currentUser.id).single();
+
+    if (profile?.role === 'admin') {
+        document.getElementById('stepAlready').classList.add('active');
+    } else {
+        document.getElementById('stepCode').classList.add('active');
+    }
+})();
+
+async function verifyAdmin() {
+    const code = document.getElementById('adminCode').value.trim();
+    if (!code) { showMsg('관리자 코드를 입력하세요', 'error'); return; }
+
+    const btn = document.getElementById('verifyBtn');
+    btn.disabled = true;
+    btn.textContent = '인증 중...';
+
+    const { data, error } = await sb.rpc('promote_to_admin', { admin_code: code });
+
+    btn.disabled = false;
+    btn.textContent = '관리자 인증';
+
+    if (error) {
+        showMsg('오류: ' + error.message, 'error');
+        return;
+    }
+
+    if (data && data.success) {
+        document.getElementById('stepCode').classList.remove('active');
+        document.getElementById('stepSuccess').classList.add('active');
+    } else {
+        showMsg(data?.message || '잘못된 관리자 코드입니다', 'error');
+    }
+}
+
+function showMsg(text, type) {
+    const el = document.getElementById('message');
+    el.textContent = text;
+    el.className = 'message ' + type;
+}
+
+// Enter 키로 인증
+document.getElementById('adminCode')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') verifyAdmin();
+});
+</script>
+</body>
+</html>

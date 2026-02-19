@@ -23,6 +23,41 @@
             overflow-x: hidden;
         }
 
+        /* 로딩 중 컨텐츠 숨김 */
+        .container { opacity: 0; transition: opacity 0.3s; }
+        .container.ready { opacity: 1; }
+
+        /* 사용자 바 */
+        .user-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 20;
+        }
+        .user-name {
+            color: #5D4E37; font-weight: 700;
+            background: rgba(255,255,255,0.9); padding: 8px 16px;
+            border-radius: 20px; border: 2px solid #C4A35A;
+            font-size: 0.9em;
+        }
+        .admin-badge {
+            display: none;
+            background: #E74C3C; color: white;
+            padding: 4px 12px; border-radius: 15px;
+            font-size: 0.8em; font-weight: 700;
+            border: 2px solid #5D4E37;
+        }
+        .btn-logout {
+            padding: 8px 16px; background: #E74C3C; color: white;
+            border: 2px solid #5D4E37; border-radius: 20px;
+            cursor: pointer; font-weight: 700; font-family: inherit;
+            font-size: 0.85em; transition: all 0.2s;
+        }
+        .btn-logout:hover { transform: translateY(-1px); }
+
         /* 구름 애니메이션 */
         /* 구름 애니메이션 */
         .cloud {
@@ -391,6 +426,12 @@
     <div class="deco-right">🍀</div>
 
     <div class="container">
+        <div class="user-bar">
+            <span class="admin-badge" id="adminBadge">ADMIN</span>
+            <span class="user-name" id="userName">로딩...</span>
+            <button class="btn-logout" onclick="logout()">로그아웃</button>
+        </div>
+
         <div class="header-bubble">
             <div class="emoji-icon">🚀💰</div>
             <h1>PROJECT TITAN v2.0</h1>
@@ -565,7 +606,41 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase_config.js"></script>
     <script>
+        const { createClient } = supabase;
+        const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // 인증 체크 → 미로그인 시 login.html로 이동
+        (async () => {
+            const { data: { session } } = await sb.auth.getSession();
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // 사용자 정보 표시
+            const user = session.user;
+            document.getElementById('userName').textContent =
+                user.user_metadata?.name || user.email?.split('@')[0] || 'User';
+
+            // 관리자 확인
+            const { data: profile } = await sb.from('user_profiles')
+                .select('role').eq('user_id', user.id).single();
+            if (profile?.role === 'admin') {
+                document.getElementById('adminBadge').style.display = 'inline';
+            }
+
+            // 컨텐츠 표시
+            document.querySelector('.container').classList.add('ready');
+        })();
+
+        async function logout() {
+            await sb.auth.signOut();
+            window.location.href = 'login.html';
+        }
+
         // 현재 시간 표시 (한국시간)
         function updateTime() {
             const now = new Date();
@@ -578,7 +653,7 @@
         }
 
         updateTime();
-        setInterval(updateTime, 1000); // 1초마다 시간 업데이트
+        setInterval(updateTime, 1000);
 
         // 랜덤 반짝이 추가
         function createSparkle() {

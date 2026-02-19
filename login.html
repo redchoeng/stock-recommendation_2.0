@@ -190,7 +190,7 @@ h1 { color: #5D4E37; font-size: 1.8em; margin-bottom: 8px; }
 
     <div class="message" id="message"></div>
 
-    <a href="index.html" class="back-link">&larr; 메인으로 돌아가기</a>
+    <a href="admin_setup.html" style="display:inline-block;margin-top:20px;color:#E74C3C;text-decoration:none;font-size:0.82em;font-weight:700;">🔑 관리자 계정 등록</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -201,15 +201,15 @@ const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let isSignup = false;
 
-// 이미 로그인 상태면 대시보드로
+// 이미 로그인 상태면 메인으로
 sb.auth.getSession().then(({ data: { session } }) => {
-    if (session) window.location.href = 'dashboard.html';
+    if (session) window.location.href = 'index.html';
 });
 
 async function loginWithGithub() {
     const { error } = await sb.auth.signInWithOAuth({
         provider: 'github',
-        options: { redirectTo: window.location.origin + '/dashboard.html' }
+        options: { redirectTo: window.location.origin + '/index.html' }
     });
     if (error) showMessage(error.message, 'error');
 }
@@ -217,7 +217,7 @@ async function loginWithGithub() {
 async function loginWithGoogle() {
     const { error } = await sb.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: window.location.origin + '/dashboard.html' }
+        options: { redirectTo: window.location.origin + '/index.html' }
     });
     if (error) showMessage(error.message, 'error');
 }
@@ -252,7 +252,7 @@ async function loginWithEmail() {
         const { error } = await sb.auth.signInWithPassword({ email, password });
         setLoading(false);
         if (error) { showMessage(error.message, 'error'); return; }
-        window.location.href = 'dashboard.html';
+        window.location.href = 'index.html';
     }
 }
 
