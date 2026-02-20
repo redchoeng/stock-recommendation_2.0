@@ -261,13 +261,15 @@ class TitanAnalyzer:
     }
 
     # 기술적 점수 재설계 (전문가급, 총 50점)
-    # 1. 추세 분석 (15점)
-    SCORE_MA200 = 3
-    SCORE_MA50 = 3
-    SCORE_MA20 = 2
-    SCORE_MACD_BULLISH = 4
-    SCORE_MACD_SIGNAL = 2
-    SCORE_ADX_STRONG = 3
+    # 1. 추세 분석 (15점) - MA5/20/60/120 스윙매매 최적화
+    SCORE_MA120 = 2        # 장기 추세 (6개월)
+    SCORE_MA60 = 2         # 중기 추세 (3개월)
+    SCORE_MA20 = 2         # 단기 추세 (1개월)
+    SCORE_MA5 = 1          # 초단기 모멘텀 (1주)
+    SCORE_MACD_BULLISH = 3
+    SCORE_MACD_SIGNAL = 1
+    SCORE_ICHIMOKU = 3     # 일목균형표 (구름위+TK크로스+미래구름)
+    SCORE_ADX_STRONG = 2
 
     # 2. 모멘텀 (12점)
     SCORE_RSI_OPTIMAL = 6
@@ -764,9 +766,9 @@ class TitanAnalyzer:
         score = 0
         comments = []
         breakdown = {
-            # 추세 (15점)
-            'trend_score': 0, 'ma20': 0, 'ma50': 0, 'ma200': 0,
-            'macd_score': 0, 'adx_score': 0,
+            # 추세 (15점) - MA5/20/60/120 + MACD + 일목균형표 + ADX
+            'trend_score': 0, 'ma5': 0, 'ma20': 0, 'ma60': 0, 'ma120': 0,
+            'macd_score': 0, 'ichimoku_score': 0, 'adx_score': 0,
             # 모멘텀 (12점)
             'momentum_score': 0, 'rsi_value': 0, 'rsi_score': 0,
             'stoch_score': 0, 'stoch_k': 0, 'stoch_d': 0,
@@ -779,31 +781,35 @@ class TitanAnalyzer:
         }
 
         try:
-            if len(hist) < 200:
+            if len(hist) < 120:
                 return 0, ["데이터부족"], breakdown
 
             close = hist['Close']
             volume = hist['Volume']
 
-            # ==================== 1. 추세 분석 (15점) ====================
+            # ==================== 1. 추세 분석 (16점) ====================
             trend_score = 0
 
-            # 다층 이동평균
+            # 다층 이동평균 (스윙매매 최적화: 5/20/60/120)
+            ma5 = close.rolling(window=5).mean().iloc[-1]
             ma20 = close.rolling(window=20).mean().iloc[-1]
-            ma50 = close.rolling(window=50).mean().iloc[-1]
-            ma200 = close.rolling(window=200).mean().iloc[-1]
+            ma60 = close.rolling(window=60).mean().iloc[-1]
+            ma120 = close.rolling(window=120).mean().iloc[-1]
 
+            breakdown['ma5'] = ma5
             breakdown['ma20'] = ma20
-            breakdown['ma50'] = ma50
-            breakdown['ma200'] = ma200
+            breakdown['ma60'] = ma60
+            breakdown['ma120'] = ma120
 
-            if current_price > ma200:
-                trend_score += self.SCORE_MA200
-                comments.append("MA200↑")
-            if current_price > ma50:
-                trend_score += self.SCORE_MA50
+            if current_price > ma120:
+                trend_score += self.SCORE_MA120
+                comments.append("MA120↑")
+            if current_price > ma60:
+                trend_score += self.SCORE_MA60
             if current_price > ma20:
                 trend_score += self.SCORE_MA20
+            if current_price > ma5:
+                trend_score += self.SCORE_MA5
 
             # MACD
             macd = MACD(close=close)
@@ -812,17 +818,54 @@ class TitanAnalyzer:
 
             if macd_line > macd_signal:
                 if macd_line > 0:
-                    trend_score += self.SCORE_MACD_BULLISH  # 강한 상승
+                    trend_score += self.SCORE_MACD_BULLISH
                     comments.append("MACD골든")
                 else:
                     trend_score += self.SCORE_MACD_SIGNAL
                 breakdown['macd_score'] = self.SCORE_MACD_BULLISH if macd_line > 0 else self.SCORE_MACD_SIGNAL
 
+            # 일목균형표 (Ichimoku Cloud)
+            ichimoku_score = 0
+            high_9 = hist['High'].rolling(window=9).max()
+            low_9 = hist['Low'].rolling(window=9).min()
+            high_26 = hist['High'].rolling(window=26).max()
+            low_26 = hist['Low'].rolling(window=26).min()
+
+            tenkan = (high_9 + low_9) / 2      # 전환선
+            kijun = (high_26 + low_26) / 2      # 기준선
+            senkou_a = ((tenkan + kijun) / 2).shift(26)   # 선행스팬A
+            senkou_b = ((hist['High'].rolling(window=52).max() + hist['Low'].rolling(window=52).min()) / 2).shift(26)
+
+            tenkan_now = tenkan.iloc[-1]
+            kijun_now = kijun.iloc[-1]
+            span_a = senkou_a.iloc[-1] if len(senkou_a.dropna()) > 0 else 0
+            span_b = senkou_b.iloc[-1] if len(senkou_b.dropna()) > 0 else 0
+            cloud_top = max(span_a, span_b)
+            cloud_bottom = min(span_a, span_b)
+
+            breakdown['ichimoku_tenkan'] = float(tenkan_now) if tenkan_now else 0
+            breakdown['ichimoku_kijun'] = float(kijun_now) if kijun_now else 0
+            breakdown['ichimoku_cloud_top'] = float(cloud_top) if cloud_top else 0
+            breakdown['ichimoku_cloud_bottom'] = float(cloud_bottom) if cloud_bottom else 0
+
+            # 구름 위 가격 (+1), TK 크로스 (+1), 미래 구름 양운 (+1)
+            if current_price > cloud_top:
+                ichimoku_score += 1
+                comments.append("구름↑")
+            if tenkan_now > kijun_now:
+                ichimoku_score += 1
+                comments.append("TK골든")
+            if span_a > span_b:
+                ichimoku_score += 1
+
+            trend_score += ichimoku_score
+            breakdown['ichimoku_score'] = ichimoku_score
+
             # ADX (추세 강도)
             adx = ADXIndicator(high=hist['High'], low=hist['Low'], close=close)
             adx_value = adx.adx().iloc[-1]
 
-            if adx_value > 25:  # 강한 추세
+            if adx_value > 25:
                 trend_score += self.SCORE_ADX_STRONG
                 breakdown['adx_score'] = self.SCORE_ADX_STRONG
                 comments.append(f"ADX:{adx_value:.0f}")
@@ -831,8 +874,7 @@ class TitanAnalyzer:
             score += trend_score
 
             # ==================== 추세 필터 ====================
-            # 추세 점수가 낮으면 하락 추세로 판단
-            is_downtrend = trend_score < 8  # 15점 만점의 절반 이하
+            is_downtrend = trend_score < 8
 
             # ==================== 2. 모멘텀 (12점) ====================
             momentum_score = 0
@@ -1021,15 +1063,15 @@ class TitanAnalyzer:
             spy = yf.Ticker('^GSPC')
             hist = spy.history(period='1y')
 
-            if len(hist) < 200:
+            if len(hist) < 120:
                 return 'neutral', {}, "데이터 부족"
 
             close = hist['Close']
             current_price = close.iloc[-1]
 
-            # 이동평균
-            ma50 = close.rolling(window=50).mean().iloc[-1]
-            ma200 = close.rolling(window=200).mean().iloc[-1]
+            # 이동평균 (시장 전체는 MA60/120)
+            ma60 = close.rolling(window=60).mean().iloc[-1]
+            ma120 = close.rolling(window=120).mean().iloc[-1]
 
             # 추세 방향 (최근 3개월)
             price_3m_ago = close.iloc[-63] if len(close) >= 63 else close.iloc[0]
@@ -1047,14 +1089,14 @@ class TitanAnalyzer:
             bull_signals = 0
             bear_signals = 0
 
-            # 1. 가격 vs MA200
-            if current_price > ma200:
+            # 1. 가격 vs MA120
+            if current_price > ma120:
                 bull_signals += 1
             else:
                 bear_signals += 1
 
-            # 2. MA50 vs MA200
-            if ma50 > ma200:
+            # 2. MA60 vs MA120
+            if ma60 > ma120:
                 bull_signals += 1
             else:
                 bear_signals += 1
@@ -1091,8 +1133,8 @@ class TitanAnalyzer:
 
             details = {
                 'current': current_price,
-                'ma50': ma50,
-                'ma200': ma200,
+                'ma60': ma60,
+                'ma120': ma120,
                 'trend_3m': trend_3m * 100,  # 퍼센트로
                 'trend_6m': trend_6m * 100,  # 퍼센트로
                 'adx': adx_value,
@@ -1261,7 +1303,7 @@ class TitanAnalyzer:
 
             # --- 기술적 데이터 추출 ---
             ma20 = tech_breakdown.get('ma20', 0)
-            ma50 = tech_breakdown.get('ma50', 0)
+            ma60 = tech_breakdown.get('ma60', 0)
             bb_upper = tech_breakdown.get('bb_upper', 0)
             bb_lower = tech_breakdown.get('bb_lower', 0)
             atr = tech_breakdown.get('atr_value', 0)
@@ -1337,13 +1379,13 @@ class TitanAnalyzer:
             # ========== Tier 3: 세분화 전략 (일반종목) ==========
             else:
                 rsi = tech_breakdown.get('rsi_value', 50)
-                ma200 = tech_breakdown.get('ma200', 0)
+                ma120 = tech_breakdown.get('ma120', 0)
 
                 # --- 시장 구조 판별 ---
-                uptrend = (ma20 > 0 and ma50 > 0 and ma20 > ma50)
+                uptrend = (ma20 > 0 and ma60 > 0 and ma20 > ma60)
                 price_above_ma20 = (ma20 > 0 and current_price > ma20)
-                sideways = (ma20 > 0 and ma50 > 0 and abs(ma20 - ma50) / ma50 < 0.02)
-                weak = (ma50 > 0 and current_price < ma50) or rsi < 40
+                sideways = (ma20 > 0 and ma60 > 0 and abs(ma20 - ma60) / ma60 < 0.02)
+                weak = (ma60 > 0 and current_price < ma60) or rsi < 40
 
                 # --- Tier 3A: 📈 추세추종 (강한 상승추세 편승) ---
                 if uptrend and price_above_ma20 and rsi >= 50:
@@ -1410,8 +1452,8 @@ class TitanAnalyzer:
                         support_candidates.append(('BB하단', bb_lower))
                     if nearest_support and nearest_support < current_price:
                         support_candidates.append(('스윙저점', nearest_support))
-                    if ma50 > 0 and ma50 < current_price:
-                        support_candidates.append(('MA50', ma50))
+                    if ma60 > 0 and ma60 < current_price:
+                        support_candidates.append(('MA60', ma60))
                     if support_candidates:
                         best_label, best_support = max(support_candidates, key=lambda x: x[1])
                         buy_price = best_support
@@ -1445,8 +1487,8 @@ class TitanAnalyzer:
                     support_candidates = []
                     if nearest_support and nearest_support < current_price:
                         support_candidates.append(('스윙저점', nearest_support))
-                    if ma200 > 0 and ma200 < current_price:
-                        support_candidates.append(('MA200', ma200))
+                    if ma120 > 0 and ma120 < current_price:
+                        support_candidates.append(('MA120', ma120))
                     if bb_lower > 0 and bb_lower < current_price:
                         support_candidates.append(('BB하단', bb_lower))
                     if support_candidates:
@@ -1456,9 +1498,9 @@ class TitanAnalyzer:
                     else:
                         buy_price = current_price * 0.95
                         strategy_suffix = "지지확인"
-                    # 목표: 보수적 (MA50 복귀 or 1.5×ATR)
-                    if ma50 > 0 and ma50 > current_price:
-                        target_price = ma50
+                    # 목표: 보수적 (MA60 복귀 or 1.5×ATR)
+                    if ma60 > 0 and ma60 > current_price:
+                        target_price = ma60
                     elif nearest_resistance and nearest_resistance > current_price:
                         target_price = nearest_resistance
                     else:
@@ -1626,17 +1668,17 @@ class TitanAnalyzer:
         # 2) 기술적 요약
         rsi = tech_bd.get('rsi_value', 50)
         ma20 = tech_bd.get('ma20', 0)
-        ma50 = tech_bd.get('ma50', 0)
+        ma60 = tech_bd.get('ma60', 0)
         price = stock_data.get('price', 0)
 
         tech_parts = []
-        if ma20 and ma50:
-            if ma20 > ma50 and price > ma20:
-                tech_parts.append("MA20>MA50 정배열 상태로 상승 추세 진행 중")
-            elif ma20 > ma50:
-                tech_parts.append("MA20>MA50 정배열이나 단기 조정 구간")
-            elif ma20 < ma50 and price < ma20:
-                tech_parts.append("MA20<MA50 역배열로 약세 흐름")
+        if ma20 and ma60:
+            if ma20 > ma60 and price > ma20:
+                tech_parts.append("MA20>MA60 정배열 상태로 상승 추세 진행 중")
+            elif ma20 > ma60:
+                tech_parts.append("MA20>MA60 정배열이나 단기 조정 구간")
+            elif ma20 < ma60 and price < ma20:
+                tech_parts.append("MA20<MA60 역배열로 약세 흐름")
             else:
                 tech_parts.append("이동평균 수렴 구간으로 방향성 탐색 중")
 
@@ -2604,7 +2646,7 @@ class TitanAnalyzer:
                         <!-- 추세 분석 -->
                         <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
                             <span class="criterion">📈 추세 분석</span>
-                            <span class="criterion-value">MA20/50/200, MACD, ADX</span>
+                            <span class="criterion-value">MA5/20/60/120, MACD, 일목균형표, ADX</span>
                             <span class="criterion-score">+{tech_bd.get('trend_score', 0)}점 /15</span>
                         </div>
                         <!-- 모멘텀 -->
@@ -2701,7 +2743,7 @@ class TitanAnalyzer:
         <div class="footer">
             <strong>⚠️ 투자 유의사항</strong><br>
             본 리포트는 PROJECT TITAN 알고리즘 기반 투자 참고 자료이며, 투자 손실에 대한 책임은 투자자 본인에게 있습니다.<br>
-            <small>Powered by Titan v2.0 | Fundamental (ROE, OPM, Sector) + Technical (MA20, RSI, Volume) + Contrarian Hybrid Strategy</small><br>
+            <small>Powered by Titan v2.0 | Fundamental (ROE, OPM, Sector) + Technical (MA5/20/60/120, Ichimoku, RSI, Volume) + Contrarian Hybrid Strategy</small><br>
             <small>🎯 과매도 우량주 즉시매수 | 📊 일반주 MA20풀백 | ⚠️ 과열주 조정대기</small>
         </div>
     </div>
@@ -2804,8 +2846,10 @@ function toggleDetail(id) {{
                 'opm_value': fund_bd.get('opm_value'),
                 'revenue_growth_value': fund_bd.get('revenue_growth_value'),
                 'rsi_value': tech_bd.get('rsi_value'),
+                'ma5': tech_bd.get('ma5'),
                 'ma20': tech_bd.get('ma20'),
-                'ma50': tech_bd.get('ma50'),
+                'ma60': tech_bd.get('ma60'),
+                'ma120': tech_bd.get('ma120'),
                 'analyst_comment': r.get('analyst_comment', ''),
                 'analyst_data': r.get('analyst_data', {}),
             }
