@@ -2508,6 +2508,8 @@ function toggleDetail(id) {{
         cache_file = f"titan_scores_{cache_type}.json"
         cache = {}
         for r in results:
+            fund_bd = r.get('fund_breakdown', {})
+            tech_bd = r.get('tech_breakdown', {})
             cache[r['ticker']] = {
                 'score': r.get('score', 0),
                 'fund_score': r.get('fund_score', 0),
@@ -2517,6 +2519,22 @@ function toggleDetail(id) {{
                 'market_cap': r.get('market_cap', 0),
                 'sector': r.get('sector', ''),
                 'company_name': r.get('company_name', ''),
+                'verdict': r.get('verdict', ''),
+                'buy_price': r.get('buy_price'),
+                'target_price': r.get('target_price'),
+                'stop_loss': r.get('stop_loss'),
+                'strategy': r.get('strategy', ''),
+                'comment': r.get('comment', ''),
+                'contrarian_adjustment': r.get('contrarian_adjustment', 0),
+                'liquidity_bonus': r.get('liquidity_bonus', 0),
+                'liquidity_tier': r.get('liquidity_tier', ''),
+                'sector_name': fund_bd.get('sector_name', ''),
+                'roe_value': fund_bd.get('roe_value'),
+                'opm_value': fund_bd.get('opm_value'),
+                'revenue_growth_value': fund_bd.get('revenue_growth_value'),
+                'rsi_value': tech_bd.get('rsi_value'),
+                'ma20': tech_bd.get('ma20'),
+                'ma50': tech_bd.get('ma50'),
             }
         with open(cache_file, 'w') as f:
             json.dump(cache, f, indent=2)
