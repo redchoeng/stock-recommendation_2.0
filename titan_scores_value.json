@@ -2980,8 +2980,8 @@
     "company_name": "Sherwin-Williams Company (The)"
   },
   "DD": {
-    "score": 40,
-    "fund_score": 16,
+    "score": 46,
+    "fund_score": 20,
     "tech_score": 28,
     "price": 50.24,
     "avg_volume": 5153288,
@@ -3080,8 +3080,8 @@
     "company_name": "Celanese Corporation"
   },
   "CF": {
-    "score": 78,
-    "fund_score": 43,
+    "score": 80,
+    "fund_score": 44,
     "tech_score": 32,
     "price": 99.46,
     "avg_volume": 2338631,
@@ -3195,7 +3195,7 @@
     "tech_score": 28,
     "price": 91.64,
     "avg_volume": 9598468,
-    "market_cap": 190850351104,
+    "market_cap": 190933942272,
     "sector": "Utilities",
     "company_name": "NextEra Energy, Inc."
   },
@@ -3210,8 +3210,8 @@
     "company_name": "Duke Energy Corporation (Holdin"
   },
   "SO": {
-    "score": 77,
-    "fund_score": 40,
+    "score": 61,
+    "fund_score": 27,
     "tech_score": 32,
     "price": 95.05,
     "avg_volume": 5853013,
@@ -3310,8 +3310,8 @@
     "company_name": "Public Service Enterprise Group"
   },
   "AWK": {
-    "score": 72,
-    "fund_score": 41,
+    "score": 68,
+    "fund_score": 38,
     "tech_score": 27,
     "price": 131.36,
     "avg_volume": 1844906,
@@ -3380,8 +3380,8 @@
     "company_name": "NiSource Inc"
   },
   "CNP": {
-    "score": 66,
-    "fund_score": 39,
+    "score": 69,
+    "fund_score": 41,
     "tech_score": 29,
     "price": 42.64,
     "avg_volume": 4957030,
