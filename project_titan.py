@@ -2080,54 +2080,73 @@ class TitanAnalyzer:
             color: #5D4E37;
         }}
         .analyst-view {{
-            margin-top: 12px;
-            padding: 14px 16px;
-            background: linear-gradient(135deg, #F8F9FA 0%, #EEF2F7 100%);
+            margin-top: 14px;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, #FAFBFC 0%, #EDF1F5 100%);
             border: 2px solid #D5DDE5;
-            border-radius: 12px;
+            border-radius: 14px;
         }}
         .analyst-header {{
             font-weight: 800;
             font-size: 0.95em;
             color: #2C3E50;
-            margin-bottom: 8px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #D5DDE5;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E0E6ED;
         }}
         .analyst-comment {{
             font-size: 0.88em;
             color: #34495E;
-            line-height: 1.7;
-            margin-bottom: 10px;
+            line-height: 1.85;
+            margin-bottom: 16px;
+            padding: 12px 14px;
+            background: white;
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
         }}
         .wall-street {{
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 8px;
+            margin-bottom: 14px;
         }}
         .ws-tag {{
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-size: 0.82em;
+            padding: 7px 14px;
+            border-radius: 10px;
+            font-size: 0.84em;
             font-weight: 700;
+            letter-spacing: -0.2px;
         }}
         .ws-consensus {{
             background: #E8F5E9;
             color: #2E7D32;
+            border: 1px solid #C8E6C9;
         }}
         .ws-target {{
             background: #E3F2FD;
             color: #1565C0;
+            border: 1px solid #BBDEFB;
         }}
         .ws-news {{
-            font-size: 0.82em;
-            color: #7B8D9E;
-            line-height: 1.5;
-        }}
-        .ws-news a {{
+            font-size: 0.83em;
             color: #5D6D7E;
-            text-decoration: none;
+            line-height: 1.6;
+            padding: 10px 14px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #E8ECF0;
+        }}
+        .ws-news-item {{
+            padding: 4px 0;
+        }}
+        .ws-news-item + .ws-news-item {{
+            border-top: 1px solid #F0F2F5;
+            margin-top: 4px;
+            padding-top: 8px;
+        }}
+        .ws-news-pub {{
+            color: #95A5B0;
+            font-size: 0.9em;
         }}
         .back-link {{
             display: block;
@@ -2309,10 +2328,11 @@ class TitanAnalyzer:
             .breakdown-item {{ grid-template-columns: 1fr auto; gap: 4px; padding: 5px 8px; font-size: 0.8em; }}
             .breakdown-item .criterion-value {{ display: none; }}
             .comment {{ font-size: 0.82em; padding: 8px; }}
-            .analyst-view {{ padding: 10px 12px; }}
-            .analyst-comment {{ font-size: 0.82em; }}
-            .wall-street {{ gap: 6px; }}
-            .ws-tag {{ font-size: 0.78em; padding: 3px 8px; }}
+            .analyst-view {{ padding: 14px; }}
+            .analyst-comment {{ font-size: 0.82em; padding: 10px 12px; margin-bottom: 12px; line-height: 1.75; }}
+            .wall-street {{ gap: 8px; margin-bottom: 10px; }}
+            .ws-tag {{ font-size: 0.78em; padding: 5px 10px; }}
+            .ws-news {{ padding: 8px 10px; font-size: 0.8em; }}
             .verdict {{ font-size: 0.8em; padding: 4px 12px; }}
             .scoring-modal {{ width: 100%; height: 95vh; border-radius: 10px; }}
             .footer {{ padding: 15px 10px; font-size: 0.85em; }}
@@ -2529,8 +2549,8 @@ class TitanAnalyzer:
                         title = n.get('title', '')
                         publisher = n.get('publisher', '')
                         if title:
-                            pub_str = f' — {publisher}' if publisher else ''
-                            news_html += f'📰 {title}{pub_str}<br>'
+                            pub_str = f' <span class="ws-news-pub">— {publisher}</span>' if publisher else ''
+                            news_html += f'<div class="ws-news-item">📰 {title}{pub_str}</div>'
                     news_html += '</div>'
                     analyst_view_html += news_html
 
