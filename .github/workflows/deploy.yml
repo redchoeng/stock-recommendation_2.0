@@ -34,6 +34,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 2
+
+      - name: Check if analysis files changed
+        id: changes
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            CHANGED=$(git diff --name-only HEAD~1 HEAD -- project_titan.py requirements.txt .github/workflows/deploy.yml)
+            if [ -z "$CHANGED" ]; then
+              echo "analysis_changed=false" >> $GITHUB_OUTPUT
+              echo "Skipping analysis - no analysis files changed"
+            else
+              echo "analysis_changed=true" >> $GITHUB_OUTPUT
+              echo "Analysis files changed: $CHANGED"
+            fi
+          else
+            echo "analysis_changed=true" >> $GITHUB_OUTPUT
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -66,17 +83,17 @@ jobs:
           "
 
       - name: Generate Growth Stocks Report with Titan Algorithm
-        if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        if: steps.market_check.outputs.is_open == 'true' || (github.event_name == 'push' && steps.changes.outputs.analysis_changed == 'true') || github.event_name == 'workflow_dispatch'
         run: |
           python project_titan.py growth
 
       - name: Generate Value Stocks Report with Titan Algorithm
-        if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        if: steps.market_check.outputs.is_open == 'true' || (github.event_name == 'push' && steps.changes.outputs.analysis_changed == 'true') || github.event_name == 'workflow_dispatch'
         run: |
           python project_titan.py value
 
       - name: Generate Portfolio Composition Page
-        if: steps.market_check.outputs.is_open == 'true' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        if: steps.market_check.outputs.is_open == 'true' || (github.event_name == 'push' && steps.changes.outputs.analysis_changed == 'true') || github.event_name == 'workflow_dispatch'
         run: |
           python project_titan.py portfolio
 
