@@ -1060,8 +1060,8 @@
     "company_name": "Airbnb, Inc."
   },
   "BKNG": {
-    "score": 32,
-    "fund_score": 25,
+    "score": 33,
+    "fund_score": 26,
     "tech_score": 6,
     "price": 4007.45,
     "avg_volume": 294850,
@@ -1070,8 +1070,8 @@
     "company_name": "Booking Holdings Inc. Common St"
   },
   "DASH": {
-    "score": 43,
-    "fund_score": 27,
+    "score": 40,
+    "fund_score": 24,
     "tech_score": 15,
     "price": 176.19,
     "avg_volume": 5000568,
