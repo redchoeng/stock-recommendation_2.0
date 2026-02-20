@@ -23,6 +23,10 @@ on:
   # 수동 실행도 가능
   workflow_dispatch:
 
+concurrency:
+  group: deploy-reports
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
