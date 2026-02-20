@@ -252,10 +252,30 @@ async function loadData() {
 function search(query) {
     if (!query || query.length < 1) return [];
     const q = query.toLowerCase();
-    return allStocks.filter(s =>
-        s.ticker.toLowerCase().includes(q) ||
-        (s.company_name && s.company_name.toLowerCase().includes(q))
-    ).slice(0, 20);
+    return allStocks
+        .filter(s =>
+            s.ticker.toLowerCase().includes(q) ||
+            (s.company_name && s.company_name.toLowerCase().includes(q))
+        )
+        .map(s => {
+            const t = s.ticker.toLowerCase();
+            const n = (s.company_name || '').toLowerCase();
+            let relevance = 0;
+            // 티커 정확 일치 → 최우선
+            if (t === q) relevance = 100;
+            // 티커 시작 일치
+            else if (t.startsWith(q)) relevance = 80;
+            // 기업명 단어 시작 일치
+            else if (n.split(/\s+/).some(w => w.startsWith(q))) relevance = 60;
+            // 티커 부분 일치
+            else if (t.includes(q)) relevance = 40;
+            // 기업명 부분 일치
+            else relevance = 20;
+            // 동일 관련성 내에서 점수 높은 순
+            return { ...s, _relevance: relevance };
+        })
+        .sort((a, b) => b._relevance - a._relevance || b.score - a.score)
+        .slice(0, 20);
 }
 
 function renderResults(stocks) {
