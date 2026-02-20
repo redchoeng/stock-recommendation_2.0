@@ -104,6 +104,56 @@
             font-size: 0.9em;
             color: #5D4E37;
         }
+        .analyst-view {
+            margin-top: 12px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #F8F9FA 0%, #EEF2F7 100%);
+            border: 2px solid #D5DDE5;
+            border-radius: 12px;
+        }
+        .analyst-header {
+            font-weight: 800;
+            font-size: 0.95em;
+            color: #2C3E50;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #D5DDE5;
+        }
+        .analyst-comment {
+            font-size: 0.88em;
+            color: #34495E;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        .wall-street {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        .ws-tag {
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.82em;
+            font-weight: 700;
+        }
+        .ws-consensus {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+        .ws-target {
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+        .ws-news {
+            font-size: 0.82em;
+            color: #7B8D9E;
+            line-height: 1.5;
+        }
+        .ws-news a {
+            color: #5D6D7E;
+            text-decoration: none;
+        }
         .back-link {
             display: block;
             text-align: center;
@@ -284,6 +334,10 @@
             .breakdown-item { grid-template-columns: 1fr auto; gap: 4px; padding: 5px 8px; font-size: 0.8em; }
             .breakdown-item .criterion-value { display: none; }
             .comment { font-size: 0.82em; padding: 8px; }
+            .analyst-view { padding: 10px 12px; }
+            .analyst-comment { font-size: 0.82em; }
+            .wall-street { gap: 6px; }
+            .ws-tag { font-size: 0.78em; padding: 3px 8px; }
             .verdict { font-size: 0.8em; padding: 4px 12px; }
             .scoring-modal { width: 100%; height: 95vh; border-radius: 10px; }
             .footer { padding: 15px 10px; font-size: 0.85em; }
@@ -306,7 +360,7 @@
             <div style="font-size: 3em;">⭐</div>
             <h1>Growth Stocks Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
             <div class="subtitle">Advanced Fundamental + Technical Analysis</div>
-            <div class="date">2026-02-20 09:36 UTC 업데이트</div>
+            <div class="date">2026-02-20 09:53 UTC 업데이트</div>
             <button class="scoring-btn" onclick="document.getElementById('scoringOverlay').classList.add('active')">📐 점수 체계 보기</button>
         </div>
         <!-- 점수 체계 모달 -->
@@ -350,11 +404,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$422.50</div>
+                    <div class="info-value" style="font-size: 1.2em;">$422.40</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.37%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.34%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📈 추세추종(MA20↑)</div>
@@ -370,6 +424,7 @@
                 </div>
             </div>
             <div class="comment">💡 ROE:22.6%, OPM:45.0%, AI/반도체</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 22.6%로 수익성 최상위권. 영업이익률 45.0%의 고마진 구조. 매출 YoY +57% 고성장. MA20>MA50 정배열 상태로 상승 추세 진행 중. RSI 59으로 매수세 우위. 월가 123명 중 104명 매수 의견(Strong Buy). 평균 목표가 $391 (현재가 대비 -6%). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (104/123)</span><span class="ws-tag ws-target">목표가 $196~$523 (avg $391)</span></div><div class="ws-news"></div></div>
 
             <button class="detail-toggle" onclick="toggleDetail(1)">상세 분석 ▼</button>
 
@@ -474,11 +529,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$188.82</div>
+                    <div class="info-value" style="font-size: 1.2em;">$188.70</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.45%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.38%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📈 추세추종(MA20↑)</div>
@@ -494,6 +549,7 @@
                 </div>
             </div>
             <div class="comment">💡 ROE:107.4%, OPM:63.2%, AI/반도체</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 107.4%로 수익성 최상위권. 영업이익률 63.2%의 고마진 구조. 매출 YoY +62% 고성장. MA20>MA50 정배열 상태로 상승 추세 진행 중. RSI 53으로 매수세 우위. 월가 192명 중 180명 매수 의견(Strong Buy). 평균 목표가 $254 (현재가 대비 +35% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (180/192)</span><span class="ws-tag ws-target">목표가 $140~$352 (avg $254)</span></div><div class="ws-news"></div></div>
 
             <button class="detail-toggle" onclick="toggleDetail(2)">상세 분석 ▼</button>
 
@@ -598,11 +654,11 @@
             <div class="info">
                 <div class="info-item" style="background: #FF9800; color: white;">
                     <div class="info-label" style="color: rgba(255,255,255,0.9);">🌅 프리마켓</div>
-                    <div class="info-value" style="font-size: 1.2em;">$238.94</div>
+                    <div class="info-value" style="font-size: 1.2em;">$239.00</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.48%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.45%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📈 추세추종(MA20↑)</div>
@@ -618,6 +674,7 @@
                 </div>
             </div>
             <div class="comment">💡 ROE:65.6%, OPM:33.9%, AI/반도체</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 65.6%로 수익성 최상위권. 영업이익률 33.9%의 고마진 구조. 매출 YoY +22% 성장세. MA20>MA50 정배열 상태로 상승 추세 진행 중. RSI 59으로 매수세 우위. 월가 104명 중 71명 매수 의견(Buy). 평균 목표가 $274 (현재가 대비 +16% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Buy (71/104)</span><span class="ws-tag ws-target">목표가 $200~$325 (avg $274)</span></div><div class="ws-news"></div></div>
 
             <button class="detail-toggle" onclick="toggleDetail(3)">상세 분석 ▼</button>
 
@@ -742,6 +799,7 @@
                 </div>
             </div>
             <div class="comment">💡 ROE:17.9%, OPM:26.9%, AI/반도체</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 17.9%로 양호한 수익성. 영업이익률 26.9%의 고마진 구조. 매출 YoY +21% 성장세. MA20>MA50 정배열 상태로 상승 추세 진행 중. RSI 58으로 매수세 우위. 월가 48명 중 40명 매수 의견(Strong Buy). 평균 목표가 $1328 (현재가 대비 +13% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (40/48)</span><span class="ws-tag ws-target">목표가 $1000~$1500 (avg $1328)</span></div><div class="ws-news"></div></div>
 
             <button class="detail-toggle" onclick="toggleDetail(4)">상세 분석 ▼</button>
 
