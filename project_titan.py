@@ -1590,6 +1590,114 @@ class TitanAnalyzer:
 
         return adjustment, contrarian_comment
 
+    def _generate_analyst_comment(self, stock_data, analyst_data):
+        """Titan 분석 데이터 + 월가 데이터를 조합한 애널리스트 톤 코멘트 생성"""
+        parts = []
+        fund_bd = stock_data.get('fund_breakdown', {})
+        tech_bd = stock_data.get('tech_breakdown', {})
+
+        # 1) 펀더멘털 요약
+        roe = fund_bd.get('roe_value', 0)
+        opm = fund_bd.get('opm_value', 0)
+        rev_growth = fund_bd.get('revenue_growth_value')
+
+        fund_parts = []
+        if roe >= 20:
+            fund_parts.append(f"ROE {roe:.1f}%로 수익성 최상위권")
+        elif roe >= 10:
+            fund_parts.append(f"ROE {roe:.1f}%로 양호한 수익성")
+        elif roe > 0:
+            fund_parts.append(f"ROE {roe:.1f}%로 수익성 보통")
+
+        if opm >= 25:
+            fund_parts.append(f"영업이익률 {opm:.1f}%의 고마진 구조")
+        elif opm >= 15:
+            fund_parts.append(f"영업이익률 {opm:.1f}%로 안정적")
+
+        if rev_growth is not None:
+            if rev_growth >= 30:
+                fund_parts.append(f"매출 YoY +{rev_growth:.0f}% 고성장")
+            elif rev_growth >= 10:
+                fund_parts.append(f"매출 YoY +{rev_growth:.0f}% 성장세")
+
+        if fund_parts:
+            parts.append(". ".join(fund_parts) + ".")
+
+        # 2) 기술적 요약
+        rsi = tech_bd.get('rsi_value', 50)
+        ma20 = tech_bd.get('ma20', 0)
+        ma50 = tech_bd.get('ma50', 0)
+        price = stock_data.get('price', 0)
+
+        tech_parts = []
+        if ma20 and ma50:
+            if ma20 > ma50 and price > ma20:
+                tech_parts.append("MA20>MA50 정배열 상태로 상승 추세 진행 중")
+            elif ma20 > ma50:
+                tech_parts.append("MA20>MA50 정배열이나 단기 조정 구간")
+            elif ma20 < ma50 and price < ma20:
+                tech_parts.append("MA20<MA50 역배열로 약세 흐름")
+            else:
+                tech_parts.append("이동평균 수렴 구간으로 방향성 탐색 중")
+
+        if rsi <= 30:
+            tech_parts.append(f"RSI {rsi:.0f}으로 과매도 영역 → 반등 가능성")
+        elif rsi >= 70:
+            tech_parts.append(f"RSI {rsi:.0f}으로 과매수 영역 → 단기 조정 유의")
+        elif rsi >= 50:
+            tech_parts.append(f"RSI {rsi:.0f}으로 매수세 우위")
+        else:
+            tech_parts.append(f"RSI {rsi:.0f}으로 매도세 우위")
+
+        if tech_parts:
+            parts.append(". ".join(tech_parts) + ".")
+
+        # 3) 월가 컨센서스
+        buy_cnt = analyst_data.get('buy_count', 0)
+        hold_cnt = analyst_data.get('hold_count', 0)
+        sell_cnt = analyst_data.get('sell_count', 0)
+        total_cnt = buy_cnt + hold_cnt + sell_cnt
+        target_mean = analyst_data.get('target_mean')
+
+        if total_cnt > 0:
+            buy_ratio = buy_cnt / total_cnt * 100
+            ws_parts = []
+            if buy_ratio >= 70:
+                ws_parts.append(f"월가 {total_cnt}명 중 {buy_cnt}명 매수 의견(Strong Buy)")
+            elif buy_ratio >= 50:
+                ws_parts.append(f"월가 {total_cnt}명 중 {buy_cnt}명 매수 의견(Buy)")
+            else:
+                ws_parts.append(f"월가 매수 {buy_cnt} / 보유 {hold_cnt} / 매도 {sell_cnt}")
+
+            if target_mean and price > 0:
+                upside = (target_mean - price) / price * 100
+                if upside > 0:
+                    ws_parts.append(f"평균 목표가 ${target_mean:.0f} (현재가 대비 +{upside:.0f}% 상승여력)")
+                else:
+                    ws_parts.append(f"평균 목표가 ${target_mean:.0f} (현재가 대비 {upside:.0f}%)")
+
+            if ws_parts:
+                parts.append(". ".join(ws_parts) + ".")
+
+        # 4) 전략 제안
+        strategy = stock_data.get('buy_strategy', '')
+        contrarian = stock_data.get('contrarian_adjustment', 0)
+
+        if contrarian > 0:
+            parts.append("역발상 매수 시그널 감지 → 저가 매수 기회로 판단.")
+        elif '추세추종' in strategy:
+            parts.append("상승 추세 지속 중으로 추세 추종 매매가 유효.")
+        elif '풀백매수' in strategy:
+            parts.append("상승 추세 내 조정 구간으로 분할 매수 접근 권장.")
+        elif '박스권' in strategy:
+            parts.append("횡보 구간 하단 접근 중으로 지지선 확인 후 매수 검토.")
+        elif '반등대기' in strategy:
+            parts.append("하락 추세로 반등 신호 확인 전까지 관망 권장.")
+        elif '⚠️' in strategy:
+            parts.append("과열 구간으로 신규 진입보다 조정 후 재진입 권장.")
+
+        return " ".join(parts) if parts else ""
+
     def _analyze_single_stock(self, ticker):
         """개별 종목 분석"""
         stock = yf.Ticker(ticker)
@@ -1636,7 +1744,36 @@ class TitanAnalyzer:
             all_comments.insert(0, contrarian_comment)
         comment = ", ".join(all_comments[:3]) if all_comments else "-"
 
-        return {
+        # 📊 월가 애널리스트 데이터 수집
+        analyst_data = {}
+        try:
+            rec = stock.recommendations
+            if rec is not None and not rec.empty:
+                latest = rec.tail(3)
+                analyst_data['buy_count'] = int(latest[['strongBuy', 'buy']].sum().sum())
+                analyst_data['hold_count'] = int(latest['hold'].sum())
+                analyst_data['sell_count'] = int(latest[['sell', 'strongSell']].sum().sum())
+        except Exception:
+            pass
+        try:
+            targets = stock.analyst_price_targets
+            if targets is not None:
+                analyst_data['target_low'] = targets.get('low')
+                analyst_data['target_mean'] = targets.get('mean')
+                analyst_data['target_high'] = targets.get('high')
+        except Exception:
+            pass
+        try:
+            news_list = stock.news
+            if news_list:
+                analyst_data['news'] = [
+                    {'title': n.get('title', ''), 'publisher': n.get('publisher', '')}
+                    for n in news_list[:2]
+                ]
+        except Exception:
+            pass
+
+        result = {
             'ticker': ticker,
             'company_name': info.get('shortName', ''),
             'score': total_score,
@@ -1659,8 +1796,14 @@ class TitanAnalyzer:
             'breakout': breakout,              # 레거시 호환
             'target': target,
             'stop_loss': stop_loss,
-            'comment': comment
+            'comment': comment,
+            'analyst_data': analyst_data,
         }
+
+        # 📝 애널리스트 뷰 코멘트 생성
+        result['analyst_comment'] = self._generate_analyst_comment(result, analyst_data)
+
+        return result
 
     def stage2_deep_analysis(self, tickers):
         """2단계: 정밀 분석 (Titan 알고리즘)"""
@@ -1936,6 +2079,56 @@ class TitanAnalyzer:
             font-size: 0.9em;
             color: #5D4E37;
         }}
+        .analyst-view {{
+            margin-top: 12px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #F8F9FA 0%, #EEF2F7 100%);
+            border: 2px solid #D5DDE5;
+            border-radius: 12px;
+        }}
+        .analyst-header {{
+            font-weight: 800;
+            font-size: 0.95em;
+            color: #2C3E50;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #D5DDE5;
+        }}
+        .analyst-comment {{
+            font-size: 0.88em;
+            color: #34495E;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }}
+        .wall-street {{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }}
+        .ws-tag {{
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.82em;
+            font-weight: 700;
+        }}
+        .ws-consensus {{
+            background: #E8F5E9;
+            color: #2E7D32;
+        }}
+        .ws-target {{
+            background: #E3F2FD;
+            color: #1565C0;
+        }}
+        .ws-news {{
+            font-size: 0.82em;
+            color: #7B8D9E;
+            line-height: 1.5;
+        }}
+        .ws-news a {{
+            color: #5D6D7E;
+            text-decoration: none;
+        }}
         .back-link {{
             display: block;
             text-align: center;
@@ -2116,6 +2309,10 @@ class TitanAnalyzer:
             .breakdown-item {{ grid-template-columns: 1fr auto; gap: 4px; padding: 5px 8px; font-size: 0.8em; }}
             .breakdown-item .criterion-value {{ display: none; }}
             .comment {{ font-size: 0.82em; padding: 8px; }}
+            .analyst-view {{ padding: 10px 12px; }}
+            .analyst-comment {{ font-size: 0.82em; }}
+            .wall-street {{ gap: 6px; }}
+            .ws-tag {{ font-size: 0.78em; padding: 3px 8px; }}
             .verdict {{ font-size: 0.8em; padding: 4px 12px; }}
             .scoring-modal {{ width: 100%; height: 95vh; border-radius: 10px; }}
             .footer {{ padding: 15px 10px; font-size: 0.85em; }}
@@ -2286,6 +2483,59 @@ class TitanAnalyzer:
             if stock['comment'] and stock['comment'] != '-':
                 comment_html = f'<div class="comment">💡 {stock["comment"]}</div>'
 
+            # 📝 애널리스트 뷰
+            analyst_view_html = ''
+            analyst_comment = stock.get('analyst_comment', '')
+            a_data = stock.get('analyst_data', {})
+            if analyst_comment or a_data:
+                analyst_view_html = '<div class="analyst-view">'
+                analyst_view_html += '<div class="analyst-header">📝 Titan 애널리스트 뷰</div>'
+                if analyst_comment:
+                    analyst_view_html += f'<div class="analyst-comment">{analyst_comment}</div>'
+
+                # 월가 컨센서스 태그
+                ws_tags = []
+                a_buy = a_data.get('buy_count', 0)
+                a_hold = a_data.get('hold_count', 0)
+                a_sell = a_data.get('sell_count', 0)
+                a_total = a_buy + a_hold + a_sell
+                if a_total > 0:
+                    buy_ratio = a_buy / a_total * 100
+                    if buy_ratio >= 70:
+                        consensus_label = 'Strong Buy'
+                    elif buy_ratio >= 50:
+                        consensus_label = 'Buy'
+                    else:
+                        consensus_label = 'Hold'
+                    ws_tags.append(f'<span class="ws-tag ws-consensus">월가: {consensus_label} ({a_buy}/{a_total})</span>')
+
+                a_target_mean = a_data.get('target_mean')
+                a_target_low = a_data.get('target_low')
+                a_target_high = a_data.get('target_high')
+                if a_target_mean:
+                    target_str = f'목표가 ${a_target_mean:.0f}'
+                    if a_target_low and a_target_high:
+                        target_str = f'목표가 ${a_target_low:.0f}~${a_target_high:.0f} (avg ${a_target_mean:.0f})'
+                    ws_tags.append(f'<span class="ws-tag ws-target">{target_str}</span>')
+
+                if ws_tags:
+                    analyst_view_html += '<div class="wall-street">' + ''.join(ws_tags) + '</div>'
+
+                # 뉴스 헤드라인
+                news_items = a_data.get('news', [])
+                if news_items:
+                    news_html = '<div class="ws-news">'
+                    for n in news_items[:2]:
+                        title = n.get('title', '')
+                        publisher = n.get('publisher', '')
+                        if title:
+                            pub_str = f' — {publisher}' if publisher else ''
+                            news_html += f'📰 {title}{pub_str}<br>'
+                    news_html += '</div>'
+                    analyst_view_html += news_html
+
+                analyst_view_html += '</div>'
+
             html += f'''
         <div class="stock-card">
             <div class="rank">#{i}</div>
@@ -2295,6 +2545,7 @@ class TitanAnalyzer:
 
             {price_html}
             {comment_html}
+            {analyst_view_html}
 
             <button class="detail-toggle" onclick="toggleDetail({i})">상세 분석 ▼</button>
 
@@ -2535,6 +2786,8 @@ function toggleDetail(id) {{
                 'rsi_value': tech_bd.get('rsi_value'),
                 'ma20': tech_bd.get('ma20'),
                 'ma50': tech_bd.get('ma50'),
+                'analyst_comment': r.get('analyst_comment', ''),
+                'analyst_data': r.get('analyst_data', {}),
             }
         with open(cache_file, 'w') as f:
             json.dump(cache, f, indent=2)
