@@ -750,9 +750,9 @@
     "company_name": "Cisco Systems, Inc."
   },
   "AKAM": {
-    "score": 61,
+    "score": 62,
     "fund_score": 23,
-    "tech_score": 33,
+    "tech_score": 34,
     "price": 109.59,
     "avg_volume": 3423881,
     "market_cap": 15766190080,
@@ -850,9 +850,9 @@
     "company_name": "Nu Holdings Ltd."
   },
   "V": {
-    "score": 54,
+    "score": 51,
     "fund_score": 48,
-    "tech_score": 9,
+    "tech_score": 6,
     "price": 318.93,
     "avg_volume": 7528371,
     "market_cap": 614909607936,
@@ -1235,7 +1235,7 @@
     "tech_score": 17,
     "price": 103.29,
     "avg_volume": 5334191,
-    "market_cap": 19616514048,
+    "market_cap": 19716843520,
     "sector": "Healthcare",
     "company_name": "Exact Sciences Corporation"
   },
