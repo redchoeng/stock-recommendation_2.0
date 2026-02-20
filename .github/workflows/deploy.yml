@@ -112,5 +112,10 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Auto update reports with Titan v2.0 - $(date -u '+%Y-%m-%d %H:%M') UTC"
-            git push
+            # 리모트에 새 커밋이 있으면 pull 후 재시도
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              echo "Push failed, retrying ($i/3)..."
+              sleep 5
+            done
           fi
