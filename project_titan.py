@@ -1774,12 +1774,38 @@ class TitanAnalyzer:
         print(tabulate(table_data, headers=headers, tablefmt='grid'))
         print(f"\n📊 총 {len(filtered)}개 유망 종목 발견")
 
+    def _get_current_market_status(self):
+        """리포트 생성 시점 기준 시장 상태 판별 (경계 시간 여유 포함)"""
+        try:
+            et_tz = pytz.timezone('America/New_York')
+            now_et = datetime.now(et_tz)
+            hour = now_et.hour
+            minute = now_et.minute
+            weekday = now_et.weekday()
+            # 분 단위로 변환하여 경계 판별 (10분 여유)
+            time_min = hour * 60 + minute
+            if weekday >= 5:
+                return 'closed'
+            if time_min >= 230 and time_min < 570:      # 3:50 AM ~ 9:30 AM
+                return 'pre'
+            elif time_min >= 570 and time_min < 960:     # 9:30 AM ~ 4:00 PM
+                return 'regular'
+            elif time_min >= 960 and time_min < 1210:    # 4:00 PM ~ 8:10 PM
+                return 'after'
+            else:
+                return 'closed'
+        except Exception:
+            return 'unknown'
+
     def generate_html_report(self, results, report_type="NASDAQ 100", filename="report.html", min_score=50):
         """HTML 리포트 생성"""
         filtered = [r for r in results if r['score'] >= min_score]
         filtered.sort(key=lambda x: x['score'], reverse=True)
 
         now = datetime.now()
+
+        # 리포트 전체에 적용할 시장 상태 (생성 시점 기준 1회 판별)
+        report_market_status = self._get_current_market_status()
 
         # 시장 상태 및 기준 점수 결정
         market_regime = filtered[0].get('market_regime', 'neutral') if filtered else 'neutral'
@@ -2175,7 +2201,7 @@ class TitanAnalyzer:
 
             # === 가격 블록을 먼저 빌드 (카드 상단에 표시) ===
             market_info = stock.get('market_info', {})
-            market_status = market_info.get('status', 'unknown')
+            market_status = report_market_status  # 리포트 생성 시점 기준 통일
             prev_close = market_info.get('previous_close', 0)
             regular_price = stock['price']
             display_price = market_info.get('display_price', regular_price)
