@@ -261,32 +261,32 @@ class TitanAnalyzer:
     }
 
     # 기술적 점수 재설계 (전문가급, 총 50점)
-    # 1. 추세 분석 (15점) - MA5/20/60/120 스윙매매 최적화
+    # 1. 추세 분석 (20점) - MA5/20/60/120 + 일목균형표 + MACD + ADX
     SCORE_MA120 = 2        # 장기 추세 (6개월)
     SCORE_MA60 = 2         # 중기 추세 (3개월)
-    SCORE_MA20 = 2         # 단기 추세 (1개월)
-    SCORE_MA5 = 1          # 초단기 모멘텀 (1주)
-    SCORE_MACD_BULLISH = 3
-    SCORE_MACD_SIGNAL = 1
+    SCORE_MA20 = 3         # 단기 추세 (1개월)
+    SCORE_MA5 = 2          # 초단기 모멘텀 (1주)
+    SCORE_MACD_BULLISH = 4
+    SCORE_MACD_SIGNAL = 2
     SCORE_ICHIMOKU = 3     # 일목균형표 (구름위+TK크로스+미래구름)
     SCORE_ADX_STRONG = 2
 
-    # 2. 모멘텀 (12점)
-    SCORE_RSI_OPTIMAL = 6
-    SCORE_RSI_GOOD = 4
+    # 2. 모멘텀 (10점)
+    SCORE_RSI_OPTIMAL = 5
+    SCORE_RSI_GOOD = 3
     SCORE_RSI_OVERSOLD = 2
-    SCORE_STOCH_OPTIMAL = 6
-    SCORE_STOCH_GOOD = 3
+    SCORE_STOCH_OPTIMAL = 5
+    SCORE_STOCH_GOOD = 2
 
-    # 3. 거래량 (10점)
-    SCORE_VOLUME_EXTREME = 6    # 3배 이상
-    SCORE_VOLUME_HIGH = 4       # 2-3배
-    SCORE_VOLUME_MODERATE = 3   # 1.5-2배
-    SCORE_VOLUME_NORMAL = 2     # 1.2-1.5배
+    # 3. 거래량 (8점)
+    SCORE_VOLUME_EXTREME = 4    # 3배 이상
+    SCORE_VOLUME_HIGH = 3       # 2-3배
+    SCORE_VOLUME_MODERATE = 2   # 1.5-2배
+    SCORE_VOLUME_NORMAL = 1     # 1.2-1.5배
     SCORE_OBV_RISING = 4
 
-    # 4. 변동성 (8점)
-    SCORE_BB_POSITION = 5
+    # 4. 변동성 (7점)
+    SCORE_BB_POSITION = 4
     SCORE_ATR_EXPANSION = 3
 
     # 5. 가격 패턴 (5점)
@@ -2647,25 +2647,25 @@ class TitanAnalyzer:
                         <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
                             <span class="criterion">📈 추세 분석</span>
                             <span class="criterion-value">MA5/20/60/120, MACD, 일목균형표, ADX</span>
-                            <span class="criterion-score">+{tech_bd.get('trend_score', 0)}점 /15</span>
+                            <span class="criterion-score">+{tech_bd.get('trend_score', 0)}점 /20</span>
                         </div>
                         <!-- 모멘텀 -->
                         <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
                             <span class="criterion">⚡ 모멘텀</span>
                             <span class="criterion-value">RSI:{tech_bd.get('rsi_value', 0):.0f}, Stoch</span>
-                            <span class="criterion-score">+{tech_bd.get('momentum_score', 0)}점 /12</span>
+                            <span class="criterion-score">+{tech_bd.get('momentum_score', 0)}점 /10</span>
                         </div>
                         <!-- 거래량 -->
                         <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
                             <span class="criterion">📊 거래량</span>
                             <span class="criterion-value">{tech_bd.get('volume_ratio', 0):.1f}x, OBV</span>
-                            <span class="criterion-score">+{tech_bd.get('volume_score', 0)}점 /10</span>
+                            <span class="criterion-score">+{tech_bd.get('volume_score', 0)}점 /8</span>
                         </div>
                         <!-- 변동성 -->
                         <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
                             <span class="criterion">🌊 변동성</span>
                             <span class="criterion-value">BB, ATR</span>
-                            <span class="criterion-score">+{tech_bd.get('volatility_score', 0)}점 /8</span>
+                            <span class="criterion-score">+{tech_bd.get('volatility_score', 0)}점 /7</span>
                         </div>
                         <!-- 가격 패턴 -->
                         <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
