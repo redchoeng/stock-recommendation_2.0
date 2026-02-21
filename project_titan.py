@@ -618,6 +618,17 @@ class TitanAnalyzer:
                     breakdown['policy_bonus'] = policy_bonus
                     comments.append(policy_comment)
 
+                # 성장주 모드 섹터 적합도 스케일링
+                # 비핵심 성장 섹터(Tier3 이하)는 ROE/OPM/RevGrowth 점수 축소
+                # 핵심 성장 섹터(반도체, 클라우드 등)와 공정 비교를 위해
+                sector_tier = breakdown.get('sector_score', 0)
+                if sector_tier <= self.SCORE_SECTOR_TIER3:  # 5점 이하
+                    base_scores = breakdown.get('roe_score', 0) + breakdown.get('opm_score', 0) + breakdown.get('revenue_growth_score', 0)
+                    scale = 0.7 + 0.3 * (sector_tier / self.SCORE_SECTOR_TIER1)  # Tier3=0.85, Tier4=0.79, Default=0.73
+                    scaled_base = int(base_scores * scale)
+                    score -= (base_scores - scaled_base)
+                    comments.append(f"비핵심섹터 조정")
+
         except Exception:
             pass
 
@@ -649,8 +660,8 @@ class TitanAnalyzer:
         if any(kw in ind_lower for kw in ['aerospace', 'defense', 'military']):
             return self.POLICY_BONUS, "[Policy]트럼프 국방비증액 수혜"
 
-        # 금융 (은행, 보험, 자산운용)
-        if sector == 'Financial Services':
+        # 금융 (미국 은행, 보험만 - 핀테크/해외 금융 제외)
+        if sector == 'Financial Services' and any(kw in ind_lower for kw in ['bank', 'insurance', 'asset management', 'capital market', 'financial exchange']):
             return self.POLICY_BONUS, "[Policy]트럼프 금융규제완화 수혜"
 
         # 산업재/제조 (리쇼어링, 인프라)
