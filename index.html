@@ -510,34 +510,33 @@
 
         // 다음 업데이트 (KST)
         function showNextUpdate() {
-            const scheduleKST = [
-                [0, 30], [3, 30], [5, 30], [6, 30], [8, 0], [9, 0], [10, 0], [18, 0], [21, 0], [23, 30]
-            ];
+            // 월요일: 00:30 없음 (토→일 UTC 밤에 안 돌림)
+            const monSchedule = [[3,30],[5,30],[6,30],[8,0],[9,0],[10,0],[18,0],[21,0],[23,30]];
+            // 화~금: 전체 스케줄
+            const fullSchedule = [[0,30],[3,30],[5,30],[6,30],[8,0],[9,0],[10,0],[18,0],[21,0],[23,30]];
+            // 토요일: 금요일 정규장 마감 분 뿐
+            const satSchedule = [[0,30]];
+
             const now = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
-            const day = now.getDay();
+            const day = now.getDay(); // 0=일, 1=월, ..., 6=토
             const nowMin = now.getHours() * 60 + now.getMinutes();
 
+            let schedule;
+            if (day === 1) schedule = monSchedule;
+            else if (day >= 2 && day <= 5) schedule = fullSchedule;
+            else if (day === 6) schedule = satSchedule;
+            else schedule = []; // 일요일
+
             let nextLabel = '';
-            if (day >= 1 && day <= 5) {
-                for (const [sh, sm] of scheduleKST) {
-                    if (nowMin < sh * 60 + sm) {
-                        nextLabel = String(sh).padStart(2,'0') + ':' + String(sm).padStart(2,'0') + ' KST';
-                        break;
-                    }
-                }
-            }
-            if (!nextLabel && day === 6 && nowMin < 10 * 60) {
-                for (const [sh, sm] of scheduleKST) {
-                    if (sh <= 10 && nowMin < sh * 60 + sm) {
-                        nextLabel = String(sh).padStart(2,'0') + ':' + String(sm).padStart(2,'0') + ' KST';
-                        break;
-                    }
+            for (const [h, m] of schedule) {
+                if (nowMin < h * 60 + m) {
+                    nextLabel = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ' KST';
+                    break;
                 }
             }
             if (!nextLabel) {
-                nextLabel = '월요일 18:00 KST';
-                if (day >= 1 && day < 5) nextLabel = '내일 00:30 KST';
-                if (day === 5 && nowMin >= 10 * 60) nextLabel = '월요일 18:00 KST';
+                if (day >= 1 && day <= 5) nextLabel = '내일 00:30 KST';
+                else nextLabel = '월요일 03:30 KST'; // 토 00:30 이후 or 일요일
             }
             document.getElementById('nextUpdate').textContent = nextLabel;
         }
