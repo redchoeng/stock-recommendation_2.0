@@ -4,100 +4,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patch Notes - Titan v2.0</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <style>
+:root {
+    --bg: #f7f8fa; --surface: #ffffff; --text: #191f28; --text-sub: #8b95a1;
+    --text-muted: #b0b8c1; --border: #e5e8eb; --red: #f06595;
+    --radius: 16px; --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+}
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
-    font-family: 'Noto Sans KR', -apple-system, sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
-    background-attachment: fixed;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
+    font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    min-height: 100vh; background: var(--bg); color: var(--text);
+    padding: 20px; -webkit-font-smoothing: antialiased;
 }
-.cloud { position:fixed; background:white; border-radius:50px; opacity:0.9; animation:float 20s infinite ease-in-out; z-index:0; }
-.cloud::before,.cloud::after { content:''; position:absolute; background:white; border-radius:50%; }
-.cloud-1 { width:100px; height:40px; top:8%; left:-100px; }
-.cloud-1::before { width:50px; height:50px; top:-25px; left:15px; }
-.cloud-1::after { width:35px; height:35px; top:-15px; left:55px; }
-.cloud-2 { width:120px; height:45px; top:15%; left:-120px; animation-delay:-7s; }
-.cloud-2::before { width:55px; height:55px; top:-30px; left:20px; }
-.cloud-2::after { width:40px; height:40px; top:-18px; left:65px; }
-@keyframes float { 0%{transform:translateX(0)} 100%{transform:translateX(calc(100vw + 200px))} }
-.sparkle { position:fixed; width:10px; height:10px; background:#FFD700; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation:sparkle 2s infinite; z-index:1; }
-@keyframes sparkle { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:1;transform:scale(1)} }
-.container { position:relative; z-index:10; max-width:800px; margin:0 auto; padding-top:20px; }
-.back-link { display:inline-block; color:#5D4E37; text-decoration:none; font-weight:bold; margin-bottom:15px; padding:8px 20px; background:rgba(255,255,255,0.8); border-radius:20px; border:2px solid #C4A35A; }
-.back-link:hover { background:white; }
-.header-bubble { background:white; border-radius:30px; padding:25px 30px; margin-bottom:25px; box-shadow:0 8px 0 #E74C3C, 0 12px 20px rgba(0,0,0,0.15); border:4px solid #5D4E37; text-align:center; }
-.emoji-icon { font-size:3em; margin-bottom:8px; animation:bounce 2s infinite; }
-@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-h1 { color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #FADBD8; }
-.subtitle { color:#7B6B4F; font-size:0.95em; }
+.container { max-width:720px; margin:0 auto; }
+.market-switcher {
+    display:flex; justify-content:center; gap:4px; margin-bottom:20px;
+    background:var(--surface); border-radius:12px; padding:4px;
+    box-shadow:var(--shadow); width:fit-content; margin-left:auto; margin-right:auto;
+}
+.market-btn {
+    padding:10px 24px; font-size:0.9em; font-weight:600; font-family:inherit;
+    border:none; border-radius:10px; cursor:pointer; transition:all 0.2s;
+    text-decoration:none; color:var(--text-sub); display:flex; align-items:center; gap:6px; background:transparent;
+}
+.market-btn.active { background:var(--red); color:white; }
+.market-btn:not(.active):hover { background:#fff0f6; color:var(--red); }
+.back-link {
+    display:block; text-align:center; margin-bottom:16px;
+    color:var(--text-sub); text-decoration:none; font-weight:600; font-size:0.9em;
+}
+.back-link:hover { color:var(--red); }
+.header-card {
+    background:var(--surface); border-radius:var(--radius); padding:28px;
+    margin-bottom:20px; box-shadow:var(--shadow); text-align:center;
+    position:relative; overflow:hidden;
+}
+.header-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #f06595, #e64980); }
+h1 { color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; letter-spacing:-0.02em; }
+.subtitle { color:var(--text-sub); font-size:0.9em; }
 
 .version-card {
-    background: white;
-    border-radius: 16px;
-    padding: 20px 25px;
-    margin-bottom: 18px;
-    border: 3px solid #5D4E37;
-    border-left: 8px solid #E74C3C;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.08);
-    transition: transform 0.2s;
+    background: var(--surface); border-radius: var(--radius);
+    padding: 20px 24px; margin-bottom: 12px;
+    border-left: 4px solid var(--red);
+    box-shadow: var(--shadow); transition: all 0.2s;
 }
-.version-card:hover { transform: translateX(5px); }
-.version-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+.version-card:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.version-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
 .version-tag {
-    display:inline-block; padding:5px 16px; border-radius:20px;
-    color:white; font-weight:900; font-size:0.95em;
-    border:2px solid #5D4E37; box-shadow:0 2px 0 rgba(0,0,0,0.15);
+    display:inline-block; padding:4px 14px; border-radius:8px;
+    color:white; font-weight:700; font-size:0.85em;
 }
-.version-subtitle { color:#5D4E37; font-weight:700; font-size:1.05em; }
+.version-subtitle { color:var(--text); font-weight:700; font-size:0.95em; }
 .change-list { list-style:none; padding:0; }
 .change-list li {
-    color:#555; font-size:0.9em; line-height:1.7;
-    padding:3px 0 3px 20px; position:relative;
+    color:var(--text-sub); font-size:0.88em; line-height:1.7;
+    padding:2px 0 2px 18px; position:relative;
 }
 .change-list li::before {
-    content:''; position:absolute; left:0; top:11px;
-    width:8px; height:8px; border-radius:50%; background:#C4A35A;
+    content:''; position:absolute; left:0; top:10px;
+    width:6px; height:6px; border-radius:50%; background:var(--text-muted);
 }
-.change-list li strong { color:#5D4E37; }
+.change-list li strong { color:var(--text); }
 
-.footer { background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; margin-top:10px; }
+.footer {
+    background:var(--surface); border-radius:var(--radius); padding:20px;
+    color:var(--text-muted); font-size:0.85em; text-align:center;
+    box-shadow:var(--shadow); margin-top:16px; line-height:1.7;
+}
 @media (max-width:768px) {
-    body { padding:10px; }
-    .header-bubble { padding:18px 15px; border-radius:20px; }
-    .emoji-icon { font-size:2.2em; }
-    h1 { font-size:1.3em; }
-    .subtitle { font-size:0.85em; }
-    .version-card { padding:15px 12px; border-radius:12px; border-left-width:5px; }
-    .version-tag { font-size:0.82em; padding:4px 12px; }
-    .version-subtitle { font-size:0.92em; }
-    .change-list li { font-size:0.82em; padding-left:16px; }
-    .footer { padding:12px 10px; font-size:0.8em; }
+    body { padding:12px; }
+    .header-card { padding:20px 16px; }
+    h1 { font-size:1.25em; }
+    .version-card { padding:16px; border-left-width:3px; }
+    .version-tag { font-size:0.8em; padding:3px 10px; }
+    .change-list li { font-size:0.82em; padding-left:14px; }
 }
 </style>
 </head>
 <body>
-<div class="cloud cloud-1"></div>
-<div class="cloud cloud-2"></div>
-<div class="sparkle" style="top:20%;left:15%"></div>
-<div class="sparkle" style="top:50%;right:20%;animation-delay:0.5s"></div>
-<div class="sparkle" style="top:75%;left:10%;animation-delay:1s"></div>
 
 <div class="container">
-    <div style="display:flex;justify-content:center;gap:0;margin-bottom:15px;">
-        <span style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;display:flex;align-items:center;gap:8px;border-radius:20px 0 0 20px;border-right:none;background:linear-gradient(135deg,#5D4E37,#7B6B4F);color:white;box-shadow:0 4px 0 #3D2E17;">🇺🇸 미국장</span>
-        <a href="https://redchoeng.github.io/stock-recommendation_kr/" style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;text-decoration:none;color:#5D4E37;display:flex;align-items:center;gap:8px;border-radius:0 20px 20px 0;background:white;">🇰🇷 한국장</a>
+    <div class="market-switcher">
+        <span class="market-btn active">US</span>
+        <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
     </div>
     <a href="index.html" class="back-link">&larr; 메인으로</a>
 
-    <div class="header-bubble">
-        <div class="emoji-icon">📋</div>
+    <div class="header-card">
         <h1>Patch Notes</h1>
-        <p class="subtitle">PROJECT TITAN 버전 히스토리</p>
+        <p class="subtitle">Project Titan 버전 히스토리</p>
     </div>
 
     
@@ -217,20 +215,8 @@ h1 { color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #F
         </div>
 
     <div class="footer">
-        <p>Powered by Titan v2.0 | CHANGELOG.md 기반 자동 생성</p>
+        <p>Titan v2.0 &middot; CHANGELOG.md 기반 자동 생성</p>
     </div>
 </div>
-
-<script>
-setInterval(() => {
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.style.top = Math.random()*100+'%';
-    s.style.left = Math.random()*100+'%';
-    s.style.animationDelay = Math.random()*2+'s';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 4000);
-}, 1200);
-</script>
 </body>
 </html>
