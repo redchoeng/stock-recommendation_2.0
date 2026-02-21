@@ -280,12 +280,12 @@ class TitanAnalyzer:
         'Technology': (20, 35),
         'Healthcare': (18, 30),
         'Consumer Cyclical': (15, 25),
-        'Consumer Defensive': (18, 28),
+        'Consumer Defensive': (22, 42),  # WMT/COST 등 우량 리테일 프리미엄 반영
         'Financial Services': (12, 20),
         'Utilities': (18, 28),
         'Real Estate': (18, 30),
         'Energy': (12, 20),
-        'Industrials': (15, 25),
+        'Industrials': (20, 36),          # GE/CAT/HON 등 리레이팅 반영
         'Communication Services': (15, 25),
         'Basic Materials': (12, 20),
     }
@@ -298,14 +298,25 @@ class TitanAnalyzer:
         'Utilities': (150, 250),
         'Communication Services': (100, 200),
         'Energy': (80, 150),
-        'Healthcare': (80, 150),
-        'Consumer Defensive': (80, 150),
+        'Healthcare': (100, 220),         # ABBV 등 M&A 부채 반영
+        'Consumer Defensive': (150, 320), # KO/PEP 자사주+배당 레버리지 반영
         'Consumer Cyclical': (80, 150),
-        'Industrials': (80, 150),
+        'Industrials': (120, 260),        # CAT/GE 등 설비투자 부채 반영
         'Basic Materials': (80, 150),
         'Technology': (50, 100),
     }
     DEFAULT_VALUE_DE_THRESHOLD = (80, 150)
+
+    # 배당 귀족 (25년 이상 연속 배당 증가) — 가치주 보너스 +4점
+    DIVIDEND_ARISTOCRATS = {
+        'KO', 'PEP', 'PG', 'CL', 'KMB', 'WMT', 'MCD', 'GPC',
+        'JNJ', 'ABT', 'ABBV', 'MDT', 'BDX', 'SYY',
+        'CAT', 'EMR', 'ITW', 'MMM', 'DOV', 'SWK', 'PH', 'GWW',
+        'XOM', 'CVX',
+        'AFL', 'AXP', 'MCO',
+        'NUE', 'APD', 'SHW',
+        'TGT', 'LOW', 'SPGI',
+    }
 
     # 기술적 점수 재설계 (전문가급, 총 50점)
     # 1. 추세 분석 (20점) - MA5/20/60/120 + 일목균형표 + MACD + ADX
@@ -579,6 +590,13 @@ class TitanAnalyzer:
                 breakdown['sector_name'] = sector_name
                 if sector_comment:
                     comments.append(sector_comment)
+
+                # 배당 귀족 보너스 (+4점) — 25년+ 연속 배당 증가 우량주
+                ticker_sym = info.get('symbol', '')
+                if ticker_sym in self.DIVIDEND_ARISTOCRATS:
+                    score += 4
+                    breakdown['aristocrat_bonus'] = 4
+                    comments.append("배당귀족")
 
                 # 트럼프 정책 보너스/페널티
                 policy_bonus, policy_comment = self._get_trump_policy_bonus(
