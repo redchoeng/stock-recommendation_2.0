@@ -541,9 +541,43 @@ class TitanAnalyzer:
         try:
             sector = info.get('sector', '')
             industry = info.get('industry', '')
-
+            ticker_sym = info.get('symbol', '')
+            
+            # 주요 지표 미리 추출 (우량주 판별용)
+            market_cap = info.get('marketCap', 0)
+            roe = info.get('returnOnEquity')
+            opm = info.get('operatingMargins')
+            is_aristocrat = ticker_sym in self.DIVIDEND_ARISTOCRATS
+            
             # ===== 가치주 모드: 배당/저평가/안정성 중심 (50점) =====
             if self.analysis_mode == 'value':
+                
+                # [우량주 프리미엄 산정] KO, PEP, COST 등 고평가 우량주 구제 로직
+                # 시장 지배력(Moat)이 있는 기업은 밸류에이션/부채 기준을 완화해줌
+                premium_multiplier = 1.0
+                moat_factors = []
+                
+                # 1. 시가총액 프리미엄 ($100B+)
+                if market_cap >= 100_000_000_000:
+                    premium_multiplier += 0.2
+                    moat_factors.append("MegaCap")
+                
+                # 2. 수익성 프리미엄 (ROE 20%+)
+                if roe and roe >= 0.20:
+                    premium_multiplier += 0.2
+                    moat_factors.append("HighROE")
+                    
+                # 3. 배당귀족 프리미엄
+                if is_aristocrat:
+                    premium_multiplier += 0.1
+                
+                # 최대 1.6배까지 허용 (PER 20 -> 32까지 용인)
+                premium_multiplier = min(premium_multiplier, 1.6)
+                
+                if premium_multiplier > 1.0:
+                    # comments.append(f"프리미엄{premium_multiplier:.1f}x") # 디버깅용
+                    pass
+
                 # 1. 배당수익률 (12점)
                 # dividendYield 포맷 불일치 문제(0.019 vs 1.9 vs 0.93) 회피:
                 # dividendRate(연간배당$/주) / 현재가로 직접 계산
@@ -564,6 +598,11 @@ class TitanAnalyzer:
                     dy_exc, dy_good = self.VALUE_DIVIDEND_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_DIVIDEND_THRESHOLD)
                     dy_pts = self._calc_gradient_score(div_pct, dy_exc, dy_good, 12)
+                    
+                    # [보완] 배당귀족이거나 우량주(Moat)인데 배당률이 낮은 경우(COST, WMT 등) 기본 점수 보장
+                    if dy_pts < 5 and (is_aristocrat or 'MegaCap' in moat_factors):
+                        dy_pts = 5 # 최소 5점 보장
+                        
                     score += dy_pts
                     breakdown['dividend_yield_score'] = dy_pts
                     if dy_pts >= 6:
@@ -578,6 +617,11 @@ class TitanAnalyzer:
                     breakdown['per_value'] = per
                     per_good, per_fair = self.VALUE_PER_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_PER_THRESHOLD)
+                    
+                    # [보완] 프리미엄 적용 (기준 완화)
+                    per_good *= premium_multiplier
+                    per_fair *= premium_multiplier
+                    
                     per_pts = self._calc_inverse_gradient_score(per, per_good, per_fair, 12)
 
                 ev_pts = 0
@@ -586,6 +630,11 @@ class TitanAnalyzer:
                     breakdown['ev_ebitda_value'] = ev_ebitda
                     ev_good, ev_fair = self.VALUE_EVEBITDA_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_EVEBITDA_THRESHOLD)
+                    
+                    # [보완] 프리미엄 적용 (기준 완화)
+                    ev_good *= premium_multiplier
+                    ev_fair *= premium_multiplier
+                    
                     ev_pts = self._calc_inverse_gradient_score(ev_ebitda, ev_good, ev_fair, 12)
 
                 val_pts = max(per_pts, ev_pts)
@@ -617,6 +666,11 @@ class TitanAnalyzer:
                     breakdown['debt_equity_value'] = de
                     de_good, de_fair = self.VALUE_DE_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_DE_THRESHOLD)
+                    
+                    # [보완] 프리미엄 적용 (초대형 우량주는 부채비율 기준 완화)
+                    de_good = int(de_good * premium_multiplier)
+                    de_fair = int(de_fair * premium_multiplier)
+
                     de_pts = self._calc_inverse_gradient_score(de, de_good, de_fair, 8)
                     score += de_pts
                     breakdown['debt_equity_score'] = de_pts
