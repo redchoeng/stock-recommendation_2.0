@@ -3984,7 +3984,7 @@ if __name__ == "__main__":
                 tickers=tickers,
                 report_type="Growth Stocks",
                 html_filename="growth_report.html",
-                min_score=75,
+                min_score=70,
                 skip_stage1=True,
             )
         elif mode == "value":
