@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Growth Stocks - Titan Analysis - 2026-02-21</title>
+    <script>(function(){const t=localStorage.getItem('titan_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
     <style>
@@ -17,11 +18,34 @@
             --accent: #7B68EE;
             --accent-light: #f3f0ff;
             --green: #20c997;
+            --green-bg: #e6fcf5;
             --red: #f06595;
+            --red-bg: #fff0f6;
+            --orange: #fd7e14;
             --radius: 16px;
             --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
             --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
         }
+        [data-theme="dark"] {
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --text: #e4e8f0;
+            --text-sub: #7a8494;
+            --text-muted: #4a5060;
+            --border: #252836;
+            --accent-light: #1e1730;
+            --green-bg: #0b2520;
+            --red-bg: #2b0e1c;
+            --shadow: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.45);
+        }
+        .theme-toggle {
+            background: var(--surface); border: none; border-radius: 10px;
+            box-shadow: var(--shadow); cursor: pointer; font-size: 1.05em;
+            width: 34px; height: 34px; display: flex; align-items: center;
+            justify-content: center; transition: box-shadow 0.2s; flex-shrink: 0;
+        }
+        .theme-toggle:hover { box-shadow: var(--shadow-hover); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -93,6 +117,14 @@
             display: flex; align-items: center; justify-content: center;
             font-weight: 700; font-size: 0.9em;
         }
+        .rank-change {
+            position: absolute; top: 52px; left: 12px;
+            font-size: 0.72em; font-weight: 700; border-radius: 6px;
+            padding: 1px 6px; white-space: nowrap;
+        }
+        .rank-change.up { color: #2f9e44; background: #d3f9d8; }
+        .rank-change.down { color: #c92a2a; background: #ffe3e3; }
+        .rank-change.new { color: #1971c2; background: #dbe4ff; }
         .stock-card h2 { color: var(--text); margin-bottom: 8px; padding-left: 48px; font-size: 1.2em; font-weight: 700; }
         .stock-card .ticker { color: var(--accent); font-weight: 700; font-size: 1.05em; }
         .stock-card .info { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
@@ -213,15 +245,18 @@
 </head>
 <body>
     <div class="container">
-        <div class="market-switcher">
-            <span class="market-btn active">US</span>
-            <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:20px;">
+            <div class="market-switcher" style="margin-bottom:0;">
+                <span class="market-btn active">US</span>
+                <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="다크모드 전환">🌙</button>
         </div>
         <a href="index.html" class="back-link">&larr; 메인으로</a>
         <div class="header">
             <h1>Growth Stocks Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
             <div class="subtitle">Fundamental + Technical + Volatility Breakout Analysis</div>
-            <div class="date">2026-02-21 17:59 KST 업데이트</div>
+            <div class="date">2026-02-21 18:16 KST 업데이트</div>
             <button class="scoring-btn" onclick="document.getElementById('scoringOverlay').classList.add('active')">📐 점수 체계 보기</button>
         </div>
         <!-- 점수 체계 모달 -->
@@ -257,6 +292,7 @@
 
         <div class="stock-card">
             <div class="rank">#1</div>
+            
             <span class="score-badge strong">83점</span>
             <h2><span class="ticker">NVDA</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">NVIDIA Corporation</span></h2>
             <span class="verdict strong-buy-">Strong Buy ★</span>
@@ -373,7 +409,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$32,500M</span>
+                            <span class="criterion-value">$34,164M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -392,6 +428,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#2</div>
+            
             <span class="score-badge high">77점</span>
             <h2><span class="ticker">VRTX</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Vertex Pharmaceuticals Incorpor</span></h2>
             <span class="verdict buy">Buy</span>
@@ -508,7 +545,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$700M</span>
+                            <span class="criterion-value">$698M</span>
                             <span class="criterion-score" style="color: #27AE60;">+3점</span>
                         </div>
                     </div>
@@ -527,6 +564,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#3</div>
+            
             <span class="score-badge high">76점</span>
             <h2><span class="ticker">AMAT</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Applied Materials, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -547,7 +585,7 @@
                 </div>
                 <div class="info-item">
                     <div class="info-label">목표가</div>
-                    <div class="info-value">$415.72</div>
+                    <div class="info-value">$415.77</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">손절가</div>
@@ -643,7 +681,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$2,835M</span>
+                            <span class="criterion-value">$2,879M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -662,6 +700,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#4</div>
+            
             <span class="score-badge high">75점</span>
             <h2><span class="ticker">LRCX</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Lam Research Corporation</span></h2>
             <span class="verdict buy">Buy</span>
@@ -778,7 +817,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$2,876M</span>
+                            <span class="criterion-value">$2,938M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -797,6 +836,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#5</div>
+            
             <span class="score-badge high">74점</span>
             <h2><span class="ticker">TXN</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Texas Instruments Incorporated</span></h2>
             <span class="verdict buy">Buy</span>
@@ -913,7 +953,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$1,704M</span>
+                            <span class="criterion-value">$1,735M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -932,6 +972,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#6</div>
+            
             <span class="score-badge high">74점</span>
             <h2><span class="ticker">MU</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Micron Technology, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -1048,7 +1089,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$13,804M</span>
+                            <span class="criterion-value">$14,078M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -1067,6 +1108,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#7</div>
+            
             <span class="score-badge high">74점</span>
             <h2><span class="ticker">SHOP</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Shopify Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -1183,7 +1225,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$1,308M</span>
+                            <span class="criterion-value">$1,287M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -1202,6 +1244,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#8</div>
+            
             <span class="score-badge high">74점</span>
             <h2><span class="ticker">WDC</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Western Digital Corporation</span></h2>
             <span class="verdict buy">Buy</span>
@@ -1318,7 +1361,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$2,623M</span>
+                            <span class="criterion-value">$2,628M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -1337,6 +1380,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#9</div>
+            
             <span class="score-badge high">73점</span>
             <h2><span class="ticker">TER</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Teradyne, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -1467,7 +1511,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$1,066M</span>
+                            <span class="criterion-value">$1,089M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -1486,6 +1530,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#10</div>
+            
             <span class="score-badge high">73점</span>
             <h2><span class="ticker">NU</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Nu Holdings Ltd.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -1625,6 +1670,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#11</div>
+            
             <span class="score-badge high">72점</span>
             <h2><span class="ticker">MPWR</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Monolithic Power Systems, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -1741,7 +1787,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$815M</span>
+                            <span class="criterion-value">$850M</span>
                             <span class="criterion-score" style="color: #27AE60;">+3점</span>
                         </div>
                     </div>
@@ -1760,6 +1806,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#12</div>
+            
             <span class="score-badge high">72점</span>
             <h2><span class="ticker">NFLX</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Netflix, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -1876,7 +1923,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$3,721M</span>
+                            <span class="criterion-value">$3,734M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -1895,6 +1942,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#13</div>
+            
             <span class="score-badge high">71점</span>
             <h2><span class="ticker">AVGO</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Broadcom Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -2011,7 +2059,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$10,451M</span>
+                            <span class="criterion-value">$10,556M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -2030,6 +2078,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#14</div>
+            
             <span class="score-badge high">71점</span>
             <h2><span class="ticker">DXCM</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">DexCom, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -2146,7 +2195,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$391M</span>
+                            <span class="criterion-value">$396M</span>
                             <span class="criterion-score" style="color: #27AE60;">+3점</span>
                         </div>
                     </div>
@@ -2165,6 +2214,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#15</div>
+            
             <span class="score-badge high">70점</span>
             <h2><span class="ticker">PLTR</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Palantir Technologies Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -2281,7 +2331,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$5,941M</span>
+                            <span class="criterion-value">$6,066M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -2300,6 +2350,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#16</div>
+            
             <span class="score-badge high">70점</span>
             <h2><span class="ticker">SMCI</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Super Micro Computer, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -2416,7 +2467,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$923M</span>
+                            <span class="criterion-value">$931M</span>
                             <span class="criterion-score" style="color: #27AE60;">+3점</span>
                         </div>
                     </div>
@@ -2435,6 +2486,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#17</div>
+            
             <span class="score-badge high">70점</span>
             <h2><span class="ticker">GOOGL</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Alphabet Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -2551,7 +2603,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$11,418M</span>
+                            <span class="criterion-value">$12,067M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -2570,6 +2622,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#18</div>
+            
             <span class="score-badge high">70점</span>
             <h2><span class="ticker">GOOG</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Alphabet Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -2686,7 +2739,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$7,276M</span>
+                            <span class="criterion-value">$7,670M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -2719,6 +2772,19 @@ function toggleDetail(id) {
         el.classList.add('open');
         btn.textContent = '상세 분석 ▲';
     }
+}
+(function(){
+    const saved = localStorage.getItem('titan_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+})();
+function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('titan_theme', next);
+    document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
 }
 </script>
 </body>
