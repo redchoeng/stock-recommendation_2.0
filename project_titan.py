@@ -178,6 +178,26 @@ class TitanAnalyzer:
     POLICY_BONUS = 3          # 정책 수혜 섹터 가산점
     POLICY_PENALTY = -3       # 정책 역풍 섹터 감점
 
+    # 섹터 순환매 분석용 ETF 매핑
+    SECTOR_ETF_MAP = {
+        'Technology': 'XLK',
+        'Financial Services': 'XLF',
+        'Energy': 'XLE',
+        'Healthcare': 'XLV',
+        'Industrials': 'XLI',
+        'Utilities': 'XLU',
+        'Consumer Defensive': 'XLP',
+        'Consumer Cyclical': 'XLY',
+        'Communication Services': 'XLC',
+        'Basic Materials': 'XLB',
+        'Real Estate': 'XLRE',
+    }
+    ROTATION_BONUS_INFLOW = 3       # 수급유입 (핫섹터 + 가속)
+    ROTATION_BONUS_TURNING = 5      # 순환매 기대 (소외 + 반등)
+    ROTATION_BONUS_WATCHING = 1     # 관심 (중위 + 가속)
+    ROTATION_PENALTY_OVERHEAT = -2  # 과열주의 (핫 + 감속)
+    ROTATION_PENALTY_COLD = -3      # 소외 지속
+
     # 섹터별 ROE 기준 (자본구조 차이 반영)
     # {sector: (excellent_threshold, good_threshold)}
     SECTOR_ROE_THRESHOLDS = {
@@ -1159,6 +1179,86 @@ class TitanAnalyzer:
         else:
             return "Avoid"
 
+    def _analyze_sector_rotation(self):
+        """섹터 순환매 분석 — ETF 모멘텀 기반
+
+        핫 섹터에서 소외 섹터로 자금이 이동하는 순환매 패턴 감지.
+        각 섹터의 1주 수익률과 모멘텀 가속/감속을 분석하여
+        수급유입/과열주의/순환매 기대/소외 지속 등의 국면을 판별.
+        """
+        try:
+            etf_tickers = list(self.SECTOR_ETF_MAP.values())
+            data = yf.download(etf_tickers, period='1mo', progress=False)
+
+            if data.empty:
+                return {}
+
+            results = {}
+            for sector, etf in self.SECTOR_ETF_MAP.items():
+                try:
+                    close = data['Close'][etf].dropna()
+                    if len(close) < 10:
+                        continue
+
+                    # 1주 수익률
+                    week_return = (close.iloc[-1] / close.iloc[-5] - 1) * 100
+                    # 모멘텀 가속/감속: 최근 5일 vs 이전 5일
+                    recent_5d = (close.iloc[-1] / close.iloc[-5] - 1) * 100
+                    prev_5d = (close.iloc[-6] / close.iloc[-10] - 1) * 100
+                    acceleration = recent_5d - prev_5d
+
+                    results[sector] = {
+                        'etf': etf,
+                        'week_return': round(week_return, 2),
+                        'acceleration': round(acceleration, 2),
+                    }
+                except Exception:
+                    continue
+
+            if not results:
+                return {}
+
+            # 1주 수익률 기준으로 순위 매기기
+            sorted_sectors = sorted(results.items(), key=lambda x: x[1]['week_return'], reverse=True)
+            total = len(sorted_sectors)
+            top_cutoff = max(total // 3, 1)
+            bottom_cutoff = total - top_cutoff
+
+            for rank, (sector, info) in enumerate(sorted_sectors):
+                info['rank'] = rank + 1
+                acc = info['acceleration']
+
+                if rank < top_cutoff:
+                    # 핫 섹터 (상위 1/3)
+                    if acc > 0:
+                        info['rotation_bonus'] = self.ROTATION_BONUS_INFLOW
+                        info['phase'] = '수급유입'
+                    else:
+                        info['rotation_bonus'] = self.ROTATION_PENALTY_OVERHEAT
+                        info['phase'] = '과열주의'
+                elif rank >= bottom_cutoff:
+                    # 소외 섹터 (하위 1/3)
+                    if acc > 0:
+                        info['rotation_bonus'] = self.ROTATION_BONUS_TURNING
+                        info['phase'] = '순환매 기대'
+                    else:
+                        info['rotation_bonus'] = self.ROTATION_PENALTY_COLD
+                        info['phase'] = '소외 지속'
+                else:
+                    # 중위 섹터
+                    if acc > 0.5:
+                        info['rotation_bonus'] = self.ROTATION_BONUS_WATCHING
+                        info['phase'] = '관심'
+                    else:
+                        info['rotation_bonus'] = 0
+                        info['phase'] = '중립'
+
+            return dict(sorted_sectors)
+
+        except Exception as e:
+            print(f"  ⚠️ 섹터 순환매 분석 실패: {e}")
+            return {}
+
     def _detect_market_regime(self):
         """시장 상태 감지 (Bull/Bear/Sideways)"""
         try:
@@ -1928,6 +2028,23 @@ class TitanAnalyzer:
         market_regime, regime_details, regime_desc = self._detect_market_regime()
         print(f"   {regime_desc}\n")
 
+        # 🔄 섹터 순환매 분석
+        print("🔄 섹터 순환매 분석 중...")
+        self.sector_rotation = self._analyze_sector_rotation()
+        if self.sector_rotation:
+            phases = {}
+            for sector, info in self.sector_rotation.items():
+                phase = info.get('phase', '중립')
+                if phase not in phases:
+                    phases[phase] = []
+                phases[phase].append(f"{sector}({info['week_return']:+.1f}%)")
+
+            icons = {'수급유입': '🔥', '과열주의': '⚠️', '순환매 기대': '⚡', '소외 지속': '❄️', '관심': '👀', '중립': '➖'}
+            for phase in ['수급유입', '순환매 기대', '관심', '중립', '과열주의', '소외 지속']:
+                if phase in phases:
+                    print(f"   {icons.get(phase, '')} {phase}: {', '.join(phases[phase])}")
+            print()
+
         results = []
         total = len(tickers)
 
@@ -1970,8 +2087,16 @@ class TitanAnalyzer:
                     else:
                         fund_w, tech_w = 0.8, 1.2    # 성장주: 펀더 40 : 기술 60
 
-                    # 조정된 점수로 총점 재계산 (가중치 + 거래대금 보너스 포함)
-                    total_score_adjusted = round(fund_adjusted * fund_w + tech_adjusted * tech_w) + result['contrarian_adjustment'] + liq_bonus
+                    # 🔄 섹터 순환매 보너스
+                    sector = result.get('sector', '')
+                    rotation_info = self.sector_rotation.get(sector, {})
+                    rotation_bonus = rotation_info.get('rotation_bonus', 0)
+                    rotation_phase = rotation_info.get('phase', '중립')
+                    result['rotation_bonus'] = rotation_bonus
+                    result['rotation_phase'] = rotation_phase
+
+                    # 조정된 점수로 총점 재계산 (가중치 + 거래대금 + 순환매 보너스 포함)
+                    total_score_adjusted = round(fund_adjusted * fund_w + tech_adjusted * tech_w) + result['contrarian_adjustment'] + liq_bonus + rotation_bonus
 
                     # 결과에 시장 상태 정보 추가
                     result['market_regime'] = market_regime
@@ -2764,6 +2889,8 @@ function toggleDetail(id) {{
                 'contrarian_adjustment': r.get('contrarian_adjustment', 0),
                 'liquidity_bonus': r.get('liquidity_bonus', 0),
                 'liquidity_tier': r.get('liquidity_tier', ''),
+                'rotation_bonus': r.get('rotation_bonus', 0),
+                'rotation_phase': r.get('rotation_phase', ''),
                 'sector_name': fund_bd.get('sector_name', ''),
                 'roe_value': fund_bd.get('roe_value'),
                 'opm_value': fund_bd.get('opm_value'),
