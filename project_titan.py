@@ -2188,6 +2188,20 @@ class TitanAnalyzer:
         filtered = [r for r in results if r['score'] >= min_score]
         filtered.sort(key=lambda x: x['score'], reverse=True)
 
+        # 이전 순위 로드 (순위 변화 표시용)
+        import json as _jcache
+        _cache_type = 'growth' if 'Growth' in report_type else 'value'
+        _prev_cache_file = f"titan_scores_{_cache_type}.json"
+        prev_ranks = {}
+        try:
+            with open(_prev_cache_file) as _f:
+                _prev_data = _jcache.load(_f)
+            _prev_sorted = sorted(_prev_data.items(), key=lambda x: x[1].get('score', 0), reverse=True)
+            for _ri, (_tk, _) in enumerate(_prev_sorted, 1):
+                prev_ranks[_tk] = _ri
+        except Exception:
+            pass
+
         import pytz as _pytz
         _kst = _pytz.timezone('Asia/Seoul')
         now = datetime.now(_kst)
@@ -2310,6 +2324,14 @@ class TitanAnalyzer:
             display: flex; align-items: center; justify-content: center;
             font-weight: 700; font-size: 0.9em;
         }}
+        .rank-change {{
+            position: absolute; top: 52px; left: 12px;
+            font-size: 0.72em; font-weight: 700; border-radius: 6px;
+            padding: 1px 6px; white-space: nowrap;
+        }}
+        .rank-change.up {{ color: #2f9e44; background: #d3f9d8; }}
+        .rank-change.down {{ color: #c92a2a; background: #ffe3e3; }}
+        .rank-change.new {{ color: #1971c2; background: #dbe4ff; }}
         .stock-card h2 {{ color: var(--text); margin-bottom: 8px; padding-left: 48px; font-size: 1.2em; font-weight: 700; }}
         .stock-card .ticker {{ color: var(--accent); font-weight: 700; font-size: 1.05em; }}
         .stock-card .info {{ margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }}
@@ -2642,9 +2664,22 @@ class TitanAnalyzer:
 
                 analyst_view_html += '</div>'
 
+            _prev_rank = prev_ranks.get(stock['ticker'])
+            if _prev_rank is None:
+                _rank_change_html = '<span class="rank-change new">NEW</span>'
+            else:
+                _diff = _prev_rank - i
+                if _diff > 0:
+                    _rank_change_html = f'<span class="rank-change up">▲{_diff}</span>'
+                elif _diff < 0:
+                    _rank_change_html = f'<span class="rank-change down">▼{abs(_diff)}</span>'
+                else:
+                    _rank_change_html = ''
+
             html += f'''
         <div class="stock-card">
             <div class="rank">#{i}</div>
+            {_rank_change_html}
             <span class="score-badge {score_class}">{stock['score']}점</span>
             <h2><span class="ticker">{stock['ticker']}</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">{stock.get('company_name', '')}</span></h2>
             <span class="verdict {verdict_class}">{stock['verdict']}</span>
