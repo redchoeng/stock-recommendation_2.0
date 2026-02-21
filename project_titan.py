@@ -1987,7 +1987,9 @@ class TitanAnalyzer:
         filtered = [r for r in results if r['score'] >= min_score]
         filtered.sort(key=lambda x: x['score'], reverse=True)
 
-        now = datetime.now()
+        import pytz as _pytz
+        _kst = _pytz.timezone('Asia/Seoul')
+        now = datetime.now(_kst)
 
         # 리포트 전체에 적용할 시장 상태 (생성 시점 기준 1회 판별)
         report_market_status = self._get_current_market_status()
@@ -2401,7 +2403,7 @@ class TitanAnalyzer:
             <div style="font-size: 3em;">{emoji}</div>
             <h1>{report_type} Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
             <div class="subtitle">Advanced Fundamental + Technical Analysis</div>
-            <div class="date">{now.strftime("%Y-%m-%d %H:%M")} UTC 업데이트</div>
+            <div class="date">{now.strftime("%Y-%m-%d %H:%M")} KST 업데이트</div>
             <button class="scoring-btn" onclick="document.getElementById('scoringOverlay').classList.add('active')">📐 점수 체계 보기</button>
         </div>
         <!-- 점수 체계 모달 -->
@@ -2813,15 +2815,15 @@ function toggleDetail(id) {{
         # Titan 점수 캐시 저장 (ML 포트폴리오에서 동일 점수 사용)
         self._save_score_cache(results, report_type)
 
-        # 마지막 업데이트 시간 저장 (index.html에서 표시용)
+        # 마지막 업데이트 시간 저장 (index.html에서 표시용, KST)
         import json as _json
         import pytz as _pytz
-        et_tz = _pytz.timezone('America/New_York')
-        now_et = datetime.now(et_tz)
+        kst_tz = _pytz.timezone('Asia/Seoul')
+        now_kst = datetime.now(kst_tz)
         with open('last_updated.json', 'w', encoding='utf-8') as _f:
             _json.dump({
-                'timestamp': now_et.strftime('%Y-%m-%d %H:%M'),
-                'timezone': 'ET',
+                'timestamp': now_kst.strftime('%Y-%m-%d %H:%M'),
+                'timezone': 'KST',
                 'mode': report_type
             }, _f)
 
@@ -2935,8 +2937,9 @@ function toggleDetail(id) {{
         all_candidates = top_growth + top_value
 
         portfolio_json = _json.dumps(all_candidates, ensure_ascii=False)
-        now = datetime.now()
-        timestamp = now.strftime("%Y-%m-%d %H:%M UTC")
+        import pytz as _ptz
+        now = datetime.now(_ptz.timezone('Asia/Seoul'))
+        timestamp = now.strftime("%Y-%m-%d %H:%M KST")
 
         html = f'''<!DOCTYPE html>
 <html lang="ko">
