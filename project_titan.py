@@ -2647,6 +2647,9 @@ function toggleDetail(id) {{
         # Titan 점수 캐시 저장 (ML 포트폴리오에서 동일 점수 사용)
         self._save_score_cache(results, report_type)
 
+        # 텔레그램 보유종목 알림
+        send_telegram_alert(results, 'my_holdings.json', market='us')
+
         # 마지막 업데이트 시간 저장 (index.html에서 표시용, KST)
         import json as _json
         import pytz as _pytz
@@ -3486,6 +3489,95 @@ h1 {{ color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; le
         print(f"\n⏱️  총 소요 시간: {elapsed/60:.1f}분")
 
         return results
+
+
+# ============================================================================
+# 텔레그램 알림
+# ============================================================================
+def send_telegram_alert(results, holdings_path='my_holdings.json', market='us'):
+    """보유종목 가격 체크 후 텔레그램 알림 전송"""
+    import json as _json
+    import requests
+
+    token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+    chat_id = os.environ.get('TELEGRAM_CHAT_ID', '')
+    if not token or not chat_id:
+        print("⚠️  텔레그램 설정 없음 (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID)")
+        return
+
+    try:
+        with open(holdings_path, 'r', encoding='utf-8') as f:
+            holdings = _json.load(f).get('holdings', [])
+    except (FileNotFoundError, _json.JSONDecodeError):
+        print(f"⚠️  {holdings_path} 파일 없음 또는 파싱 오류")
+        return
+
+    holdings = [h for h in holdings if h.get('qty', 0) > 0]
+    if not holdings:
+        return
+
+    lookup = {r['ticker']: r for r in results}
+
+    alerts = []
+    summary_lines = []
+    kst = pytz.timezone('Asia/Seoul')
+    now_str = datetime.now(kst).strftime('%m/%d %H:%M')
+
+    is_kr = (market == 'kr')
+
+    def fmt(v):
+        if not v:
+            return '-'
+        return f"₩{int(v):,}" if is_kr else f"${v:,.2f}"
+
+    for h in holdings:
+        r = lookup.get(h['ticker'])
+        if not r:
+            continue
+
+        price = r.get('price', 0)
+        target = r.get('target') or r.get('target_price', 0)
+        stop = r.get('stop_loss', 0)
+        avg = h.get('avg_price', 0)
+        qty = h.get('qty', 0)
+        name = h.get('name', h['ticker'])
+        pnl_pct = ((price - avg) / avg * 100) if avg else 0
+
+        if price and target and price >= target:
+            alerts.append(
+                f"🟢 목표가 도달: {name} ({h['ticker']})\n"
+                f"현재 {fmt(price)} ≥ 목표 {fmt(target)}\n"
+                f"보유 {qty}주 · 평단 {fmt(avg)} · 수익 {pnl_pct:+.1f}%"
+            )
+
+        if price and stop and price <= stop:
+            alerts.append(
+                f"🔴 손절가 도달: {name} ({h['ticker']})\n"
+                f"현재 {fmt(price)} ≤ 손절 {fmt(stop)}\n"
+                f"보유 {qty}주 · 평단 {fmt(avg)} · 손실 {pnl_pct:+.1f}%"
+            )
+
+        summary_lines.append(
+            f"  {name}: {fmt(price)} ({pnl_pct:+.1f}%)\n"
+            f"    목표 {fmt(target)} | 손절 {fmt(stop)} | 점수 {r.get('score', '-')}점"
+        )
+
+    def send_tg(text):
+        url = f"https://api.telegram.org/bot{token}/sendMessage"
+        try:
+            requests.post(url, json={'chat_id': chat_id, 'text': text}, timeout=10)
+        except Exception as e:
+            print(f"⚠️  텔레그램 전송 실패: {e}")
+
+    for alert in alerts:
+        send_tg(alert)
+        print(f"📨 텔레그램 알림 전송: {alert[:50]}...")
+
+    if summary_lines:
+        tag = 'KR' if is_kr else 'US'
+        msg = f"📊 [{tag}] 보유종목 현황 ({now_str} KST)\n\n" + "\n\n".join(summary_lines)
+        send_tg(msg)
+        print(f"📨 텔레그램 요약 전송 ({len(summary_lines)}종목)")
 
 
 if __name__ == "__main__":
