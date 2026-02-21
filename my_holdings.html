@@ -297,6 +297,56 @@ body {
 }
 .btn-delete:hover { background: var(--red); color: white; }
 
+/* 가격 정보 그리드 */
+.holding-prices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: var(--bg);
+    border-radius: 8px;
+}
+.price-item {
+    text-align: center;
+}
+.price-label {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+.price-val {
+    font-size: 0.82em;
+    font-weight: 700;
+}
+.price-val.current { color: var(--text); }
+.price-val.buy { color: var(--green); }
+.price-val.target { color: var(--accent); }
+.price-val.stop { color: var(--red); }
+.price-val.pnl-up { color: var(--green); }
+.price-val.pnl-down { color: var(--red); }
+
+/* 카드형 레이아웃 */
+.holding-card {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+.holding-card:last-child { border-bottom: none; }
+.holding-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.holding-pnl {
+    font-size: 0.8em;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+@media (max-width: 400px) {
+    .holding-prices { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* 메시지 */
 .msg {
     padding: 10px 14px;
@@ -398,6 +448,7 @@ const { createClient } = supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let currentUser = null;
 let currentMarket = 'us';
+let analysisData = {}; // ticker → {price, buy_price, target_price, stop_loss, score}
 
 // ── 초기화 ──
 (async () => {
@@ -409,20 +460,39 @@ let currentMarket = 'us';
     currentUser = session.user;
     document.getElementById('app').classList.add('ready');
     await checkPushStatus();
+    await loadAnalysisData();
     await loadHoldings();
 })();
 
+// ── 분석 데이터 로드 ──
+async function loadAnalysisData() {
+    analysisData = {};
+    try {
+        const isKR = currentMarket === 'kr';
+        const baseUrl = isKR
+            ? 'https://redchoeng.github.io/stock-recommendation_kr/'
+            : '';
+        const [g, v] = await Promise.all([
+            fetch(baseUrl + 'titan_scores_growth.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+            fetch(baseUrl + 'titan_scores_value.json?' + Date.now()).then(r => r.json()).catch(() => ({}))
+        ]);
+        for (const [ticker, info] of Object.entries(g)) analysisData[ticker] = info;
+        for (const [ticker, info] of Object.entries(v)) {
+            if (!analysisData[ticker]) analysisData[ticker] = info;
+        }
+    } catch (e) {}
+}
+
 // ── 마켓 전환 ──
-function switchMarket(market) {
+async function switchMarket(market) {
     currentMarket = market;
     document.querySelectorAll('.market-tab').forEach((tab, i) => {
         tab.classList.toggle('active', (i === 0 && market === 'us') || (i === 1 && market === 'kr'));
     });
-    const ticker = document.getElementById('inputTicker');
-    ticker.placeholder = market === 'us' ? 'NVDA' : '005930';
-    const name = document.getElementById('inputName');
-    name.placeholder = market === 'us' ? 'NVIDIA' : '삼성전자';
-    loadHoldings();
+    document.getElementById('inputTicker').placeholder = market === 'us' ? 'NVDA' : '005930';
+    document.getElementById('inputName').placeholder = market === 'us' ? 'NVIDIA' : '삼성전자';
+    await loadAnalysisData();
+    await loadHoldings();
 }
 
 // ── 보유종목 CRUD ──
@@ -449,21 +519,37 @@ async function loadHoldings() {
         return isKR ? `₩${parseInt(v).toLocaleString()}` : `$${parseFloat(v).toFixed(2)}`;
     };
 
-    list.innerHTML = items.map(h => `
-        <div class="holding-item">
-            <div class="holding-info">
-                <div class="holding-name">${esc(h.name)}</div>
-                <div class="holding-ticker">${esc(h.ticker)}</div>
+    list.innerHTML = items.map(h => {
+        const a = analysisData[h.ticker] || {};
+        const price = a.price || 0;
+        const target = a.target_price || a.target || 0;
+        const stop = a.stop_loss || 0;
+        const buy = a.buy_price || 0;
+        const avg = parseFloat(h.avg_price) || 0;
+        const pnl = avg ? ((price - avg) / avg * 100) : 0;
+        const pnlClass = pnl >= 0 ? 'pnl-up' : 'pnl-down';
+        const pnlStr = price ? `${pnl >= 0 ? '+' : ''}${pnl.toFixed(1)}%` : '-';
+        const score = a.score || a.total_score || '-';
+
+        return `
+        <div class="holding-card">
+            <div class="holding-top">
+                <div class="holding-info">
+                    <div class="holding-name">${esc(h.name)} <span class="holding-pnl ${pnlClass}">${pnlStr}</span></div>
+                    <div class="holding-ticker">${esc(h.ticker)} · ${h.qty}주 · 평단 ${fmt(avg)} · 점수 ${score}</div>
+                </div>
+                <button class="btn-delete" onclick="deleteHolding('${h.id}')" title="삭제">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
             </div>
-            <div class="holding-detail">
-                <div class="holding-qty">${h.qty}주</div>
-                <div class="holding-avg">평단 ${fmt(h.avg_price)}</div>
+            <div class="holding-prices">
+                <div class="price-item"><div class="price-label">현재가</div><div class="price-val current">${price ? fmt(price) : '-'}</div></div>
+                <div class="price-item"><div class="price-label">매수가</div><div class="price-val buy">${buy ? fmt(buy) : '-'}</div></div>
+                <div class="price-item"><div class="price-label">목표가</div><div class="price-val target">${target ? fmt(target) : '-'}</div></div>
+                <div class="price-item"><div class="price-label">손절가</div><div class="price-val stop">${stop ? fmt(stop) : '-'}</div></div>
             </div>
-            <button class="btn-delete" onclick="deleteHolding('${h.id}')" title="삭제">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-        </div>
-    `).join('');
+        </div>`;
+    }).join('');
 }
 
 async function addHolding() {

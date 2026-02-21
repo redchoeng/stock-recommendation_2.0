@@ -526,8 +526,8 @@
 
         // 다음 업데이트 (KST)
         function showNextUpdate() {
-            // 월요일: 00:30 없음 (토→일 UTC 밤에 안 돌림)
-            const monSchedule = [[3,30],[5,30],[6,30],[8,0],[9,0],[10,0],[18,0],[21,0],[23,30]];
+            // 월요일: 03:30~09:00은 일요일 미국시간이라 의미 없음. 10:00(KST)부터 유효
+            const monSchedule = [[10,0],[18,0],[21,0],[23,30]];
             // 화~금: 전체 스케줄
             const fullSchedule = [[0,30],[3,30],[5,30],[6,30],[8,0],[9,0],[10,0],[18,0],[21,0],[23,30]];
             // 토요일: 금요일 정규장 마감 분 뿐
@@ -552,7 +552,7 @@
             }
             if (!nextLabel) {
                 if (day >= 1 && day <= 5) nextLabel = '내일 00:30 KST';
-                else nextLabel = '월요일 03:30 KST'; // 토 00:30 이후 or 일요일
+                else nextLabel = '월요일 10:00 KST'; // 토 00:30 이후 or 일요일
             }
             document.getElementById('nextUpdate').textContent = nextLabel;
         }
