@@ -545,11 +545,22 @@ class TitanAnalyzer:
             # ===== 가치주 모드: 배당/저평가/안정성 중심 (50점) =====
             if self.analysis_mode == 'value':
                 # 1. 배당수익률 (12점)
-                div_yield = info.get('dividendYield')
-                if div_yield and div_yield > 0:
-                    # yfinance: 보통 decimal(0.019=1.9%) 반환하지만 일부 종목은 percentage(1.9) 반환
-                    div_pct = div_yield if div_yield >= 1 else div_yield * 100
-                    breakdown['dividend_yield_value'] = div_pct
+                # dividendYield 포맷 불일치 문제(0.019 vs 1.9 vs 0.93) 회피:
+                # dividendRate(연간배당$/주) / 현재가로 직접 계산
+                div_pct = None
+                div_rate = info.get('dividendRate')
+                price_now = info.get('currentPrice') or info.get('regularMarketPrice') or info.get('previousClose')
+                if div_rate and div_rate > 0 and price_now and price_now > 0:
+                    div_pct = div_rate / price_now * 100
+                else:
+                    # fallback: dividendYield (포맷 불명확하나 최선)
+                    div_yield = info.get('dividendYield') or info.get('trailingAnnualDividendYield')
+                    if div_yield and div_yield > 0:
+                        # 15% 초과는 현실적으로 불가 → decimal 형태로 간주해 *100
+                        div_pct = div_yield if div_yield <= 15 else div_yield / 100
+
+                if div_pct and div_pct > 0:
+                    breakdown['dividend_yield_value'] = round(div_pct, 2)
                     dy_exc, dy_good = self.VALUE_DIVIDEND_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_DIVIDEND_THRESHOLD)
                     dy_pts = self._calc_gradient_score(div_pct, dy_exc, dy_good, 12)
