@@ -3604,6 +3604,29 @@ def _send_telegram_fallback(results, market='us'):
         send_tg(f"📊 [{tag}] 보유종목 현황 ({now_str} KST)\n\n" + "\n\n".join(summary_lines))
 
 
+def _fetch_user_holding_tickers(market='us'):
+    """Supabase에서 사용자 보유종목 티커를 가져와 분석 대상에 추가"""
+    import requests as _req
+    sb_url = os.environ.get('SUPABASE_URL', '')
+    sb_key = os.environ.get('SUPABASE_SERVICE_KEY', '')
+    if not sb_url or not sb_key:
+        return []
+    try:
+        headers = {'apikey': sb_key, 'Authorization': f'Bearer {sb_key}'}
+        resp = _req.get(
+            f"{sb_url}/rest/v1/alert_holdings?market=eq.{market}&select=ticker",
+            headers=headers, timeout=10
+        )
+        if resp.status_code == 200:
+            tickers = list(set(h['ticker'] for h in resp.json()))
+            if tickers:
+                print(f"📌 보유종목 {len(tickers)}개 추가 분석 대상에 포함")
+            return tickers
+    except Exception as e:
+        print(f"⚠️  보유종목 조회 실패: {e}")
+    return []
+
+
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding='utf-8')
@@ -3624,18 +3647,22 @@ if __name__ == "__main__":
         mode = sys.argv[1].lower()
 
         if mode == "growth":
-            analyzer.analysis_mode = 'growth'  # 성장주 섹터 점수 체계
+            analyzer.analysis_mode = 'growth'
+            holding_tickers = _fetch_user_holding_tickers(market='us')
+            tickers = list(dict.fromkeys(GROWTH_TICKERS + holding_tickers))
             analyzer.run_analysis_with_tickers(
-                tickers=GROWTH_TICKERS,
+                tickers=tickers,
                 report_type="Growth Stocks",
                 html_filename="growth_report.html",
                 min_score=75,
                 skip_stage1=True,
             )
         elif mode == "value":
-            analyzer.analysis_mode = 'value'  # 가치주 섹터 점수 체계
+            analyzer.analysis_mode = 'value'
+            holding_tickers = _fetch_user_holding_tickers(market='us')
+            tickers = list(dict.fromkeys(VALUE_TICKERS + holding_tickers))
             analyzer.run_analysis_with_tickers(
-                tickers=VALUE_TICKERS,
+                tickers=tickers,
                 report_type="Value Stocks",
                 html_filename="value_report.html",
                 min_score=85,
@@ -3645,11 +3672,8 @@ if __name__ == "__main__":
             analyzer.generate_portfolio_html(filename="portfolio.html")
         elif mode == "changelog":
             analyzer.generate_changelog_html()
-        elif mode == "sp500":
-            analyzer.run_full_analysis()
         else:
             print(f"❌ 알 수 없는 모드: {mode}")
-            print("사용법: python project_titan.py [growth|value|portfolio|changelog|sp500]")
+            print("사용법: python project_titan.py [growth|value|portfolio|changelog]")
     else:
-        # 기본: S&P 500 전체 분석
-        analyzer.run_full_analysis()
+        print("사용법: python project_titan.py [growth|value|portfolio|changelog]")
