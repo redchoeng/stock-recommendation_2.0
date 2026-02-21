@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="300">
     <title>PROJECT TITAN v2.0 - 미국 주식 투자 분석</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4263eb">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
     <style>
@@ -217,6 +219,7 @@
         .report-card.portfolio::before { background: linear-gradient(90deg, #20c997, #12b886); }
         .report-card.dashboard::before { background: linear-gradient(90deg, #7c3aed, #9775fa); }
         .report-card.search::before { background: linear-gradient(90deg, #0ca678, #38d9a9); }
+        .report-card.holdings::before { background: linear-gradient(90deg, #f59f00, #20c997); }
         .report-card.changelog::before { background: linear-gradient(90deg, #f06595, #e64980); }
 
         .report-card .badge {
@@ -232,6 +235,7 @@
         .report-card.portfolio .badge { background: var(--green-bg); color: var(--teal); }
         .report-card.dashboard .badge { background: var(--purple-bg); color: var(--purple); }
         .report-card.search .badge { background: var(--teal-bg); color: var(--teal); }
+        .report-card.holdings .badge { background: var(--orange-bg); color: var(--orange); }
         .report-card.changelog .badge { background: var(--red-bg); color: var(--red); }
 
         .report-card h3 {
@@ -429,6 +433,18 @@
                     <span class="enter">검색하기 &rarr;</span>
                 </a>
 
+                <a href="my_holdings.html" class="report-card holdings" id="cardHoldings">
+                    <span class="badge">Alert</span>
+                    <h3>보유종목 알림</h3>
+                    <p class="desc">목표가 · 손절가 도달 시 푸시 알림</p>
+                    <div class="features">
+                        <div class="feature"><span class="feature-dot"></span>US / KR 보유종목 등록</div>
+                        <div class="feature"><span class="feature-dot"></span>목표가 도달 알림</div>
+                        <div class="feature"><span class="feature-dot"></span>손절가 도달 알림</div>
+                    </div>
+                    <span class="enter">설정하기 &rarr;</span>
+                </a>
+
                 <a href="changelog.html" class="report-card changelog">
                     <span class="badge">Patch Notes</span>
                     <h3>업데이트 내역</h3>
@@ -468,7 +484,7 @@
                 document.getElementById('userName').textContent = 'Guest';
                 document.getElementById('logoutBtn').textContent = '로그인하기';
 
-                ['cardPortfolio', 'cardDashboard'].forEach(id => {
+                ['cardPortfolio', 'cardDashboard', 'cardHoldings'].forEach(id => {
                     const card = document.getElementById(id);
                     card.href = 'javascript:void(0)';
                     card.classList.add('locked');
@@ -542,6 +558,11 @@
         }
         showNextUpdate();
         setInterval(showNextUpdate, 60000);
+
+        // PWA Service Worker 등록
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').catch(() => {});
+        }
     </script>
 </body>
 </html>

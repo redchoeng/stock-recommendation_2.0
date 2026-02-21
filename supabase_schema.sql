@@ -104,3 +104,45 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER on_auth_user_created
     AFTER INSERT ON auth.users
     FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+-- ============================================
+-- 5. 보유종목 알림 + 푸시 구독 (PWA Web Push)
+-- ============================================
+
+-- 알림 모니터링용 보유종목
+CREATE TABLE alert_holdings (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+    ticker TEXT NOT NULL,
+    name TEXT NOT NULL,
+    qty NUMERIC NOT NULL DEFAULT 0,
+    avg_price NUMERIC NOT NULL DEFAULT 0,
+    market TEXT NOT NULL DEFAULT 'us' CHECK (market IN ('us', 'kr')),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(user_id, ticker, market)
+);
+
+-- Web Push 구독 정보
+CREATE TABLE push_subscriptions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+    endpoint TEXT NOT NULL,
+    p256dh TEXT NOT NULL,
+    auth TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(user_id, endpoint)
+);
+
+ALTER TABLE alert_holdings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE push_subscriptions ENABLE ROW LEVEL SECURITY;
+
+-- alert_holdings: 본인만
+CREATE POLICY "Users can view own holdings" ON alert_holdings FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can insert own holdings" ON alert_holdings FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can update own holdings" ON alert_holdings FOR UPDATE USING (auth.uid() = user_id);
+CREATE POLICY "Users can delete own holdings" ON alert_holdings FOR DELETE USING (auth.uid() = user_id);
+
+-- push_subscriptions: 본인만
+CREATE POLICY "Users can view own push subs" ON push_subscriptions FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can insert own push subs" ON push_subscriptions FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can delete own push subs" ON push_subscriptions FOR DELETE USING (auth.uid() = user_id);

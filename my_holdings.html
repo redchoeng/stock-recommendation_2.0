@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보유종목 알림 - Project Titan</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --text: #191f28;
+    --text-sub: #8b95a1;
+    --text-muted: #b0b8c1;
+    --border: #e5e8eb;
+    --accent: #4263eb;
+    --accent-light: #edf2ff;
+    --green: #20c997;
+    --green-bg: #e6fcf5;
+    --red: #f06595;
+    --red-bg: #fff0f6;
+    --orange: #fd7e14;
+    --orange-bg: #fff4e6;
+    --purple: #7c3aed;
+    --radius: 16px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+body {
+    font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container { opacity: 0; transition: opacity 0.3s; }
+.container.ready { opacity: 1; }
+
+.wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+/* 헤더 */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--text-sub);
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+.back-btn:hover { background: var(--surface); color: var(--accent); }
+.page-title {
+    font-size: 1.3em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* 푸시 알림 카드 */
+.push-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+.push-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.push-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1em;
+}
+.push-icon {
+    width: 36px; height: 36px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.push-status {
+    font-size: 0.82em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+.push-status.on { background: var(--green-bg); color: var(--green); }
+.push-status.off { background: var(--red-bg); color: var(--red); }
+.push-desc {
+    font-size: 0.85em;
+    color: var(--text-sub);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+.push-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95em;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    color: white;
+    background: var(--accent);
+}
+.push-btn:hover { opacity: 0.9; }
+.push-btn:disabled { background: var(--text-muted); cursor: not-allowed; }
+.push-btn.danger { background: var(--red); }
+
+/* 마켓 탭 */
+.market-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.market-tab {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9em;
+    font-family: inherit;
+    transition: all 0.2s;
+    color: var(--text-sub);
+}
+.market-tab.active {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+}
+
+/* 종목 추가 폼 */
+.add-form {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+.add-form h3 {
+    font-size: 0.95em;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.form-row.full { grid-template-columns: 1fr; }
+.form-group label {
+    display: block;
+    font-size: 0.78em;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin-bottom: 4px;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+}
+.form-group input:focus {
+    border-color: var(--accent);
+}
+.btn-add {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9em;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    background: var(--green);
+    color: white;
+    transition: all 0.2s;
+    margin-top: 4px;
+}
+.btn-add:hover { opacity: 0.9; }
+.btn-add:disabled { background: var(--text-muted); cursor: wait; }
+
+/* 보유종목 리스트 */
+.holdings-section {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+}
+.holdings-section h3 {
+    font-size: 0.95em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.count-badge {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.8em;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+.empty-state {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+.holding-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+.holding-item:last-child { border-bottom: none; }
+.holding-info {
+    flex: 1;
+}
+.holding-name {
+    font-weight: 700;
+    font-size: 0.95em;
+    margin-bottom: 4px;
+}
+.holding-ticker {
+    color: var(--accent);
+    font-size: 0.8em;
+    font-weight: 600;
+}
+.holding-detail {
+    text-align: right;
+    margin-right: 12px;
+}
+.holding-qty {
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-bottom: 2px;
+}
+.holding-avg {
+    color: var(--text-sub);
+    font-size: 0.8em;
+}
+.btn-delete {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 8px;
+    background: var(--red-bg);
+    color: var(--red);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.btn-delete:hover { background: var(--red); color: white; }
+
+/* 메시지 */
+.msg {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.82em;
+    margin-top: 10px;
+    display: none;
+    line-height: 1.5;
+}
+.msg.error { display: block; background: var(--red-bg); color: var(--red); }
+.msg.success { display: block; background: var(--green-bg); color: var(--green); }
+.msg.info { display: block; background: var(--orange-bg); color: var(--orange); }
+
+@media (max-width: 480px) {
+    .wrapper { padding: 16px 12px 30px; }
+    .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="wrapper">
+        <div class="page-header">
+            <a href="index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                돌아가기
+            </a>
+            <h1 class="page-title">보유종목 알림</h1>
+        </div>
+
+        <!-- 푸시 알림 설정 -->
+        <div class="push-card">
+            <div class="push-card-header">
+                <div class="push-card-title">
+                    <div class="push-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    </div>
+                    푸시 알림
+                </div>
+                <span class="push-status off" id="pushStatus">비활성</span>
+            </div>
+            <p class="push-desc">
+                목표가/손절가 도달 시 기기로 알림을 받습니다.<br>
+                알림을 허용하면 앱을 닫아도 자동으로 알림이 옵니다.
+            </p>
+            <button class="push-btn" id="pushBtn" onclick="togglePush()">알림 허용하기</button>
+            <div class="msg" id="pushMsg"></div>
+        </div>
+
+        <!-- 마켓 탭 -->
+        <div class="market-tabs">
+            <button class="market-tab active" onclick="switchMarket('us')">US 미국주식</button>
+            <button class="market-tab" onclick="switchMarket('kr')">KR 한국주식</button>
+        </div>
+
+        <!-- 종목 추가 -->
+        <div class="add-form">
+            <h3>종목 추가</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>종목코드 (티커)</label>
+                    <input type="text" id="inputTicker" placeholder="NVDA">
+                </div>
+                <div class="form-group">
+                    <label>종목명</label>
+                    <input type="text" id="inputName" placeholder="NVIDIA">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>보유 수량</label>
+                    <input type="number" id="inputQty" placeholder="10" min="0" step="1">
+                </div>
+                <div class="form-group">
+                    <label>평균 매수가</label>
+                    <input type="number" id="inputAvgPrice" placeholder="120.50" min="0" step="any">
+                </div>
+            </div>
+            <button class="btn-add" id="btnAdd" onclick="addHolding()">추가하기</button>
+            <div class="msg" id="addMsg"></div>
+        </div>
+
+        <!-- 보유종목 리스트 -->
+        <div class="holdings-section">
+            <h3>보유종목 <span class="count-badge" id="holdingCount">0</span></h3>
+            <div id="holdingsList">
+                <div class="empty-state">등록된 종목이 없습니다</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase_config.js"></script>
+<script>
+const VAPID_PUBLIC_KEY = 'BCH6KzGSSHQoBblDXc0v6m8H7FKycZRcE533dPe0GuCa7lXku28eVNTOZ3qEKzqOWeOAVsICSAiNMwH3Kl7dpGM';
+
+const { createClient } = supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUser = null;
+let currentMarket = 'us';
+
+// ── 초기화 ──
+(async () => {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+        window.location.href = 'login.html';
+        return;
+    }
+    currentUser = session.user;
+    document.getElementById('app').classList.add('ready');
+    await checkPushStatus();
+    await loadHoldings();
+})();
+
+// ── 마켓 전환 ──
+function switchMarket(market) {
+    currentMarket = market;
+    document.querySelectorAll('.market-tab').forEach((tab, i) => {
+        tab.classList.toggle('active', (i === 0 && market === 'us') || (i === 1 && market === 'kr'));
+    });
+    const ticker = document.getElementById('inputTicker');
+    ticker.placeholder = market === 'us' ? 'NVDA' : '005930';
+    const name = document.getElementById('inputName');
+    name.placeholder = market === 'us' ? 'NVIDIA' : '삼성전자';
+    loadHoldings();
+}
+
+// ── 보유종목 CRUD ──
+async function loadHoldings() {
+    const { data, error } = await sb.from('alert_holdings')
+        .select('*')
+        .eq('user_id', currentUser.id)
+        .eq('market', currentMarket)
+        .order('created_at', { ascending: false });
+
+    const list = document.getElementById('holdingsList');
+    const count = document.getElementById('holdingCount');
+    const items = data || [];
+    count.textContent = items.length;
+
+    if (items.length === 0) {
+        list.innerHTML = '<div class="empty-state">등록된 종목이 없습니다</div>';
+        return;
+    }
+
+    const isKR = currentMarket === 'kr';
+    const fmt = (v) => {
+        if (!v) return '-';
+        return isKR ? `₩${parseInt(v).toLocaleString()}` : `$${parseFloat(v).toFixed(2)}`;
+    };
+
+    list.innerHTML = items.map(h => `
+        <div class="holding-item">
+            <div class="holding-info">
+                <div class="holding-name">${esc(h.name)}</div>
+                <div class="holding-ticker">${esc(h.ticker)}</div>
+            </div>
+            <div class="holding-detail">
+                <div class="holding-qty">${h.qty}주</div>
+                <div class="holding-avg">평단 ${fmt(h.avg_price)}</div>
+            </div>
+            <button class="btn-delete" onclick="deleteHolding('${h.id}')" title="삭제">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+    `).join('');
+}
+
+async function addHolding() {
+    const ticker = document.getElementById('inputTicker').value.trim().toUpperCase();
+    const name = document.getElementById('inputName').value.trim();
+    const qty = parseFloat(document.getElementById('inputQty').value) || 0;
+    const avg_price = parseFloat(document.getElementById('inputAvgPrice').value) || 0;
+
+    if (!ticker || !name) {
+        showMsg('addMsg', '종목코드와 종목명을 입력하세요', 'error');
+        return;
+    }
+    if (qty <= 0) {
+        showMsg('addMsg', '수량을 입력하세요', 'error');
+        return;
+    }
+
+    const btn = document.getElementById('btnAdd');
+    btn.disabled = true;
+    btn.textContent = '추가 중...';
+
+    const { error } = await sb.from('alert_holdings').upsert({
+        user_id: currentUser.id,
+        ticker,
+        name,
+        qty,
+        avg_price,
+        market: currentMarket
+    }, { onConflict: 'user_id,ticker,market' });
+
+    btn.disabled = false;
+    btn.textContent = '추가하기';
+
+    if (error) {
+        showMsg('addMsg', '오류: ' + error.message, 'error');
+        return;
+    }
+
+    showMsg('addMsg', `${name} (${ticker}) 추가 완료`, 'success');
+    document.getElementById('inputTicker').value = '';
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputQty').value = '';
+    document.getElementById('inputAvgPrice').value = '';
+    await loadHoldings();
+}
+
+async function deleteHolding(id) {
+    if (!confirm('이 종목을 삭제하시겠습니까?')) return;
+    await sb.from('alert_holdings').delete().eq('id', id);
+    await loadHoldings();
+}
+
+// ── 푸시 알림 ──
+async function checkPushStatus() {
+    const statusEl = document.getElementById('pushStatus');
+    const btn = document.getElementById('pushBtn');
+
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+        statusEl.textContent = '미지원';
+        statusEl.className = 'push-status off';
+        btn.textContent = '이 브라우저는 푸시 알림을 지원하지 않습니다';
+        btn.disabled = true;
+        return;
+    }
+
+    const permission = Notification.permission;
+    const reg = await navigator.serviceWorker.getRegistration();
+    const sub = reg ? await reg.pushManager.getSubscription() : null;
+
+    if (permission === 'granted' && sub) {
+        statusEl.textContent = '활성';
+        statusEl.className = 'push-status on';
+        btn.textContent = '알림 해제';
+        btn.className = 'push-btn danger';
+    } else if (permission === 'denied') {
+        statusEl.textContent = '차단됨';
+        statusEl.className = 'push-status off';
+        btn.textContent = '브라우저 설정에서 알림을 허용해주세요';
+        btn.disabled = true;
+    } else {
+        statusEl.textContent = '비활성';
+        statusEl.className = 'push-status off';
+        btn.textContent = '알림 허용하기';
+        btn.className = 'push-btn';
+    }
+}
+
+async function togglePush() {
+    const btn = document.getElementById('pushBtn');
+    btn.disabled = true;
+
+    try {
+        const reg = await navigator.serviceWorker.ready;
+        const existingSub = await reg.pushManager.getSubscription();
+
+        if (existingSub) {
+            // 해제
+            await existingSub.unsubscribe();
+            await sb.from('push_subscriptions')
+                .delete()
+                .eq('user_id', currentUser.id)
+                .eq('endpoint', existingSub.endpoint);
+            showMsg('pushMsg', '알림이 해제되었습니다', 'info');
+        } else {
+            // 구독
+            const sub = await reg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+            });
+
+            const key = sub.getKey('p256dh');
+            const auth = sub.getKey('auth');
+
+            const { error } = await sb.from('push_subscriptions').upsert({
+                user_id: currentUser.id,
+                endpoint: sub.endpoint,
+                p256dh: btoa(String.fromCharCode(...new Uint8Array(key))),
+                auth: btoa(String.fromCharCode(...new Uint8Array(auth)))
+            }, { onConflict: 'user_id,endpoint' });
+
+            if (error) {
+                showMsg('pushMsg', '저장 오류: ' + error.message, 'error');
+            } else {
+                showMsg('pushMsg', '알림이 활성화되었습니다!', 'success');
+            }
+        }
+    } catch (e) {
+        showMsg('pushMsg', '오류: ' + e.message, 'error');
+    }
+
+    btn.disabled = false;
+    await checkPushStatus();
+}
+
+// ── 유틸 ──
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    return Uint8Array.from([...rawData].map(c => c.charCodeAt(0)));
+}
+
+function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+}
+
+function showMsg(id, text, type) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.className = 'msg ' + type;
+    setTimeout(() => { el.className = 'msg'; }, 4000);
+}
+
+// Service Worker 등록
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js').catch(() => {});
+}
+</script>
+</body>
+</html>
