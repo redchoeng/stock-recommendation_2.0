@@ -307,6 +307,23 @@ class TitanAnalyzer:
     }
     DEFAULT_VALUE_DE_THRESHOLD = (80, 150)
 
+    # EV/EBITDA 기준 (역방향: 낮을수록 좋음) {sector: (good_upper, fair_upper)}
+    # PER 대신 또는 병행으로 사용 — 설비투자 기업에 더 적합
+    VALUE_EVEBITDA_THRESHOLDS = {
+        'Technology':              (18, 30),
+        'Healthcare':              (14, 22),
+        'Consumer Defensive':      (14, 24),  # WMT ~18x, COST ~28x
+        'Consumer Cyclical':       (12, 20),
+        'Financial Services':      (10, 16),  # 은행엔 별로지만 보험/증권엔 유효
+        'Utilities':               (10, 16),
+        'Real Estate':             (14, 22),
+        'Energy':                  (7,  12),  # XOM ~8x
+        'Industrials':             (13, 22),  # GE ~18x, CAT ~13x
+        'Communication Services':  (8,  14),
+        'Basic Materials':         (8,  13),
+    }
+    DEFAULT_VALUE_EVEBITDA_THRESHOLD = (12, 20)
+
     # 배당 귀족 (25년 이상 연속 배당 증가) — 가치주 보너스 +4점
     DIVIDEND_ARISTOCRATS = {
         'KO', 'PEP', 'PG', 'CL', 'KMB', 'WMT', 'MCD', 'GPC',
@@ -517,6 +534,7 @@ class TitanAnalyzer:
             # 가치주 전용 필드
             'dividend_yield_score': 0, 'dividend_yield_value': None,
             'per_score': 0, 'per_value': None,
+            'ev_ebitda_value': None, 'valuation_method': 'PER',
             'debt_equity_score': 0, 'debt_equity_value': None,
         }
 
@@ -540,16 +558,33 @@ class TitanAnalyzer:
                     if dy_pts >= 6:
                         comments.append(f"배당{div_pct:.1f}%")
 
-                # 2. PER 저평가 (12점, 역방향 - 낮을수록 좋음)
+                # 2. 밸류에이션 (12점): PER vs EV/EBITDA 중 높은 쪽 채택
                 per = info.get('trailingPE')
+                ev_ebitda = info.get('enterpriseToEbitda')
+
+                per_pts = 0
                 if per and per > 0:
                     breakdown['per_value'] = per
                     per_good, per_fair = self.VALUE_PER_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_PER_THRESHOLD)
                     per_pts = self._calc_inverse_gradient_score(per, per_good, per_fair, 12)
-                    score += per_pts
-                    breakdown['per_score'] = per_pts
-                    if per_pts >= 6:
+
+                ev_pts = 0
+                # Financial Services는 EV/EBITDA 신뢰도 낮아 PER만 사용
+                if ev_ebitda and ev_ebitda > 0 and sector != 'Financial Services':
+                    breakdown['ev_ebitda_value'] = ev_ebitda
+                    ev_good, ev_fair = self.VALUE_EVEBITDA_THRESHOLDS.get(
+                        sector, self.DEFAULT_VALUE_EVEBITDA_THRESHOLD)
+                    ev_pts = self._calc_inverse_gradient_score(ev_ebitda, ev_good, ev_fair, 12)
+
+                val_pts = max(per_pts, ev_pts)
+                score += val_pts
+                breakdown['per_score'] = val_pts
+                breakdown['valuation_method'] = 'EV/EBITDA' if ev_pts > per_pts else 'PER'
+                if val_pts >= 6:
+                    if ev_pts > per_pts and ev_ebitda:
+                        comments.append(f"EV/EBITDA:{ev_ebitda:.1f}x")
+                    elif per and per > 0:
                         comments.append(f"PER:{per:.1f}")
 
                 # 3. ROE (8점, 가치주는 비중 축소)
@@ -2747,8 +2782,8 @@ class TitanAnalyzer:
                             <span class="criterion-score">+{fund_bd.get('dividend_yield_score', 0)}점</span>
                         </div>
                         <div class="breakdown-item">
-                            <span class="criterion">PER (저평가)</span>
-                            <span class="criterion-value">{fund_bd.get('per_value', 0):.1f}x</span>
+                            <span class="criterion">{"EV/EBITDA" if fund_bd.get("valuation_method") == "EV/EBITDA" else "PER"} (저평가)</span>
+                            <span class="criterion-value">{fund_bd.get("ev_ebitda_value") if fund_bd.get("valuation_method") == "EV/EBITDA" and fund_bd.get("ev_ebitda_value") else fund_bd.get("per_value") or 0:.1f}x</span>
                             <span class="criterion-score">+{fund_bd.get('per_score', 0)}점</span>
                         </div>
                         <div class="breakdown-item">
@@ -3040,6 +3075,8 @@ function toggleTheme() {{
                 'revenue_growth_value': fund_bd.get('revenue_growth_value'),
                 'dividend_yield_value': fund_bd.get('dividend_yield_value'),
                 'per_value': fund_bd.get('per_value'),
+                'ev_ebitda_value': fund_bd.get('ev_ebitda_value'),
+                'valuation_method': fund_bd.get('valuation_method', 'PER'),
                 'debt_equity_value': fund_bd.get('debt_equity_value'),
                 'rsi_value': tech_bd.get('rsi_value'),
                 'ma5': tech_bd.get('ma5'),
