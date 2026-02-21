@@ -154,7 +154,7 @@ tr:hover { background:#f0fdf9; }
     <div class="header-card">
         <h1>Portfolio Builder</h1>
         <p class="subtitle">Titan 점수 + 유동성 등급 기반 포트폴리오 구성</p>
-        <p class="timestamp">2026-02-21 15:15 KST</p>
+        <p class="timestamp">2026-02-21 15:46 KST</p>
     </div>
 
     <div class="input-section">
@@ -402,16 +402,6 @@ async function addToMyAssets() {
 // 페이지 로드 시 자동 계산
 window.addEventListener('load', () => { calculatePortfolio(); });
 
-// 반짝이 생성
-setInterval(() => {
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.style.top = Math.random()*100+'%';
-    s.style.left = Math.random()*100+'%';
-    s.style.animationDelay = Math.random()*2+'s';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 4000);
-}, 1200);
 </script>
 </body>
 </html>
