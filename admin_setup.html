@@ -9,102 +9,113 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
-:root {
-    --bg: #f7f8fa;
-    --surface: #ffffff;
-    --text: #191f28;
-    --text-sub: #8b95a1;
-    --text-muted: #b0b8c1;
-    --border: #e5e8eb;
-    --accent: #f06595;
-    --accent-light: #fff0f6;
-    --green: #20c997;
-    --green-bg: #e6fcf5;
-    --blue: #4263eb;
-    --blue-light: #edf2ff;
-    --orange: #fd7e14;
-    --orange-bg: #fff4e6;
-    --purple: #7c3aed;
-    --purple-bg: #f3f0ff;
-    --radius: 16px;
-    --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-}
-
 body {
     font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     min-height: 100vh;
-    background: var(--bg);
-    color: var(--text);
+    background: #0f172a;
+    color: #191f28;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
     -webkit-font-smoothing: antialiased;
-}
-
-.setup-box {
-    background: var(--surface);
-    border-radius: 24px;
-    padding: 48px 36px;
-    width: 100%;
-    max-width: 440px;
-    box-shadow: var(--shadow-lg);
-    text-align: center;
     position: relative;
     overflow: hidden;
 }
-.setup-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--purple));
+
+/* 배경 글로우 */
+.bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    pointer-events: none;
+}
+.bg-glow-1 {
+    width: 450px; height: 450px;
+    background: #f06595;
+    top: -120px; left: -80px;
+}
+.bg-glow-2 {
+    width: 400px; height: 400px;
+    background: #7c3aed;
+    bottom: -80px; right: -60px;
 }
 
-.icon-box {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
+.setup-card {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4), 0 0 60px rgba(240,101,149,0.1);
+}
+
+/* 브랜드 헤더 */
+.brand-header {
+    padding: 36px 36px 32px;
+    text-align: center;
+    position: relative;
+}
+.brand-header.key-theme {
+    background: linear-gradient(135deg, #f06595 0%, #7c3aed 100%);
+}
+.brand-header.success-theme {
+    background: linear-gradient(135deg, #20c997 0%, #12b886 100%);
+}
+.brand-header.crown-theme {
+    background: linear-gradient(135deg, #7c3aed 0%, #6741d9 100%);
+}
+.brand-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+}
+
+.brand-icon {
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 2em;
+    margin: 0 auto 16px;
+    border: 1px solid rgba(255,255,255,0.2);
 }
-.icon-box.key { background: var(--accent-light); }
-.icon-box.check { background: var(--green-bg); }
-.icon-box.crown { background: var(--purple-bg); }
-
-h1 {
-    font-size: 1.4em;
+.brand-header h1, .brand-header h2 {
     font-weight: 800;
+    color: white;
     letter-spacing: -0.02em;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
-h2 {
-    font-size: 1.2em;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-}
-.subtitle {
-    color: var(--text-sub);
-    font-size: 0.88em;
-    margin-bottom: 28px;
+.brand-header h1 { font-size: 1.4em; }
+.brand-header h2 { font-size: 1.3em; }
+.brand-header p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85em;
     line-height: 1.5;
+}
+
+/* 폼 영역 */
+.form-body {
+    background: #ffffff;
+    padding: 28px 36px 36px;
 }
 
 .step { display: none; }
 .step.active { display: block; }
 
 .info-card {
-    background: var(--orange-bg);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 20px;
+    background: #fff4e6;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
     text-align: left;
-    font-size: 0.85em;
+    font-size: 0.82em;
     color: #e67700;
     line-height: 1.6;
 }
@@ -116,60 +127,43 @@ h2 {
 }
 
 .user-card {
-    background: var(--blue-light);
-    border-radius: 12px;
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    font-size: 0.88em;
-    color: var(--blue);
+    background: #edf2ff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 0.85em;
+    color: #4263eb;
     font-weight: 600;
 }
 
 .input-field {
     width: 100%;
-    padding: 14px 18px;
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
+    padding: 13px 18px;
+    border: 1.5px solid #e5e8eb;
+    border-radius: 10px;
     font-size: 1em;
     font-family: inherit;
     margin-bottom: 14px;
     text-align: center;
     letter-spacing: 2px;
-    background: var(--bg);
-    color: var(--text);
+    background: #f7f8fa;
+    color: #191f28;
     outline: none;
     transition: all 0.2s;
 }
 .input-field:focus {
-    border-color: var(--accent);
+    border-color: #f06595;
     box-shadow: 0 0 0 3px rgba(240,101,149,0.1);
-    background: var(--surface);
+    background: #fff;
 }
-.input-field::placeholder { color: var(--text-muted); letter-spacing: 0; }
+.input-field::placeholder { color: #b0b8c1; letter-spacing: 0; }
 
-.btn-verify {
-    width: 100%;
-    padding: 14px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 1em;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s;
-}
-.btn-verify:hover { background: #e64980; }
-.btn-verify:active { transform: scale(0.98); }
-.btn-verify:disabled { background: var(--text-muted); cursor: wait; }
-
-.btn-action {
+.btn-primary {
     display: block;
     width: 100%;
-    padding: 14px;
+    padding: 13px;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 1em;
     font-weight: 700;
     cursor: pointer;
@@ -178,95 +172,119 @@ h2 {
     text-decoration: none;
     text-align: center;
     color: white;
-    margin-bottom: 10px;
 }
-.btn-action:hover { opacity: 0.9; }
-.btn-action:active { transform: scale(0.98); }
-.btn-action.blue { background: var(--blue); }
-.btn-action.green { background: var(--green); }
-.btn-action.purple { background: var(--purple); }
+.btn-primary:hover { opacity: 0.9; }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { background: #b0b8c1; cursor: wait; }
+.btn-primary.pink { background: #f06595; }
+.btn-primary.pink:hover { background: #e64980; }
+.btn-primary.blue { background: #4263eb; }
+.btn-primary.green { background: #20c997; }
+.btn-primary.purple { background: #7c3aed; }
 
 .message {
     margin-top: 14px;
     padding: 10px 14px;
     border-radius: 10px;
-    font-size: 0.85em;
+    font-size: 0.82em;
     display: none;
     line-height: 1.5;
 }
-.message.error { display: block; background: var(--accent-light); color: #e03e6a; }
-.message.success { display: block; background: var(--green-bg); color: #0ca678; }
+.message.error { display: block; background: #fff0f6; color: #e03e6a; }
+.message.success { display: block; background: #e6fcf5; color: #0ca678; }
 
 .back-link {
     display: inline-block;
-    margin-top: 20px;
-    color: var(--text-muted);
+    margin-top: 18px;
+    color: #b0b8c1;
     text-decoration: none;
-    font-size: 0.82em;
+    font-size: 0.8em;
     font-weight: 500;
     transition: color 0.2s;
 }
-.back-link:hover { color: var(--text); }
+.back-link:hover { color: #4263eb; }
 
 @media (max-width: 480px) {
-    .setup-box { padding: 36px 24px; }
-    h1 { font-size: 1.2em; }
+    .brand-header { padding: 28px 24px 24px; }
+    .form-body { padding: 24px 24px 28px; }
 }
 </style>
 </head>
 <body>
 
-<div class="setup-box">
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<div class="setup-card">
     <!-- Step 1: 로그인 필요 -->
     <div class="step" id="stepLogin">
-        <div class="icon-box key">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f06595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        <div class="brand-header key-theme">
+            <div class="brand-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            </div>
+            <h1>관리자 계정 설정</h1>
+            <p>관리자 권한을 설정하려면 먼저 계정이 필요합니다.<br>로그인 또는 회원가입 후 다시 방문하세요.</p>
         </div>
-        <h1>관리자 계정 설정</h1>
-        <p class="subtitle">관리자 권한을 설정하려면 먼저 계정이 필요합니다.<br>로그인 또는 회원가입 후 다시 방문하세요.</p>
-        <a href="login.html" class="btn-action blue">로그인 / 회원가입</a>
+        <div class="form-body">
+            <a href="login.html" class="btn-primary blue">로그인 / 회원가입</a>
+            <div style="text-align:center;">
+                <a href="login.html" class="back-link">&larr; 로그인으로 돌아가기</a>
+            </div>
+        </div>
     </div>
 
     <!-- Step 2: 관리자 코드 입력 -->
     <div class="step" id="stepCode">
-        <div class="icon-box key">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f06595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        <div class="brand-header key-theme">
+            <div class="brand-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            </div>
+            <h1>관리자 계정 설정</h1>
+            <p>관리자 코드를 입력하여 관리자 권한을 획득합니다</p>
         </div>
-        <h1>관리자 계정 설정</h1>
-        <p class="subtitle">관리자 코드를 입력하여 관리자 권한을 획득합니다</p>
-
-        <div class="user-card" id="currentUserInfo">로그인 확인 중...</div>
-        <div class="info-card">
-            관리자 코드를 입력하세요.<br>
-            코드는 Supabase SQL에서 설정된 값입니다.<br>
-            (기본값: <code>titan-admin-2024</code>)
+        <div class="form-body">
+            <div class="user-card" id="currentUserInfo">로그인 확인 중...</div>
+            <div class="info-card">
+                관리자 코드를 입력하세요.<br>
+                코드는 Supabase SQL에서 설정된 값입니다.<br>
+                (기본값: <code>titan-admin-2024</code>)
+            </div>
+            <input type="password" class="input-field" id="adminCode" placeholder="관리자 코드 입력">
+            <button class="btn-primary pink" id="verifyBtn" onclick="verifyAdmin()">관리자 인증</button>
+            <div class="message" id="message"></div>
+            <div style="text-align:center;">
+                <a href="login.html" class="back-link">&larr; 로그인으로 돌아가기</a>
+            </div>
         </div>
-        <input type="password" class="input-field" id="adminCode" placeholder="관리자 코드 입력">
-        <button class="btn-verify" id="verifyBtn" onclick="verifyAdmin()">관리자 인증</button>
-        <div class="message" id="message"></div>
     </div>
 
     <!-- Step 3: 성공 -->
     <div class="step" id="stepSuccess">
-        <div class="icon-box check">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#20c997" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="brand-header success-theme">
+            <div class="brand-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h2>관리자 권한 획득!</h2>
+            <p>이제 관리자 기능을 사용할 수 있습니다.</p>
         </div>
-        <h2 style="color: var(--green);">관리자 권한 획득!</h2>
-        <p class="subtitle">이제 관리자 기능을 사용할 수 있습니다.</p>
-        <a href="index.html" class="btn-action green">메인으로 이동</a>
+        <div class="form-body">
+            <a href="index.html" class="btn-primary green">메인으로 이동</a>
+        </div>
     </div>
 
     <!-- Step 4: 이미 관리자 -->
     <div class="step" id="stepAlready">
-        <div class="icon-box crown">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-5 4-5-4-5 4z"/><path d="M3 20h18"/></svg>
+        <div class="brand-header crown-theme">
+            <div class="brand-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-5 4-5-4-5 4z"/><path d="M3 20h18"/></svg>
+            </div>
+            <h2>이미 관리자입니다</h2>
+            <p>현재 계정에 관리자 권한이 설정되어 있습니다.</p>
         </div>
-        <h2 style="color: var(--purple);">이미 관리자입니다</h2>
-        <p class="subtitle">현재 계정에 관리자 권한이 설정되어 있습니다.</p>
-        <a href="index.html" class="btn-action purple">메인으로 이동</a>
+        <div class="form-body">
+            <a href="index.html" class="btn-primary purple">메인으로 이동</a>
+        </div>
     </div>
-
-    <a href="login.html" class="back-link">&larr; 로그인으로 돌아가기</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -288,7 +306,6 @@ let currentUser = null;
     const displayName = currentUser.user_metadata?.name || currentUser.email?.split('@')[0] || 'User';
     document.getElementById('currentUserInfo').textContent = '로그인: ' + displayName + ' (' + currentUser.email + ')';
 
-    // 이미 관리자인지 확인
     const { data: profile } = await sb.from('user_profiles')
         .select('role').eq('user_id', currentUser.id).single();
 
@@ -331,7 +348,6 @@ function showMsg(text, type) {
     el.className = 'message ' + type;
 }
 
-// Enter 키로 인증
 document.getElementById('adminCode')?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') verifyAdmin();
 });
