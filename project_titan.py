@@ -10,7 +10,6 @@ import pandas as pd
 import time
 from datetime import datetime, timezone
 from tabulate import tabulate
-from ta.momentum import RSIIndicator
 import pytz
 
 # ============================================================================
@@ -31,8 +30,8 @@ GROWTH_TICKERS = [
     'ZM', 'DOCU', 'APPN', 'OKTA', 'CYBR', 'VRNS', 'QLYS', 'RPD', 'TENB', 'S',
     'CHKP', 'BILL', 'VEEV',
 
-    # ========== Technology - AI & Data (8) ==========
-    'PLTR', 'AI', 'PATH', 'U', 'SNPS', 'CDNS',
+    # ========== Technology - AI & Data (4) ==========
+    'PLTR', 'AI', 'PATH', 'U',
 
     # ========== Technology - Hardware & Infrastructure (12) ==========
     'AAPL', 'DELL', 'HPE', 'SMCI', 'ANET', 'CSCO', 'JNPR', 'AKAM',
@@ -159,23 +158,7 @@ class TitanAnalyzer:
     MIN_PRICE = 5.0  # $5
     MIN_AVG_VOLUME = 1_000_000  # 100만주
 
-    # 점수 임계값
-    SCORE_STRONG_BUY = 80
-    SCORE_BUY = 60
-    SCORE_HOLD = 40
-
-    # 펀더멘털 점수 가중치 (4단계 그라데이션)
-    SCORE_ROE_EXCELLENT = 15    # 섹터 기준 초과
-    SCORE_ROE_GOOD = 8          # 섹터 기준 충족
-    SCORE_ROE_FAIR = 3          # 기준 미달이지만 양호 (good의 50% 이상)
-    SCORE_OPM_EXCELLENT = 15
-    SCORE_OPM_GOOD = 8
-    SCORE_OPM_FAIR = 3
-
-    # 매출 성장률 점수 (4단계 그라데이션)
-    SCORE_REVENUE_GROWTH_HIGH = 10   # 섹터 기준 초과
-    SCORE_REVENUE_GROWTH_GOOD = 5    # 섹터 기준 충족
-    SCORE_REVENUE_GROWTH_FAIR = 2    # 기준 미달이지만 양호 (good의 50% 이상)
+    # 펀더멘털 점수는 _calc_gradient_score()에서 max_pts로 직접 지정
 
     # 섹터별 점수 - 성장주 (비중 축소: 20% → 10%)
     SCORE_SECTOR_TIER1 = 10  # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
@@ -226,11 +209,6 @@ class TitanAnalyzer:
     }
     DEFAULT_REVENUE_GROWTH_THRESHOLD = (20, 10)
 
-    # 업종(industry) 레벨 매출성장률 오버라이드
-    INDUSTRY_REVENUE_GROWTH_OVERRIDES = {
-        # 반도체: Technology 기본 기준과 동일 (20%/10%)
-        # 'Semiconductors': (20, 10),  # Technology 기본값과 동일하므로 오버라이드 불필요
-    }
 
     # 섹터별 OPM 기준 (저마진 업종 차등 적용)
     # {sector: (excellent_threshold, good_threshold)}
@@ -304,11 +282,8 @@ class TitanAnalyzer:
     SCORE_OVERBOUGHT_PENALTY = -5      # 과열주 감점
 
     # 기타 설정
-    VOLUME_SURGE_MULTIPLIER = 1.2
-    STOP_LOSS_RATIO = 0.97
 
     def __init__(self):
-        self.K_FACTOR = 0.5  # Volatility breakout factor
         self.results = []
         self.analysis_mode = 'growth'  # 'growth' or 'value'
 
@@ -465,9 +440,8 @@ class TitanAnalyzer:
 
             # 3. Revenue Growth (매출 성장률 - 업종/섹터별 차등 기준, 선형 보간)
             revenue_growth = info.get('revenueGrowth')
-            rg_high, rg_good = self.INDUSTRY_REVENUE_GROWTH_OVERRIDES.get(
-                industry, self.SECTOR_REVENUE_GROWTH_THRESHOLDS.get(
-                    sector, self.DEFAULT_REVENUE_GROWTH_THRESHOLD))
+            rg_high, rg_good = self.SECTOR_REVENUE_GROWTH_THRESHOLDS.get(
+                    sector, self.DEFAULT_REVENUE_GROWTH_THRESHOLD)
             if revenue_growth:
                 rg_pct = revenue_growth * 100
                 breakdown['revenue_growth_value'] = rg_pct
@@ -665,7 +639,6 @@ class TitanAnalyzer:
         - 전기차/배터리: EV 보조금 삭감, 연비규제 완화
         """
         ind_lower = industry.lower() if industry else ""
-        sn_lower = sector_name.lower() if sector_name else ""
 
         # === 수혜 섹터 ===
         # 에너지 (화석연료) - 원유, 가스, 정유, 파이프라인
@@ -710,23 +683,15 @@ class TitanAnalyzer:
         industry_lower = industry.lower()
 
         # Tier 1 (20점): 필수소비재, 헬스케어 (배당귀족 다수 포함)
-        # 필수소비재 - 경기 방어적, 안정적 배당
         if sector == 'Consumer Defensive':
-            if any(kw in industry_lower for kw in ['household', 'personal', 'packaged food', 'beverage', 'tobacco']):
-                return self.VALUE_SECTOR_TIER1, "필수소비재", "필수소비재"
             return self.VALUE_SECTOR_TIER1, "필수소비재", "필수소비재"
-        # 헬스케어 - 제약/의료기기 (바이오텍 제외한 안정적 헬스케어)
         if sector == 'Healthcare' and 'biotech' not in industry_lower:
-            if any(kw in industry_lower for kw in ['drug', 'pharmaceutical', 'medical device', 'health care plan', 'diagnostics']):
-                return self.VALUE_SECTOR_TIER1, "헬스케어", "헬스케어"
             return self.VALUE_SECTOR_TIER1, "헬스케어", "헬스케어"
 
         # Tier 2 (15점): 유틸리티, 금융 (안정적 배당)
         if sector == 'Utilities':
             return self.VALUE_SECTOR_TIER2, "유틸리티", "유틸리티"
         if sector == 'Financial Services':
-            if any(kw in industry_lower for kw in ['bank', 'insurance', 'asset management', 'capital market']):
-                return self.VALUE_SECTOR_TIER2, "금융", "금융"
             return self.VALUE_SECTOR_TIER2, "금융", "금융"
         # 부동산 - REITs
         if sector == 'Real Estate':
@@ -734,8 +699,6 @@ class TitanAnalyzer:
 
         # Tier 3 (10점): 산업재, 에너지, 통신
         if sector == 'Industrials':
-            if any(kw in industry_lower for kw in ['aerospace', 'defense', 'railroad', 'logistics', 'machinery']):
-                return self.VALUE_SECTOR_TIER3, "산업재", "산업재"
             return self.VALUE_SECTOR_TIER3, "산업재", "산업재"
         if sector == 'Energy':
             return self.VALUE_SECTOR_TIER3, "에너지", "에너지"
@@ -1056,7 +1019,6 @@ class TitanAnalyzer:
     def _detect_market_regime(self):
         """시장 상태 감지 (Bull/Bear/Sideways)"""
         try:
-            import yfinance as yf
             from ta.trend import ADXIndicator
 
             # S&P 500 분석
@@ -1152,9 +1114,6 @@ class TitanAnalyzer:
 
     def _apply_regime_adjustment(self, tech_score, fund_score, regime, is_downtrend=False, tech_breakdown=None):
         """시장 상태에 따른 점수 비율 재설계 + 추세 필터"""
-        original_tech = tech_score
-        original_fund = fund_score
-
         # ==================== 1. 추세 필터 페널티 (시장 상태 고려) ====================
         trend_penalty_applied = False
         if is_downtrend and tech_score > 0:
@@ -1173,32 +1132,19 @@ class TitanAnalyzer:
         # ==================== 2. 시장 상태별 가중치 재설계 ====================
         # 기존: 멀티플라이어 방식 → 신규: 비율 재분배 방식
         if regime == 'bull':
-            # 상승장: 기술 60 : 펀더 40
-            tech_weight = 0.6
-            fund_weight = 0.4
-            tech_score = int(tech_score * 1.2)  # 60/50 = 1.2
-            fund_score = int(fund_score * 0.8)  # 40/50 = 0.8
+            tech_score = int(tech_score * 1.2)
+            fund_score = int(fund_score * 0.8)
             adjustment = "상승장: 기술60% : 펀더40% (모멘텀 중시)"
 
         elif regime == 'bear':
-            # 하락장: 기술 40 : 펀더 60
-            tech_weight = 0.4
-            fund_weight = 0.6
-            tech_score = int(tech_score * 0.8)  # 40/50 = 0.8
-            fund_score = int(fund_score * 1.2)  # 60/50 = 1.2
+            tech_score = int(tech_score * 0.8)
+            fund_score = int(fund_score * 1.2)
             adjustment = "하락장: 기술40% : 펀더60% (안전성 중시)"
 
         elif regime == 'sideways':
-            # 횡보장: 기술 50 : 펀더 50 (균형)
-            tech_weight = 0.5
-            fund_weight = 0.5
-            tech_score = int(tech_score * 1.0)
-            fund_score = int(fund_score * 1.0)
             adjustment = "횡보장: 기술50% : 펀더50% (균형)"
 
         else:  # neutral
-            tech_weight = 0.5
-            fund_weight = 0.5
             adjustment = "중립: 조정 없음"
 
         # ==================== 3. 점수 상한선 적용 (인플레이션 방지) ====================
@@ -1217,28 +1163,6 @@ class TitanAnalyzer:
             adjustment = f"{trend_penalty_msg} + {adjustment}"
 
         return tech_score, fund_score, adjustment
-
-    def _calculate_volatility_breakout(self, hist):
-        """변동성 돌파 전략 가격 계산 (레거시 - 호환성 유지)"""
-        try:
-            if len(hist) < 2:
-                return None, None, None
-
-            # 전일 데이터
-            prev_high = hist['High'].iloc[-2]
-            prev_low = hist['Low'].iloc[-2]
-            today_open = hist['Open'].iloc[-1]
-
-            # 계산
-            range_val = prev_high - prev_low
-            breakout_price = today_open + (range_val * self.K_FACTOR)
-            target_price = breakout_price + range_val
-            stop_loss = breakout_price * self.STOP_LOSS_RATIO
-
-            return breakout_price, target_price, stop_loss
-
-        except Exception:
-            return None, None, None
 
     # ===== 스윙매매 헬퍼 메서드 =====
 
@@ -1771,9 +1695,6 @@ class TitanAnalyzer:
             current_price, contrarian_adj, hist, tech_breakdown
         )
 
-        # 레거시 호환성: breakout 가격도 유지
-        breakout, _, _ = self._calculate_volatility_breakout(hist)
-
         # 시장 상태 및 가격 정보
         market_info = self._get_market_status_and_prices(info, stock)
 
@@ -1833,9 +1754,8 @@ class TitanAnalyzer:
             'liquidity_tier': 'N/A',
             'daily_trading_value': 0,
             'market_info': market_info,
-            'buy_price': buy_price,           # 🎯 스마트 매수가
-            'buy_strategy': strategy,          # 전략 설명
-            'breakout': breakout,              # 레거시 호환
+            'buy_price': buy_price,
+            'buy_strategy': strategy,
             'target': target,
             'stop_loss': stop_loss,
             'comment': comment,
@@ -1950,7 +1870,7 @@ class TitanAnalyzer:
                 r['score'],
                 r['verdict'],
                 f"${r['price']:.2f}",
-                f"${r['breakout']:.2f}" if r['breakout'] else "N/A",
+                f"${r['buy_price']:.2f}" if r.get('buy_price') else "N/A",
                 f"${r['stop_loss']:.2f}" if r['stop_loss'] else "N/A",
                 r['comment']
             ])
@@ -2687,9 +2607,9 @@ function toggleDetail(id) {{
                 'company_name': r.get('company_name', ''),
                 'verdict': r.get('verdict', ''),
                 'buy_price': r.get('buy_price'),
-                'target_price': r.get('target_price'),
+                'target_price': r.get('target'),
                 'stop_loss': r.get('stop_loss'),
-                'strategy': r.get('strategy', ''),
+                'strategy': r.get('buy_strategy', ''),
                 'comment': r.get('comment', ''),
                 'contrarian_adjustment': r.get('contrarian_adjustment', 0),
                 'liquidity_bonus': r.get('liquidity_bonus', 0),
@@ -3180,16 +3100,6 @@ async function addToMyAssets() {{
 // 페이지 로드 시 자동 계산
 window.addEventListener('load', () => {{ calculatePortfolio(); }});
 
-// 반짝이 생성
-setInterval(() => {{
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.style.top = Math.random()*100+'%';
-    s.style.left = Math.random()*100+'%';
-    s.style.animationDelay = Math.random()*2+'s';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 4000);
-}}, 1200);
 </script>
 </body>
 </html>'''
@@ -3462,33 +3372,6 @@ h1 {{ color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; le
 
         return results
 
-    def run_full_analysis(self):
-        """전체 분석 실행 (S&P 500)"""
-        start_time = time.time()
-
-        # S&P 500 다운로드
-        sp500_tickers = self.get_sp500_tickers()
-        if not sp500_tickers:
-            print("❌ 티커 리스트를 가져올 수 없습니다.")
-            return
-
-        # Stage 1: 빠른 필터링
-        filtered_tickers = self.stage1_quick_filter(sp500_tickers)
-
-        if not filtered_tickers:
-            print("❌ 1단계 필터를 통과한 종목이 없습니다.")
-            return
-
-        # Stage 2: 정밀 분석
-        results = self.stage2_deep_analysis(filtered_tickers)
-
-        # 결과 출력
-        self.display_results(results, min_score=60)
-
-        elapsed = time.time() - start_time
-        print(f"\n⏱️  총 소요 시간: {elapsed/60:.1f}분")
-
-        return results
 
 
 # ============================================================================

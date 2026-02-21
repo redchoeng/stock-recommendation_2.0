@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>보유종목 알림 - Project Titan</title>
 <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4263eb">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <style>
@@ -25,7 +26,6 @@
     --red-bg: #fff0f6;
     --orange: #fd7e14;
     --orange-bg: #fff4e6;
-    --purple: #7c3aed;
     --radius: 16px;
     --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
 }
@@ -247,14 +247,6 @@ body {
     color: var(--text-muted);
     font-size: 0.9em;
 }
-.holding-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-}
-.holding-item:last-child { border-bottom: none; }
 .holding-info {
     flex: 1;
 }
@@ -267,19 +259,6 @@ body {
     color: var(--accent);
     font-size: 0.8em;
     font-weight: 600;
-}
-.holding-detail {
-    text-align: right;
-    margin-right: 12px;
-}
-.holding-qty {
-    font-weight: 700;
-    font-size: 0.9em;
-    margin-bottom: 2px;
-}
-.holding-avg {
-    color: var(--text-sub);
-    font-size: 0.8em;
 }
 .btn-delete {
     width: 32px;
