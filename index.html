@@ -7,6 +7,7 @@
     <title>PROJECT TITAN v2.0 - 미국 주식 투자 분석</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4263eb">
+    <script>(function(){const t=localStorage.getItem('titan_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})()</script>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
     <style>
@@ -33,6 +34,26 @@
             --radius: 16px;
             --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
             --shadow-hover: 0 8px 24px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+        }
+        [data-theme="dark"] {
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --text: #e4e8f0;
+            --text-sub: #7a8494;
+            --text-muted: #4a5060;
+            --border: #252836;
+            --accent: #5c7cfa;
+            --accent-light: #1a2040;
+            --green: #20c997;
+            --green-bg: #0b2520;
+            --red: #f06595;
+            --red-bg: #2b0e1c;
+            --orange: #fd7e14;
+            --orange-bg: #2b1a08;
+            --purple: #9775fa;
+            --purple-bg: #1e1730;
+            --shadow: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.45), 0 2px 4px rgba(0,0,0,0.25);
         }
 
         body {
@@ -91,6 +112,21 @@
             background: var(--accent-light);
             color: var(--accent);
         }
+
+        /* 다크모드 토글 */
+        .theme-toggle {
+            background: var(--surface);
+            border: none;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, box-shadow 0.2s;
+            flex-shrink: 0;
+        }
+        .theme-toggle:hover { box-shadow: var(--shadow-hover); }
 
         /* 유저 바 */
         .user-bar {
@@ -358,6 +394,7 @@
             <div class="user-bar">
                 <span class="admin-badge" id="adminBadge">ADMIN</span>
                 <span class="user-name" id="userName">로딩...</span>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="다크모드 전환">🌙</button>
                 <button class="btn-logout" id="logoutBtn" onclick="logout()">로그아웃</button>
             </div>
 
@@ -600,6 +637,42 @@
         }
         showNextUpdate();
         setInterval(showNextUpdate, 60000);
+
+        // 다크모드 토글
+        (function initTheme() {
+            const saved = localStorage.getItem('titan_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', saved);
+            document.getElementById('themeToggle').textContent = saved === 'dark' ? '☀️' : '🌙';
+        })();
+
+        function toggleTheme() {
+            const cur = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = cur === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('titan_theme', next);
+            document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
+            reloadHeatmap(next);
+        }
+
+        function reloadHeatmap(theme) {
+            const wrap = document.querySelector('.tradingview-widget-container');
+            if (!wrap) return;
+            wrap.querySelector('.tradingview-widget-container__widget').innerHTML = '';
+            const oldScript = wrap.querySelector('script');
+            if (oldScript) oldScript.remove();
+            const s = document.createElement('script');
+            s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js';
+            s.async = true;
+            s.textContent = JSON.stringify({
+                exchanges: [], dataSource: 'SPX500', grouping: 'sector',
+                blockSize: 'market_cap_basic', blockColor: 'change',
+                locale: 'en', colorTheme: theme,
+                hasTopBar: false, isZoomEnabled: true,
+                hasSymbolTooltip: true, isMonoSize: false,
+                width: '100%', height: '500'
+            });
+            wrap.appendChild(s);
+        }
 
         // PWA Service Worker 등록
         if ('serviceWorker' in navigator) {
