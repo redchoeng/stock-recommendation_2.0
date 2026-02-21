@@ -498,14 +498,18 @@
             <div class="stats">
                 <div class="stat">
                     <div class="stat-value" id="updateTime">로딩 중...</div>
-                    <div class="stat-label">📅 마지막 업데이트 (KST)</div>
+                    <div class="stat-label">📅 마지막 업데이트 (ET)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="nextUpdate">계산 중...</div>
+                    <div class="stat-label">⏰ 다음 업데이트</div>
                 </div>
                 <div class="stat">
                     <div class="stat-value">60+</div>
                     <div class="stat-label">분석 종목</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">9회/일</div>
+                    <div class="stat-value">10회/일</div>
                     <div class="stat-label">자동 업데이트</div>
                 </div>
             </div>
@@ -746,19 +750,46 @@
             window.location.href = 'login.html';
         }
 
-        // 현재 시간 표시 (한국시간)
-        function updateTime() {
-            const now = new Date();
-            const kstTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
-            const formatted = (kstTime.getMonth() + 1) + '/' +
-                            kstTime.getDate() + ' ' +
-                            String(kstTime.getHours()).padStart(2, '0') + ':' +
-                            String(kstTime.getMinutes()).padStart(2, '0');
-            document.getElementById('updateTime').textContent = formatted;
-        }
+        // 실제 리포트 생성 시간 표시
+        fetch('last_updated.json?' + Date.now())
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById('updateTime').textContent = d.timestamp + ' ' + d.timezone;
+            })
+            .catch(() => {
+                document.getElementById('updateTime').textContent = '-';
+            });
 
-        updateTime();
-        setInterval(updateTime, 1000);
+        // 다음 업데이트 시간 계산 (미국 ET 기준)
+        function showNextUpdate() {
+            // ET 기준 스케줄: 프리마켓~애프터장
+            const scheduleET = [
+                [4, 0], [7, 0], [9, 30], [10, 30], [13, 30], [15, 30], [16, 30], [18, 0], [19, 0], [20, 0]
+            ];
+            const now = new Date(new Date().toLocaleString("en-US", {timeZone: "America/New_York"}));
+            const day = now.getDay(); // 0=Sun
+            const h = now.getHours();
+            const m = now.getMinutes();
+            const nowMin = h * 60 + m;
+
+            let nextLabel = '';
+            if (day >= 1 && day <= 5) {
+                for (const [sh, sm] of scheduleET) {
+                    if (nowMin < sh * 60 + sm) {
+                        nextLabel = String(sh).padStart(2,'0') + ':' + String(sm).padStart(2,'0') + ' ET';
+                        break;
+                    }
+                }
+            }
+            if (!nextLabel) {
+                const daysUntilMon = day === 5 ? 3 : day === 6 ? 2 : 1;
+                nextLabel = '월요일 04:00 ET';
+                if (day >= 1 && day < 5) nextLabel = '내일 04:00 ET';
+            }
+            document.getElementById('nextUpdate').textContent = nextLabel;
+        }
+        showNextUpdate();
+        setInterval(showNextUpdate, 60000);
 
         // 랜덤 반짝이 추가
         function createSparkle() {

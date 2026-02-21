@@ -2813,6 +2813,18 @@ function toggleDetail(id) {{
         # Titan 점수 캐시 저장 (ML 포트폴리오에서 동일 점수 사용)
         self._save_score_cache(results, report_type)
 
+        # 마지막 업데이트 시간 저장 (index.html에서 표시용)
+        import json as _json
+        import pytz as _pytz
+        et_tz = _pytz.timezone('America/New_York')
+        now_et = datetime.now(et_tz)
+        with open('last_updated.json', 'w', encoding='utf-8') as _f:
+            _json.dump({
+                'timestamp': now_et.strftime('%Y-%m-%d %H:%M'),
+                'timezone': 'ET',
+                'mode': report_type
+            }, _f)
+
         elapsed = time.time() - start_time
         print(f"\n⏱️  총 소요 시간: {elapsed/60:.1f}분")
 
