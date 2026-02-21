@@ -2253,6 +2253,7 @@ class TitanAnalyzer:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{report_type} - Titan Analysis - {now.strftime("%Y-%m-%d")}</title>
+    <script>(function(){{const t=localStorage.getItem('titan_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}})()</script>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
     <style>
@@ -2266,11 +2267,34 @@ class TitanAnalyzer:
             --accent: {primary_color};
             --accent-light: {('#edf2ff' if '5BA3E0' in primary_color else '#fff8e1' if 'E8A838' in primary_color else '#f3f0ff')};
             --green: #20c997;
+            --green-bg: #e6fcf5;
             --red: #f06595;
+            --red-bg: #fff0f6;
+            --orange: #fd7e14;
             --radius: 16px;
             --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
             --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
         }}
+        [data-theme="dark"] {{
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --text: #e4e8f0;
+            --text-sub: #7a8494;
+            --text-muted: #4a5060;
+            --border: #252836;
+            --accent-light: {('#0d1f3a' if '5BA3E0' in primary_color else '#2a1f08' if 'E8A838' in primary_color else '#1e1730')};
+            --green-bg: #0b2520;
+            --red-bg: #2b0e1c;
+            --shadow: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.45);
+        }}
+        .theme-toggle {{
+            background: var(--surface); border: none; border-radius: 10px;
+            box-shadow: var(--shadow); cursor: pointer; font-size: 1.05em;
+            width: 34px; height: 34px; display: flex; align-items: center;
+            justify-content: center; transition: box-shadow 0.2s; flex-shrink: 0;
+        }}
+        .theme-toggle:hover {{ box-shadow: var(--shadow-hover); }}
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{
             font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -2470,9 +2494,12 @@ class TitanAnalyzer:
 </head>
 <body>
     <div class="container">
-        <div class="market-switcher">
-            <span class="market-btn active">US</span>
-            <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:20px;">
+            <div class="market-switcher" style="margin-bottom:0;">
+                <span class="market-btn active">US</span>
+                <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="다크모드 전환">🌙</button>
         </div>
         <a href="index.html" class="back-link">&larr; 메인으로</a>
         <div class="header">
@@ -2894,6 +2921,19 @@ function toggleDetail(id) {{
         el.classList.add('open');
         btn.textContent = '상세 분석 ▲';
     }}
+}}
+(function(){{
+    const saved = localStorage.getItem('titan_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+}})();
+function toggleTheme() {{
+    const cur = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('titan_theme', next);
+    document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
 }}
 </script>
 </body>
