@@ -2006,16 +2006,13 @@ class TitanAnalyzer:
             strong_buy_threshold = 80
             buy_threshold = 70
 
-        # 리포트 타입에 따른 색상 및 아이콘 설정
+        # 리포트 타입에 따른 색상 설정
         if "NASDAQ" in report_type:
             primary_color = "#5BA3E0"
-            emoji = "🚀"
         elif "Value" in report_type:
             primary_color = "#E8A838"
-            emoji = "💰"
         else:
             primary_color = "#7B68EE"
-            emoji = "⭐"
 
         html = f'''<!DOCTYPE html>
 <html lang="ko">
@@ -2023,386 +2020,223 @@ class TitanAnalyzer:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{report_type} - Titan Analysis - {now.strftime("%Y-%m-%d")}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
     <style>
+        :root {{
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --text: #191f28;
+            --text-sub: #8b95a1;
+            --text-muted: #b0b8c1;
+            --border: #e5e8eb;
+            --accent: {primary_color};
+            --accent-light: {('#edf2ff' if '5BA3E0' in primary_color else '#fff8e1' if 'E8A838' in primary_color else '#f3f0ff')};
+            --green: #20c997;
+            --red: #f06595;
+            --radius: 16px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+        }}
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{
-            font-family: 'Noto Sans KR', sans-serif;
-            background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
-            background-attachment: fixed;
+            font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             padding: 20px;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }}
-        .container {{ max-width: 1200px; margin: 0 auto; }}
+        .container {{ max-width: 960px; margin: 0 auto; }}
+        .market-switcher {{
+            display: flex; justify-content: center; gap: 4px; margin-bottom: 20px;
+            background: var(--surface); border-radius: 12px; padding: 4px;
+            box-shadow: var(--shadow); width: fit-content; margin-left: auto; margin-right: auto;
+        }}
+        .market-btn {{
+            padding: 10px 24px; font-size: 0.9em; font-weight: 600; font-family: inherit;
+            border: none; border-radius: 10px; cursor: pointer; transition: all 0.2s;
+            text-decoration: none; color: var(--text-sub); display: flex; align-items: center; gap: 6px; background: transparent;
+        }}
+        .market-btn.active {{ background: var(--accent); color: white; }}
+        .market-btn:not(.active):hover {{ background: var(--accent-light); color: var(--accent); }}
+        .back-link {{
+            display: block; text-align: center; margin-bottom: 16px;
+            color: var(--text-sub); text-decoration: none; font-weight: 600; font-size: 0.9em;
+        }}
+        .back-link:hover {{ color: var(--accent); }}
         .header {{
-            background: white;
-            border-radius: 30px;
-            padding: 35px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 0 {primary_color};
-            border: 4px solid #5D4E37;
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }}
-        .header h1 {{ color: #5D4E37; font-size: 2em; margin-top: 10px; }}
-        .header .subtitle {{ color: {primary_color}; margin-top: 10px; font-size: 1.1em; }}
-        .header .date {{ color: #7B6B4F; margin-top: 10px; font-size: 0.9em; }}
+        .header::before {{
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--accent), {('#7c3aed' if '5BA3E0' in primary_color else '#f59f00' if 'E8A838' in primary_color else '#9775fa')});
+        }}
+        .header h1 {{ color: var(--text); font-size: 1.6em; font-weight: 800; margin-top: 8px; letter-spacing: -0.02em; }}
+        .header .subtitle {{ color: var(--text-sub); margin-top: 8px; font-size: 0.95em; }}
+        .header .date {{ color: var(--text-muted); margin-top: 8px; font-size: 0.85em; }}
+        .titan-badge {{
+            display: inline-block; background: var(--accent); color: white;
+            padding: 4px 12px; border-radius: 8px; font-size: 0.7em; margin-left: 8px; font-weight: 700;
+        }}
         .summary {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px; margin-bottom: 20px;
         }}
         .summary-card {{
-            background: linear-gradient(180deg, #FFF8DC, #FAEBD7);
-            border-radius: 20px;
-            padding: 20px;
-            border: 3px solid #5D4E37;
-            text-align: center;
+            background: var(--surface); border-radius: var(--radius); padding: 18px;
+            box-shadow: var(--shadow); text-align: center;
         }}
-        .summary-card .label {{ color: #7B6B4F; margin-bottom: 8px; }}
-        .summary-card .value {{ color: #FF6B35; font-size: 1.8em; font-weight: bold; }}
+        .summary-card .label {{ color: var(--text-sub); margin-bottom: 6px; font-size: 0.85em; }}
+        .summary-card .value {{ color: var(--accent); font-size: 1.5em; font-weight: 700; }}
         .stock-card {{
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 15px;
-            border: 3px solid #5D4E37;
-            box-shadow: 0 5px 0 {primary_color};
-            position: relative;
+            background: var(--surface); border-radius: var(--radius); padding: 24px;
+            margin-bottom: 12px; box-shadow: var(--shadow); position: relative;
+            transition: box-shadow 0.2s;
         }}
+        .stock-card:hover {{ box-shadow: var(--shadow-hover); }}
         .stock-card .rank {{
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #FFD700;
-            color: #5D4E37;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2em;
-            border: 2px solid #5D4E37;
+            position: absolute; top: 12px; left: 12px;
+            background: var(--accent); color: white;
+            width: 36px; height: 36px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.9em;
         }}
-        .stock-card h2 {{ color: #5D4E37; margin-bottom: 10px; padding-left: 50px; }}
-        .stock-card .ticker {{ color: {primary_color}; font-weight: bold; font-size: 1.1em; }}
-        .stock-card .info {{ margin-top: 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }}
-        .stock-card .info-item {{ padding: 8px; background: #F5F5F5; border-radius: 10px; }}
-        .stock-card .info-label {{ font-size: 0.85em; color: #7B6B4F; }}
-        .stock-card .info-value {{ font-weight: bold; color: #5D4E37; margin-top: 3px; }}
+        .stock-card h2 {{ color: var(--text); margin-bottom: 8px; padding-left: 48px; font-size: 1.2em; font-weight: 700; }}
+        .stock-card .ticker {{ color: var(--accent); font-weight: 700; font-size: 1.05em; }}
+        .stock-card .info {{ margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }}
+        .stock-card .info-item {{ padding: 10px; background: var(--bg); border-radius: 12px; }}
+        .stock-card .info-label {{ font-size: 0.8em; color: var(--text-sub); }}
+        .stock-card .info-value {{ font-weight: 700; color: var(--text); margin-top: 2px; }}
         .score-badge {{
-            background: {primary_color};
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            float: right;
-            font-weight: bold;
-            font-size: 1.1em;
+            background: var(--accent); color: white; padding: 6px 16px; border-radius: 10px;
+            float: right; font-weight: 700; font-size: 1em;
         }}
-        .score-badge.high {{ background: #4CAF50; }}
-        .score-badge.strong {{ background: #FF6B35; }}
+        .score-badge.high {{ background: var(--green); }}
+        .score-badge.strong {{ background: #f76707; }}
         .verdict {{
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            font-weight: bold;
-            margin-top: 10px;
+            display: inline-block; padding: 4px 14px; border-radius: 8px;
+            font-size: 0.85em; font-weight: 700; margin-top: 8px;
         }}
-        .verdict.strong-buy {{ background: #4CAF50; color: white; }}
-        .verdict.buy {{ background: #8BC34A; color: white; }}
-        .verdict.hold {{ background: #FFC107; color: #5D4E37; }}
+        .verdict.strong-buy {{ background: #e6fcf5; color: #0ca678; }}
+        .verdict.buy {{ background: #e6fcf5; color: var(--green); }}
+        .verdict.hold {{ background: #fff9db; color: #e67700; }}
         .comment {{
-            margin-top: 10px;
-            padding: 10px;
-            background: #FFF9E6;
-            border-left: 4px solid {primary_color};
-            border-radius: 5px;
-            font-size: 0.9em;
-            color: #5D4E37;
+            margin-top: 12px; padding: 12px 14px; background: var(--bg);
+            border-left: 3px solid var(--accent); border-radius: 8px;
+            font-size: 0.88em; color: var(--text); line-height: 1.6;
         }}
         .analyst-view {{
-            margin-top: 14px;
-            padding: 18px 20px;
-            background: linear-gradient(135deg, #FAFBFC 0%, #EDF1F5 100%);
-            border: 2px solid #D5DDE5;
-            border-radius: 14px;
+            margin-top: 14px; padding: 18px 20px;
+            background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
         }}
         .analyst-header {{
-            font-weight: 800;
-            font-size: 0.95em;
-            color: #2C3E50;
-            margin-bottom: 14px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #E0E6ED;
+            font-weight: 700; font-size: 0.92em; color: var(--text);
+            margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
         }}
         .analyst-comment {{
-            font-size: 0.88em;
-            color: #34495E;
-            line-height: 1.85;
-            margin-bottom: 16px;
-            padding: 12px 14px;
-            background: white;
-            border-radius: 10px;
-            border-left: 3px solid #667eea;
+            font-size: 0.86em; color: var(--text); line-height: 1.8;
+            margin-bottom: 14px; padding: 12px 14px; background: var(--surface);
+            border-radius: 10px; border-left: 3px solid var(--accent);
         }}
-        .wall-street {{
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 14px;
-        }}
-        .ws-tag {{
-            padding: 7px 14px;
-            border-radius: 10px;
-            font-size: 0.84em;
-            font-weight: 700;
-            letter-spacing: -0.2px;
-        }}
-        .ws-consensus {{
-            background: #E8F5E9;
-            color: #2E7D32;
-            border: 1px solid #C8E6C9;
-        }}
-        .ws-target {{
-            background: #E3F2FD;
-            color: #1565C0;
-            border: 1px solid #BBDEFB;
-        }}
+        .wall-street {{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }}
+        .ws-tag {{ padding: 6px 12px; border-radius: 8px; font-size: 0.82em; font-weight: 700; }}
+        .ws-consensus {{ background: #e6fcf5; color: #0ca678; }}
+        .ws-target {{ background: #edf2ff; color: #4263eb; }}
         .ws-news {{
-            font-size: 0.83em;
-            color: #5D6D7E;
-            line-height: 1.6;
-            padding: 10px 14px;
-            background: white;
-            border-radius: 10px;
-            border: 1px solid #E8ECF0;
+            font-size: 0.82em; color: var(--text-sub); line-height: 1.6;
+            padding: 10px 14px; background: var(--surface); border-radius: 10px; border: 1px solid var(--border);
         }}
-        .ws-news-item {{
-            padding: 4px 0;
-        }}
-        .ws-news-item + .ws-news-item {{
-            border-top: 1px solid #F0F2F5;
-            margin-top: 4px;
-            padding-top: 8px;
-        }}
-        .ws-news-pub {{
-            color: #95A5B0;
-            font-size: 0.9em;
-        }}
-        .back-link {{
-            display: block;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #5D4E37;
-            text-decoration: none;
-            font-weight: bold;
-        }}
-        .back-link:hover {{ color: {primary_color}; }}
-        .footer {{
-            background: rgba(255,255,255,0.9);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            color: #7B6B4F;
-            margin-top: 30px;
-        }}
-        .titan-badge {{
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            margin-left: 10px;
-            font-weight: bold;
-        }}
-        .score-breakdown {{
-            margin: 15px 0;
-            padding: 15px;
-            background: #F8F9FA;
-            border-radius: 10px;
-            border: 2px solid #E0E0E0;
-            display: none;
-        }}
-        .score-breakdown.open {{
-            display: block;
-        }}
+        .ws-news-item {{ padding: 4px 0; }}
+        .ws-news-item + .ws-news-item {{ border-top: 1px solid var(--border); margin-top: 4px; padding-top: 8px; }}
+        .ws-news-pub {{ color: var(--text-muted); font-size: 0.9em; }}
         .detail-toggle {{
-            display: inline-block;
-            margin-top: 10px;
-            padding: 6px 18px;
-            background: linear-gradient(135deg, #F8F9FA, #E8E8E8);
-            color: #5D4E37;
-            border: 2px solid #C4A35A;
-            border-radius: 15px;
-            font-size: 0.85em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
+            display: inline-block; margin-top: 10px; padding: 6px 16px;
+            background: var(--bg); color: var(--text-sub); border: 1px solid var(--border);
+            border-radius: 10px; font-size: 0.84em; font-weight: 600;
+            cursor: pointer; transition: all 0.2s; font-family: inherit;
         }}
-        .detail-toggle:hover {{ background: #FFF8DC; transform: translateY(-1px); }}
-        .score-breakdown h3 {{
-            color: #5D4E37;
-            margin-bottom: 12px;
-            font-size: 1em;
-        }}
-        .breakdown-section {{
-            margin-bottom: 12px;
-        }}
-        .breakdown-title {{
-            font-weight: bold;
-            color: {primary_color};
-            margin-bottom: 8px;
-            font-size: 0.95em;
-        }}
-        .breakdown-items {{
-            display: grid;
-            gap: 6px;
-        }}
+        .detail-toggle:hover {{ background: var(--accent-light); color: var(--accent); border-color: var(--accent); }}
+        .score-breakdown {{ margin: 14px 0; padding: 16px; background: var(--bg); border-radius: 12px; border: 1px solid var(--border); display: none; }}
+        .score-breakdown.open {{ display: block; }}
+        .score-breakdown h3 {{ color: var(--text); margin-bottom: 12px; font-size: 0.95em; }}
+        .breakdown-section {{ margin-bottom: 12px; }}
+        .breakdown-title {{ font-weight: 700; color: var(--accent); margin-bottom: 8px; font-size: 0.9em; }}
+        .breakdown-items {{ display: grid; gap: 4px; }}
         .breakdown-item {{
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            gap: 10px;
-            padding: 6px 10px;
-            background: white;
-            border-radius: 6px;
-            align-items: center;
-            font-size: 0.85em;
+            display: grid; grid-template-columns: 1fr auto auto; gap: 10px;
+            padding: 8px 12px; background: var(--surface); border-radius: 8px;
+            align-items: center; font-size: 0.84em;
         }}
-        .breakdown-item .criterion {{
-            color: #5D4E37;
-            font-weight: 500;
-        }}
-        .breakdown-item .criterion-value {{
-            color: #7B6B4F;
-            text-align: right;
-        }}
-        .breakdown-item .criterion-score {{
-            color: {primary_color};
-            font-weight: bold;
-            text-align: right;
-            min-width: 50px;
-        }}
-        .highlight-price {{
-            background: linear-gradient(135deg, #FFF3CD, #FFE5B4) !important;
-            border: 2px solid {primary_color} !important;
-            font-weight: bold;
-        }}
-        /* 점수 체계 버튼 */
+        .breakdown-item .criterion {{ color: var(--text); font-weight: 500; }}
+        .breakdown-item .criterion-value {{ color: var(--text-sub); text-align: right; }}
+        .breakdown-item .criterion-score {{ color: var(--accent); font-weight: 700; text-align: right; min-width: 50px; }}
+        .highlight-price {{ background: var(--accent-light) !important; font-weight: bold; }}
         .scoring-btn {{
-            display: inline-block;
-            margin-top: 12px;
-            padding: 8px 22px;
-            background: linear-gradient(135deg, #5D4E37, #7B6B4F);
-            color: #FFF8DC;
-            border: 2px solid #5D4E37;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            display: inline-block; margin-top: 12px; padding: 8px 20px;
+            background: var(--text); color: white; border: none; border-radius: 10px;
+            font-size: 0.85em; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit;
         }}
-        .scoring-btn:hover {{ background: linear-gradient(135deg, #7B6B4F, #9B8B6F); transform: translateY(-1px); }}
-        /* 모달 */
-        .scoring-overlay {{
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-        }}
+        .scoring-btn:hover {{ opacity: 0.85; transform: translateY(-1px); }}
+        .scoring-overlay {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(4px); }}
         .scoring-overlay.active {{ display: flex; }}
-        .scoring-modal {{
-            width: 95%; max-width: 1400px; height: 92vh;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            position: relative;
+        .scoring-modal {{ width: 95%; max-width: 1200px; height: 90vh; border-radius: var(--radius); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }}
+        .scoring-modal iframe {{ width: 100%; height: 100%; border: none; }}
+        .scoring-close {{ position: absolute; top: 12px; right: 16px; width: 36px; height: 36px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 10px; font-size: 1.2em; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; }}
+        .scoring-close:hover {{ background: rgba(240,101,149,0.8); }}
+        .footer {{
+            background: var(--surface); border-radius: var(--radius); padding: 20px;
+            text-align: center; color: var(--text-muted); margin-top: 24px;
+            box-shadow: var(--shadow); font-size: 0.85em; line-height: 1.7;
         }}
-        .scoring-modal iframe {{
-            width: 100%; height: 100%; border: none;
-        }}
-        .scoring-close {{
-            position: absolute;
-            top: 12px; right: 16px;
-            width: 36px; height: 36px;
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.3em;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }}
-        .scoring-close:hover {{ background: rgba(200,0,0,0.8); }}
-
-        /* ===== 모바일 반응형 ===== */
         @media (max-width: 768px) {{
-            body {{ padding: 10px; }}
-            .container {{ max-width: 100%; }}
-            .header {{ padding: 20px 15px; border-radius: 20px; }}
-            .header h1 {{ font-size: 1.3em; }}
-            .header .subtitle {{ font-size: 0.9em; }}
-            .titan-badge {{ display: block; margin: 8px auto 0; }}
+            body {{ padding: 12px; }}
+            .header {{ padding: 24px 16px; }}
+            .header h1 {{ font-size: 1.25em; }}
+            .titan-badge {{ display: block; margin: 8px auto 0; width: fit-content; }}
             .summary {{ grid-template-columns: repeat(2, 1fr); gap: 8px; }}
-            .summary-card {{ padding: 12px 8px; border-radius: 14px; }}
-            .summary-card .value {{ font-size: 1.3em; }}
-            .summary-card .label {{ font-size: 0.8em; }}
-            .stock-card {{ padding: 15px 12px; border-radius: 16px; margin-bottom: 12px; }}
-            .stock-card .rank {{ width: 32px; height: 32px; font-size: 1em; top: 8px; left: 8px; }}
-            .stock-card h2 {{ padding-left: 42px; font-size: 1.1em; padding-right: 70px; }}
-            .score-badge {{ padding: 5px 12px; font-size: 0.95em; }}
+            .summary-card {{ padding: 14px 8px; }}
+            .summary-card .value {{ font-size: 1.2em; }}
+            .stock-card {{ padding: 18px 14px; }}
+            .stock-card .rank {{ width: 30px; height: 30px; font-size: 0.85em; border-radius: 8px; }}
+            .stock-card h2 {{ padding-left: 40px; font-size: 1.05em; padding-right: 70px; }}
+            .score-badge {{ padding: 5px 12px; font-size: 0.9em; }}
             .stock-card .info {{ grid-template-columns: repeat(2, 1fr); gap: 6px; }}
-            .stock-card .info-item {{ padding: 6px; border-radius: 8px; }}
-            .stock-card .info-label {{ font-size: 0.75em; }}
-            .stock-card .info-value {{ font-size: 0.9em; }}
-            .score-breakdown {{ padding: 10px; margin: 10px 0; }}
-            .score-breakdown h3 {{ font-size: 0.9em; }}
-            .breakdown-title {{ font-size: 0.85em; }}
-            .breakdown-item {{ grid-template-columns: 1fr auto; gap: 4px; padding: 5px 8px; font-size: 0.8em; }}
+            .breakdown-item {{ grid-template-columns: 1fr auto; gap: 4px; font-size: 0.8em; }}
             .breakdown-item .criterion-value {{ display: none; }}
-            .comment {{ font-size: 0.82em; padding: 8px; }}
+            .comment {{ font-size: 0.82em; }}
             .analyst-view {{ padding: 14px; }}
-            .analyst-comment {{ font-size: 0.82em; padding: 10px 12px; margin-bottom: 12px; line-height: 1.75; }}
-            .wall-street {{ gap: 8px; margin-bottom: 10px; }}
+            .analyst-comment {{ font-size: 0.82em; padding: 10px 12px; margin-bottom: 12px; }}
+            .wall-street {{ gap: 6px; }}
             .ws-tag {{ font-size: 0.78em; padding: 5px 10px; }}
             .ws-news {{ padding: 8px 10px; font-size: 0.8em; }}
             .verdict {{ font-size: 0.8em; padding: 4px 12px; }}
             .scoring-modal {{ width: 100%; height: 95vh; border-radius: 10px; }}
-            .footer {{ padding: 15px 10px; font-size: 0.85em; }}
         }}
         @media (max-width: 400px) {{
             .header h1 {{ font-size: 1.1em; }}
             .summary {{ grid-template-columns: 1fr 1fr; gap: 6px; }}
-            .summary-card .value {{ font-size: 1.1em; }}
-            .stock-card h2 {{ font-size: 1em; padding-right: 60px; }}
-            .score-badge {{ padding: 4px 10px; font-size: 0.85em; }}
-            .stock-card .info {{ grid-template-columns: 1fr 1fr; }}
-            .breakdown-item {{ font-size: 0.75em; }}
+            .stock-card h2 {{ font-size: 0.95em; }}
         }}
     </style>
 </head>
 <body>
     <div class="container">
-        <div style="display:flex;justify-content:center;gap:0;margin-bottom:15px;">
-            <span style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;display:flex;align-items:center;gap:8px;border-radius:20px 0 0 20px;border-right:none;background:linear-gradient(135deg,#5D4E37,#7B6B4F);color:white;box-shadow:0 4px 0 #3D2E17;">🇺🇸 미국장</span>
-            <a href="https://redchoeng.github.io/stock-recommendation_kr/" style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;text-decoration:none;color:#5D4E37;display:flex;align-items:center;gap:8px;border-radius:0 20px 20px 0;background:white;">🇰🇷 한국장</a>
+        <div class="market-switcher">
+            <span class="market-btn active">US</span>
+            <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
         </div>
-        <a href="index.html" class="back-link">← 메인으로</a>
+        <a href="index.html" class="back-link">&larr; 메인으로</a>
         <div class="header">
-            <div style="font-size: 3em;">{emoji}</div>
             <h1>{report_type} Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
-            <div class="subtitle">Advanced Fundamental + Technical Analysis</div>
+            <div class="subtitle">Fundamental + Technical + Volatility Breakout Analysis</div>
             <div class="date">{now.strftime("%Y-%m-%d %H:%M")} KST 업데이트</div>
             <button class="scoring-btn" onclick="document.getElementById('scoringOverlay').classList.add('active')">📐 점수 체계 보기</button>
         </div>
@@ -2430,10 +2264,10 @@ class TitanAnalyzer:
                 <div class="label">평균 점수</div>
                 <div class="value">{sum(r['score'] for r in filtered) / len(filtered) if filtered else 0:.0f}점</div>
             </div>
-            <div class="summary-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                <div class="label" style="color: rgba(255,255,255,0.9);">🌍 시장 상태 및 평가 기준</div>
-                <div class="value" style="font-size: 1.1em;">{filtered[0].get('regime_description', 'N/A') if filtered else 'N/A'}<br>
-                <span style="font-size: 0.85em; opacity: 0.9;">Strong Buy ≥{strong_buy_threshold}점 | Buy ≥{buy_threshold}점</span></div>
+            <div class="summary-card" style="grid-column: 1 / -1; background: var(--accent); color: white;">
+                <div class="label" style="color: rgba(255,255,255,0.8);">시장 상태 및 평가 기준</div>
+                <div class="value" style="font-size: 1em; color: white;">{filtered[0].get('regime_description', 'N/A') if filtered else 'N/A'}<br>
+                <span style="font-size: 0.8em; opacity: 0.85;">Strong Buy ≥{strong_buy_threshold}점 | Buy ≥{buy_threshold}점</span></div>
             </div>
         </div>
 '''
@@ -2747,10 +2581,8 @@ class TitanAnalyzer:
 
         html += f'''
         <div class="footer">
-            <strong>⚠️ 투자 유의사항</strong><br>
-            본 리포트는 PROJECT TITAN 알고리즘 기반 투자 참고 자료이며, 투자 손실에 대한 책임은 투자자 본인에게 있습니다.<br>
-            <small>Powered by Titan v2.0 | Fundamental (ROE, OPM, Sector) + Technical (MA5/20/60/120, Ichimoku, RSI, Volume) + Contrarian Hybrid Strategy</small><br>
-            <small>🎯 과매도 우량주 즉시매수 | 📊 일반주 MA20풀백 | ⚠️ 과열주 조정대기</small>
+            <p>Project Titan v2.0 &middot; Fundamental + Technical + Contrarian Hybrid Strategy</p>
+            <p style="margin-top: 4px;">본 리포트는 알고리즘 기반 투자 참고 자료이며, 투자 손실에 대한 책임은 본인에게 있습니다.</p>
         </div>
     </div>
 <script>
@@ -2947,114 +2779,136 @@ function toggleDetail(id) {{
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio Builder - Titan v2.0</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <style>
+:root {{
+    --bg: #f7f8fa; --surface: #ffffff; --text: #191f28; --text-sub: #8b95a1;
+    --text-muted: #b0b8c1; --border: #e5e8eb; --accent: #20c997;
+    --accent-dark: #0ca678; --radius: 16px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+}}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 body {{
-    font-family: 'Noto Sans KR', -apple-system, sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
-    background-attachment: fixed;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
+    font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    min-height: 100vh; background: var(--bg); color: var(--text);
+    padding: 20px; -webkit-font-smoothing: antialiased;
 }}
-.cloud {{ position:fixed; background:white; border-radius:50px; opacity:0.9; animation:float 20s infinite ease-in-out; z-index:0; }}
-.cloud::before,.cloud::after {{ content:''; position:absolute; background:white; border-radius:50%; }}
-.cloud-1 {{ width:100px; height:40px; top:8%; left:-100px; }}
-.cloud-1::before {{ width:50px; height:50px; top:-25px; left:15px; }}
-.cloud-1::after {{ width:35px; height:35px; top:-15px; left:55px; }}
-.cloud-2 {{ width:120px; height:45px; top:15%; left:-120px; animation-delay:-7s; }}
-.cloud-2::before {{ width:55px; height:55px; top:-30px; left:20px; }}
-.cloud-2::after {{ width:40px; height:40px; top:-18px; left:65px; }}
-@keyframes float {{ 0%{{transform:translateX(0)}} 100%{{transform:translateX(calc(100vw + 200px))}} }}
-.sparkle {{ position:fixed; width:10px; height:10px; background:#FFD700; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation:sparkle 2s infinite; z-index:1; }}
-@keyframes sparkle {{ 0%,100%{{opacity:0;transform:scale(0)}} 50%{{opacity:1;transform:scale(1)}} }}
-.container {{ position:relative; z-index:10; max-width:960px; margin:0 auto; padding-top:20px; }}
-.back-link {{ display:inline-block; color:#5D4E37; text-decoration:none; font-weight:bold; margin-bottom:15px; padding:8px 20px; background:rgba(255,255,255,0.8); border-radius:20px; border:2px solid #C4A35A; }}
-.back-link:hover {{ background:white; }}
-.header-bubble {{ background:white; border-radius:30px; padding:25px 30px; margin-bottom:25px; box-shadow:0 8px 0 #27AE60, 0 12px 20px rgba(0,0,0,0.15); border:4px solid #5D4E37; text-align:center; }}
-.emoji-icon {{ font-size:3em; margin-bottom:8px; animation:bounce 2s infinite; }}
-@keyframes bounce {{ 0%,100%{{transform:translateY(0)}} 50%{{transform:translateY(-10px)}} }}
-h1 {{ color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #D5F5E3; }}
-.subtitle {{ color:#7B6B4F; font-size:0.95em; }}
-.timestamp {{ color:#999; font-size:0.8em; margin-top:5px; }}
+.container {{ max-width:780px; margin:0 auto; }}
+.market-switcher {{
+    display:flex; justify-content:center; gap:4px; margin-bottom:20px;
+    background:var(--surface); border-radius:12px; padding:4px;
+    box-shadow:var(--shadow); width:fit-content; margin-left:auto; margin-right:auto;
+}}
+.market-btn {{
+    padding:10px 24px; font-size:0.9em; font-weight:600; font-family:inherit;
+    border:none; border-radius:10px; cursor:pointer; transition:all 0.2s;
+    text-decoration:none; color:var(--text-sub); display:flex; align-items:center; gap:6px; background:transparent;
+}}
+.market-btn.active {{ background:var(--accent); color:white; }}
+.market-btn:not(.active):hover {{ background:#e6fcf5; color:var(--accent-dark); }}
+.back-link {{
+    display:block; text-align:center; margin-bottom:16px;
+    color:var(--text-sub); text-decoration:none; font-weight:600; font-size:0.9em;
+}}
+.back-link:hover {{ color:var(--accent); }}
+.header-card {{
+    background:var(--surface); border-radius:var(--radius); padding:28px;
+    margin-bottom:20px; box-shadow:var(--shadow); text-align:center;
+    position:relative; overflow:hidden;
+}}
+.header-card::before {{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #20c997, #12b886); }}
+h1 {{ color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; letter-spacing:-0.02em; }}
+.subtitle {{ color:var(--text-sub); font-size:0.9em; }}
+.timestamp {{ color:var(--text-muted); font-size:0.8em; margin-top:6px; }}
 
 /* 입력 섹션 */
-.input-section {{ background:linear-gradient(180deg,#FFF8DC,#FAEBD7); border:4px solid #5D4E37; border-radius:20px; padding:25px; margin-bottom:25px; box-shadow:0 6px 0 #C4A35A; }}
-.input-row {{ display:flex; gap:15px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:15px; }}
+.input-section {{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px; margin-bottom:20px; box-shadow:var(--shadow);
+}}
+.input-row {{ display:flex; gap:16px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }}
 .input-group {{ display:flex; flex-direction:column; align-items:center; }}
-.input-group label {{ color:#5D4E37; font-weight:700; margin-bottom:5px; font-size:0.9em; }}
-.seed-input {{ width:200px; padding:12px 15px; border:3px solid #5D4E37; border-radius:12px; font-size:1.2em; font-family:inherit; text-align:center; background:white; }}
-.seed-input:focus {{ outline:none; border-color:#27AE60; box-shadow:0 0 10px rgba(39,174,96,0.3); }}
+.input-group label {{ color:var(--text); font-weight:700; margin-bottom:6px; font-size:0.88em; }}
+.seed-input {{
+    width:200px; padding:12px 15px; border:1px solid var(--border); border-radius:12px;
+    font-size:1.1em; font-family:inherit; text-align:center; background:var(--bg);
+}}
+.seed-input:focus {{ outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(32,201,151,0.15); }}
 .slider-group {{ display:flex; align-items:center; gap:10px; }}
-.slider-group input[type=range] {{ width:180px; accent-color:#27AE60; }}
-.slider-label {{ font-weight:700; color:#5D4E37; min-width:120px; text-align:center; }}
-.calc-btn {{ background:#27AE60; color:white; padding:12px 35px; border:3px solid #5D4E37; border-radius:25px; font-size:1.1em; font-weight:bold; cursor:pointer; box-shadow:0 4px 0 #1E8449; transition:all 0.2s; font-family:inherit; }}
-.calc-btn:hover {{ transform:translateY(2px); box-shadow:0 2px 0 #1E8449; }}
-.calc-btn:active {{ transform:translateY(4px); box-shadow:none; }}
+.slider-group input[type=range] {{ width:180px; accent-color:var(--accent); }}
+.slider-label {{ font-weight:700; color:var(--text); min-width:120px; text-align:center; font-size:0.88em; }}
+.calc-btn {{
+    background:var(--accent); color:white; padding:12px 32px; border:none;
+    border-radius:12px; font-size:1em; font-weight:700; cursor:pointer;
+    transition:all 0.2s; font-family:inherit;
+}}
+.calc-btn:hover {{ background:var(--accent-dark); transform:translateY(-1px); }}
+.calc-btn:active {{ transform:translateY(1px); }}
 
 /* 결과 테이블 */
 .result-section {{ display:none; }}
-.result-card {{ background:white; border-radius:20px; padding:20px; margin-bottom:20px; border:4px solid #5D4E37; box-shadow:0 6px 0 #27AE60, 0 10px 20px rgba(0,0,0,0.1); }}
-.result-card h2 {{ color:#5D4E37; font-size:1.3em; margin-bottom:15px; text-align:center; }}
-table {{ width:100%; border-collapse:collapse; font-size:0.88em; }}
-th {{ background:#27AE60; color:white; padding:10px 8px; text-align:center; font-weight:700; }}
+.result-card {{
+    background:var(--surface); border-radius:var(--radius); padding:20px;
+    margin-bottom:20px; box-shadow:var(--shadow);
+}}
+.result-card h2 {{ color:var(--text); font-size:1.2em; font-weight:700; margin-bottom:16px; text-align:center; }}
+table {{ width:100%; border-collapse:collapse; font-size:0.85em; }}
+th {{ background:var(--accent); color:white; padding:10px 8px; text-align:center; font-weight:700; }}
 th:first-child {{ border-radius:10px 0 0 0; }}
 th:last-child {{ border-radius:0 10px 0 0; }}
-td {{ padding:10px 8px; text-align:center; border-bottom:1px solid #eee; }}
-tr:hover {{ background:#f8fff8; }}
-.cat-growth {{ background:#E8F4FD; color:#2E86C1; padding:3px 10px; border-radius:10px; font-size:0.85em; font-weight:700; }}
-.cat-value {{ background:#FEF5E7; color:#D4851C; padding:3px 10px; border-radius:10px; font-size:0.85em; font-weight:700; }}
-.tier-hot {{ color:#FF6B35; font-weight:700; }}
-.tier-active {{ color:#27AE60; font-weight:700; }}
-.tier-normal {{ color:#7B6B4F; }}
-.tier-thin {{ color:#E74C3C; font-weight:700; }}
-.summary-box {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-top:15px; }}
-.summary-item {{ background:#F8F9FA; border-radius:12px; padding:12px; text-align:center; }}
-.summary-value {{ font-size:1.3em; font-weight:900; color:#27AE60; }}
-.summary-label {{ font-size:0.8em; color:#7B6B4F; margin-top:3px; }}
-.cash-note {{ text-align:center; margin-top:12px; color:#E67E22; font-weight:700; font-size:0.9em; }}
+td {{ padding:10px 8px; text-align:center; border-bottom:1px solid var(--border); }}
+tr:hover {{ background:#f0fdf9; }}
+.cat-growth {{ background:#edf2ff; color:#4263eb; padding:3px 10px; border-radius:8px; font-size:0.82em; font-weight:700; }}
+.cat-value {{ background:#fff4e6; color:#fd7e14; padding:3px 10px; border-radius:8px; font-size:0.82em; font-weight:700; }}
+.tier-hot {{ color:#f76707; font-weight:700; }}
+.tier-active {{ color:var(--accent-dark); font-weight:700; }}
+.tier-normal {{ color:var(--text-sub); }}
+.tier-thin {{ color:#f06595; font-weight:700; }}
+.summary-box {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-top:16px; }}
+.summary-item {{ background:var(--bg); border-radius:12px; padding:14px; text-align:center; }}
+.summary-value {{ font-size:1.2em; font-weight:800; color:var(--accent-dark); }}
+.summary-label {{ font-size:0.8em; color:var(--text-sub); margin-top:3px; }}
+.cash-note {{ text-align:center; margin-top:12px; color:#fd7e14; font-weight:700; font-size:0.88em; }}
 
 /* 내 자산에 추가 버튼 */
 .add-to-assets {{
-    display:block; width:100%; padding:16px; margin-top:20px;
-    background:#8E44AD; color:white; border:3px solid #5D4E37;
-    border-radius:15px; font-size:1.1em; font-weight:700; cursor:pointer;
-    box-shadow:0 4px 0 #6C3483; font-family:inherit; transition:all 0.2s;
-    text-align:center;
+    display:block; width:100%; padding:14px; margin-top:20px;
+    background:#7c3aed; color:white; border:none;
+    border-radius:12px; font-size:1em; font-weight:700; cursor:pointer;
+    font-family:inherit; transition:all 0.2s; text-align:center;
 }}
-.add-to-assets:hover {{ transform:translateY(-2px); box-shadow:0 6px 0 #6C3483; }}
-.add-to-assets:disabled {{ background:#aaa; box-shadow:0 4px 0 #888; cursor:not-allowed; }}
-.add-msg {{ text-align:center; margin-top:10px; padding:10px; border-radius:10px; font-size:0.9em; display:none; }}
-.add-msg.success {{ display:block; background:#D5F5E3; color:#27AE60; border:2px solid #27AE60; }}
-.add-msg.error {{ display:block; background:#FDEDEC; color:#E74C3C; border:2px solid #E74C3C; }}
-.add-msg.info {{ display:block; background:#EBF5FB; color:#2E86C1; border:2px solid #2E86C1; }}
+.add-to-assets:hover {{ background:#6c2bd9; transform:translateY(-1px); }}
+.add-to-assets:disabled {{ background:var(--text-muted); cursor:not-allowed; }}
+.add-msg {{ text-align:center; margin-top:10px; padding:10px; border-radius:10px; font-size:0.88em; display:none; }}
+.add-msg.success {{ display:block; background:#e6fcf5; color:var(--accent-dark); }}
+.add-msg.error {{ display:block; background:#fff0f6; color:#f06595; }}
+.add-msg.info {{ display:block; background:#edf2ff; color:#4263eb; }}
 
 /* 푸터 */
-.footer {{ background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; }}
+.footer {{
+    background:var(--surface); border-radius:var(--radius); padding:20px;
+    color:var(--text-muted); font-size:0.85em; text-align:center;
+    box-shadow:var(--shadow); line-height:1.7;
+}}
 @media (max-width:768px) {{
-    body {{ padding:10px; }}
-    .container {{ padding-top:10px; }}
-    .header-bubble {{ padding:18px 15px; border-radius:20px; }}
-    .emoji-icon {{ font-size:2.2em; }}
-    h1 {{ font-size:1.3em; }}
-    .subtitle {{ font-size:0.85em; }}
-    .input-section {{ padding:15px 12px; border-radius:16px; }}
+    body {{ padding:12px; }}
+    .header-card {{ padding:20px 16px; }}
+    h1 {{ font-size:1.25em; }}
+    .input-section {{ padding:16px 12px; }}
     .input-row {{ flex-direction:column; gap:10px; }}
-    .seed-input {{ width:100%; font-size:1.1em; }}
+    .seed-input {{ width:100%; font-size:1em; }}
     .slider-group input[type=range] {{ width:140px; }}
-    .slider-label {{ min-width:100px; font-size:0.85em; }}
+    .slider-label {{ min-width:100px; font-size:0.82em; }}
     .calc-btn {{ width:100%; padding:14px; }}
-    .result-card {{ padding:12px 10px; border-radius:16px; }}
-    .result-card h2 {{ font-size:1.1em; }}
+    .result-card {{ padding:14px 10px; }}
+    .result-card h2 {{ font-size:1.05em; }}
     table {{ font-size:0.72em; display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }}
     th,td {{ padding:6px 4px; }}
     .summary-box {{ grid-template-columns:repeat(2,1fr); gap:8px; }}
-    .summary-value {{ font-size:1.1em; }}
-    .summary-label {{ font-size:0.75em; }}
-    .add-to-assets {{ font-size:1em; padding:14px; }}
-    .footer {{ padding:12px 10px; font-size:0.8em; }}
+    .summary-value {{ font-size:1em; }}
+    .add-to-assets {{ font-size:0.95em; padding:12px; }}
 }}
 @media (max-width:400px) {{
     h1 {{ font-size:1.1em; }}
@@ -3064,25 +2918,18 @@ tr:hover {{ background:#f8fff8; }}
 </style>
 </head>
 <body>
-<div class="cloud cloud-1"></div>
-<div class="cloud cloud-2"></div>
-<div class="sparkle" style="top:20%;left:15%"></div>
-<div class="sparkle" style="top:40%;right:20%;animation-delay:0.5s"></div>
-<div class="sparkle" style="top:70%;left:10%;animation-delay:1s"></div>
 
 <div class="container">
-    <div style="display:flex;justify-content:center;gap:0;margin-bottom:15px;">
-        <span style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;display:flex;align-items:center;gap:8px;border-radius:20px 0 0 20px;border-right:none;background:linear-gradient(135deg,#5D4E37,#7B6B4F);color:white;box-shadow:0 4px 0 #3D2E17;">🇺🇸 미국장</span>
-        <a href="https://redchoeng.github.io/stock-recommendation_kr/" style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;text-decoration:none;color:#5D4E37;display:flex;align-items:center;gap:8px;border-radius:0 20px 20px 0;background:white;">🇰🇷 한국장</a>
+    <div class="market-switcher">
+        <span class="market-btn active">US</span>
+        <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
     </div>
-    <a href="index.html" class="back-link">← 메인으로</a>
+    <a href="index.html" class="back-link">&larr; 메인으로</a>
 
-    <div class="header-bubble">
-        <div class="emoji-icon">📊💼</div>
+    <div class="header-card">
         <h1>Portfolio Builder</h1>
         <p class="subtitle">Titan 점수 + 유동성 등급 기반 포트폴리오 구성</p>
-        <p class="subtitle">ML 없이 펀더멘털 + 기술적 분석만으로 추천</p>
-        <p class="timestamp">마지막 업데이트: {timestamp}</p>
+        <p class="timestamp">{timestamp}</p>
     </div>
 
     <div class="input-section">
@@ -3131,11 +2978,8 @@ tr:hover {{ background:#f8fff8; }}
     </div>
 
     <div class="footer">
-        <p><strong>⚠️ 투자 유의사항</strong><br>
-        본 포트폴리오는 Titan 알고리즘 기반 참고 자료이며, 투자 손실에 대한 책임은 투자자 본인에게 있습니다.</p>
-        <p style="margin-top:8px;font-size:0.8em;color:#999;">
-            Powered by Titan v2.0 | 유동성 등급: Hot($1B+/일) Active($300M+) Normal($100M+) Thin(&lt;$100M)
-        </p>
+        <p>본 포트폴리오는 Titan 알고리즘 기반 참고 자료이며, 투자 손실에 대한 책임은 본인에게 있습니다.</p>
+        <p style="margin-top:4px;">Titan v2.0 &middot; Hot($1B+/일) &middot; Active($300M+) &middot; Normal($100M+) &middot; Thin(&lt;$100M)</p>
     </div>
 </div>
 
@@ -3435,120 +3279,106 @@ setInterval(() => {{
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patch Notes - Titan v2.0</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <style>
+:root {{
+    --bg: #f7f8fa; --surface: #ffffff; --text: #191f28; --text-sub: #8b95a1;
+    --text-muted: #b0b8c1; --border: #e5e8eb; --red: #f06595;
+    --radius: 16px; --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+}}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 body {{
-    font-family: 'Noto Sans KR', -apple-system, sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #F7DC6F 70%, #FADBD8 100%);
-    background-attachment: fixed;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
+    font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    min-height: 100vh; background: var(--bg); color: var(--text);
+    padding: 20px; -webkit-font-smoothing: antialiased;
 }}
-.cloud {{ position:fixed; background:white; border-radius:50px; opacity:0.9; animation:float 20s infinite ease-in-out; z-index:0; }}
-.cloud::before,.cloud::after {{ content:''; position:absolute; background:white; border-radius:50%; }}
-.cloud-1 {{ width:100px; height:40px; top:8%; left:-100px; }}
-.cloud-1::before {{ width:50px; height:50px; top:-25px; left:15px; }}
-.cloud-1::after {{ width:35px; height:35px; top:-15px; left:55px; }}
-.cloud-2 {{ width:120px; height:45px; top:15%; left:-120px; animation-delay:-7s; }}
-.cloud-2::before {{ width:55px; height:55px; top:-30px; left:20px; }}
-.cloud-2::after {{ width:40px; height:40px; top:-18px; left:65px; }}
-@keyframes float {{ 0%{{transform:translateX(0)}} 100%{{transform:translateX(calc(100vw + 200px))}} }}
-.sparkle {{ position:fixed; width:10px; height:10px; background:#FFD700; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation:sparkle 2s infinite; z-index:1; }}
-@keyframes sparkle {{ 0%,100%{{opacity:0;transform:scale(0)}} 50%{{opacity:1;transform:scale(1)}} }}
-.container {{ position:relative; z-index:10; max-width:800px; margin:0 auto; padding-top:20px; }}
-.back-link {{ display:inline-block; color:#5D4E37; text-decoration:none; font-weight:bold; margin-bottom:15px; padding:8px 20px; background:rgba(255,255,255,0.8); border-radius:20px; border:2px solid #C4A35A; }}
-.back-link:hover {{ background:white; }}
-.header-bubble {{ background:white; border-radius:30px; padding:25px 30px; margin-bottom:25px; box-shadow:0 8px 0 #E74C3C, 0 12px 20px rgba(0,0,0,0.15); border:4px solid #5D4E37; text-align:center; }}
-.emoji-icon {{ font-size:3em; margin-bottom:8px; animation:bounce 2s infinite; }}
-@keyframes bounce {{ 0%,100%{{transform:translateY(0)}} 50%{{transform:translateY(-10px)}} }}
-h1 {{ color:#5D4E37; font-size:1.8em; margin-bottom:8px; text-shadow:2px 2px 0 #FADBD8; }}
-.subtitle {{ color:#7B6B4F; font-size:0.95em; }}
+.container {{ max-width:720px; margin:0 auto; }}
+.market-switcher {{
+    display:flex; justify-content:center; gap:4px; margin-bottom:20px;
+    background:var(--surface); border-radius:12px; padding:4px;
+    box-shadow:var(--shadow); width:fit-content; margin-left:auto; margin-right:auto;
+}}
+.market-btn {{
+    padding:10px 24px; font-size:0.9em; font-weight:600; font-family:inherit;
+    border:none; border-radius:10px; cursor:pointer; transition:all 0.2s;
+    text-decoration:none; color:var(--text-sub); display:flex; align-items:center; gap:6px; background:transparent;
+}}
+.market-btn.active {{ background:var(--red); color:white; }}
+.market-btn:not(.active):hover {{ background:#fff0f6; color:var(--red); }}
+.back-link {{
+    display:block; text-align:center; margin-bottom:16px;
+    color:var(--text-sub); text-decoration:none; font-weight:600; font-size:0.9em;
+}}
+.back-link:hover {{ color:var(--red); }}
+.header-card {{
+    background:var(--surface); border-radius:var(--radius); padding:28px;
+    margin-bottom:20px; box-shadow:var(--shadow); text-align:center;
+    position:relative; overflow:hidden;
+}}
+.header-card::before {{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #f06595, #e64980); }}
+h1 {{ color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; letter-spacing:-0.02em; }}
+.subtitle {{ color:var(--text-sub); font-size:0.9em; }}
 
 .version-card {{
-    background: white;
-    border-radius: 16px;
-    padding: 20px 25px;
-    margin-bottom: 18px;
-    border: 3px solid #5D4E37;
-    border-left: 8px solid #E74C3C;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.08);
-    transition: transform 0.2s;
+    background: var(--surface); border-radius: var(--radius);
+    padding: 20px 24px; margin-bottom: 12px;
+    border-left: 4px solid var(--red);
+    box-shadow: var(--shadow); transition: all 0.2s;
 }}
-.version-card:hover {{ transform: translateX(5px); }}
-.version-header {{ display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap; }}
+.version-card:hover {{ transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }}
+.version-header {{ display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }}
 .version-tag {{
-    display:inline-block; padding:5px 16px; border-radius:20px;
-    color:white; font-weight:900; font-size:0.95em;
-    border:2px solid #5D4E37; box-shadow:0 2px 0 rgba(0,0,0,0.15);
+    display:inline-block; padding:4px 14px; border-radius:8px;
+    color:white; font-weight:700; font-size:0.85em;
 }}
-.version-subtitle {{ color:#5D4E37; font-weight:700; font-size:1.05em; }}
+.version-subtitle {{ color:var(--text); font-weight:700; font-size:0.95em; }}
 .change-list {{ list-style:none; padding:0; }}
 .change-list li {{
-    color:#555; font-size:0.9em; line-height:1.7;
-    padding:3px 0 3px 20px; position:relative;
+    color:var(--text-sub); font-size:0.88em; line-height:1.7;
+    padding:2px 0 2px 18px; position:relative;
 }}
 .change-list li::before {{
-    content:''; position:absolute; left:0; top:11px;
-    width:8px; height:8px; border-radius:50%; background:#C4A35A;
+    content:''; position:absolute; left:0; top:10px;
+    width:6px; height:6px; border-radius:50%; background:var(--text-muted);
 }}
-.change-list li strong {{ color:#5D4E37; }}
+.change-list li strong {{ color:var(--text); }}
 
-.footer {{ background:rgba(255,255,255,0.7); border-radius:15px; padding:15px 25px; color:#7B6B4F; font-size:0.85em; border:3px solid #C4A35A; text-align:center; margin-top:10px; }}
+.footer {{
+    background:var(--surface); border-radius:var(--radius); padding:20px;
+    color:var(--text-muted); font-size:0.85em; text-align:center;
+    box-shadow:var(--shadow); margin-top:16px; line-height:1.7;
+}}
 @media (max-width:768px) {{
-    body {{ padding:10px; }}
-    .header-bubble {{ padding:18px 15px; border-radius:20px; }}
-    .emoji-icon {{ font-size:2.2em; }}
-    h1 {{ font-size:1.3em; }}
-    .subtitle {{ font-size:0.85em; }}
-    .version-card {{ padding:15px 12px; border-radius:12px; border-left-width:5px; }}
-    .version-tag {{ font-size:0.82em; padding:4px 12px; }}
-    .version-subtitle {{ font-size:0.92em; }}
-    .change-list li {{ font-size:0.82em; padding-left:16px; }}
-    .footer {{ padding:12px 10px; font-size:0.8em; }}
+    body {{ padding:12px; }}
+    .header-card {{ padding:20px 16px; }}
+    h1 {{ font-size:1.25em; }}
+    .version-card {{ padding:16px; border-left-width:3px; }}
+    .version-tag {{ font-size:0.8em; padding:3px 10px; }}
+    .change-list li {{ font-size:0.82em; padding-left:14px; }}
 }}
 </style>
 </head>
 <body>
-<div class="cloud cloud-1"></div>
-<div class="cloud cloud-2"></div>
-<div class="sparkle" style="top:20%;left:15%"></div>
-<div class="sparkle" style="top:50%;right:20%;animation-delay:0.5s"></div>
-<div class="sparkle" style="top:75%;left:10%;animation-delay:1s"></div>
 
 <div class="container">
-    <div style="display:flex;justify-content:center;gap:0;margin-bottom:15px;">
-        <span style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;display:flex;align-items:center;gap:8px;border-radius:20px 0 0 20px;border-right:none;background:linear-gradient(135deg,#5D4E37,#7B6B4F);color:white;box-shadow:0 4px 0 #3D2E17;">🇺🇸 미국장</span>
-        <a href="https://redchoeng.github.io/stock-recommendation_kr/" style="padding:10px 24px;font-size:0.95em;font-weight:800;border:3px solid #5D4E37;text-decoration:none;color:#5D4E37;display:flex;align-items:center;gap:8px;border-radius:0 20px 20px 0;background:white;">🇰🇷 한국장</a>
+    <div class="market-switcher">
+        <span class="market-btn active">US</span>
+        <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
     </div>
     <a href="index.html" class="back-link">&larr; 메인으로</a>
 
-    <div class="header-bubble">
-        <div class="emoji-icon">📋</div>
+    <div class="header-card">
         <h1>Patch Notes</h1>
-        <p class="subtitle">PROJECT TITAN 버전 히스토리</p>
+        <p class="subtitle">Project Titan 버전 히스토리</p>
     </div>
 
     {sections_html}
 
     <div class="footer">
-        <p>Powered by Titan v2.0 | CHANGELOG.md 기반 자동 생성</p>
+        <p>Titan v2.0 &middot; CHANGELOG.md 기반 자동 생성</p>
     </div>
 </div>
-
-<script>
-setInterval(() => {{
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.style.top = Math.random()*100+'%';
-    s.style.left = Math.random()*100+'%';
-    s.style.animationDelay = Math.random()*2+'s';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 4000);
-}}, 1200);
-</script>
 </body>
 </html>'''
 
