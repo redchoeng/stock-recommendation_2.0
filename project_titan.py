@@ -2769,6 +2769,27 @@ class TitanAnalyzer:
                     </div>
                 </div>'''
 
+            # 🔄 섹터 순환매 표시
+            rot_bonus = stock.get('rotation_bonus', 0)
+            rot_phase = stock.get('rotation_phase', '')
+            if rot_phase and rot_phase != '중립':
+                rot_sign = '+' if rot_bonus >= 0 else ''
+                phase_colors = {'수급유입': '#FF6B35', '순환매 기대': '#27AE60', '관심': '#3498DB', '과열주의': '#E67E22', '소외 지속': '#E74C3C'}
+                phase_icons = {'수급유입': '🔥', '순환매 기대': '⚡', '관심': '👀', '과열주의': '⚠️', '소외 지속': '❄️'}
+                rot_color = phase_colors.get(rot_phase, '#7B6B4F')
+                rot_icon = phase_icons.get(rot_phase, '🔄')
+                html += f'''
+                <div class="breakdown-section" style="border-top: 2px dashed {rot_color}; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: {rot_color};">{rot_icon} 섹터 순환매: {rot_phase} ({rot_sign}{rot_bonus}점)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
+                            <span class="criterion">섹터 동향</span>
+                            <span class="criterion-value">{stock.get('sector', '')} {rot_phase}</span>
+                            <span class="criterion-score" style="color: {rot_color};">{rot_sign}{rot_bonus}점</span>
+                        </div>
+                    </div>
+                </div>'''
+
             # score-breakdown 닫기 + stock-card 닫기
             html += '''
             </div>
