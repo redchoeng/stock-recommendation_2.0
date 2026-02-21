@@ -238,6 +238,55 @@ class TitanAnalyzer:
         'Healthcare Plans': (5, 1),         # 건강보험: 구조적 극저마진 (UNH 0.3%, CI 3.3%)
     }
 
+    # ===== 가치주 모드 전용 기준 =====
+    # 배당수익률 기준 {sector: (excellent%, good%)} — 높을수록 좋음
+    VALUE_DIVIDEND_THRESHOLDS = {
+        'Utilities': (5.0, 3.0),
+        'Real Estate': (5.0, 3.0),
+        'Energy': (5.0, 2.5),
+        'Consumer Defensive': (4.0, 2.0),
+        'Financial Services': (3.5, 1.5),
+        'Industrials': (3.0, 1.5),
+        'Healthcare': (3.0, 1.5),
+        'Communication Services': (3.0, 1.5),
+        'Consumer Cyclical': (3.0, 1.0),
+        'Basic Materials': (4.0, 2.0),
+        'Technology': (2.0, 0.5),
+    }
+    DEFAULT_VALUE_DIVIDEND_THRESHOLD = (4.0, 2.0)
+
+    # PER 기준 (역방향: 낮을수록 좋음) {sector: (good_upper, fair_upper)}
+    VALUE_PER_THRESHOLDS = {
+        'Technology': (20, 35),
+        'Healthcare': (18, 30),
+        'Consumer Cyclical': (15, 25),
+        'Consumer Defensive': (18, 28),
+        'Financial Services': (12, 20),
+        'Utilities': (18, 28),
+        'Real Estate': (18, 30),
+        'Energy': (12, 20),
+        'Industrials': (15, 25),
+        'Communication Services': (15, 25),
+        'Basic Materials': (12, 20),
+    }
+    DEFAULT_VALUE_PER_THRESHOLD = (15, 25)
+
+    # 부채비율(D/E) 기준 (역방향: 낮을수록 좋음) {sector: (good_upper, fair_upper)}
+    VALUE_DE_THRESHOLDS = {
+        'Financial Services': (300, 600),   # 은행: 레버리지 구조적 높음
+        'Real Estate': (150, 300),
+        'Utilities': (150, 250),
+        'Communication Services': (100, 200),
+        'Energy': (80, 150),
+        'Healthcare': (80, 150),
+        'Consumer Defensive': (80, 150),
+        'Consumer Cyclical': (80, 150),
+        'Industrials': (80, 150),
+        'Basic Materials': (80, 150),
+        'Technology': (50, 100),
+    }
+    DEFAULT_VALUE_DE_THRESHOLD = (80, 150)
+
     # 기술적 점수 재설계 (전문가급, 총 50점)
     # 1. 추세 분석 (20점) - MA5/20/60/120 + 일목균형표 + MACD + ADX
     SCORE_MA120 = 2        # 장기 추세 (6개월)
@@ -392,83 +441,112 @@ class TitanAnalyzer:
 
         return round(pts)
 
+    @staticmethod
+    def _calc_inverse_gradient_score(value, good_upper, fair_upper, max_pts):
+        """역방향 선형 보간 (낮을수록 좋은 지표: PER, 부채비율)
+
+        구간별 점수:
+        - value <= good_upper * 0.6: max_pts (만점, 확실한 저평가)
+        - good_upper*0.6 ~ good_upper: max_pts*0.8 ~ max_pts
+        - good_upper ~ fair_upper: max_pts*0.4 ~ max_pts*0.8
+        - fair_upper ~ fair_upper*1.5: max_pts*0.05 ~ max_pts*0.4
+        - > fair_upper*1.5: 0
+        """
+        if value <= 0:
+            return 0
+
+        excellent = good_upper * 0.6
+        poor = fair_upper * 1.5
+
+        if value <= excellent:
+            return max_pts
+        elif value <= good_upper:
+            ratio = (good_upper - value) / (good_upper - excellent) if good_upper > excellent else 1
+            pts = max_pts * (0.8 + 0.2 * ratio)
+        elif value <= fair_upper:
+            ratio = (fair_upper - value) / (fair_upper - good_upper) if fair_upper > good_upper else 1
+            pts = max_pts * (0.4 + 0.4 * ratio)
+        elif value <= poor:
+            ratio = (poor - value) / (poor - fair_upper) if poor > fair_upper else 1
+            pts = max_pts * (0.05 + 0.35 * ratio)
+        else:
+            return 0
+
+        return round(pts)
+
     def _get_fundamental_score(self, info):
         """기본적 분석 점수 (최대 50점)"""
         score = 0
         comments = []
         breakdown = {
-            'roe_score': 0,
-            'roe_value': 0,
-            'opm_score': 0,
-            'opm_value': 0,
-            'revenue_growth_score': 0,
-            'revenue_growth_value': None,  # None이면 N/A 표시
-            'sector_score': 0,
-            'sector_name': ''
+            'roe_score': 0, 'roe_value': 0,
+            'opm_score': 0, 'opm_value': 0,
+            'revenue_growth_score': 0, 'revenue_growth_value': None,
+            'sector_score': 0, 'sector_name': '',
+            # 가치주 전용 필드
+            'dividend_yield_score': 0, 'dividend_yield_value': None,
+            'per_score': 0, 'per_value': None,
+            'debt_equity_score': 0, 'debt_equity_value': None,
         }
 
         try:
             sector = info.get('sector', '')
             industry = info.get('industry', '')
 
-            # 1. ROE (섹터별 차등 기준, 선형 보간)
-            roe = info.get('returnOnEquity')
-            roe_excellent, roe_good = self.SECTOR_ROE_THRESHOLDS.get(
-                sector, self.DEFAULT_ROE_THRESHOLD)
-            if roe:
-                roe_pct = roe * 100
-                breakdown['roe_value'] = roe_pct
-                roe_pts = self._calc_gradient_score(roe_pct, roe_excellent, roe_good, 15)
-                score += roe_pts
-                breakdown['roe_score'] = roe_pts
-                if roe_pts >= 8:
-                    comments.append(f"ROE:{roe_pct:.1f}%")
-
-            # 2. Operating Margin (업종/섹터별 차등 기준, 선형 보간)
-            opm = info.get('operatingMargins')
-            opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
-                industry, self.SECTOR_OPM_THRESHOLDS.get(
-                    sector, self.DEFAULT_OPM_THRESHOLD))
-            if opm:
-                opm_pct = opm * 100
-                breakdown['opm_value'] = opm_pct
-                opm_pts = self._calc_gradient_score(opm_pct, opm_excellent, opm_good, 15)
-                score += opm_pts
-                breakdown['opm_score'] = opm_pts
-                if opm_pts >= 8:
-                    comments.append(f"OPM:{opm_pct:.1f}%")
-
-            # 3. Revenue Growth (매출 성장률 - 업종/섹터별 차등 기준, 선형 보간)
-            revenue_growth = info.get('revenueGrowth')
-            rg_high, rg_good = self.SECTOR_REVENUE_GROWTH_THRESHOLDS.get(
-                    sector, self.DEFAULT_REVENUE_GROWTH_THRESHOLD)
-            if revenue_growth:
-                rg_pct = revenue_growth * 100
-                breakdown['revenue_growth_value'] = rg_pct
-                rg_pts = self._calc_gradient_score(rg_pct, rg_high, rg_good, 10)
-                score += rg_pts
-                breakdown['revenue_growth_score'] = rg_pts
-
-            # 3-1. 고성장 투자기업 보정 (매출 30%+ & ROE/OPM 적자)
-            # SNOW, NET, CRWD 등 성장 투자 중인 기업은 적자가 구조적
-            if revenue_growth and revenue_growth > 0.30:
-                roe_val = roe * 100 if roe else 0
-                opm_val = opm * 100 if opm else 0
-                if roe_val < 0 and breakdown['roe_score'] == 0:
-                    growth_credit = round(15 * 0.4)  # 성장 투자 인정 (40% = 6점)
-                    score += growth_credit
-                    breakdown['roe_score'] = growth_credit
-                    comments.append("성장투자")
-                if opm_val < 0 and breakdown['opm_score'] == 0:
-                    growth_credit = round(15 * 0.4)
-                    score += growth_credit
-                    breakdown['opm_score'] = growth_credit
-
-            # 4. Sector & Industry (세분화된 분류)
-            breakdown['sector_name'] = f"{sector}"
-
-            # ===== 가치주 모드: 배당/안정성 중심 점수 체계 =====
+            # ===== 가치주 모드: 배당/저평가/안정성 중심 (50점) =====
             if self.analysis_mode == 'value':
+                # 1. 배당수익률 (12점)
+                div_yield = info.get('dividendYield')
+                if div_yield and div_yield > 0:
+                    div_pct = div_yield * 100
+                    breakdown['dividend_yield_value'] = div_pct
+                    dy_exc, dy_good = self.VALUE_DIVIDEND_THRESHOLDS.get(
+                        sector, self.DEFAULT_VALUE_DIVIDEND_THRESHOLD)
+                    dy_pts = self._calc_gradient_score(div_pct, dy_exc, dy_good, 12)
+                    score += dy_pts
+                    breakdown['dividend_yield_score'] = dy_pts
+                    if dy_pts >= 6:
+                        comments.append(f"배당{div_pct:.1f}%")
+
+                # 2. PER 저평가 (12점, 역방향 - 낮을수록 좋음)
+                per = info.get('trailingPE')
+                if per and per > 0:
+                    breakdown['per_value'] = per
+                    per_good, per_fair = self.VALUE_PER_THRESHOLDS.get(
+                        sector, self.DEFAULT_VALUE_PER_THRESHOLD)
+                    per_pts = self._calc_inverse_gradient_score(per, per_good, per_fair, 12)
+                    score += per_pts
+                    breakdown['per_score'] = per_pts
+                    if per_pts >= 6:
+                        comments.append(f"PER:{per:.1f}")
+
+                # 3. ROE (8점, 가치주는 비중 축소)
+                roe = info.get('returnOnEquity')
+                roe_excellent, roe_good = self.SECTOR_ROE_THRESHOLDS.get(
+                    sector, self.DEFAULT_ROE_THRESHOLD)
+                if roe:
+                    roe_pct = roe * 100
+                    breakdown['roe_value'] = roe_pct
+                    roe_pts = self._calc_gradient_score(roe_pct, roe_excellent, roe_good, 8)
+                    score += roe_pts
+                    breakdown['roe_score'] = roe_pts
+                    if roe_pts >= 4:
+                        comments.append(f"ROE:{roe_pct:.1f}%")
+
+                # 4. 부채비율 D/E (8점, 역방향 - 낮을수록 안정적)
+                de = info.get('debtToEquity')
+                if de is not None and de >= 0:
+                    breakdown['debt_equity_value'] = de
+                    de_good, de_fair = self.VALUE_DE_THRESHOLDS.get(
+                        sector, self.DEFAULT_VALUE_DE_THRESHOLD)
+                    de_pts = self._calc_inverse_gradient_score(de, de_good, de_fair, 8)
+                    score += de_pts
+                    breakdown['debt_equity_score'] = de_pts
+                    if de_pts >= 4:
+                        comments.append(f"D/E:{de:.0f}")
+
+                # 5. 섹터 (10점)
+                breakdown['sector_name'] = sector
                 sector_score, sector_name, sector_comment = self._get_value_sector_score(sector, industry)
                 score += sector_score
                 breakdown['sector_score'] = sector_score
@@ -476,7 +554,7 @@ class TitanAnalyzer:
                 if sector_comment:
                     comments.append(sector_comment)
 
-                # 트럼프 정책 보너스/페널티 적용 (가치주 모드)
+                # 트럼프 정책 보너스/페널티
                 policy_bonus, policy_comment = self._get_trump_policy_bonus(
                     sector, industry, sector_name)
                 if policy_bonus != 0:
@@ -484,8 +562,62 @@ class TitanAnalyzer:
                     breakdown['policy_bonus'] = policy_bonus
                     comments.append(policy_comment)
 
-            # ===== 성장주 모드: 기술/성장 중심 점수 체계 =====
+            # ===== 성장주 모드: ROE/OPM/매출성장 중심 (50점) =====
             else:
+                # 1. ROE (섹터별 차등 기준, 선형 보간, 15점)
+                roe = info.get('returnOnEquity')
+                roe_excellent, roe_good = self.SECTOR_ROE_THRESHOLDS.get(
+                    sector, self.DEFAULT_ROE_THRESHOLD)
+                if roe:
+                    roe_pct = roe * 100
+                    breakdown['roe_value'] = roe_pct
+                    roe_pts = self._calc_gradient_score(roe_pct, roe_excellent, roe_good, 15)
+                    score += roe_pts
+                    breakdown['roe_score'] = roe_pts
+                    if roe_pts >= 8:
+                        comments.append(f"ROE:{roe_pct:.1f}%")
+
+                # 2. Operating Margin (업종/섹터별 차등 기준, 15점)
+                opm = info.get('operatingMargins')
+                opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
+                    industry, self.SECTOR_OPM_THRESHOLDS.get(
+                        sector, self.DEFAULT_OPM_THRESHOLD))
+                if opm:
+                    opm_pct = opm * 100
+                    breakdown['opm_value'] = opm_pct
+                    opm_pts = self._calc_gradient_score(opm_pct, opm_excellent, opm_good, 15)
+                    score += opm_pts
+                    breakdown['opm_score'] = opm_pts
+                    if opm_pts >= 8:
+                        comments.append(f"OPM:{opm_pct:.1f}%")
+
+                # 3. Revenue Growth (매출 성장률, 10점)
+                revenue_growth = info.get('revenueGrowth')
+                rg_high, rg_good = self.SECTOR_REVENUE_GROWTH_THRESHOLDS.get(
+                        sector, self.DEFAULT_REVENUE_GROWTH_THRESHOLD)
+                if revenue_growth:
+                    rg_pct = revenue_growth * 100
+                    breakdown['revenue_growth_value'] = rg_pct
+                    rg_pts = self._calc_gradient_score(rg_pct, rg_high, rg_good, 10)
+                    score += rg_pts
+                    breakdown['revenue_growth_score'] = rg_pts
+
+                # 3-1. 고성장 투자기업 보정 (매출 30%+ & ROE/OPM 적자)
+                if revenue_growth and revenue_growth > 0.30:
+                    roe_val = roe * 100 if roe else 0
+                    opm_val = opm * 100 if opm else 0
+                    if roe_val < 0 and breakdown['roe_score'] == 0:
+                        growth_credit = round(15 * 0.4)
+                        score += growth_credit
+                        breakdown['roe_score'] = growth_credit
+                        comments.append("성장투자")
+                    if opm_val < 0 and breakdown['opm_score'] == 0:
+                        growth_credit = round(15 * 0.4)
+                        score += growth_credit
+                        breakdown['opm_score'] = growth_credit
+
+                # 4. Sector & Industry (세분화된 분류)
+                breakdown['sector_name'] = f"{sector}"
                 ind_lower = industry.lower()
 
                 # Tier 1: AI, 반도체, 클라우드, 사이버보안, 국방
@@ -2636,6 +2768,9 @@ function toggleDetail(id) {{
                 'roe_value': fund_bd.get('roe_value'),
                 'opm_value': fund_bd.get('opm_value'),
                 'revenue_growth_value': fund_bd.get('revenue_growth_value'),
+                'dividend_yield_value': fund_bd.get('dividend_yield_value'),
+                'per_value': fund_bd.get('per_value'),
+                'debt_equity_value': fund_bd.get('debt_equity_value'),
                 'rsi_value': tech_bd.get('rsi_value'),
                 'ma5': tech_bd.get('ma5'),
                 'ma20': tech_bd.get('ma20'),
