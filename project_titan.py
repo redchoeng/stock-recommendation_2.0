@@ -518,7 +518,8 @@ class TitanAnalyzer:
                 # 1. 배당수익률 (12점)
                 div_yield = info.get('dividendYield')
                 if div_yield and div_yield > 0:
-                    div_pct = div_yield * 100
+                    # yfinance: 보통 decimal(0.019=1.9%) 반환하지만 일부 종목은 percentage(1.9) 반환
+                    div_pct = div_yield if div_yield >= 1 else div_yield * 100
                     breakdown['dividend_yield_value'] = div_pct
                     dy_exc, dy_good = self.VALUE_DIVIDEND_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_DIVIDEND_THRESHOLD)
@@ -564,6 +565,11 @@ class TitanAnalyzer:
                     breakdown['debt_equity_score'] = de_pts
                     if de_pts >= 4:
                         comments.append(f"D/E:{de:.0f}")
+                elif sector in ('Financial Services', 'Real Estate'):
+                    # 금융/부동산: yfinance D/E 데이터 없는 경우 중간 점수 부여
+                    de_pts = round(8 * 0.5)
+                    score += de_pts
+                    breakdown['debt_equity_score'] = de_pts
 
                 # 5. 섹터 (10점)
                 breakdown['sector_name'] = sector
