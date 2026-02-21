@@ -3001,7 +3001,7 @@ function toggleTheme() {{
         print(f"✅ HTML 리포트 생성 완료: {filename} ({len(filtered)}개 추천)")
         return filtered
 
-    def run_analysis_with_tickers(self, tickers, report_type="Analysis", html_filename=None, min_score=50, skip_stage1=True):
+    def run_analysis_with_tickers(self, tickers, report_type="Analysis", html_filename=None, min_score=50, skip_stage1=True, min_market_cap=0):
         """특정 티커 리스트로 분석 실행"""
         start_time = time.time()
 
@@ -3020,6 +3020,12 @@ function toggleTheme() {{
                 print("❌ 1단계 필터를 통과한 종목이 없습니다.")
                 return []
             results = self.stage2_deep_analysis(filtered_tickers)
+
+        # 시총 필터 (skip_stage1=True일 때도 적용)
+        if min_market_cap and min_market_cap > 0:
+            before = len(results)
+            results = [r for r in results if r.get('market_cap', 0) >= min_market_cap]
+            print(f"🏦 시총 필터 (≥${min_market_cap/1e9:.0f}B): {before}개 → {len(results)}개")
 
         # 결과 출력
         self.display_results(results, min_score=min_score)
@@ -4138,6 +4144,7 @@ if __name__ == "__main__":
                 html_filename="value_report.html",
                 min_score=85,
                 skip_stage1=True,
+                min_market_cap=20_000_000_000,  # $20B 이상만
             )
         elif mode == "portfolio":
             analyzer.generate_portfolio_html(filename="portfolio.html")
