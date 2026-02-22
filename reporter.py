@@ -609,7 +609,7 @@ class ReporterMixin:
                     <div class="breakdown-items">''' + (f'''
                         <div class="breakdown-item">
                             <span class="criterion">배당수익률</span>
-                            <span class="criterion-value">{fund_bd.get('dividend_yield_value', 0):.2f}%</span>
+                            <span class="criterion-value">{(fund_bd.get('dividend_yield_value') or 0):.2f}%</span>
                             <span class="criterion-score">+{fund_bd.get('dividend_yield_score', 0)}점</span>
                         </div>
                         <div class="breakdown-item">
@@ -619,27 +619,27 @@ class ReporterMixin:
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">ROE (수익성)</span>
-                            <span class="criterion-value">{fund_bd.get('roe_value', 0):.1f}%</span>
+                            <span class="criterion-value">{(fund_bd.get('roe_value') or 0):.1f}%</span>
                             <span class="criterion-score">+{fund_bd.get('roe_score', 0)}점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">부채비율 (D/E)</span>
-                            <span class="criterion-value">{"N/A" if fund_bd.get('debt_equity_value') is None else f"{fund_bd.get('debt_equity_value', 0):.0f}%"}</span>
+                            <span class="criterion-value">{"N/A" if fund_bd.get('debt_equity_value') is None else f"{(fund_bd.get('debt_equity_value') or 0):.0f}%"}</span>
                             <span class="criterion-score">+{fund_bd.get('debt_equity_score', 0)}점</span>
                         </div>''' if is_value_mode else f'''
                         <div class="breakdown-item">
                             <span class="criterion">Beta (시장민감도)</span>
-                            <span class="criterion-value">{fund_bd.get('beta_value', 0):.2f}</span>
+                            <span class="criterion-value">{(fund_bd.get('beta_value') or 0):.2f}</span>
                             <span class="criterion-score">+{fund_bd.get('beta_score', 0)}점</span>
                         </div>''' if is_value_mode else f'''
                         <div class="breakdown-item">
                             <span class="criterion">ROE (자기자본이익률)</span>
-                            <span class="criterion-value">{fund_bd.get('roe_value', 0):.1f}%</span>
+                            <span class="criterion-value">{(fund_bd.get('roe_value') or 0):.1f}%</span>
                             <span class="criterion-score">+{fund_bd.get('roe_score', 0)}점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">OPM (영업이익률)</span>
-                            <span class="criterion-value">{fund_bd.get('opm_value', 0):.1f}%</span>
+                            <span class="criterion-value">{(fund_bd.get('opm_value') or 0):.1f}%</span>
                             <span class="criterion-score">+{fund_bd.get('opm_score', 0)}점</span>
                         </div>
                         <div class="breakdown-item">
@@ -672,13 +672,13 @@ class ReporterMixin:
                         <!-- 모멘텀 -->
                         <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
                             <span class="criterion">⚡ 모멘텀</span>
-                            <span class="criterion-value">RSI:{tech_bd.get('rsi_value', 0):.0f}, MFI:{tech_bd.get('mfi_value', 0):.0f}</span>
+                            <span class="criterion-value">RSI:{(tech_bd.get('rsi_value') or 0):.0f}, MFI:{(tech_bd.get('mfi_value') or 0):.0f}</span>
                             <span class="criterion-score">+{tech_bd.get('momentum_score', 0)}점</span>
                         </div>
                         <!-- 거래량 -->
                         <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
                             <span class="criterion">📊 거래량</span>
-                            <span class="criterion-value">{tech_bd.get('volume_ratio', 0):.1f}x, OBV</span>
+                            <span class="criterion-value">{(tech_bd.get('volume_ratio') or 0):.1f}x, OBV</span>
                             <span class="criterion-score">+{tech_bd.get('volume_score', 0)}점 /8</span>
                         </div>
                         <!-- 변동성 -->
