@@ -4,6 +4,7 @@ notifier.py — Web Push / Telegram 알림 전역 함수
 send_push_alert, _send_webpush, _send_telegram_fallback, _fetch_user_holding_tickers
 """
 import os
+from datetime import datetime
 import pytz
 
 def send_push_alert(results, market='us'):
