@@ -1,92 +1,92 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patch Notes - Titan v2.0</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
-<style>
-:root {
+    <html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patch Notes - Titan v2.0</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+    <style>
+    :root {
     --bg: #f7f8fa; --surface: #ffffff; --text: #191f28; --text-sub: #8b95a1;
     --text-muted: #b0b8c1; --border: #e5e8eb; --red: #f06595;
     --radius: 16px; --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
     font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     min-height: 100vh; background: var(--bg); color: var(--text);
     padding: 20px; -webkit-font-smoothing: antialiased;
-}
-.container { max-width:720px; margin:0 auto; }
-.market-switcher {
+    }
+    .container { max-width:720px; margin:0 auto; }
+    .market-switcher {
     display:flex; justify-content:center; gap:4px; margin-bottom:20px;
     background:var(--surface); border-radius:12px; padding:4px;
     box-shadow:var(--shadow); width:fit-content; margin-left:auto; margin-right:auto;
-}
-.market-btn {
+    }
+    .market-btn {
     padding:10px 24px; font-size:0.9em; font-weight:600; font-family:inherit;
     border:none; border-radius:10px; cursor:pointer; transition:all 0.2s;
     text-decoration:none; color:var(--text-sub); display:flex; align-items:center; gap:6px; background:transparent;
-}
-.market-btn.active { background:var(--red); color:white; }
-.market-btn:not(.active):hover { background:#fff0f6; color:var(--red); }
-.back-link {
+    }
+    .market-btn.active { background:var(--red); color:white; }
+    .market-btn:not(.active):hover { background:#fff0f6; color:var(--red); }
+    .back-link {
     display:block; text-align:center; margin-bottom:16px;
     color:var(--text-sub); text-decoration:none; font-weight:600; font-size:0.9em;
-}
-.back-link:hover { color:var(--red); }
-.header-card {
+    }
+    .back-link:hover { color:var(--red); }
+    .header-card {
     background:var(--surface); border-radius:var(--radius); padding:28px;
     margin-bottom:20px; box-shadow:var(--shadow); text-align:center;
     position:relative; overflow:hidden;
-}
-.header-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #f06595, #e64980); }
-h1 { color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; letter-spacing:-0.02em; }
-.subtitle { color:var(--text-sub); font-size:0.9em; }
+    }
+    .header-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #f06595, #e64980); }
+    h1 { color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; letter-spacing:-0.02em; }
+    .subtitle { color:var(--text-sub); font-size:0.9em; }
 
-.version-card {
+    .version-card {
     background: var(--surface); border-radius: var(--radius);
     padding: 20px 24px; margin-bottom: 12px;
     border-left: 4px solid var(--red);
     box-shadow: var(--shadow); transition: all 0.2s;
-}
-.version-card:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-.version-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
-.version-tag {
+    }
+    .version-card:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .version-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+    .version-tag {
     display:inline-block; padding:4px 14px; border-radius:8px;
     color:white; font-weight:700; font-size:0.85em;
-}
-.version-subtitle { color:var(--text); font-weight:700; font-size:0.95em; }
-.change-list { list-style:none; padding:0; }
-.change-list li {
+    }
+    .version-subtitle { color:var(--text); font-weight:700; font-size:0.95em; }
+    .change-list { list-style:none; padding:0; }
+    .change-list li {
     color:var(--text-sub); font-size:0.88em; line-height:1.7;
     padding:2px 0 2px 18px; position:relative;
-}
-.change-list li::before {
+    }
+    .change-list li::before {
     content:''; position:absolute; left:0; top:10px;
     width:6px; height:6px; border-radius:50%; background:var(--text-muted);
-}
-.change-list li strong { color:var(--text); }
+    }
+    .change-list li strong { color:var(--text); }
 
-.footer {
+    .footer {
     background:var(--surface); border-radius:var(--radius); padding:20px;
     color:var(--text-muted); font-size:0.85em; text-align:center;
     box-shadow:var(--shadow); margin-top:16px; line-height:1.7;
-}
-@media (max-width:768px) {
+    }
+    @media (max-width:768px) {
     body { padding:12px; }
     .header-card { padding:20px 16px; }
     h1 { font-size:1.25em; }
     .version-card { padding:16px; border-left-width:3px; }
     .version-tag { font-size:0.8em; padding:3px 10px; }
     .change-list li { font-size:0.82em; padding-left:14px; }
-}
-</style>
-</head>
-<body>
+    }
+    </style>
+    </head>
+    <body>
 
-<div class="container">
+    <div class="container">
     <div class="market-switcher">
         <span class="market-btn active">US</span>
         <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
@@ -217,6 +217,6 @@ h1 { color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; let
     <div class="footer">
         <p>Titan v2.0 &middot; CHANGELOG.md 기반 자동 생성</p>
     </div>
-</div>
-</body>
-</html>
+    </div>
+    </body>
+    </html>
