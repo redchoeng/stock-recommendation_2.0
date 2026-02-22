@@ -275,7 +275,7 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
 
                     # 모드별 펀더멘털/기술적 가중치 적용
                     if self.analysis_mode == 'value':
-                        fund_w, tech_w = 1.3, 0.7   # 가치주: 펀더 65 : 기술 35
+                        fund_w, tech_w = 1.4, 0.6   # 가치주: 펀더 70 : 기술 30 (펀더멘탈 비중 강화)
                     else:
                         fund_w, tech_w = 0.8, 1.2    # 성장주: 펀더 40 : 기술 60
 
@@ -409,6 +409,7 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
                 'rs_score': tech_bd.get('rs_score', 0),
                 'rs_ratio': tech_bd.get('rs_ratio', 0),
                 'dividend_yield_value': fund_bd.get('dividend_yield_value'),
+                'dividend_growth_score': fund_bd.get('dividend_growth_score', 0),
                 'per_value': fund_bd.get('per_value'),
                 'ev_ebitda_value': fund_bd.get('ev_ebitda_value'),
                 'valuation_method': fund_bd.get('valuation_method', 'PER'),

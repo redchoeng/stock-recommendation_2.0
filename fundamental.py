@@ -230,15 +230,16 @@ class FundamentalMixin:
         """기본적 분석 점수 (최대 50점 + 보너스)
 
         [가치주(Value) 평가 기준 - 총 50점 + α]
-        1. 💰 배당수익률 (12점): 섹터별 기준, 배당성향(Payout Ratio) 과다 시 감점
-        2. 💎 밸류에이션 (12점): PER, EV/EBITDA, PBR 중 가장 유리한 지표 채택 (우량주 프리미엄 적용)
-        3. 📈 ROE (8점): 자본 효율성 (가치주는 성장주보다 비중 낮음)
-        4. ⚖️ 부채비율 (8점): 재무 안정성 (낮을수록 좋음, 우량주 기준 완화)
-        5. 🛡️ 섹터 (10점): 필수소비재, 헬스케어 등 방어주 우대
+        1. 💰 배당수익률 (10점): 섹터별 기준, 배당성향(Payout Ratio) 과다 시 감점
+        2. 📈 배당성장률 (5점): 배당 지속성·성장 잠재력 (귀족주 만점)
+        3. 💎 밸류에이션 (12점): PER, EV/EBITDA, PBR 중 가장 유리한 지표 채택 (우량주 프리미엄 적용)
+        4. 📈 ROE (8점): 자본 효율성 (가치주는 성장주보다 비중 낮음)
+        5. ⚖️ 부채비율 (8점): 재무 안정성 (낮을수록 좋음, 우량주 기준 완화)
+        6. 🛡️ 섹터 (10점): 필수소비재, 헬스케어 등 방어주 우대
 
         [보너스 항목]
         + 📉 Beta (최대 5점): 시장 민감도 0.8 이하 시 만점 (헤징 효과)
-        + 💵 FCF Yield (3점): 잉여현금흐름 5% 이상 시
+        + 💵 FCF Yield (5점): 잉여현금흐름 기반 배당 지속가능성 검증
         + 👑 배당귀족 (4점): 25년 이상 연속 배당 증가
         + 🏛️ 정책 수혜 (3점): 트럼프 정책 등 거시 환경 수혜"""
         score = 0
@@ -289,7 +290,7 @@ class FundamentalMixin:
 
                 premium_multiplier = min(premium_multiplier, 1.6)
 
-                # 1. 배당수익률 (12점)
+                # 1. 배당수익률 (10점, 기존 12→10: 배당성장률 5점 신설로 재배분)
                 div_pct = None
                 div_rate = info.get('dividendRate')
                 price_now = info.get('currentPrice') or info.get('regularMarketPrice') or info.get('previousClose')
@@ -304,10 +305,10 @@ class FundamentalMixin:
                     breakdown['dividend_yield_value'] = round(div_pct, 2)
                     dy_exc, dy_good = self.VALUE_DIVIDEND_THRESHOLDS.get(
                         sector, self.DEFAULT_VALUE_DIVIDEND_THRESHOLD)
-                    dy_pts = self._calc_gradient_score(div_pct, dy_exc, dy_good, 12)
+                    dy_pts = self._calc_gradient_score(div_pct, dy_exc, dy_good, 10)
 
-                    if dy_pts < 5 and (is_aristocrat or 'MegaCap' in moat_factors):
-                        dy_pts = 5
+                    if dy_pts < 4 and (is_aristocrat or 'MegaCap' in moat_factors):
+                        dy_pts = 4
 
                     payout = info.get('payoutRatio')
                     if payout and payout > 1.0 and sector != 'Real Estate':
@@ -316,8 +317,32 @@ class FundamentalMixin:
 
                     score += dy_pts
                     breakdown['dividend_yield_score'] = dy_pts
-                    if dy_pts >= 6:
+                    if dy_pts >= 5:
                         comments.append(f"배당{div_pct:.1f}%")
+
+                # 1.5. 배당 성장률 (5점, 신규: 배당 지속성·성장 잠재력)
+                div_growth_pts = 0
+                five_yr_avg_yield = info.get('fiveYearAvgDividendYield')
+                earnings_growth = info.get('earningsGrowth')
+                payout_for_growth = info.get('payoutRatio')
+
+                if is_aristocrat:
+                    div_growth_pts = 5  # 25년+ 연속 배당 증가 = 만점
+                elif div_pct and div_pct > 0:
+                    if five_yr_avg_yield and five_yr_avg_yield > 0:
+                        div_growth_pts += 2  # 5년 이상 배당 지속
+                    if payout_for_growth and 0 < payout_for_growth < 0.7:
+                        div_growth_pts += 1  # 성장 여력 있는 배당성향
+                    if earnings_growth and earnings_growth > 0.05:
+                        div_growth_pts += 1  # 이익 성장 → 배당 성장 가능
+                    if earnings_growth and earnings_growth > 0.10 and payout_for_growth and 0 < payout_for_growth < 0.6:
+                        div_growth_pts += 1  # 강한 이익성장 + 낮은 배당성향
+
+                div_growth_pts = min(div_growth_pts, 5)
+                score += div_growth_pts
+                breakdown['dividend_growth_score'] = div_growth_pts
+                if div_growth_pts >= 3:
+                    comments.append(f"배당성장력{div_growth_pts}점")
 
                 # 2. 밸류에이션 (12점): PER vs EV/EBITDA 중 높은 쪽 채택
                 per = info.get('trailingPE')
@@ -398,15 +423,22 @@ class FundamentalMixin:
                     score += de_pts
                     breakdown['debt_equity_score'] = de_pts
 
-                # FCF 보너스 (최대 3점)
+                # FCF Yield (5점, 기존 3→5 승격: 배당 지속가능성 검증)
                 fcf = info.get('freeCashflow')
                 if fcf and market_cap and market_cap > 0:
                     fcf_yield = fcf / market_cap
-                    if fcf_yield > 0.05:
-                        score += 3
-                        breakdown['fcf_score'] = 3
-                        if fcf_yield > 0.07:
-                            comments.append("현금흐름우수")
+                    if fcf_yield > 0.08:
+                        fcf_pts = 5
+                        comments.append("현금흐름최상위")
+                    elif fcf_yield > 0.05:
+                        fcf_pts = 4
+                        comments.append("현금흐름우수")
+                    elif fcf_yield > 0.03:
+                        fcf_pts = 2
+                    else:
+                        fcf_pts = 0
+                    score += fcf_pts
+                    breakdown['fcf_score'] = fcf_pts
 
                 # 베타(Beta) 점수 (5점)
                 beta = info.get('beta')
