@@ -13,6 +13,22 @@ class FundamentalMixin:
     SCORE_SECTOR_TIER4 = 2   # 전통 에너지, 소비재, 유틸리티
     SCORE_SECTOR_DEFAULT = 1 # 분류 미매칭 (최소 보장)
 
+    # ===== 성장주 모드 섹터 점수 맵 (현재 메타 반영, 최대 8점) =====
+    # 순환매 보너스는 ETF 단위 섹터 전체를 보지만, 이 맵은 세부 테마를 구분
+    GROWTH_SECTOR_SCORE_MAP = {
+        # Tier 1 (8점): AI·반도체·클라우드·보안·국방·원자력 — 현재 핵심 메타
+        'AI/반도체': 8, '클라우드': 8, '사이버보안': 8, '국방/항공': 8,
+        '원자력/우라늄': 8, '원자력발전': 8,
+        # Tier 2 (6점): 소프트웨어·디지털플랫폼 — 핵심 메타 인접
+        '소프트웨어': 6, '디지털인프라': 6,
+        # Tier 3 (4점): 핀테크·가전·바이오텍·희토류·EV — 성장 테마이나 현재 메타 약함
+        '핀테크': 4, '가전/생태계': 4, '바이오텍': 4, '희토류/전략소재': 4, '전기차/배터리': 4,
+        # Tier 4 (2점): 헬스케어·산업재·신재생에너지 — 성장 요소 있으나 메타 미약
+        '헬스케어': 2, '산업재': 2, '신재생에너지': 2,
+        # Tier 5 (1점): 소비재·에너지·유틸리티·금융 — 성장주 리스트이나 섹터 특성 약함
+        '소비재': 1, '에너지': 1, '유틸리티': 1, '금융': 1,
+    }
+
     # ===== 섹터별 점수 - 가치주 =====
     VALUE_SECTOR_TIER1 = 10  # 필수소비재, 헬스케어 (배당귀족)
     VALUE_SECTOR_TIER2 = 8   # 유틸리티, 금융 (안정적 배당)
@@ -582,8 +598,8 @@ class FundamentalMixin:
                         score += growth_credit
                         breakdown['opm_score'] = growth_credit
 
-                # 4. Sector 라벨링 (점수 0점, 분류만 — 순환매 보너스가 동적으로 반영)
-                breakdown['sector_score'] = 0
+                # 4. 섹터 점수 (현재 메타 반영, 최대 8점) + 섹터명 분류
+                # 순환매 보너스는 ETF 단위 전체 섹터 동향, 섹터 점수는 세부 테마 구분
                 ind_lower = industry.lower()
 
                 if any(kw in ind_lower for kw in ['semiconductor', 'chip', 'artificial intelligence', 'computer hardware']):
@@ -628,6 +644,12 @@ class FundamentalMixin:
                     breakdown['sector_name'] = "유틸리티"
                 else:
                     breakdown['sector_name'] = sector or "기타"
+
+                # 섹터 점수 적용 (GROWTH_SECTOR_SCORE_MAP 기반)
+                sector_score = self.GROWTH_SECTOR_SCORE_MAP.get(
+                    breakdown['sector_name'], self.SCORE_SECTOR_DEFAULT)
+                score += sector_score
+                breakdown['sector_score'] = sector_score
 
                 # 트럼프 정책 보너스/페널티
                 policy_bonus, policy_comment = self._get_trump_policy_bonus(

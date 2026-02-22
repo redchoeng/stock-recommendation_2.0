@@ -12,6 +12,7 @@ class StrategyMixin:
     # ===== 역발상 보너스/페널티 (강화) =====
     SCORE_OVERSOLD_QUALITY_BONUS = 10
     SCORE_OVERBOUGHT_PENALTY = -8     # 기존 -5 → -8 강화
+    SCORE_MILD_OVERSOLD_BONUS = 5     # RSI 30~45 핵심 성장섹터 단기조정 보너스
 
     # =========================================================================
 
@@ -372,6 +373,13 @@ class StrategyMixin:
                 # 펀더 25-35: 약한 보너스만
                 adjustment = 3
                 contrarian_comment = "💎약한저평가"
+        # RSI 30~45 단기조정 보너스: 핵심 성장섹터 고품질 종목 한정
+        # GOOGL, AVGO 등 메타 종목이 단기 10~15% 조정 시 캡처
+        elif rsi < 45 and fund_score >= 35:
+            core_meta_sectors = ['AI/반도체', '클라우드', '사이버보안', '국방/항공', '소프트웨어', '디지털인프라']
+            if sector_name in core_meta_sectors:
+                adjustment = self.SCORE_MILD_OVERSOLD_BONUS
+                contrarian_comment = "💡단기조정관심"
         # 과열 조건 강화: RSI>75 (기존 70) → 더 강한 감점
         elif rsi > 75:
             adjustment = self.SCORE_OVERBOUGHT_PENALTY  # -8
