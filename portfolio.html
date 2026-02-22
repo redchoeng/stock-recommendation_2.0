@@ -1,123 +1,123 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Builder - Titan v2.0</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
-<style>
-:root {
+    <html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Builder - Titan v2.0</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+    <style>
+    :root {
     --bg: #f7f8fa; --surface: #ffffff; --text: #191f28; --text-sub: #8b95a1;
     --text-muted: #b0b8c1; --border: #e5e8eb; --accent: #20c997;
     --accent-dark: #0ca678; --radius: 16px;
     --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
     --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
     font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     min-height: 100vh; background: var(--bg); color: var(--text);
     padding: 20px; -webkit-font-smoothing: antialiased;
-}
-.container { max-width:780px; margin:0 auto; }
-.market-switcher {
+    }
+    .container { max-width:780px; margin:0 auto; }
+    .market-switcher {
     display:flex; justify-content:center; gap:4px; margin-bottom:20px;
     background:var(--surface); border-radius:12px; padding:4px;
     box-shadow:var(--shadow); width:fit-content; margin-left:auto; margin-right:auto;
-}
-.market-btn {
+    }
+    .market-btn {
     padding:10px 24px; font-size:0.9em; font-weight:600; font-family:inherit;
     border:none; border-radius:10px; cursor:pointer; transition:all 0.2s;
     text-decoration:none; color:var(--text-sub); display:flex; align-items:center; gap:6px; background:transparent;
-}
-.market-btn.active { background:var(--accent); color:white; }
-.market-btn:not(.active):hover { background:#e6fcf5; color:var(--accent-dark); }
-.back-link {
+    }
+    .market-btn.active { background:var(--accent); color:white; }
+    .market-btn:not(.active):hover { background:#e6fcf5; color:var(--accent-dark); }
+    .back-link {
     display:block; text-align:center; margin-bottom:16px;
     color:var(--text-sub); text-decoration:none; font-weight:600; font-size:0.9em;
-}
-.back-link:hover { color:var(--accent); }
-.header-card {
+    }
+    .back-link:hover { color:var(--accent); }
+    .header-card {
     background:var(--surface); border-radius:var(--radius); padding:28px;
     margin-bottom:20px; box-shadow:var(--shadow); text-align:center;
     position:relative; overflow:hidden;
-}
-.header-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #20c997, #12b886); }
-h1 { color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; letter-spacing:-0.02em; }
-.subtitle { color:var(--text-sub); font-size:0.9em; }
-.timestamp { color:var(--text-muted); font-size:0.8em; margin-top:6px; }
+    }
+    .header-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #20c997, #12b886); }
+    h1 { color:var(--text); font-size:1.5em; font-weight:800; margin-bottom:6px; letter-spacing:-0.02em; }
+    .subtitle { color:var(--text-sub); font-size:0.9em; }
+    .timestamp { color:var(--text-muted); font-size:0.8em; margin-top:6px; }
 
-/* 입력 섹션 */
-.input-section {
+    /* 입력 섹션 */
+    .input-section {
     background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
     padding:24px; margin-bottom:20px; box-shadow:var(--shadow);
-}
-.input-row { display:flex; gap:16px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }
-.input-group { display:flex; flex-direction:column; align-items:center; }
-.input-group label { color:var(--text); font-weight:700; margin-bottom:6px; font-size:0.88em; }
-.seed-input {
+    }
+    .input-row { display:flex; gap:16px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }
+    .input-group { display:flex; flex-direction:column; align-items:center; }
+    .input-group label { color:var(--text); font-weight:700; margin-bottom:6px; font-size:0.88em; }
+    .seed-input {
     width:200px; padding:12px 15px; border:1px solid var(--border); border-radius:12px;
     font-size:1.1em; font-family:inherit; text-align:center; background:var(--bg);
-}
-.seed-input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(32,201,151,0.15); }
-.slider-group { display:flex; align-items:center; gap:10px; }
-.slider-group input[type=range] { width:180px; accent-color:var(--accent); }
-.slider-label { font-weight:700; color:var(--text); min-width:120px; text-align:center; font-size:0.88em; }
-.calc-btn {
+    }
+    .seed-input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(32,201,151,0.15); }
+    .slider-group { display:flex; align-items:center; gap:10px; }
+    .slider-group input[type=range] { width:180px; accent-color:var(--accent); }
+    .slider-label { font-weight:700; color:var(--text); min-width:120px; text-align:center; font-size:0.88em; }
+    .calc-btn {
     background:var(--accent); color:white; padding:12px 32px; border:none;
     border-radius:12px; font-size:1em; font-weight:700; cursor:pointer;
     transition:all 0.2s; font-family:inherit;
-}
-.calc-btn:hover { background:var(--accent-dark); transform:translateY(-1px); }
-.calc-btn:active { transform:translateY(1px); }
+    }
+    .calc-btn:hover { background:var(--accent-dark); transform:translateY(-1px); }
+    .calc-btn:active { transform:translateY(1px); }
 
-/* 결과 테이블 */
-.result-section { display:none; }
-.result-card {
+    /* 결과 테이블 */
+    .result-section { display:none; }
+    .result-card {
     background:var(--surface); border-radius:var(--radius); padding:20px;
     margin-bottom:20px; box-shadow:var(--shadow);
-}
-.result-card h2 { color:var(--text); font-size:1.2em; font-weight:700; margin-bottom:16px; text-align:center; }
-table { width:100%; border-collapse:collapse; font-size:0.85em; }
-th { background:var(--accent); color:white; padding:10px 8px; text-align:center; font-weight:700; }
-th:first-child { border-radius:10px 0 0 0; }
-th:last-child { border-radius:0 10px 0 0; }
-td { padding:10px 8px; text-align:center; border-bottom:1px solid var(--border); }
-tr:hover { background:#f0fdf9; }
-.cat-growth { background:#edf2ff; color:#4263eb; padding:3px 10px; border-radius:8px; font-size:0.82em; font-weight:700; }
-.cat-value { background:#fff4e6; color:#fd7e14; padding:3px 10px; border-radius:8px; font-size:0.82em; font-weight:700; }
-.tier-hot { color:#f76707; font-weight:700; }
-.tier-active { color:var(--accent-dark); font-weight:700; }
-.tier-normal { color:var(--text-sub); }
-.tier-thin { color:#f06595; font-weight:700; }
-.summary-box { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-top:16px; }
-.summary-item { background:var(--bg); border-radius:12px; padding:14px; text-align:center; }
-.summary-value { font-size:1.2em; font-weight:800; color:var(--accent-dark); }
-.summary-label { font-size:0.8em; color:var(--text-sub); margin-top:3px; }
-.cash-note { text-align:center; margin-top:12px; color:#fd7e14; font-weight:700; font-size:0.88em; }
+    }
+    .result-card h2 { color:var(--text); font-size:1.2em; font-weight:700; margin-bottom:16px; text-align:center; }
+    table { width:100%; border-collapse:collapse; font-size:0.85em; }
+    th { background:var(--accent); color:white; padding:10px 8px; text-align:center; font-weight:700; }
+    th:first-child { border-radius:10px 0 0 0; }
+    th:last-child { border-radius:0 10px 0 0; }
+    td { padding:10px 8px; text-align:center; border-bottom:1px solid var(--border); }
+    tr:hover { background:#f0fdf9; }
+    .cat-growth { background:#edf2ff; color:#4263eb; padding:3px 10px; border-radius:8px; font-size:0.82em; font-weight:700; }
+    .cat-value { background:#fff4e6; color:#fd7e14; padding:3px 10px; border-radius:8px; font-size:0.82em; font-weight:700; }
+    .tier-hot { color:#f76707; font-weight:700; }
+    .tier-active { color:var(--accent-dark); font-weight:700; }
+    .tier-normal { color:var(--text-sub); }
+    .tier-thin { color:#f06595; font-weight:700; }
+    .summary-box { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-top:16px; }
+    .summary-item { background:var(--bg); border-radius:12px; padding:14px; text-align:center; }
+    .summary-value { font-size:1.2em; font-weight:800; color:var(--accent-dark); }
+    .summary-label { font-size:0.8em; color:var(--text-sub); margin-top:3px; }
+    .cash-note { text-align:center; margin-top:12px; color:#fd7e14; font-weight:700; font-size:0.88em; }
 
-/* 내 자산에 추가 버튼 */
-.add-to-assets {
+    /* 내 자산에 추가 버튼 */
+    .add-to-assets {
     display:block; width:100%; padding:14px; margin-top:20px;
     background:#7c3aed; color:white; border:none;
     border-radius:12px; font-size:1em; font-weight:700; cursor:pointer;
     font-family:inherit; transition:all 0.2s; text-align:center;
-}
-.add-to-assets:hover { background:#6c2bd9; transform:translateY(-1px); }
-.add-to-assets:disabled { background:var(--text-muted); cursor:not-allowed; }
-.add-msg { text-align:center; margin-top:10px; padding:10px; border-radius:10px; font-size:0.88em; display:none; }
-.add-msg.success { display:block; background:#e6fcf5; color:var(--accent-dark); }
-.add-msg.error { display:block; background:#fff0f6; color:#f06595; }
-.add-msg.info { display:block; background:#edf2ff; color:#4263eb; }
+    }
+    .add-to-assets:hover { background:#6c2bd9; transform:translateY(-1px); }
+    .add-to-assets:disabled { background:var(--text-muted); cursor:not-allowed; }
+    .add-msg { text-align:center; margin-top:10px; padding:10px; border-radius:10px; font-size:0.88em; display:none; }
+    .add-msg.success { display:block; background:#e6fcf5; color:var(--accent-dark); }
+    .add-msg.error { display:block; background:#fff0f6; color:#f06595; }
+    .add-msg.info { display:block; background:#edf2ff; color:#4263eb; }
 
-/* 푸터 */
-.footer {
+    /* 푸터 */
+    .footer {
     background:var(--surface); border-radius:var(--radius); padding:20px;
     color:var(--text-muted); font-size:0.85em; text-align:center;
     box-shadow:var(--shadow); line-height:1.7;
-}
-@media (max-width:768px) {
+    }
+    @media (max-width:768px) {
     body { padding:12px; }
     .header-card { padding:20px 16px; }
     h1 { font-size:1.25em; }
@@ -134,17 +134,17 @@ tr:hover { background:#f0fdf9; }
     .summary-box { grid-template-columns:repeat(2,1fr); gap:8px; }
     .summary-value { font-size:1em; }
     .add-to-assets { font-size:0.95em; padding:12px; }
-}
-@media (max-width:400px) {
+    }
+    @media (max-width:400px) {
     h1 { font-size:1.1em; }
     table { font-size:0.65em; }
     .summary-box { grid-template-columns:1fr 1fr; }
-}
-</style>
-</head>
-<body>
+    }
+    </style>
+    </head>
+    <body>
 
-<div class="container">
+    <div class="container">
     <div class="market-switcher">
         <span class="market-btn active">US</span>
         <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
@@ -154,7 +154,7 @@ tr:hover { background:#f0fdf9; }
     <div class="header-card">
         <h1>Portfolio Builder</h1>
         <p class="subtitle">Titan 점수 + 유동성 등급 기반 포트폴리오 구성</p>
-        <p class="timestamp">2026-02-21 21:51 KST</p>
+        <p class="timestamp">2026-02-22 22:15 KST</p>
     </div>
 
     <div class="input-section">
@@ -206,17 +206,17 @@ tr:hover { background:#f0fdf9; }
         <p>본 포트폴리오는 Titan 알고리즘 기반 참고 자료이며, 투자 손실에 대한 책임은 본인에게 있습니다.</p>
         <p style="margin-top:4px;">Titan v2.0 &middot; Hot($1B+/일) &middot; Active($300M+) &middot; Normal($100M+) &middot; Thin(&lt;$100M)</p>
     </div>
-</div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase_config.js"></script>
-<script>
-let sbClient = null;
-let currentUser = null;
-let lastPortfolio = [];
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase_config.js"></script>
+    <script>
+    let sbClient = null;
+    let currentUser = null;
+    let lastPortfolio = [];
 
-// Supabase 초기화 + 인증 체크
-(async () => {
+    // Supabase 초기화 + 인증 체크
+    (async () => {
     try {
         const { createClient } = supabase;
         sbClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -229,26 +229,26 @@ let lastPortfolio = [];
     } catch(e) {
         window.location.href = 'login.html';
     }
-})();
+    })();
 
-const ALL_DATA = [{"ticker": "NVDA", "name": "NVIDIA Corporation", "titan": 83, "fund": 50, "tech": 31, "tier_bonus": 5, "tier_name": "Hot", "final": 88, "price": 189.82, "daily_val": 34164.0, "sector": "Technology", "category": "Growth"}, {"ticker": "AMAT", "name": "Applied Materials, Inc.", "titan": 76, "fund": 40, "tech": 32, "tier_bonus": 5, "tier_name": "Hot", "final": 81, "price": 375.38, "daily_val": 2879.0, "sector": "Technology", "category": "Growth"}, {"ticker": "LRCX", "name": "Lam Research Corporation", "titan": 75, "fund": 49, "tech": 25, "tier_bonus": 5, "tier_name": "Hot", "final": 80, "price": 244.92, "daily_val": 2938.0, "sector": "Technology", "category": "Growth"}, {"ticker": "VRTX", "name": "Vertex Pharmaceuticals Incorpor", "titan": 77, "fund": 43, "tech": 29, "tier_bonus": 3, "tier_name": "Active", "final": 80, "price": 476.9, "daily_val": 698.0, "sector": "Healthcare", "category": "Growth"}, {"ticker": "BMY", "name": "Bristol-Myers Squibb Company", "titan": 90, "fund": 46, "tech": 32, "tier_bonus": 3, "tier_name": "Active", "final": 93, "price": 60.66, "daily_val": 885.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "TGT", "name": "Target Corporation", "titan": 89, "fund": 51, "tech": 32, "tier_bonus": 3, "tier_name": "Active", "final": 92, "price": 116.69, "daily_val": 845.0, "sector": "Consumer Defensive", "category": "Value"}, {"ticker": "ABBV", "name": "AbbVie Inc.", "titan": 86, "fund": 43, "tech": 29, "tier_bonus": 5, "tier_name": "Hot", "final": 91, "price": 224.81, "daily_val": 1475.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "GILD", "name": "Gilead Sciences, Inc.", "titan": 86, "fund": 43, "tech": 28, "tier_bonus": 5, "tier_name": "Hot", "final": 91, "price": 151.4, "daily_val": 1128.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "UPS", "name": "United Parcel Service, Inc.", "titan": 88, "fund": 46, "tech": 32, "tier_bonus": 3, "tier_name": "Active", "final": 91, "price": 116.73, "daily_val": 725.0, "sector": "Industrials", "category": "Value"}];
-const GROWTH = ALL_DATA.filter(s => s.category === 'Growth');
-const VALUE = ALL_DATA.filter(s => s.category === 'Value');
+    const ALL_DATA = [{"ticker": "NVDA", "name": "NVIDIA Corporation", "titan": 76, "fund": 44, "tech": 28, "tier_bonus": 5, "tier_name": "Hot", "final": 81, "price": 189.82, "daily_val": 32522.0, "sector": "Technology", "category": "Growth"}, {"ticker": "ABNB", "name": "Airbnb, Inc.", "titan": 75, "fund": 37, "tech": 34, "tier_bonus": 3, "tier_name": "Active", "final": 78, "price": 127.89, "daily_val": 609.0, "sector": "Consumer Cyclical", "category": "Growth"}, {"ticker": "BMY", "name": "Bristol-Myers Squibb Company", "titan": 106, "fund": 55, "tech": 31, "tier_bonus": 3, "tier_name": "Active", "final": 109, "price": 60.66, "daily_val": 874.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "GILD", "name": "Gilead Sciences, Inc.", "titan": 103, "fund": 54, "tech": 25, "tier_bonus": 5, "tier_name": "Hot", "final": 108, "price": 151.4, "daily_val": 1103.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "MRK", "name": "Merck & Company, Inc.", "titan": 100, "fund": 54, "tech": 26, "tier_bonus": 5, "tier_name": "Hot", "final": 105, "price": 122.26, "daily_val": 1696.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "ALL", "name": "Allstate Corporation (The)", "titan": 101, "fund": 55, "tech": 26, "tier_bonus": 3, "tier_name": "Active", "final": 104, "price": 206.37, "daily_val": 363.0, "sector": "Financial Services", "category": "Value"}, {"ticker": "JNJ", "name": "Johnson & Johnson", "titan": 99, "fund": 55, "tech": 22, "tier_bonus": 5, "tier_name": "Hot", "final": 104, "price": 242.49, "daily_val": 2175.0, "sector": "Healthcare", "category": "Value"}];
+    const GROWTH = ALL_DATA.filter(s => s.category === 'Growth');
+    const VALUE = ALL_DATA.filter(s => s.category === 'Value');
 
-const slider = document.getElementById('ratioSlider');
-const ratioLabel = document.getElementById('ratioLabel');
-slider.addEventListener('input', () => {
+    const slider = document.getElementById('ratioSlider');
+    const ratioLabel = document.getElementById('ratioLabel');
+    slider.addEventListener('input', () => {
     const g = slider.value;
     ratioLabel.textContent = 'Growth ' + g + '% / Value ' + (100 - g) + '%';
-});
+    });
 
-// 시드 입력에 콤마 자동 포맷
-document.getElementById('seedInput').addEventListener('input', function(e) {
+    // 시드 입력에 콤마 자동 포맷
+    document.getElementById('seedInput').addEventListener('input', function(e) {
     let v = e.target.value.replace(/[^0-9]/g, '');
     if (v) e.target.value = parseInt(v).toLocaleString('en-US');
-});
+    });
 
-function calculatePortfolio() {
+    function calculatePortfolio() {
     const seedStr = document.getElementById('seedInput').value.replace(/,/g, '');
     const seed = parseFloat(seedStr);
     if (isNaN(seed) || seed <= 0) { alert('투자금을 입력하세요'); return; }
@@ -340,10 +340,10 @@ function calculatePortfolio() {
 
     document.getElementById('resultSection').style.display = 'block';
     document.getElementById('resultSection').scrollIntoView({behavior:'smooth'});
-}
+    }
 
-// ===== 내 자산에 추가 =====
-async function addToMyAssets() {
+    // ===== 내 자산에 추가 =====
+    async function addToMyAssets() {
     const msgEl = document.getElementById('addMsg');
     const btn = document.getElementById('addToAssetsBtn');
 
@@ -397,11 +397,11 @@ async function addToMyAssets() {
     }
 
     setTimeout(() => { msgEl.className = 'add-msg'; }, 8000);
-}
+    }
 
-// 페이지 로드 시 자동 계산
-window.addEventListener('load', () => { calculatePortfolio(); });
+    // 페이지 로드 시 자동 계산
+    window.addEventListener('load', () => { calculatePortfolio(); });
 
-</script>
-</body>
-</html>
+    </script>
+    </body>
+    </html>
