@@ -423,6 +423,8 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
                 'mfi_value': tech_bd.get('mfi_value'),
                 'analyst_comment': r.get('analyst_comment', ''),
                 'analyst_data': r.get('analyst_data', {}),
+                'intuition_score': fund_bd.get('intuition_score', 0),
+                'intuition_tags': [(tid, tname, pts) for tid, tname, pts in fund_bd.get('intuition_tags', [])],
             }
         with open(cache_file, 'w') as f:
             json.dump(cache, f, indent=2)

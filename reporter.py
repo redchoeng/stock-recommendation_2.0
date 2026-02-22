@@ -12,6 +12,27 @@ from tabulate import tabulate
 
 
 class ReporterMixin:
+
+    @staticmethod
+    def _build_intuition_line(fund_bd):
+        """직관 점수를 기존 펀더멘탈 breakdown 항목 형식으로 표시 (태그가 있을 때만)"""
+        intuition_tags = fund_bd.get('intuition_tags', [])
+        intuition_score = fund_bd.get('intuition_score', 0)
+        if not intuition_tags:
+            return ""
+
+        sign = '+' if intuition_score > 0 else ''
+        tag_names = [name for _, name, _ in intuition_tags]
+        tags_str = '·'.join(tag_names[:4])
+
+        bg_style = 'background: rgba(156, 39, 176, 0.06);' if intuition_score > 0 else 'background: rgba(244, 67, 54, 0.06);'
+
+        return f'''<div class="breakdown-item" style="{bg_style}">
+                            <span class="criterion">질적 경쟁우위</span>
+                            <span class="criterion-value">{tags_str}</span>
+                            <span class="criterion-score">{sign}{intuition_score}점</span>
+                        </div>'''
+
     def display_results(self, results, min_score=60):
         """결과 테이블 출력"""
         print("=" * 100)
@@ -646,6 +667,11 @@ class ReporterMixin:
                             <span class="criterion">매출성장률</span>
                             <span class="criterion-value">{rg_display}</span>
                             <span class="criterion-score">+{fund_bd.get('revenue_growth_score', 0)}점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">FCF (현금창출력)</span>
+                            <span class="criterion-value">{f"{fund_bd.get('fcf_margin_value'):.0f}%" if fund_bd.get('fcf_margin_value') is not None else "N/A"}</span>
+                            <span class="criterion-score">+{fund_bd.get('fcf_score', 0)}점</span>
                         </div>''') + f'''
                         <div class="breakdown-item">
                             <span class="criterion">PEG (성장가치)</span>
@@ -658,6 +684,7 @@ class ReporterMixin:
                             <span class="criterion-score">+{fund_bd.get('sector_score', 0)}점</span>
                         </div>
                         {policy_html}
+                        {self._build_intuition_line(fund_bd)}
                     </div>
                 </div>
                 <div class="breakdown-section">

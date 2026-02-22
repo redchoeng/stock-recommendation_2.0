@@ -156,9 +156,168 @@ class FundamentalMixin:
         'TGT', 'LOW', 'SPGI',
     }
 
+    # =====================================================================
+    # 🧠 정성적 직관 점수 (Qualitative Intuition Score)
+    # 숫자가 말해주지 못하는 것들 — 경험 많은 투자자의 직관을 체계화
+    # 최대 +7점 / 최소 -3점 (성장주 모드 전용)
+    # =====================================================================
+
+    # 직관 요소 정의: {요소ID: (점수, 한글명, 설명)}
+    INTUITION_FACTORS = {
+        'ecosystem_moat':     (3, '생태계 해자',    '플랫폼 락인, 개발자 생태계, 전환비용이 만드는 깊은 해자'),
+        'innovation_leader':  (2, '혁신 선도',      '카테고리를 정의하거나 기술 패러다임을 이끄는 기업'),
+        'network_effect':     (2, '네트워크 효과',   '사용자가 늘수록 가치가 기하급수적으로 증가하는 구조'),
+        'founder_led':        (1, '창업자 경영',     '비전을 가진 창업자가 직접 경영하는 프리미엄'),
+        'narrative_momentum': (2, '시장 내러티브',   '현재 시장의 지배적 테마와 강하게 연결된 종목'),
+        'switching_cost':     (2, '전환비용',        '고객이 다른 제품으로 바꾸기 어려운 엔터프라이즈 락인'),
+        'winner_takes_all':   (2, '승자독식',        '시장 구조상 1등이 압도적 점유율을 가져가는 구조'),
+        'cash_machine':       (1, '현금인쇄기',      '숫자를 넘어서는 질적 차원의 현금창출 구조'),
+        # 부정적 요소
+        'mgmt_concern':      (-2, '경영리스크',      '턴어라운드 불확실성, 리더십 공백, 전략 표류'),
+        'narrative_headwind': (-1, '테마 역풍',      '한때 뜨거웠으나 현재 시장에서 소외된 내러티브'),
+    }
+    INTUITION_MAX_BONUS = 7
+    INTUITION_MAX_PENALTY = -3
+
+    # 종목별 직관 태그 — 투자자의 직관을 구조화한 핵심 데이터
+    INTUITION_TAGS = {
+        # ===== Mega-Cap Tech: 생태계 제왕들 =====
+        'NVDA':  ['ecosystem_moat', 'innovation_leader', 'founder_led', 'narrative_momentum', 'winner_takes_all'],
+        'AAPL':  ['ecosystem_moat', 'switching_cost', 'cash_machine', 'network_effect'],
+        'MSFT':  ['ecosystem_moat', 'switching_cost', 'narrative_momentum', 'cash_machine'],
+        'GOOGL': ['ecosystem_moat', 'network_effect', 'cash_machine', 'winner_takes_all'],
+        'GOOG':  ['ecosystem_moat', 'network_effect', 'cash_machine', 'winner_takes_all'],
+        'META':  ['network_effect', 'founder_led', 'narrative_momentum', 'cash_machine'],
+        'AMZN':  ['ecosystem_moat', 'network_effect', 'switching_cost', 'winner_takes_all'],
+        'TSLA':  ['innovation_leader', 'founder_led', 'narrative_momentum'],
+
+        # ===== Semiconductors: 실리콘의 왕들 =====
+        'AVGO':  ['ecosystem_moat', 'cash_machine', 'switching_cost'],
+        'ASML':  ['winner_takes_all', 'innovation_leader'],
+        'AMD':   ['innovation_leader', 'narrative_momentum'],
+        'QCOM':  ['ecosystem_moat', 'switching_cost'],
+        'TXN':   ['cash_machine', 'switching_cost'],
+        'LRCX':  ['winner_takes_all'],
+        'AMAT':  ['winner_takes_all'],
+        'KLAC':  ['winner_takes_all'],
+        'MU':    ['narrative_momentum'],
+        'MRVL':  ['narrative_momentum'],
+
+        # ===== Enterprise Software: 전환비용의 제왕들 =====
+        'CRM':   ['ecosystem_moat', 'switching_cost'],
+        'ADBE':  ['ecosystem_moat', 'switching_cost'],
+        'ORCL':  ['switching_cost', 'ecosystem_moat'],
+        'INTU':  ['switching_cost', 'cash_machine'],
+        'NOW':   ['switching_cost', 'innovation_leader'],
+        'WDAY':  ['switching_cost'],
+        'SNOW':  ['innovation_leader', 'narrative_momentum'],
+        'CDNS':  ['winner_takes_all', 'switching_cost'],
+        'SNPS':  ['winner_takes_all', 'switching_cost'],
+        'VEEV':  ['switching_cost', 'winner_takes_all'],
+        'ADSK':  ['switching_cost'],
+        'TEAM':  ['network_effect'],
+        'HUBS':  ['ecosystem_moat'],
+        'SHOP':  ['ecosystem_moat', 'network_effect'],
+
+        # ===== Cybersecurity: 필수불가결한 방패 =====
+        'CRWD':  ['innovation_leader', 'narrative_momentum'],
+        'PANW':  ['innovation_leader', 'narrative_momentum', 'ecosystem_moat'],
+        'ZS':    ['innovation_leader', 'narrative_momentum'],
+        'FTNT':  ['cash_machine'],
+        'NET':   ['innovation_leader', 'narrative_momentum'],
+
+        # ===== AI & Data: 내러티브의 중심 =====
+        'PLTR':  ['narrative_momentum', 'founder_led', 'innovation_leader'],
+        'DDOG':  ['innovation_leader', 'switching_cost'],
+        'MDB':   ['innovation_leader'],
+
+        # ===== Digital Platform: 네트워크가 곧 해자 =====
+        'NFLX':  ['network_effect', 'cash_machine'],
+        'ABNB':  ['network_effect', 'founder_led'],
+        'BKNG':  ['network_effect', 'cash_machine'],
+        'TTD':   ['innovation_leader'],
+        'RBLX':  ['network_effect'],
+        'MELI':  ['ecosystem_moat', 'network_effect'],
+        'PDD':   ['network_effect'],
+
+        # ===== Hardware & Infrastructure: AI의 뼈대 =====
+        'SMCI':  ['narrative_momentum'],
+        'ANET':  ['innovation_leader', 'narrative_momentum'],
+        'DELL':  ['narrative_momentum'],
+        'PSTG':  ['narrative_momentum'],
+
+        # ===== Fintech: 결제의 독점 =====
+        'V':     ['winner_takes_all', 'network_effect', 'cash_machine'],
+        'MA':    ['winner_takes_all', 'network_effect', 'cash_machine'],
+        'PYPL':  ['network_effect'],
+        'SQ':    ['ecosystem_moat', 'founder_led'],
+
+        # ===== Biotech & Healthcare Growth =====
+        'LLY':   ['innovation_leader', 'narrative_momentum', 'winner_takes_all'],
+        'ISRG':  ['innovation_leader', 'winner_takes_all'],
+        'VRTX':  ['winner_takes_all', 'cash_machine'],
+        'REGN':  ['innovation_leader', 'cash_machine'],
+        'TMO':   ['ecosystem_moat', 'switching_cost'],
+        'DHR':   ['ecosystem_moat'],
+
+        # ===== New Energy & Industrial Tech =====
+        'SMR':   ['narrative_momentum', 'innovation_leader'],
+        'OKLO':  ['narrative_momentum', 'founder_led'],
+        'GEV':   ['narrative_momentum'],
+
+        # ===== 부정적 직관 =====
+        'INTC':  ['mgmt_concern'],
+        'ZM':    ['narrative_headwind'],
+        'DOCU':  ['narrative_headwind'],
+        'WOLF':  ['mgmt_concern', 'narrative_headwind'],
+        'PATH':  ['narrative_headwind'],
+    }
+
     VALUE_BETA_THRESHOLDS = (0.8, 1.2)
 
     # =========================================================================
+
+    def _get_intuition_score(self, ticker):
+        """🧠 정성적 직관 점수 계산 (성장주 전용)
+
+        숫자로 측정할 수 없는 경쟁우위를 점수화:
+        - 생태계 해자, 혁신 선도, 네트워크 효과 등 긍정 요소
+        - 경영 리스크, 테마 역풍 등 부정 요소
+        - 캡: +7 / -3
+
+        Returns:
+            (score, tags_detail, comment)
+            - score: 직관 점수 (int)
+            - tags_detail: [(tag_id, tag_name, pts), ...] 적용된 태그 리스트
+            - comment: 요약 코멘트 (str)
+        """
+        tags = self.INTUITION_TAGS.get(ticker, [])
+        if not tags:
+            return 0, [], ""
+
+        raw_score = 0
+        tags_detail = []
+        for tag_id in tags:
+            factor = self.INTUITION_FACTORS.get(tag_id)
+            if factor:
+                pts, name, _ = factor
+                raw_score += pts
+                tags_detail.append((tag_id, name, pts))
+
+        # 캡 적용
+        score = max(self.INTUITION_MAX_PENALTY, min(self.INTUITION_MAX_BONUS, raw_score))
+
+        # 코멘트 생성
+        positive_tags = [name for _, name, pts in tags_detail if pts > 0]
+        negative_tags = [name for _, name, pts in tags_detail if pts < 0]
+
+        comment_parts = []
+        if positive_tags:
+            comment_parts.append(f"[직관]{'+'.join(positive_tags[:3])}")
+        if negative_tags:
+            comment_parts.append(f"[주의]{'·'.join(negative_tags)}")
+
+        return score, tags_detail, ", ".join(comment_parts)
 
     @staticmethod
     def _calc_gradient_score(value, excellent, good, max_pts):
@@ -636,6 +795,15 @@ class FundamentalMixin:
                     score += policy_bonus
                     breakdown['policy_bonus'] = policy_bonus
                     comments.append(policy_comment)
+
+                # 🧠 정성적 직관 점수 (성장주 전용)
+                intuition_score, intuition_tags, intuition_comment = self._get_intuition_score(ticker_sym)
+                if intuition_score != 0:
+                    score += intuition_score
+                    breakdown['intuition_score'] = intuition_score
+                    breakdown['intuition_tags'] = intuition_tags
+                    if intuition_comment:
+                        comments.append(intuition_comment)
 
         except Exception:
             pass

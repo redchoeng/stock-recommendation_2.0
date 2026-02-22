@@ -424,6 +424,20 @@ class StrategyMixin:
         if fund_parts:
             parts.append(". ".join(fund_parts) + ".")
 
+        # 1.5) 직관 요소 내러티브
+        intuition_tags = fund_bd.get('intuition_tags', [])
+        intuition_score = fund_bd.get('intuition_score', 0)
+        if intuition_tags:
+            pos_names = [name for _, name, pts in intuition_tags if pts > 0]
+            neg_names = [name for _, name, pts in intuition_tags if pts < 0]
+            intuition_parts = []
+            if pos_names:
+                intuition_parts.append(f"정성 분석: {'·'.join(pos_names[:3])} 등 질적 경쟁우위 보유(+{max(0, intuition_score)}점)")
+            if neg_names:
+                intuition_parts.append(f"다만 {'·'.join(neg_names)} 요인은 유의 필요")
+            if intuition_parts:
+                parts.append(". ".join(intuition_parts) + ".")
+
         # 2) 기술적 요약
         rsi = tech_bd.get('rsi_value', 50)
         ma20 = tech_bd.get('ma20', 0)
