@@ -8,6 +8,7 @@ import os
 import json
 import re
 from datetime import datetime
+from tabulate import tabulate
 
 
 class ReporterMixin:
@@ -648,7 +649,7 @@ class ReporterMixin:
                         </div>''') + f'''
                         <div class="breakdown-item">
                             <span class="criterion">PEG (성장가치)</span>
-                            <span class="criterion-value">{fund_bd.get('peg_value', 0):.2f}</span>
+                            <span class="criterion-value">{(fund_bd.get('peg_value') or 0):.2f}</span>
                             <span class="criterion-score">+{fund_bd.get('peg_score', 0)}점</span>
                         </div>
                         <div class="breakdown-item">

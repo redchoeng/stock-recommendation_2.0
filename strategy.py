@@ -9,9 +9,9 @@ from datetime import datetime
 
 
 class StrategyMixin:
-    # ===== 역발상 보너스/페널티 =====
+    # ===== 역발상 보너스/페널티 (강화) =====
     SCORE_OVERSOLD_QUALITY_BONUS = 10
-    SCORE_OVERBOUGHT_PENALTY = -5
+    SCORE_OVERBOUGHT_PENALTY = -8     # 기존 -5 → -8 강화
 
     # =========================================================================
 
@@ -48,21 +48,21 @@ class StrategyMixin:
         return min(candidates) if candidates else None
 
     def _validate_risk_reward(self, buy_price, target_price, stop_loss, atr, swing_highs):
-        """R:R >= 1.5 보장, 최대 손절 8%"""
-        max_stop = buy_price * 0.92
+        """R:R >= 2.0 보장, 최대 손절 7% (강화)"""
+        max_stop = buy_price * 0.93   # 기존 0.92 → 0.93 (7% 최대 손절)
         if stop_loss < max_stop:
             stop_loss = max_stop
 
         risk = buy_price - stop_loss
         reward = target_price - buy_price
-        if risk > 0 and reward / risk < 1.5:
+        if risk > 0 and reward / risk < 2.0:   # 기존 1.5 → 2.0
             farther = [r for r in swing_highs if r > target_price]
             if farther:
                 target_price = min(farther)
             elif atr > 0:
-                target_price = buy_price + (2.5 * atr)
+                target_price = buy_price + (3.0 * atr)   # 기존 2.5 → 3.0
             else:
-                target_price = buy_price * 1.10
+                target_price = buy_price * 1.12   # 기존 1.10 → 1.12
 
         return target_price, stop_loss
 
@@ -343,28 +343,42 @@ class StrategyMixin:
             }
 
     def _apply_contrarian_adjustment(self, fund_score, tech_breakdown, sector_name):
-        """하이브리드 전략: 과매도 우량주 보너스, 과열주 감점"""
+        """하이브리드 전략: 과매도 우량주 보너스, 과열주 감점 (강화)"""
         adjustment = 0
         contrarian_comment = ""
 
         rsi = tech_breakdown.get('rsi_value', 50)
+        volume_ratio = tech_breakdown.get('volume_ratio', 1.0)
 
         quality_growth_sectors = [
             'AI/반도체', '클라우드', '사이버보안', '국방/항공',
             '소프트웨어', '바이오텍', '디지털인프라'
         ]
 
+        # 과매도 조건 강화: Fund≥35 (기존 30), 거래량 폭증 시 추가 보너스
         if rsi < self.RSI_OVERSOLD:
-            if fund_score >= 30:
+            if fund_score >= 35:
                 if sector_name in quality_growth_sectors:
                     adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS
+                    if volume_ratio >= 2.0:
+                        adjustment += 2  # 항복매도(Capitulation) 거래량 동반
                     contrarian_comment = "🎯저가매수기회"
                 else:
                     adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS // 2
                     contrarian_comment = "💎저평가"
-        elif rsi > self.RSI_OVERBOUGHT:
-            adjustment = self.SCORE_OVERBOUGHT_PENALTY
+            elif fund_score >= 25:
+                # 펀더 25-35: 약한 보너스만
+                adjustment = 3
+                contrarian_comment = "💎약한저평가"
+        # 과열 조건 강화: RSI>75 (기존 70) → 더 강한 감점
+        elif rsi > 75:
+            adjustment = self.SCORE_OVERBOUGHT_PENALTY  # -8
+            if volume_ratio < 1.0:
+                adjustment -= 2  # 거래량 감소 동반 과열 = 추가 감점
             contrarian_comment = "⚠️과열주의"
+        elif rsi > self.RSI_OVERBOUGHT:   # 70-75 구간: 경미한 감점
+            adjustment = -3
+            contrarian_comment = "⚡과열경계"
 
         return adjustment, contrarian_comment
 
@@ -397,6 +411,13 @@ class StrategyMixin:
                 fund_parts.append(f"매출 YoY +{rev_growth:.0f}% 고성장")
             elif rev_growth >= 10:
                 fund_parts.append(f"매출 YoY +{rev_growth:.0f}% 성장세")
+
+        fcf_margin = fund_bd.get('fcf_margin_value')
+        if fcf_margin is not None:
+            if fcf_margin >= 25:
+                fund_parts.append(f"FCF Margin {fcf_margin:.0f}%로 현금창출력 최상위")
+            elif fcf_margin >= 15:
+                fund_parts.append(f"FCF Margin {fcf_margin:.0f}%로 우수한 현금흐름")
 
         if fund_parts:
             parts.append(". ".join(fund_parts) + ".")

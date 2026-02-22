@@ -106,7 +106,7 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
         print(f"\n✅ 1단계 완료: {len(filtered)}개 종목 선정 (원본 {total}개)\n")
         return [item['ticker'] for item in filtered]
 
-    def _analyze_single_stock(self, ticker):
+    def _analyze_single_stock(self, ticker, spy_hist=None):
         """개별 종목 분석"""
         stock = yf.Ticker(ticker)
         info = stock.info
@@ -118,9 +118,9 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
         # 현재가
         current_price = self._get_current_price(info, hist)
 
-        # 점수 계산
+        # 점수 계산 (SPY 히스토리 전달하여 상대강도 계산)
         fund_score, fund_comments, fund_breakdown = self._get_fundamental_score(info)
-        tech_score, tech_comments, tech_breakdown = self._get_technical_score(hist, current_price)
+        tech_score, tech_comments, tech_breakdown = self._get_technical_score(hist, current_price, spy_hist=spy_hist)
 
         # 🔥 하이브리드 전략: 역발상 조정
         contrarian_adj, contrarian_comment = self._apply_contrarian_adjustment(
@@ -215,9 +215,9 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
         print("📊 STAGE 2: 정밀 분석 (Fundamental + Technical)")
         print("=" * 70)
 
-        # 🌍 시장 상태 감지
+        # 🌍 시장 상태 감지 (VIX 포함)
         print("\n🌍 시장 상태 감지 중...")
-        market_regime, regime_details, regime_desc = self._detect_market_regime()
+        market_regime, regime_details, regime_desc, spy_hist = self._detect_market_regime()
         print(f"   {regime_desc}\n")
 
         # 🔄 섹터 순환매 분석
@@ -244,7 +244,7 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
             try:
                 print(f"분석 중: {i}/{total} - {ticker}")
 
-                result = self._analyze_single_stock(ticker)
+                result = self._analyze_single_stock(ticker, spy_hist=spy_hist)
                 if result:
                     # 시장 상태에 따른 점수 조정 (추세 필터 포함)
                     is_downtrend = result.get('tech_breakdown', {}).get('is_downtrend', False)
@@ -404,6 +404,10 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
                 'opm_value': fund_bd.get('opm_value'),
                 'revenue_growth_value': fund_bd.get('revenue_growth_value'),
                 'peg_value': fund_bd.get('peg_value'),
+                'fcf_margin_value': fund_bd.get('fcf_margin_value'),
+                'fcf_score': fund_bd.get('fcf_score', 0),
+                'rs_score': tech_bd.get('rs_score', 0),
+                'rs_ratio': tech_bd.get('rs_ratio', 0),
                 'dividend_yield_value': fund_bd.get('dividend_yield_value'),
                 'per_value': fund_bd.get('per_value'),
                 'ev_ebitda_value': fund_bd.get('ev_ebitda_value'),

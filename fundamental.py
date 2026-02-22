@@ -6,11 +6,11 @@ FundamentalMixin: _get_fundamental_score, _get_trump_policy_bonus, _get_value_se
 
 
 class FundamentalMixin:
-    # ===== 섹터별 점수 - 성장주 =====
-    SCORE_SECTOR_TIER1 = 10  # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
-    SCORE_SECTOR_TIER2 = 8   # 소프트웨어, EV, 바이오텍, 신재생에너지, 희토류
-    SCORE_SECTOR_TIER3 = 5   # 헬스케어, 산업자동화, 핀테크
-    SCORE_SECTOR_TIER4 = 3   # 전통 에너지, 소비재, 유틸리티
+    # ===== 섹터별 점수 - 성장주 (축소: 10→5점, 섹터 편향 방지) =====
+    SCORE_SECTOR_TIER1 = 5   # AI, 반도체, 클라우드, 사이버보안, 국방, 원자력
+    SCORE_SECTOR_TIER2 = 4   # 소프트웨어, EV, 바이오텍, 신재생에너지, 희토류
+    SCORE_SECTOR_TIER3 = 3   # 헬스케어, 산업자동화, 핀테크
+    SCORE_SECTOR_TIER4 = 2   # 전통 에너지, 소비재, 유틸리티
     SCORE_SECTOR_DEFAULT = 1 # 분류 미매칭 (최소 보장)
 
     # ===== 섹터별 점수 - 가치주 =====
@@ -448,7 +448,7 @@ class FundamentalMixin:
                     breakdown['policy_bonus'] = policy_bonus
                     comments.append(policy_comment)
 
-            # ===== 성장주 모드: ROE/OPM/매출성장 중심 (50점) =====
+            # ===== 성장주 모드: ROE/OPM/FCF/매출성장 중심 (50점) =====
             else:
                 # 1. ROE (15점)
                 roe = info.get('returnOnEquity')
@@ -463,7 +463,7 @@ class FundamentalMixin:
                     if roe_pts >= 8:
                         comments.append(f"ROE:{roe_pct:.1f}%")
 
-                # 2. Operating Margin (15점)
+                # 2. Operating Margin (10점, 기존 15→10 축소: ROE와 중복 줄임)
                 opm = info.get('operatingMargins')
                 opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
                     industry, self.SECTOR_OPM_THRESHOLDS.get(
@@ -471,11 +471,47 @@ class FundamentalMixin:
                 if opm:
                     opm_pct = opm * 100
                     breakdown['opm_value'] = opm_pct
-                    opm_pts = self._calc_gradient_score(opm_pct, opm_excellent, opm_good, 15)
+                    opm_pts = self._calc_gradient_score(opm_pct, opm_excellent, opm_good, 10)
                     score += opm_pts
                     breakdown['opm_score'] = opm_pts
-                    if opm_pts >= 8:
+                    if opm_pts >= 5:
                         comments.append(f"OPM:{opm_pct:.1f}%")
+
+                # 2.5. FCF Margin (10점, 신규: 기술주 핵심 현금창출력)
+                fcf = info.get('freeCashflow')
+                total_revenue = info.get('totalRevenue')
+                if fcf and total_revenue and total_revenue > 0:
+                    fcf_margin = fcf / total_revenue * 100
+                    breakdown['fcf_margin_value'] = round(fcf_margin, 1)
+                    # 섹터별 FCF 기준
+                    if sector == 'Technology':
+                        fcf_excellent, fcf_good = 25, 10
+                    elif sector == 'Communication Services':
+                        fcf_excellent, fcf_good = 20, 8
+                    elif sector == 'Healthcare':
+                        fcf_excellent, fcf_good = 20, 8
+                    else:
+                        fcf_excellent, fcf_good = 15, 5
+                    fcf_pts = self._calc_gradient_score(fcf_margin, fcf_excellent, fcf_good, 10)
+                    score += fcf_pts
+                    breakdown['fcf_score'] = fcf_pts
+                    if fcf_pts >= 5:
+                        comments.append(f"FCF:{fcf_margin:.0f}%")
+                elif fcf and market_cap and market_cap > 0:
+                    # FCF Yield 폴백 (매출 데이터 없을 때)
+                    fcf_yield = fcf / market_cap * 100
+                    breakdown['fcf_margin_value'] = None
+                    breakdown['fcf_yield_value'] = round(fcf_yield, 1)
+                    if fcf_yield > 5:
+                        fcf_pts = 7
+                    elif fcf_yield > 3:
+                        fcf_pts = 4
+                    elif fcf_yield > 1:
+                        fcf_pts = 2
+                    else:
+                        fcf_pts = 0
+                    score += fcf_pts
+                    breakdown['fcf_score'] = fcf_pts
 
                 # 3. Revenue Growth (10점)
                 revenue_growth = info.get('revenueGrowth')
@@ -510,134 +546,55 @@ class FundamentalMixin:
                         breakdown['roe_score'] = growth_credit
                         comments.append("성장투자")
                     if opm_val < 0 and breakdown['opm_score'] == 0:
-                        growth_credit = round(15 * 0.4)
+                        growth_credit = round(10 * 0.4)
                         score += growth_credit
                         breakdown['opm_score'] = growth_credit
 
-                # 4. Sector & Industry (세분화된 분류)
-                breakdown['sector_name'] = f"{sector}"
+                # 4. Sector 라벨링 (점수 0점, 분류만 — 순환매 보너스가 동적으로 반영)
+                breakdown['sector_score'] = 0
                 ind_lower = industry.lower()
 
-                # Tier 1: AI, 반도체, 클라우드, 사이버보안, 국방
-                if any(keyword in ind_lower for keyword in ['semiconductor', 'chip', 'artificial intelligence', 'computer hardware']):
-                    score += self.SCORE_SECTOR_TIER1
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                if any(kw in ind_lower for kw in ['semiconductor', 'chip', 'artificial intelligence', 'computer hardware']):
                     breakdown['sector_name'] = "AI/반도체"
-                    comments.append("AI/반도체")
-                elif any(keyword in ind_lower for keyword in ['cloud', 'data center', 'infrastructure software']):
-                    score += self.SCORE_SECTOR_TIER1
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                elif any(kw in ind_lower for kw in ['cloud', 'data center', 'infrastructure software']):
                     breakdown['sector_name'] = "클라우드"
-                    comments.append("클라우드")
-                elif any(keyword in ind_lower for keyword in ['cybersecurity', 'security software', 'information security']):
-                    score += self.SCORE_SECTOR_TIER1
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                elif any(kw in ind_lower for kw in ['cybersecurity', 'security software', 'information security']):
                     breakdown['sector_name'] = "사이버보안"
-                    comments.append("사이버보안")
-                elif any(keyword in ind_lower for keyword in ['aerospace', 'defense', 'military']):
-                    score += self.SCORE_SECTOR_TIER1
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER1
+                elif any(kw in ind_lower for kw in ['aerospace', 'defense', 'military']):
                     breakdown['sector_name'] = "국방/항공"
-                    comments.append("국방/항공")
-
-                # Tier 2: 소프트웨어, EV, 바이오텍, 신재생, 원자력, 희토류, 가전
-                elif sector == 'Technology' and any(keyword in ind_lower for keyword in ['software', 'application', 'saas']):
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                elif sector == 'Technology' and any(kw in ind_lower for kw in ['software', 'application', 'saas']):
                     breakdown['sector_name'] = "소프트웨어"
-                    comments.append("소프트웨어")
-                elif any(keyword in ind_lower for keyword in ['consumer electronics']):
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                elif any(kw in ind_lower for kw in ['consumer electronics']):
                     breakdown['sector_name'] = "가전/생태계"
-                    comments.append("가전/생태계")
-                elif any(keyword in ind_lower for keyword in ['electric vehicle', 'ev ', 'battery', 'lithium']):
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                elif any(kw in ind_lower for kw in ['electric vehicle', 'ev ', 'battery', 'lithium']):
                     breakdown['sector_name'] = "전기차/배터리"
-                    comments.append("전기차/배터리")
-                elif any(keyword in ind_lower for keyword in ['biotech', 'genomic', 'gene therapy', 'crispr']):
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                elif any(kw in ind_lower for kw in ['biotech', 'genomic', 'gene therapy', 'crispr']):
                     breakdown['sector_name'] = "바이오텍"
-                    comments.append("바이오텍")
-                elif any(keyword in ind_lower for keyword in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                elif any(kw in ind_lower for kw in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
                     breakdown['sector_name'] = "신재생에너지"
-                    comments.append("신재생에너지")
-                elif any(keyword in ind_lower for keyword in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                elif any(kw in ind_lower for kw in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
                     breakdown['sector_name'] = "원자력/우라늄"
-                    comments.append("원자력/우라늄")
-                elif any(keyword in ind_lower for keyword in ['rare earth', 'lithium', 'cobalt', 'nickel', 'critical mineral']):
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                    breakdown['sector_name'] = "희토류/전략소재"
-                    comments.append("희토류/전략소재")
-                elif sector == 'Communication Services':
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
-                    breakdown['sector_name'] = "디지털인프라"
-                    comments.append("디지털인프라")
-
-                # Tier 3: 헬스케어, 산업자동화, 핀테크
-                elif sector == 'Healthcare' and 'biotech' not in ind_lower:
-                    score += self.SCORE_SECTOR_TIER3
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                    breakdown['sector_name'] = "헬스케어"
-                    comments.append("헬스케어")
-                elif sector == 'Industrials' and any(keyword in ind_lower for keyword in ['automation', 'robot', 'machinery']):
-                    score += self.SCORE_SECTOR_TIER3
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                    breakdown['sector_name'] = "산업자동화"
-                    comments.append("산업자동화")
-                elif any(keyword in ind_lower for keyword in ['fintech', 'payment', 'financial technology']):
-                    score += self.SCORE_SECTOR_TIER3
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                    breakdown['sector_name'] = "핀테크"
-                    comments.append("핀테크")
-                elif sector == 'Industrials':
-                    score += self.SCORE_SECTOR_TIER3
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                    breakdown['sector_name'] = "산업재"
-                    comments.append("산업재")
-                elif sector == 'Financial Services':
-                    score += self.SCORE_SECTOR_TIER3
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                    breakdown['sector_name'] = "금융"
-                    comments.append("금융")
-
-                # Tier 3: 전통 에너지
-                elif sector == 'Energy' and 'renewable' not in industry.lower():
-                    score += self.SCORE_SECTOR_TIER3
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER3
-                    breakdown['sector_name'] = "에너지"
-                    comments.append("에너지")
-                # 원자력 유틸리티 (CEG, VST 등) → TIER2
-                elif sector == 'Utilities' and 'independent power' in industry.lower():
-                    score += self.SCORE_SECTOR_TIER2
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER2
+                elif sector == 'Utilities' and 'independent power' in ind_lower:
                     breakdown['sector_name'] = "원자력발전"
-                    comments.append("원자력발전")
-
-                # Tier 4: 소비재, 일반 유틸리티
+                elif any(kw in ind_lower for kw in ['rare earth', 'lithium', 'cobalt', 'nickel', 'critical mineral']):
+                    breakdown['sector_name'] = "희토류/전략소재"
+                elif sector == 'Communication Services':
+                    breakdown['sector_name'] = "디지털인프라"
+                elif sector == 'Healthcare' and 'biotech' not in ind_lower:
+                    breakdown['sector_name'] = "헬스케어"
+                elif any(kw in ind_lower for kw in ['fintech', 'payment', 'financial technology']):
+                    breakdown['sector_name'] = "핀테크"
+                elif sector == 'Industrials':
+                    breakdown['sector_name'] = "산업재"
+                elif sector == 'Financial Services':
+                    breakdown['sector_name'] = "금융"
+                elif sector == 'Energy':
+                    breakdown['sector_name'] = "에너지"
                 elif sector in ['Consumer Cyclical', 'Consumer Defensive']:
-                    score += self.SCORE_SECTOR_TIER4
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
                     breakdown['sector_name'] = "소비재"
-                    comments.append("소비재")
                 elif sector == 'Utilities':
-                    score += self.SCORE_SECTOR_TIER4
-                    breakdown['sector_score'] = self.SCORE_SECTOR_TIER4
                     breakdown['sector_name'] = "유틸리티"
-                    comments.append("유틸리티")
-
-                # Default
                 else:
-                    score += self.SCORE_SECTOR_DEFAULT
-                    breakdown['sector_score'] = self.SCORE_SECTOR_DEFAULT
                     breakdown['sector_name'] = sector or "기타"
 
                 # 트럼프 정책 보너스/페널티
@@ -647,15 +604,6 @@ class FundamentalMixin:
                     score += policy_bonus
                     breakdown['policy_bonus'] = policy_bonus
                     comments.append(policy_comment)
-
-                # 성장주 모드 섹터 적합도 스케일링
-                sector_tier = breakdown.get('sector_score', 0)
-                if sector_tier <= self.SCORE_SECTOR_TIER3:
-                    base_scores = breakdown.get('roe_score', 0) + breakdown.get('opm_score', 0) + breakdown.get('revenue_growth_score', 0)
-                    scale = 0.7 + 0.3 * (sector_tier / self.SCORE_SECTOR_TIER1)
-                    scaled_base = int(base_scores * scale)
-                    score -= (base_scores - scaled_base)
-                    comments.append(f"비핵심섹터 조정")
 
         except Exception:
             pass
