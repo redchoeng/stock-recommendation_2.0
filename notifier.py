@@ -4,6 +4,7 @@ notifier.py — Web Push / Telegram 알림 전역 함수
 send_push_alert, _send_webpush, _send_telegram_fallback, _fetch_user_holding_tickers
 """
 import os
+import pytz
 
 def send_push_alert(results, market='us'):
     """Supabase에서 사용자별 보유종목 조회 후 Web Push 알림 전송"""
