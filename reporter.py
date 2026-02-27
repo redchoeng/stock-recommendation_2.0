@@ -437,41 +437,32 @@ class ReporterMixin:
 
             # === 가격 블록을 먼저 빌드 (카드 상단에 표시) ===
             market_info = stock.get('market_info', {})
-            market_status = report_market_status  # 리포트 생성 시점 기준 통일
             prev_close = market_info.get('previous_close', 0)
             regular_price = stock['price']
+            pre_market_price = market_info.get('pre_market_price') or 0
+            post_market_price = market_info.get('post_market_price') or 0
             display_price = market_info.get('display_price', regular_price)
 
-            if market_status == 'pre':
-                status_color = '#FF9800'
-                status_label = '🌅 프리마켓'
-                base_price = prev_close
-            elif market_status == 'after':
-                status_color = '#9C27B0'
-                status_label = '🌙 애프터장'
-                base_price = regular_price
-            elif market_status == 'regular':
-                status_color = '#4CAF50'
-                status_label = '☀️ 정규장'
-                base_price = prev_close
-            else:
-                status_color = '#607D8B'
-                status_label = '🌙 폐장'
-                base_price = prev_close
-
-            change_pct = ((display_price - base_price) / base_price * 100) if base_price > 0 else 0
+            # 변동률은 폐장 기준(전일대비)으로 기본 계산, JS가 시장 상태별로 재계산
+            change_pct = ((regular_price - prev_close) / prev_close * 100) if prev_close > 0 else 0
             change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
             change_sign = '+' if change_pct >= 0 else ''
 
+            _pre_attr = f'data-pre-market="{pre_market_price:.2f}"' if pre_market_price else ''
+            _post_attr = f'data-post-market="{post_market_price:.2f}"' if post_market_price else ''
+
             price_html = f'''
             <div class="info">
-                <div class="info-item" style="background: {status_color}; color: white;">
-                    <div class="info-label" style="color: rgba(255,255,255,0.9);">{status_label}</div>
-                    <div class="info-value" style="font-size: 1.2em;">${display_price:.2f}</div>
+                <div class="info-item market-status-box" style="background: #607D8B; color: white;"
+                     data-regular="{regular_price:.2f}"
+                     data-prev-close="{prev_close:.2f}"
+                     {_pre_attr} {_post_attr}>
+                    <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
+                    <div class="info-value market-status-price" style="font-size: 1.2em;">${regular_price:.2f}</div>
                 </div>
-                <div class="info-item">
+                <div class="info-item market-change-box">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: {change_color}; font-weight: bold;">{change_sign}{change_pct:.2f}%</div>
+                    <div class="info-value market-change-value" style="color: {change_color}; font-weight: bold;">{change_sign}{change_pct:.2f}%</div>
                 </div>'''
 
             buy_strategy = stock.get('buy_strategy', '')
@@ -811,6 +802,93 @@ class ReporterMixin:
     localStorage.setItem('titan_theme', next);
     document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
     }}
+
+    // 시장 상태 동적 판별 (클라이언트 ET 시간 기준)
+    (function updateMarketStatus() {{
+        var now = new Date();
+        // ET 시간 계산 (UTC offset: EST=-5, EDT=-4)
+        var utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        // US Eastern: 1월~3월 둘째 일요일 = EST(-5), 이후~11월 첫째 일요일 = EDT(-4)
+        var jan1 = new Date(now.getFullYear(), 0, 1);
+        var jul1 = new Date(now.getFullYear(), 6, 1);
+        var stdOff = Math.max(jan1.getTimezoneOffset(), jul1.getTimezoneOffset());
+        // ET offset in ms: -5h (EST) or -4h (EDT)
+        var etNow = new Date(utc + (-5) * 3600000);
+        // DST check: 3월 둘째 일요일 ~ 11월 첫째 일요일
+        var mar = new Date(now.getFullYear(), 2, 1);
+        var marSun2 = new Date(mar.getTime() + ((14 - mar.getDay()) % 7 + 7) * 86400000);
+        var nov = new Date(now.getFullYear(), 10, 1);
+        var novSun1 = new Date(nov.getTime() + ((7 - nov.getDay()) % 7) * 86400000);
+        var utcDate = new Date(utc);
+        if (utcDate >= marSun2 && utcDate < novSun1) {{
+            etNow = new Date(utc + (-4) * 3600000);
+        }}
+
+        var day = etNow.getDay(); // 0=Sun, 6=Sat
+        var h = etNow.getHours();
+        var m = etNow.getMinutes();
+        var timeMin = h * 60 + m;
+
+        var status;
+        if (day === 0 || day === 6) {{
+            status = 'closed';
+        }} else if (timeMin >= 240 && timeMin < 570) {{
+            status = 'pre';       // 4:00 AM ~ 9:30 AM ET
+        }} else if (timeMin >= 570 && timeMin < 960) {{
+            status = 'regular';   // 9:30 AM ~ 4:00 PM ET
+        }} else if (timeMin >= 960 && timeMin < 1200) {{
+            status = 'after';     // 4:00 PM ~ 8:00 PM ET
+        }} else {{
+            status = 'closed';
+        }}
+
+        var statusMap = {{
+            pre:     {{ color: '#FF9800', label: '🌅 프리마켓' }},
+            regular: {{ color: '#4CAF50', label: '☀️ 정규장' }},
+            after:   {{ color: '#9C27B0', label: '🌙 애프터장' }},
+            closed:  {{ color: '#607D8B', label: '🌙 폐장' }}
+        }};
+        var info = statusMap[status];
+
+        var boxes = document.querySelectorAll('.market-status-box');
+        boxes.forEach(function(box) {{
+            box.style.background = info.color;
+            var label = box.querySelector('.market-status-label');
+            var priceEl = box.querySelector('.market-status-price');
+            if (label) label.textContent = info.label;
+
+            var regular = parseFloat(box.dataset.regular) || 0;
+            var prevClose = parseFloat(box.dataset.prevClose) || 0;
+            var preMkt = parseFloat(box.dataset.preMarket) || 0;
+            var postMkt = parseFloat(box.dataset.postMarket) || 0;
+
+            var displayPrice = regular;
+            var basePrice = prevClose;
+            if (status === 'pre' && preMkt > 0) {{
+                displayPrice = preMkt;
+                basePrice = prevClose;
+            }} else if (status === 'after' && postMkt > 0) {{
+                displayPrice = postMkt;
+                basePrice = regular;
+            }} else if (status === 'after') {{
+                basePrice = regular;
+            }}
+
+            if (priceEl) priceEl.textContent = '$' + displayPrice.toFixed(2);
+
+            var changeBox = box.parentElement.querySelector('.market-change-box');
+            if (changeBox && basePrice > 0) {{
+                var pct = ((displayPrice - basePrice) / basePrice * 100);
+                var sign = pct >= 0 ? '+' : '';
+                var color = pct >= 0 ? '#4CAF50' : '#F44336';
+                var valEl = changeBox.querySelector('.market-change-value');
+                if (valEl) {{
+                    valEl.textContent = sign + pct.toFixed(2) + '%';
+                    valEl.style.color = color;
+                }}
+            }}
+        }});
+    }})();
     </script>
     </body>
     </html>'''
