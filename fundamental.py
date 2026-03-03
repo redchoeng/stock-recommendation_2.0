@@ -20,9 +20,11 @@ class FundamentalMixin:
     VALUE_SECTOR_TIER4 = 3   # 기술주, 경기민감 소비재 (성장주 영역)
     VALUE_SECTOR_DEFAULT = 1 # 분류 미매칭 (최소 보장)
 
-    # ===== 트럼프 정부 정책 방향 =====
-    POLICY_BONUS = 3
-    POLICY_PENALTY = -3
+    # ===== 트럼프 정부 정책 방향 (티어별 차등) =====
+    POLICY_TIER1 = 5       # 정부 직접 지출 확정 (방산 Golden Dome/Fleet, AI 전력)
+    POLICY_TIER2 = 3       # 정책 방향 명확 (에너지, 금융, 원자력, 리쇼어링)
+    POLICY_TIER3 = 1       # 간접 수혜 (공급망안보, 사이버보안)
+    POLICY_PENALTY = -1    # 역풍 완화 (대법원 IEEPA 관세 위헌 판결)
 
     # ===== 섹터별 ROE 기준 =====
     SECTOR_ROE_THRESHOLDS = {
@@ -643,30 +645,36 @@ class FundamentalMixin:
         return score, comments, breakdown
 
     def _get_trump_policy_bonus(self, sector, industry, sector_name=""):
-        """트럼프 정부 거시 정책 방향에 따른 섹터 보너스/페널티"""
+        """트럼프 정부 거시 정책 방향에 따른 섹터 보너스/페널티 (3티어)"""
         ind_lower = industry.lower() if industry else ""
 
-        # === 수혜 섹터 ===
-        if sector == 'Energy' and 'renewable' not in ind_lower and 'solar' not in ind_lower:
-            return self.POLICY_BONUS, "[Policy]트럼프 에너지정책 수혜"
+        # === Tier 1 (+5): 정부 직접 지출 확정 ===
         if any(kw in ind_lower for kw in ['aerospace', 'defense', 'military']):
-            return self.POLICY_BONUS, "[Policy]트럼프 국방비증액 수혜"
-        if sector == 'Financial Services' and any(kw in ind_lower for kw in ['bank', 'insurance', 'asset management', 'capital market', 'financial exchange']):
-            return self.POLICY_BONUS, "[Policy]트럼프 금융규제완화 수혜"
-        if sector == 'Industrials':
-            return self.POLICY_BONUS, "[AIRR]인프라/리쇼어링 수혜"
-        if any(kw in ind_lower for kw in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
-            return self.POLICY_BONUS, "[AIRR]AI전력/원자력 수혜"
-        if sector == 'Utilities' and 'independent power' in ind_lower:
-            return self.POLICY_BONUS, "[AIRR]AI전력/원자력 수혜"
-        if any(kw in ind_lower for kw in ['rare earth', 'critical mineral', 'cobalt', 'nickel']):
-            return self.POLICY_BONUS, "[Policy]트럼프 공급망안보 수혜"
+            return self.POLICY_TIER1, "[Policy]국방비증액·Golden Dome/Fleet 수혜"
+        if sector == 'Utilities' and any(kw in ind_lower for kw in ['independent power', 'data center']):
+            return self.POLICY_TIER1, "[AIRR]AI전력인프라 직접 수혜"
 
-        # === 역풍 섹터 ===
+        # === Tier 2 (+3): 정책 방향 명확 ===
+        if sector == 'Energy' and 'renewable' not in ind_lower and 'solar' not in ind_lower:
+            return self.POLICY_TIER2, "[Policy]트럼프 에너지정책 수혜"
+        if sector == 'Financial Services' and any(kw in ind_lower for kw in ['bank', 'insurance', 'asset management', 'capital market', 'financial exchange']):
+            return self.POLICY_TIER2, "[Policy]트럼프 금융규제완화 수혜"
+        if sector == 'Industrials':
+            return self.POLICY_TIER2, "[AIRR]인프라/리쇼어링 수혜"
+        if any(kw in ind_lower for kw in ['nuclear', 'uranium', 'reactor', 'enrichment', 'smr']):
+            return self.POLICY_TIER2, "[AIRR]AI전력/원자력 수혜"
+
+        # === Tier 3 (+1): 간접 수혜 ===
+        if any(kw in ind_lower for kw in ['rare earth', 'critical mineral', 'cobalt', 'nickel']):
+            return self.POLICY_TIER3, "[Policy]트럼프 공급망안보 수혜"
+        if any(kw in ind_lower for kw in ['cybersecurity', 'security software', 'information security']):
+            return self.POLICY_TIER3, "[Policy]국방 사이버보안 수혜"
+
+        # === 역풍 완화 (-1, 대법원 IEEPA 위헌 판결 반영) ===
         if any(kw in ind_lower for kw in ['solar', 'wind', 'renewable', 'clean energy', 'hydrogen']):
-            return self.POLICY_PENALTY, "[Policy]트럼프 IRA축소 역풍"
+            return self.POLICY_PENALTY, "[Policy]IRA축소 역풍(대법원 완화)"
         if any(kw in ind_lower for kw in ['electric vehicle', 'ev ', 'battery', 'lithium']):
-            return self.POLICY_PENALTY, "[Policy]트럼프 EV보조금삭감 역풍"
+            return self.POLICY_PENALTY, "[Policy]EV보조금삭감 역풍(대법원 완화)"
 
         return 0, ""
 

@@ -109,9 +109,10 @@ VALUE_TICKERS = [
     # ========== Energy - Uranium (7) ==========
     'CCJ', 'UEC', 'URG', 'UUUU', 'LEU', 'BWXT',  # 우라늄/원자력
 
-    # ========== Industrials - Aerospace & Defense (12) ==========
+    # ========== Industrials - Aerospace & Defense (14) ==========
     'LMT', 'RTX', 'BA', 'NOC', 'GD', 'LHX', 'HII', 'KTOS',
-    'TDG', 'HWM', 'TXT', 'LDOS',  # S&P 500 추가
+    'TDG', 'HWM', 'TXT', 'LDOS',
+    'RKLB', 'AVAV',  # 우주발사체/전술드론 (Golden Dome 수혜)
 
     # ========== Industrials - Infrastructure & Construction (15) ==========
     'STRL', 'FIX', 'MTZ', 'EME', 'PWR', 'PRIM', 'DY', 'AGX', 'SPXC', 'OSK',

@@ -377,7 +377,7 @@
                     <div class="legend-item"><div class="legend-dot" style="background:#8e24aa;"></div>OPM (15pt)</div>
                     <div class="legend-item"><div class="legend-dot" style="background:#43a047;"></div>섹터 (10pt)</div>
                     <div class="legend-item"><div class="legend-dot" style="background:#f57c00;"></div>매출성장 (10pt)</div>
-                    <div class="legend-item"><div class="legend-dot" style="background: repeating-linear-gradient(45deg, #4caf50, #4caf50 3px, transparent 3px, transparent 6px); border: 1px solid #4caf50;"></div>정책보너스 (±3pt)</div>
+                    <div class="legend-item"><div class="legend-dot" style="background: repeating-linear-gradient(45deg, #4caf50, #4caf50 3px, transparent 3px, transparent 6px); border: 1px solid #4caf50;"></div>정책보너스 (T1:+5 / T2:+3 / T3:+1 / 역풍:-1)</div>
                 </div>
             </div>
             <div class="score-box">
@@ -590,23 +590,33 @@
             </div>
         </div>
 
-        <!-- ===== 6. 트럼프 정책 보너스 ===== -->
-        <div class="section-title">🏛️ 트럼프 정부 정책 보너스/페널티</div>
+        <!-- ===== 6. 트럼프 정책 보너스 (3티어) ===== -->
+        <div class="section-title">🏛️ 트럼프 정부 정책 보너스/페널티 (2026.03 업데이트)</div>
         <div class="policy-section">
             <div class="policy-grid">
                 <div class="policy-card policy-positive">
-                    <h3 style="color: #4caf50;">✅ 수혜 섹터 (+3점)</h3>
+                    <h3 style="color: #1565c0;">🔷 Tier 1 — 정부 직접 지출 확정 (+5점)</h3>
+                    <div class="policy-item">
+                        <div>
+                            <div class="policy-label">🛡️ 국방/방산</div>
+                            <div class="policy-reason">국방예산 $1.5조 증액, Golden Dome 미사일방어($134억), Golden Fleet 해군증강, NATO 5% 압박</div>
+                        </div>
+                        <span class="policy-score-pos">+5</span>
+                    </div>
+                    <div class="policy-item">
+                        <div>
+                            <div class="policy-label">⚡ AI 전력 인프라</div>
+                            <div class="policy-reason">데이터센터 전력 수요 폭증, 독립발전사업자 직접 수혜</div>
+                        </div>
+                        <span class="policy-score-pos">+5</span>
+                    </div>
+                </div>
+                <div class="policy-card policy-positive">
+                    <h3 style="color: #4caf50;">✅ Tier 2 — 정책 방향 명확 (+3점)</h3>
                     <div class="policy-item">
                         <div>
                             <div class="policy-label">⛽ 에너지 (화석연료)</div>
                             <div class="policy-reason">Drill Baby Drill, 파리협정 탈퇴, LNG 수출 확대</div>
-                        </div>
-                        <span class="policy-score-pos">+3</span>
-                    </div>
-                    <div class="policy-item">
-                        <div>
-                            <div class="policy-label">🛡️ 국방/항공</div>
-                            <div class="policy-reason">국방비 증액, NATO 압박 → 유럽 방산 지출 증가</div>
                         </div>
                         <span class="policy-score-pos">+3</span>
                     </div>
@@ -631,29 +641,39 @@
                         </div>
                         <span class="policy-score-pos">+3</span>
                     </div>
+                </div>
+                <div class="policy-card" style="border-left: 4px solid #ff9800;">
+                    <h3 style="color: #ff9800;">🔸 Tier 3 — 간접 수혜 (+1점)</h3>
                     <div class="policy-item">
                         <div>
                             <div class="policy-label">💎 희토류/전략소재</div>
                             <div class="policy-reason">중국 의존 탈피, 공급망 안보</div>
                         </div>
-                        <span class="policy-score-pos">+3</span>
+                        <span class="policy-score-pos">+1</span>
+                    </div>
+                    <div class="policy-item">
+                        <div>
+                            <div class="policy-label">🔒 사이버보안</div>
+                            <div class="policy-reason">국방 사이버 예산 증가, 인프라 보호 의무화</div>
+                        </div>
+                        <span class="policy-score-pos">+1</span>
                     </div>
                 </div>
                 <div class="policy-card policy-negative">
-                    <h3 style="color: #f44336;">❌ 역풍 섹터 (-3점)</h3>
+                    <h3 style="color: #ff9800;">⚠️ 역풍 완화 (-1점, 대법원 판결 반영)</h3>
                     <div class="policy-item">
                         <div>
                             <div class="policy-label">🌿 신재생에너지</div>
-                            <div class="policy-reason">IRA 보조금 축소/폐지, 규제 완화로 화석연료 경쟁력↑</div>
+                            <div class="policy-reason">IRA 축소 역풍 있으나, 대법원 IEEPA 관세 위헌 판결로 부담 경감</div>
                         </div>
-                        <span class="policy-score-neg">-3</span>
+                        <span class="policy-score-neg">-1</span>
                     </div>
                     <div class="policy-item">
                         <div>
                             <div class="policy-label">🔋 전기차/배터리</div>
-                            <div class="policy-reason">EV 보조금 삭감, 연비 규제 완화</div>
+                            <div class="policy-reason">EV 보조금 삭감 역풍 있으나, 관세 완화로 부품 원가 부담 경감</div>
                         </div>
-                        <span class="policy-score-neg">-3</span>
+                        <span class="policy-score-neg">-1</span>
                     </div>
                 </div>
             </div>
