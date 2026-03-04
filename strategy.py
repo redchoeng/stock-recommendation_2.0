@@ -48,23 +48,30 @@ class StrategyMixin:
         return min(candidates) if candidates else None
 
     def _validate_risk_reward(self, buy_price, target_price, stop_loss, atr, swing_highs):
-        """R:R >= 2.0 보장, 최대 손절 7% (강화)"""
-        max_stop = buy_price * 0.93   # 기존 0.92 → 0.93 (7% 최대 손절)
+        """R:R 검증: 비율 부족 시 목표가 강제 상향 대신 진입 보류 플래그 반환"""
+        max_stop = buy_price * 0.93   # 최대 손절 7%
         if stop_loss < max_stop:
             stop_loss = max_stop
 
         risk = buy_price - stop_loss
         reward = target_price - buy_price
-        if risk > 0 and reward / risk < 2.0:   # 기존 1.5 → 2.0
-            farther = [r for r in swing_highs if r > target_price]
-            if farther:
-                target_price = min(farther)
-            elif atr > 0:
-                target_price = buy_price + (3.0 * atr)   # 기존 2.5 → 3.0
-            else:
-                target_price = buy_price * 1.12   # 기존 1.10 → 1.12
 
-        return target_price, stop_loss
+        # R:R < 1.5 → 진입 부적합 (avoid 플래그)
+        if risk > 0 and reward / risk < 1.5:
+            # 현실적 저항선이 있으면 목표가만 소폭 조정 시도
+            realistic = [r for r in swing_highs if r > target_price and r <= buy_price * 1.15]
+            if realistic:
+                target_price = min(realistic)
+                # 재검증: 여전히 부족하면 avoid
+                if (target_price - buy_price) / risk < 1.5:
+                    return target_price, stop_loss, True  # avoid=True
+            else:
+                return target_price, stop_loss, True  # avoid=True
+        # R:R 1.5~2.0 → 비중 축소 권장
+        elif risk > 0 and reward / risk < 2.0:
+            return target_price, stop_loss, False  # 통과하되 비중 축소는 전략 텍스트에서 표현
+
+        return target_price, stop_loss, False
 
     def _calculate_smart_entry_exit(self, current_price, contrarian_adj, hist, tech_breakdown):
         """🎯 스윙매매 특화 진입/청산 전략 (기술적 레벨 기반)"""
@@ -105,7 +112,7 @@ class StrategyMixin:
                 if stop_loss >= buy_price:
                     stop_loss = buy_price * 0.95
 
-                target_price, stop_loss = self._validate_risk_reward(
+                target_price, stop_loss, _rr_avoid = self._validate_risk_reward(
                     buy_price, target_price, stop_loss, atr, swing_highs)
                 strategy = "🎯 역발상매수(기술적지지)"
 
@@ -134,7 +141,7 @@ class StrategyMixin:
                 if stop_loss >= buy_price:
                     stop_loss = buy_price * 0.95
 
-                target_price, stop_loss = self._validate_risk_reward(
+                target_price, stop_loss, _rr_avoid = self._validate_risk_reward(
                     buy_price, target_price, stop_loss, atr, swing_highs)
                 strategy = "⚠️ 조정대기(진입조건가)"
 
@@ -266,13 +273,18 @@ class StrategyMixin:
                         stop_loss = buy_price * 0.97
                     if stop_loss >= buy_price:
                         stop_loss = buy_price * 0.95
-                    target_price, stop_loss = self._validate_risk_reward(
+                    target_price, stop_loss, _rr_avoid = self._validate_risk_reward(
                         buy_price, target_price, stop_loss, atr, swing_highs)
                     strategy = f"🔄 반등대기({strategy_suffix})"
 
+            # R:R 부족 시 진입 보류 경고
+            if _rr_avoid:
+                strategy = "⛔ R:R부족-진입보류"
+
             return buy_price, target_price, stop_loss, strategy
 
-        except Exception:
+        except (KeyError, TypeError, ValueError, ZeroDivisionError) as e:
+            print(f"  ⚠️ 진입/청산 계산 에러: {type(e).__name__}: {e}")
             return None, None, None, "계산 실패"
 
     def _get_current_price(self, info, hist):

@@ -497,55 +497,91 @@ class FundamentalMixin:
                     if roe_pts >= 8:
                         comments.append(f"ROE:{roe_pct:.1f}%")
 
-                # 2. Operating Margin (10점, 기존 15→10 축소: ROE와 중복 줄임)
-                opm = info.get('operatingMargins')
-                opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
-                    industry, self.SECTOR_OPM_THRESHOLDS.get(
-                        sector, self.DEFAULT_OPM_THRESHOLD))
-                if opm:
-                    opm_pct = opm * 100
-                    breakdown['opm_value'] = opm_pct
-                    opm_pts = self._calc_gradient_score(opm_pct, opm_excellent, opm_good, 10)
-                    score += opm_pts
-                    breakdown['opm_score'] = opm_pts
-                    if opm_pts >= 5:
-                        comments.append(f"OPM:{opm_pct:.1f}%")
+                # 2. Operating Margin / NIM (10점)
+                # 금융주는 OPM 대신 PBR + 배당안정성으로 대체
+                if sector == 'Financial Services':
+                    pb = info.get('priceToBook')
+                    if pb and pb > 0:
+                        breakdown['opm_value'] = None
+                        breakdown['pb_value'] = round(pb, 2)
+                        # PBR 낮을수록 유리: 1.0 이하 만점, 2.0 이상 0점
+                        pb_pts = self._calc_inverse_gradient_score(pb, 1.0, 2.0, 10)
+                        score += pb_pts
+                        breakdown['opm_score'] = pb_pts
+                        if pb_pts >= 5:
+                            comments.append(f"PBR:{pb:.2f}")
+                else:
+                    opm = info.get('operatingMargins')
+                    opm_excellent, opm_good = self.INDUSTRY_OPM_OVERRIDES.get(
+                        industry, self.SECTOR_OPM_THRESHOLDS.get(
+                            sector, self.DEFAULT_OPM_THRESHOLD))
+                    if opm:
+                        opm_pct = opm * 100
+                        breakdown['opm_value'] = opm_pct
+                        opm_pts = self._calc_gradient_score(opm_pct, opm_excellent, opm_good, 10)
+                        score += opm_pts
+                        breakdown['opm_score'] = opm_pts
+                        if opm_pts >= 5:
+                            comments.append(f"OPM:{opm_pct:.1f}%")
 
-                # 2.5. FCF Margin (10점, 신규: 기술주 핵심 현금창출력)
-                fcf = info.get('freeCashflow')
-                total_revenue = info.get('totalRevenue')
-                if fcf and total_revenue and total_revenue > 0:
-                    fcf_margin = fcf / total_revenue * 100
-                    breakdown['fcf_margin_value'] = round(fcf_margin, 1)
-                    # 섹터별 FCF 기준
-                    if sector == 'Technology':
-                        fcf_excellent, fcf_good = 25, 10
-                    elif sector == 'Communication Services':
-                        fcf_excellent, fcf_good = 20, 8
-                    elif sector == 'Healthcare':
-                        fcf_excellent, fcf_good = 20, 8
-                    else:
-                        fcf_excellent, fcf_good = 15, 5
-                    fcf_pts = self._calc_gradient_score(fcf_margin, fcf_excellent, fcf_good, 10)
-                    score += fcf_pts
-                    breakdown['fcf_score'] = fcf_pts
-                    if fcf_pts >= 5:
-                        comments.append(f"FCF:{fcf_margin:.0f}%")
-                elif fcf and market_cap and market_cap > 0:
-                    # FCF Yield 폴백 (매출 데이터 없을 때)
-                    fcf_yield = fcf / market_cap * 100
+                # 2.5. FCF Margin / 배당안정성 (10점)
+                # 금융주는 FCF 대신 배당수익률+지속성으로 대체
+                if sector == 'Financial Services':
+                    div_yield = info.get('dividendYield') or 0
+                    payout = info.get('payoutRatio') or 0
+                    div_pct = div_yield * 100
+                    payout_pct = payout * 100
                     breakdown['fcf_margin_value'] = None
-                    breakdown['fcf_yield_value'] = round(fcf_yield, 1)
-                    if fcf_yield > 5:
-                        fcf_pts = 7
-                    elif fcf_yield > 3:
-                        fcf_pts = 4
-                    elif fcf_yield > 1:
-                        fcf_pts = 2
-                    else:
-                        fcf_pts = 0
-                    score += fcf_pts
-                    breakdown['fcf_score'] = fcf_pts
+                    fin_pts = 0
+                    if div_pct >= 2.0:
+                        fin_pts += 5
+                    elif div_pct >= 1.0:
+                        fin_pts += 3
+                    # 배당성향 30~60%가 건전
+                    if 20 <= payout_pct <= 60:
+                        fin_pts += 5
+                    elif payout_pct < 80:
+                        fin_pts += 3
+                    fin_pts = min(fin_pts, 10)
+                    score += fin_pts
+                    breakdown['fcf_score'] = fin_pts
+                    if div_pct >= 1.5:
+                        comments.append(f"배당{div_pct:.1f}%")
+                else:
+                    fcf = info.get('freeCashflow')
+                    total_revenue = info.get('totalRevenue')
+                    if fcf and total_revenue and total_revenue > 0:
+                        fcf_margin = fcf / total_revenue * 100
+                        breakdown['fcf_margin_value'] = round(fcf_margin, 1)
+                        # 섹터별 FCF 기준
+                        if sector == 'Technology':
+                            fcf_excellent, fcf_good = 25, 10
+                        elif sector == 'Communication Services':
+                            fcf_excellent, fcf_good = 20, 8
+                        elif sector == 'Healthcare':
+                            fcf_excellent, fcf_good = 20, 8
+                        else:
+                            fcf_excellent, fcf_good = 15, 5
+                        fcf_pts = self._calc_gradient_score(fcf_margin, fcf_excellent, fcf_good, 10)
+                        score += fcf_pts
+                        breakdown['fcf_score'] = fcf_pts
+                        if fcf_pts >= 5:
+                            comments.append(f"FCF:{fcf_margin:.0f}%")
+                    elif fcf and market_cap and market_cap > 0:
+                        # FCF Yield 폴백 (매출 데이터 없을 때)
+                        fcf_yield = fcf / market_cap * 100
+                        breakdown['fcf_margin_value'] = None
+                        breakdown['fcf_yield_value'] = round(fcf_yield, 1)
+                        if fcf_yield > 5:
+                            fcf_pts = 7
+                        elif fcf_yield > 3:
+                            fcf_pts = 4
+                        elif fcf_yield > 1:
+                            fcf_pts = 2
+                        else:
+                            fcf_pts = 0
+                        score += fcf_pts
+                        breakdown['fcf_score'] = fcf_pts
 
                 # 3. Revenue Growth (10점)
                 revenue_growth = info.get('revenueGrowth')
@@ -639,8 +675,10 @@ class FundamentalMixin:
                     breakdown['policy_bonus'] = policy_bonus
                     comments.append(policy_comment)
 
-        except Exception:
-            pass
+        except (KeyError, TypeError, ValueError) as e:
+            print(f"  ⚠️ 펀더멘탈 분석 에러: {type(e).__name__}: {e}")
+        except ZeroDivisionError:
+            print(f"  ⚠️ 펀더멘탈 분석 ZeroDivision 에러")
 
         return score, comments, breakdown
 

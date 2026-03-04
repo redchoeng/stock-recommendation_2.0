@@ -310,8 +310,8 @@ class TechnicalMixin:
                     elif rs_ratio > -0.05:
                         rs_score = self.SCORE_RS_NEUTRAL
                     # rs_ratio <= -0.05: 0점 (시장 대비 약세)
-                except Exception:
-                    pass
+                except (KeyError, TypeError, ValueError, ZeroDivisionError):
+                    pass  # RS 계산 실패는 0점 처리
 
             breakdown['rs_score'] = rs_score
             score += rs_score
@@ -377,7 +377,7 @@ class TechnicalMixin:
                         'week_return': round(week_return, 2),
                         'acceleration': round(acceleration, 2),
                     }
-                except Exception:
+                except (KeyError, TypeError, ValueError, ZeroDivisionError):
                     continue
 
             if not results:
@@ -453,8 +453,8 @@ class TechnicalMixin:
                 vix_hist = vix.history(period='5d')
                 if not vix_hist.empty:
                     vix_value = vix_hist['Close'].iloc[-1]
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"  ⚠️ VIX 데이터 로드 실패: {e}")
 
             bull_signals = 0
             bear_signals = 0

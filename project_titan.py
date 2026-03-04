@@ -99,9 +99,10 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
                 if i % 10 == 0:
                     time.sleep(0.3)
 
-            except Exception:
-                # 에러는 조용히 스킵
-                pass
+            except (KeyError, TypeError, ValueError) as e:
+                print(f"  ⚠️ {ticker} 스크리닝 스킵: {type(e).__name__}")
+            except Exception as e:
+                print(f"  ⚠️ {ticker} 스크리닝 에러: {e}")
 
         print(f"\n✅ 1단계 완료: {len(filtered)}개 종목 선정 (원본 {total}개)\n")
         return [item['ticker'] for item in filtered]
