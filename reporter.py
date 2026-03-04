@@ -362,8 +362,8 @@ class ReporterMixin:
     <div class="container">
         <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:20px;">
             <div class="market-switcher" style="margin-bottom:0;">
-                <span class="market-btn active">US</span>
-                <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
+                <span class="market-btn active">미장</span>
+                <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">국장</a>
             </div>
             <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="다크모드 전환">🌙</button>
         </div>
@@ -1197,8 +1197,8 @@ class ReporterMixin:
 
     <div class="container">
     <div class="market-switcher">
-        <span class="market-btn active">US</span>
-        <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
+        <span class="market-btn active">미장</span>
+        <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">국장</a>
     </div>
     <a href="index.html" class="back-link">&larr; 메인으로</a>
 
@@ -1629,8 +1629,8 @@ class ReporterMixin:
 
     <div class="container">
     <div class="market-switcher">
-        <span class="market-btn active">US</span>
-        <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">KR</a>
+        <span class="market-btn active">미장</span>
+        <a href="https://redchoeng.github.io/stock-recommendation_kr/" class="market-btn">국장</a>
     </div>
     <a href="index.html" class="back-link">&larr; 메인으로</a>
 

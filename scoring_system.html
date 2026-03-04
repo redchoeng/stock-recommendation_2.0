@@ -312,41 +312,42 @@
         <p class="subtitle">펀더멘털 + 기술적 분석 (모드별 가중치 차등) + 거래대금 보너스 + 역발상 조정</p>
 
         <!-- ===== 0. 모드별 가중치 ===== -->
-        <div class="section-title">⚖️ 모드별 점수 가중치</div>
+        <div class="section-title">⚖️ 모드별 점수 가중치 (시장 상태 연동)</div>
         <div class="dual-grid">
             <div class="card" style="text-align:center;">
                 <h3>📈 성장주 (Growth) 모드</h3>
-                <div style="display:flex; gap:10px; justify-content:center; margin:15px 0;">
-                    <div style="background:rgba(102,126,234,0.2); padding:15px 25px; border-radius:12px;">
-                        <div style="font-size:2em; font-weight:900; color:#a0b4ff;">40</div>
-                        <div style="font-size:0.85em; color:#8892b0;">펀더멘털</div>
-                        <div style="font-size:0.75em; color:#5a6270;">×0.8</div>
+                <div style="display:flex; gap:8px; justify-content:center; margin:15px 0; flex-wrap:wrap;">
+                    <div style="background:rgba(76,175,80,0.15); padding:12px 18px; border-radius:12px; border:1px solid rgba(76,175,80,0.3);">
+                        <div style="font-size:0.7em; color:#81c784; margin-bottom:4px;">📈 강세장</div>
+                        <div style="font-size:1.4em; font-weight:900; color:#a0b4ff;">40<span style="font-size:0.5em; color:#8892b0;">:</span><span style="color:#ef9a9a;">60</span></div>
+                        <div style="font-size:0.7em; color:#5a6270;">×0.8 : ×1.2</div>
                     </div>
-                    <div style="font-size:2em; color:#8892b0; align-self:center;">:</div>
-                    <div style="background:rgba(244,67,54,0.15); padding:15px 25px; border-radius:12px;">
-                        <div style="font-size:2em; font-weight:900; color:#ef9a9a;">60</div>
-                        <div style="font-size:0.85em; color:#8892b0;">기술적</div>
-                        <div style="font-size:0.75em; color:#5a6270;">×1.2</div>
+                    <div style="background:rgba(255,152,0,0.15); padding:12px 18px; border-radius:12px; border:1px solid rgba(255,152,0,0.3);">
+                        <div style="font-size:0.7em; color:#ffb74d; margin-bottom:4px;">↔️ 횡보/약세장</div>
+                        <div style="font-size:1.4em; font-weight:900; color:#a0b4ff;">50<span style="font-size:0.5em; color:#8892b0;">:</span><span style="color:#ef9a9a;">50</span></div>
+                        <div style="font-size:0.7em; color:#5a6270;">×1.0 : ×1.0</div>
                     </div>
                 </div>
-                <div style="font-size:0.85em; color:#8892b0;">커트라인: <strong style="color:#a0b4ff;">75점</strong> 이상</div>
+                <div style="font-size:0.85em; color:#8892b0;">기본 커트라인: <strong style="color:#a0b4ff;">70점</strong></div>
+                <div style="font-size:0.75em; color:#5a6270; margin-top:4px;">횡보장 65 / 약세장 60 (동적 완화)</div>
             </div>
             <div class="card" style="text-align:center;">
                 <h3>💎 가치주 (Value) 모드</h3>
                 <div style="display:flex; gap:10px; justify-content:center; margin:15px 0;">
                     <div style="background:rgba(102,126,234,0.2); padding:15px 25px; border-radius:12px;">
-                        <div style="font-size:2em; font-weight:900; color:#a0b4ff;">65</div>
+                        <div style="font-size:2em; font-weight:900; color:#a0b4ff;">70</div>
                         <div style="font-size:0.85em; color:#8892b0;">펀더멘털</div>
-                        <div style="font-size:0.75em; color:#5a6270;">×1.3</div>
+                        <div style="font-size:0.75em; color:#5a6270;">×1.4</div>
                     </div>
                     <div style="font-size:2em; color:#8892b0; align-self:center;">:</div>
                     <div style="background:rgba(244,67,54,0.15); padding:15px 25px; border-radius:12px;">
-                        <div style="font-size:2em; font-weight:900; color:#ef9a9a;">35</div>
+                        <div style="font-size:2em; font-weight:900; color:#ef9a9a;">30</div>
                         <div style="font-size:0.85em; color:#8892b0;">기술적</div>
-                        <div style="font-size:0.75em; color:#5a6270;">×0.7</div>
+                        <div style="font-size:0.75em; color:#5a6270;">×0.6</div>
                     </div>
                 </div>
-                <div style="font-size:0.85em; color:#8892b0;">커트라인: <strong style="color:#a0b4ff;">85점</strong> 이상</div>
+                <div style="font-size:0.85em; color:#8892b0;">기본 커트라인: <strong style="color:#a0b4ff;">80점</strong></div>
+                <div style="font-size:0.75em; color:#5a6270; margin-top:4px;">횡보장 75 / 약세장 70 (동적 완화)</div>
             </div>
         </div>
 
@@ -442,23 +443,45 @@
                 </div>
             </div>
             <div class="bonus-card">
-                <h3>🎯 역발상 조정 (RSI 기반)</h3>
+                <h3>🎯 역발상 조정 (RSI + BB + MFI)</h3>
                 <div class="bonus-item">
                     <div>
-                        <span style="color:#4caf50; font-weight:700;">🎯 과매도 우량주</span><br>
-                        <span style="color:#8892b0; font-size:0.78em;">RSI &lt; 30 + 펀더멘털 30점+</span>
+                        <span style="color:#4caf50; font-weight:700;">🎯 강한 과매도</span><br>
+                        <span style="color:#8892b0; font-size:0.78em;">RSI &lt; 30 + 펀더 35점+ + 우량섹터</span>
                     </div>
-                    <span class="policy-score-pos">+5~10점</span>
+                    <span class="policy-score-pos">+10~12점</span>
                 </div>
                 <div class="bonus-item">
                     <div>
-                        <span style="color:#f44336; font-weight:700;">⚠️ 과열 주의</span><br>
-                        <span style="color:#8892b0; font-size:0.78em;">RSI &gt; 70</span>
+                        <span style="color:#66bb6a; font-weight:700;">📉 조정매수 (우량)</span><br>
+                        <span style="color:#8892b0; font-size:0.78em;">RSI 30~45 + 펀더 40점+ + (BB하단/MFI&lt;30/거래량급증)</span>
                     </div>
-                    <span class="policy-score-neg">-5점</span>
+                    <span class="policy-score-pos">+8점</span>
+                </div>
+                <div class="bonus-item">
+                    <div>
+                        <span style="color:#aed581; font-weight:700;">📉 조정매수 (양호)</span><br>
+                        <span style="color:#8892b0; font-size:0.78em;">RSI 30~45 + 펀더 30점+ + 신호 1개+</span>
+                    </div>
+                    <span class="policy-score-pos">+5점</span>
+                </div>
+                <div class="bonus-item">
+                    <div>
+                        <span style="color:#ffb74d; font-weight:700;">⚡ 과열 경계</span><br>
+                        <span style="color:#8892b0; font-size:0.78em;">RSI 70~75</span>
+                    </div>
+                    <span class="policy-score-neg">-3점</span>
+                </div>
+                <div class="bonus-item">
+                    <div>
+                        <span style="color:#f44336; font-weight:700;">⚠️ 강한 과열</span><br>
+                        <span style="color:#8892b0; font-size:0.78em;">RSI &gt; 75 (거래량 감소 시 추가 -2)</span>
+                    </div>
+                    <span class="policy-score-neg">-8~10점</span>
                 </div>
                 <div style="margin-top:10px; padding:10px; background:rgba(255,255,255,0.02); border-radius:8px; font-size:0.82em; color:#8892b0; line-height:1.5;">
-                    우량 성장섹터(AI/반도체, 클라우드 등) 과매도 시 큰 보너스,<br>기타 섹터는 절반 적용
+                    핵심: "좋은 기업이 싸질 때" 매수 신호 발생<br>
+                    BB하단 접근, MFI 과매도, 거래량 급증 중 1개 이상 충족 시 보너스
                 </div>
             </div>
         </div>
@@ -473,19 +496,20 @@
                 <div class="bar-segment v-sell" style="width:40%;">Sell / Weak<br>0-39</div>
             </div>
             <p style="font-size: 0.85em; color: #8892b0; text-align: center;">
-                리포트 게시 기준: 성장주 <strong style="color:#a0b4ff;">75점+</strong> | 가치주 <strong style="color:#a0b4ff;">85점+</strong>
+                리포트 게시 기준 (동적): 성장주 <strong style="color:#a0b4ff;">70점+</strong> | 가치주 <strong style="color:#a0b4ff;">80점+</strong><br>
+                <span style="font-size:0.9em; color:#5a6270;">횡보장 -5 / 약세장 -10 자동 완화</span>
             </p>
         </div>
 
         <!-- ===== 4. 스윙매매 전략 분류 ===== -->
-        <div class="section-title">📊 스윙매매 진입 전략 (6단계)</div>
+        <div class="section-title">📊 스윙매매 진입 전략 (8단계)</div>
         <div class="strategy-grid">
-            <div class="strategy-card">
+            <div class="strategy-card" style="border: 1px solid rgba(76,175,80,0.3);">
                 <div class="emoji">🎯</div>
                 <div class="name">역발상매수</div>
                 <div class="desc">과매도 우량주 (RSI&lt;30)<br>BB하단~현재가 진입</div>
             </div>
-            <div class="strategy-card">
+            <div class="strategy-card" style="border: 1px solid rgba(244,67,54,0.3);">
                 <div class="emoji">⚠️</div>
                 <div class="name">조정대기</div>
                 <div class="desc">과열주 (RSI&gt;70)<br>MA20/스윙저점까지 대기</div>
@@ -493,7 +517,7 @@
             <div class="strategy-card">
                 <div class="emoji">📈</div>
                 <div class="name">추세추종</div>
-                <div class="desc">MA20&gt;MA50, 가격&gt;MA20<br>강한 상승추세 편승</div>
+                <div class="desc">MA20&gt;MA60, 가격&gt;MA20<br>강한 상승추세 편승</div>
             </div>
             <div class="strategy-card">
                 <div class="emoji">📊</div>
@@ -503,18 +527,29 @@
             <div class="strategy-card">
                 <div class="emoji">📦</div>
                 <div class="name">박스권하단</div>
-                <div class="desc">횡보장 (MA20≈MA50)<br>BB하단/스윙저점 매수</div>
+                <div class="desc">횡보장 (MA20≈MA60)<br>BB하단/스윙저점 매수</div>
+            </div>
+            <div class="strategy-card" style="border: 1px solid rgba(102,126,234,0.3);">
+                <div class="emoji">💰</div>
+                <div class="name">분할매수</div>
+                <div class="desc">지지선 2% 이내 도달<br>즉시 분할진입 가능</div>
+            </div>
+            <div class="strategy-card" style="border: 1px solid rgba(156,39,176,0.3);">
+                <div class="emoji">📉</div>
+                <div class="name">눌림매수</div>
+                <div class="desc">지지선 5% 이내<br>소량 1차 진입 가능</div>
             </div>
             <div class="strategy-card">
                 <div class="emoji">🔄</div>
                 <div class="name">반등대기</div>
-                <div class="desc">약세 (가격&lt;MA50)<br>강한 지지 확인 후 진입</div>
+                <div class="desc">지지선 5% 초과<br>추가 하락 대기</div>
             </div>
         </div>
         <div class="card" style="margin-bottom:30px;">
             <p style="font-size:0.85em; color:#8892b0; line-height:1.7; text-align:center;">
-                모든 전략에 <strong style="color:#ccd6f6;">R:R ≥ 1.5:1</strong> 보장 · 최대 손절폭 <strong style="color:#ccd6f6;">8%</strong> 제한<br>
-                매수/목표/손절가는 기술적 레벨(MA20, BB밴드, 스윙고저점, ATR) 기반 산출
+                R:R 기준: 성장주 <strong style="color:#ccd6f6;">≥ 1.5:1</strong> · 가치주 <strong style="color:#ccd6f6;">≥ 1.2:1</strong> (저변동성 반영)<br>
+                R:R 미달 시 완전차단 대신 <strong style="color:#ef9a9a;">-5점 감점</strong> + 전략명에 (R:R주의) 표시<br>
+                최대 손절폭 <strong style="color:#ccd6f6;">7%</strong> 제한 · 매수/목표/손절가는 기술적 레벨 기반 산출
             </p>
         </div>
 
@@ -791,17 +826,24 @@
         <!-- ===== 9. 총점 산출 공식 ===== -->
         <div class="section-title">🧮 총점 산출 공식</div>
         <div class="card" style="margin-bottom: 30px; text-align:center; padding:30px;">
-            <div style="font-size:1.1em; color:#ccd6f6; line-height:2; font-family:monospace;">
-                <div style="margin-bottom:15px;">
-                    <span style="color:#a0b4ff;">성장주</span> = 펀더멘털<span style="color:#8892b0;">×0.8</span> + 기술적<span style="color:#8892b0;">×1.2</span> + 역발상 + 유동성
+            <div style="font-size:1.05em; color:#ccd6f6; line-height:2.2; font-family:monospace;">
+                <div style="margin-bottom:8px;">
+                    <span style="color:#a0b4ff;">성장주(강세)</span> = 펀더멘털<span style="color:#8892b0;">×0.8</span> + 기술적<span style="color:#8892b0;">×1.2</span> + 역발상 + 유동성 + 순환매 + R:R감점
+                </div>
+                <div style="margin-bottom:8px;">
+                    <span style="color:#ffb74d;">성장주(횡보/약세)</span> = 펀더멘털<span style="color:#8892b0;">×1.0</span> + 기술적<span style="color:#8892b0;">×1.0</span> + 역발상 + 유동성 + 순환매 + R:R감점
                 </div>
                 <div>
-                    <span style="color:#f5b041;">가치주</span> = 펀더멘털<span style="color:#8892b0;">×1.3</span> + 기술적<span style="color:#8892b0;">×0.7</span> + 역발상 + 유동성
+                    <span style="color:#f5b041;">가치주</span> = 펀더멘털<span style="color:#8892b0;">×1.4</span> + 기술적<span style="color:#8892b0;">×0.6</span> + 역발상 + 유동성 + 순환매 + R:R감점
                 </div>
+            </div>
+            <div style="margin-top:15px; font-size:0.82em; color:#5a6270; line-height:1.6;">
+                시장 레짐 자동 감지 (S&P500 MA60/MA120, ADX, VIX 기반)<br>
+                횡보/약세장 → 펀더멘털 비중 상향 = "좋은 기업이 싸질 때" 매수 포착
             </div>
         </div>
 
-        <p class="footnote">Project Titan v2.0 | 점수 체계 시각화 | 모드별 가중치 차등 + 거래대금 + 역발상 + 스윙매매 전략 (2025-2026)</p>
+        <p class="footnote">Project Titan v2.0 | 점수 체계 시각화 | 시장 연동 동적 가중치 + 역발상 조정매수 + 8단계 전략 (2026.03)</p>
     </div>
 </body>
 </html>
