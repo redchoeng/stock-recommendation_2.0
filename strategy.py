@@ -171,7 +171,7 @@ class StrategyMixin:
                         stop_loss = current_price * 0.98
                     if stop_loss >= current_price:
                         stop_loss = current_price * 0.95
-                    target_price, stop_loss = self._validate_risk_reward(
+                    target_price, stop_loss, _rr_avoid = self._validate_risk_reward(
                         buy_price, target_price, stop_loss, atr, swing_highs)
                     strategy = "📈 추세추종(MA20↑)"
 
@@ -205,7 +205,7 @@ class StrategyMixin:
                         stop_loss = buy_price * 0.98
                     if stop_loss >= buy_price:
                         stop_loss = buy_price * 0.95
-                    target_price, stop_loss = self._validate_risk_reward(
+                    target_price, stop_loss, _rr_avoid = self._validate_risk_reward(
                         buy_price, target_price, stop_loss, atr, swing_highs)
                     strategy = f"📊 풀백매수({strategy_suffix})"
 
@@ -239,7 +239,7 @@ class StrategyMixin:
                         stop_loss = buy_price * 0.98
                     if stop_loss >= buy_price:
                         stop_loss = buy_price * 0.95
-                    target_price, stop_loss = self._validate_risk_reward(
+                    target_price, stop_loss, _rr_avoid = self._validate_risk_reward(
                         buy_price, target_price, stop_loss, atr, swing_highs)
                     strategy = f"📦 박스권하단({strategy_suffix})"
 
