@@ -277,15 +277,17 @@ class StrategyMixin:
                         buy_price, target_price, stop_loss, atr, swing_highs)
                     strategy = f"🔄 반등대기({strategy_suffix})"
 
-            # R:R 부족 시 진입 보류 경고
+            # R:R 부족 시 경고 표시 + 감점 (완전 차단 대신)
+            rr_penalty = 0
             if _rr_avoid:
-                strategy = "⛔ R:R부족-진입보류"
+                strategy = f"⚠️ {strategy}(R:R주의)"
+                rr_penalty = -5
 
-            return buy_price, target_price, stop_loss, strategy
+            return buy_price, target_price, stop_loss, strategy, rr_penalty
 
         except (KeyError, TypeError, ValueError, ZeroDivisionError) as e:
             print(f"  ⚠️ 진입/청산 계산 에러: {type(e).__name__}: {e}")
-            return None, None, None, "계산 실패"
+            return None, None, None, "계산 실패", 0
 
     def _get_current_price(self, info, hist):
         """현재가 추출"""
@@ -355,44 +357,72 @@ class StrategyMixin:
             }
 
     def _apply_contrarian_adjustment(self, fund_score, tech_breakdown, sector_name):
-        """하이브리드 전략: 과매도 우량주 보너스, 과열주 감점 (강화)"""
+        """하이브리드 전략: 과매도/조정구간 우량주 보너스, 과열주 감점"""
         adjustment = 0
         contrarian_comment = ""
 
         rsi = tech_breakdown.get('rsi_value', 50)
+        mfi = tech_breakdown.get('mfi_value', 50)
         volume_ratio = tech_breakdown.get('volume_ratio', 1.0)
+        bb_lower = tech_breakdown.get('bb_lower', 0)
+        current_price = tech_breakdown.get('current_price', 0)
 
         quality_growth_sectors = [
             'AI/반도체', '클라우드', '사이버보안', '국방/항공',
             '소프트웨어', '바이오텍', '디지털인프라',
-            # 가치주 방어 섹터 (포트폴리오 헤징 역할)
             '필수소비재', '헬스케어', '유틸리티', '금융',
         ]
 
-        # 과매도 조건 강화: Fund≥35 (기존 30), 거래량 폭증 시 추가 보너스
+        # BB하단 근접 여부 (현재가가 BB하단의 102% 이내)
+        near_bb_lower = (bb_lower > 0 and current_price > 0
+                         and current_price <= bb_lower * 1.02)
+
+        # === 구간 1: 강한 과매도 (RSI < 30) ===
         if rsi < self.RSI_OVERSOLD:
             if fund_score >= 35:
                 if sector_name in quality_growth_sectors:
-                    adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS
+                    adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS  # +10
                     if volume_ratio >= 2.0:
                         adjustment += 2  # 항복매도(Capitulation) 거래량 동반
                     contrarian_comment = "🎯저가매수기회"
                 else:
-                    adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS // 2
+                    adjustment = self.SCORE_OVERSOLD_QUALITY_BONUS // 2  # +5
                     contrarian_comment = "💎저평가"
             elif fund_score >= 25:
-                # 펀더 25-35: 약한 보너스만
                 adjustment = 3
                 contrarian_comment = "💎약한저평가"
-        # 과열 조건 강화: RSI>75 (기존 70) → 더 강한 감점
+
+        # === 구간 2: 조정매수 구간 (RSI 30~45 + 추가 조건) ===
+        elif rsi < 45 and fund_score >= 30:
+            # 조건: BB하단 근접 OR MFI 과매도 OR 거래량 급증
+            dip_signals = sum([
+                near_bb_lower,
+                mfi < 30,
+                volume_ratio >= 1.5,
+            ])
+            if dip_signals >= 1:
+                if fund_score >= 40:
+                    adjustment = 8  # 펀더멘탈 최우량 조정 = 강한 매수 신호
+                    contrarian_comment = "📉우량주조정매수"
+                else:
+                    adjustment = 5  # 펀더멘탈 양호 조정
+                    contrarian_comment = "📉조정매수구간"
+            elif rsi < 35 and fund_score >= 35:
+                # RSI 30~35: 신호 없어도 펀더 우량이면 소폭 보너스
+                adjustment = 3
+                contrarian_comment = "💎눌림목"
+
+        # === 구간 3: 과열 경계 (RSI 70~75) ===
+        elif rsi > self.RSI_OVERBOUGHT and rsi <= 75:
+            adjustment = -3
+            contrarian_comment = "⚡과열경계"
+
+        # === 구간 4: 강한 과열 (RSI > 75) ===
         elif rsi > 75:
             adjustment = self.SCORE_OVERBOUGHT_PENALTY  # -8
             if volume_ratio < 1.0:
                 adjustment -= 2  # 거래량 감소 동반 과열 = 추가 감점
             contrarian_comment = "⚠️과열주의"
-        elif rsi > self.RSI_OVERBOUGHT:   # 70-75 구간: 경미한 감점
-            adjustment = -3
-            contrarian_comment = "⚡과열경계"
 
         return adjustment, contrarian_comment
 

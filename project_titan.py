@@ -123,6 +123,9 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
         fund_score, fund_comments, fund_breakdown = self._get_fundamental_score(info)
         tech_score, tech_comments, tech_breakdown = self._get_technical_score(hist, current_price, spy_hist=spy_hist)
 
+        # tech_breakdown에 현재가 추가 (역발상 BB하단 비교용)
+        tech_breakdown['current_price'] = current_price
+
         # 🔥 하이브리드 전략: 역발상 조정
         contrarian_adj, contrarian_comment = self._apply_contrarian_adjustment(
             fund_score,
@@ -134,9 +137,10 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
         total_score = fund_score + tech_score + contrarian_adj
 
         # 🎯 스윙매매 특화 진입/청산 전략
-        buy_price, target, stop_loss, strategy = self._calculate_smart_entry_exit(
+        buy_price, target, stop_loss, strategy, rr_penalty = self._calculate_smart_entry_exit(
             current_price, contrarian_adj, hist, tech_breakdown
         )
+        total_score += rr_penalty  # R:R 부족 시 -5 감점 (완전 차단 대신)
 
         # 시장 상태 및 가격 정보
         market_info = self._get_market_status_and_prices(info, stock)
@@ -313,7 +317,7 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
 
         print(f"\n✅ 2단계 완료: {len(results)}개 종목 분석 완료")
         print(f"📊 시장 상태: {regime_desc}\n")
-        return results
+        return results, market_regime
 
     def run_analysis_with_tickers(self, tickers, report_type="Analysis", html_filename=None, min_score=50, skip_stage1=True, min_market_cap=0):
         """특정 티커 리스트로 분석 실행"""
@@ -325,15 +329,13 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
         print(f"{'='*70}\n")
 
         if skip_stage1:
-            # Stage 1 스킵하고 바로 Stage 2 분석
-            results = self.stage2_deep_analysis(tickers)
+            results, market_regime = self.stage2_deep_analysis(tickers)
         else:
-            # Stage 1 필터링 후 Stage 2 분석
             filtered_tickers = self.stage1_quick_filter(tickers, min_market_cap=min_market_cap)
             if not filtered_tickers:
                 print("❌ 1단계 필터를 통과한 종목이 없습니다.")
                 return []
-            results = self.stage2_deep_analysis(filtered_tickers)
+            results, market_regime = self.stage2_deep_analysis(filtered_tickers)
 
         # 시총 필터 (skip_stage1=True일 때도 적용)
         if min_market_cap and min_market_cap > 0:
@@ -341,12 +343,24 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
             results = [r for r in results if r.get('market_cap', 0) >= min_market_cap]
             print(f"🏦 시총 필터 (≥${min_market_cap/1e9:.0f}B): {before}개 → {len(results)}개")
 
+        # 🎯 시장 상태별 동적 임계값 (약세/횡보에서도 우량주 추천 가능)
+        regime_thresholds = {
+            'bull': 0,       # 강세장: 기본 임계값 유지
+            'neutral': -5,   # 중립: 5점 완화
+            'sideways': -5,  # 횡보장: 5점 완화
+            'bear': -10,     # 약세장: 10점 완화 (바닥 매수 기회)
+        }
+        threshold_adj = regime_thresholds.get(market_regime, 0)
+        effective_min_score = min_score + threshold_adj
+        if threshold_adj != 0:
+            print(f"📊 시장 상태({market_regime}) 반영: 임계값 {min_score} → {effective_min_score}")
+
         # 결과 출력
-        self.display_results(results, min_score=min_score)
+        self.display_results(results, min_score=effective_min_score)
 
         # HTML 리포트 생성
         if html_filename:
-            self.generate_html_report(results, report_type=report_type, filename=html_filename, min_score=min_score)
+            self.generate_html_report(results, report_type=report_type, filename=html_filename, min_score=effective_min_score)
 
         # Titan 점수 캐시 저장 (ML 포트폴리오에서 동일 점수 사용)
         self._save_score_cache(results, report_type)
