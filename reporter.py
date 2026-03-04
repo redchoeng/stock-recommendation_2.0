@@ -439,30 +439,26 @@ class ReporterMixin:
             market_info = stock.get('market_info', {})
             prev_close = market_info.get('previous_close', 0)
             regular_price = stock['price']
-            pre_market_price = market_info.get('pre_market_price') or 0
-            post_market_price = market_info.get('post_market_price') or 0
             display_price = market_info.get('display_price', regular_price)
 
-            # 변동률은 폐장 기준(전일대비)으로 기본 계산, JS가 시장 상태별로 재계산
-            change_pct = ((regular_price - prev_close) / prev_close * 100) if prev_close > 0 else 0
+            # 변동률: 생성 시점 시장 상태에 맞는 display_price 기준
+            if report_market_status == 'after':
+                base_price = regular_price
+            else:
+                base_price = prev_close
+            change_pct = ((display_price - base_price) / base_price * 100) if base_price > 0 else 0
             change_color = '#4CAF50' if change_pct >= 0 else '#F44336'
             change_sign = '+' if change_pct >= 0 else ''
 
-            _pre_attr = f'data-pre-market="{pre_market_price:.2f}"' if pre_market_price else ''
-            _post_attr = f'data-post-market="{post_market_price:.2f}"' if post_market_price else ''
-
             price_html = f'''
             <div class="info">
-                <div class="info-item market-status-box" style="background: #607D8B; color: white;"
-                     data-regular="{regular_price:.2f}"
-                     data-prev-close="{prev_close:.2f}"
-                     {_pre_attr} {_post_attr}>
+                <div class="info-item market-status-box" style="background: #607D8B; color: white;">
                     <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value market-status-price" style="font-size: 1.2em;">${regular_price:.2f}</div>
+                    <div class="info-value" style="font-size: 1.2em;">${display_price:.2f}</div>
                 </div>
-                <div class="info-item market-change-box">
+                <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value market-change-value" style="color: {change_color}; font-weight: bold;">{change_sign}{change_pct:.2f}%</div>
+                    <div class="info-value" style="color: {change_color}; font-weight: bold;">{change_sign}{change_pct:.2f}%</div>
                 </div>'''
 
             buy_strategy = stock.get('buy_strategy', '')
@@ -850,43 +846,12 @@ class ReporterMixin:
         }};
         var info = statusMap[status];
 
+        // 시장 상태 라벨·색상만 동적 업데이트 (가격은 생성 시점 그대로 유지)
         var boxes = document.querySelectorAll('.market-status-box');
         boxes.forEach(function(box) {{
             box.style.background = info.color;
             var label = box.querySelector('.market-status-label');
-            var priceEl = box.querySelector('.market-status-price');
             if (label) label.textContent = info.label;
-
-            var regular = parseFloat(box.dataset.regular) || 0;
-            var prevClose = parseFloat(box.dataset.prevClose) || 0;
-            var preMkt = parseFloat(box.dataset.preMarket) || 0;
-            var postMkt = parseFloat(box.dataset.postMarket) || 0;
-
-            var displayPrice = regular;
-            var basePrice = prevClose;
-            if (status === 'pre' && preMkt > 0) {{
-                displayPrice = preMkt;
-                basePrice = prevClose;
-            }} else if (status === 'after' && postMkt > 0) {{
-                displayPrice = postMkt;
-                basePrice = regular;
-            }} else if (status === 'after') {{
-                basePrice = regular;
-            }}
-
-            if (priceEl) priceEl.textContent = '$' + displayPrice.toFixed(2);
-
-            var changeBox = box.parentElement.querySelector('.market-change-box');
-            if (changeBox && basePrice > 0) {{
-                var pct = ((displayPrice - basePrice) / basePrice * 100);
-                var sign = pct >= 0 ? '+' : '';
-                var color = pct >= 0 ? '#4CAF50' : '#F44336';
-                var valEl = changeBox.querySelector('.market-change-value');
-                if (valEl) {{
-                    valEl.textContent = sign + pct.toFixed(2) + '%';
-                    valEl.style.color = color;
-                }}
-            }}
         }});
     }})();
     </script>
