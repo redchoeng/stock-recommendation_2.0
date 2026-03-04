@@ -462,7 +462,7 @@ class ReporterMixin:
                 </div>'''
 
             buy_strategy = stock.get('buy_strategy', '')
-            if stock.get('buy_price') is not None and buy_strategy.startswith('⚠️'):
+            if stock.get('buy_price') is not None and '조정대기' in buy_strategy:
                 price_html += f'''
                 <div class="info-item" style="background: rgba(244, 67, 54, 0.1); border-left: 3px solid #F44336;">
                     <div class="info-label">⚠️ 투자전략</div>

@@ -12,7 +12,25 @@ sys.stdout.reconfigure(encoding='utf-8')
 from ml_predictor import EnsemblePredictor, train_and_predict
 from project_titan import TitanAnalyzer, GROWTH_TICKERS, VALUE_TICKERS
 
-MIN_SCORE = 75
+BASE_MIN_SCORE = 75
+
+def _get_dynamic_min_score():
+    """시장 상태에 따른 동적 임계값 (Titan 캐시에서 regime 확인)"""
+    try:
+        with open("titan_scores_growth.json", 'r') as f:
+            g_cache = json.load(f)
+        # 첫 번째 종목에서 market_regime 확인
+        first = next(iter(g_cache.values()), {})
+        regime = first.get('market_regime', 'neutral')
+        adj = {'bull': 0, 'neutral': -5, 'sideways': -5, 'bear': -10}.get(regime, 0)
+        effective = BASE_MIN_SCORE + adj
+        if adj != 0:
+            print(f"📊 시장 상태({regime}) 반영: ML 임계값 {BASE_MIN_SCORE} → {effective}")
+        return effective
+    except Exception:
+        return BASE_MIN_SCORE
+
+MIN_SCORE = _get_dynamic_min_score()
 
 def load_titan_cache(min_score=MIN_SCORE):
     """Titan 리포트에서 저장된 캐시 점수 로드 (캐시 없으면 실시간 스캔 폴백)"""
@@ -23,7 +41,6 @@ def load_titan_cache(min_score=MIN_SCORE):
     growth_list = []
     value_list = []
 
-    # 캐시 파일 존재 여부 확인
     has_growth_cache = os.path.exists(growth_cache_file)
     has_value_cache = os.path.exists(value_cache_file)
 

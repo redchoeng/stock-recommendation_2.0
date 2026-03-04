@@ -48,7 +48,7 @@ class StrategyMixin:
         return min(candidates) if candidates else None
 
     def _validate_risk_reward(self, buy_price, target_price, stop_loss, atr, swing_highs):
-        """R:R 검증: 비율 부족 시 목표가 강제 상향 대신 진입 보류 플래그 반환"""
+        """R:R 검증: 모드별 기준 차등 (가치주는 변동성이 작으므로 완화)"""
         max_stop = buy_price * 0.93   # 최대 손절 7%
         if stop_loss < max_stop:
             stop_loss = max_stop
@@ -56,20 +56,21 @@ class StrategyMixin:
         risk = buy_price - stop_loss
         reward = target_price - buy_price
 
-        # R:R < 1.5 → 진입 부적합 (avoid 플래그)
-        if risk > 0 and reward / risk < 1.5:
-            # 현실적 저항선이 있으면 목표가만 소폭 조정 시도
+        # 가치주는 변동성이 작아 R:R 1.5가 과도 → 1.2로 완화
+        mode = getattr(self, 'analysis_mode', 'growth')
+        rr_min = 1.2 if mode == 'value' else 1.5
+        rr_caution = 1.5 if mode == 'value' else 2.0
+
+        if risk > 0 and reward / risk < rr_min:
             realistic = [r for r in swing_highs if r > target_price and r <= buy_price * 1.15]
             if realistic:
                 target_price = min(realistic)
-                # 재검증: 여전히 부족하면 avoid
-                if (target_price - buy_price) / risk < 1.5:
+                if (target_price - buy_price) / risk < rr_min:
                     return target_price, stop_loss, True  # avoid=True
             else:
                 return target_price, stop_loss, True  # avoid=True
-        # R:R 1.5~2.0 → 비중 축소 권장
-        elif risk > 0 and reward / risk < 2.0:
-            return target_price, stop_loss, False  # 통과하되 비중 축소는 전략 텍스트에서 표현
+        elif risk > 0 and reward / risk < rr_caution:
+            return target_price, stop_loss, False
 
         return target_price, stop_loss, False
 
@@ -243,7 +244,7 @@ class StrategyMixin:
                         buy_price, target_price, stop_loss, atr, swing_highs)
                     strategy = f"📦 박스권하단({strategy_suffix})"
 
-                # --- Tier 3D: 반등대기 ---
+                # --- Tier 3D: 약세/하락 구간 ---
                 else:
                     support_candidates = []
                     if nearest_support and nearest_support < current_price:
@@ -275,7 +276,18 @@ class StrategyMixin:
                         stop_loss = buy_price * 0.95
                     target_price, stop_loss, _rr_avoid = self._validate_risk_reward(
                         buy_price, target_price, stop_loss, atr, swing_highs)
-                    strategy = f"🔄 반등대기({strategy_suffix})"
+
+                    # 지지선까지 거리에 따라 전략 세분화
+                    dist_to_support = (current_price - buy_price) / current_price
+                    if dist_to_support <= 0.02:
+                        # 지지선 2% 이내: 즉시 분할매수 가능
+                        strategy = f"💰 분할매수({strategy_suffix})"
+                    elif dist_to_support <= 0.05:
+                        # 지지선 5% 이내: 1차 소량 진입 가능
+                        strategy = f"📉 눌림매수({strategy_suffix})"
+                    else:
+                        # 지지선 5% 초과: 대기
+                        strategy = f"🔄 반등대기({strategy_suffix})"
 
             # R:R 부족 시 경고 표시 + 감점 (완전 차단 대신)
             rr_penalty = 0

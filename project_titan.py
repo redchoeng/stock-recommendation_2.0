@@ -278,11 +278,13 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
                     result['liquidity_tier'] = liq_tier
                     result['daily_trading_value'] = daily_value
 
-                    # 모드별 펀더멘털/기술적 가중치 적용
+                    # 모드별 + 시장상태별 펀더멘털/기술적 가중치 적용
                     if self.analysis_mode == 'value':
-                        fund_w, tech_w = 1.4, 0.6   # 가치주: 펀더 70 : 기술 30 (펀더멘탈 비중 강화)
+                        fund_w, tech_w = 1.4, 0.6   # 가치주: 펀더 70 : 기술 30
+                    elif market_regime in ('bear', 'sideways'):
+                        fund_w, tech_w = 1.0, 1.0   # 성장주 횡보/약세: 펀더 50 : 기술 50
                     else:
-                        fund_w, tech_w = 0.8, 1.2    # 성장주: 펀더 40 : 기술 60
+                        fund_w, tech_w = 0.8, 1.2    # 성장주 강세: 펀더 40 : 기술 60
 
                     # 🔄 섹터 순환매 보너스
                     sector = result.get('sector', '')
@@ -438,6 +440,7 @@ class TitanAnalyzer(FundamentalMixin, TechnicalMixin, StrategyMixin, ReporterMix
                 'mfi_value': tech_bd.get('mfi_value'),
                 'analyst_comment': r.get('analyst_comment', ''),
                 'analyst_data': r.get('analyst_data', {}),
+                'market_regime': r.get('market_regime', 'neutral'),
             }
         with open(cache_file, 'w') as f:
             json.dump(cache, f, indent=2)
