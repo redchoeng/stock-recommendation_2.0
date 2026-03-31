@@ -1,17 +1,17 @@
 {
   "NVDA": {
-    "score": 67,
-    "fund_score": 52,
-    "tech_score": 7,
+    "score": 54,
+    "fund_score": 44,
+    "tech_score": 9,
     "price": 165.17,
-    "avg_volume": 174903088,
+    "avg_volume": 180628640,
     "market_cap": 4014456963072,
     "sector": "Technology",
     "company_name": "NVIDIA Corporation",
-    "verdict": "Buy",
-    "buy_price": 167.37890338885163,
+    "verdict": "Avoid",
+    "buy_price": 167.37890338885242,
     "target_price": 188.8800048828125,
-    "stop_loss": 156.26146079045498,
+    "stop_loss": 156.26146078973497,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc6b0\ub7c9\uc8fc\uc870\uc815\ub9e4\uc218, ROE:101.5%, OPM:65.0%",
     "contrarian_adjustment": 8,
@@ -34,13 +34,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 34.0000337762887,
+    "rsi_value": 34.00003377884259,
     "ma5": 171.56199951171874,
     "ma20": 178.56454467773438,
     "ma60": 183.6054656982422,
     "ma120": 184.82412935892742,
-    "atr_value": 5.558721299198331,
-    "mfi_value": 29.04953489580616,
+    "atr_value": 5.558721299558726,
+    "mfi_value": 29.029129296353986,
     "analyst_comment": "ROE 101.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 65.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +73% \uace0\uc131\uc7a5. FCF Margin 27%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 191\uba85 \uc911 180\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $268 (\ud604\uc7ac\uac00 \ub300\ube44 +62% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 180,
@@ -60,14 +60,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "AMD": {
-    "score": 38,
-    "fund_score": 30,
+    "score": 30,
+    "fund_score": 25,
     "tech_score": 8,
     "price": 196.04,
-    "avg_volume": 36274357,
+    "avg_volume": 38153101,
     "market_cap": 319625723904,
     "sector": "Technology",
     "company_name": "Advanced Micro Devices, Inc.",
@@ -102,8 +102,8 @@
     "ma20": 200.79199981689453,
     "ma60": 213.6865000406901,
     "ma120": 220.77741635640461,
-    "atr_value": 10.145153946585983,
-    "mfi_value": 51.2169811549239,
+    "atr_value": 10.144797544870025,
+    "mfi_value": 51.07744020998762,
     "analyst_comment": "ROE 7.1%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 17.1%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +34% \uace0\uc131\uc7a5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 45\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 155\uba85 \uc911 120\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $290 (\ud604\uc7ac\uac00 \ub300\ube44 +48% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 120,
@@ -123,14 +123,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "INTC": {
-    "score": 7,
+    "score": 8,
     "fund_score": 1,
     "tech_score": 6,
     "price": 41.19,
-    "avg_volume": 104905003,
+    "avg_volume": 107539366,
     "market_cap": 206815412224,
     "sector": "Technology",
     "company_name": "Intel Corporation",
@@ -165,8 +165,8 @@
     "ma20": 44.898999786376955,
     "ma60": 45.865500132242836,
     "ma120": 41.84883337020874,
-    "atr_value": 2.580854064550594,
-    "mfi_value": 36.608656994839805,
+    "atr_value": 2.5812112837016827,
+    "mfi_value": 36.598705358362295,
     "analyst_comment": "ROE 0.0%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 23 / \ubcf4\uc720 98 / \ub9e4\ub3c4 19. \ud3c9\uade0 \ubaa9\ud45c\uac00 $47 (\ud604\uc7ac\uac00 \ub300\ube44 +14% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 23,
@@ -186,21 +186,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "QCOM": {
-    "score": 48,
-    "fund_score": 37,
-    "tech_score": 6,
+    "score": 38,
+    "fund_score": 31,
+    "tech_score": 7,
     "price": 127.07,
-    "avg_volume": 10919898,
+    "avg_volume": 11450735,
     "market_cap": 135716495360,
     "sector": "Technology",
     "company_name": "QUALCOMM Incorporated",
     "verdict": "Avoid",
-    "buy_price": 124.88501093546093,
+    "buy_price": 124.88501093546007,
     "target_price": 146.00260288450687,
-    "stop_loss": 117.09118879966297,
+    "stop_loss": 117.09083130803504,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:21.5%, OPM:27.5%",
     "contrarian_adjustment": 5,
@@ -223,13 +223,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 32.42915913709825,
+    "rsi_value": 32.42915913784779,
     "ma5": 128.7479995727539,
     "ma20": 132.08393974304198,
     "ma60": 145.56258176167805,
     "ma120": 157.74516353607177,
-    "atr_value": 3.8969110678989742,
-    "mfi_value": 12.607292292742088,
+    "atr_value": 3.8970898137125216,
+    "mfi_value": 12.567243204399006,
     "analyst_comment": "ROE 21.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 27.5%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 45 / \ubcf4\uc720 61 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $155 (\ud604\uc7ac\uac00 \ub300\ube44 +22% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 45,
@@ -249,14 +249,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TXN": {
-    "score": 40,
-    "fund_score": 34,
+    "score": 30,
+    "fund_score": 29,
     "tech_score": 6,
     "price": 186.42,
-    "avg_volume": 7599659,
+    "avg_volume": 7825636,
     "market_cap": 169728573440,
     "sector": "Technology",
     "company_name": "Texas Instruments Incorporated",
@@ -286,13 +286,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 36.30900027157973,
+    "rsi_value": 36.30900027152575,
     "ma5": 192.31200256347657,
     "ma20": 193.72300033569337,
     "ma60": 202.20585708618165,
     "ma120": 185.61885553995768,
-    "atr_value": 5.934363414678384,
-    "mfi_value": 58.22293926483403,
+    "atr_value": 5.9340070129619695,
+    "mfi_value": 57.89360803128722,
     "analyst_comment": "ROE 30.1%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 34.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 42 / \ubcf4\uc720 54 / \ub9e4\ub3c4 17. \ud3c9\uade0 \ubaa9\ud45c\uac00 $222 (\ud604\uc7ac\uac00 \ub300\ube44 +19% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 42,
@@ -312,21 +312,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MU": {
-    "score": 56,
-    "fund_score": 42,
-    "tech_score": 9,
+    "score": 46,
+    "fund_score": 35,
+    "tech_score": 11,
     "price": 321.8,
-    "avg_volume": 36363191,
+    "avg_volume": 39508606,
     "market_cap": 362904780800,
     "sector": "Technology",
     "company_name": "Micron Technology, Inc.",
-    "verdict": "Hold",
-    "buy_price": 331.89297907597097,
-    "target_price": 436.8900146484375,
-    "stop_loss": 308.660470540653,
+    "verdict": "Avoid",
+    "buy_price": 331.79127323648333,
+    "target_price": 436.7065562174714,
+    "stop_loss": 308.5658841099295,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:39.8%, OPM:67.6%",
     "contrarian_adjustment": 5,
@@ -349,13 +349,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 31.647307822204198,
-    "ma5": 362.4199951171875,
-    "ma20": 401.9619964599609,
-    "ma60": 392.6169987996419,
-    "ma120": 312.4292755126953,
-    "atr_value": 27.04317050805091,
-    "mfi_value": 38.4603537104306,
+    "rsi_value": 31.66675903591819,
+    "ma5": 362.2948425292969,
+    "ma20": 401.79996490478516,
+    "ma60": 392.4543863932292,
+    "ma120": 312.29920819600426,
+    "atr_value": 27.03457782228486,
+    "mfi_value": 38.43098570473523,
     "analyst_comment": "ROE 39.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 67.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +196% \uace0\uc131\uc7a5. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 127\uba85 \uc911 110\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $528 (\ud604\uc7ac\uac00 \ub300\ube44 +64% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 110,
@@ -375,21 +375,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "AVGO": {
-    "score": 66,
-    "fund_score": 50,
-    "tech_score": 8,
+    "score": 54,
+    "fund_score": 42,
+    "tech_score": 10,
     "price": 293.41,
-    "avg_volume": 26234215,
+    "avg_volume": 26775038,
     "market_cap": 1391137128448,
     "sector": "Technology",
     "company_name": "Broadcom Inc.",
-    "verdict": "Buy",
-    "buy_price": 295.5435181019208,
-    "target_price": 339.989990234375,
-    "stop_loss": 274.8554718347864,
+    "verdict": "Avoid",
+    "buy_price": 295.44155954135647,
+    "target_price": 339.2782896681297,
+    "stop_loss": 274.76065037346154,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc6b0\ub7c9\uc8fc\uc870\uc815\ub9e4\uc218, ROE:33.4%, OPM:31.8%",
     "contrarian_adjustment": 8,
@@ -405,21 +405,21 @@
     "fcf_margin_value": 37.4,
     "fcf_score": 10,
     "rs_score": 0,
-    "rs_ratio": -7.9,
+    "rs_ratio": -7.7,
     "dividend_yield_value": null,
     "dividend_growth_score": 0,
     "per_value": null,
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 33.423822669126764,
+    "rsi_value": 33.751013773927994,
     "ma5": 308.12200317382815,
-    "ma20": 321.91400146484375,
-    "ma60": 329.3771667480469,
-    "ma120": 343.8974848429362,
-    "atr_value": 12.651517964488942,
-    "mfi_value": 12.642108521606417,
-    "analyst_comment": "ROE 33.4%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 31.8%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +16% \uc131\uc7a5\uc138. FCF Margin 37%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 33\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 148\uba85 \uc911 143\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $472 (\ud604\uc7ac\uac00 \ub300\ube44 +61% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
+    "ma20": 321.43513946533204,
+    "ma60": 328.75267893473307,
+    "ma120": 343.21009928385416,
+    "atr_value": 12.66562704913074,
+    "mfi_value": 12.59918678628486,
+    "analyst_comment": "ROE 33.4%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 31.8%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +16% \uc131\uc7a5\uc138. FCF Margin 37%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 148\uba85 \uc911 143\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $472 (\ud604\uc7ac\uac00 \ub300\ube44 +61% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 143,
       "hold_count": 5,
@@ -438,18 +438,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MRVL": {
-    "score": 58,
-    "fund_score": 40,
-    "tech_score": 18,
+    "score": 55,
+    "fund_score": 34,
+    "tech_score": 23,
     "price": 87.81,
-    "avg_volume": 16189055,
+    "avg_volume": 17213126,
     "market_cap": 76786171904,
     "sector": "Technology",
     "company_name": "Marvell Technology, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 89.07700042724609,
     "target_price": 95.05000305175781,
     "stop_loss": 84.27869728088379,
@@ -475,13 +475,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 49.439197202549494,
+    "rsi_value": 49.43919720246308,
     "ma5": 94.23599853515626,
     "ma20": 89.07700042724609,
     "ma60": 83.72877629597981,
-    "ma120": 85.63915125528972,
-    "atr_value": 4.967254183459649,
-    "mfi_value": 58.839709411665865,
+    "ma120": 85.639151318868,
+    "atr_value": 4.9672541833996595,
+    "mfi_value": 58.81964094019348,
     "analyst_comment": "ROE 19.3%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 18.7%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +22% \uc131\uc7a5\uc138. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 49\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 133\uba85 \uc911 96\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $121 (\ud604\uc7ac\uac00 \ub300\ube44 +37% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 96,
@@ -501,14 +501,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ADI": {
-    "score": 48,
-    "fund_score": 40,
-    "tech_score": 8,
+    "score": 38,
+    "fund_score": 34,
+    "tech_score": 9,
     "price": 303.1,
-    "avg_volume": 3979669,
+    "avg_volume": 4130505,
     "market_cap": 147974684672,
     "sector": "Technology",
     "company_name": "Analog Devices, Inc.",
@@ -538,13 +538,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 37.77483870359875,
+    "rsi_value": 37.77483870930559,
     "ma5": 313.5640014648437,
     "ma20": 316.5080001831055,
     "ma60": 317.5174835205078,
-    "ma120": 284.0122557322184,
-    "atr_value": 9.798964169095951,
-    "mfi_value": 44.53990876144768,
+    "ma120": 284.01225624084475,
+    "atr_value": 9.798964175498151,
+    "mfi_value": 44.520325087408054,
     "analyst_comment": "ROE 7.9%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 33.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +30% \uace0\uc131\uc7a5. FCF Margin 35%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 108\uba85 \uc911 77\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $387 (\ud604\uc7ac\uac00 \ub300\ube44 +28% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 77,
@@ -564,14 +564,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ON": {
-    "score": 22,
-    "fund_score": 19,
+    "score": 17,
+    "fund_score": 16,
     "tech_score": 5,
     "price": 55.66,
-    "avg_volume": 8494894,
+    "avg_volume": 8764708,
     "market_cap": 22396381184,
     "sector": "Technology",
     "company_name": "ON Semiconductor Corporation",
@@ -606,8 +606,8 @@
     "ma20": 59.90249938964844,
     "ma60": 62.77416648864746,
     "ma120": 57.1065000851949,
-    "atr_value": 2.7487541335847827,
-    "mfi_value": 44.45596403200483,
+    "atr_value": 2.748397186912071,
+    "mfi_value": 44.23099160307187,
     "analyst_comment": "ROE 1.5%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 19.1%\ub85c \uc548\uc815\uc801. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 39 / \ubcf4\uc720 63 / \ub9e4\ub3c4 1. \ud3c9\uade0 \ubaa9\ud45c\uac00 $67 (\ud604\uc7ac\uac00 \ub300\ube44 +21% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 39,
@@ -627,19 +627,19 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MPWR": {
-    "score": 52,
-    "fund_score": 42,
-    "tech_score": 7,
+    "score": 41,
+    "fund_score": 35,
+    "tech_score": 8,
     "price": 1002.34,
-    "avg_volume": 586596,
+    "avg_volume": 599411,
     "market_cap": 49232936960,
     "sector": "Technology",
     "company_name": "Monolithic Power Systems, Inc.",
     "verdict": "Avoid",
-    "buy_price": 1014.4449857625394,
+    "buy_price": 1014.4449857625467,
     "target_price": 1250.0,
     "stop_loss": 978.12,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
@@ -664,13 +664,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 37.9305992820053,
+    "rsi_value": 37.93059928214845,
     "ma5": 1066.7760131835937,
     "ma20": 1067.0744934082031,
     "ma60": 1092.4934987386068,
     "ma120": 1027.5797622680664,
-    "atr_value": 49.12650539562778,
-    "mfi_value": 44.19051911525753,
+    "atr_value": 49.126505395534295,
+    "mfi_value": 44.183304562609216,
     "analyst_comment": "ROE 19.2%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 26.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +21% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 48\uba85 \uc911 41\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1328 (\ud604\uc7ac\uac00 \ub300\ube44 +33% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 41,
@@ -690,21 +690,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MCHP": {
-    "score": 21,
-    "fund_score": 21,
+    "score": 15,
+    "fund_score": 18,
     "tech_score": 2,
     "price": 60.06,
-    "avg_volume": 9019716,
+    "avg_volume": 9331935,
     "market_cap": 32500598784,
     "sector": "Technology",
     "company_name": "Microchip Technology Incorporat",
     "verdict": "Avoid",
-    "buy_price": 59.661838905982776,
+    "buy_price": 59.661838905982265,
     "target_price": 71.79573841094971,
-    "stop_loss": 56.67874696068363,
+    "stop_loss": 56.67874696068315,
     "strategy": "\ud83d\udcb0 \ubd84\ud560\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "OPM:13.2%, FCF:23%, ADX:28",
     "contrarian_adjustment": 0,
@@ -727,13 +727,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 29.711405401692957,
+    "rsi_value": 29.711405413304746,
     "ma5": 63.40999984741211,
     "ma20": 64.77199954986573,
     "ma60": 71.79573841094971,
-    "ma120": 66.26577113469442,
-    "atr_value": 2.8026606900408026,
-    "mfi_value": 37.27903378567199,
+    "ma120": 66.26577116648356,
+    "atr_value": 2.8026606906714924,
+    "mfi_value": 37.27443353706496,
     "analyst_comment": "\ub9e4\ucd9c YoY +16% \uc131\uc7a5\uc138. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 30\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 78\uba85 \uc911 60\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $87 (\ud604\uc7ac\uac00 \ub300\ube44 +44% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 60,
@@ -753,21 +753,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ASML": {
-    "score": 56,
-    "fund_score": 42,
-    "tech_score": 9,
+    "score": 45,
+    "fund_score": 35,
+    "tech_score": 10,
     "price": 1253.96,
-    "avg_volume": 1746291,
+    "avg_volume": 1861091,
     "market_cap": 492378259456,
     "sector": "Technology",
     "company_name": "ASML Holding N.V. - New York Re",
-    "verdict": "Hold",
-    "buy_price": 1279.5284090145901,
+    "verdict": "Avoid",
+    "buy_price": 1279.5284090145963,
     "target_price": 1407.5400390625,
-    "stop_loss": 1189.9614203835688,
+    "stop_loss": 1189.9614203835745,
     "strategy": "\u26a0\ufe0f \ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)(R:R\uc8fc\uc758)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:50.5%, OPM:35.3%",
     "contrarian_adjustment": 5,
@@ -790,13 +790,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 37.253131590796144,
+    "rsi_value": 37.25313159079631,
     "ma5": 1335.847998046875,
     "ma20": 1354.9315063476563,
     "ma60": 1370.4178487141928,
     "ma120": 1206.3903111775717,
-    "atr_value": 55.13149354744933,
-    "mfi_value": 44.878979653870104,
+    "atr_value": 55.131493547449644,
+    "mfi_value": 44.75974524135957,
     "analyst_comment": "ROE 50.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 35.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 33%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 37\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 124\uba85 \uc911 99\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1462 (\ud604\uc7ac\uac00 \ub300\ube44 +17% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 99,
@@ -816,19 +816,19 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "LRCX": {
-    "score": 67,
-    "fund_score": 50,
-    "tech_score": 9,
+    "score": 55,
+    "fund_score": 42,
+    "tech_score": 11,
     "price": 199.93,
-    "avg_volume": 11630640,
+    "avg_volume": 12003546,
     "market_cap": 251118059520,
     "sector": "Technology",
     "company_name": "Lam Research Corporation",
-    "verdict": "Buy",
-    "buy_price": 197.57436341869987,
+    "verdict": "Avoid",
+    "buy_price": 197.5743634187,
     "target_price": 251.56859137918295,
     "stop_loss": 192.13920181274415,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
@@ -853,13 +853,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 38.20086865288476,
+    "rsi_value": 38.200868653140354,
     "ma5": 219.04999694824218,
     "ma20": 219.12199859619142,
     "ma60": 223.570814259847,
     "ma120": 189.68734525044758,
-    "atr_value": 12.620828203004825,
-    "mfi_value": 67.50902128251266,
+    "atr_value": 12.620828203027665,
+    "mfi_value": 67.16123067261482,
     "analyst_comment": "ROE 65.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 33.9%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +22% \uc131\uc7a5\uc138. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 106\uba85 \uc911 75\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $275 (\ud604\uc7ac\uac00 \ub300\ube44 +37% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 75,
@@ -879,19 +879,19 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "AMAT": {
-    "score": 49,
-    "fund_score": 36,
-    "tech_score": 8,
+    "score": 40,
+    "fund_score": 30,
+    "tech_score": 9,
     "price": 323.12,
-    "avg_volume": 7451411,
+    "avg_volume": 7807910,
     "market_cap": 256431210496,
     "sector": "Technology",
     "company_name": "Applied Materials, Inc.",
     "verdict": "Avoid",
-    "buy_price": 322.6080929242644,
+    "buy_price": 322.60809292425125,
     "target_price": 344.170774557935,
     "stop_loss": 313.49340362548827,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
@@ -916,13 +916,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 39.73260509737759,
+    "rsi_value": 39.73260509744553,
     "ma5": 348.4339965820312,
     "ma20": 348.0689987182617,
     "ma60": 336.07433013916017,
     "ma120": 288.2736115773519,
-    "atr_value": 17.18585272349716,
-    "mfi_value": 59.21998556332093,
+    "atr_value": 17.185852723543498,
+    "mfi_value": 58.947658517333714,
     "analyst_comment": "ROE 38.9%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 29.9%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 15%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 113\uba85 \uc911 78\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $412 (\ud604\uc7ac\uac00 \ub300\ube44 +27% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 78,
@@ -942,19 +942,19 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "KLAC": {
-    "score": 56,
-    "fund_score": 42,
-    "tech_score": 9,
+    "score": 46,
+    "fund_score": 35,
+    "tech_score": 11,
     "price": 1382.58,
-    "avg_volume": 1097293,
+    "avg_volume": 1136493,
     "market_cap": 181660418048,
     "sector": "Technology",
     "company_name": "KLA Corporation",
-    "verdict": "Hold",
-    "buy_price": 1355.8839870708127,
+    "verdict": "Avoid",
+    "buy_price": 1355.8839870707914,
     "target_price": 1577.3499755859375,
     "stop_loss": 1307.8098193359374,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
@@ -979,13 +979,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.03279983301282,
+    "rsi_value": 41.03279983700933,
     "ma5": 1477.3859619140626,
     "ma20": 1458.8459899902343,
     "ma60": 1461.9318074544271,
-    "ma120": 1317.7081746419271,
-    "atr_value": 70.7459585453555,
-    "mfi_value": 57.61840540213366,
+    "ma120": 1317.7081720987956,
+    "atr_value": 70.7459585692195,
+    "mfi_value": 57.60302740246235,
     "analyst_comment": "ROE 100.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 41.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 25%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 41\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 91\uba85 \uc911 51\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1676 (\ud604\uc7ac\uac00 \ub300\ube44 +21% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 51,
@@ -1005,24 +1005,24 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "NXPI": {
-    "score": 38,
-    "fund_score": 34,
-    "tech_score": 3,
+    "score": 27,
+    "fund_score": 29,
+    "tech_score": 5,
     "price": 187.39,
-    "avg_volume": 2823732,
+    "avg_volume": 2889115,
     "market_cap": 47352111104,
     "sector": "Technology",
     "company_name": "NXP Semiconductors N.V.",
     "verdict": "Avoid",
-    "buy_price": 187.39,
-    "target_price": 242.92999267578125,
-    "stop_loss": 174.2727,
-    "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
-    "comment": "\ud83d\udc8e\uc57d\ud55c\uc800\ud3c9\uac00, ROE:20.7%, OPM:26.3%",
-    "contrarian_adjustment": 3,
+    "buy_price": 181.20501455091136,
+    "target_price": 220.84892832438152,
+    "stop_loss": 172.1447638233658,
+    "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(BB\ud558\ub2e8)",
+    "comment": "ROE:20.7%, OPM:26.3%, FCF:15%",
+    "contrarian_adjustment": 0,
     "liquidity_bonus": 3,
     "liquidity_tier": "Active",
     "rotation_bonus": -5,
@@ -1035,21 +1035,21 @@
     "fcf_margin_value": 15.3,
     "fcf_score": 5,
     "rs_score": 0,
-    "rs_ratio": -6.9,
+    "rs_ratio": -6.4,
     "dividend_yield_value": null,
     "dividend_growth_score": 0,
     "per_value": null,
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 29.7350426353146,
-    "ma5": 193.99599914550782,
-    "ma20": 197.99300003051758,
-    "ma60": 221.92816670735678,
-    "ma120": 217.3518128712972,
-    "atr_value": 7.451257819934214,
-    "mfi_value": 23.37897288451819,
-    "analyst_comment": "ROE 20.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 26.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 15%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 30\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 99\uba85 \uc911 83\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $261 (\ud604\uc7ac\uac00 \ub300\ube44 +39% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
+    "rsi_value": 30.97960308888767,
+    "ma5": 193.79319763183594,
+    "ma20": 197.17046966552735,
+    "ma60": 220.84892832438152,
+    "ma120": 216.2629187266032,
+    "atr_value": 7.455818358683863,
+    "mfi_value": 22.910875567812283,
+    "analyst_comment": "ROE 20.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 26.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 15%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 99\uba85 \uc911 83\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $261 (\ud604\uc7ac\uac00 \ub300\ube44 +39% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 83,
       "hold_count": 16,
@@ -1068,14 +1068,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ENTG": {
-    "score": 18,
-    "fund_score": 14,
+    "score": 15,
+    "fund_score": 12,
     "tech_score": 6,
     "price": 108.64,
-    "avg_volume": 2918455,
+    "avg_volume": 2967491,
     "market_cap": 16540319744,
     "sector": "Technology",
     "company_name": "Entegris, Inc.",
@@ -1105,13 +1105,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 39.105070471271034,
+    "rsi_value": 39.105070471262415,
     "ma5": 116.56599884033203,
     "ma20": 116.65650024414063,
     "ma60": 118.20105883280436,
     "ma120": 102.13435611724853,
-    "atr_value": 6.306666312060344,
-    "mfi_value": 37.00213306076869,
+    "atr_value": 6.307380750357268,
+    "mfi_value": 36.371547871877546,
     "analyst_comment": "ROE 6.2%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 39\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 36\uba85 \uc911 23\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $141 (\ud604\uc7ac\uac00 \ub300\ube44 +30% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 23,
@@ -1131,14 +1131,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "WOLF": {
     "score": -6,
     "fund_score": 0,
     "tech_score": 2,
     "price": 14.8,
-    "avg_volume": 1617415,
+    "avg_volume": 1659253,
     "market_cap": 715411904,
     "sector": "Technology",
     "company_name": "Wolfspeed, Inc.",
@@ -1174,7 +1174,7 @@
     "ma60": 18.06699995994568,
     "ma120": 20.435083317756654,
     "atr_value": 1.558085510548155,
-    "mfi_value": 36.97436162968724,
+    "mfi_value": 36.88394389912438,
     "analyst_comment": "MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 2 / \ubcf4\uc720 3 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $15 (\ud604\uc7ac\uac00 \ub300\ube44 +1% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 2,
@@ -1194,14 +1194,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SWKS": {
-    "score": 23,
-    "fund_score": 20,
-    "tech_score": 8,
+    "score": 17,
+    "fund_score": 17,
+    "tech_score": 7,
     "price": 52.5,
-    "avg_volume": 3718925,
+    "avg_volume": 3829345,
     "market_cap": 7894615040,
     "sector": "Technology",
     "company_name": "Skyworks Solutions, Inc.",
@@ -1231,13 +1231,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 34.218311856374896,
+    "rsi_value": 34.218311830503595,
     "ma5": 54.87200012207031,
     "ma20": 55.023000144958495,
     "ma60": 57.88123950958252,
-    "ma120": 63.0356471379598,
-    "atr_value": 2.098989543843055,
-    "mfi_value": 48.21568917905266,
+    "ma120": 63.03564688364665,
+    "atr_value": 2.0987680185642152,
+    "mfi_value": 47.96604815443906,
     "analyst_comment": "ROE 6.5%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. FCF Margin 27%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 17 / \ubcf4\uc720 57 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $67 (\ud604\uc7ac\uac00 \ub300\ube44 +28% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 17,
@@ -1257,14 +1257,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "QRVO": {
-    "score": 28,
-    "fund_score": 26,
+    "score": 21,
+    "fund_score": 22,
     "tech_score": 7,
     "price": 76.02,
-    "avg_volume": 1340216,
+    "avg_volume": 1381221,
     "market_cap": 7047485440,
     "sector": "Technology",
     "company_name": "Qorvo, Inc.",
@@ -1300,7 +1300,7 @@
     "ma60": 80.98016611735027,
     "ma120": 84.49112453460694,
     "atr_value": 2.2684083825079617,
-    "mfi_value": 60.72638458908787,
+    "mfi_value": 60.68935196061848,
     "analyst_comment": "ROE 9.6%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 19.8%\ub85c \uc548\uc815\uc801. FCF Margin 15%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 11 / \ubcf4\uc720 55 / \ub9e4\ub3c4 0. \ud3c9\uade0 \ubaa9\ud45c\uac00 $88 (\ud604\uc7ac\uac00 \ub300\ube44 +16% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 11,
@@ -1320,14 +1320,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CRUS": {
-    "score": 52,
-    "fund_score": 36,
-    "tech_score": 24,
+    "score": 53,
+    "fund_score": 30,
+    "tech_score": 31,
     "price": 138.33,
-    "avg_volume": 597169,
+    "avg_volume": 641650,
     "market_cap": 7059033600,
     "sector": "Technology",
     "company_name": "Cirrus Logic, Inc.",
@@ -1363,7 +1363,7 @@
     "ma60": 134.38566703796386,
     "ma120": 128.61758359273276,
     "atr_value": 5.740764069885699,
-    "mfi_value": 76.19528802767168,
+    "mfi_value": 76.10777671025818,
     "analyst_comment": "ROE 19.9%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 26.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 50\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 21\uba85 \uc911 14\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $146 (\ud604\uc7ac\uac00 \ub300\ube44 +6% \uc0c1\uc2b9\uc5ec\ub825). \uacfc\uc5f4 \uad6c\uac04\uc73c\ub85c \uc2e0\uaddc \uc9c4\uc785\ubcf4\ub2e4 \uc870\uc815 \ud6c4 \uc7ac\uc9c4\uc785 \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 14,
@@ -1383,20 +1383,20 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SLAB": {
-    "score": 31,
-    "fund_score": 16,
-    "tech_score": 20,
+    "score": 36,
+    "fund_score": 14,
+    "tech_score": 25,
     "price": 205.85,
-    "avg_volume": 761425,
+    "avg_volume": 765930,
     "market_cap": 6786548736,
     "sector": "Technology",
     "company_name": "Silicon Laboratories, Inc.",
     "verdict": "Avoid",
     "buy_price": 205.85,
-    "target_price": 210.40192432577246,
+    "target_price": 210.40906761888073,
     "stop_loss": 201.733,
     "strategy": "\u26a0\ufe0f \ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)(R:R\uc8fc\uc758)",
     "comment": "MA120\u2191, ADX:45, RSI:66",
@@ -1425,8 +1425,8 @@
     "ma20": 204.72949981689453,
     "ma60": 182.95316670735676,
     "ma120": 157.14549967447917,
-    "atr_value": 2.2759621628862305,
-    "mfi_value": 62.52101649107898,
+    "atr_value": 2.27953380944036,
+    "mfi_value": 62.46632569739584,
     "analyst_comment": "\ub9e4\ucd9c YoY +25% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 66\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 5 / \ubcf4\uc720 17 / \ub9e4\ub3c4 0. \ud3c9\uade0 \ubaa9\ud45c\uac00 $223 (\ud604\uc7ac\uac00 \ub300\ube44 +8% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
       "buy_count": 5,
@@ -1446,19 +1446,19 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TER": {
-    "score": 57,
-    "fund_score": 42,
-    "tech_score": 12,
+    "score": 48,
+    "fund_score": 35,
+    "tech_score": 14,
     "price": 276.35,
-    "avg_volume": 3340469,
+    "avg_volume": 3484423,
     "market_cap": 43264237568,
     "sector": "Technology",
     "company_name": "Teradyne, Inc.",
-    "verdict": "Hold",
-    "buy_price": 274.8295369267247,
+    "verdict": "Avoid",
+    "buy_price": 274.82953692673163,
     "target_price": 327.85289638358427,
     "stop_loss": 260.38978912353514,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
@@ -1483,13 +1483,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.93467234273543,
+    "rsi_value": 41.93467234660723,
     "ma5": 302.55999755859375,
     "ma20": 298.3984970092773,
     "ma60": 278.496511332194,
-    "ma120": 225.85748011271158,
-    "atr_value": 18.834251218906974,
-    "mfi_value": 49.86802364833057,
+    "ma120": 225.85747985839845,
+    "atr_value": 18.8342512166277,
+    "mfi_value": 49.65688006033752,
     "analyst_comment": "ROE 19.7%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 30.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +44% \uace0\uc131\uc7a5. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 52\uba85 \uc911 34\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $314 (\ud604\uc7ac\uac00 \ub300\ube44 +14% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 34,
@@ -1509,14 +1509,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ONTO": {
-    "score": 28,
-    "fund_score": 22,
-    "tech_score": 11,
+    "score": 22,
+    "fund_score": 19,
+    "tech_score": 10,
     "price": 189.27,
-    "avg_volume": 897979,
+    "avg_volume": 918755,
     "market_cap": 9407165440,
     "sector": "Technology",
     "company_name": "Onto Innovation Inc.",
@@ -1552,7 +1552,7 @@
     "ma60": 204.70633392333986,
     "ma120": 173.38216692606608,
     "atr_value": 12.792518495457076,
-    "mfi_value": 56.785571354220394,
+    "mfi_value": 56.25927490704407,
     "analyst_comment": "ROE 6.8%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 20.9%\ub85c \uc548\uc815\uc801. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 23\uba85 \uc911 18\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $266 (\ud604\uc7ac\uac00 \ub300\ube44 +40% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 18,
@@ -1572,21 +1572,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MSFT": {
-    "score": 61,
-    "fund_score": 45,
-    "tech_score": 6,
+    "score": 49,
+    "fund_score": 38,
+    "tech_score": 7,
     "price": 358.96,
-    "avg_volume": 34174708,
+    "avg_volume": 36402258,
     "market_cap": 2667926257664,
     "sector": "Technology",
     "company_name": "Microsoft Corporation",
-    "verdict": "Hold",
-    "buy_price": 356.7037587524516,
+    "verdict": "Avoid",
+    "buy_price": 356.70375875245134,
     "target_price": 413.04998779296875,
-    "stop_loss": 339.21023092474564,
+    "stop_loss": 339.20880531788157,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:34.4%, OPM:47.1%",
     "contrarian_adjustment": 10,
@@ -1609,13 +1609,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 24.796812505992307,
+    "rsi_value": 24.796812505993515,
     "ma5": 365.09599609375,
     "ma20": 390.8374984741211,
     "ma60": 418.70981750488284,
     "ma120": 458.45068130493166,
-    "atr_value": 8.74676391385299,
-    "mfi_value": 27.411812790659,
+    "atr_value": 8.74747671728488,
+    "mfi_value": 27.95074005618919,
     "analyst_comment": "ROE 34.4%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 47.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +17% \uc131\uc7a5\uc138. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 25\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 172\uba85 \uc911 167\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $590 (\ud604\uc7ac\uac00 \ub300\ube44 +64% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 167,
@@ -1635,21 +1635,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ORCL": {
-    "score": 51,
-    "fund_score": 40,
-    "tech_score": 6,
+    "score": 41,
+    "fund_score": 34,
+    "tech_score": 7,
     "price": 138.8,
-    "avg_volume": 26835877,
+    "avg_volume": 27395565,
     "market_cap": 399195209728,
     "sector": "Technology",
     "company_name": "Oracle Corporation",
     "verdict": "Avoid",
-    "buy_price": 139.2820990279694,
+    "buy_price": 139.28209902796328,
     "target_price": 165.38999938964844,
-    "stop_loss": 136.49645704741,
+    "stop_loss": 136.49645704740402,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:57.6%, OPM:32.7%",
     "contrarian_adjustment": 5,
@@ -1672,13 +1672,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 36.212934695623204,
+    "rsi_value": 36.21293469562985,
     "ma5": 142.8760009765625,
     "ma20": 151.24799880981445,
     "ma60": 162.76478322347006,
     "ma120": 198.42132377624512,
-    "atr_value": 6.804160452804412,
-    "mfi_value": 33.720175706165065,
+    "atr_value": 6.805596958807341,
+    "mfi_value": 33.48757330243778,
     "analyst_comment": "ROE 57.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 32.7%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +22% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 132\uba85 \uc911 96\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $246 (\ud604\uc7ac\uac00 \ub300\ube44 +78% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 96,
@@ -1698,21 +1698,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CRM": {
-    "score": 44,
-    "fund_score": 36,
-    "tech_score": 8,
+    "score": 35,
+    "fund_score": 30,
+    "tech_score": 9,
     "price": 185.03,
-    "avg_volume": 12021908,
+    "avg_volume": 12846975,
     "market_cap": 173373112320,
     "sector": "Technology",
     "company_name": "Salesforce, Inc.",
     "verdict": "Avoid",
-    "buy_price": 180.26941009697032,
+    "buy_price": 180.2694100969648,
     "target_price": 207.5301663716634,
-    "stop_loss": 174.8613277940612,
+    "stop_loss": 174.86132779405585,
     "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "OPM:19.2%, FCF:39%, RSI:42*",
     "contrarian_adjustment": 0,
@@ -1735,13 +1735,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 42.18705533645235,
+    "rsi_value": 42.1870553367439,
     "ma5": 182.99200134277345,
     "ma20": 193.05350036621093,
     "ma60": 207.5301663716634,
     "ma120": 228.1274491628011,
-    "atr_value": 7.893951085910798,
-    "mfi_value": 50.08707511681491,
+    "atr_value": 7.893951086000427,
+    "mfi_value": 50.63559891720272,
     "analyst_comment": "ROE 12.4%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 19.2%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +12% \uc131\uc7a5\uc138. FCF Margin 39%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 171\uba85 \uc911 130\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $274 (\ud604\uc7ac\uac00 \ub300\ube44 +48% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 130,
@@ -1761,18 +1761,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ADBE": {
-    "score": 66,
-    "fund_score": 48,
-    "tech_score": 10,
+    "score": 54,
+    "fund_score": 40,
+    "tech_score": 12,
     "price": 241.13,
-    "avg_volume": 5712062,
+    "avg_volume": 5942996,
     "market_cap": 98293497856,
     "sector": "Technology",
     "company_name": "Adobe Inc.",
-    "verdict": "Buy",
+    "verdict": "Avoid",
     "buy_price": 241.13,
     "target_price": 285.3599853515625,
     "stop_loss": 224.2509,
@@ -1803,8 +1803,8 @@
     "ma20": 257.33299865722654,
     "ma60": 277.57116673787436,
     "ma120": 308.56483319600426,
-    "atr_value": 9.385488815560143,
-    "mfi_value": 18.42634912553011,
+    "atr_value": 9.38534603689106,
+    "mfi_value": 18.806176853430202,
     "analyst_comment": "ROE 58.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 38.8%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +12% \uc131\uc7a5\uc138. FCF Margin 38%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 118\uba85 \uc911 66\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $328 (\ud604\uc7ac\uac00 \ub300\ube44 +36% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 66,
@@ -1824,18 +1824,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "INTU": {
-    "score": 55,
-    "fund_score": 45,
-    "tech_score": 10,
+    "score": 44,
+    "fund_score": 38,
+    "tech_score": 11,
     "price": 429.03,
-    "avg_volume": 3849493,
+    "avg_volume": 3975100,
     "market_cap": 119387930624,
     "sector": "Technology",
     "company_name": "Intuit Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 428.989990234375,
     "target_price": 477.63868204752606,
     "stop_loss": 398.96069091796875,
@@ -1861,13 +1861,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 45.34195326315737,
+    "rsi_value": 45.3419532631574,
     "ma5": 427.46599731445315,
     "ma20": 446.4070022583008,
     "ma60": 477.63868204752606,
     "ma120": 568.0284261067708,
-    "atr_value": 21.068009346475073,
-    "mfi_value": 40.55683301597654,
+    "atr_value": 21.068009346475176,
+    "mfi_value": 40.56447936181736,
     "analyst_comment": "ROE 23.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 15.7%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +41% \uace0\uc131\uc7a5. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 45\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 103\uba85 \uc911 79\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $603 (\ud604\uc7ac\uac00 \ub300\ube44 +41% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 79,
@@ -1887,14 +1887,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "NOW": {
-    "score": 53,
-    "fund_score": 40,
-    "tech_score": 8,
+    "score": 43,
+    "fund_score": 34,
+    "tech_score": 9,
     "price": 104.97,
-    "avg_volume": 18127588,
+    "avg_volume": 18930690,
     "market_cap": 110758363136,
     "sector": "Technology",
     "company_name": "ServiceNow, Inc.",
@@ -1930,7 +1930,7 @@
     "ma60": 117.86383336385092,
     "ma120": 144.3407330830892,
     "atr_value": 5.25682137955657,
-    "mfi_value": 26.87995639246543,
+    "mfi_value": 27.592277252884642,
     "analyst_comment": "ROE 15.5%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 16.5%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +21% \uc131\uc7a5\uc138. FCF Margin 37%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 139\uba85 \uc911 126\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $189 (\ud604\uc7ac\uac00 \ub300\ube44 +80% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 126,
@@ -1950,14 +1950,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SNOW": {
-    "score": 42,
-    "fund_score": 36,
+    "score": 31,
+    "fund_score": 30,
     "tech_score": 3,
     "price": 153.67,
-    "avg_volume": 5792081,
+    "avg_volume": 5981110,
     "market_cap": 53123719168,
     "sector": "Technology",
     "company_name": "Snowflake Inc.",
@@ -1992,8 +1992,8 @@
     "ma20": 170.80499877929688,
     "ma60": 185.65183334350587,
     "ma120": 215.10066719055175,
-    "atr_value": 8.84652475143827,
-    "mfi_value": 24.25698587133479,
+    "atr_value": 8.855810814496307,
+    "mfi_value": 24.918345235166314,
     "analyst_comment": "\ub9e4\ucd9c YoY +30% \uace0\uc131\uc7a5. FCF Margin 34%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 156\uba85 \uc911 130\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $239 (\ud604\uc7ac\uac00 \ub300\ube44 +56% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 130,
@@ -2013,14 +2013,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "WDAY": {
-    "score": 38,
-    "fund_score": 30,
-    "tech_score": 10,
+    "score": 29,
+    "fund_score": 25,
+    "tech_score": 9,
     "price": 128.77,
-    "avg_volume": 4929469,
+    "avg_volume": 5169611,
     "market_cap": 33866510336,
     "sector": "Technology",
     "company_name": "Workday, Inc.",
@@ -2056,7 +2056,7 @@
     "ma60": 159.206499226888,
     "ma120": 192.95733273824055,
     "atr_value": 6.671924176884471,
-    "mfi_value": 32.77616072226026,
+    "mfi_value": 32.791873428006426,
     "analyst_comment": "ROE 8.2%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \ub9e4\ucd9c YoY +14% \uc131\uc7a5\uc138. FCF Margin 32%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 39\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 129\uba85 \uc911 88\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $181 (\ud604\uc7ac\uac00 \ub300\ube44 +41% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 88,
@@ -2076,14 +2076,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TEAM": {
-    "score": 25,
-    "fund_score": 20,
+    "score": 20,
+    "fund_score": 17,
     "tech_score": 7,
     "price": 66.88,
-    "avg_volume": 6012435,
+    "avg_volume": 6385901,
     "market_cap": 17639202816,
     "sector": "Technology",
     "company_name": "Atlassian Corporation",
@@ -2119,7 +2119,7 @@
     "ma60": 99.05166676839193,
     "ma120": 128.20624974568685,
     "atr_value": 4.972981291682335,
-    "mfi_value": 24.22404052183856,
+    "mfi_value": 24.270065471774345,
     "analyst_comment": "\ub9e4\ucd9c YoY +23% \uc131\uc7a5\uc138. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 100\uba85 \uc911 76\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $169 (\ud604\uc7ac\uac00 \ub300\ube44 +153% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 76,
@@ -2139,14 +2139,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DDOG": {
-    "score": 26,
-    "fund_score": 21,
+    "score": 21,
+    "fund_score": 18,
     "tech_score": 7,
     "price": 115.81,
-    "avg_volume": 5740633,
+    "avg_volume": 5939298,
     "market_cap": 40979521536,
     "sector": "Technology",
     "company_name": "Datadog, Inc.",
@@ -2181,8 +2181,8 @@
     "ma20": 124.02099952697753,
     "ma60": 123.57233352661133,
     "ma120": 140.9540002187093,
-    "atr_value": 6.887244490120745,
-    "mfi_value": 48.44278371482286,
+    "atr_value": 6.889244481401437,
+    "mfi_value": 48.467789879647164,
     "analyst_comment": "ROE 3.3%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \ub9e4\ucd9c YoY +29% \uc131\uc7a5\uc138. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 43\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 139\uba85 \uc911 124\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $182 (\ud604\uc7ac\uac00 \ub300\ube44 +58% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 124,
@@ -2202,18 +2202,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ADSK": {
-    "score": 66,
-    "fund_score": 51,
-    "tech_score": 9,
+    "score": 54,
+    "fund_score": 43,
+    "tech_score": 11,
     "price": 235.68,
-    "avg_volume": 2141850,
+    "avg_volume": 2258295,
     "market_cap": 49964158976,
     "sector": "Technology",
     "company_name": "Autodesk, Inc.",
-    "verdict": "Buy",
+    "verdict": "Avoid",
     "buy_price": 231.18064232545595,
     "target_price": 264.75,
     "stop_loss": 214.99799736267406,
@@ -2245,7 +2245,7 @@
     "ma60": 251.54666646321616,
     "ma120": 276.4781661987305,
     "atr_value": 8.473820547064614,
-    "mfi_value": 24.82567461742427,
+    "mfi_value": 25.028906052376428,
     "analyst_comment": "ROE 39.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 27.2%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +19% \uc131\uc7a5\uc138. FCF Margin 39%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 96\uba85 \uc911 81\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $332 (\ud604\uc7ac\uac00 \ub300\ube44 +41% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 81,
@@ -2265,14 +2265,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CDNS": {
-    "score": 45,
-    "fund_score": 39,
+    "score": 33,
+    "fund_score": 33,
     "tech_score": 3,
     "price": 270.88,
-    "avg_volume": 2415640,
+    "avg_volume": 2564990,
     "market_cap": 74787823616,
     "sector": "Technology",
     "company_name": "Cadence Design Systems, Inc.",
@@ -2307,8 +2307,8 @@
     "ma20": 289.7300003051758,
     "ma60": 298.660666402181,
     "ma120": 311.6974169413249,
-    "atr_value": 10.393452007311856,
-    "mfi_value": 20.989728339486007,
+    "atr_value": 10.394166990570785,
+    "mfi_value": 20.982961435536993,
     "analyst_comment": "ROE 21.9%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 32.8%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 28%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 78\uba85 \uc911 65\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $372 (\ud604\uc7ac\uac00 \ub300\ube44 +37% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 65,
@@ -2328,14 +2328,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SNPS": {
-    "score": 35,
-    "fund_score": 31,
+    "score": 26,
+    "fund_score": 26,
     "tech_score": 6,
     "price": 383.14,
-    "avg_volume": 2140528,
+    "avg_volume": 2245406,
     "market_cap": 73395077120,
     "sector": "Technology",
     "company_name": "Synopsys, Inc.",
@@ -2371,7 +2371,7 @@
     "ma60": 452.99200337727865,
     "ma120": 447.5225850423177,
     "atr_value": 16.810584019316845,
-    "mfi_value": 18.55914691048504,
+    "mfi_value": 18.559007263510694,
     "analyst_comment": "ROE 5.5%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \ub9e4\ucd9c YoY +66% \uace0\uc131\uc7a5. FCF Margin 39%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 33\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 75\uba85 \uc911 58\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $538 (\ud604\uc7ac\uac00 \ub300\ube44 +40% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 58,
@@ -2391,14 +2391,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "PANW": {
-    "score": 49,
-    "fund_score": 37,
-    "tech_score": 12,
+    "score": 42,
+    "fund_score": 31,
+    "tech_score": 14,
     "price": 154.35,
-    "avg_volume": 10144716,
+    "avg_volume": 10597480,
     "market_cap": 125949607936,
     "sector": "Technology",
     "company_name": "Palo Alto Networks, Inc.",
@@ -2434,7 +2434,7 @@
     "ma60": 168.1248336791992,
     "ma120": 184.69525019327799,
     "atr_value": 6.883916749330064,
-    "mfi_value": 45.641328863765104,
+    "mfi_value": 45.817915475260676,
     "analyst_comment": "ROE 16.3%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 15.5%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +15% \uc131\uc7a5\uc138. FCF Margin 29%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 43\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 168\uba85 \uc911 130\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $207 (\ud604\uc7ac\uac00 \ub300\ube44 +34% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 130,
@@ -2454,14 +2454,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CRWD": {
-    "score": 28,
-    "fund_score": 22,
+    "score": 22,
+    "fund_score": 19,
     "tech_score": 6,
     "price": 380.06,
-    "avg_volume": 3759049,
+    "avg_volume": 3983165,
     "market_cap": 96388571136,
     "sector": "Technology",
     "company_name": "CrowdStrike Holdings, Inc.",
@@ -2496,8 +2496,8 @@
     "ma20": 415.7254974365234,
     "ma60": 424.42749938964846,
     "ma120": 467.27650044759116,
-    "atr_value": 19.66085834372671,
-    "mfi_value": 32.49682866484261,
+    "atr_value": 19.66087360251577,
+    "mfi_value": 32.743264979744794,
     "analyst_comment": "\ub9e4\ucd9c YoY +23% \uc131\uc7a5\uc138. FCF Margin 33%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 162\uba85 \uc911 107\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $490 (\ud604\uc7ac\uac00 \ub300\ube44 +29% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 107,
@@ -2517,14 +2517,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ZS": {
-    "score": 28,
-    "fund_score": 24,
+    "score": 21,
+    "fund_score": 20,
     "tech_score": 6,
     "price": 137.26,
-    "avg_volume": 2543208,
+    "avg_volume": 2718935,
     "market_cap": 22070130688,
     "sector": "Technology",
     "company_name": "Zscaler, Inc.",
@@ -2560,7 +2560,7 @@
     "ma60": 177.96775029500324,
     "ma120": 229.32862548828126,
     "atr_value": 8.47233130021163,
-    "mfi_value": 39.2389011533004,
+    "mfi_value": 39.255545772853374,
     "analyst_comment": "\ub9e4\ucd9c YoY +26% \uc131\uc7a5\uc138. FCF Margin 34%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 148\uba85 \uc911 117\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $234 (\ud604\uc7ac\uac00 \ub300\ube44 +70% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 117,
@@ -2580,18 +2580,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "FTNT": {
-    "score": 59,
-    "fund_score": 46,
-    "tech_score": 10,
+    "score": 47,
+    "fund_score": 39,
+    "tech_score": 11,
     "price": 79.05,
-    "avg_volume": 6583338,
+    "avg_volume": 6858098,
     "market_cap": 58785386496,
     "sector": "Technology",
     "company_name": "Fortinet, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 78.33648984485528,
     "target_price": 85.05999755859375,
     "stop_loss": 76.49729667663574,
@@ -2622,8 +2622,8 @@
     "ma20": 82.30749969482422,
     "ma60": 80.75033353169759,
     "ma120": 81.74475015004477,
-    "atr_value": 3.0398684868598687,
-    "mfi_value": 43.2644068492948,
+    "atr_value": 3.0484395666589754,
+    "mfi_value": 43.47396502428051,
     "analyst_comment": "ROE 135.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 32.8%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +15% \uc131\uc7a5\uc138. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 44\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 31 / \ubcf4\uc720 86 / \ub9e4\ub3c4 9. \ud3c9\uade0 \ubaa9\ud45c\uac00 $89 (\ud604\uc7ac\uac00 \ub300\ube44 +13% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 31,
@@ -2643,14 +2643,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "NET": {
-    "score": 37,
-    "fund_score": 31,
+    "score": 28,
+    "fund_score": 26,
     "tech_score": 8,
     "price": 194.63,
-    "avg_volume": 4467854,
+    "avg_volume": 4675503,
     "market_cap": 68505923584,
     "sector": "Technology",
     "company_name": "Cloudflare, Inc.",
@@ -2685,8 +2685,8 @@
     "ma20": 206.97600021362305,
     "ma60": 190.43666763305663,
     "ma120": 200.70541687011718,
-    "atr_value": 11.367306630740936,
-    "mfi_value": 53.36080740991511,
+    "atr_value": 11.367313170221962,
+    "mfi_value": 52.97968665637368,
     "analyst_comment": "\ub9e4\ucd9c YoY +34% \uace0\uc131\uc7a5. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 45\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 105\uba85 \uc911 62\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $233 (\ud604\uc7ac\uac00 \ub300\ube44 +20% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 62,
@@ -2706,14 +2706,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MDB": {
-    "score": 24,
-    "fund_score": 19,
+    "score": 19,
+    "fund_score": 16,
     "tech_score": 7,
     "price": 235.21,
-    "avg_volume": 1889401,
+    "avg_volume": 1933993,
     "market_cap": 19144157184,
     "sector": "Technology",
     "company_name": "MongoDB, Inc.",
@@ -2749,7 +2749,7 @@
     "ma60": 335.98966623942056,
     "ma120": 351.2808339436849,
     "atr_value": 16.721178249214717,
-    "mfi_value": 33.45008238884438,
+    "mfi_value": 33.504967695607675,
     "analyst_comment": "\ub9e4\ucd9c YoY +27% \uc131\uc7a5\uc138. FCF Margin 19%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 124\uba85 \uc911 89\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $354 (\ud604\uc7ac\uac00 \ub300\ube44 +51% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 89,
@@ -2769,14 +2769,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ESTC": {
-    "score": 14,
-    "fund_score": 16,
+    "score": 10,
+    "fund_score": 14,
     "tech_score": 3,
     "price": 49.41,
-    "avg_volume": 2093159,
+    "avg_volume": 2160808,
     "market_cap": 5206470144,
     "sector": "Technology",
     "company_name": "Elastic N.V.",
@@ -2812,7 +2812,7 @@
     "ma60": 61.63783327738444,
     "ma120": 71.46916675567627,
     "atr_value": 3.1106292824143145,
-    "mfi_value": 35.50318781665925,
+    "mfi_value": 35.85504062931193,
     "analyst_comment": "\ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 87\uba85 \uc911 59\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $82 (\ud604\uc7ac\uac00 \ub300\ube44 +66% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 59,
@@ -2820,16 +2820,26 @@
       "sell_count": 0,
       "target_low": 60.0,
       "target_mean": 82.125,
-      "target_high": 116.0
+      "target_high": 116.0,
+      "news": [
+        {
+          "title": "",
+          "publisher": ""
+        },
+        {
+          "title": "",
+          "publisher": ""
+        }
+      ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CFLT": {
-    "score": 27,
-    "fund_score": 16,
-    "tech_score": 16,
+    "score": 30,
+    "fund_score": 14,
+    "tech_score": 20,
     "price": 30.99,
-    "avg_volume": 11663133,
+    "avg_volume": 11997407,
     "market_cap": 11133729792,
     "sector": "Technology",
     "company_name": "Confluent, Inc.",
@@ -2885,14 +2895,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "GTLB": {
-    "score": 24,
-    "fund_score": 21,
-    "tech_score": 8,
+    "score": 18,
+    "fund_score": 18,
+    "tech_score": 7,
     "price": 20.8,
-    "avg_volume": 5956984,
+    "avg_volume": 6192225,
     "market_cap": 3538745344,
     "sector": "Technology",
     "company_name": "GitLab Inc.",
@@ -2928,7 +2938,7 @@
     "ma60": 29.33358319600423,
     "ma120": 36.21574993133545,
     "atr_value": 1.3527177513148285,
-    "mfi_value": 25.0075898730299,
+    "mfi_value": 25.005524818986586,
     "analyst_comment": "\ub9e4\ucd9c YoY +23% \uc131\uc7a5\uc138. FCF Margin 30%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 82\uba85 \uc911 50\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $34 (\ud604\uc7ac\uac00 \ub300\ube44 +64% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 50,
@@ -2948,14 +2958,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DOCN": {
-    "score": 43,
-    "fund_score": 21,
-    "tech_score": 27,
+    "score": 50,
+    "fund_score": 18,
+    "tech_score": 34,
     "price": 78.32,
-    "avg_volume": 3180518,
+    "avg_volume": 3670148,
     "market_cap": 8140905472,
     "sector": "Technology",
     "company_name": "DigitalOcean Holdings, Inc.",
@@ -2991,7 +3001,7 @@
     "ma60": 62.66733360290527,
     "ma120": 53.56575012207031,
     "atr_value": 5.870582827773153,
-    "mfi_value": 55.098209338507125,
+    "mfi_value": 55.097082021756925,
     "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 16.0%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 58\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 42\uba85 \uc911 28\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $81 (\ud604\uc7ac\uac00 \ub300\ube44 +4% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
       "buy_count": 28,
@@ -3011,14 +3021,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DBX": {
-    "score": 23,
-    "fund_score": 24,
-    "tech_score": 7,
+    "score": 15,
+    "fund_score": 20,
+    "tech_score": 6,
     "price": 22.56,
-    "avg_volume": 4084098,
+    "avg_volume": 4096376,
     "market_cap": 5649651200,
     "sector": "Technology",
     "company_name": "Dropbox, Inc.",
@@ -3054,7 +3064,7 @@
     "ma60": 25.453833293914794,
     "ma120": 27.276166661580405,
     "atr_value": 0.8254825043238873,
-    "mfi_value": 14.58745848991289,
+    "mfi_value": 14.764410697779894,
     "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 24.9%\ub85c \uc548\uc815\uc801. FCF Margin 32%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 29\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 \ub9e4\uc218 3 / \ubcf4\uc720 14 / \ub9e4\ub3c4 10. \ud3c9\uade0 \ubaa9\ud45c\uac00 $26 (\ud604\uc7ac\uac00 \ub300\ube44 +13% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 3,
@@ -3074,14 +3084,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "BOX": {
-    "score": 40,
-    "fund_score": 39,
-    "tech_score": 9,
+    "score": 32,
+    "fund_score": 33,
+    "tech_score": 11,
     "price": 23.32,
-    "avg_volume": 2654679,
+    "avg_volume": 2771903,
     "market_cap": 3340072704,
     "sector": "Technology",
     "company_name": "Box, Inc.",
@@ -3117,7 +3127,7 @@
     "ma60": 25.190499941507976,
     "ma120": 28.244249947865804,
     "atr_value": 0.9358148468473662,
-    "mfi_value": 53.061274690135036,
+    "mfi_value": 53.91627785514245,
     "analyst_comment": "ROE 58.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. FCF Margin 30%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 14 / \ubcf4\uc720 13 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $32 (\ud604\uc7ac\uac00 \ub300\ube44 +38% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 14,
@@ -3137,14 +3147,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SHOP": {
-    "score": 38,
-    "fund_score": 33,
+    "score": 28,
+    "fund_score": 28,
     "tech_score": 5,
     "price": 111.77,
-    "avg_volume": 11369205,
+    "avg_volume": 11792756,
     "market_cap": 145869193216,
     "sector": "Technology",
     "company_name": "Shopify Inc.",
@@ -3179,8 +3189,8 @@
     "ma20": 123.5009994506836,
     "ma60": 131.60816599527996,
     "ma120": 146.21483306884767,
-    "atr_value": 6.5047817124139655,
-    "mfi_value": 25.131985596824606,
+    "atr_value": 6.506210044061566,
+    "mfi_value": 25.066104690640174,
     "analyst_comment": "ROE 9.8%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 20.3%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +31% \uace0\uc131\uc7a5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 154\uba85 \uc911 102\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $160 (\ud604\uc7ac\uac00 \ub300\ube44 +43% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 102,
@@ -3200,14 +3210,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "HUBS": {
-    "score": 25,
-    "fund_score": 19,
+    "score": 20,
+    "fund_score": 16,
     "tech_score": 8,
     "price": 237.81,
-    "avg_volume": 1646403,
+    "avg_volume": 1710076,
     "market_cap": 12542226432,
     "sector": "Technology",
     "company_name": "HubSpot, Inc.",
@@ -3243,7 +3253,7 @@
     "ma60": 281.1123326619466,
     "ma120": 346.47558237711587,
     "atr_value": 16.2960388167523,
-    "mfi_value": 41.41229984098718,
+    "mfi_value": 41.41536023516525,
     "analyst_comment": "ROE 2.3%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \ub9e4\ucd9c YoY +20% \uc131\uc7a5\uc138. FCF Margin 21%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 110\uba85 \uc911 102\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $373 (\ud604\uc7ac\uac00 \ub300\ube44 +57% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 102,
@@ -3263,14 +3273,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ZM": {
-    "score": 50,
-    "fund_score": 37,
-    "tech_score": 15,
+    "score": 42,
+    "fund_score": 31,
+    "tech_score": 16,
     "price": 78.68,
-    "avg_volume": 3970072,
+    "avg_volume": 4149001,
     "market_cap": 23297222656,
     "sector": "Technology",
     "company_name": "Zoom Communications, Inc.",
@@ -3306,7 +3316,7 @@
     "ma60": 83.81058336893717,
     "ma120": 84.08420829772949,
     "atr_value": 2.8894395446854326,
-    "mfi_value": 54.082907051443634,
+    "mfi_value": 54.30151933404905,
     "analyst_comment": "ROE 20.3%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 21.5%\ub85c \uc548\uc815\uc801. FCF Margin 40%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 49\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 91\uba85 \uc911 48\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $97 (\ud604\uc7ac\uac00 \ub300\ube44 +24% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 48,
@@ -3326,14 +3336,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DOCU": {
-    "score": 37,
-    "fund_score": 30,
-    "tech_score": 12,
+    "score": 28,
+    "fund_score": 25,
+    "tech_score": 11,
     "price": 47.26,
-    "avg_volume": 4714208,
+    "avg_volume": 5057843,
     "market_cap": 9188664320,
     "sector": "Technology",
     "company_name": "DocuSign, Inc.",
@@ -3369,7 +3379,7 @@
     "ma60": 51.22491639455159,
     "ma120": 60.16891679763794,
     "atr_value": 2.4324667680528163,
-    "mfi_value": 58.0486431670758,
+    "mfi_value": 58.1470276034517,
     "analyst_comment": "ROE 15.8%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. FCF Margin 37%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 49\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 21 / \ubcf4\uc720 48 / \ub9e4\ub3c4 0. \ud3c9\uade0 \ubaa9\ud45c\uac00 $65 (\ud604\uc7ac\uac00 \ub300\ube44 +37% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 21,
@@ -3389,14 +3399,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "APPN": {
-    "score": 13,
-    "fund_score": 16,
+    "score": 9,
+    "fund_score": 14,
     "tech_score": 5,
     "price": 23.82,
-    "avg_volume": 1055303,
+    "avg_volume": 1050253,
     "market_cap": 1761721088,
     "sector": "Technology",
     "company_name": "Appian Corporation",
@@ -3431,8 +3441,8 @@
     "ma20": 25.43400001525879,
     "ma60": 27.19383325576782,
     "ma120": 31.584166765213013,
-    "atr_value": 1.1855834544552686,
-    "mfi_value": 48.438985660399524,
+    "atr_value": 1.1856120646847608,
+    "mfi_value": 48.61626534577426,
     "analyst_comment": "\ub9e4\ucd9c YoY +22% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 39\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 4 / \ubcf4\uc720 8 / \ub9e4\ub3c4 2. \ud3c9\uade0 \ubaa9\ud45c\uac00 $31 (\ud604\uc7ac\uac00 \ub300\ube44 +30% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 4,
@@ -3452,14 +3462,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "OKTA": {
-    "score": 23,
-    "fund_score": 19,
+    "score": 19,
+    "fund_score": 16,
     "tech_score": 9,
     "price": 75.47,
-    "avg_volume": 3060849,
+    "avg_volume": 3309000,
     "market_cap": 13375564800,
     "sector": "Technology",
     "company_name": "Okta, Inc.",
@@ -3495,7 +3505,7 @@
     "ma60": 83.05941696166992,
     "ma120": 84.95783348083496,
     "atr_value": 3.9520002170022086,
-    "mfi_value": 49.665398170304094,
+    "mfi_value": 49.8762761729903,
     "analyst_comment": "ROE 3.5%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \ub9e4\ucd9c YoY +12% \uc131\uc7a5\uc138. FCF Margin 29%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 45\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 132\uba85 \uc911 89\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $101 (\ud604\uc7ac\uac00 \ub300\ube44 +34% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 89,
@@ -3515,14 +3525,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CYBR": {
-    "score": 22,
-    "fund_score": 19,
+    "score": 17,
+    "fund_score": 16,
     "tech_score": 5,
     "price": 408.85,
-    "avg_volume": 803927,
+    "avg_volume": 792623,
     "market_cap": 20637501440,
     "sector": "Technology",
     "company_name": "CyberArk Software Ltd.",
@@ -3578,14 +3588,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "VRNS": {
-    "score": 11,
-    "fund_score": 16,
+    "score": 7,
+    "fund_score": 14,
     "tech_score": 3,
     "price": 21.17,
-    "avg_volume": 3092944,
+    "avg_volume": 3185163,
     "market_cap": 2495886080,
     "sector": "Technology",
     "company_name": "Varonis Systems, Inc.",
@@ -3620,8 +3630,8 @@
     "ma20": 23.4229998588562,
     "ma60": 27.205083306630453,
     "ma120": 34.014874903361004,
-    "atr_value": 1.3794862900356175,
-    "mfi_value": 33.37427938316509,
+    "atr_value": 1.3798435091867058,
+    "mfi_value": 33.449185866121255,
     "analyst_comment": "FCF Margin 35%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 63\uba85 \uc911 48\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $34 (\ud604\uc7ac\uac00 \ub300\ube44 +60% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 48,
@@ -3641,14 +3651,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "QLYS": {
-    "score": 51,
-    "fund_score": 46,
-    "tech_score": 8,
+    "score": 39,
+    "fund_score": 39,
+    "tech_score": 9,
     "price": 87.92,
-    "avg_volume": 633633,
+    "avg_volume": 666836,
     "market_cap": 3152662272,
     "sector": "Technology",
     "company_name": "Qualys, Inc.",
@@ -3683,8 +3693,8 @@
     "ma20": 95.13049964904785,
     "ma60": 111.2068327585856,
     "ma120": 124.62166665395101,
-    "atr_value": 4.820116139980946,
-    "mfi_value": 41.25742034801401,
+    "atr_value": 4.822259454887474,
+    "mfi_value": 41.36549398408706,
     "analyst_comment": "ROE 38.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 33.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. FCF Margin 39%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 18 / \ubcf4\uc720 48 / \ub9e4\ub3c4 6. \ud3c9\uade0 \ubaa9\ud45c\uac00 $139 (\ud604\uc7ac\uac00 \ub300\ube44 +58% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 18,
@@ -3704,14 +3714,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "RPD": {
-    "score": 24,
-    "fund_score": 24,
-    "tech_score": 8,
+    "score": 16,
+    "fund_score": 20,
+    "tech_score": 7,
     "price": 5.45,
-    "avg_volume": 1762686,
+    "avg_volume": 1877736,
     "market_cap": 359117440,
     "sector": "Technology",
     "company_name": "Rapid7, Inc.",
@@ -3747,7 +3757,7 @@
     "ma60": 9.246833348274231,
     "ma120": 12.78008338212967,
     "atr_value": 0.4633481791379047,
-    "mfi_value": 29.594397433382767,
+    "mfi_value": 29.665959224449935,
     "analyst_comment": "ROE 27.1%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 29\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 \ub9e4\uc218 19 / \ubcf4\uc720 54 / \ub9e4\ub3c4 5. \ud3c9\uade0 \ubaa9\ud45c\uac00 $10 (\ud604\uc7ac\uac00 \ub300\ube44 +87% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 19,
@@ -3767,14 +3777,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TENB": {
-    "score": 14,
-    "fund_score": 16,
+    "score": 10,
+    "fund_score": 14,
     "tech_score": 6,
     "price": 17.06,
-    "avg_volume": 2570025,
+    "avg_volume": 2742371,
     "market_cap": 2036013056,
     "sector": "Technology",
     "company_name": "Tenable Holdings, Inc.",
@@ -3810,7 +3820,7 @@
     "ma60": 21.05216671625773,
     "ma120": 24.119666655858357,
     "atr_value": 1.1666470772486122,
-    "mfi_value": 27.378208100496465,
+    "mfi_value": 27.423808091872175,
     "analyst_comment": "\ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. FCF Margin 27%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 69\uba85 \uc911 39\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $30 (\ud604\uc7ac\uac00 \ub300\ube44 +76% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 39,
@@ -3830,14 +3840,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "S": {
-    "score": 18,
-    "fund_score": 20,
-    "tech_score": 3,
+    "score": 15,
+    "fund_score": 17,
+    "tech_score": 5,
     "price": 12.61,
-    "avg_volume": 8342840,
+    "avg_volume": 8599063,
     "market_cap": 4290886400,
     "sector": "Technology",
     "company_name": "SentinelOne, Inc.",
@@ -3846,7 +3856,7 @@
     "target_price": 14.039999961853027,
     "stop_loss": 12.112649660110474,
     "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
-    "comment": "FCF:28%, RSI:38, \u26a0\ud558\ub77d\ucd94\uc138",
+    "comment": "FCF:28%, RSI:38, OBV\u2191",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 0,
     "liquidity_tier": "Normal",
@@ -3873,7 +3883,7 @@
     "ma60": 13.902500025431316,
     "ma120": 15.093000038464863,
     "atr_value": 0.7024777566753787,
-    "mfi_value": 56.243266211855655,
+    "mfi_value": 56.700559088562564,
     "analyst_comment": "\ub9e4\ucd9c YoY +20% \uc131\uc7a5\uc138. FCF Margin 28%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 108\uba85 \uc911 71\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $19 (\ud604\uc7ac\uac00 \ub300\ube44 +47% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 71,
@@ -3893,14 +3903,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CHKP": {
-    "score": 47,
-    "fund_score": 40,
-    "tech_score": 7,
+    "score": 37,
+    "fund_score": 34,
+    "tech_score": 8,
     "price": 141.2,
-    "avg_volume": 1284071,
+    "avg_volume": 1320378,
     "market_cap": 15158486016,
     "sector": "Technology",
     "company_name": "Check Point Software Technologi",
@@ -3936,7 +3946,7 @@
     "ma60": 167.84166717529297,
     "ma120": 180.27375005086262,
     "atr_value": 5.141030220206916,
-    "mfi_value": 28.009813725833453,
+    "mfi_value": 28.13095754308192,
     "analyst_comment": "ROE 37.3%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 31.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 49 / \ubcf4\uc720 64 / \ub9e4\ub3c4 0. \ud3c9\uade0 \ubaa9\ud45c\uac00 $203 (\ud604\uc7ac\uac00 \ub300\ube44 +44% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 49,
@@ -3956,14 +3966,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "BILL": {
-    "score": 10,
-    "fund_score": 10,
+    "score": 8,
+    "fund_score": 9,
     "tech_score": 5,
     "price": 37.24,
-    "avg_volume": 2789625,
+    "avg_volume": 2907065,
     "market_cap": 3729835008,
     "sector": "Technology",
     "company_name": "BILL Holdings, Inc.",
@@ -3999,7 +4009,7 @@
     "ma60": 44.836500040690105,
     "ma120": 48.027666632334395,
     "atr_value": 2.1870165411486058,
-    "mfi_value": 24.279465312830553,
+    "mfi_value": 24.894738628706975,
     "analyst_comment": "\ub9e4\ucd9c YoY +14% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 35\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 72\uba85 \uc911 45\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $58 (\ud604\uc7ac\uac00 \ub300\ube44 +55% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 45,
@@ -4019,18 +4029,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "VEEV": {
-    "score": 56,
-    "fund_score": 45,
-    "tech_score": 6,
+    "score": 44,
+    "fund_score": 38,
+    "tech_score": 7,
     "price": 175.96,
-    "avg_volume": 2102725,
+    "avg_volume": 2186341,
     "market_cap": 28924633088,
     "sector": "Healthcare",
     "company_name": "Veeva Systems Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 171.9625664793278,
     "target_price": 196.8320004781087,
     "stop_loss": 166.80368948494794,
@@ -4062,7 +4072,7 @@
     "ma60": 196.8320004781087,
     "ma120": 230.0194170633952,
     "atr_value": 7.134122738097546,
-    "mfi_value": 39.31833946591919,
+    "mfi_value": 39.323422991502866,
     "analyst_comment": "ROE 13.9%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 29.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +16% \uc131\uc7a5\uc138. FCF Margin 33%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 99\uba85 \uc911 69\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $271 (\ud604\uc7ac\uac00 \ub300\ube44 +54% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 69,
@@ -4082,18 +4092,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "PLTR": {
-    "score": 68,
-    "fund_score": 52,
-    "tech_score": 8,
+    "score": 55,
+    "fund_score": 44,
+    "tech_score": 10,
     "price": 137.55,
-    "avg_volume": 48254947,
+    "avg_volume": 50111025,
     "market_cap": 328974991360,
     "sector": "Technology",
     "company_name": "Palantir Technologies Inc.",
-    "verdict": "Buy",
+    "verdict": "Avoid",
     "buy_price": 141.93545479063158,
     "target_price": 161.4499969482422,
     "stop_loss": 131.99997295528738,
@@ -4125,7 +4135,7 @@
     "ma60": 153.0083335876465,
     "ma120": 167.01670837402344,
     "atr_value": 6.948602995856213,
-    "mfi_value": 44.28304841776258,
+    "mfi_value": 44.11364821258797,
     "analyst_comment": "ROE 26.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 40.9%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +70% \uace0\uc131\uc7a5. FCF Margin 28%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 39\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 27 / \ubcf4\uc720 43 / \ub9e4\ub3c4 9. \ud3c9\uade0 \ubaa9\ud45c\uac00 $187 (\ud604\uc7ac\uac00 \ub300\ube44 +36% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 27,
@@ -4145,14 +4155,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "AI": {
-    "score": -3,
+    "score": -2,
     "fund_score": 0,
     "tech_score": 5,
     "price": 7.79,
-    "avg_volume": 6947201,
+    "avg_volume": 6982486,
     "market_cap": 1131818624,
     "sector": "Technology",
     "company_name": "C3.ai, Inc.",
@@ -4188,7 +4198,7 @@
     "ma60": 10.765833330154418,
     "ma120": 13.269500001271565,
     "atr_value": 0.5138742002770168,
-    "mfi_value": 16.33729412630187,
+    "mfi_value": 15.945506665199702,
     "analyst_comment": "MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 5 / \ubcf4\uc720 19 / \ub9e4\ub3c4 18. \ud3c9\uade0 \ubaa9\ud45c\uac00 $9 (\ud604\uc7ac\uac00 \ub300\ube44 +13% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 5,
@@ -4208,14 +4218,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "PATH": {
-    "score": 43,
-    "fund_score": 36,
-    "tech_score": 9,
+    "score": 35,
+    "fund_score": 30,
+    "tech_score": 11,
     "price": 10.87,
-    "avg_volume": 35000527,
+    "avg_volume": 33514978,
     "market_cap": 5812729344,
     "sector": "Technology",
     "company_name": "UiPath, Inc.",
@@ -4251,7 +4261,7 @@
     "ma60": 12.761666599909464,
     "ma120": 14.23824995358785,
     "atr_value": 0.7010198310698998,
-    "mfi_value": 55.489833014394414,
+    "mfi_value": 55.61797764698224,
     "analyst_comment": "ROE 14.4%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 16.7%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +14% \uc131\uc7a5\uc138. FCF Margin 29%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 7 / \ubcf4\uc720 53 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $14 (\ud604\uc7ac\uac00 \ub300\ube44 +27% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 7,
@@ -4271,14 +4281,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "U": {
-    "score": 25,
-    "fund_score": 15,
-    "tech_score": 12,
+    "score": 22,
+    "fund_score": 13,
+    "tech_score": 11,
     "price": 20.54,
-    "avg_volume": 16800813,
+    "avg_volume": 18385130,
     "market_cap": 8962219008,
     "sector": "Technology",
     "company_name": "Unity Software Inc.",
@@ -4313,8 +4323,8 @@
     "ma20": 19.530499935150146,
     "ma60": 27.83433338801066,
     "ma120": 34.37883346875508,
-    "atr_value": 1.5082304053304436,
-    "mfi_value": 54.710667840347696,
+    "atr_value": 1.5082374897682225,
+    "mfi_value": 54.79013175444997,
     "analyst_comment": "\ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. FCF Margin 30%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 50\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 80\uba85 \uc911 51\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $32 (\ud604\uc7ac\uac00 \ub300\ube44 +56% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 51,
@@ -4334,21 +4344,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "AAPL": {
-    "score": 54,
-    "fund_score": 46,
-    "tech_score": 3,
+    "score": 41,
+    "fund_score": 39,
+    "tech_score": 4,
     "price": 246.63,
-    "avg_volume": 46586027,
+    "avg_volume": 47983928,
     "market_cap": 3624949514240,
     "sector": "Technology",
     "company_name": "Apple Inc.",
     "verdict": "Avoid",
-    "buy_price": 244.11479266666802,
+    "buy_price": 244.1147926666641,
     "target_price": 276.1099853515625,
-    "stop_loss": 239.23249681333465,
+    "stop_loss": 239.2324968133308,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:152.0%, OPM:35.4%",
     "contrarian_adjustment": 5,
@@ -4371,13 +4381,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 35.56110993356444,
+    "rsi_value": 35.561109925461295,
     "ma5": 250.51600036621093,
     "ma20": 254.47149963378905,
     "ma60": 260.25719960530597,
-    "ma120": 264.56652386983234,
-    "atr_value": 5.590672279696252,
-    "mfi_value": 35.69386421937979,
+    "ma120": 264.56652450561523,
+    "atr_value": 5.592815049149026,
+    "mfi_value": 35.640978986810666,
     "analyst_comment": "ROE 152.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 35.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +16% \uc131\uc7a5\uc138. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 144\uba85 \uc911 89\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $295 (\ud604\uc7ac\uac00 \ub300\ube44 +20% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 89,
@@ -4397,20 +4407,20 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DELL": {
-    "score": 48,
-    "fund_score": 22,
-    "tech_score": 26,
+    "score": 55,
+    "fund_score": 19,
+    "tech_score": 33,
     "price": 164.66,
-    "avg_volume": 8067052,
+    "avg_volume": 8830663,
     "market_cap": 109118472192,
     "sector": "Technology",
     "company_name": "Dell Technologies Inc.",
     "verdict": "Avoid",
     "buy_price": 164.66,
-    "target_price": 180.46582905702581,
+    "target_price": 180.4658290570269,
     "stop_loss": 155.20625903320314,
     "strategy": "\ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)",
     "comment": "OPM:9.6%, MA120\u2191, MACD\uace8\ub4e0",
@@ -4434,13 +4444,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 59.07413219746108,
+    "rsi_value": 59.0741321979877,
     "ma5": 174.64200134277343,
     "ma20": 156.7739990234375,
     "ma60": 132.62066065470378,
-    "ma120": 136.22446784973144,
-    "atr_value": 8.263695932047385,
-    "mfi_value": 69.30479324915638,
+    "ma120": 136.2244675954183,
+    "atr_value": 8.263695931979642,
+    "mfi_value": 69.28393800179313,
     "analyst_comment": "\ub9e4\ucd9c YoY +40% \uace0\uc131\uc7a5. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 59\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 78\uba85 \uc911 58\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $171 (\ud604\uc7ac\uac00 \ub300\ube44 +4% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
       "buy_count": 58,
@@ -4460,23 +4470,23 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "HPE": {
-    "score": 31,
-    "fund_score": 13,
-    "tech_score": 20,
+    "score": 39,
+    "fund_score": 11,
+    "tech_score": 27,
     "price": 22.61,
-    "avg_volume": 17111950,
+    "avg_volume": 18760996,
     "market_cap": 30044360704,
     "sector": "Technology",
     "company_name": "Hewlett Packard Enterprise Comp",
     "verdict": "Avoid",
     "buy_price": 22.61,
-    "target_price": 24.3799991607666,
-    "stop_loss": 22.0656150226593,
+    "target_price": 24.223801357183156,
+    "stop_loss": 21.96271394062042,
     "strategy": "\ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)",
-    "comment": "MACD\uace8\ub4e0, RSI:51*, OBV\u2191",
+    "comment": "MA120\u2191, MACD\uace8\ub4e0, RSI:51*",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 3,
     "liquidity_tier": "Active",
@@ -4490,20 +4500,20 @@
     "fcf_margin_value": 7.1,
     "fcf_score": 2,
     "rs_score": 1,
-    "rs_ratio": 1.1,
+    "rs_ratio": 1.7,
     "dividend_yield_value": null,
     "dividend_growth_score": 0,
     "per_value": null,
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 50.58459014801334,
+    "rsi_value": 51.11865611152984,
     "ma5": 24.260000228881836,
-    "ma20": 22.288500022888183,
-    "ma60": 22.131833362579346,
-    "ma120": 22.74826571146647,
-    "atr_value": 1.0879645876669588,
-    "mfi_value": 61.882301092016476,
+    "ma20": 22.184559535980224,
+    "ma60": 22.00299180348714,
+    "ma120": 22.608998600641886,
+    "atr_value": 1.0843530411623,
+    "mfi_value": 60.20194270403935,
     "analyst_comment": "\ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 51\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 30 / \ubcf4\uc720 34 / \ub9e4\ub3c4 0. \ud3c9\uade0 \ubaa9\ud45c\uac00 $26 (\ud604\uc7ac\uac00 \ub300\ube44 +15% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
       "buy_count": 30,
@@ -4523,14 +4533,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SMCI": {
-    "score": 27,
-    "fund_score": 26,
+    "score": 19,
+    "fund_score": 22,
     "tech_score": 3,
     "price": 21.06,
-    "avg_volume": 33340433,
+    "avg_volume": 37560608,
     "market_cap": 12646149120,
     "sector": "Technology",
     "company_name": "Super Micro Computer, Inc.",
@@ -4566,7 +4576,7 @@
     "ma60": 30.129000027974445,
     "ma120": 35.260666592915854,
     "atr_value": 2.111611618663256,
-    "mfi_value": 29.64944485945385,
+    "mfi_value": 29.642186524631683,
     "analyst_comment": "ROE 13.2%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \ub9e4\ucd9c YoY +123% \uace0\uc131\uc7a5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 21 / \ubcf4\uc720 24 / \ub9e4\ub3c4 10. \ud3c9\uade0 \ubaa9\ud45c\uac00 $35 (\ud604\uc7ac\uac00 \ub300\ube44 +64% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 21,
@@ -4586,18 +4596,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ANET": {
-    "score": 68,
-    "fund_score": 54,
-    "tech_score": 8,
+    "score": 54,
+    "fund_score": 45,
+    "tech_score": 10,
     "price": 116.13,
-    "avg_volume": 7786354,
+    "avg_volume": 8033096,
     "market_cap": 146240782336,
     "sector": "Technology",
     "company_name": "Arista Networks, Inc.",
-    "verdict": "Buy",
+    "verdict": "Avoid",
     "buy_price": 119.83254046458146,
     "target_price": 138.2100067138672,
     "stop_loss": 111.44426263206076,
@@ -4628,8 +4638,8 @@
     "ma20": 132.37250022888185,
     "ma60": 133.95699971516927,
     "ma120": 135.49116611480713,
-    "atr_value": 6.307163535178035,
-    "mfi_value": 28.636317315265373,
+    "atr_value": 6.30787742852346,
+    "mfi_value": 28.241426855422418,
     "analyst_comment": "ROE 31.4%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 41.5%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +29% \uc131\uc7a5\uc138. FCF Margin 38%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 84\uba85 \uc911 72\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $178 (\ud604\uc7ac\uac00 \ub300\ube44 +53% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 72,
@@ -4649,21 +4659,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CSCO": {
-    "score": 56,
-    "fund_score": 40,
-    "tech_score": 11,
+    "score": 47,
+    "fund_score": 34,
+    "tech_score": 12,
     "price": 77.04,
-    "avg_volume": 23332288,
+    "avg_volume": 24168910,
     "market_cap": 304392339456,
     "sector": "Technology",
     "company_name": "Cisco Systems, Inc.",
-    "verdict": "Hold",
-    "buy_price": 75.88321186173317,
+    "verdict": "Avoid",
+    "buy_price": 75.88321186173239,
     "target_price": 81.16999816894531,
-    "stop_loss": 74.3655476244985,
+    "stop_loss": 74.36554762449774,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:23.8%, OPM:24.9%",
     "contrarian_adjustment": 5,
@@ -4686,13 +4696,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 43.900903969573555,
+    "rsi_value": 43.9009039699153,
     "ma5": 80.36200103759765,
     "ma20": 78.9560001373291,
     "ma60": 78.29233347574869,
     "ma120": 76.23876558939615,
-    "atr_value": 2.1735117506784376,
-    "mfi_value": 41.702876984366235,
+    "atr_value": 2.1735117507712776,
+    "mfi_value": 41.627854601518315,
     "analyst_comment": "ROE 23.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 24.9%\ub85c \uc548\uc815\uc801. FCF Margin 17%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 44\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 78\uba85 \uc911 49\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $89 (\ud604\uc7ac\uac00 \ub300\ube44 +15% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 49,
@@ -4712,14 +4722,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "AKAM": {
-    "score": 45,
-    "fund_score": 21,
-    "tech_score": 26,
+    "score": 52,
+    "fund_score": 18,
+    "tech_score": 33,
     "price": 110.22,
-    "avg_volume": 4110398,
+    "avg_volume": 4452568,
     "market_cap": 15969567744,
     "sector": "Technology",
     "company_name": "Akamai Technologies, Inc.",
@@ -4755,7 +4765,7 @@
     "ma60": 99.99833348592122,
     "ma120": 91.28733317057292,
     "atr_value": 4.9645047222788445,
-    "mfi_value": 64.49627043230333,
+    "mfi_value": 64.18081546156014,
     "analyst_comment": "ROE 9.2%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 54\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 74\uba85 \uc911 43\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $109 (\ud604\uc7ac\uac00 \ub300\ube44 -1%). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
       "buy_count": 43,
@@ -4775,14 +4785,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "NTAP": {
-    "score": 42,
-    "fund_score": 37,
-    "tech_score": 10,
+    "score": 33,
+    "fund_score": 31,
+    "tech_score": 11,
     "price": 101.18,
-    "avg_volume": 2399266,
+    "avg_volume": 2487843,
     "market_cap": 20039745536,
     "sector": "Technology",
     "company_name": "NetApp, Inc.",
@@ -4812,13 +4822,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 49.02691549184504,
+    "rsi_value": 49.02691549157025,
     "ma5": 103.55599822998047,
     "ma20": 101.02049980163574,
     "ma60": 101.46616630554199,
     "ma120": 107.37984517415364,
-    "atr_value": 3.2535417150953023,
-    "mfi_value": 49.997507333577815,
+    "atr_value": 3.2542561534090484,
+    "mfi_value": 49.60688153273877,
     "analyst_comment": "ROE 112.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 25.2%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 17%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 49\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 26 / \ubcf4\uc720 34 / \ub9e4\ub3c4 2. \ud3c9\uade0 \ubaa9\ud45c\uac00 $118 (\ud604\uc7ac\uac00 \ub300\ube44 +17% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 26,
@@ -4838,23 +4848,23 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "STX": {
-    "score": 34,
-    "fund_score": 26,
+    "score": 27,
+    "fund_score": 22,
     "tech_score": 8,
     "price": 362.43,
-    "avg_volume": 4044898,
+    "avg_volume": 4200906,
     "market_cap": 81193517056,
     "sector": "Technology",
     "company_name": "Seagate Technology Holdings PLC",
     "verdict": "Avoid",
-    "buy_price": 343.8030949833191,
-    "target_price": 439.7300109863281,
-    "stop_loss": 336.9270330836527,
+    "buy_price": 343.393747385187,
+    "target_price": 438.96428756896546,
+    "stop_loss": 336.52587243748326,
     "strategy": "\ud83d\udcca \ud480\ubc31\ub9e4\uc218(BB\ud558\ub2e8)",
-    "comment": "OPM:29.9%, MA120\u2191, RSI:42*",
+    "comment": "OPM:29.9%, MA120\u2191, RSI:43*",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 5,
     "liquidity_tier": "Hot",
@@ -4868,21 +4878,21 @@
     "fcf_margin_value": 10.9,
     "fcf_score": 4,
     "rs_score": 5,
-    "rs_ratio": 37.0,
+    "rs_ratio": 37.2,
     "dividend_yield_value": null,
     "dividend_growth_score": 0,
     "per_value": null,
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 42.42461363649925,
-    "ma5": 391.8940002441406,
-    "ma20": 389.55049896240234,
-    "ma60": 381.3878351847331,
-    "ma120": 320.4145425160726,
-    "atr_value": 28.648117311532843,
-    "mfi_value": 34.333940684251175,
-    "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 29.9%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +22% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 74\uba85 \uc911 55\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $478 (\ud604\uc7ac\uac00 \ub300\ube44 +32% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
+    "rsi_value": 42.52127975768259,
+    "ma5": 391.7460021972656,
+    "ma20": 389.0057571411133,
+    "ma60": 380.7682393391927,
+    "ma120": 319.8788551330566,
+    "atr_value": 28.570073358662093,
+    "mfi_value": 34.11633934321786,
+    "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 29.9%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +22% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 43\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 74\uba85 \uc911 55\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $478 (\ud604\uc7ac\uac00 \ub300\ube44 +32% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 55,
       "hold_count": 17,
@@ -4901,14 +4911,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "WDC": {
-    "score": 54,
-    "fund_score": 42,
-    "tech_score": 12,
+    "score": 45,
+    "fund_score": 35,
+    "tech_score": 14,
     "price": 251.67,
-    "avg_volume": 9656103,
+    "avg_volume": 9990003,
     "market_cap": 86045794304,
     "sector": "Technology",
     "company_name": "Western Digital Corporation",
@@ -4938,13 +4948,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.442635655752994,
+    "rsi_value": 41.442635655726896,
     "ma5": 279.51000061035154,
     "ma20": 277.689754486084,
     "ma60": 260.8090591430664,
-    "ma120": 206.87737477620442,
-    "atr_value": 22.27232325856081,
-    "mfi_value": 42.89348872733881,
+    "ma120": 206.87737458546957,
+    "atr_value": 22.272323257779277,
+    "mfi_value": 42.89099074911945,
     "analyst_comment": "ROE 41.1%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 15.4%\ub85c \uc548\uc815\uc801. FCF Margin 36%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 41\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 80\uba85 \uc911 63\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $321 (\ud604\uc7ac\uac00 \ub300\ube44 +28% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 63,
@@ -4964,14 +4974,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "PSTG": {
-    "score": 29,
-    "fund_score": 32,
+    "score": 19,
+    "fund_score": 27,
     "tech_score": 2,
     "price": 56.99,
-    "avg_volume": 3566200,
+    "avg_volume": 3549528,
     "market_cap": 18832969728,
     "sector": "Technology",
     "company_name": "Everpure, Inc.",
@@ -5007,7 +5017,7 @@
     "ma60": 67.87916666666666,
     "ma120": 75.56641648610433,
     "atr_value": 3.263822511779833,
-    "mfi_value": 60.31824817414389,
+    "mfi_value": 59.62480388100867,
     "analyst_comment": "ROE 13.7%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \ub9e4\ucd9c YoY +20% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 35\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 63\uba85 \uc911 42\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $91 (\ud604\uc7ac\uac00 \ub300\ube44 +60% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 42,
@@ -5027,14 +5037,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ADP": {
-    "score": 50,
-    "fund_score": 38,
-    "tech_score": 9,
+    "score": 41,
+    "fund_score": 32,
+    "tech_score": 10,
     "price": 205.47,
-    "avg_volume": 3434428,
+    "avg_volume": 3607125,
     "market_cap": 83102081024,
     "sector": "Technology",
     "company_name": "Automatic Data Processing, Inc.",
@@ -5064,13 +5074,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.47381577838724,
+    "rsi_value": 41.47381577737743,
     "ma5": 203.6459991455078,
     "ma20": 210.59373397827147,
     "ma60": 228.18901850382488,
     "ma120": 244.62591336568195,
-    "atr_value": 5.977273088784957,
-    "mfi_value": 25.150079973026365,
+    "atr_value": 5.977273088810864,
+    "mfi_value": 26.12570061788,
     "analyst_comment": "ROE 73.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 26.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 16%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 41\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 9 / \ubcf4\uc720 32 / \ub9e4\ub3c4 9. \ud3c9\uade0 \ubaa9\ud45c\uac00 $268 (\ud604\uc7ac\uac00 \ub300\ube44 +30% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 9,
@@ -5090,21 +5100,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "PAYX": {
-    "score": 65,
-    "fund_score": 51,
-    "tech_score": 16,
+    "score": 56,
+    "fund_score": 43,
+    "tech_score": 20,
     "price": 93.12,
-    "avg_volume": 3768747,
+    "avg_volume": 4083286,
     "market_cap": 33364047872,
     "sector": "Technology",
     "company_name": "Paychex, Inc.",
-    "verdict": "Buy",
-    "buy_price": 88.65336135240597,
+    "verdict": "Avoid",
+    "buy_price": 88.65336135240199,
     "target_price": 98.73797378540038,
-    "stop_loss": 85.99376051183378,
+    "stop_loss": 85.99376051182992,
     "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "ROE:40.3%, OPM:44.4%, FCF:32%",
     "contrarian_adjustment": 0,
@@ -5127,13 +5137,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 47.5699543412274,
+    "rsi_value": 47.56995434330873,
     "ma5": 92.47200012207031,
     "ma20": 93.92849998474121,
     "ma60": 98.73797378540038,
-    "ma120": 106.83101565043131,
-    "atr_value": 3.001957796328978,
-    "mfi_value": 65.38739250754202,
+    "ma120": 106.83101552327474,
+    "atr_value": 3.010886367241755,
+    "mfi_value": 65.47604674995671,
     "analyst_comment": "ROE 40.3%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 44.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +20% \uc131\uc7a5\uc138. FCF Margin 32%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 48\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 5 / \ubcf4\uc720 37 / \ub9e4\ub3c4 11. \ud3c9\uade0 \ubaa9\ud45c\uac00 $103 (\ud604\uc7ac\uac00 \ub300\ube44 +10% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 5,
@@ -5153,21 +5163,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "GOOGL": {
-    "score": 63,
-    "fund_score": 45,
+    "score": 49,
+    "fund_score": 38,
     "tech_score": 3,
     "price": 273.5,
-    "avg_volume": 32649994,
+    "avg_volume": 34294956,
     "market_cap": 3308529647616,
     "sector": "Communication Services",
     "company_name": "Alphabet Inc.",
-    "verdict": "Hold",
-    "buy_price": 277.22532906918605,
+    "verdict": "Avoid",
+    "buy_price": 277.2253290691876,
     "target_price": 312.4700012207031,
-    "stop_loss": 261.9600974104017,
+    "stop_loss": 261.96009741040393,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:35.7%, OPM:31.6%",
     "contrarian_adjustment": 10,
@@ -5190,13 +5200,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 24.851688364271098,
+    "rsi_value": 24.851688364274864,
     "ma5": 282.0260009765625,
     "ma20": 298.88407745361326,
     "ma60": 314.48760782877605,
     "ma120": 301.24690272013345,
-    "atr_value": 7.6326158293921775,
-    "mfi_value": 24.8432560430266,
+    "atr_value": 7.632615829391831,
+    "mfi_value": 24.77255005066675,
     "analyst_comment": "ROE 35.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 31.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 25\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 201\uba85 \uc911 177\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $377 (\ud604\uc7ac\uac00 \ub300\ube44 +38% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 177,
@@ -5216,21 +5226,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "GOOG": {
-    "score": 66,
-    "fund_score": 45,
-    "tech_score": 6,
+    "score": 54,
+    "fund_score": 38,
+    "tech_score": 7,
     "price": 273.14,
-    "avg_volume": 20855296,
+    "avg_volume": 22198631,
     "market_cap": 3304174911488,
     "sector": "Communication Services",
     "company_name": "Alphabet Inc.",
-    "verdict": "Buy",
-    "buy_price": 276.58942309387976,
+    "verdict": "Avoid",
+    "buy_price": 276.5894230938862,
     "target_price": 311.0690002441406,
-    "stop_loss": 261.75826951492087,
+    "stop_loss": 261.7582695136441,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:35.7%, OPM:31.6%",
     "contrarian_adjustment": 10,
@@ -5253,13 +5263,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 23.952840933836285,
+    "rsi_value": 23.952840871142854,
     "ma5": 281.2860046386719,
     "ma20": 298.0750427246094,
     "ma60": 314.44898732503253,
-    "ma120": 301.58996162414553,
-    "atr_value": 7.41557678947945,
-    "mfi_value": 23.31441366188767,
+    "ma120": 301.5899614969889,
+    "atr_value": 7.415576790121051,
+    "mfi_value": 23.305712125490757,
     "analyst_comment": "ROE 35.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 31.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 24\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 202\uba85 \uc911 178\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $360 (\ud604\uc7ac\uac00 \ub300\ube44 +32% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 178,
@@ -5279,21 +5289,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "META": {
-    "score": 71,
-    "fund_score": 48,
-    "tech_score": 8,
+    "score": 59,
+    "fund_score": 40,
+    "tech_score": 10,
     "price": 536.38,
-    "avg_volume": 14442864,
+    "avg_volume": 15656981,
     "market_cap": 1356802949120,
     "sector": "Communication Services",
     "company_name": "Meta Platforms, Inc.",
-    "verdict": "Buy",
-    "buy_price": 534.7357535247093,
+    "verdict": "Avoid",
+    "buy_price": 534.7357535247082,
     "target_price": 672.1944798634893,
-    "stop_loss": 497.30425077797963,
+    "stop_loss": 497.30425077797867,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:30.2%, OPM:41.3%",
     "contrarian_adjustment": 10,
@@ -5316,13 +5326,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 27.287963995411445,
+    "rsi_value": 27.287963995983546,
     "ma5": 559.489990234375,
     "ma20": 614.955859375,
     "ma60": 641.5535034179687,
     "ma120": 652.495790608724,
-    "atr_value": 19.730573921451793,
-    "mfi_value": 26.823888498447417,
+    "atr_value": 19.730573921767792,
+    "mfi_value": 26.89787165883753,
     "analyst_comment": "ROE 30.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 41.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +24% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 27\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 201\uba85 \uc911 184\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $862 (\ud604\uc7ac\uac00 \ub300\ube44 +61% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 184,
@@ -5342,18 +5352,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "NFLX": {
-    "score": 71,
-    "fund_score": 52,
-    "tech_score": 14,
+    "score": 61,
+    "fund_score": 44,
+    "tech_score": 17,
     "price": 92.97,
-    "avg_volume": 48441452,
+    "avg_volume": 49674956,
     "market_cap": 394368483328,
     "sector": "Communication Services",
     "company_name": "Netflix, Inc.",
-    "verdict": "Buy",
+    "verdict": "Hold",
     "buy_price": 94.92199897766113,
     "target_price": 100.19000244140625,
     "stop_loss": 89.7831024169922,
@@ -5385,7 +5395,7 @@
     "ma60": 87.97899983723958,
     "ma120": 97.61322511037191,
     "atr_value": 2.763588410193581,
-    "mfi_value": 45.27561407326861,
+    "mfi_value": 45.0850419955643,
     "analyst_comment": "ROE 42.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 24.5%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. FCF Margin 55%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 53\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 134\uba85 \uc911 94\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $113 (\ud604\uc7ac\uac00 \ub300\ube44 +22% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 94,
@@ -5405,18 +5415,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TTD": {
-    "score": 57,
-    "fund_score": 43,
-    "tech_score": 8,
+    "score": 46,
+    "fund_score": 36,
+    "tech_score": 9,
     "price": 22.01,
-    "avg_volume": 17159047,
+    "avg_volume": 18129768,
     "market_cap": 10476255232,
     "sector": "Communication Services",
     "company_name": "The Trade Desk, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 22.01,
     "target_price": 28.540000915527344,
     "stop_loss": 20.869199924468994,
@@ -5448,7 +5458,7 @@
     "ma60": 28.974250189463298,
     "ma120": 36.42029175758362,
     "atr_value": 1.5997966297145585,
-    "mfi_value": 30.286744403914625,
+    "mfi_value": 30.370798786423933,
     "analyst_comment": "ROE 16.3%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 30.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +14% \uc131\uc7a5\uc138. FCF Margin 21%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 113\uba85 \uc911 60\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $31 (\ud604\uc7ac\uac00 \ub300\ube44 +42% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 60,
@@ -5468,14 +5478,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "EA": {
-    "score": 47,
-    "fund_score": 24,
-    "tech_score": 20,
+    "score": 49,
+    "fund_score": 20,
+    "tech_score": 25,
     "price": 202.57,
-    "avg_volume": 2476201,
+    "avg_volume": 2586398,
     "market_cap": 50693898240,
     "sector": "Communication Services",
     "company_name": "Electronic Arts Inc.",
@@ -5505,13 +5515,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 60.09066876414851,
+    "rsi_value": 60.09066876331954,
     "ma5": 202.08999938964843,
     "ma20": 200.6510009765625,
     "ma60": 201.71694742838542,
     "ma120": 201.6520113627116,
-    "atr_value": 1.166138611501219,
-    "mfi_value": 77.04160053864145,
+    "atr_value": 1.166138611511085,
+    "mfi_value": 77.0955367715157,
     "analyst_comment": "ROE 10.0%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. FCF Margin 30%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 60\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 10 / \ubcf4\uc720 52 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $208 (\ud604\uc7ac\uac00 \ub300\ube44 +3% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 10,
@@ -5531,14 +5541,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TTWO": {
-    "score": 30,
-    "fund_score": 22,
+    "score": 24,
+    "fund_score": 19,
     "tech_score": 5,
     "price": 193.08,
-    "avg_volume": 2195735,
+    "avg_volume": 2284803,
     "market_cap": 35753676800,
     "sector": "Communication Services",
     "company_name": "Take-Two Interactive Software, ",
@@ -5574,7 +5584,7 @@
     "ma60": 217.82033411661783,
     "ma120": 233.31816698710125,
     "atr_value": 6.704374383098907,
-    "mfi_value": 28.118989163143254,
+    "mfi_value": 28.29809275295716,
     "analyst_comment": "\ub9e4\ucd9c YoY +25% \uc131\uc7a5\uc138. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 37\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 86\uba85 \uc911 80\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $277 (\ud604\uc7ac\uac00 \ub300\ube44 +43% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 80,
@@ -5594,14 +5604,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "RBLX": {
-    "score": 41,
-    "fund_score": 33,
+    "score": 31,
+    "fund_score": 28,
     "tech_score": 5,
     "price": 51.91,
-    "avg_volume": 11706337,
+    "avg_volume": 11853850,
     "market_cap": 36788932608,
     "sector": "Communication Services",
     "company_name": "Roblox Corporation",
@@ -5636,8 +5646,8 @@
     "ma20": 58.74200019836426,
     "ma60": 67.33400020599365,
     "ma120": 85.98891687393188,
-    "atr_value": 3.1493325224306865,
-    "mfi_value": 26.07646185797242,
+    "atr_value": 3.150761126556663,
+    "mfi_value": 25.80891195485981,
     "analyst_comment": "\ub9e4\ucd9c YoY +43% \uace0\uc131\uc7a5. FCF Margin 21%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 105\uba85 \uc911 74\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $106 (\ud604\uc7ac\uac00 \ub300\ube44 +104% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 74,
@@ -5657,21 +5667,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "NTES": {
-    "score": 48,
-    "fund_score": 39,
-    "tech_score": 7,
+    "score": 38,
+    "fund_score": 33,
+    "tech_score": 8,
     "price": 110.03,
-    "avg_volume": 830530,
+    "avg_volume": 844506,
     "market_cap": 70772613120,
     "sector": "Communication Services",
     "company_name": "NetEase, Inc.",
     "verdict": "Avoid",
-    "buy_price": 109.05722923702037,
+    "buy_price": 109.05722923702044,
     "target_price": 119.94000244140625,
-    "stop_loss": 103.9100373285139,
+    "stop_loss": 103.9100373284619,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:22.6%, OPM:30.2%",
     "contrarian_adjustment": 5,
@@ -5694,21 +5704,21 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 35.10366750541647,
+    "rsi_value": 35.103667506055885,
     "ma5": 110.88600006103516,
     "ma20": 114.59527549743652,
     "ma60": 123.25228131612143,
     "ma120": 131.39506613413494,
-    "atr_value": 2.5735959542532343,
-    "mfi_value": 37.7766385727561,
+    "atr_value": 2.5735959542792703,
+    "mfi_value": 37.800929170040604,
     "analyst_comment": "ROE 22.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 30.2%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 28%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 35\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 98\uba85 \uc911 95\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $162 (\ud604\uc7ac\uac00 \ub300\ube44 +47% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 95,
       "hold_count": 3,
       "sell_count": 0,
-      "target_low": 132.06885,
-      "target_mean": 161.99994,
-      "target_high": 200.08107,
+      "target_low": 132.10326,
+      "target_mean": 162.04216,
+      "target_high": 200.13321,
       "news": [
         {
           "title": "",
@@ -5720,14 +5730,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "WBD": {
-    "score": 26,
-    "fund_score": 15,
-    "tech_score": 8,
+    "score": 22,
+    "fund_score": 13,
+    "tech_score": 7,
     "price": 27.09,
-    "avg_volume": 25569144,
+    "avg_volume": 26204215,
     "market_cap": 67908354048,
     "sector": "Communication Services",
     "company_name": "Warner Bros. Discovery, Inc. - ",
@@ -5763,7 +5773,7 @@
     "ma60": 28.005000019073485,
     "ma120": 25.82858338356018,
     "atr_value": 0.3415167935847818,
-    "mfi_value": 38.34568864453406,
+    "mfi_value": 39.40446552171351,
     "analyst_comment": "ROE 2.1%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. FCF Margin 43%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 39\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 18 / \ubcf4\uc720 39 / \ub9e4\ub3c4 5. \ud3c9\uade0 \ubaa9\ud45c\uac00 $30 (\ud604\uc7ac\uac00 \ub300\ube44 +9% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 18,
@@ -5783,20 +5793,20 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SIRI": {
-    "score": 38,
-    "fund_score": 21,
-    "tech_score": 17,
+    "score": 41,
+    "fund_score": 18,
+    "tech_score": 22,
     "price": 22.76,
-    "avg_volume": 4876154,
+    "avg_volume": 4811521,
     "market_cap": 7660142592,
     "sector": "Communication Services",
     "company_name": "SiriusXM Holdings Inc.",
     "verdict": "Avoid",
     "buy_price": 22.76,
-    "target_price": 23.843406228335557,
+    "target_price": 23.84412066682988,
     "stop_loss": 22.17896987915039,
     "strategy": "\ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)",
     "comment": "OPM:22.3%, FCF:11%, MA120\u2191",
@@ -5820,13 +5830,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.65162233894008,
+    "rsi_value": 58.651622334736196,
     "ma5": 22.780000305175783,
     "ma20": 22.402999877929688,
     "ma60": 21.348197142283123,
-    "ma120": 21.195308526357014,
-    "atr_value": 0.5417031141677772,
-    "mfi_value": 57.92735776392952,
+    "ma120": 21.1953084786733,
+    "atr_value": 0.542060333414939,
+    "mfi_value": 57.8296617661047,
     "analyst_comment": "ROE 7.1%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 22.3%\ub85c \uc548\uc815\uc801. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 59\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 14 / \ubcf4\uc720 14 / \ub9e4\ub3c4 14. \ud3c9\uade0 \ubaa9\ud45c\uac00 $24 (\ud604\uc7ac\uac00 \ub300\ube44 +6% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
       "buy_count": 14,
@@ -5846,21 +5856,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "FOX": {
-    "score": 33,
-    "fund_score": 25,
-    "tech_score": 11,
+    "score": 26,
+    "fund_score": 21,
+    "tech_score": 10,
     "price": 53.78,
-    "avg_volume": 1692867,
+    "avg_volume": 1768313,
     "market_cap": 25107402752,
     "sector": "Communication Services",
     "company_name": "Fox Corporation",
     "verdict": "Avoid",
-    "buy_price": 51.2933578160798,
+    "buy_price": 51.29335781607891,
     "target_price": 57.59479815165202,
-    "stop_loss": 49.754557081597405,
+    "stop_loss": 49.75455708159654,
     "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "ROE:16.8%, OPM:11.3%, FCF:11%",
     "contrarian_adjustment": 0,
@@ -5883,13 +5893,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 52.709201921520226,
+    "rsi_value": 52.709201921527466,
     "ma5": 52.91599960327149,
     "ma20": 52.74800033569336,
     "ma60": 57.59479815165202,
     "ma120": 57.92121388117472,
-    "atr_value": 1.4498242344719692,
-    "mfi_value": 51.31129196344482,
+    "atr_value": 1.4512525661207811,
+    "mfi_value": 51.474116065466,
     "analyst_comment": "ROE 16.8%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 53\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704.",
     "analyst_data": {
       "target_low": null,
@@ -5906,14 +5916,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "FOXA": {
-    "score": 36,
-    "fund_score": 25,
-    "tech_score": 11,
+    "score": 29,
+    "fund_score": 21,
+    "tech_score": 10,
     "price": 59.13,
-    "avg_volume": 3904986,
+    "avg_volume": 4042898,
     "market_cap": 25153669120,
     "sector": "Communication Services",
     "company_name": "Fox Corporation",
@@ -5949,7 +5959,7 @@
     "ma60": 63.66690241495768,
     "ma120": 64.45932524998983,
     "atr_value": 1.7299925873518387,
-    "mfi_value": 54.04685742582596,
+    "mfi_value": 54.19314936853037,
     "analyst_comment": "ROE 16.8%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 51\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 26 / \ubcf4\uc720 28 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $71 (\ud604\uc7ac\uac00 \ub300\ube44 +20% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 26,
@@ -5969,14 +5979,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "AMZN": {
-    "score": 36,
-    "fund_score": 34,
+    "score": 26,
+    "fund_score": 29,
     "tech_score": 2,
     "price": 200.95,
-    "avg_volume": 48889476,
+    "avg_volume": 50933495,
     "market_cap": 2157182320640,
     "sector": "Consumer Cyclical",
     "company_name": "Amazon.com, Inc.",
@@ -6012,7 +6022,7 @@
     "ma60": 220.37233276367186,
     "ma120": 224.84424997965496,
     "atr_value": 5.6998542783304975,
-    "mfi_value": 28.38325590023743,
+    "mfi_value": 28.224928615497475,
     "analyst_comment": "ROE 22.3%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \ub9e4\ucd9c YoY +14% \uc131\uc7a5\uc138. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 207\uba85 \uc911 196\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $281 (\ud604\uc7ac\uac00 \ub300\ube44 +40% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 196,
@@ -6032,14 +6042,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TSLA": {
-    "score": 9,
-    "fund_score": 6,
+    "score": 8,
+    "fund_score": 5,
     "tech_score": 3,
     "price": 355.28,
-    "avg_volume": 60756706,
+    "avg_volume": 61422928,
     "market_cap": 1333163982848,
     "sector": "Consumer Cyclical",
     "company_name": "Tesla, Inc.",
@@ -6074,8 +6084,8 @@
     "ma20": 388.37599792480466,
     "ma60": 412.62366587320963,
     "ma120": 427.9095001220703,
-    "atr_value": 13.601885355000041,
-    "mfi_value": 36.91722353062013,
+    "atr_value": 13.602606877739998,
+    "mfi_value": 36.78580249678666,
     "analyst_comment": "ROE 4.9%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 61 / \ubcf4\uc720 52 / \ub9e4\ub3c4 26. \ud3c9\uade0 \ubaa9\ud45c\uac00 $421 (\ud604\uc7ac\uac00 \ub300\ube44 +19% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 61,
@@ -6095,14 +6105,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MELI": {
-    "score": 44,
-    "fund_score": 38,
-    "tech_score": 8,
+    "score": 34,
+    "fund_score": 32,
+    "tech_score": 9,
     "price": 1619.2,
-    "avg_volume": 575876,
+    "avg_volume": 591901,
     "market_cap": 82088878080,
     "sector": "Consumer Cyclical",
     "company_name": "MercadoLibre, Inc.",
@@ -6137,8 +6147,8 @@
     "ma20": 1694.98349609375,
     "ma60": 1932.3706705729167,
     "ma120": 2013.5119191487631,
-    "atr_value": 62.024455653221935,
-    "mfi_value": 39.36424703455567,
+    "atr_value": 62.02424638982908,
+    "mfi_value": 39.37026467562278,
     "analyst_comment": "ROE 36.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \ub9e4\ucd9c YoY +45% \uace0\uc131\uc7a5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 36\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 78\uba85 \uc911 71\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $2566 (\ud604\uc7ac\uac00 \ub300\ube44 +58% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 71,
@@ -6158,14 +6168,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ABNB": {
-    "score": 50,
-    "fund_score": 44,
-    "tech_score": 3,
+    "score": 37,
+    "fund_score": 37,
+    "tech_score": 4,
     "price": 123.1,
-    "avg_volume": 4571350,
+    "avg_volume": 4652655,
     "market_cap": 73800171520,
     "sector": "Consumer Cyclical",
     "company_name": "Airbnb, Inc.",
@@ -6201,7 +6211,7 @@
     "ma60": 130.11408284505208,
     "ma120": 127.43854141235352,
     "atr_value": 4.554858543143799,
-    "mfi_value": 42.840586733567086,
+    "mfi_value": 42.837512310323994,
     "analyst_comment": "ROE 30.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \ub9e4\ucd9c YoY +12% \uc131\uc7a5\uc138. FCF Margin 29%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 40\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 52 / \ubcf4\uc720 68 / \ub9e4\ub3c4 12. \ud3c9\uade0 \ubaa9\ud45c\uac00 $146 (\ud604\uc7ac\uac00 \ub300\ube44 +18% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 52,
@@ -6221,21 +6231,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "BKNG": {
-    "score": 39,
-    "fund_score": 33,
+    "score": 30,
+    "fund_score": 28,
     "tech_score": 6,
     "price": 4117.51,
-    "avg_volume": 390672,
+    "avg_volume": 409886,
     "market_cap": 132723048448,
     "sector": "Consumer Cyclical",
     "company_name": "Booking Holdings Inc. Common St",
     "verdict": "Avoid",
-    "buy_price": 4043.4382597450813,
+    "buy_price": 4043.438259745065,
     "target_price": 4599.205582682292,
-    "stop_loss": 3813.9997106063574,
+    "stop_loss": 3814.000024501427,
     "strategy": "\ud83d\udcb0 \ubd84\ud560\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "OPM:32.4%, FCF:24%, RSI:41*",
     "contrarian_adjustment": 0,
@@ -6258,13 +6268,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.07930252142017,
+    "rsi_value": 41.07930252142156,
     "ma5": 4184.361865234375,
     "ma20": 4309.452160644531,
     "ma60": 4599.205582682292,
     "ma120": 4854.191813151042,
-    "atr_value": 152.95903275914912,
-    "mfi_value": 35.298049110240356,
+    "atr_value": 152.95882349575862,
+    "mfi_value": 35.30615961571367,
     "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 32.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +16% \uc131\uc7a5\uc138. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 41\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 116\uba85 \uc911 86\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $5802 (\ud604\uc7ac\uac00 \ub300\ube44 +41% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 86,
@@ -6284,14 +6294,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DASH": {
-    "score": 36,
-    "fund_score": 33,
+    "score": 26,
+    "fund_score": 28,
     "tech_score": 5,
     "price": 148.01,
-    "avg_volume": 4914052,
+    "avg_volume": 5088486,
     "market_cap": 64299446272,
     "sector": "Consumer Cyclical",
     "company_name": "DoorDash, Inc.",
@@ -6326,8 +6336,8 @@
     "ma20": 164.38249893188475,
     "ma60": 185.35933303833008,
     "ma120": 208.69137471516927,
-    "atr_value": 7.683180468016388,
-    "mfi_value": 26.96752052430638,
+    "atr_value": 7.68318809741092,
+    "mfi_value": 27.127047955554815,
     "analyst_comment": "ROE 10.4%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \ub9e4\ucd9c YoY +38% \uace0\uc131\uc7a5. FCF Margin 17%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 134\uba85 \uc911 104\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $256 (\ud604\uc7ac\uac00 \ub300\ube44 +73% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 104,
@@ -6347,14 +6357,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "PDD": {
-    "score": 53,
-    "fund_score": 49,
-    "tech_score": 6,
+    "score": 39,
+    "fund_score": 41,
+    "tech_score": 7,
     "price": 98.42,
-    "avg_volume": 7805844,
+    "avg_volume": 8340100,
     "market_cap": 139721605120,
     "sector": "Consumer Cyclical",
     "company_name": "PDD Holdings Inc.",
@@ -6390,15 +6400,15 @@
     "ma60": 105.15650011698405,
     "ma120": 114.30916646321614,
     "atr_value": 3.4067805871145533,
-    "mfi_value": 38.15487181072372,
+    "mfi_value": 38.07919484240585,
     "analyst_comment": "ROE 27.3%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 22.4%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +12% \uc131\uc7a5\uc138. FCF Margin 19%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 43\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 120\uba85 \uc911 82\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $143 (\ud604\uc7ac\uac00 \ub300\ube44 +45% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 82,
       "hold_count": 38,
       "sell_count": 0,
-      "target_low": 109.745255,
-      "target_mean": 142.67174,
-      "target_high": 204.02682,
+      "target_low": 109.77385,
+      "target_mean": 142.70891,
+      "target_high": 204.07999,
       "news": [
         {
           "title": "",
@@ -6410,14 +6420,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "JD": {
-    "score": 19,
+    "score": 31,
     "fund_score": 4,
-    "tech_score": 20,
+    "tech_score": 25,
     "price": 28.94,
-    "avg_volume": 10115644,
+    "avg_volume": 10558411,
     "market_cap": 41867350016,
     "sector": "Consumer Cyclical",
     "company_name": "JD.com, Inc.",
@@ -6428,8 +6438,8 @@
     "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
     "comment": "MACD\uace8\ub4e0, RSI:58*, OBV\u2191",
     "contrarian_adjustment": 0,
-    "liquidity_bonus": 0,
-    "liquidity_tier": "Normal",
+    "liquidity_bonus": 3,
+    "liquidity_tier": "Active",
     "rotation_bonus": -5,
     "rotation_phase": "\uc18c\uc678 \uc9c0\uc18d",
     "sector_name": "\uc18c\ube44\uc7ac",
@@ -6452,16 +6462,16 @@
     "ma20": 27.760500144958495,
     "ma60": 28.243500073750813,
     "ma120": 29.603625043233237,
-    "atr_value": 0.7896829655752817,
-    "mfi_value": 59.21885610039487,
+    "atr_value": 0.7900401847263698,
+    "mfi_value": 59.795263815230925,
     "analyst_comment": "ROE 7.6%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 58\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 113\uba85 \uc911 101\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $39 (\ud604\uc7ac\uac00 \ub300\ube44 +33% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 101,
       "hold_count": 9,
       "sell_count": 3,
-      "target_low": 21.944216,
-      "target_mean": 38.525482,
-      "target_high": 59.981762,
+      "target_low": 21.949934,
+      "target_mean": 38.53552,
+      "target_high": 59.99739,
       "news": [
         {
           "title": "",
@@ -6473,14 +6483,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "LULU": {
-    "score": 42,
-    "fund_score": 36,
-    "tech_score": 5,
+    "score": 32,
+    "fund_score": 30,
+    "tech_score": 6,
     "price": 145.83,
-    "avg_volume": 2726784,
+    "avg_volume": 2775400,
     "market_cap": 17107480576,
     "sector": "Consumer Cyclical",
     "company_name": "lululemon athletica inc.",
@@ -6515,8 +6525,8 @@
     "ma20": 162.2910011291504,
     "ma60": 179.6980000813802,
     "ma120": 180.58533274332683,
-    "atr_value": 6.413526027369538,
-    "mfi_value": 47.60316516821851,
+    "atr_value": 6.413169625653579,
+    "mfi_value": 47.56178733067072,
     "analyst_comment": "ROE 34.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 22.3%\ub85c \uc548\uc815\uc801. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 27\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 \ub9e4\uc218 9 / \ubcf4\uc720 89 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $184 (\ud604\uc7ac\uac00 \ub300\ube44 +26% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 9,
@@ -6536,14 +6546,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "CPRT": {
-    "score": 41,
-    "fund_score": 39,
+    "score": 29,
+    "fund_score": 33,
     "tech_score": 4,
     "price": 32.61,
-    "avg_volume": 9334449,
+    "avg_volume": 9531456,
     "market_cap": 31567056896,
     "sector": "Industrials",
     "company_name": "Copart, Inc.",
@@ -6579,7 +6589,7 @@
     "ma60": 37.64433352152506,
     "ma120": 39.44300003051758,
     "atr_value": 1.0205631505835533,
-    "mfi_value": 51.38526290788979,
+    "mfi_value": 51.411450354677015,
     "analyst_comment": "ROE 17.1%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 34.7%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 22%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 36\uba85 \uc911 18\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $43 (\ud604\uc7ac\uac00 \ub300\ube44 +31% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 18,
@@ -6599,24 +6609,24 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "LLY": {
-    "score": 60,
-    "fund_score": 42,
-    "tech_score": 6,
+    "score": 46,
+    "fund_score": 35,
+    "tech_score": 7,
     "price": 886.63,
-    "avg_volume": 3071144,
+    "avg_volume": 3170710,
     "market_cap": 793550454784,
     "sector": "Healthcare",
     "company_name": "Eli Lilly and Company",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 886.63,
     "target_price": 1093.654593917803,
-    "stop_loss": 833.7776291849073,
+    "stop_loss": 833.7776291645288,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
-    "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:101.2%, OPM:44.9%",
-    "contrarian_adjustment": 5,
+    "comment": "\ud83d\udc8e\ub20c\ub9bc\ubaa9, ROE:101.2%, OPM:44.9%",
+    "contrarian_adjustment": 3,
     "liquidity_bonus": 5,
     "liquidity_tier": "Hot",
     "rotation_bonus": 2,
@@ -6636,13 +6646,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 32.03585999663524,
+    "rsi_value": 32.03586000733344,
     "ma5": 896.2400024414062,
     "ma20": 950.5135009765625,
     "ma60": 1014.525459798177,
-    "ma120": 988.3741078694661,
-    "atr_value": 26.426185407546345,
-    "mfi_value": 29.470853154239407,
+    "ma120": 988.3741068522136,
+    "atr_value": 26.42618541773561,
+    "mfi_value": 30.912559549516345,
     "analyst_comment": "ROE 101.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 44.9%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +43% \uace0\uc131\uc7a5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 90\uba85 \uc911 67\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1209 (\ud604\uc7ac\uac00 \ub300\ube44 +36% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 67,
@@ -6662,14 +6672,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "MRNA": {
-    "score": 14,
+    "score": 16,
     "fund_score": 0,
     "tech_score": 9,
     "price": 48.23,
-    "avg_volume": 11386494,
+    "avg_volume": 11226761,
     "market_cap": 19127384064,
     "sector": "Healthcare",
     "company_name": "Moderna, Inc.",
@@ -6705,7 +6715,7 @@
     "ma60": 46.585666783650716,
     "ma120": 36.84925004641215,
     "atr_value": 3.2529637346381497,
-    "mfi_value": 30.72404768876811,
+    "mfi_value": 30.718304750099833,
     "analyst_comment": "MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 43\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 11 / \ubcf4\uc720 52 / \ub9e4\ub3c4 9. \ud3c9\uade0 \ubaa9\ud45c\uac00 $44 (\ud604\uc7ac\uac00 \ub300\ube44 -9%). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 11,
@@ -6725,14 +6735,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "REGN": {
-    "score": 49,
-    "fund_score": 32,
-    "tech_score": 12,
+    "score": 40,
+    "fund_score": 27,
+    "tech_score": 11,
     "price": 749.29,
-    "avg_volume": 746554,
+    "avg_volume": 756391,
     "market_cap": 79214788608,
     "sector": "Healthcare",
     "company_name": "Regeneron Pharmaceuticals, Inc.",
@@ -6768,7 +6778,7 @@
     "ma60": 764.9646759033203,
     "ma120": 724.1784876505534,
     "atr_value": 20.343795408532507,
-    "mfi_value": 37.14244533429785,
+    "mfi_value": 37.42167571660437,
     "analyst_comment": "ROE 14.9%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 23.1%\ub85c \uc548\uc815\uc801. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 47\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 81\uba85 \uc911 56\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $873 (\ud604\uc7ac\uac00 \ub300\ube44 +17% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 56,
@@ -6788,18 +6798,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "VRTX": {
-    "score": 58,
-    "fund_score": 45,
-    "tech_score": 8,
+    "score": 46,
+    "fund_score": 38,
+    "tech_score": 9,
     "price": 443.16,
-    "avg_volume": 1440454,
-    "market_cap": 112562642944,
+    "avg_volume": 1514868,
+    "market_cap": 112577789952,
     "sector": "Healthcare",
     "company_name": "Vertex Pharmaceuticals Incorpor",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 431.15352125584985,
     "target_price": 485.0,
     "stop_loss": 422.53045083073283,
@@ -6830,8 +6840,8 @@
     "ma20": 462.32949981689455,
     "ma60": 466.6228322347005,
     "ma120": 449.6981661478678,
-    "atr_value": 13.685770832538438,
-    "mfi_value": 30.376475850151905,
+    "atr_value": 13.685413340908974,
+    "mfi_value": 30.64749491519909,
     "analyst_comment": "ROE 22.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 39.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 21%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 94\uba85 \uc911 67\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $548 (\ud604\uc7ac\uac00 \ub300\ube44 +24% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 67,
@@ -6851,14 +6861,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "BIIB": {
-    "score": 48,
-    "fund_score": 22,
-    "tech_score": 24,
+    "score": 54,
+    "fund_score": 19,
+    "tech_score": 31,
     "price": 187.57,
-    "avg_volume": 1297181,
+    "avg_volume": 1300475,
     "market_cap": 27527497728,
     "sector": "Healthcare",
     "company_name": "Biogen Inc.",
@@ -6894,7 +6904,7 @@
     "ma60": 184.27683334350587,
     "ma120": 174.07591692606607,
     "atr_value": 5.200948025377456,
-    "mfi_value": 44.14213924695657,
+    "mfi_value": 44.27611283813133,
     "analyst_comment": "ROE 7.4%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 19.6%\ub85c \uc548\uc815\uc801. FCF Margin 20%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 52\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 47 / \ubcf4\uc720 56 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $206 (\ud604\uc7ac\uac00 \ub300\ube44 +10% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
       "buy_count": 47,
@@ -6914,21 +6924,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ISRG": {
-    "score": 64,
-    "fund_score": 46,
+    "score": 50,
+    "fund_score": 39,
     "tech_score": 3,
     "price": 452.775,
-    "avg_volume": 1867700,
+    "avg_volume": 1951700,
     "market_cap": 160811958272,
     "sector": "Healthcare",
     "company_name": "Intuitive Surgical, Inc.",
-    "verdict": "Hold",
-    "buy_price": 454.1813896475951,
+    "verdict": "Avoid",
+    "buy_price": 454.18269480754446,
     "target_price": 511.8800048828125,
-    "stop_loss": 428.53885334742455,
+    "stop_loss": 428.5401585073739,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:16.7%, OPM:30.2%",
     "contrarian_adjustment": 10,
@@ -6951,13 +6961,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 28.231792955477488,
-    "ma5": 463.175,
-    "ma20": 480.2467514038086,
-    "ma60": 506.6622502644857,
-    "ma120": 522.4052106221517,
+    "rsi_value": 28.23671707799255,
+    "ma5": 463.1760009765625,
+    "ma20": 480.2470016479492,
+    "ma60": 506.6623336791992,
+    "ma120": 522.4052523295085,
     "atr_value": 12.821268150085272,
-    "mfi_value": 28.41795476564762,
+    "mfi_value": 28.41484941333796,
     "analyst_comment": "ROE 16.7%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 30.2%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +19% \uc131\uc7a5\uc138. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 28\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 106\uba85 \uc911 69\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $605 (\ud604\uc7ac\uac00 \ub300\ube44 +34% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 69,
@@ -6977,18 +6987,18 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DXCM": {
-    "score": 67,
-    "fund_score": 48,
-    "tech_score": 4,
+    "score": 53,
+    "fund_score": 40,
+    "tech_score": 5,
     "price": 61.9,
-    "avg_volume": 4984888,
+    "avg_volume": 5093856,
     "market_cap": 24142006272,
     "sector": "Healthcare",
     "company_name": "DexCom, Inc.",
-    "verdict": "Buy",
+    "verdict": "Avoid",
     "buy_price": 61.584001997061584,
     "target_price": 68.76000213623047,
     "stop_loss": 57.27312185726728,
@@ -7020,7 +7030,7 @@
     "ma60": 69.75183321634928,
     "ma120": 67.13983329137166,
     "atr_value": 2.259829036088092,
-    "mfi_value": 28.341410660805536,
+    "mfi_value": 28.263927121831358,
     "analyst_comment": "ROE 34.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 25.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +13% \uc131\uc7a5\uc138. FCF Margin 15%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 30\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 87\uba85 \uc911 75\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $87 (\ud604\uc7ac\uac00 \ub300\ube44 +41% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 75,
@@ -7040,14 +7050,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ALGN": {
-    "score": 37,
-    "fund_score": 28,
+    "score": 30,
+    "fund_score": 24,
     "tech_score": 7,
     "price": 166.26,
-    "avg_volume": 1229281,
+    "avg_volume": 1264751,
     "market_cap": 11929154560,
     "sector": "Healthcare",
     "company_name": "Align Technology, Inc.",
@@ -7083,7 +7093,7 @@
     "ma60": 175.22866643269856,
     "ma120": 159.71116580963135,
     "atr_value": 7.465275715499972,
-    "mfi_value": 44.55878828497979,
+    "mfi_value": 44.474394254538915,
     "analyst_comment": "ROE 10.4%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 22.4%\ub85c \uc548\uc815\uc801. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 41\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 54\uba85 \uc911 27\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $202 (\ud604\uc7ac\uac00 \ub300\ube44 +21% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 27,
@@ -7103,21 +7113,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "IDXX": {
-    "score": 63,
-    "fund_score": 49,
-    "tech_score": 2,
+    "score": 48,
+    "fund_score": 41,
+    "tech_score": 3,
     "price": 557.09,
-    "avg_volume": 501316,
+    "avg_volume": 511231,
     "market_cap": 44357754880,
     "sector": "Healthcare",
     "company_name": "IDEXX Laboratories, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 541.491198613961,
     "target_price": 651.5700073242188,
-    "stop_loss": 507.37703944421537,
+    "stop_loss": 507.36131853182695,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:66.2%, OPM:29.8%",
     "contrarian_adjustment": 10,
@@ -7145,8 +7155,8 @@
     "ma20": 589.3569976806641,
     "ma60": 642.5724975585938,
     "ma120": 663.5546646118164,
-    "atr_value": 17.05707958487285,
-    "mfi_value": 39.21249645404371,
+    "atr_value": 17.064940041067043,
+    "mfi_value": 39.05847930811861,
     "analyst_comment": "ROE 66.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 29.8%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +14% \uc131\uc7a5\uc138. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 30\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 45\uba85 \uc911 27\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $750 (\ud604\uc7ac\uac00 \ub300\ube44 +35% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 27,
@@ -7166,14 +7176,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "PODD": {
-    "score": 46,
-    "fund_score": 36,
-    "tech_score": 5,
+    "score": 36,
+    "fund_score": 30,
+    "tech_score": 6,
     "price": 208.01,
-    "avg_volume": 980883,
+    "avg_volume": 1019306,
     "market_cap": 14643040256,
     "sector": "Healthcare",
     "company_name": "Insulet Corporation",
@@ -7208,8 +7218,8 @@
     "ma20": 229.0055015563965,
     "ma60": 252.00316925048827,
     "ma120": 282.42858530680337,
-    "atr_value": 8.265751852771782,
-    "mfi_value": 26.426269494499536,
+    "atr_value": 8.26896709760995,
+    "mfi_value": 26.326202485819678,
     "analyst_comment": "ROE 18.1%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 18.7%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +31% \uace0\uc131\uc7a5. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 27\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 78\uba85 \uc911 72\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $351 (\ud604\uc7ac\uac00 \ub300\ube44 +69% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 72,
@@ -7229,14 +7239,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ILMN": {
-    "score": 54,
-    "fund_score": 40,
-    "tech_score": 12,
+    "score": 45,
+    "fund_score": 34,
+    "tech_score": 13,
     "price": 120.81,
-    "avg_volume": 2033969,
+    "avg_volume": 2058913,
     "market_cap": 18471847936,
     "sector": "Healthcare",
     "company_name": "Illumina, Inc.",
@@ -7271,8 +7281,8 @@
     "ma20": 123.34299964904785,
     "ma60": 131.43483352661133,
     "ma120": 124.9557502746582,
-    "atr_value": 5.060053678569389,
-    "mfi_value": 53.80713847036121,
+    "atr_value": 5.060410625242101,
+    "mfi_value": 53.864853982115285,
     "analyst_comment": "ROE 33.4%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 19.7%\ub85c \uc548\uc815\uc801. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 45\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 25 / \ubcf4\uc720 24 / \ub9e4\ub3c4 9. \ud3c9\uade0 \ubaa9\ud45c\uac00 $136 (\ud604\uc7ac\uac00 \ub300\ube44 +13% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 25,
@@ -7292,14 +7302,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "EXAS": {
-    "score": 28,
-    "fund_score": 16,
-    "tech_score": 20,
+    "score": 34,
+    "fund_score": 14,
+    "tech_score": 26,
     "price": 104.91,
-    "avg_volume": 2533730,
+    "avg_volume": 2473639,
     "market_cap": 20026083328,
     "sector": "Healthcare",
     "company_name": "Exact Sciences Corporation",
@@ -7355,21 +7365,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TECH": {
-    "score": 33,
-    "fund_score": 19,
+    "score": 29,
+    "fund_score": 16,
     "tech_score": 12,
     "price": 52.04,
-    "avg_volume": 2368357,
+    "avg_volume": 2436865,
     "market_cap": 8141829632,
     "sector": "Healthcare",
     "company_name": "Bio-Techne Corp",
     "verdict": "Avoid",
-    "buy_price": 48.37778392896716,
+    "buy_price": 48.377783928967105,
     "target_price": 60.111428324381514,
-    "stop_loss": 46.926450411098145,
+    "stop_loss": 46.92645041109809,
     "strategy": "\ud83d\udd04 \ubc18\ub4f1\ub300\uae30(BB\ud558\ub2e8)",
     "comment": "OPM:19.7%, FCF:21%, ADX:45",
     "contrarian_adjustment": 0,
@@ -7392,13 +7402,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.88519869774997,
+    "rsi_value": 41.8851987026647,
     "ma5": 52.162000274658205,
     "ma20": 52.74050006866455,
     "ma60": 60.111428324381514,
-    "ma120": 60.34407138824463,
-    "atr_value": 2.264184363247739,
-    "mfi_value": 46.05791489001606,
+    "ma120": 60.344071261088054,
+    "atr_value": 2.2645415825049544,
+    "mfi_value": 46.12229482793276,
     "analyst_comment": "ROE 4.0%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 19.7%\ub85c \uc548\uc815\uc801. FCF Margin 21%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 45\uba85 \uc911 33\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $75 (\ud604\uc7ac\uac00 \ub300\ube44 +44% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 33,
@@ -7418,21 +7428,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "TMO": {
-    "score": 50,
-    "fund_score": 31,
-    "tech_score": 12,
+    "score": 41,
+    "fund_score": 26,
+    "tech_score": 11,
     "price": 480.05,
-    "avg_volume": 2334935,
+    "avg_volume": 2418838,
     "market_cap": 178331009024,
     "sector": "Healthcare",
     "company_name": "Thermo Fisher Scientific Inc",
     "verdict": "Avoid",
     "buy_price": 458.3399963378906,
     "target_price": 543.1101170857747,
-    "stop_loss": 436.7510983326482,
+    "stop_loss": 436.75109833252833,
     "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(\uc2a4\uc719\uc800\uc810)",
     "comment": "ROE:13.0%, OPM:21.2%, FCF:10%",
     "contrarian_adjustment": 0,
@@ -7455,13 +7465,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.22970395788798,
+    "rsi_value": 41.22970395759336,
     "ma5": 484.66399536132815,
     "ma20": 486.85482330322264,
     "ma60": 543.1101170857747,
     "ma120": 554.8478452046712,
-    "atr_value": 14.392598670161629,
-    "mfi_value": 57.55350099501688,
+    "atr_value": 14.392598670241524,
+    "mfi_value": 58.352280643721194,
     "analyst_comment": "ROE 13.0%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 21.2%\ub85c \uc548\uc815\uc801. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 41\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 80\uba85 \uc911 66\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $664 (\ud604\uc7ac\uac00 \ub300\ube44 +38% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 66,
@@ -7481,21 +7491,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "DHR": {
-    "score": 39,
-    "fund_score": 27,
+    "score": 32,
+    "fund_score": 23,
     "tech_score": 7,
     "price": 183.89,
-    "avg_volume": 3871379,
+    "avg_volume": 4138558,
     "market_cap": 130138841088,
     "sector": "Healthcare",
     "company_name": "Danaher Corporation",
     "verdict": "Avoid",
-    "buy_price": 179.86328098525348,
-    "target_price": 213.3491668701172,
-    "stop_loss": 172.1544630229796,
+    "buy_price": 179.63793923950828,
+    "target_price": 212.9083033243815,
+    "stop_loss": 171.9828663211057,
     "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "OPM:22.2%, FCF:19%, ADX:45",
     "contrarian_adjustment": 0,
@@ -7511,21 +7521,21 @@
     "fcf_margin_value": 18.5,
     "fcf_score": 8,
     "rs_score": 0,
-    "rs_ratio": -12.1,
+    "rs_ratio": -12.0,
     "dividend_yield_value": null,
     "dividend_growth_score": 0,
     "per_value": null,
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 32.357429727086725,
-    "ma5": 186.14200134277343,
-    "ma20": 192.3585006713867,
-    "ma60": 213.3491668701172,
-    "ma120": 216.6919801076253,
-    "atr_value": 5.139211974849252,
-    "mfi_value": 24.673048335158555,
-    "analyst_comment": "ROE 7.1%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 22.2%\ub85c \uc548\uc815\uc801. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 32\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 75\uba85 \uc911 66\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $265 (\ud604\uc7ac\uac00 \ub300\ube44 +44% \uc0c1\uc2b9\uc5ec\ub825).",
+    "rsi_value": 32.68141178143851,
+    "ma5": 185.9015106201172,
+    "ma20": 191.9881965637207,
+    "ma60": 212.9083033243815,
+    "ma120": 216.2375295003255,
+    "atr_value": 5.103381945601724,
+    "mfi_value": 25.608548984696696,
+    "analyst_comment": "ROE 7.1%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 22.2%\ub85c \uc548\uc815\uc801. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 33\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 75\uba85 \uc911 66\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $265 (\ud604\uc7ac\uac00 \ub300\ube44 +44% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 66,
       "hold_count": 9,
@@ -7544,21 +7554,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "A": {
-    "score": 51,
-    "fund_score": 37,
-    "tech_score": 12,
+    "score": 44,
+    "fund_score": 31,
+    "tech_score": 14,
     "price": 112.01,
-    "avg_volume": 2251625,
+    "avg_volume": 2292426,
     "market_cap": 31680870400,
     "sector": "Healthcare",
     "company_name": "Agilent Technologies, Inc.",
     "verdict": "Avoid",
-    "buy_price": 108.26936215393377,
+    "buy_price": 108.26936215393204,
     "target_price": 127.06331481933594,
-    "stop_loss": 103.37879996502942,
+    "stop_loss": 103.37879996505302,
     "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "ROE:19.9%, OPM:22.9%, FCF:12%",
     "contrarian_adjustment": 0,
@@ -7581,13 +7591,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 38.151637384837684,
+    "rsi_value": 38.15163738447552,
     "ma5": 112.58200073242188,
     "ma20": 113.87250022888183,
     "ma60": 127.06331481933594,
     "ma120": 135.38523495992024,
-    "atr_value": 3.260374792602903,
-    "mfi_value": 54.12871760512285,
+    "atr_value": 3.260374792586009,
+    "mfi_value": 54.62785586691354,
     "analyst_comment": "ROE 19.9%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 22.9%\ub85c \uc548\uc815\uc801. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 62\uba85 \uc911 42\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $163 (\ud604\uc7ac\uac00 \ub300\ube44 +46% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 42,
@@ -7607,14 +7617,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SMR": {
-    "score": 17,
-    "fund_score": 15,
+    "score": 14,
+    "fund_score": 13,
     "tech_score": 7,
     "price": 10.25,
-    "avg_volume": 25987747,
+    "avg_volume": 25705916,
     "market_cap": 3265682176,
     "sector": "Industrials",
     "company_name": "NuScale Power Corporation",
@@ -7650,7 +7660,7 @@
     "ma60": 15.288499975204468,
     "ma120": 21.57991665204366,
     "atr_value": 0.867129394406205,
-    "mfi_value": 35.96019149243391,
+    "mfi_value": 35.70311111058405,
     "analyst_comment": "FCF Margin 392%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 31\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 18 / \ubcf4\uc720 23 / \ub9e4\ub3c4 7. \ud3c9\uade0 \ubaa9\ud45c\uac00 $21 (\ud604\uc7ac\uac00 \ub300\ube44 +102% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 18,
@@ -7670,14 +7680,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "OKLO": {
-    "score": 18,
-    "fund_score": 6,
+    "score": 17,
+    "fund_score": 5,
     "tech_score": 4,
     "price": 45.58,
-    "avg_volume": 10449459,
+    "avg_volume": 10461753,
     "market_cap": 7911265280,
     "sector": "Utilities",
     "company_name": "Oklo Inc.",
@@ -7713,7 +7723,7 @@
     "ma60": 72.26716639200846,
     "ma120": 91.35508314768474,
     "atr_value": 4.574787676455105,
-    "mfi_value": 34.1631505533808,
+    "mfi_value": 34.12553319985808,
     "analyst_comment": "MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 28\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 57\uba85 \uc911 38\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $91 (\ud604\uc7ac\uac00 \ub300\ube44 +100% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 38,
@@ -7733,21 +7743,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "GEV": {
-    "score": 46,
-    "fund_score": 34,
-    "tech_score": 12,
+    "score": 36,
+    "fund_score": 29,
+    "tech_score": 11,
     "price": 817.35,
-    "avg_volume": 2764322,
+    "avg_volume": 2891593,
     "market_cap": 221763764224,
     "sector": "Industrials",
     "company_name": "GE Vernova Inc.",
     "verdict": "Avoid",
-    "buy_price": 782.8303115459952,
+    "buy_price": 782.8303115459955,
     "target_price": 845.4887393739173,
-    "stop_loss": 767.1737053150753,
+    "stop_loss": 767.1737053150756,
     "strategy": "\ud83d\udcca \ud480\ubc31\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "ROE:42.6%, FCF:14%, [AIRR]\uc778\ud504\ub77c/\ub9ac\uc1fc\uc5b4\ub9c1 \uc218\ud61c",
     "contrarian_adjustment": 0,
@@ -7770,13 +7780,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 45.850627522729965,
+    "rsi_value": 45.85062748282806,
     "ma5": 875.3459838867187,
     "ma20": 847.7156372070312,
-    "ma60": 778.2531382242838,
-    "ma120": 693.4604446411133,
-    "atr_value": 41.515833644660056,
-    "mfi_value": 66.83287908641394,
+    "ma60": 778.2531392415365,
+    "ma120": 693.4604466756185,
+    "atr_value": 41.515842311773675,
+    "mfi_value": 66.36603583051073,
     "analyst_comment": "ROE 42.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 46\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 99\uba85 \uc911 78\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $881 (\ud604\uc7ac\uac00 \ub300\ube44 +8% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
       "buy_count": 78,
@@ -7796,14 +7806,14 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "SYM": {
-    "score": 23,
-    "fund_score": 27,
+    "score": 15,
+    "fund_score": 23,
     "tech_score": 4,
     "price": 47.41,
-    "avg_volume": 1781745,
+    "avg_volume": 1772091,
     "market_cap": 28553893888,
     "sector": "Industrials",
     "company_name": "Symbotic Inc.",
@@ -7838,8 +7848,8 @@
     "ma20": 51.10999984741211,
     "ma60": 57.31666666666667,
     "ma120": 61.77304169336955,
-    "atr_value": 3.007242150476348,
-    "mfi_value": 38.53978092521633,
+    "atr_value": 3.018456270523781,
+    "mfi_value": 38.53207164402359,
     "analyst_comment": "\ub9e4\ucd9c YoY +29% \uc131\uc7a5\uc138. FCF Margin 27%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 23 / \ubcf4\uc720 28 / \ub9e4\ub3c4 9. \ud3c9\uade0 \ubaa9\ud45c\uac00 $64 (\ud604\uc7ac\uac00 \ub300\ube44 +35% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
       "buy_count": 23,
@@ -7859,21 +7869,21 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "VRSK": {
-    "score": 54,
-    "fund_score": 45,
-    "tech_score": 6,
+    "score": 42,
+    "fund_score": 38,
+    "tech_score": 7,
     "price": 187.36,
-    "avg_volume": 1937049,
+    "avg_volume": 2015378,
     "market_cap": 26112845824,
     "sector": "Industrials",
     "company_name": "Verisk Analytics, Inc.",
     "verdict": "Avoid",
-    "buy_price": 181.9119118660251,
+    "buy_price": 181.9119118660403,
     "target_price": 207.49000549316406,
-    "stop_loss": 169.17807803540336,
+    "stop_loss": 169.17807803541749,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:437.9%, OPM:44.0%",
     "contrarian_adjustment": 5,
@@ -7896,13 +7906,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 39.29658672363543,
+    "rsi_value": 39.29658675721919,
     "ma5": 187.12799987792968,
     "ma20": 200.96762161254884,
     "ma60": 202.76986338297527,
-    "ma120": 213.01495526631672,
-    "atr_value": 7.108509546766876,
-    "mfi_value": 21.078461726660052,
+    "ma120": 213.01495412190755,
+    "atr_value": 7.1092245405772685,
+    "mfi_value": 21.235543652353655,
     "analyst_comment": "ROE 437.9%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 44.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 33%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 39\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 25 / \ubcf4\uc720 27 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $230 (\ud604\uc7ac\uac00 \ub300\ube44 +23% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 25,
@@ -7922,81 +7932,18 @@
         }
       ]
     },
-    "market_regime": "bear"
-  },
-  "PEP": {
-    "score": 76,
-    "fund_score": 44,
-    "tech_score": 25,
-    "price": 156.82,
-    "avg_volume": 7940544,
-    "market_cap": 214363684864,
-    "sector": "Consumer Defensive",
-    "company_name": "Pepsico, Inc.",
-    "verdict": "Strong Buy \u2605",
-    "buy_price": 156.82,
-    "target_price": 168.7721653681813,
-    "stop_loss": 153.68359999999998,
-    "strategy": "\ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)",
-    "comment": "ROE:42.8%, OPM:14.1%, FCF:9%",
-    "contrarian_adjustment": 0,
-    "liquidity_bonus": 5,
-    "liquidity_tier": "Hot",
-    "rotation_bonus": 2,
-    "rotation_phase": "\uad00\uc2ec",
-    "sector_name": "\uc18c\ube44\uc7ac",
-    "roe_value": 42.848000000000006,
-    "opm_value": 14.068,
-    "revenue_growth_value": 5.6000000000000005,
-    "peg_value": null,
-    "fcf_margin_value": 8.8,
-    "fcf_score": 6,
-    "rs_score": 5,
-    "rs_ratio": 17.8,
-    "dividend_yield_value": null,
-    "dividend_growth_score": 0,
-    "per_value": null,
-    "ev_ebitda_value": null,
-    "valuation_method": "PER",
-    "debt_equity_value": null,
-    "rsi_value": 51.053960719267145,
-    "ma5": 152.60199890136718,
-    "ma20": 156.51276016235352,
-    "ma60": 154.84280598958333,
-    "ma120": 149.9098705291748,
-    "atr_value": 3.2856892160950784,
-    "mfi_value": 50.16045586989004,
-    "analyst_comment": "ROE 42.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 51\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 22 / \ubcf4\uc720 44 / \ub9e4\ub3c4 5. \ud3c9\uade0 \ubaa9\ud45c\uac00 $171 (\ud604\uc7ac\uac00 \ub300\ube44 +9% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
-    "analyst_data": {
-      "buy_count": 22,
-      "hold_count": 44,
-      "sell_count": 5,
-      "target_low": 130.0,
-      "target_mean": 171.04762,
-      "target_high": 191.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
-    },
-    "market_regime": "bear"
+    "market_regime": "neutral"
   },
   "ABBV": {
-    "score": 77,
-    "fund_score": 50,
-    "tech_score": 12,
+    "score": 65,
+    "fund_score": 42,
+    "tech_score": 14,
     "price": 213.12,
-    "avg_volume": 7058505,
+    "avg_volume": 7364981,
     "market_cap": 376958615552,
     "sector": "Healthcare",
     "company_name": "AbbVie Inc.",
-    "verdict": "Strong Buy \u2605",
+    "verdict": "Hold",
     "buy_price": 213.12,
     "target_price": 229.7899932861328,
     "stop_loss": 207.8604066467285,
@@ -8022,13 +7969,13 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 43.84450445863095,
+    "rsi_value": 43.844504458630816,
     "ma5": 209.20399475097656,
     "ma20": 218.5749969482422,
     "ma60": 221.59928716023762,
     "ma120": 223.4295258839925,
     "atr_value": 5.613375851308324,
-    "mfi_value": 26.289320913009476,
+    "mfi_value": 28.317247426208098,
     "analyst_comment": "ROE 6225.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 34.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. FCF Margin 30%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 44\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 89\uba85 \uc911 60\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $249 (\ud604\uc7ac\uac00 \ub300\ube44 +17% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
       "buy_count": 60,
@@ -8048,6 +7995,69 @@
         }
       ]
     },
-    "market_regime": "bear"
+    "market_regime": "neutral"
+  },
+  "PEP": {
+    "score": 76,
+    "fund_score": 37,
+    "tech_score": 33,
+    "price": 156.82,
+    "avg_volume": 8081596,
+    "market_cap": 214363684864,
+    "sector": "Consumer Defensive",
+    "company_name": "Pepsico, Inc.",
+    "verdict": "Buy",
+    "buy_price": 156.82,
+    "target_price": 168.7721653681813,
+    "stop_loss": 153.68359999999998,
+    "strategy": "\ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)",
+    "comment": "ROE:42.8%, OPM:14.1%, FCF:9%",
+    "contrarian_adjustment": 0,
+    "liquidity_bonus": 5,
+    "liquidity_tier": "Hot",
+    "rotation_bonus": 2,
+    "rotation_phase": "\uad00\uc2ec",
+    "sector_name": "\uc18c\ube44\uc7ac",
+    "roe_value": 42.848000000000006,
+    "opm_value": 14.068,
+    "revenue_growth_value": 5.6000000000000005,
+    "peg_value": null,
+    "fcf_margin_value": 8.8,
+    "fcf_score": 6,
+    "rs_score": 5,
+    "rs_ratio": 17.8,
+    "dividend_yield_value": null,
+    "dividend_growth_score": 0,
+    "per_value": null,
+    "ev_ebitda_value": null,
+    "valuation_method": "PER",
+    "debt_equity_value": null,
+    "rsi_value": 51.05396072817477,
+    "ma5": 152.60199890136718,
+    "ma20": 156.51276016235352,
+    "ma60": 154.84280598958333,
+    "ma120": 149.90987027486165,
+    "atr_value": 3.2871180878721686,
+    "mfi_value": 51.02276884085996,
+    "analyst_comment": "ROE 42.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 51\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 22 / \ubcf4\uc720 44 / \ub9e4\ub3c4 5. \ud3c9\uade0 \ubaa9\ud45c\uac00 $171 (\ud604\uc7ac\uac00 \ub300\ube44 +9% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
+    "analyst_data": {
+      "buy_count": 22,
+      "hold_count": 44,
+      "sell_count": 5,
+      "target_low": 130.0,
+      "target_mean": 171.04762,
+      "target_high": 191.0,
+      "news": [
+        {
+          "title": "",
+          "publisher": ""
+        },
+        {
+          "title": "",
+          "publisher": ""
+        }
+      ]
+    },
+    "market_regime": "neutral"
   }
 }
