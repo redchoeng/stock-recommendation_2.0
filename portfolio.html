@@ -154,7 +154,7 @@
     <div class="header-card">
         <h1>Portfolio Builder</h1>
         <p class="subtitle">Titan 점수 + 유동성 등급 기반 포트폴리오 구성</p>
-        <p class="timestamp">2026-04-15 19:21 KST</p>
+        <p class="timestamp">2026-04-15 23:35 KST</p>
     </div>
 
     <div class="input-section">
@@ -231,7 +231,7 @@
     }
     })();
 
-    const ALL_DATA = [{"ticker": "ANET", "name": "Arista Networks, Inc.", "titan": 78, "fund": 45, "tech": 27, "tier_bonus": 5, "tier_name": "Hot", "final": 83, "price": 154.37, "daily_val": 1205.0, "sector": "Technology", "category": "Growth"}, {"ticker": "LRCX", "name": "Lam Research Corporation", "titan": 76, "fund": 42, "tech": 27, "tier_bonus": 5, "tier_name": "Hot", "final": 81, "price": 272.41, "daily_val": 2986.0, "sector": "Technology", "category": "Growth"}, {"ticker": "NVDA", "name": "NVIDIA Corporation", "titan": 75, "fund": 44, "tech": 25, "tier_bonus": 5, "tier_name": "Hot", "final": 80, "price": 196.51, "daily_val": 35062.0, "sector": "Technology", "category": "Growth"}, {"ticker": "CMCSA", "name": "Comcast Corporation", "titan": 103, "fund": 53, "tech": 21, "tier_bonus": 3, "tier_name": "Active", "final": 106, "price": 28.14, "daily_val": 946.0, "sector": "Communication Services", "category": "Value"}, {"ticker": "BDX", "name": "Becton, Dickinson and Company", "titan": 101, "fund": 55, "tech": 22, "tier_bonus": 3, "tier_name": "Active", "final": 104, "price": 155.73, "daily_val": 442.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "MRK", "name": "Merck & Company, Inc.", "titan": 98, "fund": 55, "tech": 26, "tier_bonus": 5, "tier_name": "Hot", "final": 103, "price": 119.96, "daily_val": 1363.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "GILD", "name": "Gilead Sciences, Inc.", "titan": 98, "fund": 55, "tech": 26, "tier_bonus": 5, "tier_name": "Hot", "final": 103, "price": 140.45, "daily_val": 1004.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "ABT", "name": "Abbott Laboratories", "titan": 97, "fund": 55, "tech": 11, "tier_bonus": 5, "tier_name": "Hot", "final": 102, "price": 101.05, "daily_val": 1215.0, "sector": "Healthcare", "category": "Value"}];
+    const ALL_DATA = [{"ticker": "ABT", "name": "Abbott Laboratories", "titan": 97, "fund": 55, "tech": 11, "tier_bonus": 5, "tier_name": "Hot", "final": 102, "price": 101.05, "daily_val": 1215.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "BDX", "name": "Becton, Dickinson and Company", "titan": 97, "fund": 55, "tech": 15, "tier_bonus": 3, "tier_name": "Active", "final": 100, "price": 155.0, "daily_val": 440.0, "sector": "Healthcare", "category": "Value"}, {"ticker": "T", "name": "AT&T Inc.", "titan": 94, "fund": 51, "tech": 13, "tier_bonus": 5, "tier_name": "Hot", "final": 99, "price": 25.66, "daily_val": 1160.0, "sector": "Communication Services", "category": "Value"}, {"ticker": "ALL", "name": "Allstate Corporation (The)", "titan": 95, "fund": 55, "tech": 25, "tier_bonus": 3, "tier_name": "Active", "final": 98, "price": 214.27, "daily_val": 333.0, "sector": "Financial Services", "category": "Value"}, {"ticker": "VZ", "name": "Verizon Communications Inc.", "titan": 93, "fund": 50, "tech": 13, "tier_bonus": 5, "tier_name": "Hot", "final": 98, "price": 45.19, "daily_val": 1429.0, "sector": "Communication Services", "category": "Value"}];
     const GROWTH = ALL_DATA.filter(s => s.category === 'Growth');
     const VALUE = ALL_DATA.filter(s => s.category === 'Value');
 
