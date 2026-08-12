@@ -256,7 +256,7 @@
         <div class="header">
             <h1>Growth Stocks Recommendations <span class="titan-badge">TITAN v2.0</span></h1>
             <div class="subtitle">Fundamental + Technical + Volatility Breakout Analysis</div>
-            <div class="date">2026-08-13 00:28 KST 업데이트</div>
+            <div class="date">2026-08-13 01:26 KST 업데이트</div>
             <button class="scoring-btn" onclick="document.getElementById('scoringOverlay').classList.add('active')">📐 점수 체계 보기</button>
         </div>
         <!-- 점수 체계 모달 -->
@@ -285,14 +285,155 @@
             </div>
             <div class="summary-card" style="grid-column: 1 / -1; background: var(--accent); color: white;">
                 <div class="label" style="color: rgba(255,255,255,0.8);">시장 상태 및 평가 기준</div>
-                <div class="value" style="font-size: 1em; color: white;">📈 상승장 (S&P500: 7742, 3개월: +4.6%, ADX: 21, VIX: 14.8)<br>
+                <div class="value" style="font-size: 1em; color: white;">📈 상승장 (S&P500: 7747, 3개월: +4.1%, ADX: 21, VIX: 14.8)<br>
                 <span style="font-size: 0.8em; opacity: 0.85;">Strong Buy ≥85점 | Buy ≥75점</span></div>
             </div>
         </div>
     
         <div class="stock-card">
             <div class="rank">#1</div>
-            <span class="rank-change up">▲3</span>
+            <span class="rank-change up">▲1</span>
+            <span class="score-badge high">84점</span>
+            <h2><span class="ticker">LLY</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Eli Lilly and Company</span></h2>
+            <span class="verdict buy">Buy</span>
+
+            
+            <div class="info">
+                <div class="info-item market-status-box" style="background: #607D8B; color: white;">
+                    <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
+                    <div class="info-value" style="font-size: 1.2em;">$1223.21</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">전일대비</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.67%</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">매수가 📈 추세추종(MA20↑)</div>
+                    <div class="info-value">$1223.21</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">목표가</div>
+                    <div class="info-value">$1305.60</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">손절가</div>
+                    <div class="info-value">$1168.31</div>
+                </div>
+            </div>
+            <div class="comment">💡 ROE:102.3%, OPM:54.2%, FCF:14%</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 102.3%로 수익성 최상위권. 영업이익률 54.2%의 고마진 구조. 매출 YoY +48% 고성장. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 59으로 매수세 우위. 월가 89명 중 69명 매수 의견(Strong Buy). 평균 목표가 $1299 (현재가 대비 +6% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (69/89)</span><span class="ws-tag ws-target">목표가 $850~$1600 (avg $1299)</span></div><div class="ws-news"></div></div>
+
+            <button class="detail-toggle" onclick="toggleDetail(1)">상세 분석 ▼</button>
+
+            <!-- 점수 상세 분석 (접힌 상태) -->
+            <div class="score-breakdown" id="detail-1">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 35점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">102.3%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">54.2%</span>
+                            <span class="criterion-score">+10점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">매출성장률</span>
+                            <span class="criterion-value">47.7%</span>
+                            <span class="criterion-score">+10점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">PEG (성장가치)</span>
+                            <span class="criterion-value">1.49</span>
+                            <span class="criterion-score">+3점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">헬스케어</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 38점 / 50점</div>
+                    <div class="breakdown-items">
+                        <!-- 추세 분석 -->
+                        <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
+                            <span class="criterion">📈 추세 분석</span>
+                            <span class="criterion-value">MA5/20/60/120, MACD, 일목균형표, ADX</span>
+                            <span class="criterion-score">+11점 /20</span>
+                        </div>
+                        <!-- 모멘텀 -->
+                        <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
+                            <span class="criterion">⚡ 모멘텀</span>
+                            <span class="criterion-value">RSI:59, MFI:50</span>
+                            <span class="criterion-score">+5점</span>
+                        </div>
+                        <!-- 거래량 -->
+                        <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
+                            <span class="criterion">📊 거래량</span>
+                            <span class="criterion-value">0.3x, OBV</span>
+                            <span class="criterion-score">+4점 /8</span>
+                        </div>
+                        <!-- 변동성 -->
+                        <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
+                            <span class="criterion">🌊 변동성</span>
+                            <span class="criterion-value">BB, ATR</span>
+                            <span class="criterion-score">+2점 /7</span>
+                        </div>
+                        <!-- 가격 패턴 -->
+                        <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
+                            <span class="criterion">🎯 가격 패턴</span>
+                            <span class="criterion-value">52주 98%</span>
+                            <span class="criterion-score">+5점 /5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section" style="border-top: 2px dashed #667eea; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #667eea;">🌍 상승장: 기술60% : 펀더40% (모멘텀 중시)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
+                            <span class="criterion">원래 기술 점수</span>
+                            <span class="criterion-value">32점</span>
+                            <span class="criterion-score">→ 38점</span>
+                        </div>
+                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
+                            <span class="criterion">원래 펀더 점수</span>
+                            <span class="criterion-value">44점</span>
+                            <span class="criterion-score">→ 35점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section" style="border-top: 2px dashed #3498DB; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #FF6B35;">💧 거래대금 유동성: Hot (+5점)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
+                            <span class="criterion">일 거래대금</span>
+                            <span class="criterion-value">$3,697M</span>
+                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section" style="border-top: 2px dashed #FF6B35; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #FF6B35;">🔥 섹터 순환매: 수급유입 (+5점)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
+                            <span class="criterion">섹터 동향</span>
+                            <span class="criterion-value">Healthcare 수급유입</span>
+                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stock-card">
+            <div class="rank">#2</div>
+            <span class="rank-change down">▼1</span>
             <span class="score-badge high">81점</span>
             <h2><span class="ticker">FTNT</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Fortinet, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
@@ -301,15 +442,15 @@
             <div class="info">
                 <div class="info-item market-status-box" style="background: #607D8B; color: white;">
                     <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$164.01</div>
+                    <div class="info-value" style="font-size: 1.2em;">$164.14</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+1.31%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+1.39%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 ⚠️ 📈 추세추종(MA20↑)(R:R주의)</div>
-                    <div class="info-value">$164.01</div>
+                    <div class="info-value">$164.14</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">목표가</div>
@@ -323,10 +464,10 @@
             <div class="comment">💡 ROE:117.4%, OPM:33.6%, FCF:30%</div>
             <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 117.4%로 수익성 최상위권. 영업이익률 33.6%의 고마진 구조. 매출 YoY +26% 성장세. FCF Margin 30%로 현금창출력 최상위. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 58으로 매수세 우위. 월가 매수 32 / 보유 85 / 매도 14. 평균 목표가 $161 (현재가 대비 -2%). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Hold (32/131)</span><span class="ws-tag ws-target">목표가 $86~$220 (avg $161)</span></div><div class="ws-news"></div></div>
 
-            <button class="detail-toggle" onclick="toggleDetail(1)">상세 분석 ▼</button>
+            <button class="detail-toggle" onclick="toggleDetail(2)">상세 분석 ▼</button>
 
             <!-- 점수 상세 분석 (접힌 상태) -->
-            <div class="score-breakdown" id="detail-1">
+            <div class="score-breakdown" id="detail-2">
                 <h3>📊 점수 상세 분석</h3>
                 <div class="breakdown-section">
                     <div class="breakdown-title">펀더멘털 점수: 35점 / 50점</div>
@@ -389,7 +530,7 @@
                         <!-- 가격 패턴 -->
                         <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
                             <span class="criterion">🎯 가격 패턴</span>
-                            <span class="criterion-value">52주 95%</span>
+                            <span class="criterion-value">52주 96%</span>
                             <span class="criterion-score">+5점 /5</span>
                         </div>
                     </div>
@@ -414,7 +555,7 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$996M</span>
+                            <span class="criterion-value">$997M</span>
                             <span class="criterion-score" style="color: #27AE60;">+3점</span>
                         </div>
                     </div>
@@ -432,150 +573,9 @@
             </div>
         </div>
         <div class="stock-card">
-            <div class="rank">#2</div>
-            
-            <span class="score-badge high">78점</span>
-            <h2><span class="ticker">LLY</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Eli Lilly and Company</span></h2>
-            <span class="verdict buy">Buy</span>
-
-            
-            <div class="info">
-                <div class="info-item market-status-box" style="background: #607D8B; color: white;">
-                    <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$1220.40</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.44%</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">매수가 📈 추세추종(MA20↑)</div>
-                    <div class="info-value">$1220.40</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">목표가</div>
-                    <div class="info-value">$1302.05</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">손절가</div>
-                    <div class="info-value">$1168.17</div>
-                </div>
-            </div>
-            <div class="comment">💡 ROE:102.3%, OPM:54.2%, FCF:14%</div>
-            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 102.3%로 수익성 최상위권. 영업이익률 54.2%의 고마진 구조. 매출 YoY +48% 고성장. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 58으로 매수세 우위. 월가 89명 중 69명 매수 의견(Strong Buy). 평균 목표가 $1299 (현재가 대비 +6% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (69/89)</span><span class="ws-tag ws-target">목표가 $850~$1600 (avg $1299)</span></div><div class="ws-news"></div></div>
-
-            <button class="detail-toggle" onclick="toggleDetail(2)">상세 분석 ▼</button>
-
-            <!-- 점수 상세 분석 (접힌 상태) -->
-            <div class="score-breakdown" id="detail-2">
-                <h3>📊 점수 상세 분석</h3>
-                <div class="breakdown-section">
-                    <div class="breakdown-title">펀더멘털 점수: 35점 / 50점</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item">
-                            <span class="criterion">ROE (자기자본이익률)</span>
-                            <span class="criterion-value">102.3%</span>
-                            <span class="criterion-score">+15점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">OPM (영업이익률)</span>
-                            <span class="criterion-value">54.2%</span>
-                            <span class="criterion-score">+10점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">매출성장률</span>
-                            <span class="criterion-value">47.7%</span>
-                            <span class="criterion-score">+10점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">PEG (성장가치)</span>
-                            <span class="criterion-value">1.49</span>
-                            <span class="criterion-score">+3점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">섹터</span>
-                            <span class="criterion-value">헬스케어</span>
-                            <span class="criterion-score">+0점</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="breakdown-section">
-                    <div class="breakdown-title">기술적 점수: 33점 / 50점</div>
-                    <div class="breakdown-items">
-                        <!-- 추세 분석 -->
-                        <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
-                            <span class="criterion">📈 추세 분석</span>
-                            <span class="criterion-value">MA5/20/60/120, MACD, 일목균형표, ADX</span>
-                            <span class="criterion-score">+11점 /20</span>
-                        </div>
-                        <!-- 모멘텀 -->
-                        <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
-                            <span class="criterion">⚡ 모멘텀</span>
-                            <span class="criterion-value">RSI:58, MFI:50</span>
-                            <span class="criterion-score">+5점</span>
-                        </div>
-                        <!-- 거래량 -->
-                        <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
-                            <span class="criterion">📊 거래량</span>
-                            <span class="criterion-value">0.2x, OBV</span>
-                            <span class="criterion-score">+0점 /8</span>
-                        </div>
-                        <!-- 변동성 -->
-                        <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
-                            <span class="criterion">🌊 변동성</span>
-                            <span class="criterion-value">BB, ATR</span>
-                            <span class="criterion-score">+2점 /7</span>
-                        </div>
-                        <!-- 가격 패턴 -->
-                        <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
-                            <span class="criterion">🎯 가격 패턴</span>
-                            <span class="criterion-value">52주 97%</span>
-                            <span class="criterion-score">+5점 /5</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #667eea; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #667eea;">🌍 상승장: 기술60% : 펀더40% (모멘텀 중시)</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
-                            <span class="criterion">원래 기술 점수</span>
-                            <span class="criterion-value">28점</span>
-                            <span class="criterion-score">→ 33점</span>
-                        </div>
-                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
-                            <span class="criterion">원래 펀더 점수</span>
-                            <span class="criterion-value">44점</span>
-                            <span class="criterion-score">→ 35점</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #3498DB; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #FF6B35;">💧 거래대금 유동성: Hot (+5점)</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
-                            <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$3,688M</span>
-                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #FF6B35; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #FF6B35;">🔥 섹터 순환매: 수급유입 (+5점)</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
-                            <span class="criterion">섹터 동향</span>
-                            <span class="criterion-value">Healthcare 수급유입</span>
-                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="stock-card">
             <div class="rank">#3</div>
-            <span class="rank-change up">▲4</span>
-            <span class="score-badge high">77점</span>
+            
+            <span class="score-badge high">75점</span>
             <h2><span class="ticker">DXCM</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">DexCom, Inc.</span></h2>
             <span class="verdict buy">Buy</span>
 
@@ -583,27 +583,31 @@
             <div class="info">
                 <div class="info-item market-status-box" style="background: #607D8B; color: white;">
                     <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$89.07</div>
+                    <div class="info-value" style="font-size: 1.2em;">$90.07</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.51%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.60%</div>
+                </div>
+                <div class="info-item" style="background: rgba(244, 67, 54, 0.1); border-left: 3px solid #F44336;">
+                    <div class="info-label">⚠️ 투자전략</div>
+                    <div class="info-value" style="color: #F44336;">조정 대기</div>
+                </div>
+                <div class="info-item" style="background: rgba(255, 152, 0, 0.1);">
+                    <div class="info-label">진입 조건가</div>
+                    <div class="info-value" style="color: #E67E22;">$84.06</div>
                 </div>
                 <div class="info-item">
-                    <div class="info-label">매수가 ⚠️ 📈 추세추종(MA20↑)(R:R주의)</div>
-                    <div class="info-value">$89.07</div>
+                    <div class="info-label">조건충족시 목표</div>
+                    <div class="info-value">$92.40</div>
                 </div>
                 <div class="info-item">
-                    <div class="info-label">목표가</div>
-                    <div class="info-value">$92.19</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">손절가</div>
-                    <div class="info-value">$83.12</div>
+                    <div class="info-label">조건충족시 손절</div>
+                    <div class="info-value">$78.18</div>
                 </div>
             </div>
-            <div class="comment">💡 ROE:38.5%, OPM:24.3%, FCF:21%</div>
-            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 38.5%로 수익성 최상위권. 영업이익률 24.3%로 안정적. 매출 YoY +13% 성장세. FCF Margin 20%로 우수한 현금흐름. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 69으로 매수세 우위. 월가 83명 중 74명 매수 의견(Strong Buy). 평균 목표가 $93 (현재가 대비 +5% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (74/83)</span><span class="ws-tag ws-target">목표가 $79~$115 (avg $93)</span></div><div class="ws-news"></div></div>
+            <div class="comment">💡 ⚡과열경계, ROE:38.5%, OPM:24.3%</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 38.5%로 수익성 최상위권. 영업이익률 24.3%로 안정적. 매출 YoY +13% 성장세. FCF Margin 20%로 우수한 현금흐름. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 71으로 과매수 영역 → 단기 조정 유의. 월가 83명 중 74명 매수 의견(Strong Buy). 평균 목표가 $93 (현재가 대비 +4% 상승여력). 과열 구간으로 신규 진입보다 조정 후 재진입 권장.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (74/83)</span><span class="ws-tag ws-target">목표가 $79~$115 (avg $93)</span></div><div class="ws-news"></div></div>
 
             <button class="detail-toggle" onclick="toggleDetail(3)">상세 분석 ▼</button>
 
@@ -642,7 +646,7 @@
                     </div>
                 </div>
                 <div class="breakdown-section">
-                    <div class="breakdown-title">기술적 점수: 36점 / 50점</div>
+                    <div class="breakdown-title">기술적 점수: 37점 / 50점</div>
                     <div class="breakdown-items">
                         <!-- 추세 분석 -->
                         <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
@@ -653,154 +657,13 @@
                         <!-- 모멘텀 -->
                         <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
                             <span class="criterion">⚡ 모멘텀</span>
-                            <span class="criterion-value">RSI:69, MFI:74</span>
-                            <span class="criterion-score">+3점</span>
+                            <span class="criterion-value">RSI:71, MFI:75</span>
+                            <span class="criterion-score">+2점</span>
                         </div>
                         <!-- 거래량 -->
                         <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
                             <span class="criterion">📊 거래량</span>
-                            <span class="criterion-value">0.4x, OBV</span>
-                            <span class="criterion-score">+4점 /8</span>
-                        </div>
-                        <!-- 변동성 -->
-                        <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
-                            <span class="criterion">🌊 변동성</span>
-                            <span class="criterion-value">BB, ATR</span>
-                            <span class="criterion-score">+0점 /7</span>
-                        </div>
-                        <!-- 가격 패턴 -->
-                        <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
-                            <span class="criterion">🎯 가격 패턴</span>
-                            <span class="criterion-value">52주 99%</span>
-                            <span class="criterion-score">+5점 /5</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #667eea; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #667eea;">🌍 상승장: 기술60% : 펀더40% (모멘텀 중시)</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
-                            <span class="criterion">원래 기술 점수</span>
-                            <span class="criterion-value">30점</span>
-                            <span class="criterion-score">→ 36점</span>
-                        </div>
-                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
-                            <span class="criterion">원래 펀더 점수</span>
-                            <span class="criterion-value">41점</span>
-                            <span class="criterion-score">→ 32점</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #3498DB; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #27AE60;">💧 거래대금 유동성: Active (+3점)</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
-                            <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$518M</span>
-                            <span class="criterion-score" style="color: #27AE60;">+3점</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #FF6B35; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #FF6B35;">🔥 섹터 순환매: 수급유입 (+5점)</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
-                            <span class="criterion">섹터 동향</span>
-                            <span class="criterion-value">Healthcare 수급유입</span>
-                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="stock-card">
-            <div class="rank">#4</div>
-            <span class="rank-change down">▼3</span>
-            <span class="score-badge high">76점</span>
-            <h2><span class="ticker">ANET</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Arista Networks, Inc.</span></h2>
-            <span class="verdict buy">Buy</span>
-
-            
-            <div class="info">
-                <div class="info-item market-status-box" style="background: #607D8B; color: white;">
-                    <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$206.16</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+4.20%</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">매수가 ⚠️ 📈 추세추종(MA20↑)(R:R주의)</div>
-                    <div class="info-value">$206.16</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">목표가</div>
-                    <div class="info-value">$214.89</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">손절가</div>
-                    <div class="info-value">$191.73</div>
-                </div>
-            </div>
-            <div class="comment">💡 ROE:31.5%, OPM:45.4%, FCF:37%</div>
-            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 31.5%로 수익성 최상위권. 영업이익률 45.4%의 고마진 구조. 매출 YoY +38% 고성장. FCF Margin 37%로 현금창출력 최상위. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 67으로 매수세 우위. 월가 90명 중 88명 매수 의견(Strong Buy). 평균 목표가 $242 (현재가 대비 +17% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (88/90)</span><span class="ws-tag ws-target">목표가 $185~$289 (avg $242)</span></div><div class="ws-news"></div></div>
-
-            <button class="detail-toggle" onclick="toggleDetail(4)">상세 분석 ▼</button>
-
-            <!-- 점수 상세 분석 (접힌 상태) -->
-            <div class="score-breakdown" id="detail-4">
-                <h3>📊 점수 상세 분석</h3>
-                <div class="breakdown-section">
-                    <div class="breakdown-title">펀더멘털 점수: 36점 / 50점</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item">
-                            <span class="criterion">ROE (자기자본이익률)</span>
-                            <span class="criterion-value">31.5%</span>
-                            <span class="criterion-score">+15점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">OPM (영업이익률)</span>
-                            <span class="criterion-value">45.4%</span>
-                            <span class="criterion-score">+10점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">매출성장률</span>
-                            <span class="criterion-value">37.7%</span>
-                            <span class="criterion-score">+10점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">PEG (성장가치)</span>
-                            <span class="criterion-value">1.81</span>
-                            <span class="criterion-score">+0점</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="criterion">섹터</span>
-                            <span class="criterion-value">AI/반도체</span>
-                            <span class="criterion-score">+0점</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="breakdown-section">
-                    <div class="breakdown-title">기술적 점수: 38점 / 50점</div>
-                    <div class="breakdown-items">
-                        <!-- 추세 분석 -->
-                        <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
-                            <span class="criterion">📈 추세 분석</span>
-                            <span class="criterion-value">MA5/20/60/120, MACD, 일목균형표, ADX</span>
-                            <span class="criterion-score">+11점 /20</span>
-                        </div>
-                        <!-- 모멘텀 -->
-                        <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
-                            <span class="criterion">⚡ 모멘텀</span>
-                            <span class="criterion-value">RSI:67, MFI:65</span>
-                            <span class="criterion-score">+5점</span>
-                        </div>
-                        <!-- 거래량 -->
-                        <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
-                            <span class="criterion">📊 거래량</span>
-                            <span class="criterion-value">0.4x, OBV</span>
+                            <span class="criterion-value">0.5x, OBV</span>
                             <span class="criterion-score">+4점 /8</span>
                         </div>
                         <!-- 변동성 -->
@@ -822,41 +685,51 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
                             <span class="criterion">원래 기술 점수</span>
-                            <span class="criterion-value">32점</span>
-                            <span class="criterion-score">→ 38점</span>
+                            <span class="criterion-value">31점</span>
+                            <span class="criterion-score">→ 37점</span>
                         </div>
                         <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
                             <span class="criterion">원래 펀더 점수</span>
-                            <span class="criterion-value">45점</span>
-                            <span class="criterion-score">→ 36점</span>
+                            <span class="criterion-value">41점</span>
+                            <span class="criterion-score">→ 32점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section" style="border-top: 2px solid #7B68EE; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #F44336;">⚠️ 과열 감점: -3점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.1);">
+                            <span class="criterion">최종 점수</span>
+                            <span class="criterion-value">32 + 37 -3</span>
+                            <span class="criterion-score" style="color: #F44336; font-size: 1.1em;">75점</span>
                         </div>
                     </div>
                 </div>
                 <div class="breakdown-section" style="border-top: 2px dashed #3498DB; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #FF6B35;">💧 거래대금 유동성: Hot (+5점)</div>
+                    <div class="breakdown-title" style="color: #27AE60;">💧 거래대금 유동성: Active (+3점)</div>
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$1,802M</span>
-                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
+                            <span class="criterion-value">$523M</span>
+                            <span class="criterion-score" style="color: #27AE60;">+3점</span>
                         </div>
                     </div>
                 </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #E67E22; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #E67E22;">⚠️ 섹터 순환매: 과열주의 (-3점)</div>
+                <div class="breakdown-section" style="border-top: 2px dashed #FF6B35; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #FF6B35;">🔥 섹터 순환매: 수급유입 (+5점)</div>
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">섹터 동향</span>
-                            <span class="criterion-value">Technology 과열주의</span>
-                            <span class="criterion-score" style="color: #E67E22;">-3점</span>
+                            <span class="criterion-value">Healthcare 수급유입</span>
+                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="stock-card">
-            <div class="rank">#5</div>
-            <span class="rank-change up">▲18</span>
+            <div class="rank">#4</div>
+            <span class="rank-change up">▲1</span>
             <span class="score-badge ">74점</span>
             <h2><span class="ticker">VRTX</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Vertex Pharmaceuticals Incorpor</span></h2>
             <span class="verdict hold">Hold</span>
@@ -865,11 +738,11 @@
             <div class="info">
                 <div class="info-item market-status-box" style="background: #607D8B; color: white;">
                     <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$529.00</div>
+                    <div class="info-value" style="font-size: 1.2em;">$528.96</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.12%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-0.13%</div>
                 </div>
                 <div class="info-item" style="background: rgba(244, 67, 54, 0.1); border-left: 3px solid #F44336;">
                     <div class="info-label">⚠️ 투자전략</div>
@@ -877,7 +750,7 @@
                 </div>
                 <div class="info-item" style="background: rgba(255, 152, 0, 0.1);">
                     <div class="info-label">진입 조건가</div>
-                    <div class="info-value" style="color: #E67E22;">$497.76</div>
+                    <div class="info-value" style="color: #E67E22;">$497.72</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">조건충족시 목표</div>
@@ -885,16 +758,16 @@
                 </div>
                 <div class="info-item">
                     <div class="info-label">조건충족시 손절</div>
-                    <div class="info-value">$466.52</div>
+                    <div class="info-value">$466.48</div>
                 </div>
             </div>
             <div class="comment">💡 ⚡과열경계, ROE:23.5%, OPM:38.1%</div>
             <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 23.5%로 수익성 최상위권. 영업이익률 38.1%의 고마진 구조. 매출 YoY +12% 성장세. FCF Margin 21%로 우수한 현금흐름. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 71으로 과매수 영역 → 단기 조정 유의. 월가 95명 중 77명 매수 의견(Strong Buy). 평균 목표가 $563 (현재가 대비 +6% 상승여력). 과열 구간으로 신규 진입보다 조정 후 재진입 권장.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (77/95)</span><span class="ws-tag ws-target">목표가 $350~$672 (avg $563)</span></div><div class="ws-news"></div></div>
 
-            <button class="detail-toggle" onclick="toggleDetail(5)">상세 분석 ▼</button>
+            <button class="detail-toggle" onclick="toggleDetail(4)">상세 분석 ▼</button>
 
             <!-- 점수 상세 분석 (접힌 상태) -->
-            <div class="score-breakdown" id="detail-5">
+            <div class="score-breakdown" id="detail-4">
                 <h3>📊 점수 상세 분석</h3>
                 <div class="breakdown-section">
                     <div class="breakdown-title">펀더멘털 점수: 32점 / 50점</div>
@@ -1010,88 +883,88 @@
             </div>
         </div>
         <div class="stock-card">
-            <div class="rank">#6</div>
-            
+            <div class="rank">#5</div>
+            <span class="rank-change up">▲10</span>
             <span class="score-badge ">72점</span>
-            <h2><span class="ticker">CSCO</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Cisco Systems, Inc.</span></h2>
+            <h2><span class="ticker">AVGO</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Broadcom Inc.</span></h2>
             <span class="verdict hold">Hold</span>
 
             
             <div class="info">
                 <div class="info-item market-status-box" style="background: #607D8B; color: white;">
                     <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$123.11</div>
+                    <div class="info-value" style="font-size: 1.2em;">$419.45</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+2.23%</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+0.81%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📦 박스권하단(MA60)</div>
-                    <div class="info-value">$117.85</div>
+                    <div class="info-value">$398.62</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">목표가</div>
-                    <div class="info-value">$129.88</div>
+                    <div class="info-value">$494.22</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">손절가</div>
-                    <div class="info-value">$114.91</div>
+                    <div class="info-value">$370.71</div>
                 </div>
             </div>
-            <div class="comment">💡 ROE:25.2%, OPM:25.0%, FCF:15%</div>
-            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 25.2%로 수익성 최상위권. 영업이익률 25.0%로 안정적. 매출 YoY +12% 성장세. FCF Margin 15%로 우수한 현금흐름. 이동평균 수렴 구간으로 방향성 탐색 중. RSI 62으로 매수세 우위. 월가 78명 중 51명 매수 의견(Buy). 평균 목표가 $133 (현재가 대비 +8% 상승여력). 횡보 구간 하단 접근 중으로 지지선 확인 후 매수 검토.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Buy (51/78)</span><span class="ws-tag ws-target">목표가 $115~$150 (avg $133)</span></div><div class="ws-news"></div></div>
+            <div class="comment">💡 ROE:37.3%, OPM:49.0%, FCF:36%</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 37.3%로 수익성 최상위권. 영업이익률 49.0%의 고마진 구조. 매출 YoY +48% 고성장. FCF Margin 36%로 현금창출력 최상위. 이동평균 수렴 구간으로 방향성 탐색 중. RSI 60으로 매수세 우위. 월가 144명 중 132명 매수 의견(Strong Buy). 평균 목표가 $528 (현재가 대비 +26% 상승여력). 횡보 구간 하단 접근 중으로 지지선 확인 후 매수 검토.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (132/144)</span><span class="ws-tag ws-target">목표가 $216~$675 (avg $528)</span></div><div class="ws-news"></div></div>
 
-            <button class="detail-toggle" onclick="toggleDetail(6)">상세 분석 ▼</button>
+            <button class="detail-toggle" onclick="toggleDetail(5)">상세 분석 ▼</button>
 
             <!-- 점수 상세 분석 (접힌 상태) -->
-            <div class="score-breakdown" id="detail-6">
+            <div class="score-breakdown" id="detail-5">
                 <h3>📊 점수 상세 분석</h3>
                 <div class="breakdown-section">
-                    <div class="breakdown-title">펀더멘털 점수: 30점 / 50점</div>
+                    <div class="breakdown-title">펀더멘털 점수: 40점 / 50점</div>
                     <div class="breakdown-items">
                         <div class="breakdown-item">
                             <span class="criterion">ROE (자기자본이익률)</span>
-                            <span class="criterion-value">25.2%</span>
+                            <span class="criterion-value">37.3%</span>
                             <span class="criterion-score">+15점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">OPM (영업이익률)</span>
-                            <span class="criterion-value">25.0%</span>
+                            <span class="criterion-value">49.0%</span>
                             <span class="criterion-score">+10점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
-                            <span class="criterion-value">12.0%</span>
-                            <span class="criterion-score">+5점</span>
+                            <span class="criterion-value">47.9%</span>
+                            <span class="criterion-score">+10점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">PEG (성장가치)</span>
-                            <span class="criterion-value">1.21</span>
-                            <span class="criterion-score">+3점</span>
+                            <span class="criterion-value">0.47</span>
+                            <span class="criterion-score">+5점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">섹터</span>
-                            <span class="criterion-value">Technology</span>
+                            <span class="criterion-value">AI/반도체</span>
                             <span class="criterion-score">+0점</span>
                         </div>
                         
                     </div>
                 </div>
                 <div class="breakdown-section">
-                    <div class="breakdown-title">기술적 점수: 38점 / 50점</div>
+                    <div class="breakdown-title">기술적 점수: 32점 / 50점</div>
                     <div class="breakdown-items">
                         <!-- 추세 분석 -->
                         <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
                             <span class="criterion">📈 추세 분석</span>
                             <span class="criterion-value">MA5/20/60/120, MACD, 일목균형표, ADX</span>
-                            <span class="criterion-score">+11점 /20</span>
+                            <span class="criterion-score">+10점 /20</span>
                         </div>
                         <!-- 모멘텀 -->
                         <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
                             <span class="criterion">⚡ 모멘텀</span>
-                            <span class="criterion-value">RSI:62, MFI:62</span>
-                            <span class="criterion-score">+5점</span>
+                            <span class="criterion-value">RSI:60, MFI:46</span>
+                            <span class="criterion-score">+10점</span>
                         </div>
                         <!-- 거래량 -->
                         <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
@@ -1103,13 +976,13 @@
                         <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
                             <span class="criterion">🌊 변동성</span>
                             <span class="criterion-value">BB, ATR</span>
-                            <span class="criterion-score">+2점 /7</span>
+                            <span class="criterion-score">+0점 /7</span>
                         </div>
                         <!-- 가격 패턴 -->
                         <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
                             <span class="criterion">🎯 가격 패턴</span>
-                            <span class="criterion-value">52주 90%</span>
-                            <span class="criterion-score">+5점 /5</span>
+                            <span class="criterion-value">52주 68%</span>
+                            <span class="criterion-score">+2점 /5</span>
                         </div>
                     </div>
                 </div>
@@ -1118,13 +991,13 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
                             <span class="criterion">원래 기술 점수</span>
-                            <span class="criterion-value">32점</span>
-                            <span class="criterion-score">→ 38점</span>
+                            <span class="criterion-value">27점</span>
+                            <span class="criterion-score">→ 32점</span>
                         </div>
                         <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
                             <span class="criterion">원래 펀더 점수</span>
-                            <span class="criterion-value">38점</span>
-                            <span class="criterion-score">→ 30점</span>
+                            <span class="criterion-value">50점</span>
+                            <span class="criterion-score">→ 40점</span>
                         </div>
                     </div>
                 </div>
@@ -1133,7 +1006,148 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$3,078M</span>
+                            <span class="criterion-value">$10,813M</span>
+                            <span class="criterion-score" style="color: #FF6B35;">+5점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section" style="border-top: 2px dashed #E67E22; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #E67E22;">⚠️ 섹터 순환매: 과열주의 (-3점)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
+                            <span class="criterion">섹터 동향</span>
+                            <span class="criterion-value">Technology 과열주의</span>
+                            <span class="criterion-score" style="color: #E67E22;">-3점</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stock-card">
+            <div class="rank">#6</div>
+            <span class="rank-change down">▼2</span>
+            <span class="score-badge ">72점</span>
+            <h2><span class="ticker">ANET</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Arista Networks, Inc.</span></h2>
+            <span class="verdict hold">Hold</span>
+
+            
+            <div class="info">
+                <div class="info-item market-status-box" style="background: #607D8B; color: white;">
+                    <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
+                    <div class="info-value" style="font-size: 1.2em;">$208.53</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">전일대비</div>
+                    <div class="info-value" style="color: #4CAF50; font-weight: bold;">+5.40%</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">매수가 📈 추세추종(MA20↑)</div>
+                    <div class="info-value">$208.53</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">목표가</div>
+                    <div class="info-value">$231.24</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">손절가</div>
+                    <div class="info-value">$193.93</div>
+                </div>
+            </div>
+            <div class="comment">💡 ROE:31.5%, OPM:45.4%, FCF:37%</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 31.5%로 수익성 최상위권. 영업이익률 45.4%의 고마진 구조. 매출 YoY +38% 고성장. FCF Margin 37%로 현금창출력 최상위. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 68으로 매수세 우위. 월가 90명 중 88명 매수 의견(Strong Buy). 평균 목표가 $242 (현재가 대비 +16% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (88/90)</span><span class="ws-tag ws-target">목표가 $185~$289 (avg $242)</span></div><div class="ws-news"></div></div>
+
+            <button class="detail-toggle" onclick="toggleDetail(6)">상세 분석 ▼</button>
+
+            <!-- 점수 상세 분석 (접힌 상태) -->
+            <div class="score-breakdown" id="detail-6">
+                <h3>📊 점수 상세 분석</h3>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">펀더멘털 점수: 36점 / 50점</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item">
+                            <span class="criterion">ROE (자기자본이익률)</span>
+                            <span class="criterion-value">31.5%</span>
+                            <span class="criterion-score">+15점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">OPM (영업이익률)</span>
+                            <span class="criterion-value">45.4%</span>
+                            <span class="criterion-score">+10점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">매출성장률</span>
+                            <span class="criterion-value">37.7%</span>
+                            <span class="criterion-score">+10점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">PEG (성장가치)</span>
+                            <span class="criterion-value">1.81</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="criterion">섹터</span>
+                            <span class="criterion-value">AI/반도체</span>
+                            <span class="criterion-score">+0점</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="breakdown-section">
+                    <div class="breakdown-title">기술적 점수: 34점 / 50점</div>
+                    <div class="breakdown-items">
+                        <!-- 추세 분석 -->
+                        <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
+                            <span class="criterion">📈 추세 분석</span>
+                            <span class="criterion-value">MA5/20/60/120, MACD, 일목균형표, ADX</span>
+                            <span class="criterion-score">+11점 /20</span>
+                        </div>
+                        <!-- 모멘텀 -->
+                        <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
+                            <span class="criterion">⚡ 모멘텀</span>
+                            <span class="criterion-value">RSI:68, MFI:65</span>
+                            <span class="criterion-score">+5점</span>
+                        </div>
+                        <!-- 거래량 -->
+                        <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
+                            <span class="criterion">📊 거래량</span>
+                            <span class="criterion-value">0.5x, OBV</span>
+                            <span class="criterion-score">+4점 /8</span>
+                        </div>
+                        <!-- 변동성 -->
+                        <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
+                            <span class="criterion">🌊 변동성</span>
+                            <span class="criterion-value">BB, ATR</span>
+                            <span class="criterion-score">+2점 /7</span>
+                        </div>
+                        <!-- 가격 패턴 -->
+                        <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
+                            <span class="criterion">🎯 가격 패턴</span>
+                            <span class="criterion-value">52주 50%</span>
+                            <span class="criterion-score">+2점 /5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section" style="border-top: 2px dashed #667eea; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #667eea;">🌍 상승장: 기술60% : 펀더40% (모멘텀 중시)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
+                            <span class="criterion">원래 기술 점수</span>
+                            <span class="criterion-value">29점</span>
+                            <span class="criterion-score">→ 34점</span>
+                        </div>
+                        <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
+                            <span class="criterion">원래 펀더 점수</span>
+                            <span class="criterion-value">45점</span>
+                            <span class="criterion-score">→ 36점</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-section" style="border-top: 2px dashed #3498DB; padding-top: 10px; margin-top: 10px;">
+                    <div class="breakdown-title" style="color: #FF6B35;">💧 거래대금 유동성: Hot (+5점)</div>
+                    <div class="breakdown-items">
+                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
+                            <span class="criterion">일 거래대금</span>
+                            <span class="criterion-value">$1,823M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
                         </div>
                     </div>
@@ -1152,36 +1166,36 @@
         </div>
         <div class="stock-card">
             <div class="rank">#7</div>
-            <span class="rank-change up">▲6</span>
-            <span class="score-badge ">70점</span>
-            <h2><span class="ticker">PLTR</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Palantir Technologies Inc.</span></h2>
+            <span class="rank-change up">▲2</span>
+            <span class="score-badge ">71점</span>
+            <h2><span class="ticker">AMZN</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">Amazon.com, Inc.</span></h2>
             <span class="verdict hold">Hold</span>
 
             
             <div class="info">
                 <div class="info-item market-status-box" style="background: #607D8B; color: white;">
                     <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$169.49</div>
+                    <div class="info-value" style="font-size: 1.2em;">$268.01</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-3.12%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-1.56%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 ⚠️ 📈 추세추종(MA20↑)(R:R주의)</div>
-                    <div class="info-value">$169.49</div>
+                    <div class="info-value">$268.01</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">목표가</div>
-                    <div class="info-value">$180.78</div>
+                    <div class="info-value">$287.20</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">손절가</div>
-                    <div class="info-value">$157.63</div>
+                    <div class="info-value">$252.47</div>
                 </div>
             </div>
-            <div class="comment">💡 ROE:38.1%, OPM:47.1%, FCF:35%</div>
-            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 38.1%로 수익성 최상위권. 영업이익률 47.1%의 고마진 구조. 매출 YoY +93% 고성장. FCF Margin 35%로 현금창출력 최상위. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 68으로 매수세 우위. 월가 95명 중 59명 매수 의견(Buy). 평균 목표가 $192 (현재가 대비 +13% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Buy (59/95)</span><span class="ws-tag ws-target">목표가 $80~$255 (avg $192)</span></div><div class="ws-news"></div></div>
+            <div class="comment">💡 ROE:30.6%, OPM:13.7%, MA120↑</div>
+            <div class="analyst-view"><div class="analyst-header">📝 Titan 애널리스트 뷰</div><div class="analyst-comment">ROE 30.6%로 수익성 최상위권. 매출 YoY +20% 성장세. MA20>MA60 정배열 상태로 상승 추세 진행 중. RSI 58으로 매수세 우위. 월가 194명 중 183명 매수 의견(Strong Buy). 평균 목표가 $325 (현재가 대비 +21% 상승여력). 상승 추세 지속 중으로 추세 추종 매매가 유효.</div><div class="wall-street"><span class="ws-tag ws-consensus">월가: Strong Buy (183/194)</span><span class="ws-tag ws-target">목표가 $230~$400 (avg $325)</span></div><div class="ws-news"></div></div>
 
             <button class="detail-toggle" onclick="toggleDetail(7)">상세 분석 ▼</button>
 
@@ -1189,38 +1203,38 @@
             <div class="score-breakdown" id="detail-7">
                 <h3>📊 점수 상세 분석</h3>
                 <div class="breakdown-section">
-                    <div class="breakdown-title">펀더멘털 점수: 36점 / 50점</div>
+                    <div class="breakdown-title">펀더멘털 점수: 29점 / 50점</div>
                     <div class="breakdown-items">
                         <div class="breakdown-item">
                             <span class="criterion">ROE (자기자본이익률)</span>
-                            <span class="criterion-value">38.1%</span>
+                            <span class="criterion-value">30.6%</span>
                             <span class="criterion-score">+15점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">OPM (영업이익률)</span>
-                            <span class="criterion-value">47.1%</span>
-                            <span class="criterion-score">+10점</span>
+                            <span class="criterion-value">13.7%</span>
+                            <span class="criterion-score">+9점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">매출성장률</span>
-                            <span class="criterion-value">92.8%</span>
+                            <span class="criterion-value">19.6%</span>
                             <span class="criterion-score">+10점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">PEG (성장가치)</span>
-                            <span class="criterion-value">2.41</span>
-                            <span class="criterion-score">+0점</span>
+                            <span class="criterion-value">1.48</span>
+                            <span class="criterion-score">+3점</span>
                         </div>
                         <div class="breakdown-item">
                             <span class="criterion">섹터</span>
-                            <span class="criterion-value">소프트웨어</span>
+                            <span class="criterion-value">소비재</span>
                             <span class="criterion-score">+0점</span>
                         </div>
                         
                     </div>
                 </div>
                 <div class="breakdown-section">
-                    <div class="breakdown-title">기술적 점수: 33점 / 50점</div>
+                    <div class="breakdown-title">기술적 점수: 36점 / 50점</div>
                     <div class="breakdown-items">
                         <!-- 추세 분석 -->
                         <div class="breakdown-item" style="background: rgba(103, 126, 234, 0.05);">
@@ -1231,8 +1245,8 @@
                         <!-- 모멘텀 -->
                         <div class="breakdown-item" style="background: rgba(76, 175, 80, 0.05);">
                             <span class="criterion">⚡ 모멘텀</span>
-                            <span class="criterion-value">RSI:68, MFI:71</span>
-                            <span class="criterion-score">+3점</span>
+                            <span class="criterion-value">RSI:58, MFI:54</span>
+                            <span class="criterion-score">+5점</span>
                         </div>
                         <!-- 거래량 -->
                         <div class="breakdown-item" style="background: rgba(255, 152, 0, 0.05);">
@@ -1244,13 +1258,13 @@
                         <div class="breakdown-item" style="background: rgba(156, 39, 176, 0.05);">
                             <span class="criterion">🌊 변동성</span>
                             <span class="criterion-value">BB, ATR</span>
-                            <span class="criterion-score">+2점 /7</span>
+                            <span class="criterion-score">+5점 /7</span>
                         </div>
                         <!-- 가격 패턴 -->
                         <div class="breakdown-item" style="background: rgba(244, 67, 54, 0.05);">
                             <span class="criterion">🎯 가격 패턴</span>
-                            <span class="criterion-value">52주 62%</span>
-                            <span class="criterion-score">+2점 /5</span>
+                            <span class="criterion-value">52주 81%</span>
+                            <span class="criterion-score">+3점 /5</span>
                         </div>
                     </div>
                 </div>
@@ -1259,13 +1273,13 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
                             <span class="criterion">원래 기술 점수</span>
-                            <span class="criterion-value">28점</span>
-                            <span class="criterion-score">→ 33점</span>
+                            <span class="criterion-value">30점</span>
+                            <span class="criterion-score">→ 36점</span>
                         </div>
                         <div class="breakdown-item" style="background: rgba(102, 126, 234, 0.05);">
                             <span class="criterion">원래 펀더 점수</span>
-                            <span class="criterion-value">45점</span>
-                            <span class="criterion-score">→ 36점</span>
+                            <span class="criterion-value">37점</span>
+                            <span class="criterion-score">→ 29점</span>
                         </div>
                     </div>
                 </div>
@@ -1274,18 +1288,8 @@
                     <div class="breakdown-items">
                         <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
                             <span class="criterion">일 거래대금</span>
-                            <span class="criterion-value">$7,410M</span>
+                            <span class="criterion-value">$13,501M</span>
                             <span class="criterion-score" style="color: #FF6B35;">+5점</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="breakdown-section" style="border-top: 2px dashed #E67E22; padding-top: 10px; margin-top: 10px;">
-                    <div class="breakdown-title" style="color: #E67E22;">⚠️ 섹터 순환매: 과열주의 (-3점)</div>
-                    <div class="breakdown-items">
-                        <div class="breakdown-item" style="background: rgba(52, 152, 219, 0.05);">
-                            <span class="criterion">섹터 동향</span>
-                            <span class="criterion-value">Technology 과열주의</span>
-                            <span class="criterion-score" style="color: #E67E22;">-3점</span>
                         </div>
                     </div>
                 </div>
@@ -1293,7 +1297,7 @@
         </div>
         <div class="stock-card">
             <div class="rank">#8</div>
-            <span class="rank-change down">▼3</span>
+            
             <span class="score-badge ">70점</span>
             <h2><span class="ticker">IDXX</span> <span style="font-size:0.55em; color:#7B6B4F; font-weight:normal;">IDEXX Laboratories, Inc.</span></h2>
             <span class="verdict hold">Hold</span>
@@ -1302,23 +1306,23 @@
             <div class="info">
                 <div class="info-item market-status-box" style="background: #607D8B; color: white;">
                     <div class="info-label market-status-label" style="color: rgba(255,255,255,0.9);">🌙 폐장</div>
-                    <div class="info-value" style="font-size: 1.2em;">$571.68</div>
+                    <div class="info-value" style="font-size: 1.2em;">$571.78</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">전일대비</div>
-                    <div class="info-value" style="color: #F44336; font-weight: bold;">-2.55%</div>
+                    <div class="info-value" style="color: #F44336; font-weight: bold;">-2.53%</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">매수가 📈 추세추종(MA20↑)</div>
-                    <div class="info-value">$571.68</div>
+                    <div class="info-value">$571.78</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">목표가</div>
-                    <div class="info-value">$600.86</div>
+                    <div class="info-value">$600.87</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">손절가</div>
-                    <div class="info-value">$560.25</div>
+                    <div class="info-value">$560.34</div>
                 </div>
             </div>
             <div class="comment">💡 ROE:74.2%, OPM:35.0%, FCF:20%</div>
