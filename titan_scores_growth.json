@@ -1,6 +1,6 @@
 {
   "NVDA": {
-    "score": 66,
+    "score": 59,
     "fund_score": 45,
     "tech_score": 11,
     "price": 228.87,
@@ -8,7 +8,7 @@
     "market_cap": 5526523478016,
     "sector": "Technology",
     "company_name": "NVIDIA Corporation",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 208.92999267578125,
     "target_price": 230.21239627098788,
     "stop_loss": 204.75139282226561,
@@ -34,7 +34,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.389393415454336,
+    "rsi_value": 58.389393425580955,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -60,10 +60,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AMD": {
-    "score": 51,
+    "score": 46,
     "fund_score": 35,
     "tech_score": 9,
     "price": 623.77,
@@ -123,10 +123,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "INTC": {
-    "score": 34,
+    "score": 31,
     "fund_score": 21,
     "tech_score": 6,
     "price": 123.86,
@@ -186,10 +186,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "QCOM": {
-    "score": 56,
+    "score": 51,
     "fund_score": 35,
     "tech_score": 11,
     "price": 198.27,
@@ -223,7 +223,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 65.86808853020648,
+    "rsi_value": 65.86808853020617,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -249,10 +249,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TXN": {
-    "score": 69,
+    "score": 63,
     "fund_score": 45,
     "tech_score": 14,
     "price": 271.41,
@@ -286,7 +286,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 54.641351977072965,
+    "rsi_value": 54.641351971063045,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -312,10 +312,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MU": {
-    "score": 66,
+    "score": 60,
     "fund_score": 43,
     "tech_score": 13,
     "price": 1096.16,
@@ -349,7 +349,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 61.24409969356861,
+    "rsi_value": 61.244099693743934,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -375,10 +375,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AVGO": {
-    "score": 73,
+    "score": 66,
     "fund_score": 50,
     "tech_score": 13,
     "price": 364.54,
@@ -386,7 +386,7 @@
     "market_cap": 1740179111936,
     "sector": "Technology",
     "company_name": "Broadcom Inc.",
-    "verdict": "Buy",
+    "verdict": "Hold",
     "buy_price": 357.1496301143668,
     "target_price": 375.905500352115,
     "stop_loss": 345.92948010195886,
@@ -412,7 +412,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 48.99988656014893,
+    "rsi_value": 48.99988654464882,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -438,10 +438,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MRVL": {
-    "score": 59,
+    "score": 54,
     "fund_score": 38,
     "tech_score": 11,
     "price": 262.36,
@@ -475,7 +475,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 62.41676107130836,
+    "rsi_value": 62.41676107117007,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -501,10 +501,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ADI": {
-    "score": 64,
+    "score": 58,
     "fund_score": 41,
     "tech_score": 13,
     "price": 390.37,
@@ -512,7 +512,7 @@
     "market_cap": 189159817216,
     "sector": "Technology",
     "company_name": "Analog Devices, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 369.96280799598367,
     "target_price": 395.74426602462603,
     "stop_loss": 361.9500174138746,
@@ -538,7 +538,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 59.19828619836147,
+    "rsi_value": 59.19828612328142,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -564,10 +564,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ON": {
-    "score": 44,
+    "score": 40,
     "fund_score": 28,
     "tech_score": 8,
     "price": 73.6,
@@ -627,10 +627,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MPWR": {
-    "score": 69,
+    "score": 64,
     "fund_score": 43,
     "tech_score": 16,
     "price": 1380.62,
@@ -690,10 +690,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MCHP": {
-    "score": 54,
+    "score": 49,
     "fund_score": 35,
     "tech_score": 11,
     "price": 75.82,
@@ -727,7 +727,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 51.330377661346866,
+    "rsi_value": 51.33037766134724,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -753,10 +753,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ASML": {
-    "score": 64,
+    "score": 58,
     "fund_score": 41,
     "tech_score": 13,
     "price": 1747.9,
@@ -764,7 +764,7 @@
     "market_cap": 671368413184,
     "sector": "Technology",
     "company_name": "ASML Holding N.V. - New York Re",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 1715.0919327117617,
     "target_price": 1790.0,
     "stop_loss": 1680.7900940575264,
@@ -790,7 +790,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 51.85483416366853,
+    "rsi_value": 51.85483416369427,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -802,9 +802,9 @@
       "buy_count": 117,
       "hold_count": 10,
       "sell_count": 4,
-      "target_low": 884.4633,
-      "target_mean": 2126.879,
-      "target_high": 2832.1985,
+      "target_low": 884.3621,
+      "target_mean": 2126.6355,
+      "target_high": 2831.8745,
       "news": [
         {
           "title": "",
@@ -816,10 +816,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "LRCX": {
-    "score": 64,
+    "score": 58,
     "fund_score": 43,
     "tech_score": 11,
     "price": 310.96,
@@ -827,7 +827,7 @@
     "market_cap": 389110759424,
     "sector": "Technology",
     "company_name": "Lam Research Corporation",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 298.6499938964844,
     "target_price": 321.4100036621094,
     "stop_loss": 292.6769940185547,
@@ -853,7 +853,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 51.35834956551535,
+    "rsi_value": 51.358349565515326,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -879,10 +879,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AMAT": {
-    "score": 67,
+    "score": 61,
     "fund_score": 44,
     "tech_score": 13,
     "price": 472.46,
@@ -916,7 +916,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 49.74140760508702,
+    "rsi_value": 49.74140760507714,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -942,10 +942,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "KLAC": {
-    "score": 58,
+    "score": 53,
     "fund_score": 37,
     "tech_score": 11,
     "price": 188.32,
@@ -979,7 +979,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 51.47161136574208,
+    "rsi_value": 51.47161137040179,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1005,10 +1005,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NXPI": {
-    "score": 68,
+    "score": 61,
     "fund_score": 47,
     "tech_score": 13,
     "price": 237.57,
@@ -1042,7 +1042,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 52.34182984059725,
+    "rsi_value": 52.34182984212898,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1068,10 +1068,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ENTG": {
-    "score": 41,
+    "score": 38,
     "fund_score": 25,
     "tech_score": 8,
     "price": 151.11,
@@ -1105,7 +1105,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 54.02316319804106,
+    "rsi_value": 54.02316319804107,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1131,7 +1131,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WOLF": {
     "score": 23,
@@ -1194,7 +1194,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SWKS": {
     "score": 24,
@@ -1231,7 +1231,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 64.62478984722068,
+    "rsi_value": 64.6247898472206,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1257,10 +1257,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "QRVO": {
-    "score": 34,
+    "score": 31,
     "fund_score": 21,
     "tech_score": 8,
     "price": 118.44,
@@ -1320,10 +1320,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CRUS": {
-    "score": 44,
+    "score": 40,
     "fund_score": 31,
     "tech_score": 11,
     "price": 120.38,
@@ -1383,7 +1383,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SLAB": {
     "score": 17,
@@ -1446,10 +1446,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TER": {
-    "score": 67,
+    "score": 61,
     "fund_score": 44,
     "tech_score": 13,
     "price": 398.69,
@@ -1483,7 +1483,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 54.88359069935787,
+    "rsi_value": 54.88359069938958,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1509,10 +1509,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ONTO": {
-    "score": 52,
+    "score": 48,
     "fund_score": 33,
     "tech_score": 11,
     "price": 283.81,
@@ -1572,10 +1572,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MSFT": {
-    "score": 51,
+    "score": 46,
     "fund_score": 32,
     "tech_score": 9,
     "price": 498.0,
@@ -1609,7 +1609,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 57.26019365328564,
+    "rsi_value": 57.2601936536655,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1635,10 +1635,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ORCL": {
-    "score": 58,
+    "score": 52,
     "fund_score": 40,
     "tech_score": 8,
     "price": 149.2,
@@ -1672,7 +1672,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 50.48292491072719,
+    "rsi_value": 50.482924910733665,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1698,10 +1698,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CRM": {
-    "score": 56,
+    "score": 50,
     "fund_score": 39,
     "tech_score": 7,
     "price": 233.28,
@@ -1735,7 +1735,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 52.4495427313265,
+    "rsi_value": 52.44954273133,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1761,10 +1761,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ADBE": {
-    "score": 64,
+    "score": 57,
     "fund_score": 45,
     "tech_score": 9,
     "price": 238.25,
@@ -1772,7 +1772,7 @@
     "market_cap": 94704377856,
     "sector": "Technology",
     "company_name": "Adobe Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 210.8800048828125,
     "target_price": 240.14999389648438,
     "stop_loss": 200.33600463867185,
@@ -1824,10 +1824,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "INTU": {
-    "score": 56,
+    "score": 49,
     "fund_score": 40,
     "tech_score": 6,
     "price": 292.35,
@@ -1861,7 +1861,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 38.540006495048814,
+    "rsi_value": 38.54000649504886,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1887,10 +1887,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NOW": {
-    "score": 50,
+    "score": 45,
     "fund_score": 33,
     "tech_score": 7,
     "price": 137.0,
@@ -1950,10 +1950,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SNOW": {
-    "score": 49,
+    "score": 45,
     "fund_score": 30,
     "tech_score": 9,
     "price": 336.59,
@@ -2013,10 +2013,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WDAY": {
-    "score": 49,
+    "score": 44,
     "fund_score": 34,
     "tech_score": 7,
     "price": 188.23,
@@ -2076,10 +2076,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TEAM": {
-    "score": 37,
+    "score": 34,
     "fund_score": 23,
     "tech_score": 6,
     "price": 188.65,
@@ -2139,10 +2139,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DDOG": {
-    "score": 39,
+    "score": 36,
     "fund_score": 21,
     "tech_score": 8,
     "price": 247.475,
@@ -2202,10 +2202,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ADSK": {
-    "score": 62,
+    "score": 54,
     "fund_score": 46,
     "tech_score": 8,
     "price": 219.62,
@@ -2213,7 +2213,7 @@
     "market_cap": 45900578816,
     "sector": "Technology",
     "company_name": "Autodesk, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 206.3300018310547,
     "target_price": 221.80999755859375,
     "stop_loss": 200.12849395751954,
@@ -2265,10 +2265,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CDNS": {
-    "score": 63,
+    "score": 57,
     "fund_score": 42,
     "tech_score": 13,
     "price": 302.95,
@@ -2276,7 +2276,7 @@
     "market_cap": 83430309888,
     "sector": "Technology",
     "company_name": "Cadence Design Systems, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 293.8615,
     "target_price": 347.7200012207031,
     "stop_loss": 279.16842499999996,
@@ -2328,10 +2328,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SNPS": {
-    "score": 41,
+    "score": 37,
     "fund_score": 26,
     "tech_score": 7,
     "price": 409.24,
@@ -2391,10 +2391,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PANW": {
-    "score": 40,
+    "score": 38,
     "fund_score": 21,
     "tech_score": 9,
     "price": 374.57,
@@ -2454,10 +2454,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CRWD": {
-    "score": 38,
+    "score": 36,
     "fund_score": 20,
     "tech_score": 8,
     "price": 250.06,
@@ -2517,10 +2517,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ZS": {
-    "score": 36,
+    "score": 34,
     "fund_score": 20,
     "tech_score": 8,
     "price": 210.18,
@@ -2580,10 +2580,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "FTNT": {
-    "score": 65,
+    "score": 59,
     "fund_score": 44,
     "tech_score": 13,
     "price": 174.26,
@@ -2591,7 +2591,7 @@
     "market_cap": 127856943104,
     "sector": "Technology",
     "company_name": "Fortinet, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 152.25,
     "target_price": 161.38500000000002,
     "stop_loss": 146.7675,
@@ -2643,10 +2643,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NET": {
-    "score": 47,
+    "score": 43,
     "fund_score": 29,
     "tech_score": 8,
     "price": 353.0,
@@ -2706,10 +2706,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MDB": {
-    "score": 32,
+    "score": 30,
     "fund_score": 17,
     "tech_score": 7,
     "price": 427.69,
@@ -2769,10 +2769,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ESTC": {
-    "score": 45,
+    "score": 40,
     "fund_score": 33,
     "tech_score": 7,
     "price": 89.22,
@@ -2832,10 +2832,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GTLB": {
-    "score": 28,
+    "score": 26,
     "fund_score": 17,
     "tech_score": 6,
     "price": 48.82,
@@ -2895,10 +2895,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DOCN": {
-    "score": 45,
+    "score": 41,
     "fund_score": 29,
     "tech_score": 8,
     "price": 146.0,
@@ -2958,10 +2958,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DBX": {
-    "score": 35,
+    "score": 33,
     "fund_score": 20,
     "tech_score": 10,
     "price": 33.9,
@@ -3021,10 +3021,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BOX": {
-    "score": 46,
+    "score": 40,
     "fund_score": 37,
     "tech_score": 7,
     "price": 32.87,
@@ -3084,10 +3084,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SHOP": {
-    "score": 52,
+    "score": 48,
     "fund_score": 31,
     "tech_score": 11,
     "price": 147.74,
@@ -3147,10 +3147,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "HUBS": {
-    "score": 36,
+    "score": 32,
     "fund_score": 23,
     "tech_score": 5,
     "price": 217.88,
@@ -3210,10 +3210,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ZM": {
-    "score": 45,
+    "score": 39,
     "fund_score": 35,
     "tech_score": 5,
     "price": 90.95,
@@ -3273,10 +3273,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DOCU": {
-    "score": 50,
+    "score": 45,
     "fund_score": 35,
     "tech_score": 10,
     "price": 66.76,
@@ -3336,10 +3336,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "APPN": {
-    "score": 20,
+    "score": 18,
     "fund_score": 13,
     "tech_score": 5,
     "price": 36.9,
@@ -3399,10 +3399,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "OKTA": {
-    "score": 35,
+    "score": 33,
     "fund_score": 19,
     "tech_score": 8,
     "price": 196.62,
@@ -3462,10 +3462,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "VRNS": {
-    "score": 25,
+    "score": 23,
     "fund_score": 14,
     "tech_score": 6,
     "price": 47.29,
@@ -3525,10 +3525,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "QLYS": {
-    "score": 53,
+    "score": 47,
     "fund_score": 39,
     "tech_score": 9,
     "price": 183.32,
@@ -3588,10 +3588,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "RPD": {
-    "score": 27,
+    "score": 25,
     "fund_score": 18,
     "tech_score": 7,
     "price": 12.85,
@@ -3651,10 +3651,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TENB": {
-    "score": 26,
+    "score": 25,
     "fund_score": 14,
     "tech_score": 7,
     "price": 35.91,
@@ -3714,10 +3714,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "S": {
-    "score": 30,
+    "score": 28,
     "fund_score": 17,
     "tech_score": 8,
     "price": 23.85,
@@ -3777,10 +3777,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CHKP": {
-    "score": 49,
+    "score": 43,
     "fund_score": 36,
     "tech_score": 8,
     "price": 137.13,
@@ -3840,10 +3840,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BILL": {
-    "score": 32,
+    "score": 29,
     "fund_score": 20,
     "tech_score": 7,
     "price": 46.49,
@@ -3903,10 +3903,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "VEEV": {
-    "score": 58,
+    "score": 51,
     "fund_score": 42,
     "tech_score": 8,
     "price": 260.91,
@@ -3966,10 +3966,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PLTR": {
-    "score": 65,
+    "score": 58,
     "fund_score": 45,
     "tech_score": 10,
     "price": 184.99,
@@ -3977,7 +3977,7 @@
     "market_cap": 444541796352,
     "sector": "Technology",
     "company_name": "Palantir Technologies Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 164.5500030517578,
     "target_price": 188.3699951171875,
     "stop_loss": 156.3225028991699,
@@ -4029,10 +4029,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AI": {
-    "score": 11,
+    "score": 12,
     "fund_score": 2,
     "tech_score": 7,
     "price": 10.85,
@@ -4092,10 +4092,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PATH": {
-    "score": 49,
+    "score": 44,
     "fund_score": 34,
     "tech_score": 7,
     "price": 13.25,
@@ -4155,10 +4155,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "U": {
-    "score": 31,
+    "score": 28,
     "fund_score": 18,
     "tech_score": 5,
     "price": 43.11,
@@ -4218,10 +4218,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AAPL": {
-    "score": 60,
+    "score": 54,
     "fund_score": 39,
     "tech_score": 11,
     "price": 339.75,
@@ -4229,7 +4229,7 @@
     "market_cap": 4958372495360,
     "sector": "Technology",
     "company_name": "Apple Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 319.0748358849152,
     "target_price": 344.2730974331505,
     "stop_loss": 306.80099395751955,
@@ -4281,10 +4281,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DELL": {
-    "score": 42,
+    "score": 39,
     "fund_score": 24,
     "tech_score": 8,
     "price": 548.92,
@@ -4318,7 +4318,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 62.80244160316548,
+    "rsi_value": 62.802441604183855,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4344,10 +4344,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "HPE": {
-    "score": 52,
+    "score": 48,
     "fund_score": 31,
     "tech_score": 11,
     "price": 61.03,
@@ -4381,7 +4381,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 60.80523611921831,
+    "rsi_value": 60.805236119201105,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4407,10 +4407,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SMCI": {
-    "score": 57,
+    "score": 51,
     "fund_score": 38,
     "tech_score": 9,
     "price": 41.54,
@@ -4470,10 +4470,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ANET": {
-    "score": 70,
+    "score": 64,
     "fund_score": 45,
     "tech_score": 15,
     "price": 205.19,
@@ -4481,7 +4481,7 @@
     "market_cap": 258790703104,
     "sector": "Technology",
     "company_name": "Arista Networks, Inc.",
-    "verdict": "Buy",
+    "verdict": "Hold",
     "buy_price": 186.11000061035156,
     "target_price": 206.1300048828125,
     "stop_loss": 181.00170181274413,
@@ -4533,10 +4533,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CSCO": {
-    "score": 66,
+    "score": 61,
     "fund_score": 41,
     "tech_score": 15,
     "price": 106.44,
@@ -4570,7 +4570,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 50.93373792255135,
+    "rsi_value": 50.93373792319151,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4596,10 +4596,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AKAM": {
-    "score": 28,
+    "score": 26,
     "fund_score": 14,
     "tech_score": 6,
     "price": 118.34,
@@ -4659,10 +4659,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NTAP": {
-    "score": 64,
+    "score": 59,
     "fund_score": 41,
     "tech_score": 15,
     "price": 192.91,
@@ -4670,7 +4670,7 @@
     "market_cap": 37891190784,
     "sector": "Technology",
     "company_name": "NetApp, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 161.0,
     "target_price": 199.6199951171875,
     "stop_loss": 154.69739456176757,
@@ -4696,7 +4696,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.76301028511878,
+    "rsi_value": 58.763010285126896,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4722,10 +4722,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "STX": {
-    "score": 70,
+    "score": 64,
     "fund_score": 46,
     "tech_score": 14,
     "price": 919.84,
@@ -4733,7 +4733,7 @@
     "market_cap": 209165189120,
     "sector": "Technology",
     "company_name": "Seagate Technology Holdings PLC",
-    "verdict": "Buy",
+    "verdict": "Hold",
     "buy_price": 786.010009765625,
     "target_price": 921.780029296875,
     "stop_loss": 766.26,
@@ -4759,7 +4759,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 55.04151586767102,
+    "rsi_value": 55.04151586770885,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4785,10 +4785,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WDC": {
-    "score": 70,
+    "score": 64,
     "fund_score": 46,
     "tech_score": 14,
     "price": 464.6,
@@ -4796,7 +4796,7 @@
     "market_cap": 167507312640,
     "sector": "Technology",
     "company_name": "Western Digital Corporation",
-    "verdict": "Buy",
+    "verdict": "Hold",
     "buy_price": 430.3818375771855,
     "target_price": 479.696023696328,
     "stop_loss": 417.7547828687646,
@@ -4822,7 +4822,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 47.609043532191315,
+    "rsi_value": 47.6090435378057,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4848,10 +4848,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ADP": {
-    "score": 49,
+    "score": 44,
     "fund_score": 34,
     "tech_score": 7,
     "price": 269.64,
@@ -4885,7 +4885,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 47.84591811568824,
+    "rsi_value": 47.84591813437501,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4911,10 +4911,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PAYX": {
-    "score": 55,
+    "score": 48,
     "fund_score": 40,
     "tech_score": 7,
     "price": 114.53,
@@ -4948,7 +4948,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 39.82580023571114,
+    "rsi_value": 39.825800243853685,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4974,10 +4974,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GOOGL": {
-    "score": 56,
+    "score": 51,
     "fund_score": 39,
     "tech_score": 12,
     "price": 351.16,
@@ -5011,7 +5011,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.8969533403358,
+    "rsi_value": 58.896953307975146,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5037,10 +5037,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GOOG": {
-    "score": 56,
+    "score": 51,
     "fund_score": 39,
     "tech_score": 12,
     "price": 347.41,
@@ -5074,7 +5074,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.616055232873556,
+    "rsi_value": 58.61605519154273,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5100,10 +5100,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "META": {
-    "score": 52,
+    "score": 45,
     "fund_score": 44,
     "tech_score": 11,
     "price": 736.595,
@@ -5137,7 +5137,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 77.87283476905739,
+    "rsi_value": 77.87283471952635,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5163,10 +5163,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NFLX": {
-    "score": 58,
+    "score": 51,
     "fund_score": 45,
     "tech_score": 8,
     "price": 72.16,
@@ -5226,10 +5226,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TTD": {
-    "score": 37,
+    "score": 33,
     "fund_score": 28,
     "tech_score": 6,
     "price": 13.18,
@@ -5289,10 +5289,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TTWO": {
-    "score": 15,
+    "score": 14,
     "fund_score": 8,
     "tech_score": 4,
     "price": 205.53,
@@ -5352,10 +5352,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "RBLX": {
-    "score": 44,
+    "score": 40,
     "fund_score": 30,
     "tech_score": 11,
     "price": 49.87,
@@ -5415,10 +5415,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NTES": {
-    "score": 47,
+    "score": 41,
     "fund_score": 39,
     "tech_score": 8,
     "price": 118.76,
@@ -5452,7 +5452,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 44.44291065289089,
+    "rsi_value": 44.442910653072786,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5464,9 +5464,9 @@
       "buy_count": 92,
       "hold_count": 3,
       "sell_count": 0,
-      "target_low": 132.61317,
-      "target_mean": 162.92459,
-      "target_high": 200.92905,
+      "target_low": 132.42131,
+      "target_mean": 162.68889,
+      "target_high": 200.63835,
       "news": [
         {
           "title": "",
@@ -5478,10 +5478,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WBD": {
-    "score": 14,
+    "score": 13,
     "fund_score": 11,
     "tech_score": 8,
     "price": 30.83,
@@ -5541,10 +5541,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SIRI": {
-    "score": 27,
+    "score": 24,
     "fund_score": 22,
     "tech_score": 5,
     "price": 26.53,
@@ -5578,7 +5578,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 39.0092441949051,
+    "rsi_value": 39.00924419502723,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5604,10 +5604,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "FOX": {
-    "score": 31,
+    "score": 26,
     "fund_score": 29,
     "tech_score": 5,
     "price": 57.32,
@@ -5641,7 +5641,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 48.071590982872365,
+    "rsi_value": 48.071590982869324,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5664,10 +5664,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "FOXA": {
-    "score": 42,
+    "score": 37,
     "fund_score": 32,
     "tech_score": 7,
     "price": 64.25,
@@ -5701,7 +5701,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 48.00882032900826,
+    "rsi_value": 48.008820329093446,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5727,10 +5727,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AMZN": {
-    "score": 54,
+    "score": 49,
     "fund_score": 34,
     "tech_score": 10,
     "price": 254.98,
@@ -5790,10 +5790,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TSLA": {
-    "score": 33,
+    "score": 32,
     "fund_score": 14,
     "tech_score": 9,
     "price": 378.9,
@@ -5853,10 +5853,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MELI": {
-    "score": 50,
+    "score": 46,
     "fund_score": 32,
     "tech_score": 10,
     "price": 1826.58,
@@ -5916,10 +5916,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ABNB": {
-    "score": 63,
+    "score": 56,
     "fund_score": 44,
     "tech_score": 11,
     "price": 161.81,
@@ -5927,7 +5927,7 @@
     "market_cap": 96889503744,
     "sector": "Consumer Cyclical",
     "company_name": "Airbnb, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 141.24000549316406,
     "target_price": 187.1199951171875,
     "stop_loss": 134.36280120849608,
@@ -5979,10 +5979,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BKNG": {
-    "score": 45,
+    "score": 40,
     "fund_score": 29,
     "tech_score": 3,
     "price": 164.22,
@@ -6016,7 +6016,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 28.627029224043483,
+    "rsi_value": 28.6270291961835,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6042,10 +6042,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DASH": {
-    "score": 44,
+    "score": 39,
     "fund_score": 30,
     "tech_score": 6,
     "price": 192.21,
@@ -6105,10 +6105,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PDD": {
-    "score": 57,
+    "score": 50,
     "fund_score": 41,
     "tech_score": 8,
     "price": 80.35,
@@ -6154,9 +6154,9 @@
       "buy_count": 66,
       "hold_count": 41,
       "sell_count": 4,
-      "target_low": 85.23963,
-      "target_mean": 114.6125,
-      "target_high": 150.38484,
+      "target_low": 85.23328,
+      "target_mean": 114.60395,
+      "target_high": 150.37363,
       "news": [
         {
           "title": "",
@@ -6168,7 +6168,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "JD": {
     "score": 20,
@@ -6217,9 +6217,9 @@
       "buy_count": 99,
       "hold_count": 7,
       "sell_count": 3,
-      "target_low": 25.15073,
-      "target_mean": 39.436535,
-      "target_high": 53.320206,
+      "target_low": 25.148853,
+      "target_mean": 39.433594,
+      "target_high": 53.316227,
       "news": [
         {
           "title": "",
@@ -6231,10 +6231,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "LULU": {
-    "score": 48,
+    "score": 43,
     "fund_score": 33,
     "tech_score": 7,
     "price": 103.73,
@@ -6294,10 +6294,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CPRT": {
-    "score": 43,
+    "score": 37,
     "fund_score": 33,
     "tech_score": 5,
     "price": 28.795,
@@ -6357,10 +6357,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "LLY": {
-    "score": 67,
+    "score": 61,
     "fund_score": 44,
     "tech_score": 13,
     "price": 1170.14,
@@ -6394,7 +6394,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 51.00261850601746,
+    "rsi_value": 51.00261851080124,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6420,7 +6420,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MRNA": {
     "score": 22,
@@ -6483,10 +6483,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "REGN": {
-    "score": 54,
+    "score": 48,
     "fund_score": 39,
     "tech_score": 7,
     "price": 803.9,
@@ -6520,7 +6520,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 52.128831648472726,
+    "rsi_value": 52.12883165599898,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6546,10 +6546,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "VRTX": {
-    "score": 60,
+    "score": 54,
     "fund_score": 40,
     "tech_score": 12,
     "price": 514.99,
@@ -6557,7 +6557,7 @@
     "market_cap": 130529837056,
     "sector": "Healthcare",
     "company_name": "Vertex Pharmaceuticals Incorpor",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 469.6000061035156,
     "target_price": 533.6699829101562,
     "stop_loss": 460.2080059814453,
@@ -6609,10 +6609,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BIIB": {
-    "score": 30,
+    "score": 28,
     "fund_score": 18,
     "tech_score": 7,
     "price": 225.36,
@@ -6672,10 +6672,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ISRG": {
-    "score": 60,
+    "score": 54,
     "fund_score": 39,
     "tech_score": 11,
     "price": 402.09,
@@ -6683,7 +6683,7 @@
     "market_cap": 144060022784,
     "sector": "Healthcare",
     "company_name": "Intuitive Surgical, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 345.25,
     "target_price": 405.3399963378906,
     "stop_loss": 327.9875,
@@ -6735,10 +6735,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DXCM": {
-    "score": 65,
+    "score": 59,
     "fund_score": 44,
     "tech_score": 13,
     "price": 89.53,
@@ -6746,7 +6746,7 @@
     "market_cap": 33785108480,
     "sector": "Healthcare",
     "company_name": "DexCom, Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 87.51000213623047,
     "target_price": 92.58999633789062,
     "stop_loss": 83.13450202941894,
@@ -6798,10 +6798,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ALGN": {
-    "score": 36,
+    "score": 31,
     "fund_score": 27,
     "tech_score": 4,
     "price": 153.29,
@@ -6861,10 +6861,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "IDXX": {
-    "score": 59,
+    "score": 53,
     "fund_score": 40,
     "tech_score": 11,
     "price": 521.5,
@@ -6924,10 +6924,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PODD": {
-    "score": 51,
+    "score": 45,
     "fund_score": 38,
     "tech_score": 8,
     "price": 139.38,
@@ -6987,10 +6987,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ILMN": {
-    "score": 53,
+    "score": 47,
     "fund_score": 37,
     "tech_score": 8,
     "price": 247.46,
@@ -7050,10 +7050,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TECH": {
-    "score": 37,
+    "score": 34,
     "fund_score": 23,
     "tech_score": 6,
     "price": 72.55,
@@ -7087,7 +7087,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 63.35022391765261,
+    "rsi_value": 63.35022391764416,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7113,10 +7113,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TMO": {
-    "score": 47,
+    "score": 43,
     "fund_score": 29,
     "tech_score": 8,
     "price": 658.52,
@@ -7150,7 +7150,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 69.79181416210115,
+    "rsi_value": 69.79181416155267,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7176,10 +7176,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DHR": {
-    "score": 43,
+    "score": 40,
     "fund_score": 25,
     "tech_score": 8,
     "price": 221.09,
@@ -7213,7 +7213,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 61.065602163171036,
+    "rsi_value": 61.06560216346648,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7239,10 +7239,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "A": {
-    "score": 56,
+    "score": 51,
     "fund_score": 37,
     "tech_score": 11,
     "price": 167.26,
@@ -7276,7 +7276,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 68.9638618152697,
+    "rsi_value": 68.96386181494509,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7302,7 +7302,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SMR": {
     "score": 10,
@@ -7365,7 +7365,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "OKLO": {
     "score": 16,
@@ -7428,10 +7428,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GEV": {
-    "score": 62,
+    "score": 56,
     "fund_score": 42,
     "tech_score": 13,
     "price": 950.28,
@@ -7439,7 +7439,7 @@
     "market_cap": 253091479552,
     "sector": "Industrials",
     "company_name": "GE Vernova Inc.",
-    "verdict": "Hold",
+    "verdict": "Avoid",
     "buy_price": 897.6799926757812,
     "target_price": 983.3400268554688,
     "stop_loss": 865.26,
@@ -7465,7 +7465,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 49.680917836334025,
+    "rsi_value": 49.680917836335425,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7491,10 +7491,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SYM": {
-    "score": 32,
+    "score": 29,
     "fund_score": 24,
     "tech_score": 9,
     "price": 45.07,
@@ -7554,10 +7554,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "VRSK": {
-    "score": 33,
+    "score": 28,
     "fund_score": 27,
     "tech_score": 4,
     "price": 171.94,
@@ -7591,7 +7591,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 38.75575742768068,
+    "rsi_value": 38.75575742664858,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7617,73 +7617,10 @@
         }
       ]
     },
-    "market_regime": "sideways"
-  },
-  "ABBV": {
-    "score": 54,
-    "fund_score": 32,
-    "tech_score": 12,
-    "price": 265.21,
-    "avg_volume": 6184674,
-    "market_cap": 468657176576,
-    "sector": "Healthcare",
-    "company_name": "AbbVie Inc.",
-    "verdict": "Avoid",
-    "buy_price": 246.77000427246094,
-    "target_price": 266.9700012207031,
-    "stop_loss": 239.05653165700804,
-    "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
-    "comment": "OPM:40.0%, FCF:26%, PEG\uc800\ud3c9\uac00(0.54)",
-    "contrarian_adjustment": 0,
-    "liquidity_bonus": 5,
-    "liquidity_tier": "Hot",
-    "rotation_bonus": 5,
-    "rotation_phase": "\uc218\uae09\uc720\uc785",
-    "sector_name": "\ud5ec\uc2a4\ucf00\uc5b4",
-    "roe_value": 0,
-    "opm_value": 40.035,
-    "revenue_growth_value": 10.2,
-    "peg_value": 0.54,
-    "fcf_margin_value": 26.2,
-    "fcf_score": 10,
-    "rs_score": 0,
-    "rs_ratio": NaN,
-    "dividend_yield_value": null,
-    "dividend_growth_score": 0,
-    "per_value": null,
-    "ev_ebitda_value": null,
-    "valuation_method": "PER",
-    "debt_equity_value": null,
-    "rsi_value": 59.6083295070154,
-    "ma5": NaN,
-    "ma20": NaN,
-    "ma60": NaN,
-    "ma120": NaN,
-    "atr_value": NaN,
-    "mfi_value": NaN,
-    "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 40.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 60\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 93\uba85 \uc911 73\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $279 (\ud604\uc7ac\uac00 \ub300\ube44 +5% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
-    "analyst_data": {
-      "buy_count": 73,
-      "hold_count": 17,
-      "sell_count": 3,
-      "target_low": 200.0,
-      "target_mean": 278.60715,
-      "target_high": 328.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
-    },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PEP": {
-    "score": 49,
+    "score": 42,
     "fund_score": 40,
     "tech_score": 4,
     "price": 131.19,
@@ -7717,7 +7654,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 26.154693047741716,
+    "rsi_value": 26.1546932922692,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7743,6 +7680,69 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
+  },
+  "ABBV": {
+    "score": 50,
+    "fund_score": 32,
+    "tech_score": 12,
+    "price": 265.21,
+    "avg_volume": 6184674,
+    "market_cap": 468657176576,
+    "sector": "Healthcare",
+    "company_name": "AbbVie Inc.",
+    "verdict": "Avoid",
+    "buy_price": 246.77000427246094,
+    "target_price": 266.9700012207031,
+    "stop_loss": 239.05653165700804,
+    "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
+    "comment": "OPM:40.0%, FCF:26%, PEG\uc800\ud3c9\uac00(0.54)",
+    "contrarian_adjustment": 0,
+    "liquidity_bonus": 5,
+    "liquidity_tier": "Hot",
+    "rotation_bonus": 5,
+    "rotation_phase": "\uc218\uae09\uc720\uc785",
+    "sector_name": "\ud5ec\uc2a4\ucf00\uc5b4",
+    "roe_value": 0,
+    "opm_value": 40.035,
+    "revenue_growth_value": 10.2,
+    "peg_value": 0.54,
+    "fcf_margin_value": 26.2,
+    "fcf_score": 10,
+    "rs_score": 0,
+    "rs_ratio": NaN,
+    "dividend_yield_value": null,
+    "dividend_growth_score": 0,
+    "per_value": null,
+    "ev_ebitda_value": null,
+    "valuation_method": "PER",
+    "debt_equity_value": null,
+    "rsi_value": 59.60832950362536,
+    "ma5": NaN,
+    "ma20": NaN,
+    "ma60": NaN,
+    "ma120": NaN,
+    "atr_value": NaN,
+    "mfi_value": NaN,
+    "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 40.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 60\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 93\uba85 \uc911 73\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $279 (\ud604\uc7ac\uac00 \ub300\ube44 +5% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
+    "analyst_data": {
+      "buy_count": 73,
+      "hold_count": 17,
+      "sell_count": 3,
+      "target_low": 200.0,
+      "target_mean": 278.60715,
+      "target_high": 328.0,
+      "news": [
+        {
+          "title": "",
+          "publisher": ""
+        },
+        {
+          "title": "",
+          "publisher": ""
+        }
+      ]
+    },
+    "market_regime": "neutral"
   }
 }

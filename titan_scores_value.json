@@ -34,7 +34,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 48.121458441899755,
+    "rsi_value": 48.121458442625205,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -60,7 +60,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BAC": {
     "score": 73,
@@ -123,7 +123,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WFC": {
     "score": 73,
@@ -160,7 +160,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 46.55730556522821,
+    "rsi_value": 46.557305565118696,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -186,7 +186,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "C": {
     "score": 66,
@@ -223,7 +223,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "P/B",
     "debt_equity_value": null,
-    "rsi_value": 50.44110670757838,
+    "rsi_value": 50.441106707586144,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -249,7 +249,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GS": {
     "score": 61,
@@ -286,7 +286,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 725.381,
-    "rsi_value": 38.773841590163556,
+    "rsi_value": 38.773841590547065,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -312,7 +312,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MS": {
     "score": 78,
@@ -349,7 +349,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 517.282,
-    "rsi_value": 42.27511752764086,
+    "rsi_value": 42.27511752764109,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -375,7 +375,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "USB": {
     "score": 73,
@@ -412,7 +412,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 39.371044424057466,
+    "rsi_value": 39.37104442337687,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -438,7 +438,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PNC": {
     "score": 82,
@@ -501,7 +501,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TFC": {
     "score": 77,
@@ -538,7 +538,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "P/B",
     "debt_equity_value": null,
-    "rsi_value": 40.66034034671965,
+    "rsi_value": 40.66034032414457,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -564,7 +564,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "COF": {
     "score": 57,
@@ -601,7 +601,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "P/B",
     "debt_equity_value": null,
-    "rsi_value": 40.77168945381328,
+    "rsi_value": 40.771689453811895,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -627,7 +627,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SCHW": {
     "score": 78,
@@ -664,7 +664,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 151.106,
-    "rsi_value": 48.73750951875233,
+    "rsi_value": 48.73750951882619,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -690,7 +690,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AXP": {
     "score": 83,
@@ -727,7 +727,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 172.38,
-    "rsi_value": 34.72028776337224,
+    "rsi_value": 34.72028776336812,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -753,7 +753,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BRK-B": {
     "score": 73,
@@ -816,7 +816,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PGR": {
     "score": 95,
@@ -853,7 +853,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 24.428,
-    "rsi_value": 42.67010532822459,
+    "rsi_value": 42.67010532822352,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -879,7 +879,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TRV": {
     "score": 89,
@@ -916,7 +916,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 27.378,
-    "rsi_value": 51.06937059249058,
+    "rsi_value": 51.069370592268086,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -942,7 +942,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ALL": {
     "score": 93,
@@ -979,7 +979,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 22.261,
-    "rsi_value": 35.65850810936912,
+    "rsi_value": 35.65850810936786,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1005,7 +1005,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CB": {
     "score": 84,
@@ -1068,7 +1068,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MET": {
     "score": 71,
@@ -1105,7 +1105,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 179.933,
-    "rsi_value": 51.19165936447102,
+    "rsi_value": 51.19165936447193,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1131,7 +1131,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AFL": {
     "score": 83,
@@ -1168,7 +1168,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 53.365,
-    "rsi_value": 40.60023280358257,
+    "rsi_value": 40.60023276523254,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1194,7 +1194,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AON": {
     "score": 86,
@@ -1231,7 +1231,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 163.481,
-    "rsi_value": 27.884687397596508,
+    "rsi_value": 27.884687392888466,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1257,7 +1257,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AJG": {
     "score": 55,
@@ -1294,7 +1294,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "P/B",
     "debt_equity_value": 59.401,
-    "rsi_value": 37.85167282100413,
+    "rsi_value": 37.851672821000086,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1320,7 +1320,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SPGI": {
     "score": 67,
@@ -1357,7 +1357,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 42.98,
-    "rsi_value": 39.88240979297865,
+    "rsi_value": 39.88240981947572,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1383,7 +1383,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ICE": {
     "score": 62,
@@ -1420,7 +1420,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 69.226,
-    "rsi_value": 49.23775455188404,
+    "rsi_value": 49.237754554015275,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1446,11 +1446,11 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CME": {
-    "score": 62,
-    "fund_score": 39,
+    "score": 60,
+    "fund_score": 38,
     "tech_score": 7,
     "price": 267.21,
     "avg_volume": 2521030,
@@ -1479,11 +1479,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.95,
     "dividend_growth_score": 2,
-    "per_value": 22.664122,
+    "per_value": 23.357517,
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 14.587,
-    "rsi_value": 53.01851592929701,
+    "rsi_value": 53.018515929588645,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1509,7 +1509,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NDAQ": {
     "score": 61,
@@ -1542,11 +1542,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.23,
     "dividend_growth_score": 5,
-    "per_value": 27.55102,
+    "per_value": 27.631578,
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": 77.687,
-    "rsi_value": 52.3342139093774,
+    "rsi_value": 52.33421391805363,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1572,7 +1572,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PLD": {
     "score": 62,
@@ -1609,7 +1609,7 @@
     "ev_ebitda_value": 24.724,
     "valuation_method": "PER",
     "debt_equity_value": 63.823,
-    "rsi_value": 45.36295231647352,
+    "rsi_value": 45.362952316483565,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1635,7 +1635,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AMT": {
     "score": 71,
@@ -1672,7 +1672,7 @@
     "ev_ebitda_value": 18.654,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 438.721,
-    "rsi_value": 49.09240254346445,
+    "rsi_value": 49.09240254346437,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1698,7 +1698,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DLR": {
     "score": 55,
@@ -1735,7 +1735,7 @@
     "ev_ebitda_value": 27.944,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 67.944,
-    "rsi_value": 50.80870461974148,
+    "rsi_value": 50.80870460333578,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1761,7 +1761,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "O": {
     "score": 73,
@@ -1798,7 +1798,7 @@
     "ev_ebitda_value": 16.171,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 74.722,
-    "rsi_value": 19.17351358390522,
+    "rsi_value": 19.173513697651032,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1824,7 +1824,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WELL": {
     "score": 51,
@@ -1861,7 +1861,7 @@
     "ev_ebitda_value": 55.396,
     "valuation_method": "PER",
     "debt_equity_value": 41.375,
-    "rsi_value": 45.60581645952012,
+    "rsi_value": 45.60581645940541,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1887,7 +1887,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SPG": {
     "score": 70,
@@ -1924,7 +1924,7 @@
     "ev_ebitda_value": 18.83,
     "valuation_method": "PER",
     "debt_equity_value": 503.504,
-    "rsi_value": 36.73264555068376,
+    "rsi_value": 36.73264555068348,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -1950,7 +1950,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "JNJ": {
     "score": 92,
@@ -1987,7 +1987,7 @@
     "ev_ebitda_value": 19.414,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 57.709,
-    "rsi_value": 54.21676416358209,
+    "rsi_value": 54.21676416354339,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2013,7 +2013,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "UNH": {
     "score": 92,
@@ -2050,7 +2050,7 @@
     "ev_ebitda_value": 14.397,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 69.211,
-    "rsi_value": 39.359494358697084,
+    "rsi_value": 39.35949445032505,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2076,7 +2076,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ABBV": {
     "score": 76,
@@ -2113,7 +2113,7 @@
     "ev_ebitda_value": 17.327,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 59.6083295070153,
+    "rsi_value": 59.60832950362516,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2139,7 +2139,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MRK": {
     "score": 70,
@@ -2176,7 +2176,7 @@
     "ev_ebitda_value": 14.518,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 128.408,
-    "rsi_value": 61.414405817363054,
+    "rsi_value": 61.414405980491686,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2202,7 +2202,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PFE": {
     "score": 84,
@@ -2239,7 +2239,7 @@
     "ev_ebitda_value": 8.323,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 74.253,
-    "rsi_value": 53.821640519487055,
+    "rsi_value": 53.821640519462555,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2265,7 +2265,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BMY": {
     "score": 92,
@@ -2281,7 +2281,7 @@
     "target_price": 68.0999984741211,
     "stop_loss": 53.94099884033203,
     "strategy": "\ud83d\udd04 \ubc18\ub4f1\ub300\uae30(\uc2a4\uc719\uc800\uc810)",
-    "comment": "\ubc30\ub2f94.0%, \ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, PER:13.7",
+    "comment": "\ubc30\ub2f94.0%, \ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, PER:13.8",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 3,
     "liquidity_tier": "Active",
@@ -2298,11 +2298,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 4.05,
     "dividend_growth_score": 5,
-    "per_value": 13.711453,
+    "per_value": 13.80266,
     "ev_ebitda_value": 8.513,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 201.859,
-    "rsi_value": 38.77254129294804,
+    "rsi_value": 38.7725412929479,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2328,7 +2328,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AMGN": {
     "score": 82,
@@ -2365,7 +2365,7 @@
     "ev_ebitda_value": 15.352,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 490.281,
-    "rsi_value": 45.11752643128197,
+    "rsi_value": 45.117526431352054,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2391,7 +2391,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GILD": {
     "score": 75,
@@ -2428,7 +2428,7 @@
     "ev_ebitda_value": 14.423,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 223.465,
-    "rsi_value": 63.320964705838776,
+    "rsi_value": 63.32096470432032,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2454,7 +2454,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CVS": {
     "score": 92,
@@ -2491,7 +2491,7 @@
     "ev_ebitda_value": 10.428,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 95.503,
-    "rsi_value": 27.389555339706746,
+    "rsi_value": 27.389555339780486,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2517,7 +2517,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CI": {
     "score": 90,
@@ -2554,7 +2554,7 @@
     "ev_ebitda_value": 7.622,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 74.29,
-    "rsi_value": 44.246348602376294,
+    "rsi_value": 44.246348602403074,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2580,7 +2580,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ELV": {
     "score": 80,
@@ -2617,7 +2617,7 @@
     "ev_ebitda_value": 9.724,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 68.953,
-    "rsi_value": 53.231088391408456,
+    "rsi_value": 53.23108842471671,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2643,7 +2643,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MDT": {
     "score": 91,
@@ -2680,7 +2680,7 @@
     "ev_ebitda_value": 13.073,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 55.365,
-    "rsi_value": 51.792711470142564,
+    "rsi_value": 51.79271147014255,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2706,7 +2706,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SYK": {
     "score": 83,
@@ -2739,7 +2739,7 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.28,
     "dividend_growth_score": 5,
-    "per_value": 28.506737,
+    "per_value": 28.418386,
     "ev_ebitda_value": 15.928,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 64.391,
@@ -2769,7 +2769,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BSX": {
     "score": 68,
@@ -2832,7 +2832,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ABT": {
     "score": 92,
@@ -2869,7 +2869,7 @@
     "ev_ebitda_value": 17.738,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 63.212,
-    "rsi_value": 39.431413147071396,
+    "rsi_value": 39.431413147039756,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2895,7 +2895,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "HCA": {
     "score": 58,
@@ -2932,7 +2932,7 @@
     "ev_ebitda_value": 9.444,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 57.39587610761652,
+    "rsi_value": 57.39587615410657,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -2958,7 +2958,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MCK": {
     "score": 63,
@@ -2995,7 +2995,7 @@
     "ev_ebitda_value": 16.049,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 51.264174574998044,
+    "rsi_value": 51.26417457497475,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3021,7 +3021,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CAH": {
     "score": 69,
@@ -3058,7 +3058,7 @@
     "ev_ebitda_value": 13.417,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 36.9805106139292,
+    "rsi_value": 36.98051061413611,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3084,7 +3084,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PG": {
     "score": 86,
@@ -3121,7 +3121,7 @@
     "ev_ebitda_value": 14.972,
     "valuation_method": "PER",
     "debt_equity_value": 64.49,
-    "rsi_value": 51.30367964000847,
+    "rsi_value": 51.30367964610679,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3147,7 +3147,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "KO": {
     "score": 84,
@@ -3184,7 +3184,7 @@
     "ev_ebitda_value": 24.197,
     "valuation_method": "PER",
     "debt_equity_value": 115.519,
-    "rsi_value": 46.53709494358851,
+    "rsi_value": 46.53709489841972,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3210,7 +3210,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PEP": {
     "score": 89,
@@ -3247,7 +3247,7 @@
     "ev_ebitda_value": 11.743,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 238.949,
-    "rsi_value": 26.154693049878432,
+    "rsi_value": 26.154693047797835,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3273,7 +3273,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WMT": {
     "score": 79,
@@ -3310,7 +3310,7 @@
     "ev_ebitda_value": 21.414,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 71.653,
-    "rsi_value": 48.51563585760269,
+    "rsi_value": 48.51563585775736,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3336,7 +3336,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "COST": {
     "score": 70,
@@ -3373,7 +3373,7 @@
     "ev_ebitda_value": 28.071,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 24.567,
-    "rsi_value": 37.9549721236567,
+    "rsi_value": 37.95497212664429,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3399,7 +3399,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PM": {
     "score": 55,
@@ -3436,7 +3436,7 @@
     "ev_ebitda_value": 18.96,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 46.86369426066852,
+    "rsi_value": 46.86369426068832,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3462,7 +3462,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MO": {
     "score": 65,
@@ -3499,7 +3499,7 @@
     "ev_ebitda_value": 8.682,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 52.1205434444362,
+    "rsi_value": 52.120543444435704,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3525,7 +3525,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CL": {
     "score": 74,
@@ -3562,7 +3562,7 @@
     "ev_ebitda_value": 15.278,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 1388.163,
-    "rsi_value": 35.494967254883036,
+    "rsi_value": 35.49496725469487,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3588,7 +3588,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MDLZ": {
     "score": 69,
@@ -3604,7 +3604,7 @@
     "target_price": 63.040000915527344,
     "stop_loss": 58.83050148010254,
     "strategy": "\ud83d\udcb0 \ubd84\ud560\ub9e4\uc218(\uc2a4\uc719\uc800\uc810)",
-    "comment": "\ubc30\ub2f93.4%, \ubc30\ub2f9\uc131\uc7a5\ub8253\uc810, PER:22.4",
+    "comment": "\ubc30\ub2f93.4%, \ubc30\ub2f9\uc131\uc7a5\ub8253\uc810, PER:22.1",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 3,
     "liquidity_tier": "Active",
@@ -3621,11 +3621,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 3.41,
     "dividend_growth_score": 3,
-    "per_value": 22.373627,
+    "per_value": 22.050543,
     "ev_ebitda_value": 16.176,
     "valuation_method": "PER",
     "debt_equity_value": 82.643,
-    "rsi_value": 36.536878595114864,
+    "rsi_value": 36.536878595820134,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3651,7 +3651,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MNST": {
     "score": 56,
@@ -3714,7 +3714,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TGT": {
     "score": 80,
@@ -3751,7 +3751,7 @@
     "ev_ebitda_value": 10.011,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 107.583,
-    "rsi_value": 51.18977209713015,
+    "rsi_value": 51.189772095789046,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3777,7 +3777,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ORLY": {
     "score": 29,
@@ -3840,7 +3840,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "HD": {
     "score": 72,
@@ -3877,7 +3877,7 @@
     "ev_ebitda_value": 14.839,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 380.261,
-    "rsi_value": 28.01441001917179,
+    "rsi_value": 28.014410009585447,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3903,7 +3903,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "LOW": {
     "score": 67,
@@ -3940,7 +3940,7 @@
     "ev_ebitda_value": 11.695,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 29.24501825984578,
+    "rsi_value": 29.245018259845438,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -3966,7 +3966,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TJX": {
     "score": 76,
@@ -4003,7 +4003,7 @@
     "ev_ebitda_value": 17.093,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 134.419,
-    "rsi_value": 42.10967409801293,
+    "rsi_value": 42.10967413036904,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4029,7 +4029,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ROST": {
     "score": 63,
@@ -4066,7 +4066,7 @@
     "ev_ebitda_value": 20.433,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 70.281,
-    "rsi_value": 49.432970052760574,
+    "rsi_value": 49.43297005276177,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4092,7 +4092,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NKE": {
     "score": 75,
@@ -4129,7 +4129,7 @@
     "ev_ebitda_value": 11.274,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 74.289,
-    "rsi_value": 37.48693486474471,
+    "rsi_value": 37.48693486475445,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4155,7 +4155,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MCD": {
     "score": 71,
@@ -4192,7 +4192,7 @@
     "ev_ebitda_value": 15.468,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 31.938151071080895,
+    "rsi_value": 31.938151070799847,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4218,7 +4218,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SBUX": {
     "score": 39,
@@ -4255,7 +4255,7 @@
     "ev_ebitda_value": 22.557,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": null,
-    "rsi_value": 27.251792578098645,
+    "rsi_value": 27.25179257809785,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4281,7 +4281,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "F": {
     "score": 38,
@@ -4318,7 +4318,7 @@
     "ev_ebitda_value": 25.311,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 456.708,
-    "rsi_value": 40.016519813012174,
+    "rsi_value": 40.0165198128944,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4344,7 +4344,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GM": {
     "score": 46,
@@ -4381,7 +4381,7 @@
     "ev_ebitda_value": 10.869,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 202.341,
-    "rsi_value": 46.773197633608305,
+    "rsi_value": 46.773197633649524,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4407,7 +4407,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "XOM": {
     "score": 78,
@@ -4444,7 +4444,7 @@
     "ev_ebitda_value": 10.173,
     "valuation_method": "P/B",
     "debt_equity_value": 15.921,
-    "rsi_value": 44.859979959500556,
+    "rsi_value": 44.859979955631175,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4470,7 +4470,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CVX": {
     "score": 82,
@@ -4503,11 +4503,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 3.52,
     "dividend_growth_score": 5,
-    "per_value": 19.481232,
+    "per_value": 19.613373,
     "ev_ebitda_value": 8.513,
     "valuation_method": "P/B",
     "debt_equity_value": 18.959,
-    "rsi_value": 46.70319890825894,
+    "rsi_value": 46.703198908192235,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4533,7 +4533,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "COP": {
     "score": 76,
@@ -4570,7 +4570,7 @@
     "ev_ebitda_value": 6.202,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 35.639,
-    "rsi_value": 43.22574634194364,
+    "rsi_value": 43.2257463421361,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4596,7 +4596,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SLB": {
     "score": 60,
@@ -4659,7 +4659,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "EOG": {
     "score": 80,
@@ -4692,11 +4692,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 2.92,
     "dividend_growth_score": 5,
-    "per_value": 10.857588,
+    "per_value": 11.003155,
     "ev_ebitda_value": 5.279,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 25.891,
-    "rsi_value": 42.786241975073644,
+    "rsi_value": 42.78624197509554,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4722,7 +4722,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MPC": {
     "score": 77,
@@ -4759,7 +4759,7 @@
     "ev_ebitda_value": 9.261,
     "valuation_method": "PER",
     "debt_equity_value": 133.328,
-    "rsi_value": 62.688477577909325,
+    "rsi_value": 62.688477577875936,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4785,7 +4785,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PSX": {
     "score": 72,
@@ -4822,7 +4822,7 @@
     "ev_ebitda_value": 12.103,
     "valuation_method": "PER",
     "debt_equity_value": 62.884,
-    "rsi_value": 61.810268483096976,
+    "rsi_value": 61.810268457934804,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4848,7 +4848,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "VLO": {
     "score": 82,
@@ -4885,7 +4885,7 @@
     "ev_ebitda_value": 8.62,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 40.148,
-    "rsi_value": 63.420374966545204,
+    "rsi_value": 63.42037495147954,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4911,7 +4911,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "OXY": {
     "score": 74,
@@ -4948,7 +4948,7 @@
     "ev_ebitda_value": 5.517,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 34.511,
-    "rsi_value": 41.151678809112695,
+    "rsi_value": 41.15167885043567,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -4974,7 +4974,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DVN": {
     "score": 69,
@@ -5011,7 +5011,7 @@
     "ev_ebitda_value": 7.011,
     "valuation_method": "P/B",
     "debt_equity_value": 28.488,
-    "rsi_value": 48.893549094815036,
+    "rsi_value": 48.893549069562866,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5037,7 +5037,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "FANG": {
     "score": 65,
@@ -5074,7 +5074,7 @@
     "ev_ebitda_value": 5.934,
     "valuation_method": "P/B",
     "debt_equity_value": 28.678,
-    "rsi_value": 38.66520545622063,
+    "rsi_value": 38.66520545605239,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5100,7 +5100,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BKR": {
     "score": 61,
@@ -5137,7 +5137,7 @@
     "ev_ebitda_value": 11.623,
     "valuation_method": "PER",
     "debt_equity_value": 80.925,
-    "rsi_value": 37.941241929266326,
+    "rsi_value": 37.94124192892989,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5163,7 +5163,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TRGP": {
     "score": 51,
@@ -5196,7 +5196,7 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.77,
     "dividend_growth_score": 5,
-    "per_value": 27.0,
+    "per_value": 27.688911,
     "ev_ebitda_value": 14.567,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 515.794,
@@ -5226,7 +5226,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WMB": {
     "score": 54,
@@ -5263,7 +5263,7 @@
     "ev_ebitda_value": 17.009,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 200.371,
-    "rsi_value": 45.85330095137775,
+    "rsi_value": 45.853300999764315,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5289,7 +5289,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "LMT": {
     "score": 89,
@@ -5326,7 +5326,7 @@
     "ev_ebitda_value": 14.184,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 234.238,
-    "rsi_value": 44.34496459774791,
+    "rsi_value": 44.34496461523216,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5352,7 +5352,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "RTX": {
     "score": 80,
@@ -5389,7 +5389,7 @@
     "ev_ebitda_value": 18.228,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 57.02,
-    "rsi_value": 31.980565656110272,
+    "rsi_value": 31.980565655940538,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5415,7 +5415,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "BA": {
     "score": 39,
@@ -5478,7 +5478,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GD": {
     "score": 85,
@@ -5511,11 +5511,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.85,
     "dividend_growth_score": 5,
-    "per_value": 20.95119,
+    "per_value": 21.596857,
     "ev_ebitda_value": 14.761,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 35.335,
-    "rsi_value": 33.67404017403413,
+    "rsi_value": 33.67404017405305,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5541,7 +5541,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "HWM": {
     "score": 63,
@@ -5578,7 +5578,7 @@
     "ev_ebitda_value": 33.635,
     "valuation_method": "PER",
     "debt_equity_value": 81.368,
-    "rsi_value": 33.184403805575585,
+    "rsi_value": 33.184403799083114,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5604,7 +5604,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PWR": {
     "score": 49,
@@ -5641,7 +5641,7 @@
     "ev_ebitda_value": 33.765,
     "valuation_method": "PER",
     "debt_equity_value": 67.78,
-    "rsi_value": 52.53986824470506,
+    "rsi_value": 52.53986824469876,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5667,7 +5667,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "UNP": {
     "score": 80,
@@ -5704,7 +5704,7 @@
     "ev_ebitda_value": 14.908,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 150.772,
-    "rsi_value": 24.562891861404538,
+    "rsi_value": 24.562891892444924,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5730,7 +5730,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "UPS": {
     "score": 80,
@@ -5767,7 +5767,7 @@
     "ev_ebitda_value": 8.74,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 189.9,
-    "rsi_value": 31.371132860301472,
+    "rsi_value": 31.371132855251133,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5793,7 +5793,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CSX": {
     "score": 71,
@@ -5830,7 +5830,7 @@
     "ev_ebitda_value": 15.278,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 138.068,
-    "rsi_value": 25.384463119664616,
+    "rsi_value": 25.384463231533815,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5856,7 +5856,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NSC": {
     "score": 62,
@@ -5893,7 +5893,7 @@
     "ev_ebitda_value": 15.294,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 105.519,
-    "rsi_value": 25.804986520179554,
+    "rsi_value": 25.804986520002046,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -5919,7 +5919,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "FDX": {
     "score": 73,
@@ -5982,7 +5982,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DAL": {
     "score": 75,
@@ -6019,7 +6019,7 @@
     "ev_ebitda_value": 9.499,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 96.649,
-    "rsi_value": 53.5407324616308,
+    "rsi_value": 53.54073246478848,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6045,7 +6045,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CAT": {
     "score": 76,
@@ -6061,7 +6061,7 @@
     "target_price": 887.9099731445312,
     "stop_loss": 768.24,
     "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
-    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, PER:34.8, ROE:57.0%",
+    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, PER:35.2, ROE:57.0%",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 5,
     "liquidity_tier": "Hot",
@@ -6078,11 +6078,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 0.81,
     "dividend_growth_score": 5,
-    "per_value": 34.843037,
+    "per_value": 35.207405,
     "ev_ebitda_value": 25.267,
     "valuation_method": "PER",
     "debt_equity_value": 232.783,
-    "rsi_value": 50.197625321762295,
+    "rsi_value": 50.19762532217388,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6108,7 +6108,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DE": {
     "score": 62,
@@ -6145,7 +6145,7 @@
     "ev_ebitda_value": 28.752,
     "valuation_method": "PER",
     "debt_equity_value": 230.298,
-    "rsi_value": 60.857966665547636,
+    "rsi_value": 60.857966666867426,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6171,7 +6171,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "HON": {
     "score": 81,
@@ -6187,7 +6187,7 @@
     "target_price": 221.4499969482422,
     "stop_loss": 187.1309959411621,
     "strategy": "\ud83d\udd04 \ubc18\ub4f1\ub300\uae30(\uc2a4\uc719\uc800\uc810)",
-    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, PER:8.1, ROE:46.6%",
+    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, PER:7.9, ROE:46.6%",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 3,
     "liquidity_tier": "Active",
@@ -6204,11 +6204,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.32,
     "dividend_growth_score": 5,
-    "per_value": 8.141814,
+    "per_value": 7.93743,
     "ev_ebitda_value": 10.952,
     "valuation_method": "PER",
     "debt_equity_value": 185.369,
-    "rsi_value": 38.72320512941315,
+    "rsi_value": 38.72320512921709,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6234,7 +6234,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "MMM": {
     "score": 80,
@@ -6271,7 +6271,7 @@
     "ev_ebitda_value": 14.677,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 437.937,
-    "rsi_value": 40.71552666369003,
+    "rsi_value": 40.71552670031967,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6297,7 +6297,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GE": {
     "score": 73,
@@ -6334,7 +6334,7 @@
     "ev_ebitda_value": 29.759,
     "valuation_method": "PER",
     "debt_equity_value": 113.225,
-    "rsi_value": 38.87428966051561,
+    "rsi_value": 38.87428966050798,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6360,7 +6360,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "EMR": {
     "score": 75,
@@ -6393,11 +6393,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.44,
     "dividend_growth_score": 5,
-    "per_value": 33.739605,
+    "per_value": 33.230606,
     "ev_ebitda_value": 16.118,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 67.677,
-    "rsi_value": 50.88112360866318,
+    "rsi_value": 50.88112360866544,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6423,7 +6423,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ETN": {
     "score": 59,
@@ -6460,7 +6460,7 @@
     "ev_ebitda_value": 29.001,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 105.059,
-    "rsi_value": 58.35283084384895,
+    "rsi_value": 58.35283085044792,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6486,7 +6486,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ITW": {
     "score": 82,
@@ -6523,7 +6523,7 @@
     "ev_ebitda_value": 17.871,
     "valuation_method": "PER",
     "debt_equity_value": 334.853,
-    "rsi_value": 39.00660573542523,
+    "rsi_value": 39.00660573542327,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6549,7 +6549,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CMI": {
     "score": 73,
@@ -6586,7 +6586,7 @@
     "ev_ebitda_value": 15.508,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 59.586,
-    "rsi_value": 33.60376980264999,
+    "rsi_value": 33.603769814382744,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6612,7 +6612,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TT": {
     "score": 70,
@@ -6649,7 +6649,7 @@
     "ev_ebitda_value": 23.13,
     "valuation_method": "PER",
     "debt_equity_value": 53.404,
-    "rsi_value": 41.63256227756346,
+    "rsi_value": 41.632562277633944,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6675,7 +6675,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "WM": {
     "score": 77,
@@ -6712,7 +6712,7 @@
     "ev_ebitda_value": 13.611,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 235.301,
-    "rsi_value": 29.03854679228634,
+    "rsi_value": 29.038546791318836,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6738,7 +6738,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "RSG": {
     "score": 66,
@@ -6801,7 +6801,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "JCI": {
     "score": 62,
@@ -6838,7 +6838,7 @@
     "ev_ebitda_value": 22.56,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 70.107,
-    "rsi_value": 53.948064259554855,
+    "rsi_value": 53.94806423124072,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6864,7 +6864,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "FAST": {
     "score": 72,
@@ -6901,7 +6901,7 @@
     "ev_ebitda_value": 29.52,
     "valuation_method": "PER",
     "debt_equity_value": 10.851,
-    "rsi_value": 51.90659109974216,
+    "rsi_value": 51.9065911042725,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6927,7 +6927,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "PCAR": {
     "score": 71,
@@ -6964,7 +6964,7 @@
     "ev_ebitda_value": 20.205,
     "valuation_method": "PER",
     "debt_equity_value": 72.91,
-    "rsi_value": 24.486096558934264,
+    "rsi_value": 24.486096558915108,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -6990,11 +6990,11 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CTAS": {
-    "score": 67,
-    "fund_score": 41,
+    "score": 69,
+    "fund_score": 42,
     "tech_score": 8,
     "price": 198.8,
     "avg_volume": 2111288,
@@ -7006,7 +7006,7 @@
     "target_price": 204.6199951171875,
     "stop_loss": 193.34419342041016,
     "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
-    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, ROE:40.7%, D/E:53",
+    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, PER:40.2, ROE:40.7%",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 3,
     "liquidity_tier": "Active",
@@ -7023,11 +7023,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.05,
     "dividend_growth_score": 5,
-    "per_value": 40.57143,
+    "per_value": 40.161617,
     "ev_ebitda_value": 27.369,
     "valuation_method": "PER",
     "debt_equity_value": 52.646,
-    "rsi_value": 42.13688683393983,
+    "rsi_value": 42.13688683394236,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7053,7 +7053,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AME": {
     "score": 61,
@@ -7090,7 +7090,7 @@
     "ev_ebitda_value": 23.225,
     "valuation_method": "PER",
     "debt_equity_value": 20.522,
-    "rsi_value": 53.4897773705259,
+    "rsi_value": 53.4897773995035,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7116,7 +7116,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "LIN": {
     "score": 68,
@@ -7149,11 +7149,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 1.38,
     "dividend_growth_score": 5,
-    "per_value": 29.974855,
+    "per_value": 29.499365,
     "ev_ebitda_value": 17.29,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 68.947,
-    "rsi_value": 30.906630821303906,
+    "rsi_value": 30.90663079055159,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7179,7 +7179,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "APD": {
     "score": 62,
@@ -7216,7 +7216,7 @@
     "ev_ebitda_value": 18.074,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 110.091,
-    "rsi_value": 29.811344702909153,
+    "rsi_value": 29.811344699838187,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7242,7 +7242,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "ECL": {
     "score": 50,
@@ -7279,7 +7279,7 @@
     "ev_ebitda_value": 20.854,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 138.023,
-    "rsi_value": 38.1836349941752,
+    "rsi_value": 38.18363484275893,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7305,7 +7305,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SHW": {
     "score": 59,
@@ -7342,7 +7342,7 @@
     "ev_ebitda_value": 19.957,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 389.958,
-    "rsi_value": 37.502607466216745,
+    "rsi_value": 37.502607432444705,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7368,7 +7368,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NEM": {
     "score": 87,
@@ -7405,7 +7405,7 @@
     "ev_ebitda_value": 7.671,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 15.807,
-    "rsi_value": 51.41794584744195,
+    "rsi_value": 51.417945847442965,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7431,7 +7431,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "FCX": {
     "score": 65,
@@ -7468,7 +7468,7 @@
     "ev_ebitda_value": 13.1,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 32.149,
-    "rsi_value": 51.95174761600638,
+    "rsi_value": 51.95174761601487,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7494,7 +7494,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NUE": {
     "score": 68,
@@ -7531,7 +7531,7 @@
     "ev_ebitda_value": 10.79,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 30.512,
-    "rsi_value": 39.49455590500044,
+    "rsi_value": 39.49455590501105,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7557,7 +7557,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NEE": {
     "score": 79,
@@ -7590,11 +7590,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 3.14,
     "dividend_growth_score": 5,
-    "per_value": 17.811237,
+    "per_value": 17.89165,
     "ev_ebitda_value": 19.44,
     "valuation_method": "PER",
     "debt_equity_value": 161.676,
-    "rsi_value": 30.29482173471264,
+    "rsi_value": 30.29482165065569,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7620,7 +7620,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "DUK": {
     "score": 75,
@@ -7683,7 +7683,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SO": {
     "score": 76,
@@ -7720,7 +7720,7 @@
     "ev_ebitda_value": 12.262,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 182.058,
-    "rsi_value": 29.956674015739793,
+    "rsi_value": 29.956674015366772,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7746,7 +7746,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "D": {
     "score": 72,
@@ -7783,7 +7783,7 @@
     "ev_ebitda_value": 13.694,
     "valuation_method": "PER",
     "debt_equity_value": 160.459,
-    "rsi_value": 30.9582935842336,
+    "rsi_value": 30.95829358423049,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7809,7 +7809,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "AEP": {
     "score": 72,
@@ -7846,7 +7846,7 @@
     "ev_ebitda_value": 13.247,
     "valuation_method": "PER",
     "debt_equity_value": 160.789,
-    "rsi_value": 34.92842139849043,
+    "rsi_value": 34.928421398492944,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7872,7 +7872,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "SRE": {
     "score": 66,
@@ -7909,7 +7909,7 @@
     "ev_ebitda_value": 17.056,
     "valuation_method": "PER",
     "debt_equity_value": 84.663,
-    "rsi_value": 38.05061963557509,
+    "rsi_value": 38.05061963703885,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7935,7 +7935,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CEG": {
     "score": 62,
@@ -7951,7 +7951,7 @@
     "target_price": 279.1708666853823,
     "stop_loss": 253.20914797886263,
     "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
-    "comment": "PER:25.8, ROE:15.1%, D/E:76",
+    "comment": "PER:25.7, ROE:15.1%, D/E:76",
     "contrarian_adjustment": 0,
     "liquidity_bonus": 3,
     "liquidity_tier": "Active",
@@ -7968,11 +7968,11 @@
     "rs_ratio": NaN,
     "dividend_yield_value": 0.65,
     "dividend_growth_score": 1,
-    "per_value": 25.778864,
+    "per_value": 25.653357,
     "ev_ebitda_value": 14.801,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 76.419,
-    "rsi_value": 42.456926873287514,
+    "rsi_value": 42.45692687281521,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -7998,7 +7998,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "VZ": {
     "score": 86,
@@ -8061,7 +8061,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "T": {
     "score": 84,
@@ -8098,7 +8098,7 @@
     "ev_ebitda_value": 7.525,
     "valuation_method": "PER",
     "debt_equity_value": 129.054,
-    "rsi_value": 50.99411293085298,
+    "rsi_value": 50.99411293085204,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -8124,7 +8124,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "TMUS": {
     "score": 73,
@@ -8161,7 +8161,7 @@
     "ev_ebitda_value": 8.49,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 214.035,
-    "rsi_value": 34.35440765160908,
+    "rsi_value": 34.35440763490385,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -8187,7 +8187,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "CMCSA": {
     "score": 86,
@@ -8224,7 +8224,7 @@
     "ev_ebitda_value": 4.768,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 100.474,
-    "rsi_value": 31.88288656925829,
+    "rsi_value": 31.88288657012542,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -8250,7 +8250,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "NVDA": {
     "score": 67,
@@ -8287,7 +8287,7 @@
     "ev_ebitda_value": 27.288,
     "valuation_method": "EV/EBITDA",
     "debt_equity_value": 16.971,
-    "rsi_value": 58.38939341491113,
+    "rsi_value": 58.38939341511938,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -8313,70 +8313,7 @@
         }
       ]
     },
-    "market_regime": "sideways"
-  },
-  "TER": {
-    "score": 54,
-    "fund_score": 28,
-    "tech_score": 8,
-    "price": 398.69,
-    "avg_volume": 3529179,
-    "market_cap": 62331494400,
-    "sector": "Technology",
-    "company_name": "Teradyne, Inc.",
-    "verdict": "Avoid",
-    "buy_price": 328.1539486836527,
-    "target_price": 409.5626674989153,
-    "stop_loss": 321.59086970997964,
-    "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
-    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, ROE:36.5%, D/E:3",
-    "contrarian_adjustment": 0,
-    "liquidity_bonus": 5,
-    "liquidity_tier": "Hot",
-    "rotation_bonus": 5,
-    "rotation_phase": "\uc218\uae09\uc720\uc785",
-    "sector_name": "\uae30\uc220\uc8fc",
-    "roe_value": 36.464999999999996,
-    "opm_value": 0,
-    "revenue_growth_value": null,
-    "peg_value": null,
-    "fcf_margin_value": null,
-    "fcf_score": 0,
-    "rs_score": 0,
-    "rs_ratio": NaN,
-    "dividend_yield_value": 0.13,
-    "dividend_growth_score": 5,
-    "per_value": 54.689987,
-    "ev_ebitda_value": 41.274,
-    "valuation_method": "EV/EBITDA",
-    "debt_equity_value": 2.883,
-    "rsi_value": 54.88359069759656,
-    "ma5": NaN,
-    "ma20": NaN,
-    "ma60": NaN,
-    "ma120": NaN,
-    "atr_value": NaN,
-    "mfi_value": NaN,
-    "analyst_comment": "ROE 36.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 55\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 52\uba85 \uc911 37\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $446 (\ud604\uc7ac\uac00 \ub300\ube44 +12% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
-    "analyst_data": {
-      "buy_count": 37,
-      "hold_count": 13,
-      "sell_count": 2,
-      "target_low": 350.0,
-      "target_mean": 446.46667,
-      "target_high": 550.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
-    },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
   },
   "GOOGL": {
     "score": 64,
@@ -8413,7 +8350,7 @@
     "ev_ebitda_value": 24.203,
     "valuation_method": "PER",
     "debt_equity_value": 18.859,
-    "rsi_value": 58.89695330797872,
+    "rsi_value": 58.8969533403358,
     "ma5": NaN,
     "ma20": NaN,
     "ma60": NaN,
@@ -8439,6 +8376,69 @@
         }
       ]
     },
-    "market_regime": "sideways"
+    "market_regime": "neutral"
+  },
+  "TER": {
+    "score": 54,
+    "fund_score": 28,
+    "tech_score": 8,
+    "price": 398.69,
+    "avg_volume": 3529179,
+    "market_cap": 62331494400,
+    "sector": "Technology",
+    "company_name": "Teradyne, Inc.",
+    "verdict": "Avoid",
+    "buy_price": 328.1539486836527,
+    "target_price": 409.5626674989153,
+    "stop_loss": 321.59086970997964,
+    "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(\uc2a4\uc719\uc800\uc810)",
+    "comment": "\ubc30\ub2f9\uc131\uc7a5\ub8255\uc810, ROE:36.5%, D/E:3",
+    "contrarian_adjustment": 0,
+    "liquidity_bonus": 5,
+    "liquidity_tier": "Hot",
+    "rotation_bonus": 5,
+    "rotation_phase": "\uc218\uae09\uc720\uc785",
+    "sector_name": "\uae30\uc220\uc8fc",
+    "roe_value": 36.464999999999996,
+    "opm_value": 0,
+    "revenue_growth_value": null,
+    "peg_value": null,
+    "fcf_margin_value": null,
+    "fcf_score": 0,
+    "rs_score": 0,
+    "rs_ratio": NaN,
+    "dividend_yield_value": 0.13,
+    "dividend_growth_score": 5,
+    "per_value": 52.390274,
+    "ev_ebitda_value": 41.274,
+    "valuation_method": "EV/EBITDA",
+    "debt_equity_value": 2.883,
+    "rsi_value": 54.88359069942066,
+    "ma5": NaN,
+    "ma20": NaN,
+    "ma60": NaN,
+    "ma120": NaN,
+    "atr_value": NaN,
+    "mfi_value": NaN,
+    "analyst_comment": "ROE 36.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 55\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 52\uba85 \uc911 37\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $446 (\ud604\uc7ac\uac00 \ub300\ube44 +12% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
+    "analyst_data": {
+      "buy_count": 37,
+      "hold_count": 13,
+      "sell_count": 2,
+      "target_low": 350.0,
+      "target_mean": 446.46667,
+      "target_high": 550.0,
+      "news": [
+        {
+          "title": "",
+          "publisher": ""
+        },
+        {
+          "title": "",
+          "publisher": ""
+        }
+      ]
+    },
+    "market_regime": "neutral"
   }
 }
