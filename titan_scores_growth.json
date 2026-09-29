@@ -10,7 +10,7 @@
     "company_name": "NVIDIA Corporation",
     "verdict": "Buy",
     "buy_price": 228.86,
-    "target_price": 240.90643459911718,
+    "target_price": 240.90643459810673,
     "stop_loss": 220.00989070129395,
     "strategy": "\u26a0\ufe0f \ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)(R:R\uc8fc\uc758)",
     "comment": "ROE:117.2%, OPM:66.2%, FCF:14%",
@@ -34,12 +34,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.77557026979181,
+    "rsi_value": 58.77557027789822,
     "ma5": 226.5779998779297,
     "ma20": 222.23221282958986,
     "ma60": 214.36842371622723,
-    "ma120": 210.57973505655926,
-    "atr_value": 6.023217299558576,
+    "ma120": 210.57973492940266,
+    "atr_value": 6.023217299053353,
     "mfi_value": 67.34450557044708,
     "analyst_comment": "ROE 117.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 66.2%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +106% \uace0\uc131\uc7a5. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 59\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 182\uba85 \uc911 173\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $328 (\ud604\uc7ac\uac00 \ub300\ube44 +43% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -48,17 +48,7 @@
       "sell_count": 3,
       "target_low": 180.0,
       "target_mean": 327.7,
-      "target_high": 515.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 515.0
     },
     "market_regime": "sideways"
   },
@@ -111,17 +101,7 @@
       "sell_count": 0,
       "target_low": 365.0,
       "target_mean": 618.508,
-      "target_high": 1250.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 1250.0
     },
     "market_regime": "sideways"
   },
@@ -174,17 +154,7 @@
       "sell_count": 9,
       "target_low": 75.0,
       "target_mean": 116.37209,
-      "target_high": 200.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 200.0
     },
     "market_regime": "sideways"
   },
@@ -199,7 +169,7 @@
     "company_name": "QUALCOMM Incorporated",
     "verdict": "Hold",
     "buy_price": 187.48,
-    "target_price": 204.08122896568727,
+    "target_price": 204.08122896568844,
     "stop_loss": 180.3594533615112,
     "strategy": "\ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)",
     "comment": "ROE:33.8%, OPM:18.5%, FCF:23%",
@@ -223,12 +193,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 54.55025180918583,
+    "rsi_value": 54.550251805416394,
     "ma5": 195.84400024414063,
     "ma20": 182.1812660217285,
     "ma60": 171.79161783854167,
     "ma120": 180.5580212275187,
-    "atr_value": 9.119428152182554,
+    "atr_value": 9.11942815244324,
     "mfi_value": 53.068240048490324,
     "analyst_comment": "ROE 33.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 18.5%\ub85c \uc548\uc815\uc801. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 55\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 34 / \ubcf4\uc720 69 / \ub9e4\ub3c4 9. \ud3c9\uade0 \ubaa9\ud45c\uac00 $194 (\ud604\uc7ac\uac00 \ub300\ube44 +4% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -237,17 +207,7 @@
       "sell_count": 9,
       "target_low": 100.0,
       "target_mean": 194.13333,
-      "target_high": 400.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 400.0
     },
     "market_regime": "sideways"
   },
@@ -256,7 +216,7 @@
     "fund_score": 45,
     "tech_score": 20,
     "price": 278.31,
-    "avg_volume": 6801155,
+    "avg_volume": 6897740,
     "market_cap": 254165958656,
     "sector": "Technology",
     "company_name": "Texas Instruments Incorporated",
@@ -286,12 +246,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 60.34409714736088,
+    "rsi_value": 60.34409714739092,
     "ma5": 274.2119995117188,
     "ma20": 264.17900390625,
     "ma60": 275.25137786865236,
     "ma120": 278.38871536254885,
-    "atr_value": 8.120660793622474,
+    "atr_value": 8.120660793620798,
     "mfi_value": 71.28549555477355,
     "analyst_comment": "ROE 35.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 42.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +23% \uc131\uc7a5\uc138. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 60\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 108\uba85 \uc911 55\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $325 (\ud604\uc7ac\uac00 \ub300\ube44 +17% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -300,17 +260,7 @@
       "sell_count": 6,
       "target_low": 225.0,
       "target_mean": 324.7097,
-      "target_high": 400.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 400.0
     },
     "market_regime": "sideways"
   },
@@ -325,7 +275,7 @@
     "company_name": "Micron Technology, Inc.",
     "verdict": "Hold",
     "buy_price": 1053.98,
-    "target_price": 1111.2479914101207,
+    "target_price": 1111.2479914101264,
     "stop_loss": 990.1965165710449,
     "strategy": "\u26a0\ufe0f \ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)(R:R\uc8fc\uc758)",
     "comment": "ROE:66.6%, OPM:80.4%, PEG\uc800\ud3c9\uac00(0.16)",
@@ -349,12 +299,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.350573224709734,
+    "rsi_value": 58.35057322481726,
     "ma5": 1076.966015625,
     "ma20": 1000.1985015869141,
     "ma60": 944.2535024007161,
     "ma120": 863.8302589416504,
-    "atr_value": 48.32885756034153,
+    "atr_value": 48.32885756043532,
     "mfi_value": 60.117070216902206,
     "analyst_comment": "ROE 66.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 80.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +346% \uace0\uc131\uc7a5. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 58\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 138\uba85 \uc911 124\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1521 (\ud604\uc7ac\uac00 \ub300\ube44 +44% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -363,17 +313,7 @@
       "sell_count": 1,
       "target_low": 361.0,
       "target_mean": 1520.7609,
-      "target_high": 2200.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 2200.0
     },
     "market_regime": "sideways"
   },
@@ -412,12 +352,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 42.267348569362206,
+    "rsi_value": 42.26734856943614,
     "ma5": 354.45399780273436,
     "ma20": 356.6159957885742,
     "ma60": 376.99779713948567,
     "ma120": 390.46047058105466,
-    "atr_value": 10.75894713110262,
+    "atr_value": 10.758947131368277,
     "mfi_value": 44.22993849010227,
     "analyst_comment": "ROE 44.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 54.3%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +86% \uace0\uc131\uc7a5. FCF Margin 34%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 145\uba85 \uc911 133\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $532 (\ud604\uc7ac\uac00 \ub300\ube44 +52% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
@@ -426,17 +366,7 @@
       "sell_count": 0,
       "target_low": 215.88,
       "target_mean": 531.8468,
-      "target_high": 715.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 715.0
     },
     "market_regime": "sideways"
   },
@@ -475,12 +405,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 57.12808295881883,
+    "rsi_value": 57.12808295881888,
     "ma5": 259.2099975585937,
     "ma20": 234.65300064086915,
     "ma60": 221.75724131266276,
     "ma120": 215.15325234731037,
-    "atr_value": 13.527648936496929,
+    "atr_value": 13.527648936496917,
     "mfi_value": 57.33256110689319,
     "analyst_comment": "ROE 16.5%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 16.7%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +36% \uace0\uc131\uc7a5. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 57\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 131\uba85 \uc911 115\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $290 (\ud604\uc7ac\uac00 \ub300\ube44 +15% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -489,17 +419,7 @@
       "sell_count": 1,
       "target_low": 210.0,
       "target_mean": 290.389,
-      "target_high": 400.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 400.0
     },
     "market_regime": "sideways"
   },
@@ -538,12 +458,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 63.46145545124907,
+    "rsi_value": 63.46145537266541,
     "ma5": 389.447998046875,
     "ma20": 370.5669998168945,
     "ma60": 375.0084477742513,
-    "ma120": 386.65954869588217,
-    "atr_value": 11.143534995396106,
+    "ma120": 386.65954818725584,
+    "atr_value": 11.14353501167759,
     "mfi_value": 72.0358809382266,
     "analyst_comment": "ROE 12.2%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 39.5%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +40% \uace0\uc131\uc7a5. FCF Margin 30%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 63\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 100\uba85 \uc911 85\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $471 (\ud604\uc7ac\uac00 \ub300\ube44 +19% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -552,17 +472,7 @@
       "sell_count": 0,
       "target_low": 365.0,
       "target_mean": 470.71875,
-      "target_high": 675.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 675.0
     },
     "market_regime": "sideways"
   },
@@ -615,17 +525,7 @@
       "sell_count": 0,
       "target_low": 75.0,
       "target_mean": 103.69231,
-      "target_high": 150.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 150.0
     },
     "market_regime": "sideways"
   },
@@ -664,12 +564,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.26806456499415,
+    "rsi_value": 58.268064564990965,
     "ma5": 1358.05400390625,
     "ma20": 1244.101495361328,
     "ma60": 1308.8305053710938,
     "ma120": 1412.4535909016927,
-    "atr_value": 56.04105328975585,
+    "atr_value": 56.041053289757414,
     "mfi_value": 59.29639170506082,
     "analyst_comment": "ROE 22.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 31.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +48% \uace0\uc131\uc7a5. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 58\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 46\uba85 \uc911 42\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1840 (\ud604\uc7ac\uac00 \ub300\ube44 +36% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -678,17 +578,7 @@
       "sell_count": 0,
       "target_low": 1575.0,
       "target_mean": 1839.8,
-      "target_high": 2100.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 2100.0
     },
     "market_regime": "sideways"
   },
@@ -727,12 +617,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 57.39707893301553,
+    "rsi_value": 57.39707893290578,
     "ma5": 76.54000091552734,
     "ma20": 73.55999984741212,
     "ma60": 77.35192171732585,
     "ma120": 83.59380702972412,
-    "atr_value": 2.801478080233636,
+    "atr_value": 2.8014780802389496,
     "mfi_value": 49.0772558805767,
     "analyst_comment": "ROE 7.2%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 24.0%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +38% \uace0\uc131\uc7a5. FCF Margin 27%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 57\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 76\uba85 \uc911 58\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $108 (\ud604\uc7ac\uac00 \ub300\ube44 +38% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -741,17 +631,7 @@
       "sell_count": 0,
       "target_low": 80.0,
       "target_mean": 107.84,
-      "target_high": 135.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 135.0
     },
     "market_regime": "sideways"
   },
@@ -790,31 +670,21 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 57.46932192913022,
+    "rsi_value": 57.4693219291299,
     "ma5": 1746.0719970703126,
     "ma20": 1690.2370056152345,
     "ma60": 1727.6302083333333,
     "ma120": 1670.858504231771,
-    "atr_value": 52.08135150298552,
+    "atr_value": 52.081351502986685,
     "mfi_value": 71.85250495478851,
-    "analyst_comment": "ROE 53.9%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 37.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +21% \uc131\uc7a5\uc138. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 57\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 131\uba85 \uc911 117\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $2117 (\ud604\uc7ac\uac00 \ub300\ube44 +19% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
+    "analyst_comment": "ROE 53.9%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 37.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +21% \uc131\uc7a5\uc138. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 57\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 131\uba85 \uc911 117\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $2117 (\ud604\uc7ac\uac00 \ub300\ube44 +20% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
       "buy_count": 117,
       "hold_count": 10,
       "sell_count": 4,
-      "target_low": 879.2363,
-      "target_mean": 2116.785,
-      "target_high": 2815.461,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_low": 879.4362,
+      "target_mean": 2117.266,
+      "target_high": 2816.1008
     },
     "market_regime": "sideways"
   },
@@ -853,12 +723,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 55.92285675141729,
+    "rsi_value": 55.922856750761085,
     "ma5": 310.95,
     "ma20": 296.80977325439454,
     "ma60": 309.5107243855794,
-    "ma120": 310.1556040445964,
-    "atr_value": 14.449539665951278,
+    "ma120": 310.1556056976318,
+    "atr_value": 14.449539651563196,
     "mfi_value": 41.910221100592864,
     "analyst_comment": "ROE 65.1%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 37.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +30% \uace0\uc131\uc7a5. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 56\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 6\uba85 \uc911 6\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $374 (\ud604\uc7ac\uac00 \ub300\ube44 +19% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -867,17 +737,7 @@
       "sell_count": 0,
       "target_low": 290.0,
       "target_mean": 373.7742,
-      "target_high": 500.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 500.0
     },
     "market_regime": "sideways"
   },
@@ -916,12 +776,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 56.263979963742194,
+    "rsi_value": 56.26397996457133,
     "ma5": 478.57000122070315,
     "ma20": 453.0640014648437,
     "ma60": 503.3409372965495,
-    "ma120": 488.37599817911786,
-    "atr_value": 19.77623142493929,
+    "ma120": 488.375998433431,
+    "atr_value": 19.776231423539627,
     "mfi_value": 62.02267354244753,
     "analyst_comment": "ROE 41.1%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 33.7%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +25% \uc131\uc7a5\uc138. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 56\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 117\uba85 \uc911 96\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $639 (\ud604\uc7ac\uac00 \ub300\ube44 +31% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
@@ -930,17 +790,7 @@
       "sell_count": 1,
       "target_low": 358.0,
       "target_mean": 638.94446,
-      "target_high": 900.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 900.0
     },
     "market_regime": "sideways"
   },
@@ -949,7 +799,7 @@
     "fund_score": 37,
     "tech_score": 12,
     "price": 189.17,
-    "avg_volume": 11160749,
+    "avg_volume": 11214934,
     "market_cap": 246868066304,
     "sector": "Technology",
     "company_name": "KLA Corporation",
@@ -979,12 +829,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 55.23097927837054,
+    "rsi_value": 55.23097927838425,
     "ma5": 188.0760009765625,
     "ma20": 179.0819999694824,
     "ma60": 194.2510627746582,
     "ma120": 198.5988515218099,
-    "atr_value": 7.898377059604393,
+    "atr_value": 7.898377059589242,
     "mfi_value": 53.84132886429168,
     "analyst_comment": "ROE 87.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 42.5%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +15% \uc131\uc7a5\uc138. FCF Margin 19%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 55\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 87\uba85 \uc911 55\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $234 (\ud604\uc7ac\uac00 \ub300\ube44 +24% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
@@ -993,17 +843,7 @@
       "sell_count": 1,
       "target_low": 175.0,
       "target_mean": 233.76923,
-      "target_high": 325.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 325.0
     },
     "market_regime": "sideways"
   },
@@ -1042,12 +882,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 54.132490052728386,
+    "rsi_value": 54.13249005261373,
     "ma5": 235.51400451660157,
     "ma20": 228.14894256591796,
     "ma60": 241.9089609781901,
     "ma120": 260.3794366200765,
-    "atr_value": 7.632689769458852,
+    "atr_value": 7.632689769583459,
     "mfi_value": 59.3571749824785,
     "analyst_comment": "ROE 27.9%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 30.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +20% \uc131\uc7a5\uc138. FCF Margin 27%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 54\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 90\uba85 \uc911 68\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $311 (\ud604\uc7ac\uac00 \ub300\ube44 +32% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
@@ -1056,17 +896,7 @@
       "sell_count": 3,
       "target_low": 190.0,
       "target_mean": 311.10345,
-      "target_high": 400.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 400.0
     },
     "market_regime": "sideways"
   },
@@ -1076,7 +906,7 @@
     "tech_score": 21,
     "price": 150.63,
     "avg_volume": 2564743,
-    "market_cap": 22940950528,
+    "market_cap": 23016265728,
     "sector": "Technology",
     "company_name": "Entegris, Inc.",
     "verdict": "Avoid",
@@ -1105,12 +935,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.233457014249936,
+    "rsi_value": 58.23345701498409,
     "ma5": 150.63800048828125,
     "ma20": 139.45249862670897,
     "ma60": 139.7812791188558,
-    "ma120": 143.01344814300538,
-    "atr_value": 6.864178892181967,
+    "ma120": 143.0134485244751,
+    "atr_value": 6.864178892171192,
     "mfi_value": 63.30852671099629,
     "analyst_comment": "ROE 7.7%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 19.3%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +12% \uc131\uc7a5\uc138. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 58\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 34\uba85 \uc911 21\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $173 (\ud604\uc7ac\uac00 \ub300\ube44 +15% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -1119,17 +949,7 @@
       "sell_count": 3,
       "target_low": 120.0,
       "target_mean": 173.36365,
-      "target_high": 215.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 215.0
     },
     "market_regime": "sideways"
   },
@@ -1182,17 +1002,7 @@
       "sell_count": 2,
       "target_low": 25.0,
       "target_mean": 27.5,
-      "target_high": 30.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 30.0
     },
     "market_regime": "sideways"
   },
@@ -1202,7 +1012,7 @@
     "tech_score": 33,
     "price": 87.59,
     "avg_volume": 6191310,
-    "market_cap": 13174057984,
+    "market_cap": 13179910144,
     "sector": "Technology",
     "company_name": "Skyworks Solutions, Inc.",
     "verdict": "Avoid",
@@ -1231,12 +1041,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 59.58228714179094,
+    "rsi_value": 59.58228714180766,
     "ma5": 89.22999725341796,
     "ma20": 82.2864990234375,
     "ma60": 70.09916661580404,
     "ma120": 69.29979712168375,
-    "atr_value": 4.524906142537723,
+    "atr_value": 4.524906142537541,
     "mfi_value": 84.3806989553113,
     "analyst_comment": "ROE 5.1%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 60\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 9 / \ubcf4\uc720 54 / \ub9e4\ub3c4 6. \ud3c9\uade0 \ubaa9\ud45c\uac00 $68 (\ud604\uc7ac\uac00 \ub300\ube44 -22%). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -1245,17 +1055,7 @@
       "sell_count": 6,
       "target_low": 52.0,
       "target_mean": 68.35294,
-      "target_high": 85.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 85.0
     },
     "market_regime": "sideways"
   },
@@ -1264,8 +1064,8 @@
     "fund_score": 21,
     "tech_score": 31,
     "price": 116.3,
-    "avg_volume": 1218096,
-    "market_cap": 10259755008,
+    "avg_volume": 1211537,
+    "market_cap": 10260175872,
     "sector": "Technology",
     "company_name": "Qorvo, Inc.",
     "verdict": "Avoid",
@@ -1308,17 +1108,7 @@
       "sell_count": 3,
       "target_low": 66.0,
       "target_mean": 90.16667,
-      "target_high": 105.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 105.0
     },
     "market_regime": "sideways"
   },
@@ -1327,7 +1117,7 @@
     "fund_score": 31,
     "tech_score": 16,
     "price": 119.53,
-    "avg_volume": 801975,
+    "avg_volume": 801749,
     "market_cap": 5990552064,
     "sector": "Technology",
     "company_name": "Cirrus Logic, Inc.",
@@ -1371,17 +1161,7 @@
       "sell_count": 0,
       "target_low": 130.0,
       "target_mean": 165.0,
-      "target_high": 200.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 200.0
     },
     "market_regime": "sideways"
   },
@@ -1434,17 +1214,7 @@
       "sell_count": 0,
       "target_low": 200.0,
       "target_mean": 222.85715,
-      "target_high": 231.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 231.0
     },
     "market_regime": "sideways"
   },
@@ -1483,12 +1253,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.841654714961756,
+    "rsi_value": 58.841654719873105,
     "ma5": 395.04200439453126,
     "ma20": 365.61078491210935,
     "ma60": 366.67122751871744,
-    "ma120": 374.2781717936198,
-    "atr_value": 20.266425369697316,
+    "ma120": 374.27817255655924,
+    "atr_value": 20.266425365028446,
     "mfi_value": 59.23107122298868,
     "analyst_comment": "ROE 36.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 33.2%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +104% \uace0\uc131\uc7a5. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 59\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 52\uba85 \uc911 37\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $446 (\ud604\uc7ac\uac00 \ub300\ube44 +11% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -1497,17 +1267,7 @@
       "sell_count": 2,
       "target_low": 350.0,
       "target_mean": 446.46667,
-      "target_high": 550.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 550.0
     },
     "market_regime": "sideways"
   },
@@ -1560,17 +1320,7 @@
       "sell_count": 0,
       "target_low": 330.0,
       "target_mean": 386.36365,
-      "target_high": 450.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 450.0
     },
     "market_regime": "sideways"
   },
@@ -1585,7 +1335,7 @@
     "company_name": "Microsoft Corporation",
     "verdict": "Hold",
     "buy_price": 509.22,
-    "target_price": 533.0772056276959,
+    "target_price": 533.0772056276257,
     "stop_loss": 494.8267484893799,
     "strategy": "\ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)",
     "comment": "ROE:34.0%, OPM:45.1%, MA120\u2191",
@@ -1609,12 +1359,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 58.63705741049794,
+    "rsi_value": 58.6370574106003,
     "ma5": 504.3819946289062,
     "ma20": 499.8249984741211,
     "ma60": 462.8979034423828,
     "ma120": 433.93811721801757,
-    "atr_value": 11.928602813847958,
+    "atr_value": 11.928602813812862,
     "mfi_value": 54.18148352975384,
     "analyst_comment": "ROE 34.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 45.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 59\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 169\uba85 \uc911 160\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $577 (\ud604\uc7ac\uac00 \ub300\ube44 +13% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -1623,17 +1373,7 @@
       "sell_count": 0,
       "target_low": 440.0,
       "target_mean": 577.26135,
-      "target_high": 870.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 870.0
     },
     "market_regime": "sideways"
   },
@@ -1647,9 +1387,9 @@
     "sector": "Technology",
     "company_name": "Oracle Corporation",
     "verdict": "Avoid",
-    "buy_price": 132.43452894469357,
+    "buy_price": 132.4345289446917,
     "target_price": 159.25999450683594,
-    "stop_loss": 123.16411191856503,
+    "stop_loss": 123.16411191856328,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc6b0\ub7c9\uc8fc\uc870\uc815\ub9e4\uc218, ROE:41.2%, OPM:35.6%",
     "contrarian_adjustment": 8,
@@ -1672,12 +1412,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 37.275839879268005,
+    "rsi_value": 37.275839878987654,
     "ma5": 140.6,
     "ma20": 147.7220001220703,
     "ma60": 141.1628938039144,
     "ma120": 161.41809622446695,
-    "atr_value": 6.982160324340305,
+    "atr_value": 6.982160324424613,
     "mfi_value": 42.00015308028084,
     "analyst_comment": "ROE 41.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 35.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +30% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 37\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 131\uba85 \uc911 110\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $238 (\ud604\uc7ac\uac00 \ub300\ube44 +79% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
@@ -1686,17 +1426,7 @@
       "sell_count": 3,
       "target_low": 110.0,
       "target_mean": 237.97415,
-      "target_high": 400.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 400.0
     },
     "market_regime": "sideways"
   },
@@ -1710,9 +1440,9 @@
     "sector": "Technology",
     "company_name": "Salesforce, Inc.",
     "verdict": "Avoid",
-    "buy_price": 225.90279710198092,
+    "buy_price": 225.90279710198016,
     "target_price": 261.87927269153323,
-    "stop_loss": 210.08960130484226,
+    "stop_loss": 210.08960130484155,
     "strategy": "\ud83d\udcca \ud480\ubc31\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "ROE:19.4%, OPM:21.4%, FCF:40%",
     "contrarian_adjustment": 0,
@@ -1735,12 +1465,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 45.47939374466715,
+    "rsi_value": 45.479393746267704,
     "ma5": 234.07400207519532,
     "ma20": 246.4035430908203,
     "ma60": 206.648459370931,
-    "ma120": 190.41191647847492,
-    "atr_value": 9.175885353381876,
+    "ma120": 190.41191571553549,
+    "atr_value": 9.175885346754816,
     "mfi_value": 34.29363828108032,
     "analyst_comment": "ROE 19.4%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 21.4%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +11% \uc131\uc7a5\uc138. FCF Margin 40%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 45\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 165\uba85 \uc911 121\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $281 (\ud604\uc7ac\uac00 \ub300\ube44 +24% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \ub0b4 \uc870\uc815 \uad6c\uac04\uc73c\ub85c \ubd84\ud560 \ub9e4\uc218 \uc811\uadfc \uad8c\uc7a5.",
     "analyst_data": {
@@ -1749,17 +1479,7 @@
       "sell_count": 6,
       "target_low": 160.0,
       "target_mean": 281.0783,
-      "target_high": 475.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 475.0
     },
     "market_regime": "sideways"
   },
@@ -1812,17 +1532,7 @@
       "sell_count": 13,
       "target_low": 195.0,
       "target_mean": 275.06375,
-      "target_high": 373.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 373.0
     },
     "market_regime": "sideways"
   },
@@ -1836,9 +1546,9 @@
     "sector": "Technology",
     "company_name": "Intuit Inc.",
     "verdict": "Hold",
-    "buy_price": 265.40852419640885,
+    "buy_price": 265.40852419642323,
     "target_price": 302.07000732421875,
-    "stop_loss": 246.82992750266024,
+    "stop_loss": 246.82992750267363,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:23.6%, OPM:17.6%",
     "contrarian_adjustment": 10,
@@ -1861,12 +1571,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 27.76736131714,
+    "rsi_value": 27.76736131716528,
     "ma5": 280.29400024414065,
     "ma20": 314.99199829101565,
     "ma60": 316.9779983520508,
     "ma120": 328.253164545695,
-    "atr_value": 13.451950399046046,
+    "atr_value": 13.451950399048696,
     "mfi_value": 12.612186103166891,
     "analyst_comment": "ROE 23.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 17.6%\ub85c \uc548\uc815\uc801. \ub9e4\ucd9c YoY +14% \uc131\uc7a5\uc138. FCF Margin 30%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 28\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 104\uba85 \uc911 73\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $406 (\ud604\uc7ac\uac00 \ub300\ube44 +51% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
@@ -1875,17 +1585,7 @@
       "sell_count": 5,
       "target_low": 290.0,
       "target_mean": 405.6,
-      "target_high": 732.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 732.0
     },
     "market_regime": "sideways"
   },
@@ -1938,17 +1638,7 @@
       "sell_count": 5,
       "target_low": 72.0,
       "target_mean": 144.99261,
-      "target_high": 248.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 248.0
     },
     "market_regime": "sideways"
   },
@@ -2001,17 +1691,7 @@
       "sell_count": 4,
       "target_low": 110.0,
       "target_mean": 424.18723,
-      "target_high": 525.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 525.0
     },
     "market_regime": "sideways"
   },
@@ -2064,17 +1744,7 @@
       "sell_count": 5,
       "target_low": 92.0,
       "target_mean": 208.68184,
-      "target_high": 275.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 275.0
     },
     "market_regime": "sideways"
   },
@@ -2127,17 +1797,7 @@
       "sell_count": 0,
       "target_low": 145.0,
       "target_mean": 205.3942,
-      "target_high": 480.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 480.0
     },
     "market_regime": "sideways"
   },
@@ -2190,17 +1850,7 @@
       "sell_count": 6,
       "target_low": 158.0,
       "target_mean": 286.25696,
-      "target_high": 340.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 340.0
     },
     "market_regime": "sideways"
   },
@@ -2253,17 +1903,7 @@
       "sell_count": 0,
       "target_low": 215.0,
       "target_mean": 307.54147,
-      "target_high": 375.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 375.0
     },
     "market_regime": "sideways"
   },
@@ -2273,7 +1913,7 @@
     "tech_score": 11,
     "price": 326.7,
     "avg_volume": 2365617,
-    "market_cap": 90109091840,
+    "market_cap": 89970892800,
     "sector": "Technology",
     "company_name": "Cadence Design Systems, Inc.",
     "verdict": "Avoid",
@@ -2316,17 +1956,7 @@
       "sell_count": 0,
       "target_low": 300.0,
       "target_mean": 405.47116,
-      "target_high": 470.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 470.0
     },
     "market_regime": "sideways"
   },
@@ -2379,17 +2009,7 @@
       "sell_count": 3,
       "target_low": 414.77,
       "target_mean": 553.7712,
-      "target_high": 700.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 700.0
     },
     "market_regime": "sideways"
   },
@@ -2398,7 +2018,7 @@
     "fund_score": 21,
     "tech_score": 29,
     "price": 392.09,
-    "avg_volume": 6498900,
+    "avg_volume": 6558834,
     "market_cap": 320729612288,
     "sector": "Technology",
     "company_name": "Palo Alto Networks, Inc.",
@@ -2442,17 +2062,7 @@
       "sell_count": 4,
       "target_low": 190.0,
       "target_mean": 396.12,
-      "target_high": 475.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 475.0
     },
     "market_regime": "sideways"
   },
@@ -2461,7 +2071,7 @@
     "fund_score": 20,
     "tech_score": 27,
     "price": 259.25,
-    "avg_volume": 9922188,
+    "avg_volume": 10075892,
     "market_cap": 265455108096,
     "sector": "Technology",
     "company_name": "CrowdStrike Holdings, Inc.",
@@ -2505,17 +2115,7 @@
       "sell_count": 3,
       "target_low": 132.0,
       "target_mean": 235.67,
-      "target_high": 300.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 300.0
     },
     "market_regime": "sideways"
   },
@@ -2568,17 +2168,7 @@
       "sell_count": 0,
       "target_low": 155.0,
       "target_mean": 209.67615,
-      "target_high": 298.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 298.0
     },
     "market_regime": "sideways"
   },
@@ -2631,17 +2221,7 @@
       "sell_count": 14,
       "target_low": 104.0,
       "target_mean": 164.31944,
-      "target_high": 220.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 220.0
     },
     "market_regime": "sideways"
   },
@@ -2694,17 +2274,7 @@
       "sell_count": 6,
       "target_low": 160.0,
       "target_mean": 336.80646,
-      "target_high": 400.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 400.0
     },
     "market_regime": "sideways"
   },
@@ -2714,7 +2284,7 @@
     "tech_score": 6,
     "price": 334.68,
     "avg_volume": 1867719,
-    "market_cap": 26960596992,
+    "market_cap": 26918957056,
     "sector": "Technology",
     "company_name": "MongoDB, Inc.",
     "verdict": "Avoid",
@@ -2757,17 +2327,7 @@
       "sell_count": 1,
       "target_low": 272.64,
       "target_mean": 454.15244,
-      "target_high": 565.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 565.0
     },
     "market_regime": "sideways"
   },
@@ -2820,17 +2380,7 @@
       "sell_count": 2,
       "target_low": 75.0,
       "target_mean": 110.69231,
-      "target_high": 130.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 130.0
     },
     "market_regime": "sideways"
   },
@@ -2839,7 +2389,7 @@
     "fund_score": 17,
     "tech_score": 9,
     "price": 46.21,
-    "avg_volume": 4724184,
+    "avg_volume": 4717476,
     "market_cap": 7699279360,
     "sector": "Technology",
     "company_name": "GitLab Inc.",
@@ -2883,17 +2433,7 @@
       "sell_count": 6,
       "target_low": 45.0,
       "target_mean": 55.70833,
-      "target_high": 70.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 70.0
     },
     "market_regime": "sideways"
   },
@@ -2903,7 +2443,7 @@
     "tech_score": 20,
     "price": 136.29,
     "avg_volume": 3032288,
-    "market_cap": 15933403136,
+    "market_cap": 16024915968,
     "sector": "Technology",
     "company_name": "DigitalOcean Holdings, Inc.",
     "verdict": "Avoid",
@@ -2946,17 +2486,7 @@
       "sell_count": 0,
       "target_low": 140.0,
       "target_mean": 175.2,
-      "target_high": 200.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 200.0
     },
     "market_regime": "sideways"
   },
@@ -3009,17 +2539,7 @@
       "sell_count": 11,
       "target_low": 23.0,
       "target_mean": 31.8,
-      "target_high": 42.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 42.0
     },
     "market_regime": "sideways"
   },
@@ -3072,17 +2592,7 @@
       "sell_count": 5,
       "target_low": 26.0,
       "target_mean": 38.71429,
-      "target_high": 50.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 50.0
     },
     "market_regime": "sideways"
   },
@@ -3092,7 +2602,7 @@
     "tech_score": 33,
     "price": 144.01,
     "avg_volume": 9493334,
-    "market_cap": 185289588736,
+    "market_cap": 186875232256,
     "sector": "Technology",
     "company_name": "Shopify Inc.",
     "verdict": "Hold",
@@ -3135,17 +2645,7 @@
       "sell_count": 3,
       "target_low": 120.0,
       "target_mean": 172.77083,
-      "target_high": 220.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 220.0
     },
     "market_regime": "sideways"
   },
@@ -3155,7 +2655,7 @@
     "tech_score": 8,
     "price": 202.84,
     "avg_volume": 1766930,
-    "market_cap": 10114860032,
+    "market_cap": 10383522816,
     "sector": "Technology",
     "company_name": "HubSpot, Inc.",
     "verdict": "Avoid",
@@ -3198,17 +2698,7 @@
       "sell_count": 3,
       "target_low": 190.0,
       "target_mean": 249.71677,
-      "target_high": 320.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 320.0
     },
     "market_regime": "sideways"
   },
@@ -3261,17 +2751,7 @@
       "sell_count": 3,
       "target_low": 79.0,
       "target_mean": 118.24,
-      "target_high": 135.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 135.0
     },
     "market_regime": "sideways"
   },
@@ -3280,7 +2760,7 @@
     "fund_score": 35,
     "tech_score": 14,
     "price": 66.98,
-    "avg_volume": 3292376,
+    "avg_volume": 3287887,
     "market_cap": 12518726656,
     "sector": "Technology",
     "company_name": "DocuSign, Inc.",
@@ -3324,17 +2804,7 @@
       "sell_count": 3,
       "target_low": 46.89,
       "target_mean": 69.99312,
-      "target_high": 86.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 86.0
     },
     "market_regime": "sideways"
   },
@@ -3387,17 +2857,7 @@
       "sell_count": 3,
       "target_low": 26.0,
       "target_mean": 34.0,
-      "target_high": 42.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 42.0
     },
     "market_regime": "sideways"
   },
@@ -3406,7 +2866,7 @@
     "fund_score": 19,
     "tech_score": 34,
     "price": 202.18,
-    "avg_volume": 3504937,
+    "avg_volume": 3510673,
     "market_cap": 35345293312,
     "sector": "Technology",
     "company_name": "Okta, Inc.",
@@ -3450,17 +2910,7 @@
       "sell_count": 2,
       "target_low": 127.0,
       "target_mean": 211.20256,
-      "target_high": 250.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 250.0
     },
     "market_regime": "sideways"
   },
@@ -3513,17 +2963,7 @@
       "sell_count": 3,
       "target_low": 28.0,
       "target_mean": 51.31818,
-      "target_high": 60.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 60.0
     },
     "market_regime": "sideways"
   },
@@ -3533,7 +2973,7 @@
     "tech_score": 13,
     "price": 173.83,
     "avg_volume": 766296,
-    "market_cap": 6121772544,
+    "market_cap": 6013648896,
     "sector": "Technology",
     "company_name": "Qualys, Inc.",
     "verdict": "Avoid",
@@ -3576,17 +3016,7 @@
       "sell_count": 3,
       "target_low": 130.0,
       "target_mean": 179.36278,
-      "target_high": 220.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 220.0
     },
     "market_regime": "sideways"
   },
@@ -3639,17 +3069,7 @@
       "sell_count": 10,
       "target_low": 8.76,
       "target_mean": 11.71,
-      "target_high": 15.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 15.0
     },
     "market_regime": "sideways"
   },
@@ -3658,8 +3078,8 @@
     "fund_score": 14,
     "tech_score": 6,
     "price": 34.47,
-    "avg_volume": 4229865,
-    "market_cap": 3801075200,
+    "avg_volume": 4257726,
+    "market_cap": 3796525312,
     "sector": "Technology",
     "company_name": "Tenable Holdings, Inc.",
     "verdict": "Avoid",
@@ -3702,17 +3122,7 @@
       "sell_count": 3,
       "target_low": 23.0,
       "target_mean": 35.35,
-      "target_high": 50.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 50.0
     },
     "market_regime": "sideways"
   },
@@ -3765,17 +3175,7 @@
       "sell_count": 0,
       "target_low": 17.5,
       "target_mean": 24.38333,
-      "target_high": 28.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 28.0
     },
     "market_regime": "sideways"
   },
@@ -3784,7 +3184,7 @@
     "fund_score": 36,
     "tech_score": 7,
     "price": 129.27,
-    "avg_volume": 1180253,
+    "avg_volume": 1178946,
     "market_cap": 13198548992,
     "sector": "Technology",
     "company_name": "Check Point Software Technologi",
@@ -3828,17 +3228,7 @@
       "sell_count": 0,
       "target_low": 105.0,
       "target_mean": 145.82516,
-      "target_high": 201.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 201.0
     },
     "market_regime": "sideways"
   },
@@ -3848,7 +3238,7 @@
     "tech_score": 4,
     "price": 41.6,
     "avg_volume": 2247101,
-    "market_cap": 4143223808,
+    "market_cap": 3547514112,
     "sector": "Technology",
     "company_name": "BILL Holdings, Inc.",
     "verdict": "Avoid",
@@ -3891,17 +3281,7 @@
       "sell_count": 0,
       "target_low": 43.0,
       "target_mean": 57.3,
-      "target_high": 75.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 75.0
     },
     "market_regime": "sideways"
   },
@@ -3954,17 +3334,7 @@
       "sell_count": 3,
       "target_low": 180.0,
       "target_mean": 297.2963,
-      "target_high": 350.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 350.0
     },
     "market_regime": "sideways"
   },
@@ -4017,17 +3387,7 @@
       "sell_count": 6,
       "target_low": 80.0,
       "target_mean": 195.56538,
-      "target_high": 255.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 255.0
     },
     "market_regime": "sideways"
   },
@@ -4080,17 +3440,7 @@
       "sell_count": 18,
       "target_low": 6.0,
       "target_mean": 8.3,
-      "target_high": 12.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 12.0
     },
     "market_regime": "sideways"
   },
@@ -4143,17 +3493,7 @@
       "sell_count": 3,
       "target_low": 10.0,
       "target_mean": 15.49882,
-      "target_high": 23.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 23.0
     },
     "market_regime": "sideways"
   },
@@ -4162,7 +3502,7 @@
     "fund_score": 18,
     "tech_score": 9,
     "price": 39.86,
-    "avg_volume": 9970782,
+    "avg_volume": 10050123,
     "market_cap": 17541945344,
     "sector": "Technology",
     "company_name": "Unity Software Inc.",
@@ -4206,17 +3546,7 @@
       "sell_count": 0,
       "target_low": 35.0,
       "target_mean": 49.39,
-      "target_high": 55.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 55.0
     },
     "market_regime": "sideways"
   },
@@ -4231,7 +3561,7 @@
     "company_name": "Apple Inc.",
     "verdict": "Hold",
     "buy_price": 338.4,
-    "target_price": 346.46901876471657,
+    "target_price": 346.4690187647308,
     "stop_loss": 327.02768975830077,
     "strategy": "\u26a0\ufe0f \ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)(R:R\uc8fc\uc758)",
     "comment": "ROE:148.8%, OPM:32.6%, FCF:23%",
@@ -4255,12 +3585,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 61.823794131806025,
+    "rsi_value": 61.82379415239758,
     "ma5": 338.4320007324219,
     "ma20": 330.33099975585935,
     "ma60": 321.4042444864909,
-    "ma120": 304.80769373575845,
-    "atr_value": 6.828768703657905,
+    "ma120": 304.8076922098796,
+    "atr_value": 6.82876870357416,
     "mfi_value": 75.28787148496296,
     "analyst_comment": "ROE 148.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 32.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +16% \uc131\uc7a5\uc138. FCF Margin 23%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 62\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 137\uba85 \uc911 81\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $328 (\ud604\uc7ac\uac00 \ub300\ube44 -3%). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -4269,17 +3599,7 @@
       "sell_count": 12,
       "target_low": 215.0,
       "target_mean": 328.22205,
-      "target_high": 405.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 405.0
     },
     "market_regime": "sideways"
   },
@@ -4318,12 +3638,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 54.44305844389582,
+    "rsi_value": 54.44305844389591,
     "ma5": 548.2180053710938,
     "ma20": 533.5360046386719,
     "ma60": 469.28099161783854,
     "ma120": 384.8254575093587,
-    "atr_value": 31.29204957630204,
+    "atr_value": 31.292049576302094,
     "mfi_value": 54.66951407234725,
     "analyst_comment": "\ub9e4\ucd9c YoY +58% \uace0\uc131\uc7a5. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 54\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 82\uba85 \uc911 57\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $577 (\ud604\uc7ac\uac00 \ub300\ube44 +6% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -4332,17 +3652,7 @@
       "sell_count": 0,
       "target_low": 480.0,
       "target_mean": 577.36,
-      "target_high": 735.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 735.0
     },
     "market_regime": "sideways"
   },
@@ -4381,12 +3691,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 60.677835547940546,
+    "rsi_value": 60.6778355479411,
     "ma5": 62.49000015258789,
     "ma20": 57.79604225158691,
     "ma60": 52.85621871948242,
     "ma120": 44.893612225850426,
-    "atr_value": 3.4290584970491667,
+    "atr_value": 3.4290584970491262,
     "mfi_value": 75.00992511671862,
     "analyst_comment": "ROE 10.9%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \ub9e4\ucd9c YoY +34% \uace0\uc131\uc7a5. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 61\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 67\uba85 \uc911 40\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $68 (\ud604\uc7ac\uac00 \ub300\ube44 +9% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -4395,17 +3705,7 @@
       "sell_count": 0,
       "target_low": 52.59,
       "target_mean": 68.0795,
-      "target_high": 88.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 88.0
     },
     "market_regime": "sideways"
   },
@@ -4415,7 +3715,7 @@
     "tech_score": 28,
     "price": 41.78,
     "avg_volume": 45694733,
-    "market_cap": 27026354176,
+    "market_cap": 27448012800,
     "sector": "Technology",
     "company_name": "Super Micro Computer, Inc.",
     "verdict": "Buy",
@@ -4458,17 +3758,7 @@
       "sell_count": 9,
       "target_low": 15.0,
       "target_mean": 42.375,
-      "target_high": 60.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 60.0
     },
     "market_regime": "sideways"
   },
@@ -4521,17 +3811,7 @@
       "sell_count": 0,
       "target_low": 190.0,
       "target_mean": 241.92892,
-      "target_high": 289.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 289.0
     },
     "market_regime": "sideways"
   },
@@ -4540,14 +3820,14 @@
     "fund_score": 43,
     "tech_score": 8,
     "price": 106.74,
-    "avg_volume": 20397373,
+    "avg_volume": 20364836,
     "market_cap": 420831723520,
     "sector": "Technology",
     "company_name": "Cisco Systems, Inc.",
     "verdict": "Hold",
-    "buy_price": 105.59078894658627,
+    "buy_price": 105.59078894659359,
     "target_price": 112.94999694824219,
-    "stop_loss": 100.08866369420737,
+    "stop_loss": 100.08866369423811,
     "strategy": "\u26a0\ufe0f \ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)(R:R\uc8fc\uc758)",
     "comment": "\ud83d\udcc9\uc6b0\ub7c9\uc8fc\uc870\uc815\ub9e4\uc218, ROE:27.3%, OPM:27.7%",
     "contrarian_adjustment": 8,
@@ -4570,12 +3850,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 41.800687611327966,
+    "rsi_value": 41.80068761132089,
     "ma5": 106.65599975585937,
     "ma20": 108.9014991760254,
     "ma60": 112.76766637166341,
     "ma120": 109.48136399586996,
-    "atr_value": 2.7510626261894484,
+    "atr_value": 2.7510626261777444,
     "mfi_value": 35.32295909389268,
     "analyst_comment": "ROE 27.3%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 27.7%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +18% \uc131\uc7a5\uc138. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 42\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 80\uba85 \uc911 53\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $137 (\ud604\uc7ac\uac00 \ub300\ube44 +29% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
@@ -4584,17 +3864,7 @@
       "sell_count": 2,
       "target_low": 115.0,
       "target_mean": 137.25,
-      "target_high": 170.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 170.0
     },
     "market_regime": "sideways"
   },
@@ -4647,17 +3917,7 @@
       "sell_count": 5,
       "target_low": 93.0,
       "target_mean": 158.87318,
-      "target_high": 225.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 225.0
     },
     "market_regime": "sideways"
   },
@@ -4696,7 +3956,7 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 62.757779807042766,
+    "rsi_value": 62.757779807042866,
     "ma5": 198.4080017089844,
     "ma20": 191.5770004272461,
     "ma60": 184.52403259277344,
@@ -4710,17 +3970,7 @@
       "sell_count": 2,
       "target_low": 170.0,
       "target_mean": 197.0,
-      "target_high": 219.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 219.0
     },
     "market_regime": "sideways"
   },
@@ -4729,7 +3979,7 @@
     "fund_score": 46,
     "tech_score": 24,
     "price": 921.51,
-    "avg_volume": 4502542,
+    "avg_volume": 4516429,
     "market_cap": 209544937472,
     "sector": "Technology",
     "company_name": "Seagate Technology Holdings PLC",
@@ -4759,12 +4009,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 59.19925311986734,
+    "rsi_value": 59.19925303842784,
     "ma5": 917.2966552734375,
     "ma20": 853.0261993408203,
     "ma60": 850.6541035970052,
-    "ma120": 818.5657725016276,
-    "atr_value": 50.29617639979779,
+    "ma120": 818.5657740275066,
+    "atr_value": 50.29617650561194,
     "mfi_value": 55.457558355168075,
     "analyst_comment": "ROE 371.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 43.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +48% \uace0\uc131\uc7a5. FCF Margin 16%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 59\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 75\uba85 \uc911 65\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1125 (\ud604\uc7ac\uac00 \ub300\ube44 +22% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -4773,17 +4023,7 @@
       "sell_count": 3,
       "target_low": 700.0,
       "target_mean": 1125.0,
-      "target_high": 1600.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 1600.0
     },
     "market_regime": "sideways"
   },
@@ -4822,12 +4062,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 48.704136106153435,
+    "rsi_value": 48.70413610618256,
     "ma5": 459.7280029296875,
     "ma20": 449.68975219726565,
     "ma60": 484.3827102661133,
     "ma120": 492.6951260884603,
-    "atr_value": 27.62451092876534,
+    "atr_value": 27.624510928816324,
     "mfi_value": 54.205099332576935,
     "analyst_comment": "ROE 130.9%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 43.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +44% \uace0\uc131\uc7a5. FCF Margin 18%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 49\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 78\uba85 \uc911 65\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $665 (\ud604\uc7ac\uac00 \ub300\ube44 +47% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
@@ -4836,17 +4076,7 @@
       "sell_count": 2,
       "target_low": 420.0,
       "target_mean": 664.9167,
-      "target_high": 1050.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 1050.0
     },
     "market_regime": "sideways"
   },
@@ -4860,9 +4090,9 @@
     "sector": "Technology",
     "company_name": "Automatic Data Processing, Inc.",
     "verdict": "Avoid",
-    "buy_price": 257.71961577048853,
+    "buy_price": 257.7196157704867,
     "target_price": 278.5199890136719,
-    "stop_loss": 246.56811783212416,
+    "stop_loss": 246.56811780056276,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:72.2%, OPM:23.5%",
     "contrarian_adjustment": 5,
@@ -4885,12 +4115,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 39.124525319199684,
+    "rsi_value": 39.12452538973409,
     "ma5": 264.3799987792969,
     "ma20": 271.41552581787107,
     "ma60": 264.978524017334,
-    "ma120": 238.83762423197427,
-    "atr_value": 5.575748969182191,
+    "ma120": 238.83762474060057,
+    "atr_value": 5.57574898496197,
     "mfi_value": 25.761229441051654,
     "analyst_comment": "ROE 72.2%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 23.5%\ub85c \uc548\uc815\uc801. FCF Margin 24%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 39\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 13 / \ubcf4\uc720 35 / \ub9e4\ub3c4 6. \ud3c9\uade0 \ubaa9\ud45c\uac00 $288 (\ud604\uc7ac\uac00 \ub300\ube44 +10% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
@@ -4899,17 +4129,7 @@
       "sell_count": 6,
       "target_low": 225.0,
       "target_mean": 287.6,
-      "target_high": 322.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 322.0
     },
     "market_regime": "sideways"
   },
@@ -4923,9 +4143,9 @@
     "sector": "Technology",
     "company_name": "Paychex, Inc.",
     "verdict": "Avoid",
-    "buy_price": 99.65804864753387,
+    "buy_price": 99.65804864753416,
     "target_price": 116.50692192471487,
-    "stop_loss": 93.09720292771382,
+    "stop_loss": 93.09720292784377,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83c\udfaf\uc800\uac00\ub9e4\uc218\uae30\ud68c, ROE:47.1%, OPM:38.5%",
     "contrarian_adjustment": 10,
@@ -4948,12 +4168,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 20.429435192709533,
+    "rsi_value": 20.429435179283075,
     "ma5": 104.25599975585938,
     "ma20": 115.44500045776367,
     "ma60": 116.30769767761231,
-    "ma120": 105.00701554616292,
-    "atr_value": 3.2804228599100287,
+    "ma120": 105.00701548258463,
+    "atr_value": 3.280422859845193,
     "mfi_value": 13.985888945683968,
     "analyst_comment": "ROE 47.1%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 38.5%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 29%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 20\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 \ub9e4\uc218 7 / \ubcf4\uc720 34 / \ub9e4\ub3c4 13. \ud3c9\uade0 \ubaa9\ud45c\uac00 $114 (\ud604\uc7ac\uac00 \ub300\ube44 +15% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
@@ -4962,17 +4182,7 @@
       "sell_count": 13,
       "target_low": 96.0,
       "target_mean": 113.92857,
-      "target_high": 150.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 150.0
     },
     "market_regime": "sideways"
   },
@@ -4981,14 +4191,14 @@
     "fund_score": 39,
     "tech_score": 15,
     "price": 342.75,
-    "avg_volume": 27227385,
+    "avg_volume": 27116488,
     "market_cap": 4191810224128,
     "sector": "Communication Services",
     "company_name": "Alphabet Inc.",
     "verdict": "Avoid",
-    "buy_price": 329.5725777305481,
+    "buy_price": 329.57257773054994,
     "target_price": 351.3741604480826,
-    "stop_loss": 322.98112617593716,
+    "stop_loss": 322.9811261759389,
     "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(BB\ud558\ub2e8)",
     "comment": "ROE:48.7%, OPM:34.0%, MACD\uace8\ub4e0",
     "contrarian_adjustment": 0,
@@ -5011,12 +4221,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 48.86772534678983,
+    "rsi_value": 48.86772533947161,
     "ma5": 343.6039978027344,
     "ma20": 341.93851165771486,
     "ma60": 346.60514475504556,
-    "ma120": 355.11188583374025,
-    "atr_value": 8.467561015851532,
+    "ma120": 355.11188685099285,
+    "atr_value": 8.46756101019692,
     "mfi_value": 60.95326970469546,
     "analyst_comment": "ROE 48.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 34.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +24% \uc131\uc7a5\uc138. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 49\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 189\uba85 \uc911 171\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $430 (\ud604\uc7ac\uac00 \ub300\ube44 +25% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -5025,17 +4235,7 @@
       "sell_count": 0,
       "target_low": 340.0,
       "target_mean": 429.54816,
-      "target_high": 515.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 515.0
     },
     "market_regime": "sideways"
   },
@@ -5049,9 +4249,9 @@
     "sector": "Communication Services",
     "company_name": "Alphabet Inc.",
     "verdict": "Avoid",
-    "buy_price": 327.14708305617063,
+    "buy_price": 327.14708305616,
     "target_price": 347.8541504711519,
-    "stop_loss": 320.60414139504724,
+    "stop_loss": 320.6041413950368,
     "strategy": "\ud83d\udce6 \ubc15\uc2a4\uad8c\ud558\ub2e8(BB\ud558\ub2e8)",
     "comment": "ROE:48.7%, OPM:34.0%, RSI:48*",
     "contrarian_adjustment": 0,
@@ -5074,12 +4274,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 48.43503150076689,
+    "rsi_value": 48.43503150054496,
     "ma5": 340.3280029296875,
     "ma20": 338.57201995849607,
     "ma60": 344.33256072998046,
     "ma120": 352.6502362569173,
-    "atr_value": 8.2027636604695,
+    "atr_value": 8.202763660402281,
     "mfi_value": 61.79984437251846,
     "analyst_comment": "ROE 48.7%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 34.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +24% \uc131\uc7a5\uc138. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 48\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 187\uba85 \uc911 169\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $422 (\ud604\uc7ac\uac00 \ub300\ube44 +25% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -5088,17 +4288,7 @@
       "sell_count": 0,
       "target_low": 340.0,
       "target_mean": 422.336,
-      "target_high": 475.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 475.0
     },
     "market_regime": "sideways"
   },
@@ -5107,13 +4297,13 @@
     "fund_score": 44,
     "tech_score": 28,
     "price": 715.62,
-    "avg_volume": 19865575,
+    "avg_volume": 19942625,
     "market_cap": 1823046369280,
     "sector": "Communication Services",
     "company_name": "Meta Platforms, Inc.",
     "verdict": "Buy",
     "buy_price": 715.62,
-    "target_price": 786.2725050625587,
+    "target_price": 786.2725050625568,
     "stop_loss": 665.5266,
     "strategy": "\u26a0\ufe0f \ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)(R:R\uc8fc\uc758)",
     "comment": "ROE:29.8%, OPM:34.8%, PEG\uc800\ud3c9\uac00(0.99)",
@@ -5137,12 +4327,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 60.98980925833591,
+    "rsi_value": 60.98980924905231,
     "ma5": 745.1139892578125,
     "ma20": 667.3890594482422,
     "ma60": 621.0059885660808,
-    "ma120": 616.7504358927409,
-    "atr_value": 28.014844134764044,
+    "ma120": 616.7504364013672,
+    "atr_value": 28.01484418902219,
     "mfi_value": 72.31393689477493,
     "analyst_comment": "ROE 29.8%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 34.8%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +28% \uc131\uc7a5\uc138. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 61\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 187\uba85 \uc911 167\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $794 (\ud604\uc7ac\uac00 \ub300\ube44 +11% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -5151,17 +4341,7 @@
       "sell_count": 0,
       "target_low": 580.0,
       "target_mean": 793.90735,
-      "target_high": 1000.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 1000.0
     },
     "market_regime": "sideways"
   },
@@ -5170,7 +4350,7 @@
     "fund_score": 45,
     "tech_score": 5,
     "price": 69.23,
-    "avg_volume": 37770767,
+    "avg_volume": 37696817,
     "market_cap": 288269565952,
     "sector": "Communication Services",
     "company_name": "Netflix, Inc.",
@@ -5214,17 +4394,7 @@
       "sell_count": 0,
       "target_low": 57.0,
       "target_mean": 92.92667,
-      "target_high": 135.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 135.0
     },
     "market_regime": "sideways"
   },
@@ -5277,17 +4447,7 @@
       "sell_count": 17,
       "target_low": 9.0,
       "target_mean": 13.6,
-      "target_high": 21.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 21.0
     },
     "market_regime": "sideways"
   },
@@ -5340,17 +4500,7 @@
       "sell_count": 3,
       "target_low": 170.0,
       "target_mean": 286.4417,
-      "target_high": 368.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 368.0
     },
     "market_regime": "sideways"
   },
@@ -5403,17 +4553,7 @@
       "sell_count": 4,
       "target_low": 33.0,
       "target_mean": 48.97471,
-      "target_high": 65.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 65.0
     },
     "market_regime": "sideways"
   },
@@ -5464,19 +4604,9 @@
       "buy_count": 92,
       "hold_count": 3,
       "sell_count": 0,
-      "target_low": 132.41736,
-      "target_mean": 162.68045,
-      "target_high": 200.63235,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_low": 132.43317,
+      "target_mean": 162.69987,
+      "target_high": 200.65631
     },
     "market_regime": "sideways"
   },
@@ -5529,17 +4659,7 @@
       "sell_count": 3,
       "target_low": 26.0,
       "target_mean": 30.16667,
-      "target_high": 31.25,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 31.25
     },
     "market_regime": "sideways"
   },
@@ -5553,9 +4673,9 @@
     "sector": "Communication Services",
     "company_name": "SiriusXM Holdings Inc.",
     "verdict": "Avoid",
-    "buy_price": 25.535987501828316,
+    "buy_price": 25.535987501828217,
     "target_price": 29.112324142456053,
-    "stop_loss": 24.350386293669363,
+    "stop_loss": 24.350386293923528,
     "strategy": "\ud83d\udcb0 \ubd84\ud560\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "OPM:22.1%, FCF:14%, RSI:33",
     "contrarian_adjustment": 0,
@@ -5578,12 +4698,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 32.72951541240161,
+    "rsi_value": 32.72951540011316,
     "ma5": 26.24800033569336,
     "ma20": 28.04000015258789,
     "ma60": 29.112324142456053,
-    "ma120": 27.986328585942587,
-    "atr_value": 0.7904008054393031,
+    "ma120": 27.98632853825887,
+    "atr_value": 0.7904008052697931,
     "mfi_value": 31.50556524227028,
     "analyst_comment": "ROE 7.6%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 22.1%\ub85c \uc548\uc815\uc801. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 33\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 12 / \ubcf4\uc720 20 / \ub9e4\ub3c4 10. \ud3c9\uade0 \ubaa9\ud45c\uac00 $33 (\ud604\uc7ac\uac00 \ub300\ube44 +28% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
@@ -5592,17 +4712,7 @@
       "sell_count": 10,
       "target_low": 24.0,
       "target_mean": 33.23077,
-      "target_high": 46.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 46.0
     },
     "market_regime": "sideways"
   },
@@ -5611,7 +4721,7 @@
     "fund_score": 29,
     "tech_score": 10,
     "price": 56.55,
-    "avg_volume": 1283753,
+    "avg_volume": 1271623,
     "market_cap": 23845644288,
     "sector": "Communication Services",
     "company_name": "Fox Corporation",
@@ -5652,17 +4762,7 @@
     "analyst_data": {
       "target_low": null,
       "target_mean": null,
-      "target_high": null,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": null
     },
     "market_regime": "sideways"
   },
@@ -5715,17 +4815,7 @@
       "sell_count": 3,
       "target_low": 52.6,
       "target_mean": 76.42222,
-      "target_high": 112.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 112.0
     },
     "market_regime": "sideways"
   },
@@ -5778,17 +4868,7 @@
       "sell_count": 0,
       "target_low": 230.0,
       "target_mean": 329.5393,
-      "target_high": 405.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 405.0
     },
     "market_regime": "sideways"
   },
@@ -5841,17 +4921,7 @@
       "sell_count": 17,
       "target_low": 125.0,
       "target_mean": 395.83212,
-      "target_high": 600.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 600.0
     },
     "market_regime": "sideways"
   },
@@ -5904,17 +4974,7 @@
       "sell_count": 0,
       "target_low": 1750.0,
       "target_mean": 2272.28,
-      "target_high": 2800.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 2800.0
     },
     "market_regime": "sideways"
   },
@@ -5967,17 +5027,7 @@
       "sell_count": 7,
       "target_low": 135.0,
       "target_mean": 184.35,
-      "target_high": 220.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 220.0
     },
     "market_regime": "sideways"
   },
@@ -5987,13 +5037,13 @@
     "tech_score": 6,
     "price": 163.87,
     "avg_volume": 6759249,
-    "market_cap": 126979334144,
+    "market_cap": 123128717312,
     "sector": "Consumer Cyclical",
     "company_name": "Booking Holdings Inc. Common St",
     "verdict": "Avoid",
-    "buy_price": 149.30312430613318,
+    "buy_price": 149.30312430613324,
     "target_price": 188.5509821573893,
-    "stop_loss": 141.8379680908265,
+    "stop_loss": 141.83796809082656,
     "strategy": "\ud83d\udd04 \ubc18\ub4f1\ub300\uae30(BB\ud558\ub2e8)",
     "comment": "OPM:34.4%, FCF:27%, PEG\uc800\ud3c9\uac00(0.90)",
     "contrarian_adjustment": 0,
@@ -6016,12 +5066,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 33.7912968635232,
+    "rsi_value": 33.79129687774535,
     "ma5": 161.06999816894532,
     "ma20": 175.575,
     "ma60": 188.5509821573893,
-    "ma120": 179.41510848999025,
-    "atr_value": 6.546369499292238,
+    "ma120": 179.4151081085205,
+    "atr_value": 6.546369496185799,
     "mfi_value": 33.379403683256214,
     "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 34.4%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 27%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 34\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 114\uba85 \uc911 91\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $239 (\ud604\uc7ac\uac00 \ub300\ube44 +46% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
@@ -6030,17 +5080,7 @@
       "sell_count": 0,
       "target_low": 188.0,
       "target_mean": 238.78378,
-      "target_high": 301.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 301.0
     },
     "market_regime": "sideways"
   },
@@ -6049,7 +5089,7 @@
     "fund_score": 30,
     "tech_score": 5,
     "price": 178.39,
-    "avg_volume": 4130249,
+    "avg_volume": 4144504,
     "market_cap": 77296017408,
     "sector": "Consumer Cyclical",
     "company_name": "DoorDash, Inc.",
@@ -6093,17 +5133,7 @@
       "sell_count": 0,
       "target_low": 172.0,
       "target_mean": 256.2642,
-      "target_high": 350.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 350.0
     },
     "market_regime": "sideways"
   },
@@ -6154,19 +5184,9 @@
       "buy_count": 66,
       "hold_count": 41,
       "sell_count": 4,
-      "target_low": 85.23073,
-      "target_mean": 114.600525,
-      "target_high": 150.36913,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_low": 85.240906,
+      "target_mean": 114.614204,
+      "target_high": 150.38708
     },
     "market_regime": "sideways"
   },
@@ -6217,19 +5237,9 @@
       "buy_count": 99,
       "hold_count": 7,
       "sell_count": 3,
-      "target_low": 25.148102,
-      "target_mean": 39.435947,
-      "target_high": 53.314636,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_low": 25.151104,
+      "target_mean": 39.440655,
+      "target_high": 53.321
     },
     "market_regime": "sideways"
   },
@@ -6282,17 +5292,7 @@
       "sell_count": 10,
       "target_low": 44.0,
       "target_mean": 104.91111,
-      "target_high": 255.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 255.0
     },
     "market_regime": "sideways"
   },
@@ -6302,7 +5302,7 @@
     "tech_score": 9,
     "price": 27.22,
     "avg_volume": 11261801,
-    "market_cap": 26221254656,
+    "market_cap": 25200586752,
     "sector": "Industrials",
     "company_name": "Copart, Inc.",
     "verdict": "Avoid",
@@ -6345,17 +5345,7 @@
       "sell_count": 3,
       "target_low": 25.0,
       "target_mean": 39.0,
-      "target_high": 55.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 55.0
     },
     "market_regime": "sideways"
   },
@@ -6365,7 +5355,7 @@
     "tech_score": 25,
     "price": 1184.78,
     "avg_volume": 2542966,
-    "market_cap": 1056062046208,
+    "market_cap": 1056517390336,
     "sector": "Healthcare",
     "company_name": "Eli Lilly and Company",
     "verdict": "Buy",
@@ -6394,12 +5384,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 56.107464244250956,
+    "rsi_value": 56.10746425337539,
     "ma5": 1174.252001953125,
     "ma20": 1151.3159912109375,
     "ma60": 1178.7231465657553,
-    "ma120": 1104.969123840332,
-    "atr_value": 31.695092118174834,
+    "ma120": 1104.9691228230795,
+    "atr_value": 31.695092112698465,
     "mfi_value": 76.38275452554753,
     "analyst_comment": "ROE 102.3%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 54.2%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +48% \uace0\uc131\uc7a5. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 56\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 88\uba85 \uc911 69\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1329 (\ud604\uc7ac\uac00 \ub300\ube44 +12% \uc0c1\uc2b9\uc5ec\ub825). \ud6a1\ubcf4 \uad6c\uac04 \ud558\ub2e8 \uc811\uadfc \uc911\uc73c\ub85c \uc9c0\uc9c0\uc120 \ud655\uc778 \ud6c4 \ub9e4\uc218 \uac80\ud1a0.",
     "analyst_data": {
@@ -6408,17 +5398,7 @@
       "sell_count": 6,
       "target_low": 930.0,
       "target_mean": 1328.8337,
-      "target_high": 1600.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 1600.0
     },
     "market_regime": "sideways"
   },
@@ -6471,17 +5451,7 @@
       "sell_count": 8,
       "target_low": 45.0,
       "target_mean": 119.55556,
-      "target_high": 170.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 170.0
     },
     "market_regime": "sideways"
   },
@@ -6495,9 +5465,9 @@
     "sector": "Healthcare",
     "company_name": "Regeneron Pharmaceuticals, Inc.",
     "verdict": "Avoid",
-    "buy_price": 753.6567465659689,
+    "buy_price": 753.656746565964,
     "target_price": 847.0,
-    "stop_loss": 712.225101689747,
+    "stop_loss": 712.2251016895857,
     "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
     "comment": "\ud83d\udcc9\uc870\uc815\ub9e4\uc218\uad6c\uac04, ROE:14.0%, OPM:33.1%",
     "contrarian_adjustment": 5,
@@ -6520,12 +5490,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 37.73077684610675,
+    "rsi_value": 37.730776846104526,
     "ma5": 788.406005859375,
     "ma20": 799.7894989013672,
     "ma60": 759.1608286539714,
     "ma120": 715.7399398803711,
-    "atr_value": 20.715822438110955,
+    "atr_value": 20.715822438189168,
     "mfi_value": 48.06970382712428,
     "analyst_comment": "ROE 14.0%\ub85c \uc591\ud638\ud55c \uc218\uc775\uc131. \uc601\uc5c5\uc774\uc775\ub960 33.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +17% \uc131\uc7a5\uc138. FCF Margin 20%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4\uc774\ub098 \ub2e8\uae30 \uc870\uc815 \uad6c\uac04. RSI 38\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 85\uba85 \uc911 57\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $851 (\ud604\uc7ac\uac00 \ub300\ube44 +13% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
     "analyst_data": {
@@ -6534,17 +5504,7 @@
       "sell_count": 1,
       "target_low": 730.0,
       "target_mean": 850.88464,
-      "target_high": 1030.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 1030.0
     },
     "market_regime": "sideways"
   },
@@ -6554,7 +5514,7 @@
     "tech_score": 20,
     "price": 527.67,
     "avg_volume": 1250831,
-    "market_cap": 133658804224,
+    "market_cap": 133743722496,
     "sector": "Healthcare",
     "company_name": "Vertex Pharmaceuticals Incorpor",
     "verdict": "Hold",
@@ -6597,17 +5557,7 @@
       "sell_count": 6,
       "target_low": 350.0,
       "target_mean": 571.3929,
-      "target_high": 672.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 672.0
     },
     "market_regime": "sideways"
   },
@@ -6616,7 +5566,7 @@
     "fund_score": 18,
     "tech_score": 24,
     "price": 228.69,
-    "avg_volume": 1073971,
+    "avg_volume": 1070704,
     "market_cap": 33789861888,
     "sector": "Healthcare",
     "company_name": "Biogen Inc.",
@@ -6660,17 +5610,7 @@
       "sell_count": 3,
       "target_low": 175.0,
       "target_mean": 238.18195,
-      "target_high": 300.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 300.0
     },
     "market_regime": "sideways"
   },
@@ -6723,17 +5663,7 @@
       "sell_count": 4,
       "target_low": 324.0,
       "target_mean": 476.34482,
-      "target_high": 685.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 685.0
     },
     "market_regime": "sideways"
   },
@@ -6786,17 +5716,7 @@
       "sell_count": 0,
       "target_low": 79.0,
       "target_mean": 94.48,
-      "target_high": 115.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 115.0
     },
     "market_regime": "sideways"
   },
@@ -6849,17 +5769,7 @@
       "sell_count": 3,
       "target_low": 170.0,
       "target_mean": 206.35715,
-      "target_high": 235.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 235.0
     },
     "market_regime": "sideways"
   },
@@ -6869,7 +5779,7 @@
     "tech_score": 18,
     "price": 529.06,
     "avg_volume": 575276,
-    "market_cap": 41733840896,
+    "market_cap": 41679937536,
     "sector": "Healthcare",
     "company_name": "IDEXX Laboratories, Inc.",
     "verdict": "Avoid",
@@ -6912,17 +5822,7 @@
       "sell_count": 3,
       "target_low": 470.0,
       "target_mean": 701.3333,
-      "target_high": 805.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 805.0
     },
     "market_regime": "sideways"
   },
@@ -6931,7 +5831,7 @@
     "fund_score": 38,
     "tech_score": 3,
     "price": 133.11,
-    "avg_volume": 1603044,
+    "avg_volume": 1602396,
     "market_cap": 9231737856,
     "sector": "Healthcare",
     "company_name": "Insulet Corporation",
@@ -6975,17 +5875,7 @@
       "sell_count": 0,
       "target_low": 144.0,
       "target_mean": 171.90909,
-      "target_high": 275.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 275.0
     },
     "market_regime": "sideways"
   },
@@ -7038,17 +5928,7 @@
       "sell_count": 12,
       "target_low": 113.0,
       "target_mean": 202.65,
-      "target_high": 260.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 260.0
     },
     "market_regime": "sideways"
   },
@@ -7057,13 +5937,13 @@
     "fund_score": 23,
     "tech_score": 19,
     "price": 72.51,
-    "avg_volume": 3857843,
+    "avg_volume": 3683280,
     "market_cap": 11370891264,
     "sector": "Healthcare",
     "company_name": "Bio-Techne Corp",
     "verdict": "Avoid",
     "buy_price": 72.51,
-    "target_price": 72.93559072547059,
+    "target_price": 72.93559072666122,
     "stop_loss": 71.05980000000001,
     "strategy": "\u26a0\ufe0f \ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)(R:R\uc8fc\uc758)",
     "comment": "OPM:27.9%, FCF:19%, MA120\u2191",
@@ -7087,12 +5967,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 61.45218542495678,
+    "rsi_value": 61.45218528532935,
     "ma5": 72.5520004272461,
     "ma20": 72.36900024414062,
     "ma60": 72.01431070963541,
-    "ma120": 63.24956480662028,
-    "atr_value": 0.21279536273529323,
+    "ma120": 63.24956490198771,
+    "atr_value": 0.21279536333060903,
     "mfi_value": 54.02879509799655,
     "analyst_comment": "ROE 9.0%\ub85c \uc218\uc775\uc131 \ubcf4\ud1b5. \uc601\uc5c5\uc774\uc775\ub960 27.9%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 19%\ub85c \uc6b0\uc218\ud55c \ud604\uae08\ud750\ub984. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 61\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 \ub9e4\uc218 7 / \ubcf4\uc720 36 / \ub9e4\ub3c4 0. \ud3c9\uade0 \ubaa9\ud45c\uac00 $71 (\ud604\uc7ac\uac00 \ub300\ube44 -2%). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -7101,17 +5981,7 @@
       "sell_count": 0,
       "target_low": 50.0,
       "target_mean": 70.72727,
-      "target_high": 73.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 73.0
     },
     "market_regime": "sideways"
   },
@@ -7120,7 +5990,7 @@
     "fund_score": 29,
     "tech_score": 28,
     "price": 678.6,
-    "avg_volume": 2056422,
+    "avg_volume": 2056732,
     "market_cap": 250910507008,
     "sector": "Healthcare",
     "company_name": "Thermo Fisher Scientific Inc",
@@ -7164,17 +6034,7 @@
       "sell_count": 1,
       "target_low": 520.0,
       "target_mean": 653.1111,
-      "target_high": 780.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 780.0
     },
     "market_regime": "sideways"
   },
@@ -7183,7 +6043,7 @@
     "fund_score": 25,
     "tech_score": 26,
     "price": 227.33,
-    "avg_volume": 4657606,
+    "avg_volume": 4675623,
     "market_cap": 159809814528,
     "sector": "Healthcare",
     "company_name": "Danaher Corporation",
@@ -7227,17 +6087,7 @@
       "sell_count": 0,
       "target_low": 195.0,
       "target_mean": 230.8261,
-      "target_high": 310.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 310.0
     },
     "market_regime": "sideways"
   },
@@ -7247,13 +6097,13 @@
     "tech_score": 28,
     "price": 175.21,
     "avg_volume": 2258973,
-    "market_cap": 49396756480,
+    "market_cap": 49403232256,
     "sector": "Healthcare",
     "company_name": "Agilent Technologies, Inc.",
     "verdict": "Avoid",
-    "buy_price": 165.18188292386492,
-    "target_price": 175.26269039549973,
-    "stop_loss": 155.15376584772983,
+    "buy_price": 165.1818829238538,
+    "target_price": 175.26269039549962,
+    "stop_loss": 155.1537658477076,
     "strategy": "\u26a0\ufe0f \u26a0\ufe0f \uc870\uc815\ub300\uae30(\uc9c4\uc785\uc870\uac74\uac00)(R:R\uc8fc\uc758)",
     "comment": "\u26a0\ufe0f\uacfc\uc5f4\uc8fc\uc758, ROE:21.0%, OPM:25.6%",
     "contrarian_adjustment": -10,
@@ -7276,12 +6126,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 76.76883702047986,
+    "rsi_value": 76.76883702020977,
     "ma5": 170.68399963378906,
     "ma20": 155.81499938964845,
     "ma60": 146.8550003051758,
     "ma120": 134.6499376296997,
-    "atr_value": 5.014058538067539,
+    "atr_value": 5.014058538073096,
     "mfi_value": 91.56365816613547,
     "analyst_comment": "ROE 21.0%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 25.6%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 77\uc73c\ub85c \uacfc\ub9e4\uc218 \uc601\uc5ed \u2192 \ub2e8\uae30 \uc870\uc815 \uc720\uc758. \uc6d4\uac00 63\uba85 \uc911 50\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $175 (\ud604\uc7ac\uac00 \ub300\ube44 +0% \uc0c1\uc2b9\uc5ec\ub825). \uacfc\uc5f4 \uad6c\uac04\uc73c\ub85c \uc2e0\uaddc \uc9c4\uc785\ubcf4\ub2e4 \uc870\uc815 \ud6c4 \uc7ac\uc9c4\uc785 \uad8c\uc7a5.",
     "analyst_data": {
@@ -7290,17 +6140,7 @@
       "sell_count": 0,
       "target_low": 155.0,
       "target_mean": 175.42857,
-      "target_high": 190.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 190.0
     },
     "market_regime": "sideways"
   },
@@ -7353,17 +6193,7 @@
       "sell_count": 6,
       "target_low": 6.0,
       "target_mean": 11.96667,
-      "target_high": 20.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 20.0
     },
     "market_regime": "sideways"
   },
@@ -7416,17 +6246,7 @@
       "sell_count": 3,
       "target_low": 14.0,
       "target_mean": 76.425,
-      "target_high": 130.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 130.0
     },
     "market_regime": "sideways"
   },
@@ -7465,12 +6285,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 50.04351422413343,
+    "rsi_value": 50.043514224133716,
     "ma5": 952.9080078125,
     "ma20": 933.2500061035156,
     "ma60": 987.7008371988933,
     "ma120": 1009.7031778971354,
-    "atr_value": 35.949675066963245,
+    "atr_value": 35.94967506697038,
     "mfi_value": 44.42689867927026,
     "analyst_comment": "ROE 82.6%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \ub9e4\ucd9c YoY +22% \uc131\uc7a5\uc138. FCF Margin 38%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. \uc774\ub3d9\ud3c9\uade0 \uc218\ub834 \uad6c\uac04\uc73c\ub85c \ubc29\ud5a5\uc131 \ud0d0\uc0c9 \uc911. RSI 50\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 113\uba85 \uc911 90\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $1237 (\ud604\uc7ac\uac00 \ub300\ube44 +30% \uc0c1\uc2b9\uc5ec\ub825). \ud558\ub77d \ucd94\uc138\ub85c \ubc18\ub4f1 \uc2e0\ud638 \ud655\uc778 \uc804\uae4c\uc9c0 \uad00\ub9dd \uad8c\uc7a5.",
     "analyst_data": {
@@ -7479,17 +6299,7 @@
       "sell_count": 0,
       "target_low": 940.0,
       "target_mean": 1237.341,
-      "target_high": 1450.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 1450.0
     },
     "market_regime": "sideways"
   },
@@ -7542,17 +6352,7 @@
       "sell_count": 9,
       "target_low": 38.0,
       "target_mean": 62.85714,
-      "target_high": 85.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 85.0
     },
     "market_regime": "sideways"
   },
@@ -7562,13 +6362,13 @@
     "tech_score": 6,
     "price": 167.77,
     "avg_volume": 1493203,
-    "market_cap": 21981534208,
+    "market_cap": 21836275712,
     "sector": "Industrials",
     "company_name": "Verisk Analytics, Inc.",
     "verdict": "Avoid",
-    "buy_price": 162.8605218363313,
+    "buy_price": 162.8605218363331,
     "target_price": 186.96185684204102,
-    "stop_loss": 154.7174957445147,
+    "stop_loss": 154.71749574451644,
     "strategy": "\ud83d\udcc9 \ub20c\ub9bc\ub9e4\uc218(BB\ud558\ub2e8)",
     "comment": "OPM:45.1%, FCF:34%, [AIRR]\uc778\ud504\ub77c/\ub9ac\uc1fc\uc5b4\ub9c1 \uc218\ud61c",
     "contrarian_adjustment": 0,
@@ -7591,12 +6391,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 35.381599508233904,
+    "rsi_value": 35.381599472635244,
     "ma5": 169.8740020751953,
     "ma20": 178.77134857177734,
     "ma60": 186.96185684204102,
-    "ma120": 181.03598645528157,
-    "atr_value": 5.7047526680732386,
+    "ma120": 181.0359853108724,
+    "atr_value": 5.704752669027712,
     "mfi_value": 9.039845549435299,
     "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 45.1%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. FCF Margin 34%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 35\uc73c\ub85c \ub9e4\ub3c4\uc138 \uc6b0\uc704. \uc6d4\uac00 57\uba85 \uc911 31\uba85 \ub9e4\uc218 \uc758\uacac(Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $235 (\ud604\uc7ac\uac00 \ub300\ube44 +40% \uc0c1\uc2b9\uc5ec\ub825).",
     "analyst_data": {
@@ -7605,17 +6405,60 @@
       "sell_count": 0,
       "target_low": 195.0,
       "target_mean": 234.76471,
-      "target_high": 260.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 260.0
+    },
+    "market_regime": "sideways"
+  },
+  "PEP": {
+    "score": 64,
+    "fund_score": 40,
+    "tech_score": 9,
+    "price": 128.5,
+    "avg_volume": 8343849,
+    "market_cap": 175530999808,
+    "sector": "Consumer Defensive",
+    "company_name": "Pepsico, Inc.",
+    "verdict": "Hold",
+    "buy_price": 126.56925184641469,
+    "target_price": 140.45949179228919,
+    "stop_loss": 122.08105014985762,
+    "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
+    "comment": "\ud83d\udc8e\uc800\ud3c9\uac00, ROE:51.5%, OPM:16.8%",
+    "contrarian_adjustment": 5,
+    "liquidity_bonus": 5,
+    "liquidity_tier": "Hot",
+    "rotation_bonus": 5,
+    "rotation_phase": "\uc218\uae09\uc720\uc785",
+    "sector_name": "\uc18c\ube44\uc7ac",
+    "roe_value": 51.507999999999996,
+    "opm_value": 16.836001,
+    "revenue_growth_value": 6.4,
+    "peg_value": 1.32,
+    "fcf_margin_value": 8.1,
+    "fcf_score": 5,
+    "rs_score": 0,
+    "rs_ratio": -6.5,
+    "dividend_yield_value": null,
+    "dividend_growth_score": 0,
+    "per_value": null,
+    "ev_ebitda_value": null,
+    "valuation_method": "PER",
+    "debt_equity_value": null,
+    "rsi_value": 29.51788213627802,
+    "ma5": 129.3299987792969,
+    "ma20": 134.31568756103516,
+    "ma60": 136.84116643269857,
+    "ma120": 141.5518367767334,
+    "atr_value": 2.244100848278536,
+    "mfi_value": 13.891297095804731,
+    "analyst_comment": "ROE 51.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 16.8%\ub85c \uc548\uc815\uc801. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 30\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 \ub9e4\uc218 22 / \ubcf4\uc720 47 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $153 (\ud604\uc7ac\uac00 \ub300\ube44 +19% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
+    "analyst_data": {
+      "buy_count": 22,
+      "hold_count": 47,
+      "sell_count": 3,
+      "target_low": 124.0,
+      "target_mean": 152.54546,
+      "target_high": 180.0
     },
     "market_regime": "sideways"
   },
@@ -7630,7 +6473,7 @@
     "company_name": "AbbVie Inc.",
     "verdict": "Avoid",
     "buy_price": 266.28,
-    "target_price": 276.5982659340199,
+    "target_price": 276.59826593431404,
     "stop_loss": 258.0147876434326,
     "strategy": "\u26a0\ufe0f \ud83d\udcc8 \ucd94\uc138\ucd94\uc885(MA20\u2191)(R:R\uc8fc\uc758)",
     "comment": "OPM:40.0%, FCF:26%, PEG\uc800\ud3c9\uac00(0.54)",
@@ -7654,12 +6497,12 @@
     "ev_ebitda_value": null,
     "valuation_method": "PER",
     "debt_equity_value": null,
-    "rsi_value": 61.5270203982801,
+    "rsi_value": 61.527020401744274,
     "ma5": 265.20599365234375,
     "ma20": 260.6209976196289,
     "ma60": 255.96201782226564,
-    "ma120": 235.59562072753906,
-    "atr_value": 5.159132967009946,
+    "ma120": 235.5956206003825,
+    "atr_value": 5.1591329671570305,
     "mfi_value": 67.85680602697613,
     "analyst_comment": "\uc601\uc5c5\uc774\uc775\ub960 40.0%\uc758 \uace0\ub9c8\uc9c4 \uad6c\uc870. \ub9e4\ucd9c YoY +10% \uc131\uc7a5\uc138. FCF Margin 26%\ub85c \ud604\uae08\ucc3d\ucd9c\ub825 \ucd5c\uc0c1\uc704. MA20>MA60 \uc815\ubc30\uc5f4 \uc0c1\ud0dc\ub85c \uc0c1\uc2b9 \ucd94\uc138 \uc9c4\ud589 \uc911. RSI 62\uc73c\ub85c \ub9e4\uc218\uc138 \uc6b0\uc704. \uc6d4\uac00 93\uba85 \uc911 73\uba85 \ub9e4\uc218 \uc758\uacac(Strong Buy). \ud3c9\uade0 \ubaa9\ud45c\uac00 $279 (\ud604\uc7ac\uac00 \ub300\ube44 +5% \uc0c1\uc2b9\uc5ec\ub825). \uc0c1\uc2b9 \ucd94\uc138 \uc9c0\uc18d \uc911\uc73c\ub85c \ucd94\uc138 \ucd94\uc885 \ub9e4\ub9e4\uac00 \uc720\ud6a8.",
     "analyst_data": {
@@ -7668,80 +6511,7 @@
       "sell_count": 3,
       "target_low": 200.0,
       "target_mean": 278.60715,
-      "target_high": 328.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
-    },
-    "market_regime": "sideways"
-  },
-  "PEP": {
-    "score": 64,
-    "fund_score": 40,
-    "tech_score": 9,
-    "price": 128.5,
-    "avg_volume": 8343849,
-    "market_cap": 175530999808,
-    "sector": "Consumer Defensive",
-    "company_name": "Pepsico, Inc.",
-    "verdict": "Hold",
-    "buy_price": 126.5692518464105,
-    "target_price": 140.45949179228919,
-    "stop_loss": 122.08105014990053,
-    "strategy": "\ud83c\udfaf \uc5ed\ubc1c\uc0c1\ub9e4\uc218(\uae30\uc220\uc801\uc9c0\uc9c0)",
-    "comment": "\ud83d\udc8e\uc800\ud3c9\uac00, ROE:51.5%, OPM:16.8%",
-    "contrarian_adjustment": 5,
-    "liquidity_bonus": 5,
-    "liquidity_tier": "Hot",
-    "rotation_bonus": 5,
-    "rotation_phase": "\uc218\uae09\uc720\uc785",
-    "sector_name": "\uc18c\ube44\uc7ac",
-    "roe_value": 51.507999999999996,
-    "opm_value": 16.836001,
-    "revenue_growth_value": 6.4,
-    "peg_value": 1.32,
-    "fcf_margin_value": 8.1,
-    "fcf_score": 5,
-    "rs_score": 0,
-    "rs_ratio": -6.5,
-    "dividend_yield_value": null,
-    "dividend_growth_score": 0,
-    "per_value": null,
-    "ev_ebitda_value": null,
-    "valuation_method": "PER",
-    "debt_equity_value": null,
-    "rsi_value": 29.51788213757706,
-    "ma5": 129.3299987792969,
-    "ma20": 134.31568756103516,
-    "ma60": 136.84116643269857,
-    "ma120": 141.5518367767334,
-    "atr_value": 2.2441008482549822,
-    "mfi_value": 13.891297095804731,
-    "analyst_comment": "ROE 51.5%\ub85c \uc218\uc775\uc131 \ucd5c\uc0c1\uc704\uad8c. \uc601\uc5c5\uc774\uc775\ub960 16.8%\ub85c \uc548\uc815\uc801. MA20<MA60 \uc5ed\ubc30\uc5f4\ub85c \uc57d\uc138 \ud750\ub984. RSI 30\uc73c\ub85c \uacfc\ub9e4\ub3c4 \uc601\uc5ed \u2192 \ubc18\ub4f1 \uac00\ub2a5\uc131. \uc6d4\uac00 \ub9e4\uc218 22 / \ubcf4\uc720 47 / \ub9e4\ub3c4 3. \ud3c9\uade0 \ubaa9\ud45c\uac00 $153 (\ud604\uc7ac\uac00 \ub300\ube44 +19% \uc0c1\uc2b9\uc5ec\ub825). \uc5ed\ubc1c\uc0c1 \ub9e4\uc218 \uc2dc\uadf8\ub110 \uac10\uc9c0 \u2192 \uc800\uac00 \ub9e4\uc218 \uae30\ud68c\ub85c \ud310\ub2e8.",
-    "analyst_data": {
-      "buy_count": 22,
-      "hold_count": 47,
-      "sell_count": 3,
-      "target_low": 124.0,
-      "target_mean": 152.54546,
-      "target_high": 180.0,
-      "news": [
-        {
-          "title": "",
-          "publisher": ""
-        },
-        {
-          "title": "",
-          "publisher": ""
-        }
-      ]
+      "target_high": 328.0
     },
     "market_regime": "sideways"
   }
